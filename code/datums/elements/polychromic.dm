@@ -1,9 +1,9 @@
 /**
-  * Polychromic element
-  *
-  * Add this to an R/G/B matrixed clothing to make it triple coloured and customizable!
-  * Make sure the passed list is a list of three, 3-length colours without a hash i.e. list("FFF","EEE","621").
-  */
+ * Polychromic element
+ *
+ * Add this to an R/G/B matrixed clothing to make it triple coloured and customizable!
+ * Make sure the passed list is a list of three, 3-length colours without a hash i.e. list("FFF","EEE","621").
+ */
 
 /datum/element/polychromic
 	element_flags = ELEMENT_BESPOKE

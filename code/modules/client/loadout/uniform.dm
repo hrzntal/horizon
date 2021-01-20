@@ -329,14 +329,14 @@
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
 /datum/loadout_item/uniform/job/navyblueuniformhos
- 	name = "Head of Security navyblue uniform"
- 	path = /obj/item/clothing/under/rank/security/head_of_security/formal
- 	restricted_roles = list("Head of Security")
+	name = "Head of Security navyblue uniform"
+	path = /obj/item/clothing/under/rank/security/head_of_security/formal
+	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/navyblueuniformofficer
- 	name = "Security officer navyblue uniform"
- 	path = /obj/item/clothing/under/rank/security/officer/formal
- 	restricted_roles = list("Security Officer")
+	name = "Security officer navyblue uniform"
+	path = /obj/item/clothing/under/rank/security/officer/formal
+	restricted_roles = list("Security Officer")
 
 /datum/loadout_item/uniform/job/navyblueuniformwarden
 	name = "Warden navyblue uniform"

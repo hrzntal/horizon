@@ -322,8 +322,8 @@
 	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/raptor
-    name = "Raptor"
-    icon_state = "raptor"
+	name = "Raptor"
+	icon_state = "raptor"
 
 /datum/sprite_accessory/tails/mammal/wagging/lunasune
 	name = "Lunasune"

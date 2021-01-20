@@ -42,7 +42,7 @@
 	return spawned
 
 //Proc designed to be overwritten by invidivual loadout items. has support for a one color feed, and poly colors
-/datum/loadout_item/proc/customize(var/obj/item/spawned, customization)
+/datum/loadout_item/proc/customize(obj/item/spawned, customization)
 	switch(extra_info)
 		if(LOADOUT_INFO_ONE_COLOR)
 			spawned.color = "#[customization]"
