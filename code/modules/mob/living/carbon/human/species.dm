@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///This is the fluff name. They are displayed on health analyzers and in the character setup menu. Leave them generic for other servers to customize.
 	var/name
 	// Default color. If mutant colors are disabled, this is the color that will be used by that race.
-	var/default_color = "#FFF"
+	var/default_color = "FFF"
 
 	///Whether or not the race has sexual characteristics (biological genders). At the moment this is only FALSE for skeletons and shadows
 	var/sexes = TRUE

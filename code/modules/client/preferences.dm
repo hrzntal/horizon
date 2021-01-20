@@ -1782,7 +1782,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(colorlist.len < index)
 						return
 					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","#[colorlist[index]]") as color|null
-					if(new_color)
+					if(new_color && new_color != "#000000")
 						colorlist[index] = sanitize_hexcolor(new_color)
 				if("reset_color")
 					var/key = href_list["key"]
