@@ -32,6 +32,10 @@
 	///The size of the reagent container
 	var/reagent_vol = 10
 
+	///This is for associating an organ with a mutant bodypart. Look at tails for examples
+	var/mutantpart_key
+	var/list/list/mutantpart_info
+
 /obj/item/organ/Initialize()
 	. = ..()
 	if(organ_flags & ORGAN_EDIBLE)
@@ -40,10 +44,17 @@
 			foodtypes = RAW | MEAT | GROSS,\
 			volume = reagent_vol,\
 			after_eat = CALLBACK(src, .proc/OnEatFrom))
+	if(mutantpart_key)
+		color = mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
 		return
+
+	var/mob/living/carbon/human/H = M
+	if(mutantpart_key && istype(H))
+		H.dna.species.mutant_bodyparts[mutantpart_key] = mutantpart_info.Copy()
+		H.update_body()
 
 	var/obj/item/organ/replaced = M.getorganslot(slot)
 	if(replaced)
@@ -68,6 +79,13 @@
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE)
 	owner = null
 	if(M)
+		var/mob/living/carbon/human/H = M
+		if(mutantpart_key && istype(H))
+			if(H.dna.species.mutant_bodyparts[mutantpart_key])
+				mutantpart_info = H.dna.species.mutant_bodyparts[mutantpart_key].Copy() //Update the info in case it was changed on the person
+			color = "#[mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]]"
+			H.dna.species.mutant_bodyparts -= mutantpart_key
+			H.update_body()
 		M.internal_organs -= src
 		if(M.internal_organs_slot[slot] == src)
 			M.internal_organs_slot.Remove(slot)
@@ -239,3 +257,8 @@
 /// Called before organs are replaced in regenerate_organs with new ones
 /obj/item/organ/proc/before_organ_replacement(obj/item/organ/replacement)
 	return
+
+/obj/item/organ/proc/build_from_dna(datum/dna/DNA, associated_key)
+	mutantpart_key = associated_key
+	mutantpart_info = DNA.mutant_bodyparts[associated_key].Copy()
+	color = "#[mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]]"

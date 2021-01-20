@@ -5,6 +5,7 @@
 	name = "collectable hat"
 	desc = "A rare collectable hat."
 	icon_state = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/collectable/petehat
 	name = "ultra rare Pete's hat!"

@@ -23,6 +23,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_DETECTIVE
 
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
 /datum/outfit/job/detective
 	name = "Detective"
 	jobtype = /datum/job/detective

@@ -7,6 +7,7 @@
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_OCLOTHING
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	var/blood_overlay_type = "suit"
 	var/togglename = null
 	var/suittoggled = FALSE
