@@ -1,6 +1,3 @@
-/obj/item/clothing/shoes/proc/step_action() //this was made to rewrite clown shoes squeaking
-	SEND_SIGNAL(src, COMSIG_SHOES_STEP_ACTION)
-
 /obj/item/clothing/shoes/sneakers/mime
 	name = "mime shoes"
 	icon_state = "mime"
@@ -78,7 +75,13 @@
 	desc = "A pair of orange rubber boots, designed to prevent slipping on wet surfaces while also drying them."
 	icon_state = "galoshes_dry"
 
-/obj/item/clothing/shoes/galoshes/dry/step_action()
+/obj/item/clothing/shoes/galoshes/dry/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, .proc/on_step)
+
+/obj/item/clothing/shoes/galoshes/dry/proc/on_step()
+	SIGNAL_HANDLER
+
 	var/turf/open/t_loc = get_turf(src)
 	SEND_SIGNAL(t_loc, COMSIG_TURF_MAKE_DRY, TURF_WET_WATER, TRUE, INFINITY)
 
@@ -287,7 +290,7 @@
 	desc = "A giant, clunky pair of shoes crudely made out of bronze. Why would anyone wear these?"
 	icon = 'icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_treads"
-	lace_time = 8 SECONDS
+	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/bronze/Initialize()
 	. = ..()
