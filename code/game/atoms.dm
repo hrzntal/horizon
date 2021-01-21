@@ -1382,9 +1382,12 @@
 
 /// Generic logging helper
 /atom/proc/log_message(message, message_type, color=null, log_globally=TRUE)
+	#ifdef SPACEMAN_DMM
+		return
+	#endif
 	if(!log_globally)
 		return
-
+	
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
 		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
 			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
