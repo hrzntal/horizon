@@ -502,3 +502,6 @@
 /datum/config_entry/string/centcom_ban_db	// URL for the CentCom Galactic Ban DB API
 
 /datum/config_entry/string/centcom_source_whitelist
+
+/datum/config_entry/number/cryo_min_ssd_time
+	config_entry_value = 15
