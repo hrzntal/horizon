@@ -1,6 +1,6 @@
 GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('icons/horizon/mob/ssd_indicator.dmi', "default0", FLY_LAYER))
 
-/mob/living/proc/set_ssd_indicator(var/state)
+/mob/living/proc/set_ssd_indicator(state)
 	if(state == ssd_indicator)
 		return
 	ssd_indicator = state
