@@ -1,4 +1,4 @@
-datum/ambition_template
+/datum/ambition_template
 	///Name of the template. Has to be unique
 	var/name
 	///If defined, only the antags in the whitelists will see the template
