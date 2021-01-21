@@ -5,7 +5,7 @@
 		if(!initial(keybinding.keybind_signal) || !initial(keybinding.name))
 			continue
 		add_keybinding(new keybinding)
-	init_emote_keybinds()
+	//init_emote_keybinds() -- Not for now.
 
 /// Adds an instanced keybinding to the global tracker
 /proc/add_keybinding(datum/keybinding/instance)
@@ -21,7 +21,7 @@
 		for(var/bound_key in instance.hotkey_keys)
 			LAZYADD(GLOB.hotkey_keybinding_list_by_key[bound_key], list(instance.name))
 
-/* Let's not for now.
+/* As above
 /proc/init_emote_keybinds()
 	for(var/i in subtypesof(/datum/emote))
 		var/datum/emote/faketype = i
