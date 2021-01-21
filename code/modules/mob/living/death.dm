@@ -90,6 +90,11 @@
 	med_hud_set_status()
 	stop_pulling()
 
+	//HORIZON EDIT ADDITION BEGIN - TYPING_INDICATOR
+	if(typing_indicator)
+		set_typing_indicator(FALSE)
+	//HORIZON EDIT ADDITION END
+
 	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_DEATH, src, gibbed)
 
