@@ -3413,6 +3413,7 @@
 #include "hrzn\modules\icspawning\code\game\objects\items\cards_ids.dm"
 #include "hrzn\modules\icspawning\code\modules\clothing\outfits\standard.dm"
 #include "hrzn\modules\icspawning\code\modules\spells\spell.dm"
+#include "hrzn\modules\typing_indicator\code\mob.dm"
 #include "hrzn\modules\mold\code\_mold_defines.dm"
 #include "hrzn\modules\mold\code\mold_controller.dm"
 #include "hrzn\modules\mold\code\mold_disease.dm"
