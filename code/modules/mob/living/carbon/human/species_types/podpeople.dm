@@ -2,7 +2,7 @@
 	// A mutation caused by a human being ressurected in a revival pod. These regain health in light, and begin to wither in darkness.
 	name = "Primal Podperson"
 	id = "pod"
-	default_color = "59CE00"
+	default_color = "5C0"
 	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE)
 	inherent_factions = list("plants", "vines")
 	attack_verb = "slash"

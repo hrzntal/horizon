@@ -1,6 +1,6 @@
 /datum/species/robotic
 	say_mod = "beeps"
-	default_color = "00FF00"
+	default_color = "0F0"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_RADIMMUNE,TRAIT_VIRUSIMMUNE,TRAIT_NOBREATH, TRAIT_TOXIMMUNE, TRAIT_NOCLONELOSS, TRAIT_GENELESS, TRAIT_STABLEHEART,TRAIT_LIMBATTACHMENT, TRAIT_NO_HUSK, TRAIT_OXYIMMUNE)
 	mutant_bodyparts = list()

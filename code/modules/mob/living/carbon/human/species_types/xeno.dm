@@ -3,7 +3,7 @@
 	name = "Xenomorph Hybrid"
 	id = "xeno"
 	say_mod = "hisses"
-	default_color = "00FF00"
+	default_color = "0F0"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

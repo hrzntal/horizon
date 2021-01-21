@@ -2,7 +2,7 @@
 	// Entirely alien beings that seem to be made entirely out of gel. They have three eyes and a skeleton visible within them.
 	name = "Jellyperson"
 	id = "jelly"
-	default_color = "00FF90"
+	default_color = "0F9"
 	say_mod = "chirps"
 	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD,HAIR,FACEHAIR)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_TOXINLOVER)
@@ -120,7 +120,7 @@
 /datum/species/jelly/slime
 	name = "Slimeperson"
 	id = "slime"
-	default_color = "00FFFF"
+	default_color = "0FF"
 	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,NOBLOOD)
 	say_mod = "says"
 	hair_color = "mutcolor"
@@ -761,7 +761,7 @@
 	id = "slimeperson"
 	limbs_id = "slime"
 	limbs_icon = 'icons/mob/species/slime_parts_greyscale.dmi'
-	default_color = "00FFFF"
+	default_color = "0FF"
 	say_mod = "says"
 	coldmod = 3
 	heatmod = 1

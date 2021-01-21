@@ -1,7 +1,7 @@
 /datum/species/human
 	name = "Human"
 	id = "human"
-	default_color = "FFFFFF"
+	default_color = "FFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 	use_skintones = 1
