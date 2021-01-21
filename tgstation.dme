@@ -732,6 +732,7 @@
 #include "code\datums\wounds\bones.dm"
 #include "code\datums\wounds\burns.dm"
 #include "code\datums\wounds\loss.dm"
+#include "code\datums\wounds\muscle.dm"
 #include "code\datums\wounds\pierce.dm"
 #include "code\datums\wounds\slash.dm"
 #include "code\datums\wounds\scars\_scars.dm"
@@ -3171,6 +3172,7 @@
 #include "code\modules\surgery\advanced\bioware\nerve_splicing.dm"
 #include "code\modules\surgery\advanced\bioware\vein_threading.dm"
 #include "code\modules\surgery\bodyparts\_bodyparts.dm"
+#include "code\modules\surgery\bodyparts\bodypart_aid.dm"
 #include "code\modules\surgery\bodyparts\dismemberment.dm"
 #include "code\modules\surgery\bodyparts\head.dm"
 #include "code\modules\surgery\bodyparts\helpers.dm"
@@ -3326,4 +3328,5 @@
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
+
 // END_INCLUDE
