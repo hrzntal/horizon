@@ -1,7 +1,7 @@
 /datum/species/dullahan
 	name = "Dullahan"
 	id = "dullahan"
-	default_color = "FFFFFF"
+	default_color = "FFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOHUNGER,TRAIT_NOBREATH)
 	use_skintones = TRUE
