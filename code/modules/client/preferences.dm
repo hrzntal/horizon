@@ -1783,7 +1783,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","#[colorlist[index]]") as color|null
 					if(new_color && new_color != "#000000")
-						colorlist[index] = sanitize_hexcolor(new_color)
+						colorlist[index] = sanitize_hexcolor(new_color, 6)
 				if("reset_color")
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
@@ -2129,9 +2129,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's primary color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
-							features["mcolor"] = pref_species.default_color
+							features["mcolor"] = sanitize_hexcolor(pref_species.default_color, 6)
 						else
-							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -2140,9 +2140,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's secondary color:", "Character Preference","#"+features["mcolor2"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
-							features["mcolor2"] = pref_species.default_color
+							features["mcolor2"] = sanitize_hexcolor(pref_species.default_color, 6)
 						else
-							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -2151,9 +2151,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's tertiary color:", "Character Preference","#"+features["mcolor3"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
-							features["mcolor3"] = pref_species.default_color
+							features["mcolor3"] = sanitize_hexcolor(pref_species.default_color, 6)
 						else
-							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
