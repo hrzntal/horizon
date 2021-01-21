@@ -962,6 +962,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if("Me")
 					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=me")
+				if("Whisper")
+					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=whisper")
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))
