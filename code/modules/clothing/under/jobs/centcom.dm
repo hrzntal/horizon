@@ -21,3 +21,4 @@
 	icon_state = "intern"
 	inhand_icon_state = "g_suit"
 	can_adjust = FALSE
+	mutant_variants = NONE

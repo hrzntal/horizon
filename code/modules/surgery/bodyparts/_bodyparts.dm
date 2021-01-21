@@ -96,6 +96,10 @@
 	var/datum/bodypart_aid/splint/current_splint
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
+	/// Override of which icon file we're using for the bodypart
+	var/rendered_bp_icon
+	/// Whether the bodypart renders much like an organic one, important for icon logic
+	var/organic_render = TRUE
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -524,6 +528,10 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+		//Consider moving this to a new species proc "spec_heal" maybe?
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+			if(owner.health > 50)
+				owner.revive(FALSE)
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -716,8 +724,10 @@
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			organic_render = TRUE
 		else if(status == BODYPART_ROBOTIC)
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			organic_render = FALSE
 
 	if(owner)
 		owner.updatehealth()
@@ -757,7 +767,10 @@
 		should_draw_greyscale = FALSE
 
 		var/datum/species/S = H.dna.species
-		species_id = S.limbs_id
+		if(organic_render)
+			species_id = S.limbs_id
+			alpha = S.specific_alpha
+			rendered_bp_icon = S.limbs_icon
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -842,9 +855,9 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
-	if(is_organic_limb())
+	if(organic_render)
 		if(should_draw_greyscale)
-			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else if(use_digitigrade)
@@ -852,7 +865,7 @@
 			else
 				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon = 'icons/mob/human_parts.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else
@@ -879,6 +892,55 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
+
+	if (!owner || is_pseudopart || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	//set specific alpha before setting the markings alpha
+	if (alpha != 255)
+		for (var/ov in .)
+			var/image/overlay = ov
+			overlay.alpha = alpha
+	//Markings!
+	var/override_color
+	if(HAS_TRAIT(H, TRAIT_HUSK))
+		override_color = "888"
+
+	for(var/key in H.dna.species.body_markings[body_zone])
+		var/datum/body_marking/BM = GLOB.body_markings[key]
+
+		var/render_limb_string = body_zone
+		switch(body_zone)
+			if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+				if(use_digitigrade)
+					render_limb_string = "digitigrade_[use_digitigrade]_[render_limb_string]"
+			if(BODY_ZONE_CHEST)
+				if(BM.gendered)
+					var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
+					render_limb_string = "[render_limb_string]_[gendaar]"
+
+		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+		if(override_color)
+			accessory_overlay.color = "#[override_color]"
+		else
+			accessory_overlay.color = "#[H.dna.species.body_markings[body_zone][key]]"
+		accessory_overlay.alpha = H.dna.species.markings_alpha
+		. += accessory_overlay
+
+	if(aux_zone)
+		for(var/key in H.dna.species.body_markings[aux_zone])
+			var/datum/body_marking/BM = GLOB.body_markings[key]
+
+			var/render_limb_string = aux_zone
+
+			var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+			if(override_color)
+				accessory_overlay.color = "#[override_color]"
+			else
+				accessory_overlay.color = "#[H.dna.species.body_markings[aux_zone][key]]"
+			accessory_overlay.alpha = H.dna.species.markings_alpha
+			. += accessory_overlay
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

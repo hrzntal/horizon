@@ -5,6 +5,7 @@
 	reagent_state = SOLID
 	color = "#550000"
 	taste_description = "sweet tasting metal"
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/thermite/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
@@ -43,6 +44,7 @@
 	metabolization_rate = 4
 	taste_description = "burning"
 	penetrates_skin = NONE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/clf3/on_mob_life(mob/living/carbon/M)
 	M.adjust_fire_stacks(2)
@@ -155,6 +157,7 @@
 	color = "#FA00AF"
 	taste_description = "burning"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/phlogiston/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
@@ -178,6 +181,7 @@
 	taste_description = "burning"
 	self_consuming = TRUE
 	penetrates_skin = NONE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 	// why, just why
 /datum/reagent/napalm/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
@@ -204,6 +208,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "bitterness"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 
 /datum/reagent/cryostylane/on_mob_life(mob/living/carbon/M) //TODO: code freezing into an ice cube
@@ -229,6 +234,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "bitterness"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/pyrosium/on_mob_life(mob/living/carbon/M)
 	if(holder.has_reagent(/datum/reagent/oxygen))
@@ -247,6 +253,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "charged metal"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC 
 	var/shock_timer = 0
 
 /datum/reagent/teslium/on_mob_life(mob/living/carbon/M)

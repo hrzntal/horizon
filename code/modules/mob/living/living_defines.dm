@@ -170,3 +170,6 @@
 	var/ssd_indicator = FALSE
 	///Last time our client was logged in
 	var/lastclienttime = 0
+
+	///Temporary flavor text which most mobs can set by using the IC tab
+	var/temporary_flavor_text

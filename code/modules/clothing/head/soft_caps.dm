@@ -6,6 +6,7 @@
 	var/soft_type = "cargo"
 
 	dog_fashion = /datum/dog_fashion/head/cargo_tech
+	mutant_variants = NONE
 
 	var/flipped = FALSE
 

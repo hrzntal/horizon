@@ -3,13 +3,11 @@
 	name = "Lizardperson"
 	id = "lizard"
 	say_mod = "hisses"
-	default_color = "00FF00"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
+	default_color = "0F0"
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	mutant_bodyparts = list("tail_lizard" = "Smooth", "snout" = "Round", "horns" = "None",
-						"frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
 	mutanttongue = /obj/item/organ/tongue/lizard
-	mutant_organs = list(/obj/item/organ/tail/lizard)
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75
@@ -31,6 +29,7 @@
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 10)
 
 	ass_image = 'icons/ass/asslizard.png'
+	limbs_icon = 'icons/mob/species/lizard_parts_greyscale.dmi'
 
 /// Lizards are cold blooded and do not stabilize body temperature naturally
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi)
@@ -47,59 +46,26 @@
 
 	return randname
 
-//I wag in death
-/datum/species/lizard/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
-
-/datum/species/lizard/spec_stun(mob/living/carbon/human/H,amount)
-	if(H)
-		stop_wagging_tail(H)
-	. = ..()
-
-/datum/species/lizard/can_wag_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["tail_lizard"] || mutant_bodyparts["waggingtail_lizard"]
-
-/datum/species/lizard/is_wagging_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["waggingtail_lizard"]
-
-/datum/species/lizard/start_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["tail_lizard"])
-		mutant_bodyparts["waggingtail_lizard"] = mutant_bodyparts["tail_lizard"]
-		mutant_bodyparts["waggingspines"] = mutant_bodyparts["spines"]
-		mutant_bodyparts -= "tail_lizard"
-		mutant_bodyparts -= "spines"
-	H.update_body()
-
-/datum/species/lizard/stop_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["waggingtail_lizard"])
-		mutant_bodyparts["tail_lizard"] = mutant_bodyparts["waggingtail_lizard"]
-		mutant_bodyparts["spines"] = mutant_bodyparts["waggingspines"]
-		mutant_bodyparts -= "waggingtail_lizard"
-		mutant_bodyparts -= "waggingspines"
-	H.update_body()
-
-/datum/species/lizard/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	var/real_tail_type = C.dna.features["tail_lizard"]
-	var/real_spines = C.dna.features["spines"]
-
-	. = ..()
-
-	// Special handler for loading preferences. If we're doing it from a preference load, we'll want
-	// to make sure we give the appropriate lizard tail AFTER we call the parent proc, as the parent
-	// proc will overwrite the lizard tail. Species code at its finest.
-	if(pref_load)
-		C.dna.features["tail_lizard"] = real_tail_type
-		C.dna.features["spines"] = real_spines
-
-		var/obj/item/organ/tail/lizard/new_tail = new /obj/item/organ/tail/lizard()
-
-		new_tail.tail_type = C.dna.features["tail_lizard"]
-		new_tail.spines = C.dna.features["spines"]
-
-		// organ.Insert will qdel any existing organs in the same slot, so
-		// we don't need to manage that.
-		new_tail.Insert(C, TRUE, FALSE)
+/datum/species/lizard/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	var/main_color = random_short_color()
+	var/second_color
+	var/third_color
+	var/random = rand(1,3)
+	switch(random)
+		if(1) //First random case - all is the same
+			second_color = main_color
+			third_color = main_color
+		if(2) //Second case, derrivatory shades, except there's no helpers for that and I dont feel like writing them
+			second_color = main_color
+			third_color = main_color
+		if(3) //Third case, more randomisation
+			second_color = random_short_color()
+			third_color = random_short_color()
+	returned["mcolor"] = main_color
+	returned["mcolor2"] = second_color
+	returned["mcolor3"] = third_color
+	return returned
 
 /*
 Lizard subspecies: ASHWALKERS
@@ -108,6 +74,7 @@ Lizard subspecies: ASHWALKERS
 	name = "Ash Walker"
 	id = "ashlizard"
 	limbs_id = "lizard"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_CHUNKYFINGERS,TRAIT_NOBREATH)
 	species_language_holder = /datum/language_holder/lizard/ash
+	always_customizable = TRUE

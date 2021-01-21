@@ -115,8 +115,22 @@
 		inv.update_icon()
 
 	if(wear_mask)
-		if(!(check_obscured_slots() & ITEM_SLOT_MASK))
-			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi')
+		var/desired_icon = wear_mask.worn_icon
+		var/used_style = NONE
+		if(dna?.species.id == "vox")
+			used_style = STYLE_VOX
+		else if(dna?.species.mutant_bodyparts["snout"])
+			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
+			if(S.use_muzzled_sprites && wear_mask.mutant_variants & STYLE_MUZZLE)
+				used_style = STYLE_MUZZLE
+		switch(used_style)
+			if(STYLE_MUZZLE)
+				desired_icon = wear_mask.worn_icon_muzzled || 'icons/horizon/mob/clothing/mutant/mask_muzzled.dmi'
+			if(STYLE_VOX)
+				desired_icon = 'icons/horizon/mob/clothing/mutant/mask_vox.dmi'
+
+		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
+			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon, mutant_styles = used_style)
 		update_hud_wear_mask(wear_mask)
 
 	apply_overlay(FACEMASK_LAYER)
@@ -154,12 +168,26 @@
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
 		return
 
-	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
+	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
 		inv.update_icon()
 
 	if(head)
-		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi')
+		var/desired_icon = head.worn_icon
+		var/used_style = NONE
+		if(dna?.species.id == "vox")
+			used_style = STYLE_VOX
+		else if(dna?.species.mutant_bodyparts["snout"])
+			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
+			if(S.use_muzzled_sprites && head.mutant_variants & STYLE_MUZZLE)
+				used_style = STYLE_MUZZLE
+		switch(used_style)
+			if(STYLE_MUZZLE)
+				desired_icon = head.worn_icon_muzzled || 'icons/horizon/mob/clothing/mutant/head_muzzled.dmi'
+			if(STYLE_VOX)
+				desired_icon = 'icons/horizon/mob/clothing/mutant/head_vox.dmi'
+
+		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon, mutant_styles = used_style)
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)
@@ -203,7 +231,7 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file)
+/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file, mutant_styles = NONE)
 	. = list()
 
 
@@ -233,10 +261,19 @@
 		load_limb_from_cache()
 		return
 
+	var/is_taur = FALSE
+	if(dna?.species.mutant_bodyparts["taur"])
+		var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(S.hide_legs)
+			is_taur = TRUE
+
 	//GENERATE NEW LIMBS
 	var/list/new_limbs = list()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
+		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
+			continue
+
 		new_limbs += BP.get_limb_icon()
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
@@ -271,13 +308,14 @@
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.animal_origin)
 			. += "-[BP.animal_origin]"
-		if(BP.status == BODYPART_ORGANIC)
-			. += "-organic"
-		else
-			. += "-robotic"
+		if(BP.organic_render)
+			. += "-OR"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
+
+	if(dna?.species.mutant_bodyparts["taur"])
+		. += "-taur"
 
 
 //change the mob's icon to the one matching its key

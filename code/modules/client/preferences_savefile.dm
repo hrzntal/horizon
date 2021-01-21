@@ -233,7 +233,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	windowflashing	= sanitize_integer(windowflashing, FALSE, TRUE, initial(windowflashing))
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, (2**24)-1, initial(toggles))
-	clientfps		= sanitize_integer(clientfps, -1, 1000, 0)
+	clientfps		= sanitize_integer(clientfps, -1, 1000, 40)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, FALSE, TRUE, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, FALSE, TRUE, initial(auto_fit_viewport))
@@ -375,25 +375,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
 	READ_FILE(S["randomise"],  randomise)
-	READ_FILE(S["feature_mcolor"], features["mcolor"])
-	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
-	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
-	READ_FILE(S["feature_lizard_snout"], features["snout"])
-	READ_FILE(S["feature_lizard_horns"], features["horns"])
-	READ_FILE(S["feature_lizard_frills"], features["frills"])
-	READ_FILE(S["feature_lizard_spines"], features["spines"])
-	READ_FILE(S["feature_lizard_body_markings"], features["body_markings"])
-	READ_FILE(S["feature_lizard_legs"], features["legs"])
-	READ_FILE(S["feature_moth_wings"], features["moth_wings"])
-	READ_FILE(S["feature_moth_antennae"], features["moth_antennae"])
-	READ_FILE(S["feature_moth_markings"], features["moth_markings"])
-	READ_FILE(S["persistent_scars"] , persistent_scars)
-	if(!CONFIG_GET(flag/join_with_mutant_humans))
-		features["tail_human"] = "none"
-		features["ears"] = "none"
-	else
-		READ_FILE(S["feature_human_tail"], features["tail_human"])
-		READ_FILE(S["feature_human_ears"], features["ears"])
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -429,12 +410,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!custom_names[custom_name_id])
 			custom_names[custom_name_id] = get_default_name(custom_name_id)
 
-	if(!features["mcolor"] || features["mcolor"] == "#000")
-		features["mcolor"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
-
-	if(!features["ethcolor"] || features["ethcolor"] == "#000")
-		features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
-
 	randomise = SANITIZE_LIST(randomise)
 
 	if(gender == MALE)
@@ -464,20 +439,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	jumpsuit_style	= sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	playtime_reward_cloak = sanitize_integer(playtime_reward_cloak)
-	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
-	features["ethcolor"]	= copytext_char(features["ethcolor"], 1, 7)
-	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
-	features["tail_human"] 	= sanitize_inlist(features["tail_human"], GLOB.tails_list_human, "None")
-	features["snout"]	= sanitize_inlist(features["snout"], GLOB.snouts_list)
-	features["horns"] 	= sanitize_inlist(features["horns"], GLOB.horns_list)
-	features["ears"]	= sanitize_inlist(features["ears"], GLOB.ears_list, "None")
-	features["frills"] 	= sanitize_inlist(features["frills"], GLOB.frills_list)
-	features["spines"] 	= sanitize_inlist(features["spines"], GLOB.spines_list)
-	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
-	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list, "Normal Legs")
-	features["moth_wings"] 	= sanitize_inlist(features["moth_wings"], GLOB.moth_wings_list, "Plain")
-	features["moth_antennae"] 	= sanitize_inlist(features["moth_antennae"], GLOB.moth_antennae_list, "Plain")
-	features["moth_markings"] 	= sanitize_inlist(features["moth_markings"], GLOB.moth_markings_list, "None")
 
 	persistent_scars = sanitize_integer(persistent_scars)
 
@@ -488,6 +449,100 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			job_preferences -= j
 
 	all_quirks = SANITIZE_LIST(all_quirks)
+
+	//All the new horizon related stuff here
+	READ_FILE(S["features"], features)
+	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
+	READ_FILE(S["body_markings"], body_markings)
+
+	READ_FILE(S["loadout"], loadout)
+
+	READ_FILE(S["ooc_prefs"], ooc_prefs)
+	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["noncon_pref"], noncon_pref)
+	READ_FILE(S["vore_pref"], vore_pref)
+	READ_FILE(S["general_record"], general_record)
+	READ_FILE(S["security_record"], security_record)
+	READ_FILE(S["medical_record"], medical_record)
+	READ_FILE(S["background_info"], background_info)
+	READ_FILE(S["exploitable_info"], exploitable_info)
+
+	READ_FILE(S["mismatched_customization"] , mismatched_customization)
+	READ_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
+
+	READ_FILE(S["augments"] , augments)
+	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
+
+	READ_FILE(S["undershirt_color"], undershirt_color)
+	undershirt_color			= sanitize_hexcolor(undershirt_color, 3, 0)
+
+	READ_FILE(S["socks_color"], socks_color)
+	socks_color			= sanitize_hexcolor(socks_color, 3, 0)
+
+	features = SANITIZE_LIST(features)
+	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
+	body_markings = SANITIZE_LIST(body_markings)
+
+	loadout = SANITIZE_LIST(loadout)
+	//LOADOUT POINT VALIDATION
+	//Here we calculate if we truly can use the loaded loadout
+	loadout_points = initial_loadout_points()
+	var/accumulated_cost = 0
+	for(var/path in loadout)
+		var/datum/loadout_item/LI = GLOB.loadout_items[path]
+		if(!LI)
+			loadout -= path
+			continue
+		loadout[path] = LI.get_valid_information(loadout[path])//Savefile validation
+		accumulated_cost += LI.cost
+	if(accumulated_cost > loadout_points) //Not enough points, reset loadout
+		loadout = list()
+	else
+		loadout_points -= accumulated_cost //We got enough points, subtract the cost
+
+	ooc_prefs = sanitize_text(ooc_prefs)
+	if(!length(erp_pref))
+		erp_pref = "Ask"
+	if(!length(noncon_pref))
+		noncon_pref = "Ask"
+	if(!length(vore_pref))
+		vore_pref = "Ask"
+
+	general_record = sanitize_text(general_record)
+	security_record = sanitize_text(security_record)
+	medical_record = sanitize_text(medical_record)
+	background_info = sanitize_text(background_info)
+	exploitable_info = sanitize_text(exploitable_info)
+
+	mismatched_customization = sanitize_integer(mismatched_customization, FALSE, TRUE, initial(mismatched_customization))
+	allow_advanced_colors = sanitize_integer(allow_advanced_colors, FALSE, TRUE, initial(allow_advanced_colors))
+
+	//Validating mandatory features
+	for(var/key in MANDATORY_FEATURE_LIST)
+		if(!features[key])
+			features[key] = MANDATORY_FEATURE_LIST[key]
+
+	//validating body markings
+	for(var/zone in body_markings)
+		for(var/name in body_markings[zone])
+			if(!(name in GLOB.body_markings_per_limb[zone]))
+				body_markings[zone] -= name
+
+	augments = SANITIZE_LIST(augments)
+	//validating augments
+	for(var/aug_slot in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
+		if(!aug)
+			augments -= aug_slot
+	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
+	//validating limb styles
+	for(var/limb_slot in augment_limb_styles)
+		if(!GLOB.robotic_styles_list[augment_limb_styles[limb_slot]])
+			augment_limb_styles -= limb_slot
+
+	validate_species_parts()
+
+	needs_update = TRUE
 
 	return TRUE
 
@@ -523,20 +578,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["randomise"]		, randomise)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["phobia"], phobia)
-	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
-	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
-	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
-	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
-	WRITE_FILE(S["feature_lizard_snout"]			, features["snout"])
-	WRITE_FILE(S["feature_lizard_horns"]			, features["horns"])
-	WRITE_FILE(S["feature_human_ears"]				, features["ears"])
-	WRITE_FILE(S["feature_lizard_frills"]			, features["frills"])
-	WRITE_FILE(S["feature_lizard_spines"]			, features["spines"])
-	WRITE_FILE(S["feature_lizard_body_markings"]	, features["body_markings"])
-	WRITE_FILE(S["feature_lizard_legs"]			, features["legs"])
-	WRITE_FILE(S["feature_moth_wings"]			, features["moth_wings"])
-	WRITE_FILE(S["feature_moth_antennae"]			, features["moth_antennae"])
-	WRITE_FILE(S["feature_moth_markings"]		, features["moth_markings"])
 	WRITE_FILE(S["persistent_scars"]			, persistent_scars)
 
 	//Custom names
@@ -554,6 +595,32 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
+
+	//All the new horizon related stuff here
+	WRITE_FILE(S["features"] , features)
+	WRITE_FILE(S["mutant_bodyparts"] , mutant_bodyparts)
+	WRITE_FILE(S["body_markings"] , body_markings)
+
+	WRITE_FILE(S["loadout"] , loadout)
+
+	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
+	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["noncon_pref"] , noncon_pref)
+	WRITE_FILE(S["vore_pref"] , vore_pref)
+	WRITE_FILE(S["general_record"] , general_record)
+	WRITE_FILE(S["security_record"] , security_record)
+	WRITE_FILE(S["medical_record"] , medical_record)
+	WRITE_FILE(S["background_info"] , background_info)
+	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+
+	WRITE_FILE(S["mismatched_customization"] , mismatched_customization)
+	WRITE_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
+
+	WRITE_FILE(S["augments"] , augments)
+	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
+
+	WRITE_FILE(S["undershirt_color"], undershirt_color)
+	WRITE_FILE(S["socks_color"], socks_color)
 
 	return TRUE
 

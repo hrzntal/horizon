@@ -14,6 +14,7 @@
 	inhand_icon_state = "w_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/chaplainsuit/nun
 	name = "nun robe"
