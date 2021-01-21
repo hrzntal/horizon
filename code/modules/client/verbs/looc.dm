@@ -15,9 +15,6 @@
 		return
 
 	if(!holder)
-		if(!GLOB.looc_allowed)
-			to_chat(src, "<span class='danger'> LOOC is globally muted</span>")
-			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
@@ -35,7 +32,7 @@
 
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 
-	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
+	var/list/heard = get_hearers_in_view(7, src.mob)
 	var/list/admin_seen = list()
 	for(var/mob/M in heard)
 		if(!M.client)
