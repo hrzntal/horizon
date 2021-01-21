@@ -20,6 +20,8 @@
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	bounty_types = CIV_JOB_RANDOM
 
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS) //Not a head.. YET
+
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm

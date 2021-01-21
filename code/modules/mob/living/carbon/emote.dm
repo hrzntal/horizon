@@ -15,6 +15,7 @@
 	key = "blink_r"
 	message = "blinks rapidly."
 
+/* I really cant be arsed to move this right now back here, soo.. yeah
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
@@ -33,7 +34,7 @@
 							'sound/misc/clap2.ogg',
 							'sound/misc/clap3.ogg',
 							'sound/misc/clap4.ogg')
-
+*/
 /datum/emote/living/carbon/crack
 	key = "crack"
 	key_third_person = "cracks"

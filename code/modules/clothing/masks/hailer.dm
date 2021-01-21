@@ -76,6 +76,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	desc = "A close-fitting tactical mask created in cooperation with a certain megacorporation, comes with an especially aggressive Compli-o-nator 3000."
 	icon_state = "spacepol"
 	inhand_icon_state = "spacepol"
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/sechailer/cyborg
 	name = "security hailer"

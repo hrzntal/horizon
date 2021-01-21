@@ -11,6 +11,7 @@
 	permeability_coefficient = 0.5
 	slowdown = SHOES_SLOWDOWN
 	strip_delay = 1 SECONDS
+	mutant_variants = STYLE_DIGITIGRADE
 	var/offset = 0
 	var/equipped_before_drop = FALSE
 	///Whether these shoes have laces that can be tied/untied
@@ -40,16 +41,22 @@
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
 		return(BRUTELOSS)
 
-/obj/item/clothing/shoes/worn_overlays(isinhands = FALSE)
+/obj/item/clothing/shoes/worn_overlays(isinhands = FALSE,icon_file,mutant_styles=NONE)
 	. = list()
 	if(!isinhands)
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedshoe")
 		if(HAS_BLOOD_DNA(src))
-			if(clothing_flags & LARGE_WORN_ICON)
-				. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large")
-			else
-				. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+			if (mutant_styles & STYLE_DIGITIGRADE)
+				if(clothing_flags & LARGE_WORN_ICON)
+					. += mutable_appearance('icons/horizon/mob/shoeblood/64x64.dmi', "shoeblood_large")
+				else
+					. += mutable_appearance('icons/horizon/mob/shoeblood/blood.dmi', "shoeblood")
+			else 
+				if(clothing_flags & LARGE_WORN_ICON)
+					. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large")
+				else
+					. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
 
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()

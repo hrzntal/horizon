@@ -1,3 +1,4 @@
+/*
 /datum/keybinding/emote
 	category = CATEGORY_EMOTE
 	weight = WEIGHT_EMOTE
@@ -16,3 +17,4 @@
 	if(.)
 		return
 	return user.mob.emote(emote_key, intentional=TRUE)
+*/

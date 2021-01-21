@@ -38,6 +38,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
 /datum/outfit/job/hop
 	name = "Head of Personnel"
 	jobtype = /datum/job/hop

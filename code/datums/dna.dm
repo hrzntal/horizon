@@ -5,7 +5,7 @@
 	var/uni_identity
 	var/blood_type
 	var/datum/species/species = new /datum/species/human //The type of mutant race the player is if applicable (i.e. potato-man)
-	var/list/features = list("FFF") //first value is mutant color
+	var/list/features = MANDATORY_FEATURE_LIST
 	var/real_name //Stores the real name of the person who originally got this dna datum. Used primarely for changelings,
 	var/list/mutations = list()   //All mutations are from now on here
 	var/list/temporary_mutations = list() //Temporary changes to the UE
@@ -15,6 +15,12 @@
 	var/default_mutation_genes[DNA_MUTATION_BLOCKS] //List of the default genes from this mutation to allow DNA Scanner highlighting
 	var/stability = 100
 	var/scrambled = FALSE //Did we take something like mutagen? In that case we cant get our genes scanned to instantly cheese all the powers.
+	///Mutant bodyparts of our human, those that he originally has, so they dont change if you implant a tail or cut it off etc. For ones that do, check the species level
+	var/list/list/mutant_bodyparts = list()
+	///Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation
+	var/list/list/body_markings = list()
+	///Current body size, used for proper re-sizing and keeping track of that
+	var/current_body_size = BODY_SIZE_NORMAL
 
 /datum/dna/New(mob/living/new_holder)
 	if(istype(new_holder))
@@ -41,7 +47,7 @@
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
-	destination.set_species(species.type, icon_update=0)
+	destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy())
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
@@ -56,6 +62,9 @@
 	new_dna.uni_identity = uni_identity
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
+	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	new_dna.body_markings = body_markings.Copy()
+	new_dna.update_body_size()
 	new_dna.species = new species.type
 	new_dna.real_name = real_name
 	new_dna.mutations = mutations.Copy()
@@ -264,7 +273,18 @@
 	uni_identity = generate_uni_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	features = random_features()
+	features = species.get_random_features()
+	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
+
+/datum/dna/proc/update_body_size()
+	if(!holder || current_body_size == features["body_size"])
+		return
+	var/change_multiplier = features["body_size"] / current_body_size
+	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile
+	var/translate = ((change_multiplier-1) * 32)/2
+	holder.transform = holder.transform.Scale(change_multiplier)
+	holder.transform = holder.transform.Translate(0, translate)
+	current_body_size = features["body_size"]
 
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
@@ -297,7 +317,7 @@
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(mrace && has_dna())
 		var/datum/species/new_race
 		if(ispath(mrace))
@@ -310,7 +330,44 @@
 		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
+		//BODYPARTS AND FEATURES
+		var/list/bodyparts_to_add
+		if(pref_load)
+			dna.features = pref_load.features.Copy()
+			dna.real_name = pref_load.real_name
+			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
+			dna.body_markings = pref_load.body_markings.Copy()
+			dna.species.body_markings = pref_load.body_markings.Copy()
+		else
+			if(!retain_features)
+				dna.features = override_features || new_race.get_random_features()
+			if(retain_mutantparts)
+				var/list/list/new_list = new_race.get_random_mutant_bodyparts(dna.features)
+				var/list/compiled_list = list()
+				for(var/key in new_list)
+					if(dna.mutant_bodyparts[key])
+						compiled_list[key] = dna.mutant_bodyparts[key].Copy()
+					else
+						compiled_list[key] = new_list[key].Copy()
+			else
+				dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
+			dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
+			dna.species.body_markings = dna.body_markings.Copy()
+
+		bodyparts_to_add = dna.mutant_bodyparts.Copy()
+
+		for(var/key in bodyparts_to_add)
+			var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
+			if(!SP.factual)
+				bodyparts_to_add -= key
+				continue
+
+		dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
+
+		dna.update_body_size()
+
 		dna.species.on_species_gain(src, old_species, pref_load)
+		//END OF BODYPARTS AND FEATURES
 		if(ishuman(src))
 			qdel(language_holder)
 			var/species_holder = initial(mrace.species_language_holder)
@@ -667,3 +724,4 @@
 		qdel(eyes)
 		visible_message("<span class='notice'>[src] looks up and their eyes melt away!</span>", "<span class>='userdanger'>I understand now.</span>")
 		addtimer(CALLBACK(src, .proc/adjustOrganLoss, ORGAN_SLOT_BRAIN, 200), 20)
+

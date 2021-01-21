@@ -82,6 +82,8 @@
 
 	/// A lazy list of statuses to add next to this mind in the traitor panel
 	var/list/special_statuses
+	/// Datum holding the ambitions of the mind
+	var/datum/ambitions/my_ambitions
 
 /datum/mind/New(_key)
 	key = _key
@@ -120,6 +122,9 @@
 	var/mob/living/old_current = current
 	if(current)
 		current.transfer_observers_to(new_character)	//transfer anyone observing the old character to the new one
+	if(my_ambitions)
+		remove_verb(current, /mob/proc/view_ambitions)
+		add_verb(new_character, /mob/proc/view_ambitions)
 	current = new_character								//associate ourself with our new body
 	new_character.mind = src							//and associate our new body with ourself
 	for(var/a in antag_datums)	//Makes sure all antag datums effects are applied in the new body
@@ -261,6 +266,13 @@
 		antag_team.add_member(src)
 	INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain)
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	if(A.uses_ambitions)
+		if(!my_ambitions)
+			my_ambitions = new(src)
+			add_verb(current, /mob/proc/view_ambitions)
+		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
+		if(my_ambitions.submitted)
+			A.ambitions_add()
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -269,6 +281,8 @@
 	var/datum/antagonist/A = has_antag_datum(datum_type)
 	if(A)
 		A.on_removal()
+		if(A.uses_ambitions && my_ambitions.submitted)
+			A.ambitions_removal()
 		return TRUE
 
 
@@ -348,6 +362,8 @@
 		return
 	var/mob/living/carbon/human/traitor_mob = current
 	if (!istype(traitor_mob))
+		return
+	if(find_syndicate_uplink())
 		return
 
 	var/list/all_contents = traitor_mob.GetAllContents()
@@ -639,6 +655,12 @@
 	else if (href_list["obj_announce"])
 		announce_objectives()
 
+	if (href_list["ambitions"])
+		if(!my_ambitions)
+			return
+		//It's admin viewing the user's ambitions. The user can view them through a verb.
+		my_ambitions.ShowPanel(usr, TRUE)
+
 	//Something in here might have changed your mob
 	if(self_antagging && (!usr || !usr.client) && current.client)
 		usr = current
@@ -788,6 +810,11 @@
 	if(martial_art && martial_art.id == string)
 		return martial_art
 	return FALSE
+
+/datum/mind/proc/ambition_submit()
+	for(var/datum/antagonist/A in antag_datums)
+		if(A.uses_ambitions)
+			A.ambitions_add()
 
 /mob/dead/new_player/sync_mind()
 	return

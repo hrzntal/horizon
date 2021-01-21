@@ -10,6 +10,7 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
 	hijack_speed = 0.5				//10 seconds per hijack stage by default
+	uses_ambitions = TRUE
 	var/special_role = ROLE_TRAITOR
 	var/employer = "The Syndicate"
 	var/give_objectives = TRUE
@@ -17,6 +18,11 @@
 	var/should_equip = TRUE
 	var/traitor_kind = TRAITOR_HUMAN //Set on initial assignment
 	var/datum/contractor_hub/contractor_hub
+
+
+/datum/antagonist/traitor/ambitions_add()
+	if(traitor_kind == TRAITOR_HUMAN && should_equip)
+		equip()
 
 /datum/antagonist/traitor/on_gain()
 	if(owner.current && isAI(owner.current))
@@ -55,11 +61,7 @@
 	objectives -= O
 
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
-	switch(traitor_kind)
-		if(TRAITOR_AI)
-			forge_ai_objectives()
-		else
-			forge_human_objectives()
+	add_objective(new /datum/objective/ambitions())
 
 /datum/antagonist/traitor/proc/forge_human_objectives()
 	var/is_hijacker = FALSE
@@ -187,6 +189,7 @@
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
+	..()
 
 /datum/antagonist/traitor/proc/finalize_traitor()
 	switch(traitor_kind)
@@ -195,8 +198,6 @@
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
 		if(TRAITOR_HUMAN)
-			if(should_equip)
-				equip(silent)
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)

@@ -87,6 +87,10 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(!job.player_old_enough(player.client))
 			return FALSE
+		if(job.has_banned_quirk(player.client.prefs))
+			return FALSE
+		if(job.has_banned_species(player.client.prefs))
+			return FALSE
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
 		var/position_limit = job.total_positions
@@ -113,6 +117,12 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
+			continue
+		if(job.has_banned_quirk(player.client.prefs))
+			JobDebug("FOC job not compatible with quirks, Player: [player]")
+			continue
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("FOC job not compatible with species, Player: [player]")
 			continue
 		if(flag && (!(flag in player.client.prefs.be_special)))
 			JobDebug("FOC flag failed, Player: [player], Flag: [flag], ")
@@ -147,6 +157,13 @@ SUBSYSTEM_DEF(job)
 
 		if(!job.player_old_enough(player.client))
 			JobDebug("GRJ player not old enough, Player: [player]")
+			continue
+
+		if(job.has_banned_quirk(player.client.prefs))
+			JobDebug("GRJ player has incompatible quirk, Player: [player]")
+			continue
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("GRJ player has incompatible species, Player: [player]")
 			continue
 
 		if(job.required_playtime_remaining(player.client))
@@ -329,6 +346,13 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player not old enough, Player: [player], Job:[job.title]")
 					continue
 
+				if(job.has_banned_quirk(player.client.prefs))
+					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
+					continue
+				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
+
 				if(job.required_playtime_remaining(player.client))
 					JobDebug("DO player not enough xp, Player: [player], Job:[job.title]")
 					continue
@@ -447,7 +471,10 @@ SUBSYSTEM_DEF(job)
 		living_mob.mind.assigned_role = rank
 
 	to_chat(M, "<b>You are the [rank].</b>")
+	var/list/packed_items
 	if(job)
+		if(M.client && job.no_dresscode && job.loadout)
+			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
@@ -479,6 +506,11 @@ SUBSYSTEM_DEF(job)
 		living_mob.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		if(!job.no_dresscode && job.loadout)
+			if(M.client)
+				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job,initial=TRUE)
+		if(packed_items)
+			M.client.prefs.add_packed_items(living_mob, packed_items)
 
 	return living_mob
 
@@ -709,3 +741,11 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/JobDebug(message)
 	log_job_debug(message)
+
+/datum/controller/subsystem/job/proc/FreeRole(rank)
+	if(!rank)
+		return
+	var/datum/job/job = GetJob(rank)
+	if(!job)
+		return FALSE
+	job.current_positions = max(0, job.current_positions - 1)

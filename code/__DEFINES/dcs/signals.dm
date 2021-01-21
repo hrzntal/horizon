@@ -493,8 +493,10 @@
 #define COMSIG_CARBON_ATTACH_LIMB "carbon_attach_limb"
 	#define COMPONENT_NO_ATTACH (1<<0)
 #define COMSIG_CARBON_REMOVE_LIMB "carbon_remove_limb"			//from base of /obj/item/bodypart/proc/drop_limb(special, dismembered)
-#define COMSIG_BODYPART_GAUZED	"bodypart_gauzed" // from /obj/item/bodypart/proc/apply_gauze(/obj/item/stack/gauze)
-#define COMSIG_BODYPART_GAUZE_DESTROYED	"bodypart_degauzed" // from [/obj/item/bodypart/proc/seep_gauze] when it runs out of absorption
+#define COMSIG_BODYPART_GAUZED	"bodypart_gauzed" // from /datum/bodypart_aid/gauze/New() //When a gauze is applied
+#define COMSIG_BODYPART_GAUZE_DESTROYED	"bodypart_degauzed" // from /datum/bodypart_aid/gauze/Destroy() //When a gauze is removed
+#define COMSIG_BODYPART_SPLINTED	"bodypart_splinted" // from /datum/bodypart_aid/splint/New() //When a splint is applied
+#define COMSIG_BODYPART_SPLINT_DESTROYED	"bodypart_desplinted" // from /datum/bodypart_aid/gauze/Destroy() //When a splint is removed
 
 ///from base of mob/living/carbon/soundbang_act(): (list(intensity))
 #define COMSIG_CARBON_SOUNDBANG "carbon_soundbang"
@@ -607,6 +609,8 @@
 	#define COMPONENT_HANDLED_GRILLING (1<<0)
 ///Called when an object is turned into another item through grilling ontop of a griddle
 #define COMSIG_GRILL_COMPLETED "item_grill_completed"
+///Called when an armor plate is successfully applied to an object
+#define COMSIG_ARMOR_PLATED "armor_plated"
 
 ///from base of [/obj/item/proc/tool_check_callback]: (mob/living/user)
 #define COMSIG_TOOL_IN_USE "tool_in_use"
@@ -641,7 +645,7 @@
 
 // /obj/item/clothing signals
 
-///from base of obj/item/clothing/shoes/proc/step_action(): ()
+///from [/mob/living/carbon/human/Move]: ()
 #define COMSIG_SHOES_STEP_ACTION "shoes_step_action"
 ///from base of /obj/item/clothing/suit/space/proc/toggle_spacesuit(): (obj/item/clothing/suit/space/suit)
 #define COMSIG_SUIT_SPACE_TOGGLE "suit_space_toggle"

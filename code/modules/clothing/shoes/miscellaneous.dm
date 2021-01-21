@@ -1,6 +1,3 @@
-/obj/item/clothing/shoes/proc/step_action() //this was made to rewrite clown shoes squeaking
-	SEND_SIGNAL(src, COMSIG_SHOES_STEP_ACTION)
-
 /obj/item/clothing/shoes/sneakers/mime
 	name = "mime shoes"
 	icon_state = "mime"
@@ -26,15 +23,7 @@
 	inhand_icon_state = "sneakboots"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF |  ACID_PROOF
-
-/obj/item/clothing/shoes/combat/sneakboots/equipped(mob/living/carbon/human/user, slot)
-	. = ..()
-	if(slot == ITEM_SLOT_FEET)
-		ADD_TRAIT(user, TRAIT_SILENT_FOOTSTEPS, SHOES_TRAIT)
-
-/obj/item/clothing/shoes/combat/sneakboots/dropped(mob/living/carbon/human/user)
-	REMOVE_TRAIT(user, TRAIT_SILENT_FOOTSTEPS, SHOES_TRAIT)
-	return ..()
+	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS)
 
 /obj/item/clothing/shoes/combat/swat //overpowered boots for death squads
 	name = "\improper SWAT boots"
@@ -86,7 +75,13 @@
 	desc = "A pair of orange rubber boots, designed to prevent slipping on wet surfaces while also drying them."
 	icon_state = "galoshes_dry"
 
-/obj/item/clothing/shoes/galoshes/dry/step_action()
+/obj/item/clothing/shoes/galoshes/dry/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_SHOES_STEP_ACTION, .proc/on_step)
+
+/obj/item/clothing/shoes/galoshes/dry/proc/on_step()
+	SIGNAL_HANDLER
+
 	var/turf/open/t_loc = get_turf(src)
 	SEND_SIGNAL(t_loc, COMSIG_TURF_MAKE_DRY, TURF_WET_WATER, TRUE, INFINITY)
 
@@ -295,7 +290,7 @@
 	desc = "A giant, clunky pair of shoes crudely made out of bronze. Why would anyone wear these?"
 	icon = 'icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_treads"
-	lace_time = 8 SECONDS
+	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/bronze/Initialize()
 	. = ..()
@@ -518,3 +513,45 @@
 	desc = "For when you're stepping on up to the plate."
 	icon_state = "JackFrostShoes"
 	inhand_icon_state = "JackFrostShoes_worn"
+
+/obj/item/clothing/shoes/wraps
+	icon = 'icons/horizon/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/feet.dmi'
+	name = "gilded leg wraps"
+	desc = "Ankle coverings. These ones have a golden design."
+	icon_state = "gildedcuffs"
+	body_parts_covered = FALSE
+
+/obj/item/clothing/shoes/wraps/silver
+	name = "silver leg wraps"
+	desc = "Ankle coverings. Not made of real silver."
+	icon_state = "silvergildedcuffs"
+
+/obj/item/clothing/shoes/wraps/red
+	name = "red leg wraps"
+	desc = "Ankle coverings. Show off your style with these shiny red ones!"
+	icon_state = "redcuffs"
+
+/obj/item/clothing/shoes/wraps/blue
+	name = "blue leg wraps"
+	desc = "Ankle coverings. Hang ten, brother."
+	icon_state = "bluecuffs"
+
+/obj/item/clothing/shoes/cowboyboots
+	icon = 'icons/horizon/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/feet.dmi'
+	name = "cowboy boots"
+	desc = "A standard pair of brown cowboy boots."
+	icon_state = "cowboyboots"
+
+/obj/item/clothing/shoes/cowboyboots/black
+	name = "black cowboy boots"
+	desc = "A pair of black cowboy boots, pretty easy to scuff up."
+	icon_state = "cowboyboots_black"
+
+/obj/item/clothing/shoes/high_heels
+	icon = 'icons/horizon/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/feet.dmi'
+	name = "high heels"
+	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
+	icon_state = "heels"

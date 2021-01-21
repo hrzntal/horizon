@@ -93,6 +93,7 @@ const setupApp = () => {
     'pos': '0x0',
     'size': '0x0',
   });
+  browser_output_skin();
 
   // Enable hot module reloading
   if (module.hot) {
@@ -110,6 +111,13 @@ const setupApp = () => {
       renderApp();
     });
   }
+};
+
+const browser_output_skin = async () => {
+  const winget_output = await Byond.winget('output');
+  Byond.winset('browseroutput', {
+    'size': winget_output["size"],
+  });
 };
 
 setupApp();

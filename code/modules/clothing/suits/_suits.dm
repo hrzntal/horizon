@@ -7,19 +7,22 @@
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_OCLOTHING
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	var/blood_overlay_type = "suit"
 	var/togglename = null
 	var/suittoggled = FALSE
 	limb_integrity = 0 // disabled for most exo-suits
 
 
-/obj/item/clothing/suit/worn_overlays(isinhands = FALSE)
+/obj/item/clothing/suit/worn_overlays(isinhands = FALSE, file2use, mutant_styles = NONE)
 	. = list()
 	if(!isinhands)
 		if(damaged_clothes)
-			. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
+			var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
+			. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
 		if(HAS_BLOOD_DNA(src))
-			. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood")
+			var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
+			. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform

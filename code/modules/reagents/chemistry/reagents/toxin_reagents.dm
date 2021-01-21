@@ -72,6 +72,7 @@
 	toxpwr = 3
 	material = /datum/material/plasma
 	penetrates_skin = NONE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/toxin/plasma/on_new(data)
 	. = ..()
@@ -84,6 +85,8 @@
 /datum/reagent/toxin/plasma/on_mob_life(mob/living/carbon/C)
 	if(holder.has_reagent(/datum/reagent/medicine/epinephrine))
 		holder.remove_reagent(/datum/reagent/medicine/epinephrine, 2*REM)
+	if(C.mob_biotypes & MOB_ROBOTIC)
+		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL-1)
 	C.adjustPlasma(20)
 	return ..()
 
@@ -849,6 +852,7 @@
 	var/acidpwr = 10 //the amount of protection removed from the armour
 	taste_description = "acid"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 // ...Why? I mean, clearly someone had to have done this and thought, well, acid doesn't hurt plants, but what brought us here, to this point?
 /datum/reagent/toxin/acid/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)

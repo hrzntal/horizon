@@ -18,6 +18,26 @@
 
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	var/species_visible
+	var/species_name_string
+	if(skipface || get_visible_name() == "Unknown")
+		species_visible = FALSE
+	else
+		species_visible = TRUE
+
+	if(!species_visible)
+		species_name_string = "!"
+	else if (dna.features["custom_species"])
+		species_name_string = ", [prefix_a_or_an(dna.features["custom_species"])] <EM>[dna.features["custom_species"]]</EM>!"
+	else
+		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
+
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
+	if(species_visible) //If they have a custom species shown, show the real one too
+		if(dna.features["custom_species"])
+			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
+	else
+		. += "You can't make out what species they are."
 
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
@@ -355,7 +375,7 @@
 			if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
-				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
+				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.\n"
 
 	var/scar_severity = 0
 	for(var/i in all_scars)
@@ -421,6 +441,33 @@
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
+
+	for(var/genital in list("penis", "testicles", "vagina", "breasts"))
+		if(dna.species.mutant_bodyparts[genital])
+			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			if(G)
+				if(!(G.is_hidden(src)))
+					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
+					break
+	if(!skipface)
+		var/line
+		if(length(dna.features["flavor_text"]))
+			var/message = dna.features["flavor_text"]
+			if(length_char(message) <= 40)
+				line = "<span class='notice'>[message]</span>"
+			else
+				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
+		if(client)
+			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+		if(line)
+			. += line
+	//Temporary flavor text addition:
+	if(temporary_flavor_text)
+		if(length_char(temporary_flavor_text) <= 40)
+			. += "<span class='notice'>[temporary_flavor_text]</span>"
+		else
+			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+
 	. += "*---------*</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)

@@ -33,6 +33,8 @@
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_SECURITY
 	bounty_types = CIV_JOB_SEC
 
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
+
 /datum/outfit/job/hos
 	name = "Head of Security"
 	jobtype = /datum/job/hos

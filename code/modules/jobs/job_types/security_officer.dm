@@ -24,6 +24,8 @@
 	display_order = JOB_DISPLAY_ORDER_SECURITY_OFFICER
 	bounty_types = CIV_JOB_SEC
 
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
 /datum/job/officer/get_access()
 	var/list/L = list()
 	L |= ..() | check_config_for_sec_maint()

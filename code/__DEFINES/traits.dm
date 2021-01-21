@@ -240,6 +240,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_COAGULATING		"coagulating" //from coagulant reagents, this doesn't affect the bleeding itself but does affect the bleed warning messages
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
+#define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_NO_HUSK				"no_husk"
 
 // You can stare into the abyss, but it does not stare back.
 // You're immune to the hallucination effect of the supermatter, either
@@ -485,3 +487,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
+
+/// Trait from emote module
+#define TRAIT_EXCITABLE	"wagwag"

@@ -90,10 +90,16 @@
 	var/last_maxed
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	/// If we have a gauze wrapping currently applied (not including splints)
-	var/obj/item/stack/current_gauze
+	/// If we have a gauze wrapping currently applied
+	var/datum/bodypart_aid/gauze/current_gauze
+	/// If we have a splint currently applied
+	var/datum/bodypart_aid/splint/current_splint
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
+	/// Override of which icon file we're using for the bodypart
+	var/rendered_bp_icon
+	/// Whether the bodypart renders much like an organic one, important for icon logic
+	var/organic_render = TRUE
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -112,6 +118,10 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
+	if(current_gauze)
+		qdel(current_gauze)
+	if(current_splint)
+		qdel(current_splint)
 	return ..()
 
 
@@ -179,7 +189,10 @@
 	var/turf/T = get_turf(src)
 	if(status != BODYPART_ROBOTIC)
 		playsound(T, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	seep_gauze(9999) // destroy any existing gauze if any exists
+	if(current_gauze)
+		qdel(current_gauze)
+	if(current_splint)
+		qdel(current_splint)
 	for(var/obj/item/organ/drop_organ in get_organs())
 		drop_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/I in src)
@@ -266,9 +279,12 @@
 		// note that there's no handling for BIO_JUST_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 		// standard humanoids
 		if(BIO_FLESH_BONE)
+			// If the bodypart is not mangled, and its a limb, we have a chance we hit a muscle
+			if(mangled_state != BODYPART_MANGLED_BOTH && body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(MUSCLE_WOUND_CHANCE))
+				wounding_type = WOUND_MUSCLE
 			// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 			// So a big sharp weapon is still all you need to destroy a limb
-			if(mangled_state == BODYPART_MANGLED_FLESH && sharpness)
+			else if(mangled_state == BODYPART_MANGLED_FLESH && sharpness)
 				playsound(src, "sound/effects/wounds/crackandbleed.ogg", 100)
 				if(wounding_type == WOUND_SLASH && !easy_dismember)
 					wounding_dmg *= 0.6 // edged weapons pass along 60% of their wounding damage to the bone since the power is spread out over a larger area
@@ -280,6 +296,10 @@
 
 	// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 	if(owner && wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
+		if(current_gauze)
+			current_gauze.take_damage()
+		if(current_splint)
+			current_splint.take_damage()
 		check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus)
 
 	for(var/i in wounds)
@@ -508,6 +528,10 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+		//Consider moving this to a new species proc "spec_heal" maybe?
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+			if(owner.health > 50)
+				owner.revive(FALSE)
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -700,8 +724,10 @@
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			organic_render = TRUE
 		else if(status == BODYPART_ROBOTIC)
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			organic_render = FALSE
 
 	if(owner)
 		owner.updatehealth()
@@ -741,7 +767,10 @@
 		should_draw_greyscale = FALSE
 
 		var/datum/species/S = H.dna.species
-		species_id = S.limbs_id
+		if(organic_render)
+			species_id = S.limbs_id
+			alpha = S.specific_alpha
+			rendered_bp_icon = S.limbs_icon
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -826,9 +855,9 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
-	if(is_organic_limb())
+	if(organic_render)
 		if(should_draw_greyscale)
-			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else if(use_digitigrade)
@@ -836,7 +865,7 @@
 			else
 				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon = 'icons/mob/human_parts.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else
@@ -863,6 +892,55 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
+
+	if (!owner || is_pseudopart || !ishuman(owner))
+		return
+
+	var/mob/living/carbon/human/H = owner
+	//set specific alpha before setting the markings alpha
+	if (alpha != 255)
+		for (var/ov in .)
+			var/image/overlay = ov
+			overlay.alpha = alpha
+	//Markings!
+	var/override_color
+	if(HAS_TRAIT(H, TRAIT_HUSK))
+		override_color = "888"
+
+	for(var/key in H.dna.species.body_markings[body_zone])
+		var/datum/body_marking/BM = GLOB.body_markings[key]
+
+		var/render_limb_string = body_zone
+		switch(body_zone)
+			if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+				if(use_digitigrade)
+					render_limb_string = "digitigrade_[use_digitigrade]_[render_limb_string]"
+			if(BODY_ZONE_CHEST)
+				if(BM.gendered)
+					var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
+					render_limb_string = "[render_limb_string]_[gendaar]"
+
+		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+		if(override_color)
+			accessory_overlay.color = "#[override_color]"
+		else
+			accessory_overlay.color = "#[H.dna.species.body_markings[body_zone][key]]"
+		accessory_overlay.alpha = H.dna.species.markings_alpha
+		. += accessory_overlay
+
+	if(aux_zone)
+		for(var/key in H.dna.species.body_markings[aux_zone])
+			var/datum/body_marking/BM = GLOB.body_markings[key]
+
+			var/render_limb_string = aux_zone
+
+			var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+			if(override_color)
+				accessory_overlay.color = "#[override_color]"
+			else
+				accessory_overlay.color = "#[H.dna.species.body_markings[aux_zone][key]]"
+			accessory_overlay.alpha = H.dna.species.markings_alpha
+			. += accessory_overlay
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
@@ -892,10 +970,6 @@
 	for(var/i in wounds)
 		var/datum/wound/iter_wound = i
 		dam_mul *= iter_wound.damage_mulitplier_penalty
-
-	if(!LAZYLEN(wounds) && current_gauze && !replaced) // no more wounds = no need for the gauze anymore
-		owner.visible_message("<span class='notice'>\The [current_gauze] on [owner]'s [name] fall away.</span>", "<span class='notice'>The [current_gauze] on your [name] fall away.</span>")
-		QDEL_NULL(current_gauze)
 
 	wound_damage_multiplier = dam_mul
 
@@ -940,36 +1014,28 @@
  * the gauze falls off.
  *
  * Arguments:
- * * gauze- Just the gauze stack we're taking a sheet from to apply here
+ * * new_gauze- Just the gauze stack we're taking a sheet from to apply here
  */
-/obj/item/bodypart/proc/apply_gauze(obj/item/stack/gauze)
-	if(!istype(gauze) || !gauze.absorption_capacity)
+/obj/item/bodypart/proc/apply_gauze(obj/item/stack/medical/gauze/new_gauze)
+	if(!istype(new_gauze) || current_gauze)
 		return
-	var/newly_gauzed = FALSE
-	if(!current_gauze)
-		newly_gauzed = TRUE
-	QDEL_NULL(current_gauze)
-	current_gauze = new gauze.type(src, 1)
-	gauze.use(1)
-	if(newly_gauzed)
-		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZED, gauze)
+	current_gauze = new new_gauze.gauze_type(src)
+	new_gauze.use(1)
 
 /**
- * seep_gauze() is for when a gauze wrapping absorbs blood or pus from wounds, lowering its absorption capacity.
+ * apply_splint() much like above, except with a splint
  *
- * The passed amount of seepage is deducted from the bandage's absorption capacity, and if we reach a negative absorption capacity, the bandages fall off and we're left with nothing.
+ * This proc applies a splint to a bodypart. Splints are used to stabilize muscle and bone wounds, aswell as to protect from hits causing internal bleeding
  *
  * Arguments:
- * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
+ * * new_splint- Just the gauze stack we're taking a sheet from to apply here
  */
-/obj/item/bodypart/proc/seep_gauze(seep_amt = 0)
-	if(!current_gauze)
+
+/obj/item/bodypart/proc/apply_splint(obj/item/stack/medical/splint/new_splint)
+	if(!istype(new_splint) || current_splint)
 		return
-	current_gauze.absorption_capacity -= seep_amt
-	if(current_gauze.absorption_capacity <= 0)
-		owner.visible_message("<span class='danger'>\The [current_gauze] on [owner]'s [name] fall away in rags.</span>", "<span class='warning'>\The [current_gauze] on your [name] fall away in rags.</span>", vision_distance=COMBAT_MESSAGE_RANGE)
-		QDEL_NULL(current_gauze)
-		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
+	current_splint = new new_splint.splint_type(src)
+	new_splint.use(1)
 
 
 ///Proc to turn bodypart into another.

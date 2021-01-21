@@ -14,6 +14,7 @@
 	light_power = 0.8
 	light_on = FALSE
 	dog_fashion = /datum/dog_fashion/head
+	mutant_variants = NONE
 
 	///Determines used sprites: `hardhat[on]_[hat_type]` and `hardhat[on]_[hat_type]2` (lying down sprite)
 	var/hat_type = "yellow"
