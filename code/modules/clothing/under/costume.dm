@@ -115,6 +115,7 @@
 	body_parts_covered = CHEST|GROIN
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/costume/maid/Initialize()
 	. = ..()
