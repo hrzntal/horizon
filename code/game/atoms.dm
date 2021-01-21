@@ -1383,7 +1383,7 @@
 /// Generic logging helper
 /atom/proc/log_message(message, message_type, color=null, log_globally=TRUE)
 	#ifdef SPACEMAN_DMM
-		return
+	return
 	#endif
 	if(!log_globally)
 		return
