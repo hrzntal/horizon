@@ -732,6 +732,7 @@
 #include "code\datums\wounds\bones.dm"
 #include "code\datums\wounds\burns.dm"
 #include "code\datums\wounds\loss.dm"
+#include "code\datums\wounds\muscle.dm"
 #include "code\datums\wounds\pierce.dm"
 #include "code\datums\wounds\slash.dm"
 #include "code\datums\wounds\scars\_scars.dm"
@@ -3169,6 +3170,7 @@
 #include "code\modules\surgery\advanced\bioware\nerve_splicing.dm"
 #include "code\modules\surgery\advanced\bioware\vein_threading.dm"
 #include "code\modules\surgery\bodyparts\_bodyparts.dm"
+#include "code\modules\surgery\bodyparts\bodypart_aid.dm"
 #include "code\modules\surgery\bodyparts\dismemberment.dm"
 #include "code\modules\surgery\bodyparts\head.dm"
 #include "code\modules\surgery\bodyparts\helpers.dm"
@@ -3308,7 +3310,6 @@
 #include "code\modules\vending\youtool.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
-// Horizon Includes
 #include "hrzn\modules\emotes\code\dna_screams.dm"
 #include "hrzn\modules\emotes\code\emotes.dm"
 #include "hrzn\modules\emotes\code\silicon_emotes.dm"
@@ -3316,7 +3317,6 @@
 #include "hrzn\modules\icspawning\code\game\objects\items\cards_ids.dm"
 #include "hrzn\modules\icspawning\code\modules\clothing\outfits\standard.dm"
 #include "hrzn\modules\icspawning\code\modules\spells\spell.dm"
-// Aaand the interface stuff
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
