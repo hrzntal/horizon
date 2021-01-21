@@ -207,3 +207,5 @@
 
 	/// If the client is currently under the restrictions of the interview system
 	var/interviewee = FALSE
+	/// The last time we've warned the client for cryoing as an important role
+	var/cryo_warned = 0
