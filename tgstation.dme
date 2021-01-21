@@ -3308,7 +3308,6 @@
 #include "code\modules\vending\youtool.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
-// Horizon Includes
 #include "hrzn\modules\emotes\code\dna_screams.dm"
 #include "hrzn\modules\emotes\code\emotes.dm"
 #include "hrzn\modules\emotes\code\silicon_emotes.dm"
@@ -3316,7 +3315,7 @@
 #include "hrzn\modules\icspawning\code\game\objects\items\cards_ids.dm"
 #include "hrzn\modules\icspawning\code\modules\clothing\outfits\standard.dm"
 #include "hrzn\modules\icspawning\code\modules\spells\spell.dm"
-// Aaand the interface stuff
+#include "hrzn\modules\typing_indicator\code\mob.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
