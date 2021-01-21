@@ -1370,3 +1370,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/external/port/bow
 	name = "Port Bow External Hull Access"
+
+/area/crew_quarters/cryopod
+	name = "Cryogenic Sleepers"
+	icon_state = "green"

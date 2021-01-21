@@ -166,3 +166,7 @@
 	var/body_position_pixel_x_offset = 0
 	///The x amount a mob's sprite should be offset due to the current position they're in
 	var/body_position_pixel_y_offset = 0
+	///Whether we have the ssd indicator currently
+	var/ssd_indicator = FALSE
+	///Last time our client was logged in
+	var/lastclienttime = 0
