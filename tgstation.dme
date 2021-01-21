@@ -1860,6 +1860,7 @@
 #include "code\modules\client\loadout\donator\uniform.dm"
 #include "code\modules\client\loadout\donator\personal\donator_personal.dm"
 #include "code\modules\client\verbs\etips.dm"
+#include "code\modules\client\verbs\looc.dm"
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\verbs\ping.dm"
 #include "code\modules\client\verbs\reset_held_keys.dm"
