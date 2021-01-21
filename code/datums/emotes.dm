@@ -80,6 +80,9 @@
 
 /// For handling emote cooldown, return true to allow the emote to happen
 /datum/emote/proc/check_cooldown(mob/user, intentional)
+	#ifdef UNIT_TESTS
+	return TRUE
+	#endif
 	if(!intentional)
 		return TRUE
 	if((user.emotes_used && user.emotes_used[src] + cooldown > world.time) || (user.nextsoundemote > world.time))
