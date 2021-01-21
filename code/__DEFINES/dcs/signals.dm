@@ -609,6 +609,8 @@
 	#define COMPONENT_HANDLED_GRILLING (1<<0)
 ///Called when an object is turned into another item through grilling ontop of a griddle
 #define COMSIG_GRILL_COMPLETED "item_grill_completed"
+///Called when an armor plate is successfully applied to an object
+#define COMSIG_ARMOR_PLATED "armor_plated"
 
 ///from base of [/obj/item/proc/tool_check_callback]: (mob/living/user)
 #define COMSIG_TOOL_IN_USE "tool_in_use"
@@ -643,7 +645,7 @@
 
 // /obj/item/clothing signals
 
-///from base of obj/item/clothing/shoes/proc/step_action(): ()
+///from [/mob/living/carbon/human/Move]: ()
 #define COMSIG_SHOES_STEP_ACTION "shoes_step_action"
 ///from base of /obj/item/clothing/suit/space/proc/toggle_spacesuit(): (obj/item/clothing/suit/space/suit)
 #define COMSIG_SUIT_SPACE_TOGGLE "suit_space_toggle"
