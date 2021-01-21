@@ -34,6 +34,22 @@
 	else
 		parts += ""
 	parts += "<a href='?_src_=holder;[HrefToken()];traitor=[REF(owner)]'>Show Objective</a>"
+	if(uses_ambitions && owner.current && owner.current.mind && owner.current.mind.my_ambitions)
+		var/datum/ambitions/ambs = owner.current.mind.my_ambitions
+		var/string = "NOT SUBMITTED"
+		if(ambs.submitted)
+			switch(ambs.intensity)
+				if(AMBITION_INTENSITY_STEALTH)
+					string = "Stealth"
+				if(AMBITION_INTENSITY_MILD)
+					string = "Mild"
+				if(AMBITION_INTENSITY_MEDIUM)
+					string = "Medium"
+				if(AMBITION_INTENSITY_SEVERE)
+					string = "Severe"
+				if(AMBITION_INTENSITY_EXTREME)
+					string = "Extreme"
+		parts += "<a href='?src=[REF(ambs)];admin_pref=show_ambitions'>Ambitions</a>-[string]"
 	return parts //Better as one cell or two/three
 
 //Builds table row for the antag
