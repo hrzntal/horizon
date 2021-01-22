@@ -479,6 +479,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["socks_color"], socks_color)
 	socks_color			= sanitize_hexcolor(socks_color, 3, 0)
 
+	READ_FILE(S["pref_culture"] , pref_culture)
+	READ_FILE(S["pref_location"] , pref_location)
+	READ_FILE(S["pref_faction"] , pref_faction)
+
+	READ_FILE(S["languages"] , languages)
+	languages = SANITIZE_LIST(languages)
+
+	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
+		pref_culture = pref_species.cultures[1]
+	if(!pref_location || !GLOB.culture_locations[pref_location])
+		pref_location = pref_species.locations[1]
+	if(!pref_faction || !GLOB.culture_factions[pref_faction])
+		pref_faction = pref_species.factions[1]
+
+	validate_languages()
+
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -621,6 +637,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["undershirt_color"], undershirt_color)
 	WRITE_FILE(S["socks_color"], socks_color)
+
+	WRITE_FILE(S["pref_culture"] , pref_culture)
+	WRITE_FILE(S["pref_location"] , pref_location)
+	WRITE_FILE(S["pref_faction"] , pref_faction)
+
+	WRITE_FILE(S["languages"] , languages)
 
 	return TRUE
 

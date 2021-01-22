@@ -16,6 +16,8 @@
 	display_order = JOB_DISPLAY_ORDER_BOTANIST
 	bounty_types = CIV_JOB_GROW
 
+	required_languages = null
+
 /datum/outfit/job/botanist
 	name = "Botanist"
 	jobtype = /datum/job/hydro

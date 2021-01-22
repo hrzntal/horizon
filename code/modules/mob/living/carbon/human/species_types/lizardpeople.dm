@@ -31,6 +31,9 @@
 	ass_image = 'icons/ass/asslizard.png'
 	limbs_icon = 'icons/mob/species/lizard_parts_greyscale.dmi'
 
+	cultures = list(CULTURES_EXOTIC, CULTURES_LIZARD, CULTURES_HUMAN)
+	learnable_languages = list(/datum/language/common, /datum/language/draconic)
+
 /// Lizards are cold blooded and do not stabilize body temperature naturally
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi)
 	return
@@ -78,3 +81,9 @@ Lizard subspecies: ASHWALKERS
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_CHUNKYFINGERS,TRAIT_NOBREATH)
 	species_language_holder = /datum/language_holder/lizard/ash
 	always_customizable = TRUE
+
+	cultures = list(/datum/cultural_info/culture/lavaland)
+	locations = list(/datum/cultural_info/location/stateless)
+	factions = list(/datum/cultural_info/faction/none)
+
+	learnable_languages = list(/datum/language/draconic)
