@@ -55,9 +55,7 @@
 	else
 		if(user)
 			user.put_in_hands(battery)
-		else
-			battery.forceMove(drop_location())
-		to_chat(user, "<span class='notice'>You detach \the [battery] from \the [src].</span>")
+			to_chat(user, "<span class='notice'>You detach \the [battery] from \the [src].</span>")
 		battery = null
 
 		if(holder)
