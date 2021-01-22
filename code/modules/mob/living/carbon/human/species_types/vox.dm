@@ -41,9 +41,9 @@
 
 /datum/species/vox/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = pick("7D8", "7DA", "7CD", "7DC")
-	returned["mcolor2"] = pick("ED8", "EC8")
-	returned["mcolor3"] = pick("222", "4EF", "4FB", "84F", "323")
+	returned["mcolor"] = pick("77DD88", "77DDAA", "77CCDD", "77DDCC")
+	returned["mcolor2"] = pick("EEDD88", "EECC88")
+	returned["mcolor3"] = pick("222222", "44EEFF", "44FFBB", "8844FF", "332233")
 	return returned
 
 /datum/species/vox/get_random_body_markings(list/passed_features)
