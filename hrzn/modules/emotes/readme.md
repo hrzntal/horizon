@@ -4,7 +4,6 @@
 
 File Location | Defines
 ------------- | -------
-code/__DEFINES/traits.dm | `#define TRAIT_EXCITABLE	"wagwag"`
 hrzn/emotes/code/emotes.dm 	 | `#define EMOTE_DELAY`
 
 ### Credits:
