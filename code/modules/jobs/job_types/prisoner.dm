@@ -11,6 +11,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
 
+	required_languages = null
+
 /datum/outfit/job/prisoner
 	name = "Prisoner"
 	jobtype = /datum/job/prisoner
