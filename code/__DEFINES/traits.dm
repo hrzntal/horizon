@@ -243,8 +243,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ANTENNAE	"antennae"
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
-#define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
-#define TRAIT_NO_HUSK				"no_husk"
 
 // You can stare into the abyss, but it does not stare back.
 // You're immune to the hallucination effect of the supermatter, either
@@ -491,5 +489,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
 
-/// Trait from emote module
-#define TRAIT_EXCITABLE	"wagwag"
+/// Horizon traits
+#define TRAIT_EXCITABLE				"wagwag"
+#define TRAIT_IRONASS				"ironass"
+#define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_NO_HUSK				"no_husk"

@@ -10,26 +10,6 @@
 	lose_text = "<span class='notice'>You can taste again!</span>"
 	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
-/datum/quirk/foreigner
-	name = "Foreigner"
-	desc = "You're not from around here. You don't know Galactic Common!"
-	value = 0
-	gain_text = "<span class='notice'>The words being spoken around you don't make any sense."
-	lose_text = "<span class='notice'>You've developed fluency in Galactic Common."
-	medical_record_text = "Patient does not speak Galactic Common and may require an interpreter."
-
-/datum/quirk/foreigner/add()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.add_blocked_language(/datum/language/common)
-	if(ishumanbasic(H))
-		H.grant_language(/datum/language/uncommon)
-
-/datum/quirk/foreigner/remove()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.remove_blocked_language(/datum/language/common)
-	if(ishumanbasic(H))
-		H.remove_language(/datum/language/uncommon)
-
 /datum/quirk/vegetarian
 	name = "Vegetarian"
 	desc = "You find the idea of eating meat morally and physically repulsive."
@@ -297,3 +277,21 @@
 	)
 	H.equip_in_one_of_slots(camera, camera_slots , qdel_on_fail = TRUE)
 	H.regenerate_icons()
+
+/datum/quirk/excitable
+	name = "Excitable!"
+	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
+	gain_text = "<span class='notice'>You crave for some headpats!</span>"
+	lose_text = "<span class='notice'>You no longer care for headpats all that much.</span>"
+	medical_record_text = "Patient seems to get excited easily."
+	value = 0
+	mob_trait = TRAIT_EXCITABLE
+
+/datum/quirk/ironass
+	name = "Iron Ass"
+	desc = "Your ass is incredibly firm, so firm infact that anyone slapping it will suffer injuries."
+	gain_text = "<span class='notice'>Your ass feels dense!</span>"
+	lose_text = "<span class='notice'>Your ass doesn't feel so dense anymore.</span>"
+	medical_record_text = "Patient's ass seems incredibly dense."
+	value = 0
+	mob_trait = TRAIT_IRONASS

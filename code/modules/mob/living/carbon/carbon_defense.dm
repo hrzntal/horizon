@@ -255,6 +255,29 @@
 			"You hear a slap.")
 			target.dna?.species?.stop_wagging_tail(target)
 			return
+	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
+		if(target?.client?.prefs.lewd_toggles & NO_ASS_SLAP)
+			to_chat(src,"<span class='danger'>A force stays your hand, preventing you from slapping \the [target]'s ass!</span>")
+			return
+		if(HAS_TRAIT(target, TRAIT_IRONASS))
+			var/obj/item/bodypart/affecting = src.get_bodypart("[(src.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
+			if(affecting)
+				affecting.receive_damage(2)
+			visible_message("<span class='danger'>[src] tried slapping [target]'s ass, however it was much harder than expected!</span>",
+			"<span class='danger'>You tried slapping [target]'s ass, but it felt like metal, ouch!</span>",\
+			"You hear a sore sounding slap.", ignored_mobs = list(target))
+			do_slap_animation(target, -5)
+			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
+			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
+			return
+		else
+			do_slap_animation(target, -5)
+			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
+			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
+				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
+				"You hear a slap.", ignored_mobs = list(target))
+			to_chat(target, "<span class='danger'>[src] slaps your ass!")
+			return
 	do_attack_animation(target, ATTACK_EFFECT_DISARM)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	if (ishuman(target))
@@ -435,6 +458,8 @@
 	if(M == src && check_self_for_injuries())
 		return
 
+	var/plays_sound = TRUE
+
 	if(body_position == LYING_DOWN)
 		if(buckled)
 			to_chat(M, "<span class='warning'>You need to unbuckle [src] first to do that!</span>")
@@ -444,12 +469,22 @@
 		to_chat(M, "<span class='notice'>You shake [src] trying to pick [p_them()] up!</span>")
 		to_chat(src, "<span class='notice'>[M] shakes you to get you up!</span>")
 
+	//Nose boops!
+	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		plays_sound = FALSE
+		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
+					"<span class='notice'>You boop [src] on the nose.</span>")
+		playsound(src, 'hrzn/sound/emotes/nose_boop.ogg', 50, 0)
+
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
 		SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
 		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
 					null, "<span class='hear'>You hear a soft patter.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, "<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		to_chat(src, "<span class='notice'>[M] gives you a pat on the head to make you feel better! </span>")
+		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+			if(!src.dna.species.is_wagging_tail(src))
+				src.emote("wag")
 
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
@@ -500,7 +535,8 @@
 	if(body_position != STANDING_UP && !resting && !buckled && !HAS_TRAIT(src, TRAIT_FLOORED))
 		get_up(TRUE)
 
-	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	if(plays_sound)
+		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 	// Shake animation
 	if (incapacitated())

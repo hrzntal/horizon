@@ -21,6 +21,7 @@
 	bounty_types = CIV_JOB_CHEF
 
 	attribute_sheet = /datum/attribute_sheet/cook
+	required_languages = null
 
 /datum/outfit/job/cook
 	name = "Cook"

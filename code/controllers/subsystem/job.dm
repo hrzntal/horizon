@@ -91,6 +91,8 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(job.has_banned_species(player.client.prefs))
 			return FALSE
+		if(!job.has_required_languages(player.client.prefs))
+			return FALSE
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
 		var/position_limit = job.total_positions
@@ -123,6 +125,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("FOC job not compatible with species, Player: [player]")
+			continue
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
 		if(flag && (!(flag in player.client.prefs.be_special)))
 			JobDebug("FOC flag failed, Player: [player], Flag: [flag], ")
@@ -164,6 +169,10 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("GRJ player has incompatible species, Player: [player]")
+			continue
+
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
 
 		if(job.required_playtime_remaining(player.client))
@@ -350,6 +359,10 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
 				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
+
+				if(!job.has_required_languages(player.client.prefs))
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
 					continue
 
