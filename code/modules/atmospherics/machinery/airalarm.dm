@@ -71,6 +71,11 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	resistance_flags = FIRE_PROOF
 
+	var/auto_temp = T20C
+	var/auto_temp_manage = TRUE
+	var/auto_temp_cur_mode = "idle"
+	var/auto_temp_inc = 0.5
+
 	var/danger_level = 0
 	var/mode = AALARM_MODE_SCRUBBING
 
@@ -135,6 +140,7 @@
 		/datum/gas/antinoblium		= new/datum/tlv/dangerous,
 		/datum/gas/halon			= new/datum/tlv/dangerous
 	)
+	auto_temp_manage = FALSE
 
 /obj/machinery/airalarm/kitchen_cold_room // Kitchen cold rooms start off at -14°C or 259.15°K.
 	TLV = list(
@@ -162,6 +168,7 @@
 		/datum/gas/antinoblium		= new/datum/tlv/dangerous,
 		/datum/gas/halon			= new/datum/tlv/dangerous
 	)
+	auto_temp_manage = FALSE
 
 /obj/machinery/airalarm/unlocked
 	locked = FALSE
@@ -701,7 +708,35 @@
 	if(mode == AALARM_MODE_REPLACEMENT && environment_pressure < ONE_ATMOSPHERE * 0.05)
 		mode = AALARM_MODE_SCRUBBING
 		apply_mode(src)
+	if(auto_temp_manage)
+		airalarm_heat()
 
+/obj/machinery/airalarm/proc/airalarm_heat(mode)
+	var/wanted_mode = ""
+	var/turf/location = get_turf(src)
+	var/datum/gas_mixture/environment = location.return_air()
+	if(environment.temperature >= (auto_temp) & auto_temp_cur_mode == "idle") //Allow for some over run, to stop flip-floping
+		environment.garbage_collect()
+		return
+	if(environment.temperature < (auto_temp)) //Start heating
+		wanted_mode = "heat"
+
+	if(environment.temperature > (auto_temp + 2)) //Allow for some over run, to stop flip-floping
+		wanted_mode = "idle"
+
+	if(wanted_mode == "heat" & auto_temp_cur_mode == "idle")
+		visible_message("The air alarm makes a quiet click as it starts heating the area")
+		auto_temp_cur_mode = "heat"
+
+	if(wanted_mode == "idle" & auto_temp_cur_mode == "heat")
+		visible_message("The air alarm makes a quiet click as it stops heating the area")
+		auto_temp_cur_mode = "idle"
+		environment.garbage_collect()
+		return
+
+	if(auto_temp_cur_mode == "heat")
+		environment.temperature += auto_temp_inc
+		air_update_turf(FALSE, FALSE)
 
 /obj/machinery/airalarm/proc/post_alert(alert_level)
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(alarm_frequency)
