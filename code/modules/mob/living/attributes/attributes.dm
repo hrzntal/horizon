@@ -32,6 +32,12 @@
 		raw_attributes[att] += sheet.attributes[att]
 	for(var/skill in sheet.skills)
 		raw_skills[skill] += sheet.skills[skill]
+	if(sheet.all_attributes)
+		for(var/stat in raw_attributes)
+			raw_attributes[stat] += sheet.all_attributes
+	if(sheet.all_skills)
+		for(var/skill in raw_skills)
+			raw_skills[stat] += sheet.all_skills
 	qdel(sheet)
 	update_attributes()
 
@@ -41,6 +47,12 @@
 		raw_attributes[att] -= sheet.attributes[att]
 	for(var/skill in sheet.skills)
 		raw_skills[skill] -= sheet.skills[skill]
+	if(sheet.all_attributes)
+		for(var/stat in raw_attributes)
+			raw_attributes[stat] -= sheet.all_attributes
+	if(sheet.all_skills)
+		for(var/skill in raw_skills)
+			raw_skills[stat] -= sheet.all_skills
 	qdel(sheet)
 	update_attributes()
 
