@@ -148,6 +148,7 @@ const AirAlarmControlHome = (props, context) => {
   const {
     mode,
     atmos_alarm,
+    heating_enabled,
   } = data;
   return (
     <>
@@ -188,6 +189,12 @@ const AirAlarmControlHome = (props, context) => {
         icon="chart-bar"
         content="Alarm Thresholds"
         onClick={() => setScreen('thresholds')} />
+      <Box mt={1} />
+      <Button
+        icon="fire"
+        content="Toggle Heating"
+        color={heating_enabled ? 'good' : 'average'}
+        onClick={() => act('heat_mode')} />
     </>
   );
 };

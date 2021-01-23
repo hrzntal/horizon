@@ -460,6 +460,10 @@
 			if(A.atmosalert(FALSE, src))
 				post_alert(0)
 			. = TRUE
+		if("heat_mode")
+			investigate_log("has had its heat mode by [key_name(usr)]",INVESTIGATE_ATMOS)
+			airalarm_toggleheat()
+			. = TRUE
 	update_icon()
 
 
@@ -713,7 +717,20 @@
 	if(auto_temp_manage)
 		airalarm_heat()
 
-/obj/machinery/airalarm/proc/airalarm_heat(mode)
+/obj/machinery/airalarm/proc/airalarm_toggleheat()
+	if(auto_temp_manage)
+		if(auto_temp_cur_mode == "Heat")
+			visible_message("<span class='notice'>The air alarm makes a quiet click as it stops heating the area</span>")
+			auto_temp_cur_mode = "Idle"
+			auto_temp_manage = FALSE
+			return
+		else
+			auto_temp_manage = FALSE
+			return
+	else
+		auto_temp_manage = TRUE
+
+/obj/machinery/airalarm/proc/airalarm_heat()
 	var/wanted_mode = ""
 	var/turf/location = get_turf(src)
 	var/datum/gas_mixture/environment = location.return_air()
