@@ -75,7 +75,7 @@ const AirAlarmStatus = (props, context) => {
             <LabeledList.Item
               label="Heating Status"
               color={data.heating_mode === 'heat' ? 'average' : !data.heating_enabled ? 'gray' : 'good'}>
-                {data.heating_enabled ? data.heating_mode : 'Disabled'}
+              {data.heating_enabled ? data.heating_mode : 'Disabled'}
             </LabeledList.Item>
           </>
         ) || (
