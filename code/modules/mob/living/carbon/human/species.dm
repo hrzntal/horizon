@@ -213,6 +213,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/flavor_text = "No description."
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
+	///The type of our body. This is used for restricting wearing clothes
+	var/bodytype = BODYTYPE_HUMANOID
 	/// Available cultural informations
 	var/list/cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
 	var/list/locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
@@ -1047,8 +1049,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	// this check prevents us from equipping something to a slot it doesn't support, WITH the exceptions of storage slots (pockets, suit storage, and backpacks)
 	// we don't require having those slots defined in the item's slot_flags, so we'll rely on their own checks further down
+	var/excused = FALSE
 	if(!(I.slot_flags & slot))
-		var/excused = FALSE
 		// Anything that's small or smaller can fit into a pocket by default
 		if((slot == ITEM_SLOT_RPOCKET || slot == ITEM_SLOT_LPOCKET) && I.w_class <= WEIGHT_CLASS_SMALL)
 			excused = TRUE
@@ -1056,6 +1058,11 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			excused = TRUE
 		if(!excused)
 			return FALSE
+
+	if(!excused && !(I.allowed_bodytypes & bodytype))
+		if(!disable_warning)
+			to_chat(H, "<span class='warning'>[I] doesn't fit on you!</span>")
+		return FALSE
 
 	switch(slot)
 		if(ITEM_SLOT_HANDS)
