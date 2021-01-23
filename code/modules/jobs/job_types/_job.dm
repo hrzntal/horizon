@@ -170,7 +170,7 @@
 	H.dna.species.after_equip_job(src, H, visualsOnly)
 
 	if(attribute_sheet)
-		H.attributes.apply_sheet(attribute_sheet)
+		H.attributes.add_sheet(attribute_sheet)
 
 	if(!visualsOnly && announce)
 		announce(H)

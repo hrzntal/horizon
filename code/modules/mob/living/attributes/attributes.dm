@@ -26,12 +26,21 @@
 	skill_buffs = null
 	return ..()
 
-/datum/attribute_holder/proc/apply_sheet(sheet_type)
+/datum/attribute_holder/proc/add_sheet(sheet_type)
 	var/datum/attribute_sheet/sheet = new sheet_type()
 	for(var/att in sheet.attributes)
 		raw_attributes[att] += sheet.attributes[att]
 	for(var/skill in sheet.skills)
 		raw_skills[skill] += sheet.skills[skill]
+	qdel(sheet)
+	update_attributes()
+
+/datum/attribute_holder/proc/subtract_sheet(sheet_type)
+	var/datum/attribute_sheet/sheet = new sheet_type()
+	for(var/att in sheet.attributes)
+		raw_attributes[att] -= sheet.attributes[att]
+	for(var/skill in sheet.skills)
+		raw_skills[skill] -= sheet.skills[skill]
 	qdel(sheet)
 	update_attributes()
 
@@ -87,9 +96,9 @@
 		if(SKL.attribute_affinity)
 			var/affinity_delta = 0
 			for(var/attribute in SKL.attribute_affinity)
-				var/amt = round((total_attributes[attribute] - ATTRIBUTE_EQUILIBRIUM) * SKL.attribute_affinity[attribute])
+				var/amt = (total_attributes[attribute] - ATTRIBUTE_EQUILIBRIUM) * SKL.attribute_affinity[attribute]
 				affinity_delta += amt
-			total_skills[skill] += affinity_delta
+			total_skills[skill] += round(affinity_delta)
 		for(var/buff in skill_buffs)
 			var/list/buff_list = skill_buffs[buff]
 			if(buff_list[skill])
@@ -123,7 +132,7 @@
 	attribute_affinity = list(/datum/attribute/strength = 0.5)
 
 /datum/nice_skill/guns
-	name = "Guns"
+	name = "Gun Proficiency"
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
 /datum/nice_skill/cooking
@@ -132,6 +141,14 @@
 
 /datum/nice_skill/medicine
 	name = "Medicine"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/anatomy
+	name = "Anatomy"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/forensics
+	name = "Forensics"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/eva
@@ -146,6 +163,11 @@
 	name = "Electrician"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
-/datum/nice_skill/crafting
-	name = "Crafting"
+/datum/nice_skill/craft
+	name = "Craft"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+//For jumping, climbing and swimming. Which I do want to eventually implement
+/datum/nice_skill/athletics
+	name = "Athletics"
+	attribute_affinity = list(/datum/attribute/strength = 0.25, /datum/attribute/endurance = 0.25)

@@ -11,7 +11,7 @@
 	GLOB.mob_living_list += src
 	attributes = new()
 	if(attributes_sheet)
-		attributes.apply_sheet(attributes_sheet)
+		attributes.add_sheet(attributes_sheet)
 
 /mob/living/ComponentInitialize()
 	. = ..()

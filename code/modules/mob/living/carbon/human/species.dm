@@ -214,6 +214,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
+	var/attribute_sheet
+
 ///////////
 // PROCS //
 ///////////
@@ -436,6 +438,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
 
+	if(attribute_sheet)
+		C.attributes.add_sheet(attribute_sheet)
+
 	if(TRAIT_VIRUSIMMUNE in inherent_traits)
 		for(var/datum/disease/A in C.diseases)
 			A.cure(FALSE)
@@ -492,6 +497,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		C.Digitigrade_Leg_Swap(TRUE)
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
+	if(attribute_sheet)
+		C.attributes.subtract_sheet(attribute_sheet)
 
 	//If their inert mutation is not the same, swap it out
 	if((inert_mutation != new_species.inert_mutation) && LAZYLEN(C.dna.mutation_index) && (inert_mutation in C.dna.mutation_index))
