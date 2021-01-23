@@ -60,6 +60,41 @@
 		for(var/skill in skill_buffs)
 			total_skills[skill] += buff_list[skill]
 
+//Optimized targeted procs for updates, which only target related stats/skills and affinities
+/datum/attribute_holder/proc/update_attributes_from(list/passed_list)
+	if(!passed_list) //Can be null
+		return
+	var/list/skill_updates = list()
+	for(var/att in passed_list)
+		total_attributes[att] = raw_attributes[att]
+		for(var/buff in attribute_buffs)
+			var/list/buff_list = attribute_buffs[buff]
+			if(buff_list[att])
+				total_attributes[att] += buff_list[att]
+		for(var/skill in raw_skills)
+			var/datum/nice_skill/SKL = GLOB.all_skills[skill]
+			if(SKL.attribute_affinity && SKL.attribute_affinity[att])
+				skill_updates[skill] = TRUE
+	update_skills_from(skill_updates)
+
+/datum/attribute_holder/proc/update_skills_from(list/passed_list)
+	if(!passed_list) //Can be null
+		return
+	for(var/skill in passed_list)
+		total_skills[skill] = raw_skills[skill]
+		//Handling affinities
+		var/datum/nice_skill/SKL = GLOB.all_skills[skill]
+		if(SKL.attribute_affinity)
+			var/affinity_delta = 0
+			for(var/attribute in SKL.attribute_affinity)
+				var/amt = round((total_attributes[attribute] - ATTRIBUTE_EQUILIBRIUM) * SKL.attribute_affinity[attribute])
+				affinity_delta += amt
+			total_skills[skill] += affinity_delta
+		for(var/buff in skill_buffs)
+			var/list/buff_list = skill_buffs[buff]
+			if(buff_list[skill])
+				total_skills[skill] += buff_list[skill]
+
 //GLOBAL DATUMS
 /datum/attribute
 	var/name = "Attribute"
