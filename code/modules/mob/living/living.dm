@@ -1907,6 +1907,43 @@
 			temporary_flavor_text = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 	return
 
+/mob/living/verb/check_skills()
+	set category = "IC"
+	set name = "Check Skills"
+	set desc = "Check your skills and attributes."
+	
+	var/list/dat = list()
+	dat += "<table><tr><td width='350px' height='900px' valign='top'>"
+	for(var/attribute in attributes.total_attributes)
+		var/datum/attribute/AT = GLOB.all_attributes[attribute]
+		var/amount = attributes.total_attributes[attribute]
+		var/raw = attributes.raw_attributes[attribute]
+		var/stat_color = "#FFFFFF"
+		if(amount < raw)
+			stat_color = "#FF0000"
+		else if(amount > raw)
+			stat_color = "#00FF00"
+		dat += "[AT.name]: <font color='[stat_color]'><b>[amount]</b></font> - [AT.level_description(amount)]<BR>"
+		dat += "<font color='#DDDDDD'><i>[AT.desc]</i></font><BR>"
+	dat += "</td>"
+	dat +="<td width='350px' height='900px' valign='top'>"
+	for(var/skill in attributes.total_skills)
+		var/datum/nice_skill/SKL = GLOB.all_skills[skill]
+		var/amount = attributes.total_skills[skill]
+		var/raw = attributes.raw_skills[skill]
+		var/stat_color = "#FFFFFF"
+		if(amount < raw)
+			stat_color = "#FF0000"
+		else if(amount > raw)
+			stat_color = "#00FF00"
+		dat += "[SKL.name]: <font color='[stat_color]'><b>[amount]</b></font> - [SKL.level_description(amount)]<BR>"
+		dat += "<i>[SKL.desc]</i><BR>"
+	dat += "</tr></table>"
+	var/datum/browser/popup = new(usr, "attributes and skills", "Attributes & Skills", 900, 700)
+	popup.set_content(dat.Join())
+	popup.open()
+	
+
 /// Returns the attack damage type of a living mob such as [BRUTE].
 /mob/living/proc/get_attack_type()
 	return BRUTE

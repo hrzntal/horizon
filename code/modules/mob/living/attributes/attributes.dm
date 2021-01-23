@@ -37,7 +37,7 @@
 			raw_attributes[stat] += sheet.all_attributes
 	if(sheet.all_skills)
 		for(var/skill in raw_skills)
-			raw_skills[stat] += sheet.all_skills
+			raw_skills[skill] += sheet.all_skills
 	qdel(sheet)
 	update_attributes()
 
@@ -52,7 +52,7 @@
 			raw_attributes[stat] -= sheet.all_attributes
 	if(sheet.all_skills)
 		for(var/skill in raw_skills)
-			raw_skills[stat] -= sheet.all_skills
+			raw_skills[skill] -= sheet.all_skills
 	qdel(sheet)
 	update_attributes()
 
@@ -121,6 +121,9 @@
 	var/name = "Attribute"
 	var/desc = "Description."
 
+/datum/attribute/proc/level_description(level)
+	return "Level description of [level]"
+
 /datum/attribute/strength
 	name = "Strength"
 
@@ -133,12 +136,15 @@
 /datum/attribute/intelligence
 	name = "Intelligence"
 
+//nice_skill because skill is taken by TG skills
 /datum/nice_skill
 	var/name = "Skill"
 	var/desc = "Description."
 	var/attribute_affinity
 
-//nice_skill because skill is taken by TG skills
+/datum/nice_skill/proc/level_description(level)
+	return "Level description of [level]"
+
 /datum/nice_skill/cqc
 	name = "Close Quarter Combat"
 	attribute_affinity = list(/datum/attribute/strength = 0.5)
@@ -147,8 +153,8 @@
 	name = "Gun Proficiency"
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
-/datum/nice_skill/cooking
-	name = "Cooking"
+/datum/nice_skill/forensics
+	name = "Forensics"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/medicine
@@ -159,20 +165,28 @@
 	name = "Anatomy"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
-/datum/nice_skill/forensics
-	name = "Forensics"
-	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
-
 /datum/nice_skill/eva
-	name = "EVA Operations"
+	name = "Extra-Vehicular Activity"
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
-/datum/nice_skill/construction
-	name = "Construction"
+/datum/nice_skill/engineering
+	name = "Engineering"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
-/datum/nice_skill/electrician
-	name = "Electrician"
+/datum/nice_skill/computers
+	name = "Computer Science"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/research
+	name = "Technology Research"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/cooking
+	name = "Cooking"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/botany
+	name = "Botany"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/craft

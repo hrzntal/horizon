@@ -15,4 +15,4 @@
 	all_skills = 2
 
 /datum/attribute_sheet/cook
-	skills = list(/datum/nice_skill/cooking = 4)
+	skills = list(/datum/nice_skill/cooking = 5)
