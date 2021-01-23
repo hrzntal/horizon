@@ -84,6 +84,8 @@
 	//Blacklist of species for this job.
 	var/list/species_blacklist
 
+	var/attribute_sheet
+
 /datum/job/New()
 	. = ..()
 	var/list/jobs_changes = GetMapChanges()
@@ -166,6 +168,9 @@
 		H.equipOutfit(outfit_override ? outfit_override : outfit, visualsOnly)
 
 	H.dna.species.after_equip_job(src, H, visualsOnly)
+
+	if(attribute_sheet)
+		H.attributes.apply_sheet(attribute_sheet)
 
 	if(!visualsOnly && announce)
 		announce(H)

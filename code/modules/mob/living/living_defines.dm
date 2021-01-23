@@ -173,3 +173,6 @@
 
 	///Temporary flavor text which most mobs can set by using the IC tab
 	var/temporary_flavor_text
+
+	var/datum/attribute_holder/attributes
+	var/attributes_sheet

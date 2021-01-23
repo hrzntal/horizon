@@ -257,6 +257,15 @@
 	glass_name = "glass of coffee"
 	glass_desc = "Don't drop it, or you'll send scalding liquid and glass shards everywhere."
 
+/datum/reagent/consumable/coffee/on_mob_metabolize(mob/living/L)
+	..()
+	var/list/attributes = list(/datum/attribute/intelligence = 2)
+	ADD_ATTRIBUTES(L, "coffee", attributes)
+
+/datum/reagent/consumable/coffee/on_mob_end_metabolize(mob/living/L)
+	REMOVE_ATTRIBUTES(L, "coffee")
+	..()
+
 /datum/reagent/consumable/coffee/overdose_process(mob/living/M)
 	M.Jitter(5)
 	..()

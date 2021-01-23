@@ -9,6 +9,9 @@
 		diag_hud.add_to_hud(src)
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
+	attributes = new()
+	if(attributes_sheet)
+		attributes.apply_sheet(attributes_sheet)
 
 /mob/living/ComponentInitialize()
 	. = ..()
@@ -38,6 +41,7 @@
 	remove_from_all_data_huds()
 	GLOB.mob_living_list -= src
 	QDEL_LIST(diseases)
+	qdel(attributes)
 	return ..()
 
 /mob/living/onZImpact(turf/T, levels)
