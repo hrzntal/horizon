@@ -117,7 +117,7 @@
 
 /datum/action/innate/monitor_change/Activate()
 	var/mob/living/carbon/human/H = owner
-	var/new_ipc_screen = input(usr, "Choose your character's screen:", "Monitor Display") as null|anything in GLOB.sprite_accessories["ipc_screen"]
+	var/new_ipc_screen = tgui_input_list(usr, "Choose your character's screen:", "Monitor Display", GLOB.sprite_accessories["ipc_screen"])
 	if(!new_ipc_screen)
 		return
 	H.dna.species.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = new_ipc_screen

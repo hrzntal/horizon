@@ -1165,7 +1165,7 @@
 		return
 
 	// reads from the airlock painter's `available paintjob` list. lets the player choose a paint option, or cancel painting
-	var/current_paintjob = input(user, "Please select a paintjob for this airlock.") as null|anything in sortList(painter.available_paint_jobs)
+	var/current_paintjob = tgui_input_list(user, "Please select a paintjob for this airlock.", sortList(painter.available_paint_jobs))
 	if(!current_paintjob) // if the user clicked cancel on the popup, return
 		return
 

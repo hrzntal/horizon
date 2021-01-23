@@ -145,7 +145,7 @@
 				if(is_eligible(I))
 					L[avoid_assoc_duplicate_keys("[M.real_name] ([get_area(M)])", areaindex)] = I
 
-		var/desc = input("Please select a location to lock in.", "Locking Computer") as null|anything in sortList(L)
+		var/desc = tgui_input_list("Please select a location to lock in.", "Locking Computer", sortList(L))
 		set_teleport_target(L[desc])
 		var/turf/T = get_turf(target)
 		log_game("[key_name(user)] has set the teleporter target to [target] at [AREACOORD(T)]")
@@ -159,7 +159,7 @@
 		if(!L.len)
 			to_chat(user, SPAN_ALERT("No active connected stations located."))
 			return
-		var/desc = input("Please select a station to lock in.", "Locking Computer") as null|anything in sortList(L)
+		var/desc = tgui_input_list("Please select a station to lock in.", "Locking Computer", sortList(L))
 		var/obj/machinery/teleport/station/target_station = L[desc]
 		if(!target_station || !target_station.teleporter_hub)
 			return

@@ -1065,7 +1065,7 @@ rough example of the "cone" made by the 3 dirs checked
 	else if(random)
 		chosen = pick(matches) || null
 	else
-		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
+		chosen = tgui_input_list("Select a type", "Pick Type", sortList(matches))
 	if(!chosen)
 		return
 	chosen = matches[chosen]

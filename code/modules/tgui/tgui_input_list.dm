@@ -9,7 +9,7 @@
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * timeout - The timeout of the input box, after which the input box will close and qdel itself. Set to zero for no timeout.
  */
-/proc/tgui_input_list(mob/user, message, title, list/buttons, timeout = 0)
+/proc/tgui_input_list(mob/user, message, title, list/buttons, timeout = 0, default = null)
 	if (!user)
 		user = usr
 	if(!length(buttons))
@@ -20,7 +20,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout)
+	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout, default)
 	input.ui_interact(user)
 	input.wait()
 	if (input)
@@ -39,7 +39,7 @@
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the input box, after which the menu will close and qdel itself. Set to zero for no timeout.
  */
-/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS)
+/proc/tgui_input_list_async(mob/user, message, title, list/buttons, datum/callback/callback, timeout = 60 SECONDS, default = null)
 	if (!user)
 		user = usr
 	if(!length(buttons))
@@ -50,7 +50,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout)
+	var/datum/tgui_list_input/async/input = new(user, message, title, buttons, callback, timeout, default)
 	input.ui_interact(user)
 
 /**
@@ -74,14 +74,17 @@
 	var/start_time
 	/// The lifespan of the tgui_list_input, after which the window will close and delete itself.
 	var/timeout
+	/// The selected entry in the list which will be focused.
+	var/default
 	/// Boolean field describing if the tgui_list_input was closed by the user.
 	var/closed
 
-/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout)
+/datum/tgui_list_input/New(mob/user, message, title, list/buttons, timeout, default)
 	src.title = title
 	src.message = message
 	src.buttons = list()
 	src.buttons_map = list()
+	src.default = default
 
 	// Gets rid of illegal characters
 	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"})
@@ -128,7 +131,8 @@
 	. = list(
 		"title" = title,
 		"message" = message,
-		"buttons" = buttons
+		"buttons" = buttons,
+		"default_selection" = default
 	)
 
 /datum/tgui_list_input/ui_data(mob/user)
@@ -161,8 +165,8 @@
 	/// The callback to be invoked by the tgui_list_input upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout)
-	..(user, title, message, buttons, timeout)
+/datum/tgui_list_input/async/New(mob/user, message, title, list/buttons, callback, timeout, default)
+	..(user, title, message, buttons, timeout, default)
 	src.callback = callback
 
 /datum/tgui_list_input/async/Destroy(force, ...)

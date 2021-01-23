@@ -21,6 +21,7 @@ export const ListInput = (props, context) => {
     message,
     buttons,
     timeout,
+    default_selection,
   } = data;
 
   // Search
@@ -39,7 +40,9 @@ export const ListInput = (props, context) => {
 
   // Selected Button
   const [selectedButton, setSelectedButton] = useLocalState(
-    context, 'selected_button', buttons[0]);
+    context, 'selected_button', (
+      default_selection ? default_selection : buttons[0]
+    ));
 
   const handleKeyDown = e => {
     e.preventDefault();

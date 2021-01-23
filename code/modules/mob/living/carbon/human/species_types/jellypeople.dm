@@ -957,7 +957,7 @@
 				return
 			switch(dna_alteration)
 				if("Breasts Size")
-					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
+					var/new_size = tgui_input_list(H, "Choose your character's breasts size:", "DNA Alteration", GLOB.preference_breast_sizes)
 					if(new_size)
 						DNA.features["breasts_size"] = breasts_cup_to_size(new_size)
 						var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
@@ -984,7 +984,7 @@
 						if(PP)
 							PP.set_size(DNA.features["penis_size"])
 				if("Penis Sheath")
-					var/new_sheath = input(H, "Choose your penis sheath", "DNA Alteration") as null|anything in SHEATH_MODES
+					var/new_sheath = tgui_input_list(H, "Choose your penis sheath", "DNA Alteration", SHEATH_MODES)
 					if(new_sheath)
 						DNA.features["penis_sheath"] = new_sheath
 						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
@@ -1001,7 +1001,7 @@
 						if(PP)
 							PP.girth = DNA.features["penis_girth"]
 				if("Balls Size")
-					var/new_size = input(H, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
+					var/new_size = tgui_input_list(H, "Choose your character's balls size:", "Character Preference", GLOB.preference_balls_sizes)
 					if(new_size)
 						DNA.features["balls_size"] = balls_description_to_size(new_size)
 						var/obj/item/organ/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
