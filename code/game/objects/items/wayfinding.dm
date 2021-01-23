@@ -261,7 +261,7 @@
 		to_chat(user, SPAN_NOTICE("Your pinpointer fails to detect a signal."))
 		return
 
-	var/A = input(user, "", "Pinpoint") as null|anything in sortList(beacons)
+	var/A = tgui_input_list(user, "", "Pinpoint", sortList(beacons))
 	if(!A || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated())
 		return
 

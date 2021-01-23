@@ -585,7 +585,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				if(!silent)
 					playsound(src, 'sound/machines/terminal_select.ogg', 15, TRUE)
 			if("Drone Phone")
-				var/alert_s = input(U,"Alert severity level","Ping Drones",null) as null|anything in list("Low","Medium","High","Critical")
+				var/alert_s = tgui_input_list(U, "Alert severity level", "Ping Drones", list("Low","Medium","High","Critical"))
 				var/area/A = get_area(U)
 				if(A && alert_s && !QDELETED(U))
 					var/msg = SPAN_BOLDNOTICE("NON-DRONE PING: [U.name]: [alert_s] priority alert in [A.name]!")
@@ -1204,7 +1204,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)] = P
 
-	var/c = input(user, "Please select a PDA") as null|anything in sortList(plist)
+	var/c = tgui_input_list(user, "Please select a PDA", sortList(plist))
 
 	if (!c)
 		return
@@ -1212,7 +1212,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/selected = plist[c]
 
 	if(aicamera.stored.len)
-		var/add_photo = input(user,"Do you want to attach a photo?","Photo","No") as null|anything in list("Yes","No")
+		var/add_photo = tgui_input_list(user, "Do you want to attach a photo?", "Photo", list("Yes","No"))
 		if(add_photo=="Yes")
 			var/datum/picture/Pic = aicamera.selectpicture(user)
 			aiPDA.picture = Pic

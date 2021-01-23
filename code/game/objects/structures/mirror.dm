@@ -168,7 +168,7 @@
 
 	var/mob/living/carbon/human/H = user
 
-	var/choice = input(user, "Something to change?", "Magical Grooming") as null|anything in list("name", "race", "gender", "hair", "eyes")
+	var/choice = tgui_input_list(user, "Something to change?", "Magical Grooming", list("name", "race", "gender", "hair", "eyes"))
 
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
@@ -189,7 +189,7 @@
 
 		if("race")
 			var/newrace
-			var/racechoice = input(H, "What are we again?", "Race change") as null|anything in choosable_races
+			var/racechoice = tgui_input_list(H, "What are we again?", "Race change", choosable_races)
 			newrace = GLOB.species_list[racechoice]
 
 			if(!newrace)
@@ -199,7 +199,7 @@
 			H.set_species(newrace, icon_update=0)
 
 			if(H.dna.species.use_skintones)
-				var/new_s_tone = input(user, "Choose your skin tone:", "Race change")  as null|anything in GLOB.skin_tones
+				var/new_s_tone = tgui_input_list(user, "Choose your skin tone:", "Race change", GLOB.skin_tones)
 				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 
