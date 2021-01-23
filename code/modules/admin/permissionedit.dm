@@ -319,7 +319,7 @@
 	for(R in GLOB.admin_ranks)
 		if((R.rights & usr.client.holder.rank.can_edit_rights) == R.rights)
 			rank_names[R.name] = R
-	var/new_rank = tgui_input_list("Please select a rank", "New rank", rank_names)
+	var/new_rank = tgui_input_list(usr, "Please select a rank", "New rank", rank_names)
 	if(new_rank == "*New Rank*")
 		new_rank = input("Please input a new rank", "New custom rank") as text|null
 	if(!new_rank)

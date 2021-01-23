@@ -116,7 +116,7 @@
 				organs -= organ
 				organs[organ.name] = organ
 
-			target_organ = tgui_input_list("Remove which organ?", "Surgery", sortList(organs))
+			target_organ = tgui_input_list(user, "Remove which organ?", "Surgery", sortList(organs))
 			if(target_organ && user && target && user.Adjacent(target) && user.get_active_held_item() == tool)
 				target_organ = organs[target_organ]
 				if(!target_organ)

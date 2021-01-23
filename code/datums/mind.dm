@@ -512,7 +512,7 @@
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = tgui_input_list("Select new role", "Assigned role", sortList(SSjob.station_jobs), default = assigned_role)
+		var/new_role = tgui_input_list(usr, "Select new role", "Assigned role", sortList(SSjob.station_jobs), default = assigned_role)
 		if (!new_role)
 			return
 		assigned_role = new_role
@@ -552,7 +552,7 @@
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = tgui_input_list("Which antagonist gets the objective:", "Antagonist", sortList(antag_datums) + "(new custom antag)")
+						var/datum/antagonist/target = tgui_input_list(usr, "Which antagonist gets the objective:", "Antagonist", sortList(antag_datums) + "(new custom antag)")
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")
@@ -567,7 +567,7 @@
 			if(old_objective.name in GLOB.admin_objective_list)
 				def_value = old_objective.name
 
-		var/selected_type = tgui_input_list("Select objective type:", "Objective type", GLOB.admin_objective_list, default = def_value)
+		var/selected_type = tgui_input_list(usr, "Select objective type:", "Objective type", GLOB.admin_objective_list, default = def_value)
 		selected_type = GLOB.admin_objective_list[selected_type]
 		if (!selected_type)
 			return

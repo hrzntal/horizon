@@ -26,7 +26,7 @@
 	var/A = null
 
 	if(!randomise_selection)
-		A = tgui_input_list("Area to teleport to", "Teleport", GLOB.teleportlocs)
+		A = tgui_input_list(usr, "Area to teleport to", "Teleport", GLOB.teleportlocs)
 	else
 		A = pick(GLOB.teleportlocs)
 	if(!A)

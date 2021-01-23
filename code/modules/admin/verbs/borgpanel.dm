@@ -7,7 +7,7 @@
 		return
 
 	if (!istype(borgo, /mob/living/silicon/robot))
-		borgo = tgui_input_list("Select a borg", "Select a borg", sortNames(GLOB.silicon_mobs))
+		borgo = tgui_input_list(usr, "Select a borg", "Select a borg", sortNames(GLOB.silicon_mobs))
 	if (!istype(borgo, /mob/living/silicon/robot))
 		to_chat(usr, SPAN_WARNING("Borg is required for borgpanel"), confidential = TRUE)
 
