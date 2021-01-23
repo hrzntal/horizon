@@ -48,6 +48,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/db_flags
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
 	var/horizon_toggles = TOGGLES_DEFAULT_HORIZON
+	var/lewd_toggles = TOGGLES_DEFAULT_LEWD
 	var/ghost_form = "ghost"
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
@@ -240,6 +241,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a>"
 	dat += "<a href='?_src_=prefs;preference=tab;tab=1' [current_tab == 1 ? "class='linkOn'" : ""]>Game Preferences</a>"
 	dat += "<a href='?_src_=prefs;preference=tab;tab=2' [current_tab == 2 ? "class='linkOn'" : ""]>OOC Preferences</a>"
+	dat += "<a href='?_src_=prefs;preference=tab;tab=4' [current_tab == 4 ? "class='linkOn'" : ""]>Lewd Preferences</a>"
 	dat += "<a href='?_src_=prefs;preference=tab;tab=3' [current_tab == 3 ? "class='linkOn'" : ""]>Custom Keybindings</a>"
 
 	if(!path)
@@ -1196,6 +1198,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<br><br>"
 			dat += "<a href ='?_src_=prefs;preference=keybindings_reset'>\[Reset to default\]</a>"
 			dat += "</body>"
+		if (4) // Lewd Preferences
+			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
+			dat += "<h2>Mechanical Lewd Preferences</h2>"
+			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(lewd_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a>"
+			dat += "</td></tr></table>"
 	dat += "<hr><center>"
 
 	if(!IsGuestKey(user.key))
@@ -2441,6 +2448,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 		else
 			switch(href_list["preference"])
+				if("ass_slap")
+					lewd_toggles ^= NO_ASS_SLAP
+
 				if("reset_loadout")
 					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
 					if(action && action != "Yes")

@@ -277,3 +277,21 @@
 	)
 	H.equip_in_one_of_slots(camera, camera_slots , qdel_on_fail = TRUE)
 	H.regenerate_icons()
+
+/datum/quirk/excitable
+	name = "Excitable!"
+	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
+	gain_text = "<span class='notice'>You crave for some headpats!</span>"
+	lose_text = "<span class='notice'>You no longer care for headpats all that much.</span>"
+	medical_record_text = "Patient seems to get excited easily."
+	value = 0
+	mob_trait = TRAIT_EXCITABLE
+
+/datum/quirk/ironass
+	name = "Iron Ass"
+	desc = "Your ass is incredibly firm, so firm infact that anyone slapping it will suffer injuries."
+	gain_text = "<span class='notice'>Your ass feels dense!</span>"
+	lose_text = "<span class='notice'>Your ass doesn't feel so dense anymore.</span>"
+	medical_record_text = "Patient's ass seems incredibly dense."
+	value = 0
+	mob_trait = TRAIT_IRONASS

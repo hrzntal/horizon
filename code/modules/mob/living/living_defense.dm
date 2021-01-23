@@ -425,15 +425,15 @@
  * Arguments:
  * * atom/A - atom being slapped
  */
-/mob/living/proc/do_slap_animation(atom/slapped)
+/mob/living/proc/do_slap_animation(atom/slapped, height = 10)
 	do_attack_animation(slapped, no_effect=TRUE)
 	var/image/gloveimg = image('icons/effects/effects.dmi', slapped, "slapglove", slapped.layer + 0.1)
-	gloveimg.pixel_y = 10 // should line up with head
+	gloveimg.pixel_y = height // should line up with head
 	gloveimg.pixel_x = 10
 	flick_overlay(gloveimg, GLOB.clients, 10)
 
 	// And animate the attack!
-	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = 10, pixel_z = 0, time = 3)
+	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = height, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
 
