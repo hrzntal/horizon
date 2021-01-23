@@ -16,6 +16,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_JANITOR
 
+	required_languages = null
+
 /datum/outfit/job/janitor
 	name = "Janitor"
 	jobtype = /datum/job/janitor

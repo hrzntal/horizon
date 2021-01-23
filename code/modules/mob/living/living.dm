@@ -281,9 +281,13 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
-			to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
+			if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL))
+				M.visible_message("<span class='warning'>[src] coils their tail with [AM], wow is that okay in public?!</span>", "[src] has entwined their tail with yours!")
+				to_chat(src, "<span class='notice'>You entwine your tail with [AM]'s</span>")
+			else
+				M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
+								"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
+				to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -1902,3 +1906,34 @@
 		else
 			temporary_flavor_text = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 	return
+
+/// Returns the attack damage type of a living mob such as [BRUTE].
+/mob/living/proc/get_attack_type()
+	return BRUTE
+
+
+/**
+ * Apply a martial art move from src to target.
+ *
+ * This is used to process martial art attacks against nonhumans.
+ * It is also used to process martial art attacks by nonhumans, even against humans
+ * Human vs human attacks are handled in species code right now.
+ */
+/mob/living/proc/apply_martial_art(mob/living/target)
+	if(HAS_TRAIT(target, TRAIT_MARTIAL_ARTS_IMMUNE))
+		return FALSE
+	var/datum/martial_art/style = mind?.martial_art
+	var/attack_result = FALSE
+	if (style)
+		switch (a_intent)
+			if (INTENT_GRAB)
+				attack_result = style.grab_act(src, target)
+			if (INTENT_HARM)
+				if (HAS_TRAIT(src, TRAIT_PACIFISM))
+					return FALSE
+				attack_result = style.harm_act(src, target)
+			if (INTENT_DISARM)
+				attack_result = style.disarm_act(src, target)
+			if (INTENT_HELP)
+				attack_result = style.help_act(src, target)
+	return attack_result

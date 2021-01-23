@@ -31,6 +31,9 @@
 	ass_image = 'icons/ass/asslizard.png'
 	limbs_icon = 'icons/mob/species/lizard_parts_greyscale.dmi'
 
+	cultures = list(CULTURES_EXOTIC, CULTURES_LIZARD, CULTURES_HUMAN)
+	learnable_languages = list(/datum/language/common, /datum/language/draconic)
+
 /// Lizards are cold blooded and do not stabilize body temperature naturally
 /datum/species/lizard/body_temperature_core(mob/living/carbon/human/humi)
 	return
@@ -48,7 +51,7 @@
 
 /datum/species/lizard/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	var/main_color = random_short_color()
+	var/main_color = random_color()
 	var/second_color
 	var/third_color
 	var/random = rand(1,3)
@@ -60,8 +63,8 @@
 			second_color = main_color
 			third_color = main_color
 		if(3) //Third case, more randomisation
-			second_color = random_short_color()
-			third_color = random_short_color()
+			second_color = random_color()
+			third_color = random_color()
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
@@ -78,3 +81,9 @@ Lizard subspecies: ASHWALKERS
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_CHUNKYFINGERS,TRAIT_NOBREATH)
 	species_language_holder = /datum/language_holder/lizard/ash
 	always_customizable = TRUE
+
+	cultures = list(/datum/cultural_info/culture/lavaland)
+	locations = list(/datum/cultural_info/location/stateless)
+	factions = list(/datum/cultural_info/faction/none)
+
+	learnable_languages = list(/datum/language/draconic)

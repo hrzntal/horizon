@@ -215,6 +215,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/default_mutant_bodyparts = list()
 	///The type of our body. This is used for restricting wearing clothes
 	var/bodytype = BODYTYPE_HUMANOID
+	/// Available cultural informations
+	var/list/cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
+	var/list/locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
+	var/list/factions = list(FACTIONS_GENERIC, FACTIONS_HUMAN)
+	/// List of all the languages our species can learn NO MATTER their background
+	var/list/learnable_languages = list(/datum/language/common)
 
 ///////////
 // PROCS //
@@ -2243,9 +2249,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = random_short_color()
-	returned["mcolor2"] = random_short_color()
-	returned["mcolor3"] = random_short_color()
+	returned["mcolor"] = random_color()
+	returned["mcolor2"] = random_color()
+	returned["mcolor3"] = random_color()
 	return returned
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
