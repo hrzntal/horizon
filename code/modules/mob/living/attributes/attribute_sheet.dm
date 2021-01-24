@@ -16,3 +16,12 @@
 
 /datum/attribute_sheet/cook
 	skills = list(/datum/nice_skill/cooking = 5)
+
+//SHEETS RELATED TO OCCUPATIONS
+
+/datum/attribute_sheet/physical_worker
+	attributes = list(/datum/attribute/strength = 2)
+
+/datum/attribute_sheet/ship_engineer
+	skills = list(/datum/nice_skill/engineering = 2,
+					/datum/nice_skill/eva = 2)

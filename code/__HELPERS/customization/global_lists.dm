@@ -91,3 +91,9 @@
 			continue
 		L = new path()
 		GLOB.culture_factions[path] = L
+	for(var/path in subtypesof(/datum/cultural_info/occupation))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_occupations[path] = L

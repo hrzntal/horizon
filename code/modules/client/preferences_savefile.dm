@@ -486,6 +486,23 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["pref_culture"] , pref_culture)
 	READ_FILE(S["pref_location"] , pref_location)
 	READ_FILE(S["pref_faction"] , pref_faction)
+	READ_FILE(S["pref_occupation"] , pref_occupation)
+
+	READ_FILE(S["pref_attributes"] , pref_attributes)
+	pref_attributes = SANITIZE_LIST(pref_attributes)
+
+	//Validate all existing attributes
+	for(var/att in GLOB.all_attributes)
+		if(!pref_attributes[att])
+			pref_attributes[att] = 0
+	//Validate all loaded attributes
+	for(var/att in pref_attributes)
+		if(!GLOB.all_attributes[att])
+			pref_attributes -= att
+	var/attribute_delta = GetAttributePoints() //For checking if we can have those changes
+	if(attribute_delta > ATTRIBUTES_FREE_POINTS)
+		for(var/att in pref_attributes)
+			pref_attributes[att] = 0
 
 	READ_FILE(S["languages"] , languages)
 	languages = SANITIZE_LIST(languages)
@@ -496,6 +513,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		pref_location = pref_species.locations[1]
 	if(!pref_faction || !GLOB.culture_factions[pref_faction])
 		pref_faction = pref_species.factions[1]
+	if(!pref_occupation || !GLOB.culture_occupations[pref_occupation])
+		pref_occupation = pref_species.occupations[1]
 
 	validate_languages()
 
@@ -645,6 +664,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pref_culture"] , pref_culture)
 	WRITE_FILE(S["pref_location"] , pref_location)
 	WRITE_FILE(S["pref_faction"] , pref_faction)
+	WRITE_FILE(S["pref_occupation"] , pref_occupation)
+
+	WRITE_FILE(S["pref_attributes"] , pref_attributes)
 
 	WRITE_FILE(S["languages"] , languages)
 

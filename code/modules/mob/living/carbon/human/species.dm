@@ -219,6 +219,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/list/cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
 	var/list/locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
 	var/list/factions = list(FACTIONS_GENERIC, FACTIONS_HUMAN)
+	var/list/occupations = list(OCCUPATIONS_GENERIC)
 	/// List of all the languages our species can learn NO MATTER their background
 	var/list/learnable_languages = list(/datum/language/common)
 

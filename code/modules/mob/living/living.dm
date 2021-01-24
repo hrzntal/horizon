@@ -1917,33 +1917,65 @@
 	set desc = "Check your skills and attributes."
 	
 	var/list/dat = list()
-	dat += "<table><tr><td width='350px' height='900px' valign='top'>"
-	for(var/attribute in attributes.total_attributes)
-		var/datum/attribute/AT = GLOB.all_attributes[attribute]
-		var/amount = attributes.total_attributes[attribute]
-		var/raw = attributes.raw_attributes[attribute]
+	var/even = FALSE
+	var/background_cl
+
+	dat += "<table width='100%'>"
+	dat += "<center><h2>Attributes:</h2></center>"
+	dat += "<tr>"
+	dat += "<td width='15%'></td>" //Name
+	dat += "<td width='10%'></td>" //Balance
+	dat += "<td width='40%'></td>" //Description
+	dat += "<td width='35%'></td>" //Level Description
+	dat += "</tr>"
+	for(var/att_type in GLOB.all_attributes)
+		even = !even
+		background_cl = even ? "#17191C" : "#23273C"
+		var/datum/attribute/SKL = GLOB.all_attributes[att_type]
+		var/amount = attributes.total_attributes[att_type]
+		var/raw = attributes.raw_attributes[att_type]
 		var/stat_color = "#FFFFFF"
 		if(amount < raw)
 			stat_color = "#FF0000"
 		else if(amount > raw)
 			stat_color = "#00FF00"
-		dat += "[AT.name]: <font color='[stat_color]'><b>[amount]</b></font> - [AT.level_description(amount)]<BR>"
-		dat += "<font color='#DDDDDD'><i>[AT.desc]</i></font><BR>"
-	dat += "</td>"
-	dat +="<td width='350px' height='900px' valign='top'>"
-	for(var/skill in attributes.total_skills)
-		var/datum/nice_skill/SKL = GLOB.all_skills[skill]
-		var/amount = attributes.total_skills[skill]
-		var/raw = attributes.raw_skills[skill]
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td>[SKL.name]</td>" //Name
+		dat += "<td><b><center><font color='[stat_color]'>[amount]</font></center></b></td>" //Balance
+		dat += "<td><i>[SKL.desc]</i></td>" //Description
+		dat += "<td>[SKL.level_description(amount)]</td>" //Level Description
+		dat += "</tr>"
+
+	dat += "<table width='100%'>"
+	dat += "<center><h2>Skills:</h2></center>"
+	dat += "<tr>"
+	dat += "<td width='15%'></td>" //Name
+	dat += "<td width='10%'></td>" //Balance
+	dat += "<td width='40%'></td>" //Description
+	dat += "<td width='35%'></td>" //Level Description
+	dat += "</tr>"
+	var/list/affinity_values = attributes.get_affinity_values()
+	for(var/skill_type in GLOB.all_skills)
+		even = !even
+		background_cl = even ? "#17191C" : "#23273C"
+		var/datum/nice_skill/SKL = GLOB.all_skills[skill_type]
+		var/amount = attributes.total_skills[skill_type]
+		var/raw = attributes.raw_skills[skill_type]
+		if(affinity_values[skill_type])
+			raw += affinity_values[skill_type]
 		var/stat_color = "#FFFFFF"
 		if(amount < raw)
 			stat_color = "#FF0000"
 		else if(amount > raw)
 			stat_color = "#00FF00"
-		dat += "[SKL.name]: <font color='[stat_color]'><b>[amount]</b></font> - [SKL.level_description(amount)]<BR>"
-		dat += "<i>[SKL.desc]</i><BR>"
-	dat += "</tr></table>"
-	var/datum/browser/popup = new(usr, "attributes and skills", "Attributes & Skills", 900, 700)
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td>[SKL.name]</td>" //Name
+		dat += "<td><b><center><font color='[stat_color]'>[amount]</font></center></b></td>" //Balance
+		dat += "<td><i>[SKL.desc]</i></td>" //Description
+		dat += "<td>[SKL.level_description(amount)]</td>" //Level Description
+		dat += "</tr>"
+	dat += "</table>"
+	var/datum/browser/popup = new(usr, "attributes and skills", "Attributes & Skills", 550, 700)
 	popup.set_content(dat.Join())
 	popup.open()
 	

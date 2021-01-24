@@ -1,3 +1,8 @@
+//Defines relating to prefs
+#define ATTRIBUTES_FREE_POINTS 0
+#define ATTRIBUTES_PREF_MINIMUM -3
+#define ATTRIBUTES_PREF_MAXIMUM 6
+
 #define ATTRIBUTE_EQUILIBRIUM 10
 #define BASE_ATTRIBUTE_AMOUNT 10
 
@@ -6,23 +11,21 @@
 
 #define ADD_ATTRIBUTES(target, source, attributes) \
 	target.attributes.attribute_buffs[source] = attributes; \
-	target.attributes.update_attributes_from(attributes); \
+	target.attributes.update_attributes(); \
 
 #define REMOVE_ATTRIBUTES(target, source) \
-	var/list/list_to_update = target.attributes.attribute_buffs[source]; \
 	target.attributes.attribute_buffs -= source; \
-	target.attributes.update_attributes_from(list_to_update); \
+	target.attributes.update_attributes(); \
 
 #define HAS_ATTRIBUTES_FROM(target, source) target.attributes.attribute_buffs[source]
 
 #define ADD_SKILLS(target, source, skills) \
 	target.attributes.skill_buffs[source] = skills; \
-	target.attributes.update_attributes_from(skills); \
+	target.attributes.update_skills(); \
 
 #define REMOVE_SKILLS(target, source) \
-	var/list/list_to_update = target.attributes.skill_buffs[source]; \
 	target.attributes.skill_buffs -= source; \
-	target.attributes.update_attributes_from(list_to_update); \
+	target.attributes.update_skills(); \
 
 #define HAS_SKILLS_FROM(target, source) target.attributes.skill_buffs[source]
 

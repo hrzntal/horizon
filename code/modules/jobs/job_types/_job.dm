@@ -164,7 +164,7 @@
 		// People get extra cash based on how wealthy their backgrounds are
 		if(preference_source?.prefs)
 			var/cultural_cash = 0
-			for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_FACTION, CULTURE_LOCATION))
+			for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_FACTION, CULTURE_LOCATION, CULTURE_OCCUPATION))
 				var/datum/cultural_info/cult
 				switch(cultural_thing)
 					if(CULTURE_CULTURE)
@@ -173,6 +173,8 @@
 						cult = GLOB.culture_locations[preference_source.prefs.pref_location]
 					if(CULTURE_FACTION)
 						cult = GLOB.culture_factions[preference_source.prefs.pref_faction]
+					if(CULTURE_OCCUPATION)
+						cult = GLOB.culture_occupations[preference_source.prefs.pref_occupation]
 				cultural_cash += bank_account.account_job.paycheck * cult.economic_power
 			bank_account.adjust_money(cultural_cash)
 		H.account_id = bank_account.account_id

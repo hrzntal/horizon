@@ -188,12 +188,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/pref_culture
 	var/pref_location
 	var/pref_faction
+	var/pref_occupation
 	/// Whether someone wishes to see more information regarding either of those
 	var/culture_more_info = FALSE
 	var/location_more_info = FALSE
 	var/faction_more_info = FALSE
+	var/occupation_more_info = FALSE
 	//Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
 	var/list/languages = list()
+
+	var/list/pref_attributes = list()
+	var/list/percieved_attributes
+	var/list/percieved_skills
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -280,6 +286,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=3' [character_settings_tab == 3 ? "class='linkOn'" : ""]>Background</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=4' [character_settings_tab == 4 ? "class='linkOn'" : ""]>Loadout</a>" //If you change the index of this tab, change all the logic regarding tab
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=5' [character_settings_tab == 5 ? "class='linkOn'" : ""]>Augmentation</a>"
+			dat += "<a href='?_src_=prefs;preference=character_tab;tab=6' [character_settings_tab == 6 ? "class='linkOn'" : ""]>Attributes</a>"
 			dat += "</center>"
 
 			dat += "<HR>"
@@ -690,12 +697,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(3) //Background
 					dat += "<table width='100%'>"
 					dat += "<tr>"
-					dat += "<td width='21%'></td>"
-					dat += "<td width='70%'></td>"
-					dat += "<td width='9%'></td>"
+					dat += "<td width='29%'></td>"
+					dat += "<td width='64%'></td>"
+					dat += "<td width='7%'></td>"
 					dat += "</tr>"
 					var/even = FALSE
-					for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
+					for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION, CULTURE_OCCUPATION))
 						even = !even
 						var/datum/cultural_info/cult
 						var/prefix
@@ -713,6 +720,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								cult = GLOB.culture_factions[pref_faction]
 								prefix = "Faction"
 								more = faction_more_info
+							if(CULTURE_OCCUPATION)
+								cult = GLOB.culture_occupations[pref_occupation]
+								prefix = "Prev. Occupation"
+								more = occupation_more_info
 						var/cult_desc 
 						if(more || length(cult.description) <= 160)
 							cult_desc = cult.description
@@ -721,7 +732,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
 						dat += "<td valign='top'><b>[prefix]:</b> <a href='?_src_=prefs;preference=cultural_info_change;info=[cultural_thing];task=input'>[cult.name]</a><font color='#AAAAAA' size=1><b>[cult.get_extra_desc(more)]</b></font></td>"
 						dat += "<td><i>[cult_desc]</i></td>"
-						dat += "<td valign='top'><a href='?_src_=prefs;preference=cultural_info_toggle;info=[cultural_thing];task=input'>[more ? "Show Less" : "Show More"]</a></td>"
+						dat += "<td valign='top'><a href='?_src_=prefs;preference=cultural_info_toggle;info=[cultural_thing];task=input'>[more ? "Less" : "More"]</a></td>"
 						dat += "</tr>"
 					dat += "</table>"
 					dat += "<table width='100%'><tr>"
@@ -946,6 +957,61 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									dat += "</tr>"
 								dat += "</table>"
 						dat += "</td></tr></table>"
+				if(6) //Attributes
+					UpdatePercievedAttributes()
+					dat += "<table width='100%'>"
+					dat += "<center><h2>Attributes:</h2></center>"
+					dat += "<center><i>Attributes define your character's strengths and weaknesses, aswell as impact your skills.<BR>Stimulants, drugs, moods, and other things may affect them.</i></center>"
+					dat += "<b>Points remaining: [GetAttributePoints()]</b>"
+					dat += "<tr>"
+					dat += "<td width='10%'></td>" //Name
+					dat += "<td width='5%'></td>" //Minus
+					dat += "<td width='5%'></td>" //Balance
+					dat += "<td width='5%'></td>" //Plus
+					dat += "<td width='40%'></td>" //Description
+					dat += "<td width='35%'></td>" //Level Description
+					dat += "</tr>"
+					var/even = TRUE
+					var/background_cl
+					for(var/attribute_type in GLOB.all_attributes)
+						even = !even
+						background_cl = even ? "#17191C" : "#23273C"
+						var/datum/attribute/AT = GLOB.all_attributes[attribute_type]
+						var/amt = percieved_attributes[attribute_type]
+						var/add_link = CanModifyAttribute(attribute_type, 1) ? "href='?_src_=prefs;task=set_attribute;type=[attribute_type];amount=1'" : "class='linkOff'"
+						var/sub_link = CanModifyAttribute(attribute_type, -1) ? "href='?_src_=prefs;task=set_attribute;type=[attribute_type];amount=-1'" : "class='linkOff'"
+						dat += "<tr style='background-color: [background_cl]'>"
+						dat += "<td>[AT.name]</td>" //Name
+						dat += "<td><a [sub_link]>-1</a></td>" //Minus
+						dat += "<td><b><center>[amt]</center></b></td>" //Balance
+						dat += "<td><a [add_link]>+1</a></td>" //Plus
+						dat += "<td><i>[AT.desc]</i></td>" //Description
+						dat += "<td>[AT.level_description(amt)]</td>" //Level Description
+						dat += "</tr>"
+					dat += "</table>"
+
+					dat += "<table width='100%'>"
+					dat += "<center><h2>Skills:</h2></center>"
+					dat += "<center><i>Skills define how proficient or trained you are in doing certain tasks. Attributes, background and job you join with affect them. <BR>Down below you'll see your skills without the job affecting them.</i></center>"
+					dat += "<tr>"
+					dat += "<td width='15%'></td>" //Name
+					dat += "<td width='10%'></td>" //Balance
+					dat += "<td width='40%'></td>" //Description
+					dat += "<td width='35%'></td>" //Level Description
+					dat += "</tr>"
+					for(var/skill_type in GLOB.all_skills)
+						even = !even
+						background_cl = even ? "#17191C" : "#23273C"
+						var/datum/nice_skill/SKL = GLOB.all_skills[skill_type]
+						var/amt = percieved_skills[skill_type]
+						dat += "<tr style='background-color: [background_cl]'>"
+						dat += "<td>[SKL.name]</td>" //Name
+						dat += "<td><b><center>[amt]</center></b></td>" //Balance
+						dat += "<td><i>[SKL.desc]</i></td>" //Description
+						dat += "<td>[SKL.level_description(amt)]</td>" //Level Description
+						dat += "</tr>"
+					dat += "</table>"
+
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -1599,6 +1665,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return TRUE
 
 	switch(href_list["task"])
+		if("set_attribute")
+			var/att_type = text2path(href_list["type"])
+			var/value = text2num(href_list["amount"])
+			ModifyAttribute(att_type, value)
+
 		if("close_language")
 			user << browse(null, "window=culture_lang")
 			ShowChoices(user)
@@ -1991,6 +2062,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(CULTURE_LOCATION)
 							iteration_list = pref_species.locations
 							siphon_list = GLOB.culture_locations
+						if(CULTURE_OCCUPATION)
+							iteration_list = pref_species.occupations
+							siphon_list = GLOB.culture_occupations
 					for(var/cultural_entity in iteration_list)
 						var/datum/cultural_info/CINFO = siphon_list[cultural_entity]
 						choice_list[CINFO.name] = cultural_entity
@@ -2003,6 +2077,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								pref_faction = choice_list[new_cultural_thing]
 							if(CULTURE_LOCATION)
 								pref_location = choice_list[new_cultural_thing]
+							if(CULTURE_OCCUPATION)
+								pref_occupation = choice_list[new_cultural_thing]
 						validate_languages()
 
 				if("cultural_info_toggle")
@@ -2014,6 +2090,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							faction_more_info = !faction_more_info
 						if(CULTURE_LOCATION)
 							location_more_info = !location_more_info
+						if(CULTURE_OCCUPATION)
+							occupation_more_info = !occupation_more_info
 
 				if("language")
 					var/target_lang = text2path(href_list["lang"])
@@ -2868,6 +2946,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
 			aug.apply(character, character_setup, src)
 
+	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION, CULTURE_OCCUPATION))
+		var/datum/cultural_info/cult
+		switch(cultural_thing)
+			if(CULTURE_CULTURE)
+				cult = GLOB.culture_cultures[pref_culture]
+			if(CULTURE_LOCATION)
+				cult = GLOB.culture_locations[pref_location]
+			if(CULTURE_FACTION)
+				cult = GLOB.culture_factions[pref_faction]
+			if(CULTURE_OCCUPATION)
+				cult = GLOB.culture_occupations[pref_occupation]
+		if(cult.attribute_sheet)
+			character.attributes.add_sheet(cult.attribute_sheet)
+
+	for(var/att_type in pref_attributes)
+		character.attributes.raw_attributes[att_type] += pref_attributes[att_type]
+	character.attributes.update_attributes()
+
 	if(icon_updates)
 		character.update_body()
 		character.update_hair()
@@ -3025,7 +3121,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/proc/get_required_languages()
 	var/list/lang_list = list()
-	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
+	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION, CULTURE_OCCUPATION))
 		var/datum/cultural_info/cult
 		switch(cultural_thing)
 			if(CULTURE_CULTURE)
@@ -3034,6 +3130,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				cult = GLOB.culture_locations[pref_location]
 			if(CULTURE_FACTION)
 				cult = GLOB.culture_factions[pref_faction]
+			if(CULTURE_OCCUPATION)
+				cult = GLOB.culture_occupations[pref_occupation]
 		if(cult.required_lang)
 			lang_list[cult.required_lang] = TRUE
 	return lang_list
@@ -3042,7 +3140,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/lang_list = list()
 	for(var/lang in pref_species.learnable_languages)
 		lang_list[lang] = TRUE
-	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
+	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION, CULTURE_OCCUPATION))
 		var/datum/cultural_info/cult
 		switch(cultural_thing)
 			if(CULTURE_CULTURE)
@@ -3051,6 +3149,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				cult = GLOB.culture_locations[pref_location]
 			if(CULTURE_FACTION)
 				cult = GLOB.culture_factions[pref_faction]
+			if(CULTURE_OCCUPATION)
+				cult = GLOB.culture_occupations[pref_occupation]
 		if(cult.additional_langs)
 			for(var/langtype in cult.additional_langs)
 				lang_list[langtype] = TRUE
@@ -3154,3 +3254,77 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
+
+/datum/preferences/proc/GetAttributePoints()
+	var/delta = ATTRIBUTES_FREE_POINTS
+	for(var/att in pref_attributes)
+		delta -= pref_attributes[att]
+	return delta
+
+/datum/preferences/proc/UpdatePercievedAttributes()
+	percieved_attributes = list()
+	percieved_skills = list()
+	for(var/att in GLOB.all_attributes)
+		percieved_attributes[att] = ATTRIBUTE_EQUILIBRIUM
+	for(var/skl in GLOB.all_skills)
+		percieved_skills[skl] = SKILL_EQUILIBRIUM
+	//Add the customized attributes from the players choice
+	for(var/att in pref_attributes)
+		percieved_attributes[att] += pref_attributes[att]
+	//Now we've got our base, let's add the sheets that we'd recieve
+	//Species:
+	if(pref_species.attribute_sheet)
+		AddSheetToPercievedAttributes(pref_species.attribute_sheet)
+	//Backgrounds:
+	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION, CULTURE_OCCUPATION))
+		var/datum/cultural_info/cult
+		switch(cultural_thing)
+			if(CULTURE_CULTURE)
+				cult = GLOB.culture_cultures[pref_culture]
+			if(CULTURE_LOCATION)
+				cult = GLOB.culture_locations[pref_location]
+			if(CULTURE_FACTION)
+				cult = GLOB.culture_factions[pref_faction]
+			if(CULTURE_OCCUPATION)
+				cult = GLOB.culture_occupations[pref_occupation]
+		if(cult.attribute_sheet)
+			AddSheetToPercievedAttributes(cult.attribute_sheet)
+	//Affinity bonuses for skills:
+	for(var/skill in percieved_skills)
+		var/datum/nice_skill/SKL = GLOB.all_skills[skill]
+		if(SKL.attribute_affinity)
+			var/affinity_delta = 0
+			for(var/attribute in SKL.attribute_affinity)
+				var/amt = (percieved_attributes[attribute] - ATTRIBUTE_EQUILIBRIUM) * SKL.attribute_affinity[attribute]
+				affinity_delta += amt
+			percieved_skills[skill] += round(affinity_delta)
+
+/datum/preferences/proc/AddSheetToPercievedAttributes(sheet_type)
+	var/datum/attribute_sheet/sheet = new sheet_type()
+	for(var/att in sheet.attributes)
+		percieved_attributes[att] += sheet.attributes[att]
+	for(var/skill in sheet.skills)
+		percieved_skills[skill] += sheet.skills[skill]
+	if(sheet.all_attributes)
+		for(var/stat in percieved_attributes)
+			percieved_attributes[stat] += sheet.all_attributes
+	if(sheet.all_skills)
+		for(var/skill in percieved_skills)
+			percieved_skills[skill] += sheet.all_skills
+	qdel(sheet)
+
+/datum/preferences/proc/CanModifyAttribute(att_type, value)
+	var/remaining = GetAttributePoints()
+	if(remaining < value)
+		return FALSE
+	var/target_value = pref_attributes[att_type] + value
+	if(target_value > ATTRIBUTES_PREF_MAXIMUM)
+		return FALSE
+	if(target_value < ATTRIBUTES_PREF_MINIMUM)
+		return FALSE
+	return TRUE
+
+/datum/preferences/proc/ModifyAttribute(att_type, value)
+	if(!CanModifyAttribute(att_type,value))
+		return
+	pref_attributes[att_type] += value

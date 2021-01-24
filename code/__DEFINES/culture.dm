@@ -1,6 +1,7 @@
 #define CULTURE_CULTURE "culture"
 #define CULTURE_FACTION "faction"
 #define CULTURE_LOCATION "location"
+#define CULTURE_OCCUPATION "occupation"
 
 //Amount of linguistic points people have by default. 1 point to understand, 2 points to get it spoken
 #define LINGUISTIC_POINTS_DEFAULT 5
@@ -68,3 +69,7 @@
 							/datum/cultural_info/faction/pcrc, \
 							/datum/cultural_info/faction/saare, \
 							/datum/cultural_info/faction/dais
+
+#define OCCUPATIONS_GENERIC	/datum/cultural_info/occupation/none, \
+							/datum/cultural_info/occupation/physical_worker, \
+							/datum/cultural_info/occupation/ship_engineer
