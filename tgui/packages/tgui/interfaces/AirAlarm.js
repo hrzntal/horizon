@@ -1,7 +1,7 @@
 import { toFixed } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, LabeledList, Section } from '../components';
+import { Box, Button, LabeledList, Section, Knob, AnimatedNumber, NumberInput } from '../components';
 import { Window } from '../layouts';
 import { Scrubber, Vent } from './common/AtmosControls';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
@@ -19,6 +19,9 @@ export const AirAlarm = (props, context) => {
         <AirAlarmStatus />
         {!locked && (
           <AirAlarmControl />
+        )}
+        {!locked && (
+          <AirAlarmHeatingControls />
         )}
       </Window.Content>
     </Window>
@@ -74,8 +77,8 @@ const AirAlarmStatus = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Heating Status"
-              color={data.heating_mode === 'heat' ? 'average' : !data.heating_enabled ? 'gray' : 'good'}>
-              {data.heating_enabled ? data.heating_mode : 'Disabled'}
+              color={data.heating.mode === 'Heat' ? 'average' : !data.heating.mode ? 'gray' : 'good'}>
+              {data.heating.enabled ? data.heating.mode : 'Disabled'}
             </LabeledList.Item>
           </>
         ) || (
@@ -148,7 +151,6 @@ const AirAlarmControlHome = (props, context) => {
   const {
     mode,
     atmos_alarm,
-    heating_enabled,
   } = data;
   return (
     <>
@@ -189,12 +191,6 @@ const AirAlarmControlHome = (props, context) => {
         icon="chart-bar"
         content="Alarm Thresholds"
         onClick={() => setScreen('thresholds')} />
-      <Box mt={1} />
-      <Button
-        icon="fire"
-        content="Toggle Heating"
-        color={heating_enabled ? 'good' : 'average'}
-        onClick={() => act('heat_mode')} />
     </>
   );
 };
@@ -294,3 +290,42 @@ const AirAlarmControlThresholds = (props, context) => {
     </table>
   );
 };
+
+// Heating
+// --------------------------------------------------------
+
+const AirAlarmHeatingControls = (props, context) => {
+  const { act, data} = useBackend(context);
+  const {
+    enabled,
+    setPoint,
+    maxValue,
+    minValue
+  } = data.heating;
+  return (
+    <>
+      <Section
+      title="Comfort Controls"
+      >
+        <Box mt={1} />
+        <LabeledList>
+          <LabeledList.Item label={"Setpoint"}>
+            <NumberInput
+            value={setPoint}
+            minValue={minValue}
+            maxValue={maxValue}
+            onChange={(e, value) => act('heat_setpoint',{setPoint: value})}
+            unit="K"
+            tooltip="Change the Setpoint of the heater"
+            />
+            <Button
+              icon="fire"
+              content="Toggle Heating"
+              color={enabled ? 'good' : 'average'}
+              onClick={() => act('heat_mode')} />
+          </LabeledList.Item>
+        </LabeledList>
+      </Section>
+    </>
+  );
+}
