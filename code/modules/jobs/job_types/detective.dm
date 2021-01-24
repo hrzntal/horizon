@@ -25,6 +25,8 @@
 
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
+	attribute_sheet = /datum/attribute_sheet/detective
+
 /datum/outfit/job/detective
 	name = "Detective"
 	jobtype = /datum/job/detective

@@ -92,6 +92,7 @@
 				var/amt = (total_attributes[attribute] - ATTRIBUTE_EQUILIBRIUM) * SKL.attribute_affinity[attribute]
 				affinity_delta += amt
 			returned[skill] += round(affinity_delta)
+	return returned
 
 //GLOBAL DATUMS
 /datum/attribute

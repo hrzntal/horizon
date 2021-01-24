@@ -26,6 +26,8 @@
 
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
+	attribute_sheet = /datum/attribute_sheet/officer
+
 /datum/job/warden/get_access()
 	var/list/L = list()
 	L = ..() | check_config_for_sec_maint()

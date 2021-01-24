@@ -32,6 +32,8 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
+	attribute_sheet = /datum/attribute_sheet/cmo
+
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
 	jobtype = /datum/job/cmo

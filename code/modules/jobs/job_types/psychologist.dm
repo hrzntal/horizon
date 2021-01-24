@@ -18,6 +18,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_PSYCHOLOGIST
 
+	attribute_sheet = /datum/attribute_sheet/psychologist
+
 /datum/outfit/job/psychologist
 	name = "Psychologist"
 	jobtype = /datum/job/psychologist

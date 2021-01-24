@@ -17,6 +17,8 @@
 	display_order = JOB_DISPLAY_ORDER_SHAFT_MINER
 	bounty_types = CIV_JOB_MINE
 
+	attribute_sheet = /datum/attribute_sheet/shaft_miner
+
 /datum/outfit/job/miner
 	name = "Shaft Miner"
 	jobtype = /datum/job/mining

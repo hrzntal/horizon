@@ -22,6 +22,8 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS) //Not a head.. YET
 
+	attribute_sheet = /datum/attribute_sheet/qm
+
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm

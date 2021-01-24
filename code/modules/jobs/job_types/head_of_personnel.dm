@@ -40,6 +40,8 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
+	attribute_sheet = /datum/attribute_sheet/hop
+
 /datum/outfit/job/hop
 	name = "Head of Personnel"
 	jobtype = /datum/job/hop

@@ -36,6 +36,8 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
+	attribute_sheet = /datum/attribute_sheet/rd
+
 /datum/outfit/job/rd
 	name = "Research Director"
 	jobtype = /datum/job/rd

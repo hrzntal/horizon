@@ -18,6 +18,8 @@
 
 	required_languages = null
 
+	attribute_sheet = /datum/attribute_sheet/botanist
+
 /datum/outfit/job/botanist
 	name = "Botanist"
 	jobtype = /datum/job/hydro

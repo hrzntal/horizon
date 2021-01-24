@@ -21,6 +21,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_ROBOTICIST
 
+	attribute_sheet = /datum/attribute_sheet/roboticist
+
 /datum/outfit/job/roboticist
 	name = "Roboticist"
 	jobtype = /datum/job/roboticist

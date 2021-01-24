@@ -34,6 +34,8 @@
 
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
+	attribute_sheet = /datum/attribute_sheet/ce
+
 /datum/outfit/job/ce
 	name = "Chief Engineer"
 	jobtype = /datum/job/chief_engineer
