@@ -162,7 +162,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	if(matches.len==0)
 		return
-	var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in sortList(matches)
+	var/hsbitem = tgui_input_list(usr, "Choose an object to delete.", "Delete:", sortList(matches))
 	if(hsbitem)
 		hsbitem = matches[hsbitem]
 		var/counter = 0
@@ -259,7 +259,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	if(M.ckey)
 		if(tgui_alert(usr,"This mob is being controlled by [M.key]. Are you sure you wish to give someone else control of it? [M.key] will be made a ghost.",,list("Yes","No")) != "Yes")
 			return
-	var/client/newkey = input(src, "Pick the player to put in control.", "New player") as null|anything in sortList(GLOB.clients)
+	var/client/newkey = tgui_input_list(src, "Pick the player to put in control.", "New player", sortList(GLOB.clients))
 	var/mob/oldmob = newkey.mob
 	var/delmob = FALSE
 	if((isobserver(oldmob) || tgui_alert(usr,"Do you want to delete [newkey]'s old mob?","Delete?",list("Yes","No")) != "No"))
@@ -505,7 +505,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/datum/outfit/O = path //not much to initalize here but whatever
 		outfits[initial(O.name)] = path
 
-	var/dresscode = input("Select outfit", "Robust quick dress shop") as null|anything in baseoutfits + sortList(outfits)
+	var/dresscode = tgui_input_list(src, "Select outfit", "Robust quick dress shop", baseoutfits + sortList(outfits))
 	if (isnull(dresscode))
 		return
 
@@ -519,7 +519,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			var/datum/outfit/O = path
 			job_outfits[initial(O.name)] = path
 
-		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in sortList(job_outfits)
+		dresscode = tgui_input_list(usr, "Select job equipment", "Robust quick dress shop", sortList(job_outfits))
 		dresscode = job_outfits[dresscode]
 		if(isnull(dresscode))
 			return
@@ -531,7 +531,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			var/datum/outfit/O = path
 			plasmaman_outfits[initial(O.name)] = path
 
-		dresscode = input("Select plasmeme equipment", "Robust quick dress shop") as null|anything in sortList(plasmaman_outfits)
+		dresscode = tgui_input_list(src, "Select plasmeme equipment", "Robust quick dress shop", sortList(plasmaman_outfits))
 		dresscode = plasmaman_outfits[dresscode]
 		if(isnull(dresscode))
 			return
@@ -540,7 +540,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/list/custom_names = list()
 		for(var/datum/outfit/D in GLOB.custom_outfits)
 			custom_names[D.name] = D
-		var/selected_name = input("Select outfit", "Robust quick dress shop") as null|anything in sortList(custom_names)
+		var/selected_name = tgui_input_list(src, "Select outfit", "Robust quick dress shop", sortList(custom_names))
 		dresscode = custom_names[selected_name]
 		if(isnull(dresscode))
 			return
@@ -641,7 +641,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 		names[name] = ruin_landmark
 
-	var/ruinname = input("Select ruin", "Jump to Ruin") as null|anything in sortList(names)
+	var/ruinname = tgui_input_list(src, "Select ruin", "Jump to Ruin", sortList(names))
 
 
 	var/obj/effect/landmark/ruin/landmark = names[ruinname]
@@ -678,7 +678,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/name in SSmapping.ice_ruins_underground_templates)
 		names[name] = list(SSmapping.ice_ruins_underground_templates[name], ZTRAIT_ICE_RUINS_UNDERGROUND, list(/area/icemoon/underground/unexplored))
 
-	var/ruinname = input("Select ruin", "Spawn Ruin") as null|anything in sortList(names)
+	var/ruinname = tgui_input_list(src, "Select ruin", "Spawn Ruin", sortList(names))
 	var/data = names[ruinname]
 	if (!data)
 		return
@@ -785,7 +785,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"Total Time" = /proc/cmp_profile_time_dsc,
 		"Call Count" = /proc/cmp_profile_count_dsc
 	)
-	var/sort = input(src, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
+	var/sort = tgui_input_list(src, "Sort type?", "Sort Type", sortlist)
 	if (!sort)
 		return
 	sort = sortlist[sort]

@@ -476,7 +476,7 @@
 		for (var/rule in subtypesof(/datum/dynamic_ruleset/roundstart))
 			var/datum/dynamic_ruleset/roundstart/newrule = new rule()
 			roundstart_rules[newrule.name] = newrule
-		var/added_rule = input(usr,"What ruleset do you want to force? This will bypass threat level and population restrictions.", "Rigging Roundstart", null) as null|anything in sortList(roundstart_rules)
+		var/added_rule = tgui_input_list(usr, "What ruleset do you want to force? This will bypass threat level and population restrictions.", "Rigging Roundstart", sortList(roundstart_rules))
 		if (added_rule)
 			GLOB.dynamic_forced_roundstart_ruleset += roundstart_rules[added_rule]
 			log_admin("[key_name(usr)] set [added_rule] to be a forced roundstart ruleset.")

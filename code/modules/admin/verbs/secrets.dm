@@ -224,7 +224,7 @@
 					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
 					E = DC.runEvent()
 				if("Choose")
-					var/virus = input("Choose the virus to spread", "BIOHAZARD") as null|anything in sortList(typesof(/datum/disease), /proc/cmp_typepaths_asc)
+					var/virus = tgui_input_list(holder, "Choose the virus to spread", "BIOHAZARD", sortList(typesof(/datum/disease), /proc/cmp_typepaths_asc))
 					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
 					var/datum/round_event/disease_outbreak/DO = DC.runEvent()
 					DO.virus_type = virus
@@ -232,7 +232,7 @@
 		if("allspecies")
 			if(!is_funmin)
 				return
-			var/result = input(holder, "Please choose a new species","Species") as null|anything in GLOB.species_list
+			var/result = tgui_input_list(holder, "Please choose a new species", "Species", GLOB.species_list)
 			if(result)
 				SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Mass Species Change", "[result]"))
 				log_admin("[key_name(holder)] turned all humans into [result]", 1)
