@@ -260,6 +260,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		if(tgui_alert(usr,"This mob is being controlled by [M.key]. Are you sure you wish to give someone else control of it? [M.key] will be made a ghost.",,list("Yes","No")) != "Yes")
 			return
 	var/client/newkey = tgui_input_list(src, "Pick the player to put in control.", "New player", sortList(GLOB.clients))
+	if(!newkey)
+		return
 	var/mob/oldmob = newkey.mob
 	var/delmob = FALSE
 	if((isobserver(oldmob) || tgui_alert(usr,"Do you want to delete [newkey]'s old mob?","Delete?",list("Yes","No")) != "No"))
