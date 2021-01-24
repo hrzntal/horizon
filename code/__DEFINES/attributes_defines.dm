@@ -37,6 +37,10 @@
 
 #define ATTRIBUTE_CHECK(target, attribute, check) GET_ATTRIBUTE(target, attribute) >= check
 
+#define ATTRIBUTE_CHECK_FAIL(target, attribute, check) GET_ATTRIBUTE(target, attribute) < check
+
+#define ATTRIBUTE_CHECK_FAIL_AND_ROLL(target, attribute, check, roll) (ATTRIBUTE_CHECK_FAIL(target, attribute, check)) && prob(roll)
+
 #define ATTRIBUTE_VALUE(target, attribute, base, increment) base + GET_ATTRIBUTE_DELTA(target, attribute) * increment
 #define ATTRIBUTE_VALUE_POSITIVE(target, attribute, base, increment) base + max(0,GET_ATTRIBUTE_DELTA(target, attribute)) * increment
 #define ATTRIBUTE_VALUE_NEGATIVE(target, attribute, base, increment) base + min(0,GET_ATTRIBUTE_DELTA(target, attribute)) * increment
@@ -67,6 +71,10 @@
 //Binary TRUE/FALSE check on a threshold. If a target has matching value as the check, it'll be TRUE
 #define SKILL_CHECK(target, skill, check) GET_SKILL(target, skill) >= check
 
+#define SKILL_CHECK_FAIL(target, skill, check) GET_SKILL(target, skill) < check
+
+#define SKILL_CHECK_FAIL_AND_ROLL(target, skill, check, roll) (SKILL_CHECK_FAIL(target, skill, check)) && prob(roll)
+
 #define SKILL_VALUE(target, skill, base, increment) base + GET_SKILL_DELTA(target, skill) * increment
 #define SKILL_VALUE_POSITIVE(target, skill, base, increment) base + max(0,GET_SKILL_DELTA(target, skill)) * increment
 #define SKILL_VALUE_NEGATIVE(target, skill, base, increment) base + min(0,GET_SKILL_DELTA(target, skill)) * increment
@@ -85,3 +93,6 @@
 #define SKILL_ROLL_POSITIVE(target, skill, base, increment) prob(SKILL_VALUE_POSITIVE)
 //Same, but negative deltas
 #define SKILL_ROLL_NEGATIVE(target, skill, base, increment) prob(SKILL_VALUE_NEGATIVE)
+
+#define SURGERY_SKILL_BASE 30
+#define SURGERY_SKILL_INCREMENT 20
