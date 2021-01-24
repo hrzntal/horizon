@@ -53691,6 +53691,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/machinery/cryopod{
+	dir = 8;
+	pixel_x = -6
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "bGP" = (
@@ -56277,6 +56281,10 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/cryopod{
+	dir = 8;
+	pixel_x = -5
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "bLg" = (
@@ -56508,6 +56516,9 @@
 	dir = 1;
 	pixel_y = 1
 	},
+/obj/machinery/cryopod{
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "bLx" = (
@@ -56571,20 +56582,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
-"bLC" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/plasteel/dark,
-/area/crew_quarters/fitness/recreation)
 "bLD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -56622,7 +56619,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/box/corners,
-/obj/effect/decal/cleanable/blood/old,
 /obj/structure/window/reinforced{
 	dir = 1;
 	pixel_y = 1
@@ -56631,7 +56627,7 @@
 	base_state = "left";
 	dir = 8;
 	icon_state = "left";
-	name = "Fitness Ring"
+	name = "Cryo Pods"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -56695,20 +56691,6 @@
 /obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/plating,
 /area/crew_quarters/fitness/recreation)
-"bLK" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/crew_quarters/fitness/recreation)
 "bLL" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/neutral{
@@ -56717,10 +56699,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/old,
 /obj/structure/window/reinforced,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
@@ -56762,6 +56746,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 10
+	},
+/obj/machinery/cryopod{
+	pixel_y = -3
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
@@ -56860,8 +56847,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "bLW" = (
@@ -88593,6 +88578,23 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/security/prison)
+"eQI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/fitness/recreation)
 "eUZ" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/machinery/light{
@@ -108767,7 +108769,7 @@ bBz
 bLm
 bLF
 bKQ
-bKQ
+eQI
 bLD
 bLR
 bMb
@@ -109024,8 +109026,8 @@ bBG
 bLm
 bLN
 bLW
-bLC
-bLK
+bLV
+bLL
 bLb
 bMw
 bNo
