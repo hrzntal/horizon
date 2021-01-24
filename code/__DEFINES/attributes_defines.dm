@@ -83,16 +83,5 @@
 #define SKILL_PERCENTAGE_POSITIVE(target, skill, base, increment) SKILL_VALUE_POSITIVE/100
 #define SKILL_PERCENTAGE_NEGATIVE(target, skill, base, increment) SKILL_VALUE_NEGATIVE/100
 
-//It rolls a prob on a skill delta, that is equal to 'base' + the skill delta multiplied by the increment
-//For example: Someone has a skill of 7 in medicine and we roll this
-//SKILL_ROLL(target, /datum/nice_skill/medicine, 10, 20)
-//The delta is 2, so we get 10% base chance and then 40% extra (20 * 2 from delta), resulting in a prob(50)
-#define SKILL_ROLL(target, skill, base, increment) prob(SKILL_VALUE)
-
-//Same as above, but only positive deltas matter
-#define SKILL_ROLL_POSITIVE(target, skill, base, increment) prob(SKILL_VALUE_POSITIVE)
-//Same, but negative deltas
-#define SKILL_ROLL_NEGATIVE(target, skill, base, increment) prob(SKILL_VALUE_NEGATIVE)
-
 #define SURGERY_SKILL_BASE 30
 #define SURGERY_SKILL_INCREMENT 20
