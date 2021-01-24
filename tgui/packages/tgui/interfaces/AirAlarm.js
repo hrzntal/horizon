@@ -295,37 +295,35 @@ const AirAlarmControlThresholds = (props, context) => {
 // --------------------------------------------------------
 
 const AirAlarmHeatingControls = (props, context) => {
-  const { act, data} = useBackend(context);
+  const { act, data } = useBackend(context);
   const {
     enabled,
     setPoint,
     maxValue,
-    minValue
+    minValue,
   } = data.heating;
   return (
-    <>
-      <Section
+    <Section
       title="Comfort Controls"
-      >
-        <Box mt={1} />
-        <LabeledList>
-          <LabeledList.Item label={"Setpoint"}>
-            <NumberInput
+    >
+      <Box mt={1} />
+      <LabeledList>
+        <LabeledList.Item label={"Setpoint"}>
+          <NumberInput
             value={setPoint}
             minValue={minValue}
             maxValue={maxValue}
-            onChange={(e, value) => act('heat_setpoint',{setPoint: value})}
+            onChange={(e, value) => act('heat_setpoint', { setPoint: value })}
             unit="K"
             tooltip="Change the Setpoint of the heater"
-            />
-            <Button
-              icon="fire"
-              content="Toggle Heating"
-              color={enabled ? 'good' : 'average'}
-              onClick={() => act('heat_mode')} />
-          </LabeledList.Item>
-        </LabeledList>
-      </Section>
-    </>
+          />
+          <Button
+            icon="fire"
+            content="Toggle Heating"
+            color={enabled ? 'good' : 'average'}
+            onClick={() => act('heat_mode')} />
+        </LabeledList.Item>
+      </LabeledList>
+    </Section>
   );
-}
+};
