@@ -147,15 +147,19 @@
 
 /datum/attribute/strength
 	name = "Strength"
+	desc = "Makes your blows harder aswell as makes it harder to escape your grabs."
 
 /datum/attribute/dexterity
 	name = "Dexterity"
+	desc = "Reflex and the ability to handle complex tasks with your hands."
 
 /datum/attribute/endurance
 	name = "Endurance"
+	desc = "Makes you tougher and more tolerant to things like pain or inebration."
 
 /datum/attribute/intelligence
 	name = "Intelligence"
+	desc = "Makes you understand things better, allowing you to be more skilled in a lot of things, and helps you create makeshift items."
 
 //nice_skill because skill is taken by TG skills
 /datum/nice_skill
@@ -168,46 +172,57 @@
 
 /datum/nice_skill/cqc
 	name = "Melee"
+	desc = "Fighting with melee weapons and using unarmed techniques."
 	attribute_affinity = list(/datum/attribute/strength = 0.5)
 
 /datum/nice_skill/guns
 	name = "Guns"
+	desc = "The proficiency of using guns, how steadily you can hold them and how well you can aim."
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
 /datum/nice_skill/forensics
 	name = "Forensics"
+	desc = "The skill of examining objects, substances, traces and circumstances to solve crimes."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/medical
-	name = "Medicine"
+	name = "Medical"
+	desc = "Application of medical skills, it measures how well you can treat someone."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/anatomy
 	name = "Anatomy"
+	desc = "Knowledge of the human body, essential skill for performing surgery."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/eva
 	name = "Extra-Vehicular Activity"
+	desc = "How well you can handle yourself in no gravity environments."
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
 /datum/nice_skill/engineering
 	name = "Engineering"
+	desc = "Proficiency with mechanical tools, understanding of how machines work."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/mining
 	name = "Mining"
+	desc = "Skill with mining tools and knowledge related to mining."
 	attribute_affinity = list(/datum/attribute/strength = 0.5)
 
 /datum/nice_skill/computers
 	name = "Computer Science"
+	desc = "Understanding how computers work, programming things and hacking networks."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/research
 	name = "Technology Research"
+	desc = "The ability to analyse complex items and research new technologies."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/cooking
 	name = "Cooking"
+	desc = "How well you can handle yourself in the kitchen."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/cooking/level_description(level)
@@ -219,13 +234,16 @@
 
 /datum/nice_skill/craft
 	name = "Craft"
+	desc = "The ability of creating useful items out of makeshift parts."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/art
 	name = "Art"
+	desc = "Creation of beautiful art."
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 //For jumping, climbing and swimming. Which I do want to eventually implement
 /datum/nice_skill/athletics
 	name = "Athletics"
+	desc = "How well one can jump or climb."
 	attribute_affinity = list(/datum/attribute/strength = 0.25, /datum/attribute/endurance = 0.25)

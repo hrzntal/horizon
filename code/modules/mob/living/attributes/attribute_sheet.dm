@@ -11,10 +11,12 @@
 	return ..()
 
 /datum/attribute_sheet/antagonist
-	all_attributes = 2
+	all_attributes = 4
 	all_skills = 2
 
 //JOB RELATED SHEETS
+/datum/attribute_sheet/silicon
+	all_skills = 5 //They're limited by their modules and such
 
 /datum/attribute_sheet/cook
 	skills = list(/datum/nice_skill/cooking = 5)

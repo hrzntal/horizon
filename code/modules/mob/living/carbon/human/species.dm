@@ -1420,6 +1420,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
 		var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
+		damage *= ATTRIBUTE_PERCENTAGE(user, /datum/attribute/strength , STRENGTH_PUNCH_BASE_MULTIPLIER, STRENGTH_PUNCH_INCREMENT_MULTIPLIER)
 
 		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 

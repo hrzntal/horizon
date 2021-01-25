@@ -245,6 +245,15 @@
 	brute *= wound_damage_multiplier
 	burn *= wound_damage_multiplier
 
+	if(owner)
+		var/reduction_perc = 100/(ATTRIBUTE_VALUE(owner, /datum/attribute/endurance , ENDURANCE_DAMAGE_REDUCTION_BASE, ENDURANCE_DAMAGE_REDUCTION_INCREMENT))
+		if(brute)
+			brute *= reduction_perc
+		if(burn)
+			burn *= reduction_perc
+		if(stamina)
+			stamina *= reduction_perc
+
 	switch(animal_origin)
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn //nothing can burn with so much snowflake code around
 			burn *= 2

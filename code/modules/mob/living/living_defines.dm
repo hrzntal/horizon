@@ -175,4 +175,4 @@
 	var/temporary_flavor_text
 
 	var/datum/attribute_holder/attributes
-	var/attributes_sheet
+	var/attribute_sheet

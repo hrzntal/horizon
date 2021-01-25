@@ -46,13 +46,14 @@
 #define ATTRIBUTE_VALUE_POSITIVE(target, attribute, base, increment) base + max(0,GET_ATTRIBUTE_DELTA(target, attribute)) * increment
 #define ATTRIBUTE_VALUE_NEGATIVE(target, attribute, base, increment) base + min(0,GET_ATTRIBUTE_DELTA(target, attribute)) * increment
 
-#define ATTRIBUTE_PERCENTAGE(target, attribute, base, increment) ATTRIBUTE_VALUE/100
-#define ATTRIBUTE_PERCENTAGE_POSITIVE(target, attribute, base, increment) ATTRIBUTE_VALUE_POSITIVE/100
-#define ATTRIBUTE_PERCENTAGE_NEGATIVE(target, attribute, base, increment) ATTRIBUTE_VALUE_NEGATIVE/100
+#define ATTRIBUTE_PERCENTAGE(target, attribute, base, increment) (ATTRIBUTE_VALUE(target, attribute, base, increment))/100
+#define NEGATIVE_ATTRIBUTE_PERCENTAGE(target, attribute, base, increment) (NEGATIVE_ATTRIBUTE_VALUE(target, attribute, base, increment))/100
+#define ATTRIBUTE_PERCENTAGE_POSITIVE(target, attribute, base, increment) (ATTRIBUTE_VALUE_POSITIVE(target, attribute, base, increment))/100
+#define ATTRIBUTE_PERCENTAGE_NEGATIVE(target, attribute, base, increment) (ATTRIBUTE_VALUE_NEGATIVE(target, attribute, base, increment))/100
 
-#define ATTRIBUTE_ROLL(target, attribute, base, increment) prob(ATTRIBUTE_VALUE)
-#define ATTRIBUTE_ROLL_POSITIVE(target, attribute, base, increment) prob(ATTRIBUTE_VALUE_POSITIVE)
-#define ATTRIBUTE_ROLL_NEGATIVE(target, attribute, base, increment) prob(ATTRIBUTE_VALUE_NEGATIVE)
+#define ATTRIBUTE_ROLL(target, attribute, base, increment) prob(ATTRIBUTE_VALUE(target, attribute, base, increment))
+#define ATTRIBUTE_ROLL_POSITIVE(target, attribute, base, increment) prob(ATTRIBUTE_VALUE_POSITIVE(target, attribute, base, increment))
+#define ATTRIBUTE_ROLL_NEGATIVE(target, attribute, base, increment) prob(ATTRIBUTE_VALUE_NEGATIVE(target, attribute, base, increment))
 
 /******************SKILL RELATED STUFF*************/
 #define GET_SKILL(target, skill) target.attributes.total_skills[skill]
@@ -70,9 +71,9 @@
 #define SKILL_VALUE_POSITIVE(target, skill, base, increment) base + max(0,GET_SKILL_DELTA(target, skill)) * increment
 #define SKILL_VALUE_NEGATIVE(target, skill, base, increment) base + min(0,GET_SKILL_DELTA(target, skill)) * increment
 
-#define SKILL_PERCENTAGE(target, skill, base, increment) SKILL_VALUE/100
-#define SKILL_PERCENTAGE_POSITIVE(target, skill, base, increment) SKILL_VALUE_POSITIVE/100
-#define SKILL_PERCENTAGE_NEGATIVE(target, skill, base, increment) SKILL_VALUE_NEGATIVE/100
+#define SKILL_PERCENTAGE(target, skill, base, increment) (SKILL_VALUE(target, skill, base, increment))/100
+#define SKILL_PERCENTAGE_POSITIVE(target, skill, base, increment) (SKILL_VALUE_POSITIVE(target, skill, base, increment))/100
+#define SKILL_PERCENTAGE_NEGATIVE(target, skill, base, increment) (SKILL_VALUE_NEGATIVE(target, skill, base, increment))/100
 
 //It rolls a prob on a skill delta, that is equal to 'base' + the skill delta multiplied by the increment
 //For example: Someone has a skill of 7 in medicine and we roll this
@@ -108,6 +109,16 @@
 
 #define MEDICINE_APPLICATION_FAIL_BASE 40
 #define MEDICINE_APPLICATION_FAIL_INCREMENT 20
+
+#define STRENGTH_PUNCH_BASE_MULTIPLIER 100
+#define STRENGTH_PUNCH_INCREMENT_MULTIPLIER 10
+
+#define STRENGTH_GRAB_BASE 100
+#define STRENGTH_GRAB_INCREMENT 10
+#define STRENGTH_GRAB_COEFFICIENT 40 //Higher - more favor to the stronger person in grabs
+
+#define ENDURANCE_DAMAGE_REDUCTION_BASE 100
+#define ENDURANCE_DAMAGE_REDUCTION_INCREMENT 5
 
 #define SKILL_BUFF_COFFEE "coffee"
 #define COFFEE_SKILL_LIST list(/datum/attribute/intelligence = 2)

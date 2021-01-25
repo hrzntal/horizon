@@ -10,8 +10,8 @@
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
 	attributes = new()
-	if(attributes_sheet)
-		attributes.add_sheet(attributes_sheet)
+	if(attribute_sheet)
+		attributes.add_sheet(attribute_sheet)
 
 /mob/living/ComponentInitialize()
 	. = ..()
@@ -903,6 +903,13 @@
 		var/altered_grab_state = pulledby.grab_state
 		if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
+		//Attribute handling for grab strength
+		var/mob/living/user = pulledby
+		var/victim_value = ATTRIBUTE_VALUE(src, /datum/attribute/strength, STRENGTH_GRAB_BASE, STRENGTH_GRAB_INCREMENT)
+		var/user_value = ATTRIBUTE_VALUE(user, /datum/attribute/strength, STRENGTH_GRAB_BASE, STRENGTH_GRAB_INCREMENT)
+		var/delta = (user_value - victim_value)/STRENGTH_GRAB_COEFFICIENT
+		altered_grab_state += delta
+
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
@@ -1926,7 +1933,7 @@
 	set category = "IC"
 	set name = "Check Skills"
 	set desc = "Check your skills and attributes."
-	
+
 	var/list/dat = list()
 	var/even = FALSE
 	var/background_cl
@@ -1989,7 +1996,7 @@
 	var/datum/browser/popup = new(usr, "attributes and skills", "Attributes & Skills", 550, 700)
 	popup.set_content(dat.Join())
 	popup.open()
-	
+
 
 /// Returns the attack damage type of a living mob such as [BRUTE].
 /mob/living/proc/get_attack_type()
