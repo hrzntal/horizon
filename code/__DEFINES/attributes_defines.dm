@@ -79,6 +79,7 @@
 //SKILL_ROLL(target, /datum/nice_skill/medical, 10, 20)
 //The delta is 2, so we get 10% base chance and then 40% extra (20 * 2 from delta), resulting in a prob(50)
 #define SKILL_ROLL(target, skill, base, increment) prob(SKILL_VALUE(target, skill, base, increment))
+#define NEGATIVE_SKILL_ROLL(target, skill, base, increment) prob(NEGATIVE_SKILL_VALUE(target, skill, base, increment))
 
 //Same as above, but only positive deltas matter
 #define SKILL_ROLL_POSITIVE(target, skill, base, increment) prob(SKILL_VALUE_POSITIVE)
