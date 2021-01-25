@@ -64,3 +64,4 @@
 /datum/cultural_info/occupation/castaway
 	name = "Castaway"
 	attribute_sheet = /datum/attribute_sheet/castaway
+	economic_power = 0
