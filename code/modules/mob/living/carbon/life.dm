@@ -574,6 +574,24 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		if(drunkenness >= 101)
 			adjustToxLoss(2) //Let's be honest you shouldn't be alive by now
 
+		//Skill buff handling from being drunk
+		var/rounded_drunkenness = round(drunkenness)
+		var/list/desired_attributes
+		switch(rounded_drunkenness)
+			if(6 to 20)
+				desired_attributes = BOOZE_SKILL_TIPSY
+			if(21 to 50)
+				desired_attributes = BOOZE_SKILL_DRUNK
+			if(51 to 75)
+				desired_attributes = BOOZE_SKILL_VERY_DRUNK
+			if(76 to INFINITY)
+				desired_attributes = BOOZE_SKILL_WASTED
+		var/list/current_attributes = HAS_ATTRIBUTES_FROM(src, SKILL_BUFF_BOOZE)
+		if (desired_attributes && desired_attributes != current_attributes)
+			ADD_ATTRIBUTES(src, SKILL_BUFF_BOOZE, desired_attributes)
+	else if (HAS_ATTRIBUTES_FROM(src, SKILL_BUFF_BOOZE))
+		REMOVE_ATTRIBUTES(src, SKILL_BUFF_BOOZE)
+
 /// Base carbon environment handler, adds natural stabilization
 /mob/living/carbon/handle_environment(datum/gas_mixture/environment)
 	var/areatemp = get_temperature(environment)

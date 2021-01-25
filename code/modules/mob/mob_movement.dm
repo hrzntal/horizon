@@ -272,8 +272,22 @@
 	. = ..()
 	if(. || HAS_TRAIT(src, TRAIT_SPACEWALK))
 		return TRUE
+	var/mob/living/L = src //This proc is supposedly only for living things
+	if(L.body_position == LYING_DOWN && (SKILL_CHECK_FAIL(L, /datum/nice_skill/eva, SKILL_EQUILIBRIUM+1)))
+		//If you're lying down and you're quite bad at eva, you can't space move, or hold your ground with anything
+		return FALSE
 	var/atom/movable/backup = get_spacemove_backup()
 	if(backup)
+		if(L.body_position == STANDING_UP && SKILL_CHECK_FAIL_AND_ROLL(L, /datum/nice_skill/eva, SKILL_EQUILIBRIUM+2, NEGATIVE_SKILL_VALUE(L, /datum/nice_skill/eva, EVA_SPACE_WALK_SLIP_BASE, EVA_SPACE_WALK_SLIP_INCREMENT)))
+			//Idea: Make it throw you into a random direction to make it dangerous in space, if this isnt too much off a deterrent for space assistants
+			//Idea 2: What if you could slam into other people like this too?
+			to_chat(src, "<span class='userdanger'>You loose balance and flip around as you try to push yourself off!</span>")
+			L.Knockdown(3 SECONDS)
+			SpinAnimation(15, 1)
+			if(movement_dir)
+				newtonian_move(movement_dir)
+				inertia_moving = TRUE
+			return FALSE
 		if(istype(backup) && movement_dir && !backup.anchored)
 			if(backup.newtonian_move(turn(movement_dir, 180))) //You're pushing off something movable, so it moves
 				to_chat(src, "<span class='info'>You push off of [backup] to propel yourself.</span>")

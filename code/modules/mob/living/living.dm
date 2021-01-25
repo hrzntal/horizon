@@ -950,6 +950,17 @@
 				throw_alert("gravity", /atom/movable/screen/alert/highgravity)
 		if(was_weightless)
 			REMOVE_TRAIT(src, TRAIT_MOVE_FLOATING, NO_GRAVITY_TRAIT)
+			if(!buckled && body_position == STANDING_UP && !(movement_type & (FLOATING|FLYING)))
+				if(SKILL_CHECK(src, /datum/nice_skill/eva, SKILL_EQUILIBRIUM+3))
+					if(SKILL_ROLL(src, /datum/nice_skill/eva, EVA_GRAV_FUMBLE_RECOVER_BASE, EVA_GRAV_FUMBLE_RECOVER_INCREMENT))
+						to_chat(src, "<span class='danger'>You almost fall flat, but manage to recover your posture!</span>")
+						Stun(1 SECONDS)
+					else
+						to_chat(src, "<span class='userdanger'>You fail to land on your feet as you enter gravity!</span>")
+						Paralyze(2 SECONDS)
+						Knockdown(4 SECONDS)
+				else
+					to_chat(src, "<span class='notice'>You gracefully land onto your feet as you enter gravity.</span>")
 	else
 		throw_alert("gravity", /atom/movable/screen/alert/weightless)
 		if(!was_weightless)

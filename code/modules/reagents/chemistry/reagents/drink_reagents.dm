@@ -259,11 +259,11 @@
 
 /datum/reagent/consumable/coffee/on_mob_metabolize(mob/living/L)
 	..()
-	var/list/attributes = list(/datum/attribute/intelligence = 2)
-	ADD_ATTRIBUTES(L, "coffee", attributes)
+	var/list/attributes = COFFEE_SKILL_LIST
+	ADD_ATTRIBUTES(L, SKILL_BUFF_COFFEE, attributes)
 
 /datum/reagent/consumable/coffee/on_mob_end_metabolize(mob/living/L)
-	REMOVE_ATTRIBUTES(L, "coffee")
+	REMOVE_ATTRIBUTES(L, SKILL_BUFF_COFFEE)
 	..()
 
 /datum/reagent/consumable/coffee/overdose_process(mob/living/M)
