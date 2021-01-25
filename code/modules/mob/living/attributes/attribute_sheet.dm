@@ -44,19 +44,19 @@
 	skills = list(/datum/nice_skill/guns = 4, /datum/nice_skill/cqc = 4, /datum/nice_skill/eva = 2, /datum/nice_skill/forensics = 2)
 
 /datum/attribute_sheet/doctor
-	skills = list(/datum/nice_skill/medicine = 4, /datum/nice_skill/anatomy = 4)
+	skills = list(/datum/nice_skill/medical = 4, /datum/nice_skill/anatomy = 4)
 
 /datum/attribute_sheet/chemist
-	skills = list(/datum/nice_skill/medicine = 6, /datum/nice_skill/anatomy = 2)
+	skills = list(/datum/nice_skill/medical = 6, /datum/nice_skill/anatomy = 2)
 
 /datum/attribute_sheet/cmo
-	skills = list(/datum/nice_skill/guns = 2, /datum/nice_skill/medicine = 6, /datum/nice_skill/anatomy = 6, /datum/nice_skill/eva = 2)
+	skills = list(/datum/nice_skill/guns = 2, /datum/nice_skill/medical = 6, /datum/nice_skill/anatomy = 6, /datum/nice_skill/eva = 2)
 
 /datum/attribute_sheet/paramedic
-	skills = list(/datum/nice_skill/medicine = 4, /datum/nice_skill/anatomy = 3, /datum/nice_skill/eva = 2)
+	skills = list(/datum/nice_skill/medical = 4, /datum/nice_skill/anatomy = 3, /datum/nice_skill/eva = 2)
 
 /datum/attribute_sheet/psychologist
-	skills = list(/datum/nice_skill/medicine = 3)
+	skills = list(/datum/nice_skill/medical = 3)
 
 /datum/attribute_sheet/qm
 	skills = list(/datum/nice_skill/guns = 2, /datum/nice_skill/eva = 2)
@@ -104,7 +104,7 @@
 	skills = list(/datum/nice_skill/botany = 2, /datum/nice_skill/craft = 2)
 
 /datum/attribute_sheet/nurse
-	skills = list(/datum/nice_skill/anatomy = 2, /datum/nice_skill/medicine = 2)
+	skills = list(/datum/nice_skill/anatomy = 2, /datum/nice_skill/medical = 2)
 
 /datum/attribute_sheet/herbalist
 	skills = list(/datum/nice_skill/botany = 3)

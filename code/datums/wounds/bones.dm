@@ -253,7 +253,7 @@
 	if(!do_after(user, time, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
-	if(prob(65))
+	if(SKILL_ROLL(user, /datum/nice_skill/medical, DISLOCATION_CHIROPRACTICE_BASE, DISLOCATION_CHIROPRACTICE_INCREMENT))
 		user.visible_message("<span class='danger'>[user] snaps [victim]'s dislocated [limb.name] back into place!</span>", "<span class='notice'>You snap [victim]'s dislocated [limb.name] back into place!</span>", ignored_mobs=victim)
 		to_chat(victim, "<span class='userdanger'>[user] snaps your dislocated [limb.name] back into place!</span>")
 		victim.emote("scream")

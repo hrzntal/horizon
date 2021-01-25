@@ -76,7 +76,7 @@
 
 //It rolls a prob on a skill delta, that is equal to 'base' + the skill delta multiplied by the increment
 //For example: Someone has a skill of 7 in medicine and we roll this
-//SKILL_ROLL(target, /datum/nice_skill/medicine, 10, 20)
+//SKILL_ROLL(target, /datum/nice_skill/medical, 10, 20)
 //The delta is 2, so we get 10% base chance and then 40% extra (20 * 2 from delta), resulting in a prob(50)
 #define SKILL_ROLL(target, skill, base, increment) prob(SKILL_VALUE(target, skill, base, increment))
 
@@ -93,6 +93,12 @@
 
 #define EVA_SPACE_WALK_SLIP_BASE 2
 #define EVA_SPACE_WALK_SLIP_INCREMENT 1
+
+#define DISLOCATION_CHIROPRACTICE_BASE 30
+#define DISLOCATION_CHIROPRACTICE_INCREMENT 10
+
+#define MEDICINE_APPLICATION_FAIL_BASE 40
+#define MEDICINE_APPLICATION_FAIL_INCREMENT 20
 
 #define SKILL_BUFF_COFFEE "coffee"
 #define COFFEE_SKILL_LIST list(/datum/attribute/intelligence = 2)

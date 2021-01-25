@@ -135,7 +135,7 @@
 	name = "Forensics"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
-/datum/nice_skill/medicine
+/datum/nice_skill/medical
 	name = "Medicine"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 

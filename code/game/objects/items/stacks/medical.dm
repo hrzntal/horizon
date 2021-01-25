@@ -159,6 +159,10 @@
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
 		return
 
+	if(NEGATIVE_SKILL_ROLL(user, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
+		user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
+		return
+
 	user.visible_message("<span class='green'>[user] applies [src] to [M]'s [limb.name].</span>", "<span class='green'>You bandage the wounds on [user == M ? "yourself" : "[M]'s"] [limb.name].</span>")
 	limb.apply_gauze(src)
 
@@ -461,6 +465,10 @@
 
 	user.visible_message("<span class='warning'>[user] begins fastening [M]'s [limb.name] with [src]...</span>", "<span class='warning'>You begin to fasten [user == M ? "your" : "[M]'s"] [limb.name] with [src]...</span>")
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
+		return
+
+	if(NEGATIVE_SKILL_ROLL(user, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
+		user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
 		return
 
 	user.visible_message("<span class='green'>[user] applies [src] to [M]'s [limb.name].</span>", "<span class='green'>You splint [user == M ? "your" : "[M]'s"] [limb.name].</span>")
