@@ -109,7 +109,7 @@
 /datum/attribute_sheet/herbalist
 	skills = list(/datum/nice_skill/botany = 3)
 
-/datum/attribute_sheet/cook
+/datum/attribute_sheet/cook_occup
 	skills = list(/datum/nice_skill/cooking = 3)
 
 /datum/attribute_sheet/castaway

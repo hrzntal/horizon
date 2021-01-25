@@ -784,3 +784,15 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Debug"
 
 	src << output("", "statbrowser:create_debug")
+
+/client/proc/modify_skills(mob/living/T in GLOB.mob_living_list)
+	set category = "Admin.Fun"
+	set name = "Modify Skills"
+	set desc = "Opens a menu to modify skills."
+	if(!istype(T))
+		to_chat(src, "<span class='notice'>You can only modify skills to a mob of type /mob/living.</span>", confidential = TRUE)
+		return
+	T.attributes.ShowEditPanel(usr)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Give Disease") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] opened [key_name(T)]'s skills menu.")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] opened [key_name_admin(T)]'s skills menu.</span>")

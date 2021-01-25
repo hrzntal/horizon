@@ -94,6 +94,49 @@
 			returned[skill] += round(affinity_delta)
 	return returned
 
+/datum/attribute_holder/proc/ShowEditPanel(mob/user)
+	if(!user || !user.client || !user.client.holder)
+		return
+	var/list/dat = list()
+	dat += "<h3>Raw Attributes Editing:</h3>"
+	for(var/attribute in raw_attributes)
+		var/datum/attribute/AT = GLOB.all_attributes[attribute]
+		dat += "[AT.name] - <a href='?src=[REF(src)];edit=attributes;type=[attribute]'>[raw_attributes[attribute]]</a> | [AT.desc]<BR>"
+	dat += "<h3>Raw Skills Editing:</h3>"
+	var/list/affinity_skills = get_affinity_values()
+	for(var/skill in raw_skills)
+		var/datum/nice_skill/SKL = GLOB.all_skills[skill]
+		var/raw = raw_skills[skill]
+		var/with_affinity = raw
+		if(affinity_skills[skill])
+			with_affinity += affinity_skills[skill]
+		dat += "[SKL.name] - <a href='?src=[REF(src)];edit=skills;type=[skill]'>[raw]</a> ([with_affinity] /w affinity) | [SKL.desc]<BR>"
+	winshow(user, "attribute_edit_window", TRUE)
+	var/datum/browser/popup = new(user, "attribute_edit_window", "<div align='center'>Attributes & Skills Edit</div>", 400, 600)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+	onclose(user, "attribute_edit_window", user)
+
+/datum/attribute_holder/Topic(href, href_list)
+	if(!usr.client?.holder)
+		return
+	if(href_list["edit"])
+		switch(href_list["edit"])
+			if("attributes")
+				var/desired_type = text2path(href_list["type"])
+				var/new_number = input(usr, "Choose new value", "Attribute Editing") as num|null
+				if(!new_number || QDELETED(src))
+					return
+				raw_attributes[desired_type] = new_number
+			if("skills")
+				var/desired_type = text2path(href_list["type"])
+				var/new_number = input(usr, "Choose new value", "Skills Editing") as num|null
+				if(!new_number || QDELETED(src))
+					return
+				raw_skills[desired_type] = new_number
+		update_attributes()
+		ShowEditPanel(usr)
+
 //GLOBAL DATUMS
 /datum/attribute
 	var/name = "Attribute"
@@ -153,7 +196,7 @@
 
 /datum/nice_skill/mining
 	name = "Mining"
-	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+	attribute_affinity = list(/datum/attribute/strength = 0.5)
 
 /datum/nice_skill/computers
 	name = "Computer Science"

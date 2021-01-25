@@ -91,8 +91,8 @@
 //The bigger the base/increments the higher the reduction
 #define SKILL_TIME_MULTIPLIER(target, skill, base, increment) min(MAXIMUM_SKILL_TIME_MULTIPLIER,(100/(SKILL_VALUE(target, skill, base, increment))))
 
-#define SKILL_TOOL_SPEED_BASE 55
-#define SKILL_TOOL_SPEED_INCREMENT 10
+#define SKILL_TOOL_SPEED_BASE 60
+#define SKILL_TOOL_SPEED_INCREMENT 7
 
 #define SURGERY_SKILL_BASE 30
 #define SURGERY_SKILL_INCREMENT 20

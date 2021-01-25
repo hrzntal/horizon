@@ -55,7 +55,7 @@
 
 /datum/cultural_info/occupation/cook
 	name = "Cook"
-	attribute_sheet = /datum/attribute_sheet/cook
+	attribute_sheet = /datum/attribute_sheet/cook_occup
 
 /datum/cultural_info/occupation/courtesan
 	name = "Courtesan"
