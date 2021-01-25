@@ -84,3 +84,33 @@
 /datum/attribute_sheet/ship_engineer
 	skills = list(/datum/nice_skill/engineering = 2,
 					/datum/nice_skill/eva = 2)
+
+/datum/attribute_sheet/construction_engineer
+	skills = list(/datum/nice_skill/engineering = 2, /datum/nice_skill/craft = 2)
+
+/datum/attribute_sheet/law_enforcer
+	skills = list(/datum/nice_skill/guns = 2, /datum/nice_skill/cqc = 2)
+
+/datum/attribute_sheet/low_wage_worker
+	skills = list(/datum/nice_skill/cooking = 2, /datum/nice_skill/botany = 2)
+
+/datum/attribute_sheet/artist
+	skills = list(/datum/nice_skill/art = 4, /datum/nice_skill/craft = 2, /datum/nice_skill/engineering = -2)
+
+/datum/attribute_sheet/deep_space_miner
+	skills = list(/datum/nice_skill/guns = 1, /datum/nice_skill/eva = 2)
+
+/datum/attribute_sheet/hermit
+	skills = list(/datum/nice_skill/botany = 2, /datum/nice_skill/craft = 2)
+
+/datum/attribute_sheet/nurse
+	skills = list(/datum/nice_skill/anatomy = 2, /datum/nice_skill/medicine = 2)
+
+/datum/attribute_sheet/herbalist
+	skills = list(/datum/nice_skill/botany = 3)
+
+/datum/attribute_sheet/cook
+	skills = list(/datum/nice_skill/cooking = 3)
+
+/datum/attribute_sheet/castaway
+	skills = list(/datum/nice_skill/craft = 2, /datum/nice_skill/cqc = 2)

@@ -72,4 +72,16 @@
 
 #define OCCUPATIONS_GENERIC	/datum/cultural_info/occupation/none, \
 							/datum/cultural_info/occupation/physical_worker, \
-							/datum/cultural_info/occupation/ship_engineer
+							/datum/cultural_info/occupation/ship_engineer, \
+							/datum/cultural_info/occupation/construction_engineer, \
+							/datum/cultural_info/occupation/low_wage_worker, \
+							/datum/cultural_info/occupation/law_enforcer, \
+							/datum/cultural_info/occupation/artist, \
+							/datum/cultural_info/occupation/deep_space_miner, \
+							/datum/cultural_info/occupation/hermit, \
+							/datum/cultural_info/occupation/herbalist, \
+							/datum/cultural_info/occupation/nurse, \
+							/datum/cultural_info/occupation/bartender, \
+							/datum/cultural_info/occupation/cook, \
+							/datum/cultural_info/occupation/courtesan, \
+							/datum/cultural_info/occupation/castaway
