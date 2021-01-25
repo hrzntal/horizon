@@ -110,7 +110,7 @@
 		var/with_affinity = raw
 		if(affinity_skills[skill])
 			with_affinity += affinity_skills[skill]
-		dat += "[SKL.name] - <a href='?src=[REF(src)];edit=skills;type=[skill]'>[raw]</a> ([with_affinity] /w affinity) | [SKL.desc]<BR>"
+		dat += "[SKL.name] - <a href='?src=[REF(src)];edit=skills;type=[skill]'>[raw]</a> (<b>[with_affinity]</b>) | [SKL.desc]<BR>"
 	winshow(user, "attribute_edit_window", TRUE)
 	var/datum/browser/popup = new(user, "attribute_edit_window", "<div align='center'>Attributes & Skills Edit</div>", 400, 600)
 	popup.set_content(dat.Join())
