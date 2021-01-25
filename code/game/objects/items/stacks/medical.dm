@@ -159,7 +159,8 @@
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
 		return
 
-	if(NEGATIVE_SKILL_ROLL(user, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
+	var/mob/living/LUser = user
+	if(NEGATIVE_SKILL_ROLL(LUser, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
 		user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
 		return
 
@@ -467,7 +468,8 @@
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
 		return
 
-	if(NEGATIVE_SKILL_ROLL(user, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
+	var/mob/living/LUser = user
+	if(NEGATIVE_SKILL_ROLL(LUser, /datum/nice_skill/medical, MEDICINE_APPLICATION_FAIL_BASE, MEDICINE_APPLICATION_FAIL_INCREMENT))
 		user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
 		return
 
