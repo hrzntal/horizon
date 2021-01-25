@@ -115,7 +115,7 @@
 
 #define STRENGTH_GRAB_BASE 100
 #define STRENGTH_GRAB_INCREMENT 10
-#define STRENGTH_GRAB_COEFFICIENT 40 //Higher - more favor to the stronger person in grabs
+#define STRENGTH_GRAB_COEFFICIENT 40 //Higher - less favor to the stronger person in grabs
 
 #define ENDURANCE_DAMAGE_REDUCTION_BASE 100
 #define ENDURANCE_DAMAGE_REDUCTION_INCREMENT 5
