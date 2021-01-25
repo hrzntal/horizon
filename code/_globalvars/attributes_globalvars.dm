@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(all_attributes, setup_attributes())
 GLOBAL_LIST_INIT(all_skills, setup_skills())
+GLOBAL_LIST_INIT(tool_to_skill, TOOL_BEHAVIOUR_TO_SKILL)
 
 /proc/setup_attributes()
 	var/list/LI = list()

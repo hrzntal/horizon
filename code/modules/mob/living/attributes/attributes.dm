@@ -124,11 +124,11 @@
 	return "Level description of [level]"
 
 /datum/nice_skill/cqc
-	name = "Close Quarter Combat"
+	name = "Melee"
 	attribute_affinity = list(/datum/attribute/strength = 0.5)
 
 /datum/nice_skill/guns
-	name = "Gun Proficiency"
+	name = "Guns"
 	attribute_affinity = list(/datum/attribute/dexterity = 0.5)
 
 /datum/nice_skill/forensics
@@ -149,6 +149,10 @@
 
 /datum/nice_skill/engineering
 	name = "Engineering"
+	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
+
+/datum/nice_skill/mining
+	name = "Mining"
 	attribute_affinity = list(/datum/attribute/intelligence = 0.5)
 
 /datum/nice_skill/computers

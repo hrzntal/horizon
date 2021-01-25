@@ -71,7 +71,7 @@
 	skills = list(/datum/nice_skill/research = 2, /datum/nice_skill/engineering = 4, /datum/nice_skill/anatomy = 4)
 
 /datum/attribute_sheet/shaft_miner
-	skills = list(/datum/nice_skill/guns = 4)
+	skills = list(/datum/nice_skill/mining = 4, /datum/nice_skill/guns = 2)
 
 /datum/attribute_sheet/rd
 	skills = list(/datum/nice_skill/guns = 2, /datum/nice_skill/research = 6, /datum/nice_skill/computers = 6, /datum/nice_skill/eva = 2)
@@ -98,7 +98,7 @@
 	skills = list(/datum/nice_skill/art = 4, /datum/nice_skill/craft = 2, /datum/nice_skill/engineering = -2)
 
 /datum/attribute_sheet/deep_space_miner
-	skills = list(/datum/nice_skill/guns = 1, /datum/nice_skill/eva = 2)
+	skills = list(/datum/nice_skill/mining = 2, /datum/nice_skill/eva = 2)
 
 /datum/attribute_sheet/hermit
 	skills = list(/datum/nice_skill/botany = 2, /datum/nice_skill/craft = 2)

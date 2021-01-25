@@ -86,6 +86,14 @@
 //Same, but negative deltas
 #define SKILL_ROLL_NEGATIVE(target, skill, base, increment) prob(SKILL_VALUE_NEGATIVE)
 
+#define MAXIMUM_SKILL_TIME_MULTIPLIER 3
+
+//The bigger the base/increments the higher the reduction
+#define SKILL_TIME_MULTIPLIER(target, skill, base, increment) min(MAXIMUM_SKILL_TIME_MULTIPLIER,(100/(SKILL_VALUE(target, skill, base, increment))))
+
+#define SKILL_TOOL_SPEED_BASE 55
+#define SKILL_TOOL_SPEED_INCREMENT 10
+
 #define SURGERY_SKILL_BASE 30
 #define SURGERY_SKILL_INCREMENT 20
 
@@ -109,3 +117,23 @@
 #define BOOZE_SKILL_DRUNK list(/datum/attribute/dexterity = -4, /datum/attribute/intelligence = -4, /datum/attribute/endurance = 4, /datum/attribute/strength = 2)
 #define BOOZE_SKILL_VERY_DRUNK list(/datum/attribute/dexterity = -5, /datum/attribute/intelligence = -5, /datum/attribute/endurance = 1, /datum/attribute/strength = 1)
 #define BOOZE_SKILL_WASTED list(/datum/attribute/dexterity = -4, /datum/attribute/intelligence = -4, /datum/attribute/endurance = -2)
+
+//Lazy but efficient way to apply speed modifiers to all tools with the associated skill, probably implement more fine tuned control later (object oriented probably)
+#define TOOL_BEHAVIOUR_TO_SKILL list(TOOL_CROWBAR = /datum/nice_skill/engineering, \
+									TOOL_SCREWDRIVER = /datum/nice_skill/engineering, \
+									TOOL_WIRECUTTER = /datum/nice_skill/engineering, \
+									TOOL_WRENCH = /datum/nice_skill/engineering, \
+									TOOL_WELDER = /datum/nice_skill/engineering, \
+									TOOL_ANALYZER = /datum/nice_skill/engineering, \
+									TOOL_MINING = /datum/nice_skill/mining, \
+									TOOL_SHOVEL = /datum/nice_skill/mining, \
+									TOOL_RETRACTOR = /datum/nice_skill/medical, \
+									TOOL_HEMOSTAT = /datum/nice_skill/medical, \
+									TOOL_CAUTERY = /datum/nice_skill/medical, \
+									TOOL_DRILL = /datum/nice_skill/medical, \
+									TOOL_SCALPEL = /datum/nice_skill/medical, \
+									TOOL_SAW = /datum/nice_skill/medical, \
+									TOOL_BONESET = /datum/nice_skill/medical, \
+									TOOL_KNIFE = /datum/nice_skill/cooking, \
+									TOOL_BLOODFILTER = /datum/nice_skill/medical, \
+									TOOL_ROLLINGPIN = /datum/nice_skill/cooking)
