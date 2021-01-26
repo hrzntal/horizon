@@ -275,7 +275,7 @@
 	var/mob/living/L = src //This proc is supposedly only for living things
 	var/atom/movable/backup = get_spacemove_backup()
 	if(backup)
-		if(L.body_position == STANDING_UP && SKILL_CHECK_FAIL_AND_ROLL(L, /datum/nice_skill/eva, SKILL_EQUILIBRIUM+2, NEGATIVE_SKILL_VALUE(L, /datum/nice_skill/eva, EVA_SPACE_WALK_SLIP_BASE, EVA_SPACE_WALK_SLIP_INCREMENT)) && !has_gravity(src))
+		if(L.body_position == STANDING_UP && SKILL_CHECK_FAIL_AND_ROLL(L, /datum/nice_skill/eva, SKILL_EQUILIBRIUM+2, NEGATIVE_SKILL_VALUE(L, /datum/nice_skill/eva, EVA_SPACE_WALK_SLIP_BASE, EVA_SPACE_WALK_SLIP_INCREMENT)) && !has_gravity())
 			//Idea: Make it throw you into a random direction to make it dangerous in space, if this isnt too much off a deterrent for space assistants
 			//Idea 2: What if you could slam into other people like this too?
 			to_chat(src, "<span class='userdanger'>You loose balance and flip around as you try to push yourself off!</span>")
