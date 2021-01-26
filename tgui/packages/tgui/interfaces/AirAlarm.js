@@ -18,10 +18,10 @@ export const AirAlarm = (props, context) => {
         <InterfaceLockNoticeBox />
         <AirAlarmStatus />
         {!locked && (
-          <AirAlarmControl />
+          <AirAlarmHeatingControls />
         )}
         {!locked && (
-          <AirAlarmHeatingControls />
+          <AirAlarmControl />
         )}
       </Window.Content>
     </Window>
