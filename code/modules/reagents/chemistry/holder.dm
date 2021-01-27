@@ -204,7 +204,7 @@
 			R.volume -= amount
 			update_total()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(R) ? reagent : R, amount)
-			if(!safety)//So it does not handle reactions when it need not to
+			if(!safety || !no_react)//So it does not handle reactions when it need not to
 				handle_reactions()
 
 			return TRUE
@@ -401,7 +401,7 @@
 				else
 					R.expose_single(T, target_atom, methods, part, show_message)
 				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(T.type, transfer_amount)
+			remove_reagent(T.type, transfer_amount, no_react)
 			transfer_log[T.type] = transfer_amount
 	else
 		var/to_transfer = amount
@@ -424,7 +424,7 @@
 				else
 					R.expose_single(T, target_atom, methods, transfer_amount, show_message)
 				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(T.type, transfer_amount)
+			remove_reagent(T.type, transfer_amount, no_react)
 			transfer_log[T.type] = transfer_amount
 
 	if(transfered_by && target_atom)
@@ -468,7 +468,7 @@
 	return amount
 
 /// Copies the reagents to the target object
-/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react=0)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -491,12 +491,13 @@
 		var/copy_amount = T.volume * part
 		if(preserve_data)
 			trans_data = T.data
-		R.add_reagent(T.type, copy_amount * multiplier, trans_data)
+		R.add_reagent(T.type, copy_amount * multiplier, trans_data, no_react = 1)
 
 	src.update_total()
 	R.update_total()
-	R.handle_reactions()
-	src.handle_reactions()
+	if(!no_react)
+		R.handle_reactions()
+		src.handle_reactions()
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount

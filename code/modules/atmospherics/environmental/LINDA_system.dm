@@ -120,6 +120,7 @@
 		SSair.remove_from_active(src)
 	else
 		SSair.add_to_active(src)
+	SSliquids.active_turfs[src] = TRUE
 
 /atom/movable/proc/move_update_air(turf/T)
 	if(isturf(T))
