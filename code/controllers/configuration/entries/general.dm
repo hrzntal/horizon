@@ -503,5 +503,11 @@
 
 /datum/config_entry/string/centcom_source_whitelist
 
+/datum/config_entry/flag/sql_game_log
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/file_game_log
+	protection = CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/number/cryo_min_ssd_time
 	config_entry_value = 15
