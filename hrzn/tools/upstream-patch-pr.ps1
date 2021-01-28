@@ -94,10 +94,12 @@ $ApiEndpoint			= "$ApiUrl/repos/$UpstreamOwner/$UpstreamRepo"
 # User Configuration End
 
 trap {
-	if($_.Exception.Message) {
-		Write-Error ("`n{0}" -f $_.Exception.Message)
-	} else {
-		Write-Error ("`n{0}" -f $_)
+	if ($LASTEXITCODE -ne 0) {
+		if($_.Exception.Message) {
+			Write-Error ("`n{0}" -f $_.Exception.Message)
+		} else {
+			Write-Error ("`n{0}" -f $_)
+		}
 	}
 }
 
@@ -127,7 +129,7 @@ if (-not (Get-Command "git" -ErrorAction SilentlyContinue))
 ## Check if we are in a git repository - on CI this should be set up by the workflow
 ## We could do it here, but this script is intended to also be used by users
 ## And we don't want to break anything (too much)
-if (Test-Path -Path './.git')
+if (-not (Test-Path -Path './.git'))
 {
 	throw 'Directory does not seem to contain a .git repo'
 }
