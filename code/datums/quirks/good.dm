@@ -195,8 +195,13 @@
 
 /datum/quirk/spiritual
 	name = "Spiritual"
+<<<<<<< HEAD
 	desc = "You hold a spiritual belief, whether in God, nature or the arcane rules of the universe. You gain comfort from the presence of holy people, and believe that your prayers are more special than others."
 	value = 1
+=======
+	desc = "You hold a spiritual belief, whether in God, nature or the arcane rules of the universe. You gain comfort from the presence of holy people, and believe that your prayers are more special than others. Being in the chapel makes you happy."
+	value = 4
+>>>>>>> b040ac92b8 (Adds trait-dependent room moodlet check (#56462))
 	mob_trait = TRAIT_SPIRITUAL
 	gain_text = "<span class='notice'>You have faith in a higher power.</span>"
 	lose_text = "<span class='danger'>You lose faith!</span>"
