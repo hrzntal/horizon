@@ -154,7 +154,7 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 	var/sharpness = SHARP_NONE
 
 	///How a tool acts when you use it on something, such as wirecutters cutting wires while multitools measure power
-	var/tool_behaviour = NONE
+	var/tool_behaviour
 	///How fast does the tool work
 	var/toolspeed = 1
 
