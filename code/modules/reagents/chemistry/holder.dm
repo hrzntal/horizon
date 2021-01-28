@@ -204,7 +204,7 @@
 			R.volume -= amount
 			update_total()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(R) ? reagent : R, amount)
-			if(!safety || !no_react)//So it does not handle reactions when it need not to
+			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
 
 			return TRUE
