@@ -360,3 +360,14 @@
 	icon_state = "stubby"
 	color_src = USE_MATRIXED_COLORS
 	use_muzzled_sprites = FALSE
+
+/datum/sprite_accessory/snouts/mammal/alienlizard
+	name = "Alien Lizard"
+	icon_state = "alienlizard"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/snouts/mammal/alienlizardteeth
+	name = "Alien Lizard Teeth"
+	icon_state = "alienlizardteeth"
+	color_src = USE_ONE_COLOR
+	extra = TRUE
