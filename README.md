@@ -1,8 +1,9 @@
 # Horizon Station 13
 
 [![GitHub CI Suite / Build Status (trunk)](https://img.shields.io/github/workflow/status/hrzntal/horizon/CI%20Suite/trunk?style=for-the-badge)](https://github.com/hrzntal/horizon/actions?query=workflow%3A%22CI+Suite%22)
-[![GitHub Open Pull Requests](https://img.shields.io/github/issues-pr/hrzntal/horizon?style=for-the-badge)](https://github.com/hrzntal/horizon/pulls)
+[![GitHub Open Pull Requests](https://img.shields.io/github/issues-pr/hrzntal/horizon?color=blue&style=for-the-badge)](https://github.com/hrzntal/horizon/pulls)
 [![GitHub Open Issues marked as Bug](https://img.shields.io/github/issues/hrzntal/horizon/Bug?style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aopen+is%3Aissue+label%3ABug)
+[![GitHub Open Issues marked as Feature](https://img.shields.io/github/issues/hrzntal/horizon/Feature?color=green&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aopen+is%3Aissue+label%3AFeature)
 
 ![Built with Rsentment](https://img.shields.io/static/v1?label=Built%20with&message=Resentment&labelColor=e36d25&color=d15d27&style=for-the-badge)
 ![Contains Tasty Spaghetti Code](https://img.shields.io/static/v1?label=Contains&message=Tasty%20Spaghetti%20Code&labelColor=31c4f3&color=389ad5&style=for-the-badge)
