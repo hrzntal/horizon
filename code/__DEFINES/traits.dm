@@ -494,3 +494,4 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IRONASS				"ironass"
 #define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_NO_HUSK				"no_husk"
+#define TRAIT_WATER_BREATHING		"water_breathing"

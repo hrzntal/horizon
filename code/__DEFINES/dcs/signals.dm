@@ -998,3 +998,5 @@
 #define COMSIG_HUMAN_EARLY_UNARMED_ATTACK "human_early_unarmed_attack"
 ///from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity)
 #define COMSIG_HUMAN_MELEE_UNARMED_ATTACK "human_melee_unarmed_attack"
+///from base of /turf/handle_fall(): (mob/faller)
+#define COMSIG_TURF_MOB_FALL "turf_mob_fall"
