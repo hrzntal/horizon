@@ -63,6 +63,9 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("canister frame", /obj/structure/canister_frame/machine/frame_tier_0, 5, time = 8, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
 	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
+	new/datum/stack_recipe("pool floor tile", /obj/item/stack/tile/plasteel/pool, 1, 1, 4), \
+	new/datum/stack_recipe("lowered floor tile", /obj/item/stack/tile/plasteel/lowered, 1, 1, 4), \
+	new/datum/stack_recipe("elevated floor tile", /obj/item/stack/tile/plasteel/elevated, 1, 1, 4), \
 	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
 	null, \
 	new/datum/stack_recipe("wall girders", /obj/structure/girder, 2, time = 40, one_per_turf = TRUE, on_floor = TRUE, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75), \
