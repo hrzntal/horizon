@@ -834,6 +834,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add[S] = render_state
 
+	var/husked = HAS_TRAIT(H, TRAIT_HUSK)
+	if(husked)
+		new_renderkey += "-husk"
+
 	if(new_renderkey == H.mutant_renderkey)
 		return
 	H.mutant_renderkey = new_renderkey
@@ -883,7 +887,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 
 			if(!override_color)
-				if(HAS_TRAIT(H, TRAIT_HUSK))
+				if(husked)
 					if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
 						accessory_overlay.color = HUSK_COLOR_LIST
 					else
