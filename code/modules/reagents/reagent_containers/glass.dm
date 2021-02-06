@@ -29,10 +29,14 @@
 				for(var/datum/reagent/A in reagents.reagent_list)
 					R += "[A] ([num2text(A.volume)]),"
 
-			if(isturf(target) && reagents.reagent_list.len && thrownby)
-				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
-			reagents.expose(M, TOUCH)
+			if(isturf(target))
+				var/turf/T = target
+				T.add_liquid_from_reagents(reagents)
+				if(reagents.reagent_list.len && thrownby)
+					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
+					message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
+			else
+				reagents.expose(M, TOUCH)
 			log_combat(user, M, "splashed", R)
 			reagents.clear_reagents()
 		else
@@ -144,6 +148,13 @@
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
 
 /obj/item/reagent_containers/glass/beaker/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/beaker/my_beaker, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
+	if(user.a_intent == INTENT_HARM)
+		return FALSE
+	if(!user.Adjacent(T))
+		return FALSE
+	if(liquids.fire_state) //Use an extinguisher first
+		to_chat(user, "<span class='warning'>You can't scoop up anything while it's on fire!</span>")
+		return TRUE
 	var/free_space = my_beaker.reagents.maximum_volume - my_beaker.reagents.total_volume
 	if(free_space <= 0)
 		to_chat(user, "<span class='warning'>You can't fit any more liquids inside [my_beaker]!</span>")
