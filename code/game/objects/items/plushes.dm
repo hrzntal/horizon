@@ -523,7 +523,7 @@
 
 /obj/item/toy/plush/borbplushie
 	name = "borb plushie"
-	desc = "An adorable stuffed toy that resembles a round , fluffy looking bird. Not to be mistaken for his friend , the birb plushie."
+	desc = "An adorable stuffed toy that resembles a round, fluffy looking bird. Not to be mistaken for his friend, the birb plushie."
 	icon_state = "plushie_borb"
 	inhand_icon_state = "plushie_borb"
 	attack_verb_continuous = list("pecks", "peeps")
