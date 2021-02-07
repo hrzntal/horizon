@@ -34,6 +34,10 @@ map icebox
 	votable
 endmap
 
+map watermetastation
+	votable
+endmap
+
 map runtimestation
 endmap
 
