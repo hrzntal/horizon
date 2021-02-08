@@ -185,9 +185,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	///The arousal state of the previewed character, can be toggled by the user
 	var/arousal_preview = AROUSAL_NONE
 	/// Chosen cultural informations
-	var/pref_culture
-	var/pref_location
-	var/pref_faction
+	var/pref_culture = /datum/cultural_info/culture/generic
+	var/pref_location = /datum/cultural_info/location/generic
+	var/pref_faction = /datum/cultural_info/faction/generic
 	/// Whether someone wishes to see more information regarding either of those
 	var/culture_more_info = FALSE
 	var/location_more_info = FALSE
