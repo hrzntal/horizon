@@ -188,7 +188,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/pref_culture
 	var/pref_location
 	var/pref_faction
-	var/pref_occupation
+	var/pref_occupation = /datum/cultural_info/occupation/none
 	/// Whether someone wishes to see more information regarding either of those
 	var/culture_more_info = FALSE
 	var/location_more_info = FALSE
