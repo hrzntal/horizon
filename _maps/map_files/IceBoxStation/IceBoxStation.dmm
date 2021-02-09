@@ -9173,6 +9173,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness)
 "auu" = (
@@ -9698,6 +9699,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness)
 "avB" = (
@@ -10696,6 +10700,9 @@
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness)
@@ -49533,6 +49540,16 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/genetics)
+"frQ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/crew_quarters/fitness)
 "fsg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -91646,7 +91663,7 @@ arn
 azo
 aur
 avy
-avy
+frQ
 axS
 azk
 aAk

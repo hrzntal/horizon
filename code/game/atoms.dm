@@ -1382,9 +1382,22 @@
 
 /// Generic logging helper
 /atom/proc/log_message(message, message_type, color=null, log_globally=TRUE)
+
 	if(!log_globally)
 		return
-
+	#ifndef SPACEMAN_DMM
+	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
+		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
+			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
+			VALUES (:time, :round_id, :ckey, :loc, :type, :message)
+		"}, list("time" = SQLtime(), "round_id" = "[GLOB.round_id]", "ckey" = key_name(src), "loc" = loc_name(src), type = message_type, "message" = message))
+		if(!query_sql_log_messages.warn_execute())
+			qdel(query_sql_log_messages)
+			return
+		qdel(query_sql_log_messages)
+		if(!CONFIG_GET(flag/file_game_log))
+			return
+	#endif
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		if(LOG_ATTACK)
