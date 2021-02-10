@@ -2333,6 +2333,7 @@
 #include "code\modules\mob\mob_helpers.dm"
 #include "code\modules\mob\mob_lists.dm"
 #include "code\modules\mob\mob_movement.dm"
+#include "code\modules\mob\mob_pixelshift.dm"
 #include "code\modules\mob\mob_say.dm"
 #include "code\modules\mob\mob_transformation_simple.dm"
 #include "code\modules\mob\mob_update_icons.dm"
