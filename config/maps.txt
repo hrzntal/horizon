@@ -34,7 +34,7 @@ map icebox
 	votable
 endmap
 
-map watermetastation
+map waterkilostation
 	votable
 endmap
 
