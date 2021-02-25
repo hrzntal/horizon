@@ -16,7 +16,9 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
+	var/list/trench_ruins_templates = list()
 	var/list/ocean_ruins_templates = list()
+	var/list/ocean_station_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
 
@@ -72,6 +74,110 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	run_map_generation()
 
+	/*
+	var/list/ocean_station_levels = levels_by_trait(ZTRAIT_OCEAN_STATION)
+	if (ocean_station_levels.len)
+		var/datum/space_level/ocean_station_level = z_list[ocean_station_levels[1]]
+		var/datum/space_level/station_trench_level
+		if(!ocean_station_level.traits["Down"]) //Doesn't have their own down level, make its trench
+			ocean_station_level.traits["Down"] = 1
+			station_trench_level = add_new_zlevel("Station Trench", list())
+			station_trench_level.traits["Up"] = -1
+		if(!station_trench_level)
+			var/modifier = ocean_station_level.traits["Down"]
+			station_trench_level = z_list[ocean_station_level.z_value+modifier]
+		var/extra_ocean_levels = CONFIG_GET(number/ocean_levels)
+		var/extra_level = 0
+		var/list/dir_reversal = list(TEXT_NORTH = TEXT_SOUTH,TEXT_EAST = TEXT_WEST,TEXT_SOUTH = TEXT_NORTH,TEXT_WEST = TEXT_EAST)
+		
+		var/list/x_low_list = list(TEXT_NORTH = 1, \
+									TEXT_SOUTH = 1, \
+									TEXT_EAST = world.maxx - TRANSITIONEDGE, \
+									TEXT_WEST = 1)
+		var/list/x_high_list = list(TEXT_NORTH = world.maxx, \
+									TEXT_SOUTH = world.maxx, \
+									TEXT_EAST = world.maxx, \
+									TEXT_WEST = 1 + TRANSITIONEDGE)
+		var/list/y_low_list = list(TEXT_NORTH = world.maxy - TRANSITIONEDGE, \
+									TEXT_SOUTH = 1, \
+									TEXT_EAST = 1, \
+									TEXT_WEST = 1)
+		var/list/y_high_list = list(TEXT_NORTH = world.maxy, \
+									TEXT_SOUTH = 1 + TRANSITIONEDGE, \
+									TEXT_EAST = world.maxy, \
+									TEXT_WEST = world.maxy)
+
+		//var/area/space/mirage_area = new()
+
+		for(var/text_dir in list(TEXT_NORTH,TEXT_EAST,TEXT_SOUTH,TEXT_WEST))
+			extra_level++
+			if(extra_level > extra_ocean_levels)
+				break
+
+			LoadGroup(null, "Ocean Level [extra_level]", "map_files/generic", "generic_ocean.dmm", default_traits = ZTRAITS_OCEAN_LEVEL)
+			var/datum/space_level/extra_ocean_level = z_list[world.maxz]
+			LoadGroup(null, "Trench Level [extra_level]", "map_files/generic", "generic_trench.dmm", default_traits = ZTRAITS_TRENCH_LEVEL)
+			var/datum/space_level/extra_trench_level = z_list[world.maxz]
+			extra_ocean_level.traits["Down"] = 1
+			extra_trench_level.traits["Up"] = -1
+			var/direction_from = dir_reversal[text_dir]
+
+			ocean_station_level.neigbours[text_dir] = extra_ocean_level
+			extra_ocean_level.neigbours[direction_from] = ocean_station_level
+			station_trench_level.neigbours[text_dir] = extra_trench_level
+			extra_trench_level.neigbours[direction_from] = station_trench_level
+
+			var/turf/beginning = locate(x_low_list[text_dir], y_low_list[text_dir], ocean_station_level.z_value)
+			var/turf/ending = locate(x_high_list[text_dir], y_high_list[text_dir], ocean_station_level.z_value)
+			var/list/turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+				for(var/a in T.contents)
+					qdel(a)
+
+			beginning = locate(x_low_list[direction_from], y_low_list[direction_from], extra_ocean_level.z_value)
+			ending = locate(x_high_list[direction_from], y_high_list[direction_from], extra_ocean_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+				for(var/a in T.contents)
+					qdel(a)
+
+			//TRENCH
+
+			beginning = locate(x_low_list[text_dir], y_low_list[text_dir], station_trench_level.z_value)
+			ending = locate(x_high_list[text_dir], y_high_list[text_dir], station_trench_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+				for(var/a in T.contents)
+					qdel(a)
+
+			beginning = locate(x_low_list[direction_from], y_low_list[direction_from], extra_trench_level.z_value)
+			ending = locate(x_high_list[direction_from], y_high_list[direction_from], extra_trench_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+				for(var/a in T.contents)
+					qdel(a)
+
+			/*
+			ocean_station_level.set_neigbours(list(text_dir = extra_ocean_level))
+			extra_ocean_level.set_neigbours(list(direction_from = ocean_station_level))
+
+			station_trench_level.set_neigbours(list(text_dir = extra_trench_level))
+			extra_trench_level.set_neigbours(list(direction_from = station_trench_level))
+			*/
+	*/
+
 #ifndef LOWMEMORYMODE
 	// Create space ruin levels
 	while (space_levels_so_far < config.space_ruin_levels)
@@ -103,7 +209,19 @@ SUBSYSTEM_DEF(mapping)
 	//Ocean ruins
 	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
 	if (ocean_ruins.len)
-		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated), ocean_ruins_templates)
+		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_ruins_templates)
+		for (var/ocean_z in ocean_ruins)
+			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
+
+	var/list/station_ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS_NEARSTATION)
+	if (station_ocean_ruins.len)
+		seedRuins(station_ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_station_ruins_templates)
+		for (var/ocean_z in station_ocean_ruins)
+			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
+
+	var/list/trench_ruins = levels_by_trait(ZTRAIT_TRENCH_RUINS)
+	if (trench_ruins.len)
+		seedRuins(trench_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/trench/generated), trench_ruins_templates)
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
@@ -190,7 +308,9 @@ Used by the AI doomsday and the self-destruct nuke.
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
+	trench_ruins_templates = SSmapping.trench_ruins_templates
 	ocean_ruins_templates = SSmapping.ocean_ruins_templates
+	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
 	shuttle_templates = SSmapping.shuttle_templates
@@ -265,6 +385,100 @@ Used by the AI doomsday and the self-destruct nuke.
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
+	var/list/ocean_station_levels = levels_by_trait(ZTRAIT_OCEAN_STATION)
+	if (ocean_station_levels.len)
+		var/datum/space_level/ocean_station_level = z_list[ocean_station_levels[1]]
+		var/datum/space_level/station_trench_level
+		if(!ocean_station_level.traits["Down"]) //Doesn't have their own down level, make its trench
+			ocean_station_level.traits["Down"] = 1
+			LoadGroup(null, "Station Trench", "map_files/ocean", "trench.dmm", default_traits = ZTRAITS_TRENCH_LEVEL)
+			station_trench_level = z_list[world.maxz]
+			station_trench_level.traits["Up"] = -1
+		if(!station_trench_level)
+			var/modifier = ocean_station_level.traits["Down"]
+			station_trench_level = z_list[ocean_station_level.z_value+modifier]
+		var/extra_ocean_levels = CONFIG_GET(number/ocean_levels)
+		var/extra_level = 0
+		var/list/dir_reversal = list(TEXT_NORTH = TEXT_SOUTH,TEXT_EAST = TEXT_WEST,TEXT_SOUTH = TEXT_NORTH,TEXT_WEST = TEXT_EAST)
+		
+		var/list/x_low_list = list(TEXT_NORTH = 1, \
+									TEXT_SOUTH = 1, \
+									TEXT_EAST = world.maxx - TRANSITIONEDGE, \
+									TEXT_WEST = 1)
+		var/list/x_high_list = list(TEXT_NORTH = world.maxx, \
+									TEXT_SOUTH = world.maxx, \
+									TEXT_EAST = world.maxx, \
+									TEXT_WEST = 1 + TRANSITIONEDGE)
+		var/list/y_low_list = list(TEXT_NORTH = world.maxy - TRANSITIONEDGE, \
+									TEXT_SOUTH = 1, \
+									TEXT_EAST = 1, \
+									TEXT_WEST = 1)
+		var/list/y_high_list = list(TEXT_NORTH = world.maxy, \
+									TEXT_SOUTH = 1 + TRANSITIONEDGE, \
+									TEXT_EAST = world.maxy, \
+									TEXT_WEST = world.maxy)
+
+		//var/area/space/mirage_area = new()
+
+		for(var/text_dir in list(TEXT_NORTH,TEXT_EAST,TEXT_SOUTH,TEXT_WEST))
+			extra_level++
+			if(extra_level > extra_ocean_levels)
+				break
+
+			
+			LoadGroup(null, "Ocean Level [extra_level]", "map_files/ocean", "ocean.dmm", default_traits = ZTRAITS_OCEAN_LEVEL)
+			var/datum/space_level/extra_ocean_level = z_list[world.maxz]
+			LoadGroup(null, "Trench Level [extra_level]", "map_files/ocean", "trench.dmm", default_traits = ZTRAITS_TRENCH_LEVEL)
+			var/datum/space_level/extra_trench_level = z_list[world.maxz]
+			
+			/*
+			var/datum/space_level/extra_ocean_level = add_new_zlevel("Ocean Level [extra_level]", ZTRAITS_OCEAN_LEVEL)
+			var/datum/space_level/extra_trench_level = add_new_zlevel("Trench Level [extra_level]", ZTRAITS_TRENCH_LEVEL)
+			*/
+	
+			extra_ocean_level.traits["Down"] = 1
+			extra_trench_level.traits["Up"] = -1
+			var/direction_from = dir_reversal[text_dir]
+
+			ocean_station_level.neigbours[text_dir] = extra_ocean_level
+			extra_ocean_level.neigbours[direction_from] = ocean_station_level
+			station_trench_level.neigbours[text_dir] = extra_trench_level
+			extra_trench_level.neigbours[direction_from] = station_trench_level
+
+			var/turf/beginning = locate(x_low_list[text_dir], y_low_list[text_dir], ocean_station_level.z_value)
+			var/turf/ending = locate(x_high_list[text_dir], y_high_list[text_dir], ocean_station_level.z_value)
+			var/list/turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+
+			beginning = locate(x_low_list[direction_from], y_low_list[direction_from], extra_ocean_level.z_value)
+			ending = locate(x_high_list[direction_from], y_high_list[direction_from], extra_ocean_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+
+			//TRENCH
+
+			beginning = locate(x_low_list[text_dir], y_low_list[text_dir], station_trench_level.z_value)
+			ending = locate(x_high_list[text_dir], y_high_list[text_dir], station_trench_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+
+			beginning = locate(x_low_list[direction_from], y_low_list[direction_from], extra_trench_level.z_value)
+			ending = locate(x_high_list[direction_from], y_high_list[direction_from], extra_trench_level.z_value)
+			turfblock = block(beginning, ending)
+			for(var/t in turfblock)
+				var/turf/T = t
+				//T.loc = mirage_area
+				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
+
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id
@@ -282,6 +496,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+
 #endif
 
 	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
@@ -429,8 +644,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
-		else if (istype(R, /datum/map_template/ruin/ocean))
+		else if(istype(R, /datum/map_template/ruin/ocean))
 			ocean_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/ocean_station))
+			ocean_station_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/trench))
+			trench_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")

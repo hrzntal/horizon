@@ -39,6 +39,10 @@
 
 	for(var/t in turfs) //Go through all the turfs and generate them
 		var/turf/gen_turf = t
+
+		if(istype(gen_turf, /turf/open/space/mirage) || istype(gen_turf, /turf/open/openspace/ocean))
+			continue
+
 		var/drift_x = (gen_turf.x + rand(-BIOME_RANDOM_SQUARE_DRIFT, BIOME_RANDOM_SQUARE_DRIFT)) / perlin_zoom
 		var/drift_y = (gen_turf.y + rand(-BIOME_RANDOM_SQUARE_DRIFT, BIOME_RANDOM_SQUARE_DRIFT)) / perlin_zoom
 
@@ -76,3 +80,16 @@
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf)
 		CHECK_TICK
+
+/datum/map_generator/cave_generator/trench
+	name = "Trench Generator"
+	open_turf_types =  list(/turf/open/floor/plating/ocean/rock/heavy = 1)
+	closed_turf_types =  list(/turf/closed/mineral/random/ocean = 1)
+
+	feature_spawn_list = null
+
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/carp = 1)
+	mob_spawn_chance = 1
+
+	flora_spawn_chance = 4
+	flora_spawn_list = list(/obj/structure/flora/rock = 1, /obj/structure/flora/rock/pile = 1)
