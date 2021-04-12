@@ -9893,20 +9893,10 @@
 "aqP" = (
 /obj/structure/cable,
 /obj/structure/chair/sofa/left,
-<<<<<<< HEAD
-/obj/machinery/power/apc{
-	areastring = "/area/medical/psychology";
-	dir = 1;
-	name = "Psychology APC";
-	pixel_y = 24
-	},
-/obj/item/toy/plush/moth,
-=======
 /obj/item/toy/plush/moth{
 	name = "Big Moffer"
 	},
 /obj/machinery/power/apc/auto_name/north,
->>>>>>> 41d53b5ef0 (Standardizes KiloStation APCs (#56326))
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "aqQ" = (
