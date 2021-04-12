@@ -15,9 +15,12 @@
 .PARAMETER DryRun
 	Should a "dry-run" be done? This will not push to remotes or leave any traces, intended to test the functionality of the script.
 .EXAMPLE
-	scriptname.ps1 -PrNumber 42 -PushRemote
+	.\Mirror-Repo-Pulls.ps1 -PrNumber 42 -PushRemote
 .NOTES
-	Copyright 2020 Avunia Takiya <https://takiya.cloud>, The Horizon Project <https://github.com/hrzntal>
+	Made with lots of swearing and love by a 🦊 and a 🐦
+
+
+	Copyright 2020-2021 Avunia Takiya <https://takiya.cloud>, The Horizon Project <https://github.com/hrzntal>
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -68,6 +71,10 @@ $PrNumber = $PrNumber.ToString()
 
 # User Configuration
 
+## Identity
+$CommitUsername 		= 'hrzn-actions'
+$CommitEmail			= 'hrzn-actions@users.noreply.github.com'
+
 ## Origin
 $OriginOwner 			= 'hrzntal'
 $OriginRepo 			= 'horizon'
@@ -81,7 +88,7 @@ $UpstreamDefaultBranch	= 'master'
 ## This will show up on the branch before the PR number
 ## i.e. if its 'patch/' and the upstream is tgstation
 ## the result will be patch/tgstation-XXXXX
-$PrBranchNamePrefix 	= 'patch/'
+$PrBranchNamePrefix 	= 'mirror/'
 
 ## PR title prefix
 $PrTitlePrefix			= '[MIRROR]'
@@ -89,8 +96,7 @@ $PrTitlePrefix			= '[MIRROR]'
 ## Contents of the Issue body that will show up on GH
 ## Title is omitted as it uses the prefix + original PR's title
 $PrIssueBody = @"
-(debugmode)
-Original PR: $UpstreamOwner  /  $UpstreamRepo  #  $PrNumber
+Original PR: $UpstreamOwner/$UpstreamRepo#$PrNumber
 ---
 
 "@
@@ -114,11 +120,39 @@ $PrBranch = $("$PrBranchNamePrefix{0}-{1}" -f $UpstreamRepo, $PrNumber)
 
 $RequestUrl = ("{0}/pulls/{1}" -f $ApiEndpoint, $PrNumber)
 $RequestMethod = 'Get'
-$RequestHeader = @{"Accept"="application/vnd.github.v3+json"}
+if ($GitHubToken)
+{
+	$RequestHeader = @{"Accept"="application/vnd.github.v3+json";"Authorization"="token $GitHubToken"}
+} else
+{
+	$RequestHeader = @{"Accept"="application/vnd.github.v3+json"}
+}
+
 
 # User Configuration End
 
 # Function wrappers for commonly used binaries
+#
+#
+
+function Invoke-GitCommit ($message)
+{
+	Write-Verbose "Running git commit"
+	$message = $message -replace "`"","'"
+	$output = git -c core.editor=$true commit --no-gpg-sign --amend -m "$($message|out-string)"
+	$errorval = $?
+	if ($errorval)
+	{
+		Write-Host "Command Completed Successfully"
+		Write-Verbose "LOG: git -c core.editor=$true commit --no-gpg-sign --amend -m '$($message|out-string)'"
+		Write-Verbose "LOG OUTPUT: $($output)"
+	} else {
+		write-host "Command failed"
+		Write-host "ERROR: git -c core.editor=$true commit --no-gpg-sign --amend -m '$($message|out-string)'"
+		Write-error "ERROR Output: $($output)"
+	}
+}
+
 function Invoke-GitCommand($Arguments)
 {
 	$command = "git $Arguments"
@@ -154,7 +188,27 @@ function Invoke-GitHub($Arguments)
 		Write-Error "$_"
 	}
 }
-
+function Invoke-GitHubPR ($MyPrBranch,$MyPrIssueTitle,$MyPrIssueBody)
+{
+	Write-host "Running Github PR"
+	$ownerrepo = $OriginOwner+'/'+$OriginRepo
+	write-host "================Running==========="
+	$output = gh pr create -R "$($ownerrepo)" --base "$($OriginDefaultBranch)" --head "$($MyPrBranch)" --title "$($MyPrIssueTitle)" --body "$($MyPrIssueBody|out-string)"
+	$errorval = $?
+	write-host "===============Run Done =========="
+	if ($errorval)
+	{
+		Write-Host "Command Completed Successfully"
+		Write-Verbose "LOG OUTPUT: $($output)"
+	} else {
+		write-host "Github PR Command failed"
+		Write-error "ERROR Output: $($output)"
+	}
+}
+#
+#
+# MAIN
+#
 # Environment checks
 ## Make sure we're running on an environment with powershell v5 or later
 if ($PSVersionTable['PSVersion'].Major -lt 5)
@@ -212,7 +266,7 @@ try {
 	# Get the pull request data from the remote provider
 	$PullRequestData = Invoke-RestMethod -Method "$RequestMethod" -Uri "$RequestUrl" -Headers $RequestHeader
 	# And also the commits if possible
-	$PullRequestCommits = Invoke-RestMethod -Method "$RequestMethod" -Uri "$RequestUrl/commits" -Headers $RequestHeader
+	#$PullRequestCommits = Invoke-RestMethod -Method "$RequestMethod" -Uri "$RequestUrl/commits" -Headers $RequestHeader
 }
 catch {
 	if ($_.ErrorDetails.Message)
@@ -222,6 +276,15 @@ catch {
 		Write-Error $_
 	}
 }
+
+$UserGitName = git config user.name
+$UserGitEmail = git config user.email
+write-host "In the event the script crashes run the following to restore your git config"
+write-host "git config user.name $UserGitName"
+write-host "git config user.email $UserGitEmail"
+start-sleep -Seconds 1
+git config user.name "$CommitUsername"
+git config user.email "$CommitEmail"
 
 $MergeChecksum = $PullRequestData.merge_commit_sha
 $PrIssueTitle = ("$PrTitlePrefix {0}" -f $PullRequestData.title)
@@ -291,21 +354,23 @@ Write-Verbose "Cherry picking $MergeChecksum into branch..."
 $CherryPickOutput = (git -c core.editor=$true cherry-pick --no-gpg-sign $MergeChecksum)
 if ($CherryPickOutput -match "Merge conflict")
 {
-	Invoke-GitHub("add -A .")
-	Invoke-GitHub("-c core.editor=$true cherry-pick --no-gpg-sign --continue")
+	Invoke-GitCommand("add -A .")
+	Invoke-GitCommand("-c core.editor=$true cherry-pick --no-gpg-sign --continue")
 }
 
 # Remove all mentions from the commit message by adding a space after the @
-$cherryPickCommitMessage = (git -c core.editor=$true log -1 --pretty=%B) -replace "@", "@ "
+$message = git -c core.editor=$true log -1 --pretty=%B
+$cherryPickCommitMessage = $(($message) -replace "@", "@ " | Out-String)
 Write-Verbose "Rewriting commit message..."
-Invoke-GitCommand("-c core.editor=$true commit --no-gpg-sign -m `"$cherryPickCommitMessage`" --amend")
+#Invoke-GitCommand("-c core.editor=$true commit --no-gpg-sign -m `"$($cherryPickCommitMessage | out-string)`" --amend")
+Invoke-GitCommit($cherryPickCommitMessage)
 
 if ($PushRemote)
 {
 	Write-Verbose "Pushing branch $PrBranch to $OriginUrl ..."
 	if ($Dryrun)
 	{
-		Write-Verbose " ℹ This is a dryrun so we're not pushing anything :)"
+		Write-Verbose " ℹ This is a dryrun so we're not pushing anything 🙂"
 		Invoke-GitCommand("push --dry-run -u $OriginUrl $PrBranch")
 	} else {
 		# Push it to the limit 🎶
@@ -313,6 +378,8 @@ if ($PushRemote)
 		Invoke-GitCommand("push --porcelain --quiet -u $OriginUrl $PrBranch")
 	}
 }
+#
+#
 
 if ($OpenPull)
 {
@@ -326,9 +393,12 @@ if ($OpenPull)
 		# Mmmm hopefully this will work out fine.
 		if ($GitHubToken)
 		{
-			Invoke-GitHub("pr auth login --with-token `"$GitHubToken`"")
+			# $GitHubToken
+			$GitHubToken| out-file -FilePath ./token.txt
+			Invoke-GitHub("auth login --with-token < token.txt")
+			Remove-Item -Path ./token.txt
 		}
-		Invoke-GitHub("pr create -R `"$OriginOwner/$OriginRepo`" --base `"$OriginDefaultBranch`" --head `"$PrBranch`" --title `"$PrIssueTitle`" --body `"$PrIssueBody`"")
+		Invoke-GitHubPR -MyPrBranch $PrBranch -MyPrIssueTitle $PrIssueTitle -MyPrIssueBody $PrIssueBody
 	} else {
 		Write-Verbose ' ℹ Dryrun! Not doing anything.'
 	}
@@ -338,6 +408,8 @@ if ($OpenPull)
 if ($Dryrun) {
 	Invoke-GitCommand("checkout --force `"$OriginDefaultBranch`"")
 } else {
+	git config user.name "$UserGitName"
+	git config user.email "$UserGitEmail"
 	Invoke-GitCommand("checkout --force --quiet `"$OriginDefaultBranch`"")
 }
 
