@@ -96,7 +96,8 @@ $PrTitlePrefix			= '[MIRROR]'
 ## Contents of the Issue body that will show up on GH
 ## Title is omitted as it uses the prefix + original PR's title
 $PrIssueBody = @"
-Original PR: $UpstreamOwner/$UpstreamRepo#$PrNumber
+Mirrored from: $UpstreamOwner/$UpstreamRepo#$PrNumber
+---
 ---
 
 "@
