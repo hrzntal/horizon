@@ -191,6 +191,10 @@ function Invoke-GitHub($Arguments)
 }
 function Invoke-GitHubPR ($MyPrBranch,$MyPrIssueTitle,$MyPrIssueBody)
 {
+	$MyPrBranch = $MyPrBranch -replace "`"", "'"
+	$MyPrIssueTitle = $MyPrIssueTitle -replace "`"", "'"
+	$MyPrIssueBody = $MyPrIssueBody -replace "`"", "'"
+
 	Write-host "Running Github PR"
 	$ownerrepo = $OriginOwner+'/'+$OriginRepo
 	write-host "================Running==========="
