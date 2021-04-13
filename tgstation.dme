@@ -618,11 +618,8 @@
 #include "code\datums\elements\caltrop.dm"
 #include "code\datums\elements\cleaning.dm"
 #include "code\datums\elements\climbable.dm"
-<<<<<<< HEAD
 #include "code\datums\elements\decal.dm"
-=======
 #include "code\datums\elements\deferred_aquarium_content.dm"
->>>>>>> 8c69586774 (Adds aquariums and aquarium fish. (#56343))
 #include "code\datums\elements\digitalcamo.dm"
 #include "code\datums\elements\dryable.dm"
 #include "code\datums\elements\earhealing.dm"
