@@ -486,6 +486,9 @@
 			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 
+		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
+			to_chat(M, "<span class='warning'>[src] looks visibly upset as you pat [p_them()] on the head.</span>")
+
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
 		SEND_SIGNAL(M, COMSIG_CARBON_HUG, M, src)
@@ -524,6 +527,9 @@
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/besthug, M)
 			else if (hugger_mood.sanity >= SANITY_DISTURBED)
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/betterhug, M)
+
+		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
+			to_chat(M, "<span class='warning'>[src] looks visibly upset as you hug [p_them()].</span>")
 
 	AdjustStun(-60)
 	AdjustKnockdown(-60)
