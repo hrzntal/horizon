@@ -16,7 +16,7 @@
 		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
 		z_list += S
 
-/datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level)
+/datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level, datum/overmap_object/overmap_obj = null)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
 	var/new_z = z_list.len + 1
 	if (world.maxz < new_z)
@@ -24,6 +24,9 @@
 		CHECK_TICK
 	// TODO: sleep here if the Z level needs to be cleared
 	var/datum/space_level/S = new z_type(new_z, name, traits)
+	if(overmap_obj)
+		overmap_obj.related_levels += S
+		S.related_overmap_object = overmap_obj
 	z_list += S
 	return S
 
