@@ -22,3 +22,4 @@
 /datum/overmap_sun_system/New()
 	SSmapping.add_new_zlevel("Sun system [name]", list(ZTRAIT_LINKAGE = UNAFFECTED))
 	z_level = world.maxz
+	my_space_level = SSmapping.z_list[z_level]
