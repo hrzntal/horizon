@@ -722,7 +722,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								cult = GLOB.culture_factions[pref_faction]
 								prefix = "Faction"
 								more = faction_more_info
-						var/cult_desc 
+						var/cult_desc
 						if(more || length(cult.description) <= 160)
 							cult_desc = cult.description
 						else
@@ -1683,7 +1683,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			needs_update = TRUE
 			switch(href_list["preference"])
 				if("use_preset")
-					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to use a preset (This will clear your existing markings)?",
+						null,
+						list("Yes", "No")
+					)
 					if(action && action == "Yes")
 						var/list/candidates = GLOB.body_marking_sets.Copy()
 						if(!mismatched_customization)
@@ -1871,7 +1876,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("reset_all_colors")
-					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to reset all colors?",
+						null,
+						list("Yes", "No")
+					)
 					if(action == "Yes")
 						reset_colors()
 
@@ -1941,7 +1951,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_orbit = new_orbit
 
 				if("ghostaccs")
-					var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					var/new_ghost_accs = tgui_alert(
+						usr,
+						"Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",
+						null,
+						list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					)
 					switch(new_ghost_accs)
 						if(GHOST_ACCS_FULL_NAME)
 							ghost_accs = GHOST_ACCS_FULL
@@ -1951,7 +1966,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_accs = GHOST_ACCS_NONE
 
 				if("ghostothers")
-					var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					var/new_ghost_others = tgui_alert(
+						usr,
+						"Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",
+						null,
+						list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					)
 					switch(new_ghost_others)
 						if(GHOST_OTHERS_THEIR_SETTING_NAME)
 							ghost_others = GHOST_OTHERS_THEIR_SETTING
@@ -2428,7 +2448,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		else
 			switch(href_list["preference"])
 				if("reset_loadout")
-					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to reset your loadout?",
+						null,
+						list("Yes", "No")
+					)
 					if(action && action != "Yes")
 						return
 					loadout = list()
@@ -2439,7 +2464,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("adv_colors")
 					if(allow_advanced_colors)
-						var/action = alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", "Yes", "No")
+						var/action = tgui_alert(
+							user,
+							"Are you sure you want to disable advanced colors? (This will reset your colors back to default)",
+							null,
+							list("Yes", "No")
+						)
 						if(action && action != "Yes")
 							return
 					allow_advanced_colors = !allow_advanced_colors
@@ -2532,7 +2562,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					save_preferences()
 
 				if("keybindings_reset")
-					var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
+					var/choice = tgui_alert(
+						user,
+						"Would you prefer 'hotkey' or 'classic' defaults?",
+						"Setup keybindings",
+						list("Hotkey", "Classic", "Cancel")
+					)
 					if(choice == "Cancel")
 						ShowChoices(user)
 						return
