@@ -1257,3 +1257,8 @@
 // Exosca signals
 /// Sent on exoscan failure/manual interruption: ()
 #define COMSIG_EXOSCAN_INTERRUPTED "exoscan_interrupted"
+
+///from base of mob/clickon(): (atom/A, params)
+#define COMSIG_CLICKON "any_clickon"
+	#define COMSIG_CANCEL_CLICKON 1
+
