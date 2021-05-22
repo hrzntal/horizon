@@ -70,17 +70,17 @@
 	name = "penguin ears"
 	desc = "The source of a penguin's happy feet."
 
-/obj/item/organ/ears/penguin/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/ears/penguin/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
 	. = ..()
-	if(istype(H))
-		to_chat(H, "<span class='notice'>You suddenly feel like you've lost your balance.</span>")
-		H.AddElement(/datum/element/waddling)
+	if(istype(ear_owner))
+		to_chat(ear_owner, "<span class='notice'>You suddenly feel like you've lost your balance.</span>")
+		ear_owner.AddElement(/datum/element/waddling)
 
-/obj/item/organ/ears/penguin/Remove(mob/living/carbon/human/H,  special = 0)
+/obj/item/organ/ears/penguin/Remove(mob/living/carbon/human/ear_owner,  special = 0)
 	. = ..()
-	if(istype(H))
-		to_chat(H, "<span class='notice'>Your sense of balance comes back to you.</span>")
-		H.RemoveElement(/datum/element/waddling)
+	if(istype(ear_owner))
+		to_chat(ear_owner, "<span class='notice'>Your sense of balance comes back to you.</span>")
+		ear_owner.RemoveElement(/datum/element/waddling)
 
 /obj/item/organ/ears/bronze
 	name = "tin ears"
