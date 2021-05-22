@@ -43,6 +43,8 @@
 
 	var/target_command = TARGET_IDLE
 
+	var/datum/overmap_shuttle_controller/shuttle_controller
+
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
 	for(var/overmap_object in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
@@ -285,8 +287,7 @@
 		if("general")
 			switch(href_list["general_control"])
 				if("overmap")
-					if(my_shuttle)
-						my_shuttle.GrantOvermapView(usr)
+					GrantOvermapView(usr)
 				if("comms")
 					open_comms_channel = !open_comms_channel
 				if("hail")
@@ -329,8 +330,10 @@
 	destination_x = x
 	destination_y = y
 	START_PROCESSING(SSfastprocess, src)
+	shuttle_controller = new(src)
 
 /datum/overmap_object/shuttle/Destroy()
+	QDEL_NULL(shuttle_controller)
 	my_shuttle = null
 	return ..()
 
@@ -458,12 +461,18 @@
 	
 		if(did_move)
 			update_visual_position()
-			if(my_shuttle.shuttle_controller)
-				my_shuttle.shuttle_controller.ShuttleMovedOnOvermap()
+			if(shuttle_controller)
+				shuttle_controller.ShuttleMovedOnOvermap()
 
 	var/matrix/M = new
 	M.Turn(angle)
 	my_visual.transform = M
+
+/datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user)
+	//Camera control
+	if(user.client && !shuttle_controller.busy)
+		shuttle_controller.SetController(user)
+		return TRUE
 
 /datum/overmap_object/shuttle/proc/CommandMove(dest_x, dest_y)
 	destination_y = dest_y
@@ -475,3 +484,6 @@
 
 /datum/overmap_object/shuttle/relaymove(mob/living/user, direction)
 	last_relayed_direction = direction
+
+/datum/overmap_object/shuttle/station
+	is_seperate_z_level = TRUE

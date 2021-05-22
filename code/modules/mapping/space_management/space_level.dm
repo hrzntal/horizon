@@ -7,6 +7,7 @@
 	var/xi
 	var/yi   //imaginary placements on the grid
 	var/datum/overmap_object/related_overmap_object
+	var/is_overmap_controllable = FALSE
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())
 	z_value = new_z

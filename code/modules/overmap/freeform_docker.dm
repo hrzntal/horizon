@@ -60,7 +60,7 @@
 /datum/shuttle_freeform_docker/proc/CreateEye()
 	eyeobj = new()
 	eyeobj.origin = src
-	var/obj/docking_port/mobile/my_shuttle = my_controller.shuttle
+	var/obj/docking_port/mobile/my_shuttle = my_controller.overmap_obj.my_shuttle
 	direction = my_shuttle.dir
 	eyeobj.setDir(direction)
 	var/turf/origin = locate(my_shuttle.x + x_offset, my_shuttle.y + y_offset, my_shuttle.z)
@@ -88,7 +88,7 @@
 	*/
 
 	. = SHUTTLE_DOCKER_LANDING_CLEAR
-	var/list/bounds = my_controller.shuttle.return_coords(eyeobj.x - x_offset, eyeobj.y - y_offset, eyeobj.dir)
+	var/list/bounds = my_controller.overmap_obj.my_shuttle.return_coords(eyeobj.x - x_offset, eyeobj.y - y_offset, eyeobj.dir)
 	var/list/overlappers = SSshuttle.get_dock_overlap(bounds[1], bounds[2], bounds[3], bounds[4], eyeobj.z)
 	var/list/image_cache = placement_images
 	for(var/i in 1 to image_cache.len)
@@ -112,7 +112,7 @@
 	if(!T || T.x <= 10 || T.y <= 10 || T.x >= world.maxx - 10 || T.y >= world.maxy - 10)
 		return SHUTTLE_DOCKER_BLOCKED
 	// If it's one of our shuttle areas assume it's ok to be there
-	if(my_controller.shuttle.shuttle_areas[T.loc])
+	if(my_controller.overmap_obj.my_shuttle.shuttle_areas[T.loc])
 		return SHUTTLE_DOCKER_LANDING_CLEAR
 	. = SHUTTLE_DOCKER_LANDING_CLEAR
 	// See if the turf is hidden from us
@@ -244,7 +244,7 @@
 
 /datum/shuttle_freeform_docker/proc/PlaceLandingSpot()
 	var/landing_clear = checkLandingSpot()
-	var/obj/docking_port/mobile/my_shuttle = my_controller.shuttle
+	var/obj/docking_port/mobile/my_shuttle = my_controller.overmap_obj.my_shuttle
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)

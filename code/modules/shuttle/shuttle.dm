@@ -40,17 +40,8 @@
 	var/registered = FALSE
 
 	var/datum/overmap_object/shuttle/my_overmap_object
-	var/datum/overmap_shuttle_controller/shuttle_controller
 	var/possible_destinations
 	var/obj/docking_port/stationary/freeform_port
-
-/obj/docking_port/mobile/proc/GrantOvermapView(mob/user)
-	if(!shuttle_controller)
-		shuttle_controller = new(src)
-	//Camera control
-	if(user.client && !shuttle_controller.busy)
-		shuttle_controller.SetController(user)
-		return TRUE
 
 	///register to SSshuttles
 /obj/docking_port/proc/register()
@@ -560,8 +551,8 @@
 		var/datum/overmap_object/shuttle/spawned_shuttle = new /datum/overmap_object/shuttle(current_overmap_object.current_system, current_overmap_object.x, current_overmap_object.y)
 		my_overmap_object = spawned_shuttle
 		spawned_shuttle.my_shuttle = src
-		if(shuttle_controller)
-			shuttle_controller.busy = FALSE
+		if(my_overmap_object.shuttle_controller)
+			my_overmap_object.shuttle_controller.busy = FALSE
 		if(freeform_port)
 			if(freeform_port?.get_docked())
 				freeform_port.delete_after = TRUE

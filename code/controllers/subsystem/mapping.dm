@@ -252,7 +252,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the station
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new /datum/overmap_object/station(SSovermap.main_system, rand(5,20), rand(5,20)))
+	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new /datum/overmap_object/shuttle/station(SSovermap.main_system, rand(5,20), rand(5,20)))
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"

@@ -21,9 +21,6 @@
 	COOLDOWN_DECLARE(request_cooldown)
 	var/uses_overmap = TRUE
 
-/obj/machinery/computer/shuttle/attack_hand(mob/user)
-	return ..()
-
 /obj/machinery/computer/shuttle/Initialize(mapload)
 	. = ..()
 	if(!mapload)
@@ -74,7 +71,7 @@
 	switch(href_list["task"])
 		if("overmap_view")
 			if(M.my_overmap_object)
-				M.GrantOvermapView(usr)
+				M.my_overmap_object.GrantOvermapView(usr)
 				return
 		if("overmap_ship_controls")
 			if(M.my_overmap_object)
