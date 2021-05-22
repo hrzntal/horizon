@@ -44,6 +44,14 @@
 	var/possible_destinations
 	var/obj/docking_port/stationary/freeform_port
 
+/obj/docking_port/mobile/proc/GrantOvermapView(mob/user)
+	if(!shuttle_controller)
+		shuttle_controller = new(src)
+	//Camera control
+	if(user.client && !shuttle_controller.busy)
+		shuttle_controller.SetController(user)
+		return TRUE
+
 	///register to SSshuttles
 /obj/docking_port/proc/register()
 	if(registered)

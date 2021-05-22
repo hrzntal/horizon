@@ -1,9 +1,3 @@
-#define TEMPLATE_SHIP_VELOCITY 0.5
-#define SHUTTLE_SLOWDOWN_MARGIN 1
-#define SHUTTLE_MINIMUM_VELOCITY 0.1
-#define SHUTTLE_MINIMUM_TARGET_SPEED 1
-#define VECTOR_LENGTH(x,y) sqrt(x**2+y**2)
-
 /datum/overmap_object/shuttle
 	name = "Shuttle"
 	icon = 'icons/overmap/shuttle.dmi'
@@ -28,6 +22,9 @@
 	/// Otherwise it's abstract and it doesnt have a physical shuttle in transit, or people in it. Maintain this for the purposes of AI raid ships
 	var/is_physical = TRUE
 
+	/// If true then it doesn't have a "shuttle" and is not alocated in transit and cannot dock anywhere, but things may dock into it
+	var/is_seperate_z_level = FALSE //(This can mean it's several z levels too)
+
 	/// For sensors lock follow
 	var/follow_range = 1
 
@@ -36,9 +33,22 @@
 	/// At which offset range the helm pad will apply at
 	var/helm_pad_range = 3
 	/// If true, then the applied offsets will be relative to the ship position, instead of direction position
-	var/helm_pad_relative_destination = FALSE
+	var/helm_pad_relative_destination = TRUE
 
 	var/helm_pad_engage_immediately = TRUE
+
+	var/open_comms_channel = FALSE
+
+	var/datum/overmap_lock/lock
+
+	var/target_command = TARGET_IDLE
+
+/datum/overmap_object/shuttle/proc/GetSensorTargets()
+	var/list/targets = list()
+	for(var/overmap_object in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
+		if(overmap_object != src)
+			targets += overmap_object
+	return targets
 
 /datum/overmap_object/shuttle/proc/DisplayUI(mob/user)
 	var/list/dat = list()
@@ -48,14 +58,17 @@
 	dat += "<a href='?src=[REF(src)];task=tab;tab=2' [shuttle_ui_tab == 2 ? "class='linkOn'" : ""]>Helm</a>"
 	dat += "<a href='?src=[REF(src)];task=tab;tab=3' [shuttle_ui_tab == 3 ? "class='linkOn'" : ""]>Sensors</a>"
 	dat += "<a href='?src=[REF(src)];task=tab;tab=4' [shuttle_ui_tab == 4 ? "class='linkOn'" : ""]>Target</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=5' [shuttle_ui_tab == 5 ? "class='linkOn'" : ""]>Docking</a>"
-	dat += "-<a href='?src=[REF(src)];task=refresh'>Refresh</a></center><HR>"
+	dat += "<a href='?src=[REF(src)];task=tab;tab=5' [shuttle_ui_tab == 5 ? "class='linkOn'" : ""]>Dock</a>"
+	dat += " <a href='?src=[REF(src)];task=refresh'>Refresh</a></center><HR>"
 
 	switch(shuttle_ui_tab)
 		if(SHUTTLE_TAB_GENERAL)
 			dat += "Hull: 100% integrity"
 			dat += "<BR>Shields: Not engaged"
 			dat += "<BR>Position: X: [x] , Y: [y]"
+			dat += "<BR>Overmap View: <a href='?src=[REF(src)];task=general;general_control=overmap'>Open</a>"
+			dat += "<BR>Send a Hail: <a href='?src=[REF(src)];task=general;general_control=hail'>Send...</a>"
+			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a>"
 
 		if(SHUTTLE_TAB_ENGINES)
 			dat += "Emginmes"
@@ -94,10 +107,64 @@
 			dat += "<BR>Pad Control: <a href='?src=[REF(src)];task=helm;helm_control=pad'>Open</a>"
 
 		if(SHUTTLE_TAB_SENSORS)
-			dat += "Current"
+			var/list/targets = GetSensorTargets()
+			dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
+			dat += "<tr style='vertical-align:top'>"
+			dat += "<td width=30%>Name:</td>"
+			dat += "<td width=10%>X:</td>"
+			dat += "<td width=10%>Y:</td>"
+			dat += "<td width=10%>Dist:</td>"
+			dat += "<td width=40%>Actions:</td>"
+			dat += "</tr>"
+			var/even = TRUE
+			for(var/ov_obj in targets)
+				even = !even
+				var/datum/overmap_object/overmap_obj = ov_obj
+				var/dist = FLOOR(TWO_POINT_DISTANCE(x,y,overmap_obj.x,overmap_obj.y),1)
+				var/is_destination = (destination_x == overmap_obj.x && destination_y == overmap_obj.y)
+				var/is_target = (lock && lock.target == overmap_obj)
+				dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
+				dat += "<td>[overmap_obj.name]</td>"
+				dat += "<td>[overmap_obj.x]</td>"
+				dat += "<td>[overmap_obj.y]</td>"
+				dat += "<td>[dist]</td>"
+				dat += "<td><a href='?src=[REF(src)];task=sensor;sensor_task=target;target_id=[overmap_obj.id]'[is_target ? "class='linkOn'" : ""]>Target</a><a href='?src=[REF(src)];task=sensor;sensor_task=destination;target_id=[overmap_obj.id]' [is_destination ? "class='linkOn'" : ""]>As Dest.</a></td>"
+				dat += "</tr>"
+			dat += "</table>"
 
 		if(SHUTTLE_TAB_TARGET)
-			dat += "Emginmes"
+			if(lock)
+				lock.Resolve()
+			var/locked_thing_name = lock ? lock.target.name : "NONE"
+			var/locked_status = "NOT ENGAGED"
+			var/locked_and_calibrated = FALSE
+			if(lock)
+				if(lock.is_calibrated)
+					locked_and_calibrated = TRUE
+					locked_status = "LOCKED"
+				else
+					locked_status = "CALIBRATING"
+
+			dat += "Target: [locked_thing_name]"
+			dat	+= "<BR>Lock status: [locked_status] [lock ? "<a href='?src=[REF(src)];task=target;target_control=disengage_lock'>Disengage</a>" : ""]"
+			dat	+= "<BR><B>Current Command:</B> "
+			switch(target_command)
+				if(TARGET_IDLE)
+					dat	+= "Idle."
+				if(TARGET_FIRE_ONCE)
+					dat	+= "Fire Once!"
+				if(TARGET_KEEP_FIRING)
+					dat	+= "Keep Firing!"
+				if(TARGET_SCAN)
+					dat	+= "Scan."
+				if(TARGET_BEAM_ON_BOARD)
+					dat	+= "Beam on board."
+			dat += "<BR>Commands:"
+			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_idle' [locked_and_calibrated ? "" : "class='linkOff'"]>Idle</a>"
+			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_fire_once' [locked_and_calibrated ? "" : "class='linkOff'"]>Fire Once!</a>"
+			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_keep_firing' [locked_and_calibrated ? "" : "class='linkOff'"]>Keep Firing!</a>"
+			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_scan' [locked_and_calibrated ? "" : "class='linkOff'"]>Scan</a>"
+			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_beam_on_board' [locked_and_calibrated ? "" : "class='linkOff'"]>Beam on Board</a>"
 
 		if(SHUTTLE_TAB_DOCKING)
 			dat += "Emginmes"
@@ -138,6 +205,18 @@
 		helm_command = HELM_MOVE_TO_DESTINATION
 	return
 
+/datum/overmap_object/shuttle/proc/LockLost()
+	target_command = TARGET_IDLE
+
+/datum/overmap_object/shuttle/proc/SetLockTo(datum/overmap_object/ov_obj)
+	if(lock)
+		if(ov_obj == lock.target)
+			return
+		else
+			QDEL_NULL(lock)
+	if(ov_obj)
+		lock = new(src, ov_obj)
+
 /datum/overmap_object/shuttle/Topic(href, href_list)
 	if(href_list["pad_topic"])
 		switch(href_list["pad_topic"])
@@ -174,6 +253,46 @@
 	switch(href_list["task"])
 		if("tab")
 			shuttle_ui_tab = text2num(href_list["tab"])
+		if("target")
+			if(!lock)
+				return
+			switch(href_list["target_control"])
+				if("disengage_lock")
+					SetLockTo(null)
+				if("command_idle")
+					target_command = TARGET_IDLE
+				if("command_fire_once")
+					target_command = TARGET_FIRE_ONCE
+				if("command_keep_firing")
+					target_command = TARGET_KEEP_FIRING
+				if("command_scan")
+					target_command = TARGET_SCAN
+				if("command_beam_on_board")
+					target_command = TARGET_BEAM_ON_BOARD
+		if("sensor")
+			var/id = text2num(href_list["target_id"])
+			if(!id)
+				return
+			var/datum/overmap_object/ov_obj = SSovermap.GetObjectByID(id)
+			if(!ov_obj)
+				return
+			switch(href_list["sensor_task"])
+				if("target")
+					SetLockTo(ov_obj)
+				if("destination")
+					destination_x = ov_obj.x
+					destination_y = ov_obj.y
+		if("general")
+			switch(href_list["general_control"])
+				if("overmap")
+					if(my_shuttle)
+						my_shuttle.GrantOvermapView(usr)
+				if("comms")
+					open_comms_channel = !open_comms_channel
+				if("hail")
+					var/hail_msg = input(usr, "Compose a hail message:", "Hail Message")  as text|null
+					if(hail_msg)
+						hail_msg = strip_html_simple(hail_msg, MAX_BROADCAST_LEN, TRUE)
 		if("helm")
 			switch(href_list["helm_control"])
 				if("pad")
@@ -223,11 +342,6 @@
 				StopMove()
 			else
 				var/target_angle = ATAN2(((destination_y*32)-((y*32)+partial_y)),((destination_x*32)-((x*32)+partial_x)))
-				
-				/*
-				if(target_angle > 180)
-					target_angle -= 360
-				*/
 	
 				if(target_angle < 0)
 					target_angle = 360 + target_angle
@@ -319,36 +433,37 @@
 		velocity_x *= 0.95
 		velocity_y *= 0.95
 
-	var/add_partial_x = round(velocity_x)
-	var/add_partial_y = round(velocity_y)
-
-	partial_x += add_partial_x
-	partial_y += add_partial_y
-	var/did_move = FALSE
-	if(partial_y > 16)
-		did_move = TRUE
-		partial_y -= 32
-		y = min(y+1,world.maxy)
-	else if(partial_y < -16)
-		did_move = TRUE
-		partial_y += 32
-		y = max(y-1,1)
-	if(partial_x > 16)
-		did_move = TRUE
-		partial_x -= 32
-		x = min(x+1,world.maxx)
-	else if(partial_x < -16)
-		did_move = TRUE
-		partial_x += 32
-		x = max(x-1,1)
-
-	if(did_move && my_shuttle.shuttle_controller)
-		my_shuttle.shuttle_controller.ShuttleMovedOnOvermap()
+		var/add_partial_x = round(velocity_x)
+		var/add_partial_y = round(velocity_y)
+	
+		partial_x += add_partial_x
+		partial_y += add_partial_y
+		var/did_move = FALSE
+		if(partial_y > 16)
+			did_move = TRUE
+			partial_y -= 32
+			y = min(y+1,world.maxy)
+		else if(partial_y < -16)
+			did_move = TRUE
+			partial_y += 32
+			y = max(y-1,1)
+		if(partial_x > 16)
+			did_move = TRUE
+			partial_x -= 32
+			x = min(x+1,world.maxx)
+		else if(partial_x < -16)
+			did_move = TRUE
+			partial_x += 32
+			x = max(x-1,1)
+	
+		if(did_move)
+			update_visual_position()
+			if(my_shuttle.shuttle_controller)
+				my_shuttle.shuttle_controller.ShuttleMovedOnOvermap()
 
 	var/matrix/M = new
 	M.Turn(angle)
 	my_visual.transform = M
-	update_visual_position()
 
 /datum/overmap_object/shuttle/proc/CommandMove(dest_x, dest_y)
 	destination_y = dest_y

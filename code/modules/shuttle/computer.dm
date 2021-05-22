@@ -24,16 +24,6 @@
 /obj/machinery/computer/shuttle/attack_hand(mob/user)
 	return ..()
 
-/obj/machinery/computer/shuttle/proc/GrantOvermapView(mob/user)
-	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	if(!M.shuttle_controller)
-		M.shuttle_controller = new(M)
-		M.possible_destinations = possible_destinations
-	//Camera control
-	if(user.client && !M.shuttle_controller.busy)
-		M.shuttle_controller.SetController(user)
-		return TRUE
-
 /obj/machinery/computer/shuttle/Initialize(mapload)
 	. = ..()
 	if(!mapload)
@@ -84,7 +74,7 @@
 	switch(href_list["task"])
 		if("overmap_view")
 			if(M.my_overmap_object)
-				GrantOvermapView(usr)
+				M.GrantOvermapView(usr)
 				return
 		if("overmap_ship_controls")
 			if(M.my_overmap_object)
@@ -106,6 +96,7 @@
 					to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
 					return
 			if(uses_overmap)
+				M.possible_destinations = possible_destinations
 				M.destination = "overmap"
 				M.mode = SHUTTLE_IGNITING
 				M.setTimer(5 SECONDS)

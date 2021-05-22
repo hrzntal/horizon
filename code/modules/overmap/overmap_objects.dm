@@ -7,6 +7,8 @@
 	my_overmap_object.relaymove(user, direction)
 
 /datum/overmap_object
+	/// Unique integer ID, used for easy communication between the server and clients UI
+	var/id
 	/// The name of the overmpa object
 	var/name = "Overmap object"
 	/// It's x coordinate
@@ -32,6 +34,7 @@
 	var/list/related_levels = list()
 
 /datum/overmap_object/New(datum/overmap_sun_system/passed_system, x_coord, y_coord)
+	SSovermap.RegisterObject(src)
 	x = x_coord
 	y = y_coord
 	current_system = passed_system
@@ -48,6 +51,7 @@
 		my_visual.transform = M
 
 /datum/overmap_object/Destroy()
+	SSovermap.UnregisterObject(src)
 	current_system.overmap_objects -= src
 	if(my_visual)
 		my_visual.my_overmap_object = null

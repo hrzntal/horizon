@@ -2876,6 +2876,7 @@
 #include "code\modules\NTNet\network.dm"
 #include "code\modules\NTNet\relays.dm"
 #include "code\modules\overmap\freeform_docker.dm"
+#include "code\modules\overmap\overmap_lock.dm"
 #include "code\modules\overmap\overmap_objects.dm"
 #include "code\modules\overmap\overmap_shuttle.dm"
 #include "code\modules\overmap\planet_templates.dm"
