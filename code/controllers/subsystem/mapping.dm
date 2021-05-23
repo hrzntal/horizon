@@ -270,6 +270,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	if(config.minetype == "lavaland")
 		var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
 		lavaland_template.LoadTemplate(SSovermap.main_system, rand(5,20), rand(5,20))
+	else if (!isnull(config.minetype) && config.minetype != "none")
+		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
