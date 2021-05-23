@@ -1,7 +1,6 @@
 /datum/overmap_object/shuttle
 	name = "Shuttle"
-	icon = 'icons/overmap/shuttle.dmi'
-	icon_state = "shuttle"
+	visual_type = /obj/effect/abstract/overmap/shuttle
 	var/obj/docking_port/mobile/my_shuttle = null
 	var/angle = 0
 	var/last_relayed_direction
@@ -44,6 +43,9 @@
 	var/target_command = TARGET_IDLE
 
 	var/datum/overmap_shuttle_controller/shuttle_controller
+	var/uses_rotation = TRUE
+	var/shuttle_capability = ALL_SHUTTLE_CAPABILITY
+
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
@@ -56,11 +58,15 @@
 	var/list/dat = list()
 
 	dat += "<center><a href='?src=[REF(src)];task=tab;tab=0' [shuttle_ui_tab == 0 ? "class='linkOn'" : ""]>General</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=1' [shuttle_ui_tab == 1 ? "class='linkOn'" : ""]>Engines</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=2' [shuttle_ui_tab == 2 ? "class='linkOn'" : ""]>Helm</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=3' [shuttle_ui_tab == 3 ? "class='linkOn'" : ""]>Sensors</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=4' [shuttle_ui_tab == 4 ? "class='linkOn'" : ""]>Target</a>"
-	dat += "<a href='?src=[REF(src)];task=tab;tab=5' [shuttle_ui_tab == 5 ? "class='linkOn'" : ""]>Dock</a>"
+	if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
+		dat += "<a href='?src=[REF(src)];task=tab;tab=1' [shuttle_ui_tab == 1 ? "class='linkOn'" : ""]>Engines</a>"
+		dat += "<a href='?src=[REF(src)];task=tab;tab=2' [shuttle_ui_tab == 2 ? "class='linkOn'" : ""]>Helm</a>"
+	if(shuttle_capability & SHUTTLE_CAN_USE_SENSORS)
+		dat += "<a href='?src=[REF(src)];task=tab;tab=3' [shuttle_ui_tab == 3 ? "class='linkOn'" : ""]>Sensors</a>"
+		if(shuttle_capability & SHUTTLE_CAN_USE_TARGET)
+			dat += "<a href='?src=[REF(src)];task=tab;tab=4' [shuttle_ui_tab == 4 ? "class='linkOn'" : ""]>Target</a>"
+	if(shuttle_capability & SHUTTLE_CAN_USE_DOCK)
+		dat += "<a href='?src=[REF(src)];task=tab;tab=5' [shuttle_ui_tab == 5 ? "class='linkOn'" : ""]>Dock</a>"
 	dat += " <a href='?src=[REF(src)];task=refresh'>Refresh</a></center><HR>"
 
 	switch(shuttle_ui_tab)
@@ -130,8 +136,12 @@
 				dat += "<td>[overmap_obj.x]</td>"
 				dat += "<td>[overmap_obj.y]</td>"
 				dat += "<td>[dist]</td>"
-				dat += "<td><a href='?src=[REF(src)];task=sensor;sensor_task=target;target_id=[overmap_obj.id]'[is_target ? "class='linkOn'" : ""]>Target</a><a href='?src=[REF(src)];task=sensor;sensor_task=destination;target_id=[overmap_obj.id]' [is_destination ? "class='linkOn'" : ""]>As Dest.</a></td>"
-				dat += "</tr>"
+				dat += "<td>"
+				if(shuttle_capability & SHUTTLE_CAN_USE_TARGET)
+					dat += "<a href='?src=[REF(src)];task=sensor;sensor_task=target;target_id=[overmap_obj.id]'[is_target ? "class='linkOn'" : ""]>Target</a>"
+				if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
+					dat += "<a href='?src=[REF(src)];task=sensor;sensor_task=destination;target_id=[overmap_obj.id]' [is_destination ? "class='linkOn'" : ""]>As Dest.</a>"
+				dat += "</td></tr>"
 			dat += "</table>"
 
 		if(SHUTTLE_TAB_TARGET)
@@ -169,7 +179,35 @@
 			dat += "<BR> - <a href='?src=[REF(src)];task=target;target_control=command_beam_on_board' [locked_and_calibrated ? "" : "class='linkOff'"]>Beam on Board</a>"
 
 		if(SHUTTLE_TAB_DOCKING)
-			dat += "Emginmes"
+			if(!my_shuttle || is_seperate_z_level)
+				return
+			if(VECTOR_LENGTH(velocity_x, velocity_y) > SHUTTLE_MAXIMUM_DOCKING_SPEED)
+				dat += "<B>Cannot safely dock in high velocities!</B>"
+			else
+				var/list/z_levels = list()
+				var/list/nearby_objects = current_system.GetObjectsInRadius(x,y,1)
+				var/list/freeform_z_levels = list()
+				for(var/i in nearby_objects)
+					var/datum/overmap_object/IO = i
+					for(var/level in IO.related_levels)
+						var/datum/space_level/iterated_space_level = level
+						z_levels["[iterated_space_level.z_value]"] = TRUE
+						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
+			
+				var/list/docks = list()
+				var/list/options = params2list(my_shuttle.possible_destinations)
+				for(var/i in SSshuttle.stationary)
+					var/obj/docking_port/stationary/iterated_dock = i
+					if(z_levels["[iterated_dock.z]"] && (iterated_dock.id in options))
+						docks[iterated_dock.name] = iterated_dock
+	
+				dat += "<B>Designated docks:</B>"
+				for(var/key in docks)
+					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[docks[key].id]'>Dock</a>"
+	
+				dat += "<BR><BR><B>Freeform docking spaces:</B>"
+				for(var/key in freeform_z_levels)
+					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;z_value=[freeform_z_levels[key]]'>Designate Location</a>"
 
 	var/datum/browser/popup = new(user, "overmap_shuttle_control", "Shuttle Control", 400, 440)
 	popup.set_content(dat.Join())
@@ -221,6 +259,8 @@
 
 /datum/overmap_object/shuttle/Topic(href, href_list)
 	if(href_list["pad_topic"])
+		if(!(shuttle_capability & SHUTTLE_CAN_USE_ENGINES))
+			return
 		switch(href_list["pad_topic"])
 			if("nw")
 				InputHelmPadDirection(-1, 1)
@@ -255,7 +295,51 @@
 	switch(href_list["task"])
 		if("tab")
 			shuttle_ui_tab = text2num(href_list["tab"])
+		if("dock")
+			if(!(shuttle_capability & SHUTTLE_CAN_USE_DOCK))
+				return
+			if(VECTOR_LENGTH(velocity_x, velocity_y) > SHUTTLE_MAXIMUM_DOCKING_SPEED)
+				return
+			switch(href_list["dock_control"])
+				if("normal_dock")
+					if(shuttle_controller.busy)
+						return
+					var/dock_id = href_list["dock_id"]
+					var/obj/docking_port/stationary/target_dock = SSshuttle.getDock(dock_id)
+					if(!target_dock)
+						return
+					var/datum/space_level/level_of_dock = SSmapping.z_list[target_dock.z]
+					var/datum/overmap_object/dock_overmap_object = level_of_dock.related_overmap_object
+					if(!dock_overmap_object)
+						return
+					if(!current_system.ObjectsAdjacent(src, dock_overmap_object))
+						return
+					switch(SSshuttle.moveShuttle(my_shuttle.id, dock_id, 1))
+						if(0)
+							shuttle_controller.busy = TRUE
+							shuttle_controller.RemoveCurrentControl(TRUE)
+				if("freeform_dock")
+					if(shuttle_controller.busy)
+						return
+					if(shuttle_controller.freeform_docker)
+						return
+					var/z_level = text2num(href_list["z_value"])
+					if(!z_level)
+						return
+					var/datum/space_level/level_to_freeform = SSmapping.z_list[z_level]
+					if(!level_to_freeform)
+						return
+					var/datum/overmap_object/level_overmap_object = level_to_freeform.related_overmap_object
+					if(!level_overmap_object)
+						return
+					if(!current_system.ObjectsAdjacent(src, level_overmap_object))
+						return
+					shuttle_controller.SetController(usr)
+					shuttle_controller.freeform_docker = new /datum/shuttle_freeform_docker(shuttle_controller, usr, z_level)
+
 		if("target")
+			if(!(shuttle_capability & SHUTTLE_CAN_USE_TARGET))
+				return
 			if(!lock)
 				return
 			switch(href_list["target_control"])
@@ -272,6 +356,8 @@
 				if("command_beam_on_board")
 					target_command = TARGET_BEAM_ON_BOARD
 		if("sensor")
+			if(!(shuttle_capability & SHUTTLE_CAN_USE_SENSORS))
+				return
 			var/id = text2num(href_list["target_id"])
 			if(!id)
 				return
@@ -295,6 +381,8 @@
 					if(hail_msg)
 						hail_msg = strip_html_simple(hail_msg, MAX_BROADCAST_LEN, TRUE)
 		if("helm")
+			if(!(shuttle_capability & SHUTTLE_CAN_USE_ENGINES))
+				return
 			switch(href_list["helm_control"])
 				if("pad")
 					DisplayHelmPad(usr)
@@ -338,78 +426,79 @@
 	return ..()
 
 /datum/overmap_object/shuttle/process(delta_time)
-	var/icon_state_to_update_to = "shuttle"
-	switch(helm_command)
-		if(HELM_MOVE_TO_DESTINATION)
-			if(x == destination_x && y == destination_y)
-				StopMove()
-			else
-				var/target_angle = ATAN2(((destination_y*32)-((y*32)+partial_y)),((destination_x*32)-((x*32)+partial_x)))
-	
-				if(target_angle < 0)
-					target_angle = 360 + target_angle
-	
-				var/my_angle = angle
-				if(my_angle < 0)
-					my_angle = 360 + my_angle
-	
-				var/diff = target_angle - my_angle
-	
-				var/left_turn = FALSE
-				if(diff < 0)
-					diff += 360
-				if(diff > 180)
-					diff = 360 - diff
-					left_turn = TRUE
-	
-	
-				if(!(diff < 3))
-					if(left_turn)
-						angle -= min(diff,10)
-					else
-						angle += min(diff,10)
-	
-				if(angle > 180)
-					angle -= 360
-				else if (angle < -180)
-					angle += 360
-	
-				var/target_angle_in_byond_rad = target_angle
-				if(target_angle > 180)
-					target_angle_in_byond_rad -= 360
-	
-				var/vector_len = VECTOR_LENGTH(velocity_x, velocity_y)
-				if(diff < 180 && vector_len < target_speed)
-					var/added_velocity_x = TEMPLATE_SHIP_VELOCITY * sin(target_angle_in_byond_rad)
-					var/added_velocity_y = TEMPLATE_SHIP_VELOCITY * cos(target_angle_in_byond_rad)
-	
-					if(diff > 10)
-						var/angle_multiplier = 1-(diff/360)
-						added_velocity_x *= angle_multiplier
-						added_velocity_y *= angle_multiplier
+	var/icon_state_to_update_to = SHUTTLE_ICON_IDLE
+	if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
+		switch(helm_command)
+			if(HELM_MOVE_TO_DESTINATION)
+				if(x == destination_x && y == destination_y)
+					StopMove()
+				else
+					var/target_angle = ATAN2(((destination_y*32)-((y*32)+partial_y)),((destination_x*32)-((x*32)+partial_x)))
 		
-					velocity_x += added_velocity_x
-					velocity_y += added_velocity_y
+					if(target_angle < 0)
+						target_angle = 360 + target_angle
 		
-					icon_state_to_update_to = "shuttle_forward"
-				else if (vector_len > target_speed + SHUTTLE_SLOWDOWN_MARGIN)
+					var/my_angle = angle
+					if(my_angle < 0)
+						my_angle = 360 + my_angle
+		
+					var/diff = target_angle - my_angle
+		
+					var/left_turn = FALSE
+					if(diff < 0)
+						diff += 360
+					if(diff > 180)
+						diff = 360 - diff
+						left_turn = TRUE
+		
+		
+					if(!(diff < 3))
+						if(left_turn)
+							angle -= min(diff,10)
+						else
+							angle += min(diff,10)
+		
+					if(angle > 180)
+						angle -= 360
+					else if (angle < -180)
+						angle += 360
+		
+					var/target_angle_in_byond_rad = target_angle
+					if(target_angle > 180)
+						target_angle_in_byond_rad -= 360
+		
+					var/vector_len = VECTOR_LENGTH(velocity_x, velocity_y)
+					if(diff < 180 && vector_len < target_speed)
+						var/added_velocity_x = TEMPLATE_SHIP_VELOCITY * sin(target_angle_in_byond_rad)
+						var/added_velocity_y = TEMPLATE_SHIP_VELOCITY * cos(target_angle_in_byond_rad)
+		
+						if(diff > 10)
+							var/angle_multiplier = 1-(diff/360)
+							added_velocity_x *= angle_multiplier
+							added_velocity_y *= angle_multiplier
+			
+						velocity_x += added_velocity_x
+						velocity_y += added_velocity_y
+			
+						icon_state_to_update_to = SHUTTLE_ICON_FORWARD
+					else if (vector_len > target_speed + SHUTTLE_SLOWDOWN_MARGIN)
+						if(velocity_y)
+							velocity_y *= 0.8
+							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
+						if(velocity_x)
+							velocity_x *= 0.8
+							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
+	
+			if(HELM_FULL_STOP)
+				if(!velocity_x && !velocity_y)
+					helm_command = HELM_IDLE
+				else //Lazy
 					if(velocity_y)
-						velocity_y *= 0.8
-						icon_state_to_update_to = "shuttle_backwards"
+						velocity_y *= 0.7
+						icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
 					if(velocity_x)
-						velocity_x *= 0.8
-						icon_state_to_update_to = "shuttle_backwards"
-
-		if(HELM_FULL_STOP)
-			if(!velocity_x && !velocity_y)
-				helm_command = HELM_IDLE
-			else //Lazy
-				if(velocity_y)
-					velocity_y *= 0.7
-					icon_state_to_update_to = "shuttle_backwards"
-				if(velocity_x)
-					velocity_x *= 0.7
-					icon_state_to_update_to = "shuttle_backwards"
+						velocity_x *= 0.7
+						icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
 
 
 
@@ -425,7 +514,14 @@
 
 	last_relayed_direction = null
 
-	my_visual.icon_state = icon_state_to_update_to
+	var/obj/effect/abstract/overmap/shuttle/shuttle_visual = my_visual
+	switch(icon_state_to_update_to)
+		if(SHUTTLE_ICON_IDLE)
+			shuttle_visual.icon_state = shuttle_visual.shuttle_idle_state
+		if(SHUTTLE_ICON_FORWARD)
+			shuttle_visual.icon_state = shuttle_visual.shuttle_forward_state
+		if(SHUTTLE_ICON_BACKWARD)
+			shuttle_visual.icon_state = shuttle_visual.shuttle_backward_state
 
 	//"FRICTION"
 	var/velocity_length = VECTOR_LENGTH(velocity_x, velocity_y)
@@ -464,12 +560,15 @@
 			if(shuttle_controller)
 				shuttle_controller.ShuttleMovedOnOvermap()
 
-	var/matrix/M = new
-	M.Turn(angle)
-	my_visual.transform = M
+	if(uses_rotation)
+		var/matrix/M = new
+		M.Turn(angle)
+		my_visual.transform = M
 
 /datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user)
 	//Camera control
+	if(!shuttle_controller)
+		return
 	if(user.client && !shuttle_controller.busy)
 		shuttle_controller.SetController(user)
 		return TRUE
@@ -486,4 +585,23 @@
 	last_relayed_direction = direction
 
 /datum/overmap_object/shuttle/station
+	name = "Space Station"
+	visual_type = /obj/effect/abstract/overmap/shuttle/station
 	is_seperate_z_level = TRUE
+	uses_rotation = FALSE
+	shuttle_capability = STATION_SHUTTLE_CAPABILITY
+
+/datum/overmap_object/shuttle/planet
+	name = "Planet"
+	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
+	is_seperate_z_level = TRUE
+	uses_rotation = FALSE
+	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
+
+/datum/overmap_object/shuttle/planet/lavaland
+	name = "Lavaland"
+	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
+
+/datum/overmap_object/shuttle/planet/jungle_planet
+	name = "Jungle Planet"
+	visual_type = /obj/effect/abstract/overmap/shuttle/jungle_planet
