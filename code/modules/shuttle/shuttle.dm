@@ -546,9 +546,21 @@
 		timer = INFINITY
 		var/datum/space_level/S = SSmapping.get_level(z)
 		var/datum/overmap_object/current_overmap_object = S.related_overmap_object
+		var/spawn_x_coord
+		var/spawn_y_coord
+		var/datum/overmap_sun_system/system_to_spawn_in
 		if(!current_overmap_object)
 			WARNING("NO CURRENT OVERMAP OBJECT WHEN ATTEMPT TO GO TO OVERMAP.")
-		var/datum/overmap_object/shuttle/spawned_shuttle = new /datum/overmap_object/shuttle(current_overmap_object.current_system, current_overmap_object.x, current_overmap_object.y)
+			//Fallback to not ruin gameplay
+			spawn_x_coord = 1
+			spawn_y_coord = 1
+			system_to_spawn_in = SSovermap.main_system
+		else
+			spawn_x_coord = current_overmap_object.x
+			spawn_y_coord = current_overmap_object.y
+			system_to_spawn_in = current_overmap_object.current_system
+
+		var/datum/overmap_object/shuttle/spawned_shuttle = new /datum/overmap_object/shuttle(system_to_spawn_in, spawn_x_coord, spawn_y_coord)
 		my_overmap_object = spawned_shuttle
 		spawned_shuttle.my_shuttle = src
 		if(my_overmap_object.shuttle_controller)
