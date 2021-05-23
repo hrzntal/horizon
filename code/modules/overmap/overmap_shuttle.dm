@@ -523,47 +523,72 @@
 		if(SHUTTLE_ICON_BACKWARD)
 			shuttle_visual.icon_state = shuttle_visual.shuttle_backward_state
 
-	//"FRICTION"
-	var/velocity_length = VECTOR_LENGTH(velocity_x, velocity_y)
-	if(velocity_length < SHUTTLE_MINIMUM_VELOCITY)
-		velocity_x = 0
-		velocity_y = 0
-	else
-		velocity_x *= 0.95
-		velocity_y *= 0.95
-
-		var/add_partial_x = round(velocity_x)
-		var/add_partial_y = round(velocity_y)
+	if(velocity_x || velocity_y)
+		var/velocity_length = VECTOR_LENGTH(velocity_x, velocity_y)
+		if(velocity_length < SHUTTLE_MINIMUM_VELOCITY)
+			velocity_x = 0
+			velocity_y = 0
+			if(is_seperate_z_level)
+				update_seperate_z_level_parallax(TRUE)
+		else
+			//"Friction"
+			velocity_x *= 0.95
+			velocity_y *= 0.95
 	
-		partial_x += add_partial_x
-		partial_y += add_partial_y
-		var/did_move = FALSE
-		if(partial_y > 16)
-			did_move = TRUE
-			partial_y -= 32
-			y = min(y+1,world.maxy)
-		else if(partial_y < -16)
-			did_move = TRUE
-			partial_y += 32
-			y = max(y-1,1)
-		if(partial_x > 16)
-			did_move = TRUE
-			partial_x -= 32
-			x = min(x+1,world.maxx)
-		else if(partial_x < -16)
-			did_move = TRUE
-			partial_x += 32
-			x = max(x-1,1)
-	
-		if(did_move)
-			update_visual_position()
-			if(shuttle_controller)
-				shuttle_controller.ShuttleMovedOnOvermap()
+			var/add_partial_x = round(velocity_x)
+			var/add_partial_y = round(velocity_y)
+		
+			partial_x += add_partial_x
+			partial_y += add_partial_y
+			var/did_move = FALSE
+			if(partial_y > 16)
+				did_move = TRUE
+				partial_y -= 32
+				y = min(y+1,world.maxy)
+			else if(partial_y < -16)
+				did_move = TRUE
+				partial_y += 32
+				y = max(y-1,1)
+			if(partial_x > 16)
+				did_move = TRUE
+				partial_x -= 32
+				x = min(x+1,world.maxx)
+			else if(partial_x < -16)
+				did_move = TRUE
+				partial_x += 32
+				x = max(x-1,1)
+		
+			if(did_move)
+				if(is_seperate_z_level)
+					update_seperate_z_level_parallax()
+				update_visual_position()
+				if(shuttle_controller)
+					shuttle_controller.ShuttleMovedOnOvermap()
 
 	if(uses_rotation)
 		var/matrix/M = new
 		M.Turn(angle)
 		my_visual.transform = M
+
+/datum/overmap_object/shuttle/proc/update_seperate_z_level_parallax(reset = FALSE)
+	var/established_direction = null
+	if(!reset)
+		var/absx = abs(velocity_x)
+		var/absy = abs(velocity_y)
+		if(absy > absx)
+			if(velocity_y > 0)
+				established_direction = NORTH
+			else
+				established_direction = SOUTH
+		else
+			if(velocity_x > 0)
+				established_direction = EAST
+			else
+				established_direction = WEST
+
+	for(var/i in related_levels)
+		var/datum/space_level/S = i
+		S.parallax_direction_override = established_direction
 
 /datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user)
 	//Camera control
