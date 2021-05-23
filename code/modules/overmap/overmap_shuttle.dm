@@ -194,7 +194,7 @@
 						z_levels["[iterated_space_level.z_value]"] = TRUE
 						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
 			
-				var/list/docks = list()
+				var/list/obj/docking_port/stationary/docks = list()
 				var/list/options = params2list(my_shuttle.possible_destinations)
 				for(var/i in SSshuttle.stationary)
 					var/obj/docking_port/stationary/iterated_dock = i

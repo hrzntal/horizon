@@ -2984,8 +2984,6 @@
 #include "code\modules\overmap\overmap_visuals.dm"
 #include "code\modules\overmap\planet_templates.dm"
 #include "code\modules\overmap\shuttle_control_component.dm"
-#include "code\modules\overmap\overmap_objects.dm"
-#include "code\modules\overmap\planet_templates.dm"
 #include "code\modules\overmap\sun_system.dm"
 #include "code\modules\paperwork\carbonpaper.dm"
 #include "code\modules\paperwork\clipboard.dm"
