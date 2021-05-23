@@ -605,3 +605,7 @@
 /datum/overmap_object/shuttle/planet/jungle_planet
 	name = "Jungle Planet"
 	visual_type = /obj/effect/abstract/overmap/shuttle/jungle_planet
+
+/datum/overmap_object/shuttle/planet/icebox
+	name = "Ice Planet"
+	visual_type = /obj/effect/abstract/overmap/shuttle/icebox

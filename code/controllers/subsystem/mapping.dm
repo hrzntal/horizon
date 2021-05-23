@@ -252,7 +252,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the station
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new /datum/overmap_object/shuttle/station(SSovermap.main_system, rand(5,20), rand(5,20)))
+	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new config.overmap_object_type(SSovermap.main_system, rand(5,20), rand(5,20)))
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
@@ -267,8 +267,9 @@ Used by the AI doomsday and the self-destruct nuke.
 		++space_levels_so_far
 		add_new_zlevel("Ruins Area [space_levels_so_far]", ZTRAITS_SPACE, overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,20), rand(5,20)))
 	//Load planets
-	var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
-	lavaland_template.LoadTemplate(SSovermap.main_system, rand(5,20), rand(5,20))
+	if(config.minetype == "lavaland")
+		var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
+		lavaland_template.LoadTemplate(SSovermap.main_system, rand(5,20), rand(5,20))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen

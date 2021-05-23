@@ -63,3 +63,13 @@
 	shuttle_backward_state = "jungleplanet"
 	visual_y_offset = -16
 	visual_x_offset = -16
+
+/obj/effect/abstract/overmap/shuttle/icebox
+	name = "Ice planet"
+	icon = 'icons/overmap/64x64.dmi'
+	icon_state = "jungleplanet"
+	shuttle_idle_state = "iceplanet"
+	shuttle_forward_state = "iceplanet"
+	shuttle_backward_state = "iceplanet"
+	visual_y_offset = -16
+	visual_x_offset = -16
