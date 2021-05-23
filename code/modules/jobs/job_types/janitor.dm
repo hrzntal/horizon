@@ -24,6 +24,8 @@
 		/obj/item/lightreplacer = 10
 	)
 
+	required_languages = null
+
 /datum/outfit/job/janitor
 	name = "Janitor"
 	jobtype = /datum/job/janitor

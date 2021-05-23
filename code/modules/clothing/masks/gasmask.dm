@@ -214,6 +214,7 @@
 	name = "carp mask"
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
@@ -227,6 +228,7 @@
 	dog_fashion = null
 	species_exception = list(/datum/species/golem/wood)
 	var/list/tikimask_designs = list()
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/tiki_mask/Initialize(mapload)
 	.=..()
@@ -269,3 +271,18 @@
 	inhand_icon_state = "hunter"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR|HIDESNOUT
+	mutant_variants = NONE
+
+/obj/item/clothing/mask/breath/vox
+	desc = "A close-fitting mask that can be connected to an air supply. This one's got an easily accessible feeding port to be more suitable for the Vox crewmembers."
+	name = "vox breath mask"
+	actions_types = list()
+	flags_cover = NONE
+
+/obj/item/clothing/mask/gas/glass
+	icon = 'icons/horizon/obj/clothing/masks.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/mask.dmi'
+	name = "glass gas mask"
+	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
+	icon_state = "gas_clear"
+	flags_inv = HIDEEYES

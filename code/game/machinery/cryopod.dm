@@ -3,8 +3,9 @@
 /*
  * Cryogenic refrigeration unit. Basically a despawner.
  * Stealing a lot of concepts/code from sleepers due to massive laziness.
- * The despawn tick will only fire if it's been more than time_till_despawned ticks
- * since time_entered, which is world.time when the occupant moves in.
+ * The despawn tick will only fire if it's been more than
+ * slow_despawn_time or fast_despawn_time (depending on if mob self-cryo'd/is SSD)
+ * ticks since time_entered, which is world.time when the occupant moves in.
  * ~ Zuhayr
  */
 GLOBAL_LIST_EMPTY(cryopod_computers)
@@ -16,7 +17,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	desc = "An interface between crew and the cryogenic storage oversight systems."
 	icon = 'icons/obj/machines/cryopod.dmi'
 	icon_state = "cellconsole_1"
-	// circuit = /obj/item/circuitboard/cryopodcontrol
+	circuit = /obj/item/circuitboard/computer/cryopodcontrol
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
@@ -70,6 +71,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	return data
 
+/obj/item/circuitboard/computer/cryopodcontrol
+	name = "Cryogenic Oversight Console (Computer Board)"
+	build_path = "/obj/machinery/computer/cryopod"
+
 // Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
@@ -83,8 +88,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
 
-	/// Time until despawn when a mob enters a cryopod. You cannot other people in pods unless they're catatonic.
-	var/time_till_despawn = 30 SECONDS
+	/// Time until despawn when a mob enters a cryopod.
+	var/slow_despawn_time = 10 MINUTES
+	var/fast_despawn_time = 2 MINUTES
 	/// Cooldown for when it's now safe to try an despawn the player.
 	COOLDOWN_DECLARE(despawn_world_time)
 
@@ -128,8 +134,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/mob/living/mob_occupant = occupant
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(occupant, "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.</b></span>")
-
-		COOLDOWN_START(src, despawn_world_time, time_till_despawn)
+		if(mob_occupant.client || !mob_occupant.key)
+			COOLDOWN_START(src, despawn_world_time, fast_despawn_time) // We put ourselves into cryo / are SSD (no key assigned)
+		else
+			COOLDOWN_START(src, despawn_world_time, slow_despawn_time) // We were put into cryo
 	icon_state = "cryopod"
 
 /obj/machinery/cryopod/open_machine()
@@ -203,12 +211,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 						update_objective.owner.announce_objectives()
 				qdel(objective)
 
-/obj/machinery/cryopod/proc/should_preserve_item(obj/item/item)
-	for(var/datum/objective_item/steal/possible_item in GLOB.possible_items)
-		if(istype(item, possible_item.targetitem))
-			return TRUE
-	return FALSE
-
 // This function can not be undone; do not call this unless you are sure
 /obj/machinery/cryopod/proc/despawn_occupant()
 	var/mob/living/mob_occupant = occupant
@@ -249,24 +251,20 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	visible_message("<span class='notice'>[src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
-#if MIN_COMPILER_VERSION >= 514
-	#warn Please replace the loop below this warning with an `as anything` loop.
-#endif
-	for(var/mob_content in mob_occupant)
-		var/obj/item/item_content = mob_content
-		if(!istype(item_content))
-			continue
-
-		mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
-
 	// Ghost and delete the mob.
 	if(!mob_occupant.get_ghost(TRUE))
-		if(world.time < 15 MINUTES) // before the 15 minute mark
-			mob_occupant.ghostize(FALSE) // Players despawned too early may not re-enter the game
-		else
-			mob_occupant.ghostize(TRUE)
+		mob_occupant.ghostize(FALSE)
 
 	handle_objectives()
+
+	for(var/mob_content as anything in mob_occupant)
+		var/obj/item/item = mob_content
+		if(!istype(item))
+			continue
+
+		if(!QDELETED(item))
+			qdel(item)
+
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
@@ -291,6 +289,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(target == user && (tgalert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", "Yes", "No") != "Yes"))
+		return
+
+	if(user != target && round((world.time - target.lastclienttime) / (1 MINUTES), 1) <= CONFIG_GET(number/cryo_min_ssd_time))
+		to_chat(user, "<span class='danger'>You can't put [target] into [src]. They might wake up soon.</span>")
 		return
 
 	if(target == user)

@@ -299,6 +299,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
+#define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
+#define TRAIT_NO_HUSK				"no_husk"
+
 /// This atom can ignore the "is on a turf" check for simple AI datum attacks, allowing them to attack from bags or lockers as long as any other conditions are met
 #define TRAIT_AI_BAGATTACK "bagattack"
 
@@ -629,6 +632,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
+
+/// Trait from emote module
+#define TRAIT_EXCITABLE	"wagwag"
 
 ///Traits given by station traits
 #define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"

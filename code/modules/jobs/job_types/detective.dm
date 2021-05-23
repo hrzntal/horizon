@@ -23,6 +23,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_DETECTIVE
 
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
 	mail_goodies = list(
 		/obj/item/storage/fancy/cigarettes = 25,
 		/obj/item/ammo_box/c38 = 25,

@@ -53,6 +53,7 @@
 	inhand_icon_state = "pirate"
 	allowed = list(/obj/item/melee/transforming/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/reagent_containers/food/drinks/bottle/rum)
 	species_exception = list(/datum/species/golem)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/pirate/armored
 	armor = list(MELEE = 30, BULLET = 50, LASER = 30,ENERGY = 40, BOMB = 30, BIO = 30, RAD = 30, FIRE = 60, ACID = 75)
@@ -313,6 +314,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	clothing_flags = THICKMATERIAL
 	hoodtype = /obj/item/clothing/head/hooded/bee_hood
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/bee_hood
 	name = "bee hood"
@@ -373,6 +375,7 @@
 	equip_delay_self = 50
 	strip_delay = 60
 	breakouttime = 5 MINUTES
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -380,6 +383,7 @@
 	icon_state = "ianshirt"
 	inhand_icon_state = "ianshirt"
 	species_exception = list(/datum/species/golem)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/nerdshirt
 	name = "gamer shirt"
@@ -387,18 +391,21 @@
 	icon_state = "nerdshirt"
 	inhand_icon_state = "nerdshirt"
 	species_exception = list(/datum/species/golem)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/vapeshirt //wearing this is asking to get beat.
 	name = "Vape Naysh shirt"
 	desc = "A cheap white T-shirt with a big tacky \"VN\" on the front, Why would you wear this unironically?"
 	icon_state = "vapeshirt"
 	inhand_icon_state = "vapeshirt"
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/striped_sweater
 	name = "striped sweater"
 	desc = "Reminds you of someone, but you just can't put your finger on it..."
 	icon_state = "waldo_shirt"
 	inhand_icon_state = "waldo_shirt"
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/jacket
 	name = "bomber jacket"
@@ -410,6 +417,7 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	species_exception = list(/datum/species/golem)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/jacket/leather
 	name = "leather jacket"
@@ -451,6 +459,7 @@
 	icon_state = "militaryjacket"
 	inhand_icon_state = "militaryjacket"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/gun/ballistic/automatic/pistol, /obj/item/gun/ballistic/revolver, /obj/item/radio)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/jacket/letterman
 	name = "letterman jacket"
@@ -513,6 +522,7 @@
 	icon_state = "pharoah"
 	inhand_icon_state = "pharoah"
 	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/caution
 	name = "wet floor sign"
@@ -530,6 +540,7 @@
 	attack_verb_simple = list("warn", "caution", "smash")
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	species_exception = list(/datum/species/golem)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/changshan_red
 	name = "red changshan"
@@ -693,3 +704,112 @@
 	inhand_icon_state = "DutchJacket"
 	body_parts_covered = ARMS
 
+/obj/item/clothing/suit/hooded/wintercoat/aformal
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	name = "assistant's formal winter coat"
+	desc = "A black button up winter coat."
+	icon_state = "coataformal"
+	inhand_icon_state = "coataformal"
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter,/obj/item/clothing/gloves/color/yellow)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/aformal
+
+/obj/item/clothing/head/hooded/winterhood/aformal
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	desc = "A black winter coat hood."
+	icon_state = "winterhood_aformal"
+
+/obj/item/clothing/suit/hooded/wintercoat/ratvar
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	name = "ratvarian winter coat"
+	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
+	icon_state = "coatratvar"
+	inhand_icon_state = "coatratvar"
+	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/ratvar
+
+/obj/item/clothing/head/hooded/winterhood/ratvar
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	icon_state = "winterhood_ratvar"
+	desc = "A brass-plated winter hood that glows softly, hinting at its divinity."
+	light_range = 3
+	light_power = 1
+	light_color = "#B18B25" //clockwork slab background top color
+
+/obj/item/clothing/suit/hooded/wintercoat/narsie
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	name = "narsian winter coat"
+	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
+	icon_state = "coatnarsie"
+	inhand_icon_state = "coatnarsie"
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "rad" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/restraints/legcuffs/bola/cult,/obj/item/melee/cultblade,/obj/item/melee/cultblade/dagger,/obj/item/reagent_containers/glass/beaker/unholywater,/obj/item/cult_shift,/obj/item/flashlight/flare/culttorch)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/narsie
+
+/obj/item/clothing/head/hooded/winterhood/narsie
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	desc = "A black winter hood full of whispering secrets that only She shall ever know."
+	icon_state = "winterhood_narsie"
+
+/obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
+	name = "brass winter coat"
+	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red piece of plastic as an inset."
+	icon_state = "coatratvar"
+	inhand_icon_state = "coatratvar"
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+
+/obj/item/clothing/suit/hooded/wintercoat/narsie/fake
+	name = "runed winter coat"
+	desc = "A dusty button up winter coat in the tones of oblivion and ash. The zipper pull looks like a single drop of blood."
+	icon_state = "coatnarsie"
+	inhand_icon_state = "coatnarsie"
+	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+
+/obj/item/clothing/suit/flakjack
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	name = "flak jacket"
+	desc = "A dilapidated jacket made of a supposedly bullet-proof material (Hint: It isn't.). Smells faintly of napalm."
+	icon_state = "flakjack"
+	inhand_icon_state = "redtag"
+	blood_overlay_type = "armor"
+	body_parts_covered = CHEST
+	resistance_flags = NONE
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/cloak/david
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	name = "red cloak"
+	icon_state = "goliath_cloak"
+	desc = "Ever wanted to look like a badass without ANY effort? Try this nanotrasen brand red cloak, perfect for kids"
+	hoodtype = /obj/item/clothing/head/hooded/cloakhood/david
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/cloakhood/david
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "red cloak hood"
+	icon_state = "golhood"
+	desc = "conceal your face in shame with this nanotrasen brand hood"
+	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/wornshirt
+	name = "worn shirt"
+	desc = "A worn out (or perhaps just baggy), curiously comfortable t-shirt."
+	icon = 'icons/horizon/obj/clothing/suits.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/suit.dmi'
+	icon_state = "wornshirt"
+	inhand_icon_state = "labcoat"
+	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE

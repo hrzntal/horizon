@@ -26,6 +26,8 @@
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	bounty_types = CIV_JOB_ENG
 
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+
 	family_heirlooms = list(/obj/item/clothing/head/hardhat/white, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
 
 	mail_goodies = list(

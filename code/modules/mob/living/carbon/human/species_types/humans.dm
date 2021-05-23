@@ -1,9 +1,9 @@
 /datum/species/human
 	name = "Human"
 	id = "human"
-	default_color = "FFFFFF"
+	default_color = "FFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
-	mutant_bodyparts = list("wings" = "None")
+	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = GROSS | RAW | CLOTH

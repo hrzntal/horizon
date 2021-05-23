@@ -3,9 +3,16 @@
 	id = "moth"
 	say_mod = "flutters"
 	default_color = "00FF00"
-	species_traits = list(LIPS, HAS_FLESH, HAS_BONE, HAS_MARKINGS, TRAIT_ANTENNAE)
+	species_traits = list(
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		HAS_MARKINGS,
+		TRAIT_ANTENNAE,
+		MUTCOLORS,
+	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list("moth_wings" = "Plain", "moth_antennae" = "Plain", "moth_markings" = "None")
+	default_mutant_bodyparts = list("wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -21,6 +28,7 @@
 	has_innate_wings = TRUE
 	payday_modifier = 0.75
 	family_heirlooms = list(/obj/item/flashlight/lantern/heirloom_moth)
+	limbs_icon = 'icons/mob/species/moth_parts_greyscale.dmi'
 
 /datum/species/moth/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
 	. = ..()
@@ -39,6 +47,7 @@
 
 	return randname
 
+/* Remind Azarak later to rewrite this for the new system
 /datum/species/moth/handle_fire(mob/living/carbon/human/H, delta_time, times_fired, no_protection = FALSE)
 	. = ..()
 	if(.) //if the mob is immune to fire, don't burn wings off.
@@ -60,6 +69,7 @@
 			QDEL_NULL(fly)
 			H.dna.features["wings"] = "None"
 		handle_mutant_bodyparts(H)
+*/
 
 /datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	. = ..()
@@ -87,6 +97,7 @@
 	human_mob.dna.features["moth_wings"] = wings
 	human_mob.update_body()
 
+/* Related to the fire proc above
 /datum/species/moth/spec_fully_heal(mob/living/carbon/human/H)
 	. = ..()
 	if(H.dna.features["original_moth_wings"] != null)
@@ -101,3 +112,20 @@
 	if(H.dna.features["original_moth_antennae"] == null && H.dna.features["moth_antennae"] == "Burnt Off")
 		H.dna.features["moth_antennae"] = "Plain"
 	handle_mutant_bodyparts(H)
+*/
+
+/datum/species/moth/get_random_body_markings(list/passed_features)
+	var/name = "None"
+	var/list/candidates = GLOB.body_marking_sets.Copy()
+	for(var/candi in candidates)
+		var/datum/body_marking_set/setter = GLOB.body_marking_sets[candi]
+		if(setter.recommended_species && !(id in setter.recommended_species))
+			candidates -= candi
+	if(length(candidates))
+		name = pick(candidates)
+	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
+	var/list/markings = list()
+	if(BMS)
+		markings = assemble_body_markings_from_set(BMS, passed_features, src)
+	return markings
+

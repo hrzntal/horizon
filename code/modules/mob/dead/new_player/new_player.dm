@@ -130,6 +130,7 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
+		client.prefs.needs_update = TRUE
 		client.prefs.ShowChoices(src)
 		return TRUE
 
@@ -262,6 +263,12 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "You don't have the required languages for [jobtitle]."
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -285,6 +292,12 @@
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
 		return JOB_UNAVAILABLE_PLAYTIME
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE

@@ -27,3 +27,5 @@
 		changeling.regain_powers()
 
 	med_hud_set_status()
+
+	set_ssd_indicator(FALSE)

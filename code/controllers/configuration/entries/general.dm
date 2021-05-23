@@ -515,3 +515,6 @@
 
 /datum/config_entry/flag/file_game_log
 	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/number/cryo_min_ssd_time
+	config_entry_value = 15

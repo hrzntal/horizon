@@ -60,7 +60,7 @@
 
 	var/list/mind_traits // Traits added to the mind of the mob assigned this job
 
-	///Lazylist of traits added to the liver of the mob assigned this job (used for the classic "cops heal from donuts" reaction, among others)
+	/// Lazylist of traits added to the liver of the mob assigned this job (used for the classic "cops heal from donuts" reaction, among others)
 	var/list/liver_traits = null
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
@@ -75,17 +75,32 @@
 	/// If this job's mail goodies compete with generic goodies.
 	var/exclusive_mail_goodies = FALSE
 
-	///Bitfield of departments this job belongs wit
+	/// Bitfield of departments this job belongs wit
 	var/departments = NONE
 
 	/// Should this job be allowed to be picked for the bureaucratic error event?
 	var/allow_bureaucratic_error = TRUE
 
-	///Is this job affected by weird spawns like the ones from station traits
+	/// Is this job affected by weird spawns like the ones from station traits
 	var/random_spawns_possible = TRUE
 
 	/// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
+
+	/// With this set to TRUE, the loadout will be applied before a job clothing will be
+	var/no_dresscode
+	/// Whether the job can use the loadout system
+	var/loadout = TRUE
+	/// List of banned quirks in their names(dont blame me, that's how they're stored), players can't join as the job if they have the quirk. Associative for the purposes of performance
+	var/list/banned_quirks
+	/// A list of slots that can't have loadout items assigned to them if no_dresscode is applied, used for important items such as ID, PDA, backpack and headset
+	var/list/blacklist_dresscode_slots
+	/// Whitelist of allowed species for this job. If not specified then all roundstart races can be used. Associative with TRUE
+	var/list/species_whitelist
+	/// Blacklist of species for this job.
+	var/list/species_blacklist
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
+	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
 
 /datum/job/New()
 	. = ..()
@@ -171,6 +186,20 @@
 	if(!visualsOnly)
 		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)
+		// People get extra cash based on how wealthy their backgrounds are
+		if(preference_source?.prefs)
+			var/cultural_cash = 0
+			for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_FACTION, CULTURE_LOCATION))
+				var/datum/cultural_info/cult
+				switch(cultural_thing)
+					if(CULTURE_CULTURE)
+						cult = GLOB.culture_cultures[preference_source.prefs.pref_culture]
+					if(CULTURE_LOCATION)
+						cult = GLOB.culture_locations[preference_source.prefs.pref_location]
+					if(CULTURE_FACTION)
+						cult = GLOB.culture_factions[preference_source.prefs.pref_faction]
+				cultural_cash += bank_account.account_job.paycheck * cult.economic_power
+			bank_account.adjust_money(cultural_cash)
 		H.account_id = bank_account.account_id
 
 	//Equip the rest of the gear
@@ -313,3 +342,37 @@
 /// An overridable getter for more dynamic goodies.
 /datum/job/proc/get_mail_goodies(mob/recipient)
 	return mail_goodies
+
+//Warden and regular officers add this result to their get_access()
+/datum/job/proc/check_config_for_sec_maint()
+	if(CONFIG_GET(flag/security_has_maint_access))
+		return list(ACCESS_MAINT_TUNNELS)
+	return list()
+
+/datum/job/proc/has_banned_quirk(datum/preferences/pref)
+	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)
+		return FALSE
+	if(banned_quirks)
+		for(var/Q in pref.all_quirks)
+			if(banned_quirks[Q])
+				return TRUE
+	return FALSE
+
+/datum/job/proc/has_banned_species(datum/preferences/pref)
+	var/my_id = pref.pref_species.id
+	if(species_whitelist && !species_whitelist[my_id])
+		return TRUE
+	else if(!GLOB.roundstart_races[my_id])
+		return TRUE
+	if(species_blacklist && species_blacklist[my_id])
+		return TRUE
+	return FALSE
+
+/datum/job/proc/has_required_languages(datum/preferences/pref)
+	if(!required_languages)
+		return TRUE
+	for(var/lang in required_languages)
+		//Doesnt have language, or the required "level" is too low (understood, while needing spoken)
+		if(!pref.languages[lang] || pref.languages[lang] < required_languages[lang])
+			return FALSE
+	return TRUE

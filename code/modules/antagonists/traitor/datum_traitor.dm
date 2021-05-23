@@ -24,12 +24,18 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
 	hijack_speed = 0.5 //10 seconds per hijack stage by default
+	uses_ambitions = TRUE
 	var/employer = "The Syndicate"
 	var/give_objectives = TRUE
 	var/should_give_codewords = TRUE
 	var/should_equip = TRUE
 
 	var/datum/contractor_hub/contractor_hub
+
+
+/datum/antagonist/traitor/ambitions_add()
+	if(should_equip)
+		equip()
 
 /datum/antagonist/traitor/on_gain()
 	owner.special_role = job_rank
@@ -57,7 +63,7 @@
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
-	objectives.Cut()
+	objectives.Add(new /datum/objective/ambitions())
 
 	var/is_hijacker = FALSE
 	var/objective_count = 0
@@ -142,6 +148,7 @@
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
+	..()
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()

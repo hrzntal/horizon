@@ -11,6 +11,7 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	allowed = list()
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 0, ACID = 0)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/wintercoat/Initialize()
 	. = ..()
@@ -37,6 +38,7 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 0, ACID = 0)
+	mutant_variants = NONE
 
 // CentCom
 /obj/item/clothing/suit/hooded/wintercoat/centcom
@@ -83,7 +85,7 @@
 	armor = list(MELEE = 10, BULLET = 15, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 35)
 	allowed = list(
 		/obj/item/melee/classic_baton/telescopic,
-	)	
+	)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/hop
 
 /obj/item/clothing/head/hooded/winterhood/hop
@@ -202,12 +204,12 @@
 	inhand_icon_state = "coatcmo"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, RAD = 0, FIRE = 20, ACID = 30)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical/cmo
-	
+
 /obj/item/clothing/suit/hooded/wintercoat/medical/cmo/Initialize()
 	. = ..()
 	allowed += list(
 		/obj/item/melee/classic_baton/telescopic,
-	)	
+	)
 
 /obj/item/clothing/head/hooded/winterhood/medical/cmo
 	desc = "A blue winter coat hood."
@@ -285,12 +287,12 @@
 	inhand_icon_state = "coatrd"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 20, BIO = 0, RAD = 0, FIRE = 30, ACID = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/science/rd
-	
+
 /obj/item/clothing/suit/hooded/wintercoat/science/rd/Initialize()
 	. = ..()
 	allowed += list(
 		/obj/item/melee/classic_baton/telescopic,
-	)		
+	)
 
 /obj/item/clothing/head/hooded/winterhood/science/rd
 	desc = "A white winter coat hood. It smells faintly of hair gel."
@@ -355,7 +357,7 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/classic_baton/telescopic,
-	)		
+	)
 
 /obj/item/clothing/head/hooded/winterhood/engineering/ce
 	desc = "A white winter coat hood. Feels surprisingly heavy. The tag says that it's not child safe."

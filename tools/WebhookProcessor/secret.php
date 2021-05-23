@@ -16,7 +16,7 @@ $repoOwnerAndName = "tgstation/tgstation";
 //Auto update settings
 $enable_live_tracking = true;	//auto update this file from the repository
 $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
-$tracked_branch = "master";
+$tracked_branch = "main";
 
 //PR balance settings.
 $trackPRBalance = true;	//set this to false to disable PR balance tracking

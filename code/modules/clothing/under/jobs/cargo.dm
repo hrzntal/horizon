@@ -16,6 +16,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/cargo/tech
 	name = "cargo technician's jumpsuit"
@@ -35,6 +36,7 @@
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/cargo/miner
 	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."

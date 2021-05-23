@@ -124,7 +124,7 @@
 	var/earflaps = TRUE
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-
+	mutant_variants = NONE
 	dog_fashion = /datum/dog_fashion/head/ushanka
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
@@ -224,6 +224,7 @@
 	worn_icon_state = "wig"
 	flags_inv = HIDEHAIR
 	color = "#000"
+	mutant_variants = NONE
 	var/hairstyle = "Very Long Hair"
 	var/adjustablecolor = TRUE //can color be changed manually?
 

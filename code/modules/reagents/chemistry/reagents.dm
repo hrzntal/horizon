@@ -99,6 +99,10 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	///The amount a robot will pay for a glass of this (20 units but can be higher if you pour more, be frugal!)
 	var/glass_price
 
+	///What can process this? REAGENT_ORGANIC, REAGENT_SYNTHETIC, or REAGENT_ORGANIC | REAGENT_SYNTHETIC?. We'll assume by default that it affects organics.
+	var/process_flags = REAGENT_ORGANIC
+	///The icon override used for glass sprites, needed for modularity
+	var/glass_icon
 
 /datum/reagent/New()
 	SHOULD_CALL_PARENT(TRUE)

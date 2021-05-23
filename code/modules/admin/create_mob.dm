@@ -26,16 +26,11 @@
 	H.dna.blood_type = random_blood_type()
 
 	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
-	H.dna.features["mcolor"] = random_short_color()
-	H.dna.features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
-	H.dna.features["tail_lizard"] = pick(GLOB.tails_list_lizard)
-	H.dna.features["snout"] = pick(GLOB.snouts_list)
-	H.dna.features["horns"] = pick(GLOB.horns_list)
-	H.dna.features["frills"] = pick(GLOB.frills_list)
-	H.dna.features["spines"] = pick(GLOB.spines_list)
-	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
-	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
-	H.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_list)
+	H.dna.features = H.dna.species.get_random_features()
+	H.dna.mutant_bodyparts = H.dna.species.get_random_mutant_bodyparts(H.dna.features)
+	H.dna.body_markings = H.dna.species.get_random_body_markings(H.dna.features)
+	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
+	H.dna.species.body_markings = H.dna.body_markings.Copy()
 
 	H.update_body()
 	H.update_hair()

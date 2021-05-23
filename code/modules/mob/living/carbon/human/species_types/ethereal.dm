@@ -31,6 +31,8 @@
 	bodytemp_cold_damage_limit = (T20C - 10) // about 10c
 	hair_color = "fixedmutcolor"
 	hair_alpha = 140
+	can_have_genitals = FALSE
+	can_augment = FALSE
 	var/current_color
 	var/EMPeffect = FALSE
 	var/emageffect = FALSE

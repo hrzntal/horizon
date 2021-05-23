@@ -26,6 +26,8 @@
 
 	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
 
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
 	mail_goodies = list(
 		/obj/item/card/id/advanced/silver = 10,
 		/obj/item/stack/sheet/bone = 5

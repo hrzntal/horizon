@@ -997,3 +997,10 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/area/target_area = get_area(target)
 
 	return (istype(user_area, dropoff) && istype(target_area, dropoff))
+
+/datum/objective/ambitions
+	name = "ambitions"
+	explanation_text = "Open up ambitions from the IC tab and craft your unique antagonistic story."
+
+/datum/objective/ambitions/check_completion()
+	return TRUE

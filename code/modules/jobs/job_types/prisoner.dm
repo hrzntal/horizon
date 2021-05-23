@@ -20,6 +20,8 @@
 
 	family_heirlooms = list(/obj/item/pen/blue)
 
+	required_languages = null
+
 /datum/outfit/job/prisoner
 	name = "Prisoner"
 	jobtype = /datum/job/prisoner

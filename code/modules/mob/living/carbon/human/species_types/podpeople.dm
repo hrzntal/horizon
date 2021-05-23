@@ -1,8 +1,8 @@
 /datum/species/pod
 	// A mutation caused by a human being ressurected in a revival pod. These regain health in light, and begin to wither in darkness.
-	name = "Podperson"
+	name = "Primal Podperson"
 	id = "pod"
-	default_color = "59CE00"
+	default_color = "5C0"
 	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -23,6 +23,11 @@
 	liked_food = VEGETABLES | FRUIT | GRAIN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/plant
+	always_customizable = TRUE
+
+	cultures = list(/datum/cultural_info/culture/lavaland)
+	locations = list(/datum/cultural_info/location/stateless)
+	factions = list(/datum/cultural_info/faction/none)
 
 /datum/species/pod/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.stat == DEAD)
@@ -48,3 +53,14 @@
 		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
+
+/datum/species/pod/podweak
+	name = "Podperson"
+	id = "podweak"
+	limbs_id = "pod"
+	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
+	default_mutant_bodyparts = list()
+
+	cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
+	locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
+	factions = list(FACTIONS_GENERIC, FACTIONS_HUMAN)

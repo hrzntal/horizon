@@ -17,6 +17,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/captain/suit
 	name = "captain's suit"
@@ -33,6 +34,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/captain/parade
 	name = "captain's parade uniform"

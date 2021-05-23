@@ -278,7 +278,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 
 /* Helper procs for building detailed log lines */
-/proc/key_name(whom, include_link = null, include_name = TRUE)
+/proc/key_name(whom, include_link = null, include_name = TRUE, message_link = FALSE)
 	var/mob/M
 	var/client/C
 	var/key
@@ -333,12 +333,15 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		include_link = FALSE
 
 	if(key)
+		if(include_link && !message_link)
+			. += "<a href='?_src_=holder;[HrefToken(TRUE)];adminplayeropts=[REF(M)]'>"
+
 		if(C?.holder && C.holder.fakekey && !include_name)
-			if(include_link)
+			if(include_link && message_link)
 				. += "<a href='?priv_msg=[C.findStealthKey()]'>"
 			. += "Administrator"
 		else
-			if(include_link)
+			if(include_link && message_link)
 				. += "<a href='?priv_msg=[ckey]'>"
 			. += key
 		if(!C)
@@ -360,8 +363,14 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 	return .
 
+/proc/key_name_pm(whom, include_link = null, include_name = TRUE)
+	return key_name(whom, include_link, include_name, TRUE)
+
 /proc/key_name_admin(whom, include_name = TRUE)
 	return key_name(whom, TRUE, include_name)
+
+/proc/key_name_admin_pm(whom, include_name = TRUE)
+	return key_name(whom, TRUE, include_name, TRUE)
 
 /proc/loc_name(atom/A)
 	if(!istype(A))

@@ -15,6 +15,7 @@
 	allow_bureaucratic_error = FALSE
 	departments = DEPARTMENT_SILICON
 	random_spawns_possible = FALSE
+	loadout = FALSE
 	var/do_special_check = TRUE
 
 /datum/job/ai/equip(mob/living/carbon/human/H, visualsOnly, announce, latejoin, datum/outfit/outfit_override, client/preference_source = null)

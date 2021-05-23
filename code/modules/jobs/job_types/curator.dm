@@ -18,6 +18,8 @@
 
 	family_heirlooms = list(/obj/item/pen/fountain, /obj/item/storage/pill_bottle/dice)
 
+	required_languages = null
+
 /datum/outfit/job/curator
 	name = "Curator"
 	jobtype = /datum/job/curator

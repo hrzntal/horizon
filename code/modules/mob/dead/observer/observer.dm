@@ -296,6 +296,7 @@ Works together with spawning an observer, noted above.
 	if(. && can_reenter_corpse)
 		var/mob/dead/observer/ghost = .
 		ghost.mind.current?.med_hud_set_status()
+	set_ssd_indicator(FALSE)
 
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.

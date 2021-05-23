@@ -71,6 +71,7 @@
 
 /obj/item/clothing/head/helmet/sec
 	can_flashlight = TRUE
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/sec/attackby(obj/item/I, mob/user, params)
 	if(issignaler(I))
@@ -192,6 +193,7 @@
 	strip_delay = 80
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/police
 	name = "police officer's hat"
@@ -266,6 +268,7 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/redtaghelm
 	name = "red laser tag helmet"

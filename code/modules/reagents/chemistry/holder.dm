@@ -697,6 +697,28 @@
 	if(!owner)
 		owner = reagent.holder.my_atom
 
+	//Check if this mob's species is set and can process this type of reagent
+	if(ishuman(owner))
+		var/mob/living/carbon/human/human_owner = owner
+		var/can_process = FALSE
+		//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+		if(human_owner.dna && human_owner.dna.species.reagent_flags)
+			var/owner_flags = human_owner.dna.species.reagent_flags
+			if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+				can_process = TRUE
+			if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+				can_process = TRUE
+
+		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+		if(!can_process)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+	else
+		if(reagent.process_flags == REAGENT_SYNTHETIC)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+
 	if(owner && reagent)
 		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
 			return

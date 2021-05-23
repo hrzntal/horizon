@@ -32,6 +32,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 /obj/item/bodypart/r_arm/robot
 	name = "cyborg right arm"
@@ -55,6 +56,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 /obj/item/bodypart/l_leg/robot
 	name = "cyborg left leg"
@@ -78,6 +80,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 /obj/item/bodypart/r_leg/robot
 	name = "cyborg right leg"
@@ -101,6 +104,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 /obj/item/bodypart/chest/robot
 	name = "cyborg torso"
@@ -121,6 +125,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 	var/wired = FALSE
 	var/obj/item/stock_parts/cell/cell = null
@@ -224,6 +229,7 @@
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
+	organic_render = FALSE
 
 	var/obj/item/assembly/flash/handheld/flash1 = null
 	var/obj/item/assembly/flash/handheld/flash2 = null
@@ -334,6 +340,22 @@
 	brute_reduction = 0
 	burn_reduction = 0
 	max_damage = 20
+
+/obj/item/bodypart/l_arm/robot/weak
+	brute_reduction = 0
+	burn_reduction = 0
+
+/obj/item/bodypart/r_arm/robot/weak
+	brute_reduction = 0
+	burn_reduction = 0
+
+/obj/item/bodypart/l_leg/robot/weak
+	brute_reduction = 0
+	burn_reduction = 0
+
+/obj/item/bodypart/r_leg/robot/weak
+	brute_reduction = 0
+	burn_reduction = 0
 
 
 #undef ROBOTIC_LIGHT_BRUTE_MSG

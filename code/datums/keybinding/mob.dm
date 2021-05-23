@@ -72,7 +72,7 @@
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent
-	hotkey_keys = list("C")
+	hotkey_keys = list("Alt")
 	name = "toggle_move_intent"
 	full_name = "Hold to toggle move intent"
 	description = "Held down to cycle to the other move intent, release to cycle back"
@@ -233,7 +233,7 @@
 	return TRUE
 
 /datum/keybinding/mob/prevent_movement
-	hotkey_keys = list("Alt")
+	hotkey_keys = list("Ctrl")
 	name = "block_movement"
 	full_name = "Block movement"
 	description = "Prevents you from moving"
@@ -250,3 +250,28 @@
 	if(.)
 		return
 	user.movement_locked = FALSE
+
+/datum/keybinding/mob/pixel_shift
+	hotkey_keys = list("Unbound")
+	name = "pixel_shift"
+	full_name = "Pixel Shift"
+	description = "Shift your characters offset."
+	category = CATEGORY_MOVEMENT
+	keybind_signal = "keybinding_mob_pixelshift" //this isnt even needed but someone didnt implement a proper check on
+												// /datum/keybinding/New() despite the CRASH message saying otherwise
+
+/datum/keybinding/mob/pixel_shift/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/M = user.mob
+	M.shifting = TRUE
+	return TRUE
+
+/datum/keybinding/mob/pixel_shift/up(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/M = user.mob
+	M.shifting = FALSE
+	return TRUE

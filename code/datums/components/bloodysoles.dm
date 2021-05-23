@@ -229,8 +229,6 @@
 	parent_atom = parent
 	wielder = parent
 
-	if(!bloody_feet)
-		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
 
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
@@ -276,6 +274,13 @@
 	..()
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
+	//this is done in on_step_blood because both update_icon() and initialize() are called before copy_to() is called, which means we wouldn't be able to see if they had digitigrade legs
+	if(!bloody_feet)
+		var/mob/living/carbon/H = parent
+		if (DIGITIGRADE in H.dna.species.species_traits)
+			bloody_feet = mutable_appearance('icons/horizon/mob/shoeblood/blood.dmi', "shoeblood", SHOES_LAYER)
+		else
+			bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
 	if(wielder.num_legs < 2)
 		return
 

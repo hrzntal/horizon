@@ -1,7 +1,7 @@
 /datum/species/vampire
 	name = "Vampire"
 	id = "vampire"
-	default_color = "FFFFFF"
+	default_color = "FFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,DRINKSBLOOD, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -10,7 +10,7 @@
 		TRAIT_NOBREATH,
 	)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
-	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "wings" = "None")
+	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")	
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
 	exotic_bloodtype = "U"
 	use_skintones = TRUE

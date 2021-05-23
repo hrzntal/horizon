@@ -21,6 +21,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/engineering/atmospheric_technician
 	desc = "It's a jumpsuit worn by atmospheric technicians. It has minor protection from fire."
@@ -36,6 +37,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/engineering/engineer
 	desc = "It's an orange high visibility jumpsuit worn by engineers. It has minor radiation shielding."
@@ -43,6 +45,7 @@
 	icon_state = "engine"
 	inhand_icon_state = "engi_suit"
 	species_exception = list(/datum/species/golem/uranium)
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/engineering/engineer/hazard
 	name = "engineer's hazard jumpsuit"
@@ -59,3 +62,4 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE

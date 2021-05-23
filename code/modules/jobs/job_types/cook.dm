@@ -65,6 +65,8 @@
 		/obj/item/kitchen/knife/butcher = 2
 	)
 
+	required_languages = null
+
 /datum/outfit/job/cook
 	name = "Cook"
 	jobtype = /datum/job/cook

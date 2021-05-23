@@ -15,6 +15,7 @@
 	dynamic_hair_suffix = ""
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/chefhat
 	dog_fashion = /datum/dog_fashion/head/chef
+	mutant_variants = NONE
 	///the chance that the movements of a mouse inside of this hat get relayed to the human wearing the hat
 	var/mouse_control_probability = 20
 
@@ -49,6 +50,7 @@
 	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 5)
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/captain
+	mutant_variants = NONE
 
 //Captain: This is no longer space-worthy
 /obj/item/clothing/head/caphat/parade
@@ -66,6 +68,7 @@
 	desc = "The symbol of true bureaucratic micromanagement."
 	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	dog_fashion = /datum/dog_fashion/head/hop
+	mutant_variants = NONE
 
 //Chaplain
 /obj/item/clothing/head/nun_hood
@@ -118,6 +121,7 @@
 	icon_state = "beret"
 	dog_fashion = /datum/dog_fashion/head/beret
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/vintage
 	name = "vintage beret"
@@ -159,6 +163,7 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 60, WOUND = 10)
 	strip_delay = 80
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hos/syndicate
 	name = "syndicate cap"
@@ -256,6 +261,7 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 20, ACID = 50, WOUND = 4)
 	strip_delay = 60
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/navyhos
 	name = "head of security's beret"
@@ -279,6 +285,7 @@
 	name = "science beret"
 	desc = "A science-themed beret for our hardworking scientists."
 	icon_state = "sciberet"
+	mutant_variants = NONE
 
 //Curator
 /obj/item/clothing/head/fedora/curator

@@ -63,13 +63,21 @@
 	icon_state = "alarm0"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
-	active_power_usage = 8
+	active_power_usage = 1200
 	power_channel = AREA_USAGE_ENVIRON
 	req_access = list(ACCESS_ATMOSPHERICS)
 	max_integrity = 250
 	integrity_failure = 0.33
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	resistance_flags = FIRE_PROOF
+
+	//Heating System
+	var/heating_manage = TRUE
+	var/heating_current_mode = "Idle"
+	var/heating_temp_inc = 0.5
+	var/heating_temp_minvalue = 288.15
+	var/heating_temp_maxvalue = 303.15
+	var/heating_temp_setpoint = T20C
 
 	var/danger_level = 0
 	var/mode = AALARM_MODE_SCRUBBING
@@ -135,6 +143,7 @@
 		/datum/gas/antinoblium = new/datum/tlv/dangerous,
 		/datum/gas/halon = new/datum/tlv/dangerous
 	)
+	heating_manage = FALSE
 
 /obj/machinery/airalarm/kitchen_cold_room // Kitchen cold rooms start off at -14°C or 259.15K.
 	TLV = list(
@@ -162,6 +171,7 @@
 		/datum/gas/antinoblium = new/datum/tlv/dangerous,
 		/datum/gas/halon = new/datum/tlv/dangerous
 	)
+	heating_manage = FALSE
 
 /obj/machinery/airalarm/unlocked
 	locked = FALSE
@@ -276,6 +286,13 @@
 	var/area/A = get_area(src)
 	data["atmos_alarm"] = A.atmosalm
 	data["fire_alarm"] = A.fire
+	data["heating"] = list(
+		"mode" = heating_current_mode,
+		"enabled" = heating_manage,
+		"setPoint" = heating_temp_setpoint,
+		"minValue" = heating_temp_minvalue,
+		"maxValue" = heating_temp_maxvalue
+	)
 
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/environment = T.return_air()
@@ -453,6 +470,15 @@
 			if(A.atmosalert(FALSE, src))
 				post_alert(0)
 			. = TRUE
+		if("heat_mode")
+			investigate_log("has had its heat mode by [key_name(usr)]",INVESTIGATE_ATMOS)
+			airalarm_toggleheat()
+			. = TRUE
+		if("heat_setpoint")
+			heating_temp_setpoint = params["setPoint"]
+			investigate_log("has had its setpoint changed to [heating_temp_setpoint] by [key_name(usr)]",INVESTIGATE_ATMOS)
+			. = TRUE
+
 	update_appearance()
 
 
@@ -704,7 +730,51 @@
 	if(mode == AALARM_MODE_REPLACEMENT && environment_pressure < ONE_ATMOSPHERE * 0.05)
 		mode = AALARM_MODE_SCRUBBING
 		apply_mode(src)
+	if(heating_manage)
+		airalarm_heat()
 
+/obj/machinery/airalarm/proc/airalarm_toggleheat()
+	if(heating_manage)
+		if(heating_current_mode == "Heat")
+			visible_message("<span class='notice'>The air alarm makes a quiet click as it stops heating the area</span>")
+			heating_current_mode = "Idle"
+			heating_manage = FALSE
+			return
+		else
+			heating_manage = FALSE
+			return
+	else
+		heating_manage = TRUE
+
+/obj/machinery/airalarm/proc/airalarm_heat()
+	var/wanted_mode = ""
+	var/turf/location = get_turf(src)
+	var/datum/gas_mixture/environment = location.return_air()
+	if(environment.temperature >= (heating_temp_setpoint) & heating_current_mode == "Idle") // Quick kill the proc if not heating
+		environment.garbage_collect()
+		return
+	if(environment.temperature < (heating_temp_setpoint)) //Start heating
+		wanted_mode = "Heat"
+
+	if(environment.temperature > (heating_temp_setpoint + 2)) //Allow for some over run, to stop flip-floping
+		wanted_mode = "Idle"
+
+	if(wanted_mode == "Idle" & heating_current_mode == "Heat")
+		visible_message("<span class='notice'>The air alarm makes a quiet click as it stops heating the area</span>")
+		heating_current_mode = "Idle"
+		environment.garbage_collect()
+		use_power = IDLE_POWER_USE
+		return
+
+	if(wanted_mode == "Heat" & heating_current_mode == "Idle")
+		visible_message("<span class='notice'>The air alarm makes a quiet click as it starts heating the area</span>")
+		heating_current_mode = "Heat"
+		use_power = ACTIVE_POWER_USE
+
+	if(heating_current_mode == "Heat")
+		environment.temperature += heating_temp_inc
+		air_update_turf(FALSE, FALSE)
+		environment.garbage_collect()
 
 /obj/machinery/airalarm/proc/post_alert(alert_level)
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(alarm_frequency)

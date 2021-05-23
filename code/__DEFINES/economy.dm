@@ -1,5 +1,5 @@
 /// Number of paychecks jobs start with at the creation of a new bank account for a player (So at shift-start or game join, but not a blank new account.)
-#define STARTING_PAYCHECKS 7
+#define STARTING_PAYCHECKS 4 //People get 3 extra paychecks multiplied by their background economic power
 /// How much mail the Economy SS will create per minute, regardless of firing time.
 #define MAX_MAIL_PER_MINUTE 3
 /// Probability of using letters of envelope sprites on all letters.

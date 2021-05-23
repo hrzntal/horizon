@@ -498,7 +498,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		handle_hallucinations(delta_time, times_fired)
 
 	if(drunkenness)
-		drunkenness = max(drunkenness - ((0.005 + (drunkenness * 0.02)) * delta_time), 0)
+		drunkenness = max(drunkenness - ((0.0025 + (drunkenness * 0.005)) * delta_time), 0)
 		if(drunkenness >= 6)
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(DT_PROB(16, delta_time))

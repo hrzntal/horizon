@@ -204,7 +204,7 @@
 			type = MESSAGE_TYPE_ADMINPM,
 			html = "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span></span>",
 			confidential = TRUE)
-		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>External</i>: [keywordparsedmsg]</font>")
+		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name_pm(src, TRUE, TRUE)]</b> to <i>External</i>: [keywordparsedmsg]</font>")
 		externalreplyamount--
 		send2adminchat("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
 	else
@@ -215,20 +215,20 @@
 			if(holder)
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='danger'>Admin PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>",
+					html = "<span class='danger'>Admin PM from-<b>[key_name_pm(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>",
 					confidential = TRUE)
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>",
+					html = "<span class='notice'>Admin PM to-<b>[key_name_pm(recipient, src, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span></span>",
 					confidential = TRUE)
 				//omg this is dumb, just fill in both their tickets
-				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
+				var/interaction_message = "<font color='purple'>PM from-<b>[key_name_pm(src, recipient, 1)]</b> to-<b>[key_name_pm(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
 				admin_ticket_log(src, interaction_message)
 				if(recipient != src) //reeee
 					admin_ticket_log(recipient, interaction_message)
 				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 			else //recipient is an admin but sender is not
-				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
+				var/replymsg = "Reply PM from-<b>[key_name_pm(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				admin_ticket_log(src, "<font color='red'>[replymsg]</font>")
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
@@ -258,7 +258,7 @@
 					confidential = TRUE)
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='adminsay'>Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span></span>",
+					html = "<span class='adminsay'>Admin PM from-<b>[key_name_pm(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span></span>",
 					confidential = TRUE)
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
@@ -266,10 +266,10 @@
 					confidential = TRUE)
 				to_chat(src,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span></span>",
+					html = "<span class='notice'>Admin PM to-<b>[key_name_pm(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span></span>",
 					confidential = TRUE)
 
-				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
+				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin_pm(src)]: [keywordparsedmsg]</font>")
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
@@ -295,21 +295,21 @@
 				current_ticket.MessageNoRecipient(msg)
 
 	if(external)
-		log_admin_private("PM: [key_name(src)]->External: [rawmsg]")
+		log_admin_private("PM: [key_name_pm(src)]->External: [rawmsg]")
 		for(var/client/X in GLOB.admins)
 			to_chat(X,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = "<span class='notice'><B>PM: [key_name(src, X, 0)]-&gt;External:</B> [keywordparsedmsg]</span>",
+				html = "<span class='notice'><B>PM: [key_name_pm(src, X, 0)]-&gt;External:</B> [keywordparsedmsg]</span>",
 				confidential = TRUE)
 	else
 		window_flash(recipient, ignorepref = TRUE)
-		log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
+		log_admin_private("PM: [key_name_pm(src)]->[key_name_pm(recipient)]: [rawmsg]")
 		//we don't use message_admins here because the sender/receiver might get it too
 		for(var/client/X in GLOB.admins)
 			if(X.key!=key && X.key!=recipient.key) //check client/X is an admin and isn't the sender or recipient
 				to_chat(X,
 					type = MESSAGE_TYPE_ADMINPM,
-					html = "<span class='notice'><B>PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</span>" ,
+					html = "<span class='notice'><B>PM: [key_name_pm(src, X, 0)]-&gt;[key_name_pm(recipient, X, 0)]:</B> [keywordparsedmsg]</span>" ,
 					confidential = TRUE)
 
 /client/proc/popup_admin_pm(client/recipient, msg)
@@ -396,8 +396,8 @@
 	if(!msg)
 		return "Error: No message"
 
-	message_admins("External message from [sender] to [key_name_admin(C)] : [msg]")
-	log_admin_private("External PM: [sender] -> [key_name(C)] : [msg]")
+	message_admins("External message from [sender] to [key_name_admin_pm(C)] : [msg]")
+	log_admin_private("External PM: [sender] -> [key_name_pm(C)] : [msg]")
 	msg = emoji_parse(msg)
 
 	to_chat(C,

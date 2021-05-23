@@ -8,18 +8,21 @@
 	flags_inv = 0
 	armor = list(MELEE = 30, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	strip_delay = 80
+	mutant_variants = NONE
 
 /obj/item/clothing/head/spacepolice
 	name = "space police cap"
 	desc = "A blue cap for patrolling the daily beat."
 	icon_state = "policecap_families"
 	inhand_icon_state = "policecap_families"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/powdered_wig
 	name = "powdered wig"
 	desc = "A powdered wig."
 	icon_state = "pwig"
 	inhand_icon_state = "pwig"
+	mutant_variants = NONE
 
 #define RABBIT_CD_TIME 30 SECONDS
 
@@ -30,6 +33,7 @@
 	inhand_icon_state = "that"
 	dog_fashion = /datum/dog_fashion/head
 	throwforce = 1
+	mutant_variants = NONE
 	/// Cooldown for how often we can pull rabbits out of here
 	COOLDOWN_DECLARE(rabbit_cooldown)
 
@@ -67,16 +71,19 @@
 	desc = "It smells like fresh donut holes. / <i>Il sent comme des trous de beignets frais.</i>"
 	icon_state = "canada"
 	inhand_icon_state = "canada"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/redcoat
 	name = "redcoat's hat"
 	icon_state = "redcoat"
 	desc = "<i>'I guess it's a redhead.'</i>"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/mailman
 	name = "mailman's hat"
 	icon_state = "mailman"
 	desc = "<i>'Right-on-time'</i> mail service head wear."
+	mutant_variants = NONE
 
 /obj/item/clothing/head/plaguedoctorhat
 	name = "plague doctor's hat"
@@ -90,6 +97,7 @@
 	icon_state = "hasturhood"
 	flags_inv = HIDEHAIR
 	flags_cover = HEADCOVERSEYES
+	mutant_variants = NONE
 
 /obj/item/clothing/head/nursehat
 	name = "nurse's hat"
@@ -98,6 +106,7 @@
 	dynamic_hair_suffix = ""
 
 	dog_fashion = /datum/dog_fashion/head/nurse
+	mutant_variants = NONE
 
 /obj/item/clothing/head/syndicatefake
 	name = "black space-helmet replica"
@@ -115,6 +124,7 @@
 	clothing_flags = SNUG_FIT
 	flags_cover = HEADCOVERSEYES|HEADCOVERSMOUTH
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/snowman
 	name = "snowman head"
@@ -124,6 +134,7 @@
 	clothing_flags = SNUG_FIT
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/justice
 	name = "justice hat"
@@ -157,6 +168,7 @@
 	dynamic_hair_suffix = ""
 
 	dog_fashion = /datum/dog_fashion/head/rabbit
+	mutant_variants = NONE
 
 /obj/item/clothing/head/pirate
 	name = "pirate hat"
@@ -164,6 +176,7 @@
 	icon_state = "pirate"
 	inhand_icon_state = "pirate"
 	dog_fashion = /datum/dog_fashion/head/pirate
+	mutant_variants = NONE
 
 /obj/item/clothing/head/pirate
 	var/datum/language/piratespeak/L = new
@@ -201,6 +214,7 @@
 	icon_state = "bandana"
 	inhand_icon_state = "bandana"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/bandana/armored
 	armor = list(MELEE = 30, BULLET = 50, LASER = 30,ENERGY = 40, BOMB = 30, BIO = 30, RAD = 30, FIRE = 60, ACID = 75)
@@ -258,6 +272,7 @@
 	inhand_icon_state = "fedora"
 	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/fedora
+	mutant_variants = NONE
 
 /obj/item/clothing/head/fedora/white
 	name = "white fedora"
@@ -287,6 +302,7 @@
 	flags_inv = HIDEHAIR
 
 	dog_fashion = /datum/dog_fashion/head/sombrero
+	mutant_variants = NONE
 
 	greyscale_config = /datum/greyscale_config/sombrero
 	greyscale_config_worn = /datum/greyscale_config/sombrero/worn
@@ -317,6 +333,7 @@
 	desc = "A working man's cap."
 	icon_state = "flat_cap"
 	inhand_icon_state = "detective"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hunter
 	name = "bounty hunting hat"
@@ -326,6 +343,7 @@
 	inhand_icon_state = "hunter"
 	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 15, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	mutant_variants = NONE
 
 /obj/item/clothing/head/cone
 	desc = "This cone is trying to warn you of something!"
@@ -342,6 +360,7 @@
 	attack_verb_simple = list("warn", "caution", "smash")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/santa
 	name = "santa hat"
@@ -351,12 +370,14 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/santa
+	mutant_variants = NONE
 
 /obj/item/clothing/head/jester
 	name = "jester hat"
 	desc = "A hat with bells, to add some merriness to the suit."
 	icon_state = "jester_hat"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/jester/alt
 	icon_state = "jester2"
@@ -365,6 +386,7 @@
 	name = "rice hat"
 	desc = "Welcome to the rice fields, motherfucker."
 	icon_state = "rice_hat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/lizard
 	name = "lizardskin cloche hat"
@@ -399,6 +421,7 @@
 	name = "scarecrow hat"
 	desc = "A simple straw hat."
 	icon_state = "scarecrow_hat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/lobsterhat
 	name = "foam lobster head"
@@ -506,6 +529,7 @@
 	desc = "A horrifying mix of beanie and softcap in CentCom green. You'd have to be pretty desperate for power over your peers to agree to wear this."
 	icon_state = "intern_hat"
 	inhand_icon_state = "intern_hat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/coordinator
 	name = "coordinator cap"
@@ -525,6 +549,7 @@
 	desc = "A gauzy white veil."
 	icon_state = "weddingveil"
 	inhand_icon_state = "weddingveil"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/centcom_cap
 	name = "\improper CentCom commander cap"
@@ -534,3 +559,78 @@
 	flags_inv = 0
 	armor = list(MELEE = 30, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	strip_delay = (8 SECONDS)
+	mutant_variants = NONE
+
+/obj/item/clothing/head/flakhelm	//Actually the M1 Helmet
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "flak helmet"
+	icon_state = "m1helm"
+	inhand_icon_state = "helmet"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "rad" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
+	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/tiny/spacenam	//So you can stuff other things in the elastic band instead of it simply being a fluff thing.
+	mutant_variants = NONE
+
+/datum/component/storage/concrete/pockets/tiny/spacenam
+	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
+
+/obj/item/clothing/head/cowboyhat
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "cowboy hat"
+	desc = "A standard brown cowboy hat, yeehaw."
+	icon_state = "cowboyhat"
+	inhand_icon_state = "cowboyhat"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/cowboyhat/black
+	name = "black cowboy hat"
+	desc = "A a black cowboy hat, perfect for any outlaw"
+	icon_state = "cowboyhat_black"
+	inhand_icon_state= "cowboyhat_black"
+
+/obj/item/clothing/head/cowboyhat/white
+	name = "white cowboy hat"
+	desc = "A white cowboy hat, perfect for your every day rancher"
+	icon_state = "cowboyhat_white"
+	inhand_icon_state= "cowboyhat_white"
+
+/obj/item/clothing/head/cowboyhat/pink
+	name = "pink cowboy hat"
+	desc = "A pink cowboy? more like cowgirl hat, just don't be a buckle bunny."
+	icon_state = "cowboyhat_pink"
+	inhand_icon_state= "cowboyhat_pink"
+
+/obj/item/clothing/head/cowboyhat/sec
+	name = "security cowboy hat"
+	desc = "A security cowboy hat, perfect for any true lawman"
+	icon_state = "cowboyhat_sec"
+	inhand_icon_state= "cowboyhat_sec"
+
+/obj/item/clothing/head/kepi
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "kepi"
+	desc = "A white cap with visor. Oui oui, mon capitane!"
+	icon_state = "kepi"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/kepi/old
+	icon_state = "kepi_old"
+	desc = "A flat, white circular cap with a visor, that demands some honor from it's wearer."
+
+/obj/item/clothing/head/maid
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "maid headband"
+	desc = "Maid in China."
+	icon_state = "maid"
+	dynamic_hair_suffix = ""
+	mutant_variants = NONE
+
+/obj/item/clothing/head/beret/white
+	icon = 'icons/horizon/obj/clothing/hats.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/head.dmi'
+	name = "beret"
+	icon_state = "beret_white"

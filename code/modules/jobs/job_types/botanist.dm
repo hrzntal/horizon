@@ -27,6 +27,8 @@
 		/obj/item/food/monkeycube/bee = 2
 	)
 
+	required_languages = null
+
 /datum/outfit/job/botanist
 	name = "Botanist"
 	jobtype = /datum/job/botanist

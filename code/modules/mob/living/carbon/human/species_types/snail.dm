@@ -2,7 +2,7 @@
 	name = "Snailperson"
 	id = "snail"
 	offset_features = list(OFFSET_GLASSES = list(0,4))
-	default_color = "336600" //vomit green
+	default_color = "360" //vomit green
 	species_traits = list(MUTCOLORS, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

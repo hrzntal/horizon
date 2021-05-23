@@ -191,3 +191,50 @@
 	name = "CentCom intern envirogloves"
 	icon_state = "internplasma"
 	inhand_icon_state = "internplasma"
+
+/obj/item/clothing/gloves/evening
+	icon = 'icons/horizon/obj/clothing/gloves.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/hands.dmi'
+	name = "evening gloves"
+	desc = "Thin, pretty gloves intended for use in regal feminine attire, but knowing Space China these are just for some maid fetish."
+	icon_state = "evening"
+	strip_delay = 40
+	equip_delay_other = 20
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+
+/obj/item/clothing/gloves/ring
+	icon = 'icons/horizon/obj/ring.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/hands.dmi'
+	name = "gold ring"
+	desc = "A tiny gold ring, sized to wrap around a finger."
+	gender = NEUTER
+	w_class = WEIGHT_CLASS_TINY
+	icon = 'icons/horizon/obj/ring.dmi'
+	icon_state = "ringgold"
+	inhand_icon_state = "gring"
+	worn_icon_state = "gring"
+	body_parts_covered = 0
+	transfer_prints = TRUE
+	strip_delay = 40
+
+/obj/item/clothing/gloves/ring/suicide_act(mob/living/carbon/user)
+	user.visible_message("<span class='suicide'>\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!</span>")
+	return OXYLOSS
+
+/obj/item/clothing/gloves/ring/diamond
+	name = "diamond ring"
+	desc = "An expensive ring, studded with a diamond. Cultures have used these rings in courtship for a millenia."
+	icon_state = "ringdiamond"
+	inhand_icon_state = "dring"
+	worn_icon_state = "dring"
+
+/obj/item/clothing/gloves/ring/diamond/attack_self(mob/user)
+	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
+
+/obj/item/clothing/gloves/ring/silver
+	name = "silver ring"
+	desc = "A tiny silver ring, sized to wrap around a finger."
+	icon_state = "ringsilver"
+	inhand_icon_state = "sring"
+	worn_icon_state = "sring"

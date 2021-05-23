@@ -523,6 +523,15 @@
 	attack_verb_simple = list("bite", "hiss", "tail slap")
 	squeak_override = list('sound/weapons/bite.ogg' = 1)
 
+/obj/item/toy/plush/borbplushie
+	name = "borb plushie"
+	desc = "An adorable stuffed toy that resembles a round, fluffy looking bird. Not to be mistaken for his friend, the birb plushie."
+	icon_state = "plushie_borb"
+	inhand_icon_state = "plushie_borb"
+	attack_verb_continuous = list("pecks", "peeps")
+	attack_verb_simple = list("peck", "peep")
+	squeak_override = list('hrzn/modules/emotes/sound/voice/peep_once.ogg' = 1)
+
 /obj/item/toy/plush/nukeplushie
 	name = "operative plushie"
 	desc = "A stuffed toy that resembles a syndicate nuclear operative. The tag claims operatives to be purely fictitious."

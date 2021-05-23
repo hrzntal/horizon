@@ -44,6 +44,7 @@ Contains:
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	dog_fashion = /datum/dog_fashion/back/deathsquad
 	cell = /obj/item/stock_parts/cell/bluespace
+	hardsuit_tail_colors = list("222", "510", "443")
 
 	//NEW SWAT suit
 /obj/item/clothing/suit/space/swat
@@ -82,6 +83,7 @@ Contains:
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	mutant_variants = NONE
 
 	//NASA Voidsuit
 /obj/item/clothing/head/helmet/space/nasavoid
@@ -184,6 +186,7 @@ Contains:
 	resistance_flags = FIRE_PROOF
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	cell = /obj/item/stock_parts/cell/bluespace
+	hardsuit_tail_colors = list("112", "553", "28F")
 
 // ERT suit's gets EMP Protection
 /obj/item/clothing/suit/space/hardsuit/ert/Initialize()
@@ -204,6 +207,7 @@ Contains:
 	icon_state = "ert_security"
 	inhand_icon_state = "ert_security"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/sec
+	hardsuit_tail_colors = list("411", "D34", "D34")
 
 	//ERT Engineering
 /obj/item/clothing/head/helmet/space/hardsuit/ert/engi
@@ -219,6 +223,7 @@ Contains:
 	icon_state = "ert_engineer"
 	inhand_icon_state = "ert_engineer"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/engi
+	hardsuit_tail_colors = list("333", "FA0", "FA0")
 
 	//ERT Medical
 /obj/item/clothing/head/helmet/space/hardsuit/ert/med
@@ -234,6 +239,7 @@ Contains:
 	icon_state = "ert_medical"
 	inhand_icon_state = "ert_medical"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/med
+	hardsuit_tail_colors = list("321", "FFF", "FFF")
 
 	//ERT Janitor
 /obj/item/clothing/head/helmet/space/hardsuit/ert/jani
@@ -250,6 +256,7 @@ Contains:
 	inhand_icon_state = "ert_janitor"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/jani
 	allowed = list(/obj/item/tank/internals, /obj/item/storage/bag/trash, /obj/item/melee/flyswatter, /obj/item/mop, /obj/item/holosign_creator, /obj/item/reagent_containers/glass/bucket, /obj/item/reagent_containers/spray/chemsprayer/janitor)
+	hardsuit_tail_colors = list("112", "93E", "93E")
 
 	//ERT Clown
 /obj/item/clothing/head/helmet/space/hardsuit/ert/clown
@@ -363,6 +370,7 @@ Contains:
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
+	hardsuit_tail_colors = list("9AA", "A23", "222")
 
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal/Initialize()
 	. = ..()
@@ -373,6 +381,7 @@ Contains:
 	icon_state = "hardsuit-inq"
 	inhand_icon_state = "hardsuit-inq"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor
+	hardsuit_tail_colors = list("223", "521", "721")
 
 /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor
 	name = "inquisitor's helmet"
@@ -526,6 +535,7 @@ Contains:
 	strip_delay = 130
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	cell = /obj/item/stock_parts/cell/hyper
+	mutant_variants = NONE
 
 //We can either be alive monsters or dead monsters, you choose.
 /obj/item/clothing/head/helmet/space/hardsuit/combatmedic

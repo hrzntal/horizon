@@ -44,6 +44,8 @@
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 50) // about -50c
 
 	ass_image = 'icons/ass/assplasma.png'
+	can_have_genitals = FALSE
+	can_augment = FALSE
 
 /datum/species/plasmaman/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()

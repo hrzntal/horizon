@@ -66,21 +66,6 @@
 	icon_state = "kitty"
 	damage_multiplier = 2
 
-/obj/item/organ/ears/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.dna.features["ears"] = H.dna.species.mutant_bodyparts["ears"] = "Cat"
-		H.update_body()
-
-/obj/item/organ/ears/cat/Remove(mob/living/carbon/human/H,  special = 0)
-	..()
-	if(istype(H))
-		color = H.hair_color
-		H.dna.features["ears"] = "None"
-		H.dna.species.mutant_bodyparts -= "ears"
-		H.update_body()
-
 /obj/item/organ/ears/penguin
 	name = "penguin ears"
 	desc = "The source of a penguin's happy feet."
@@ -121,3 +106,10 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	damage += 40/severity
+
+/obj/item/organ/ears/mutant
+	name = "fluffy ears"
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "kitty"
+	mutantpart_key = "ears"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list("FA0"))

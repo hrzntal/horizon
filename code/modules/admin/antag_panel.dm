@@ -102,6 +102,9 @@ GLOBAL_VAR(antag_prototypes)
 	out += "Assigned role: [assigned_role]. <a href='?src=[REF(src)];role_edit=1'>Edit</a><br>"
 	out += "Faction and special role: <b><font color='red'>[special_role]</font></b><br>"
 
+	if(my_ambitions)
+		out += "<b>Ambitions:</b> <a href='?src=[REF(src)];ambitions=1'>View</a><br>"
+
 	var/special_statuses = get_special_statuses()
 	if(length(special_statuses))
 		out += get_special_statuses() + "<br>"

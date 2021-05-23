@@ -24,6 +24,8 @@
 	bounty_types = CIV_JOB_SEC
 	departments = DEPARTMENT_SECURITY
 
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 	mail_goodies = list(

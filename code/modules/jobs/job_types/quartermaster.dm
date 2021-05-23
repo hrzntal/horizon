@@ -29,6 +29,8 @@
 	if(announce_captaincy)
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to extreme staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
 
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS) //Not a head.. YET
+
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster

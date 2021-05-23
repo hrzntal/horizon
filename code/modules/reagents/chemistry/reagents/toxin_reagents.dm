@@ -83,6 +83,7 @@
 	burning_temperature = 4500//plasma is hot!!
 	burning_volume = 0.3//But burns fast
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/toxin/plasma/on_new(data)
 	. = ..()
@@ -95,6 +96,8 @@
 /datum/reagent/toxin/plasma/on_mob_life(mob/living/carbon/C, delta_time, times_fired)
 	if(holder.has_reagent(/datum/reagent/medicine/epinephrine))
 		holder.remove_reagent(/datum/reagent/medicine/epinephrine, 2 * REM * delta_time)
+	if(C.mob_biotypes & MOB_ROBOTIC)
+		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL - 1)
 	C.adjustPlasma(20 * REM * delta_time)
 	return ..()
 
@@ -978,6 +981,7 @@
 	self_consuming = TRUE
 	ph = 2.75
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 // ...Why? I mean, clearly someone had to have done this and thought, well, acid doesn't hurt plants, but what brought us here, to this point?
 /datum/reagent/toxin/acid/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)

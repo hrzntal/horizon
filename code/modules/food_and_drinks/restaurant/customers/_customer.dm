@@ -227,12 +227,13 @@
 		LAZYSET(wings_chosen, customer_ref, GLOB.moth_wings_list[pick(GLOB.moth_wings_list)])
 	return wings_chosen[customer_ref]
 
+/*
 /datum/customer_data/moth/get_underlays(mob/living/simple_animal/robot_customer/customer)
 	var/list/underlays = list()
 
 	var/datum/sprite_accessory/moth_wings/wings = get_wings(customer)
 
-	var/mutable_appearance/wings_behind = mutable_appearance(icon = 'icons/mob/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_BEHIND")
+	var/mutable_appearance/wings_behind = mutable_appearance(icon = 'icons/mob/sprite_accessory/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_BEHIND")
 	wings_behind.appearance_flags = RESET_COLOR
 	underlays += wings_behind
 
@@ -243,7 +244,7 @@
 
 	var/datum/sprite_accessory/moth_wings/wings = get_wings(customer)
 
-	var/mutable_appearance/wings_front = mutable_appearance(icon = 'icons/mob/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_FRONT")
+	var/mutable_appearance/wings_front = mutable_appearance(icon = 'icons/mob/sprite_accessory/moth_wings.dmi', icon_state = "m_moth_wings_[wings.icon_state]_FRONT")
 	wings_front.appearance_flags = RESET_COLOR
 	overlays += wings_front
 
@@ -252,6 +253,7 @@
 	overlays += jetpack
 
 	return overlays
+*/
 
 /datum/customer_data/moth/get_order(datum/venue/venue)
 	var/dynamic_order = get_dynamic_order(venue)

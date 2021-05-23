@@ -306,9 +306,13 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
-			to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
+			if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL))
+				M.visible_message("<span class='warning'>[src] coils their tail with [AM], wow is that okay in public?!</span>", "[src] has entwined their tail with yours!")
+				to_chat(src, "<span class='notice'>You entwine your tail with [AM]'s</span>")
+			else
+				M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
+								"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
+				to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -1966,3 +1970,29 @@
 		exp_list[mind.assigned_role] = minutes
 
 	return exp_list
+
+/mob/living/Topic(href, href_list)
+	. = ..()
+	if(href_list["temporary_flavor"])
+		if(temporary_flavor_text)
+			var/datum/browser/popup = new(usr, "[name]'s temporary flavor text", "[name]'s Temporary Flavor Text", 500, 200)
+			popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s temporary flavor text", replacetext(temporary_flavor_text, "\n", "<BR>")))
+			popup.open()
+			return
+
+/mob/living/verb/set_temporary_flavor()
+	set category = "IC"
+	set name = "Set Temporary Flavor Text"
+	set desc = "Allows you to set a temporary flavor text."
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You can't set your temporary flavor text now...</span>")
+		return
+
+	var/msg = input(usr, "Set the temporary flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Temporary Flavor Text", temporary_flavor_text) as message|null
+	if(msg)
+		if(msg == "")
+			temporary_flavor_text = null
+		else
+			temporary_flavor_text = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+	return

@@ -1,10 +1,16 @@
 #define MOTH_EATING_CLOTHING_DAMAGE 15
 
+//Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
+/obj/item
+	var/mutant_variants = NONE
+	var/allowed_bodytypes = ALL_BODYTYPES
+
 /obj/item/clothing
 	name = "clothing"
 	resistance_flags = FLAMMABLE
 	max_integrity = 200
 	integrity_failure = 0.4
+	allowed_bodytypes = GENERIC_BODYTYPES
 	var/damaged_clothes = CLOTHING_PRISTINE //similar to machine's BROKEN stat and structure's broken var
 
 	///What level of bright light protection item has.
@@ -61,6 +67,13 @@
 
 	/// A lazily initiated "food" version of the clothing for moths
 	var/obj/item/food/clothing/moth_snack
+
+	/// Below you have overrides of the icon file in which the item should look for in case of mutant variants
+	var/worn_icon_digi
+	var/worn_icon_taur_snake
+	var/worn_icon_taur_paw
+	var/worn_icon_taur_hoof
+	var/worn_icon_muzzled
 
 /obj/item/clothing/Initialize()
 	if((clothing_flags & VOICEBOX_TOGGLABLE))

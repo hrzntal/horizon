@@ -32,11 +32,11 @@ $repoOwnerAndName = "tgstation/tgstation";
 $servers = array();
 $enable_live_tracking = true;
 $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
-$tracked_branch = "master";
+$tracked_branch = "main";
 $maintainer_team_id = 133041;
 $validation = "org";
 $validation_count = 1;
-$tracked_branch = 'master';
+$tracked_branch = 'main';
 $require_changelogs = false;
 $discordWebHooks = array();
 

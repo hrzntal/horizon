@@ -27,6 +27,16 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/antagpanel_category = "Uncategorized" //Antagpanel will display these together, REQUIRED
 	var/show_name_in_check_antagonists = FALSE //Will append antagonist name in admin listings - use for categories that share more than one antag type
 	var/show_to_ghosts = FALSE // Should this antagonist be shown as antag to ghosts? Shouldn't be used for stealthy antagonists like traitors
+	///Whether the antagonist uses ambitions
+	var/uses_ambitions = FALSE
+
+///This gets called after our ambitions are submitted, or the antag datum is given to someone with filled ambitions
+/datum/antagonist/proc/ambitions_add()
+	return
+
+///This gets called to remove things from an antagonist, given that they had ambitions submitted (ie. remove powers from ling, remove uplink from traitors)
+/datum/antagonist/proc/ambitions_removal()
+	return
 
 /datum/antagonist/New()
 	GLOB.antagonists += src

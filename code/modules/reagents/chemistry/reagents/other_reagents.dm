@@ -382,6 +382,7 @@
 	taste_description = "burning"
 	ph = 0.1
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.set_fire_stacks(min(M.fire_stacks + (1.5 * delta_time), 5))
@@ -561,7 +562,7 @@
 
 	if(current_cycle >= cycles_to_turn)
 		var/datum/species/species_type = race
-		H.set_species(species_type)
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE)
 		holder.del_reagent(type)
 		to_chat(H, "<span class='warning'>You've become \a [lowertext(initial(species_type.name))]!</span>")
 		return
@@ -625,12 +626,12 @@
 	if(isjellyperson(H))
 		to_chat(H, "<span class='warning'>Your jelly shifts and morphs, turning you into another subspecies!</span>")
 		var/species_type = pick(subtypesof(/datum/species/jelly))
-		H.set_species(species_type)
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE, TRUE)
 		holder.del_reagent(type)
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
 		var/datum/species/species_type = pick(subtypesof(race))
-		H.set_species(species_type)
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE, TRUE)
 		holder.del_reagent(type)
 		to_chat(H, "<span class='warning'>You've become \a [initial(species_type.name)]!</span>")
 		return TRUE
@@ -1129,6 +1130,7 @@
 	burning_volume = 0.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
@@ -1137,6 +1139,8 @@
 
 /datum/reagent/fuel/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjustToxLoss(0.5*delta_time, 0)
+	if(M.mob_biotypes & MOB_ROBOTIC)
+		M.nutrition = min(M.nutrition + 5, NUTRITION_LEVEL_FULL-1)
 	..()
 	return TRUE
 
@@ -1739,6 +1743,12 @@
 	burning_volume = 0.05 //but has a lot of hydrocarbons
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = null
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+
+/datum/reagent/fuel/oil/on_mob_life(mob/living/carbon/C)
+	if(C.mob_biotypes & MOB_ROBOTIC && C.blood_volume < BLOOD_VOLUME_NORMAL)
+		C.blood_volume += 0.5
+	..()
 
 /datum/reagent/stable_plasma
 	name = "Stable Plasma"
@@ -2543,6 +2553,7 @@
 	color = "#D2FFFA"
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM // 5u (WOUND_DETERMINATION_CRITICAL) will last for ~34 seconds
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 	/// Whether we've had at least WOUND_DETERMINATION_SEVERE (2.5u) of determination at any given time. No damage slowdown immunity or indication we're having a second wind if it's just a single moderate wound
 	var/significant = FALSE
 

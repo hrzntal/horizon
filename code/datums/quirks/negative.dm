@@ -338,40 +338,6 @@
 	medical_record_text = "Patient suffers from prosopagnosia and cannot recognize faces."
 	hardcore_value = 5
 
-/datum/quirk/prosthetic_limb
-	name = "Prosthetic Limb"
-	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
-	value = -4
-	var/slot_string = "limb"
-	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
-	hardcore_value = 3
-
-/datum/quirk/prosthetic_limb/on_spawn()
-	var/limb_slot = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/bodypart/old_part = H.get_bodypart(limb_slot)
-	var/obj/item/bodypart/prosthetic
-	switch(limb_slot)
-		if(BODY_ZONE_L_ARM)
-			prosthetic = new/obj/item/bodypart/l_arm/robot/surplus(quirk_holder)
-			slot_string = "left arm"
-		if(BODY_ZONE_R_ARM)
-			prosthetic = new/obj/item/bodypart/r_arm/robot/surplus(quirk_holder)
-			slot_string = "right arm"
-		if(BODY_ZONE_L_LEG)
-			prosthetic = new/obj/item/bodypart/l_leg/robot/surplus(quirk_holder)
-			slot_string = "left leg"
-		if(BODY_ZONE_R_LEG)
-			prosthetic = new/obj/item/bodypart/r_leg/robot/surplus(quirk_holder)
-			slot_string = "right leg"
-	prosthetic.replace_limb(H)
-	qdel(old_part)
-	H.regenerate_icons()
-
-/datum/quirk/prosthetic_limb/post_add()
-	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] has been replaced with a surplus prosthetic. It is fragile and will easily come apart under duress. Additionally, \
-	you need to use a welding tool and cables to repair it, instead of bruise packs and ointment.</span>")
-
 /datum/quirk/pushover
 	name = "Pushover"
 	desc = "Your first instinct is always to let people push you around. Resisting out of grabs will take conscious effort."
@@ -745,6 +711,22 @@
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "bad_touch", /datum/mood_event/very_bad_touch)
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "bad_touch", /datum/mood_event/bad_touch)
+
+/datum/quirk/mute
+	name = "Mute"
+	desc = "Due to some accident, medical condition, or simply by choice, you are completely unable to speak."
+	value = -2
+	gain_text = "<span class='danger'>You find yourself unable to speak!</span>"
+	lose_text = "<span class='notice'>You feel a growing strength in your vocal chords.</span>"
+	medical_record_text = "Functionally mute, patient is unable to use their voice in any capacity."
+
+/datum/quirk/mute/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.gain_trauma(new /datum/brain_trauma/severe/mute, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/mute/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H?.cure_trauma_type(/datum/brain_trauma/severe/mute, TRAUMA_RESILIENCE_ABSOLUTE)
 
 #undef LOCATION_LPOCKET
 #undef LOCATION_RPOCKET

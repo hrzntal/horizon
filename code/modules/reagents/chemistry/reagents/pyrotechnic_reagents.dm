@@ -6,6 +6,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	color = "#550000"
 	taste_description = "sweet tasting metal"
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/thermite/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
@@ -47,6 +48,7 @@
 	taste_description = "burning"
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/clf3/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjust_fire_stacks(2 * REM * delta_time)
@@ -167,6 +169,7 @@
 	taste_description = "burning"
 	self_consuming = TRUE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/phlogiston/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
@@ -190,6 +193,7 @@
 	self_consuming = TRUE
 	penetrates_skin = NONE
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 	// why, just why
 /datum/reagent/napalm/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)
@@ -227,6 +231,7 @@
 	failed_chem = null
 	burning_volume = 0.05
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED | REAGENT_DEAD_PROCESS
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/cryostylane/burn(datum/reagents/holder)
 	if(holder.has_reagent(/datum/reagent/oxygen))
@@ -279,6 +284,7 @@
 	burning_temperature = null
 	burning_volume = 0.05
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/pyrosium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(holder.has_reagent(/datum/reagent/oxygen))
@@ -303,6 +309,7 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "charged metal"
 	self_consuming = TRUE
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 	var/shock_timer = 0
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 

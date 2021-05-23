@@ -42,6 +42,7 @@
 	var/datum/reagent/largest_reagent = reagents.get_master_reagent()
 	if(largest_reagent?.glass_icon_state)
 		icon_state = largest_reagent.glass_icon_state
+		icon = largest_reagent.glass_icon || 'icons/obj/drinks.dmi'
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/update_overlays()

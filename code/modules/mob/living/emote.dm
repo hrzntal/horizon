@@ -117,7 +117,7 @@
 	message = "flaps their wings."
 	hands_use_check = TRUE
 	var/wing_time = 20
-
+/* Fix this later
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && ishuman(user))
@@ -130,7 +130,7 @@
 			else
 				H.OpenWings()
 			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
-
+*/
 /datum/emote/living/flap/aflap
 	key = "aflap"
 	key_third_person = "aflaps"
@@ -220,7 +220,7 @@
 	message_mime = "laughs silently!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-
+/* In modular, keeping here for reference rn
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	. = ..()
 	if(. && iscarbon(user))
@@ -235,7 +235,7 @@
 				return 'sound/voice/human/womanlaugh.ogg'
 			else
 				return pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
-
+*/
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"

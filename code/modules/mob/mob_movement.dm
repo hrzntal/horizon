@@ -89,6 +89,11 @@
 		return FALSE
 	if(mob.force_moving)
 		return FALSE
+	if(mob.shifting) //Pixelshifting stuff
+		mob.pixel_shift(direct)
+		return FALSE
+	else if(mob.is_shifted)
+		mob.unpixel_shift()
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
 	if(L.incorporeal_move) //Move though walls

@@ -105,3 +105,89 @@
 	icon_state = "captain_parade"
 	inhand_icon_state = "by_suit"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/stripper
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "pink stripper outfit"
+	icon_state = "stripper_p"
+	body_parts_covered = CHEST|GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/stripper/green
+	name = "green stripper outfit"
+	icon_state = "stripper_g"
+
+/obj/item/clothing/under/misc/stripper/mankini
+	name = "pink mankini"
+	icon_state = "mankini"
+
+/obj/item/clothing/under/croptop
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "crop top"
+	desc = "We've saved money by giving you half a shirt!"
+	icon_state = "croptop"
+	body_parts_covered = CHEST|GROIN|ARMS
+	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/gear_harness
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "gear harness"
+	desc = "A simple, inconspicuous harness replacement for a jumpsuit."
+	icon_state = "gear_harness"
+	body_parts_covered = CHEST|GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/poly_kilt
+	name = "polychromic kilt"
+	desc = "It's not a skirt!"
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	icon_state = "polykilt"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF", "F88", "FFF"))
+
+/obj/item/clothing/under/sweater
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "cream sweater"
+	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
+	icon_state = "bb_turtle"
+	body_parts_covered = CHEST|GROIN|ARMS
+	can_adjust = TRUE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/sweater/black
+	name = "black sweater"
+	icon_state = "bb_turtleblk"
+
+/obj/item/clothing/under/sweater/purple
+	name = "purple sweater"
+	icon_state = "bb_turtlepur"
+
+/obj/item/clothing/under/sweater/green
+	name = "green sweater"
+	icon_state = "bb_turtlegrn"
+
+/obj/item/clothing/under/sweater/red
+	name = "red sweater"
+	icon_state = "bb_turtlered"
+
+/obj/item/clothing/under/sweater/blue
+	name = "blue sweater"
+	icon_state = "bb_turtleblu"
+
+/obj/item/clothing/under/sweater/keyhole
+	name = "keyhole sweater"
+	desc = "What is the point of this, anyway?"
+	icon_state = "keyholesweater"
+	can_adjust = FALSE

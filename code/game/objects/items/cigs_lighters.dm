@@ -124,6 +124,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	body_parts_covered = null
 	grind_results = list()
 	heat = 1000
+	mutant_variants = NONE
 	var/dragtime = 10
 	var/nextdragtime = 0
 	var/lit = FALSE
@@ -861,6 +862,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "red_vape"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
+	mutant_variants = NONE
 	var/chem_volume = 100
 	var/vapetime = 0 //this so it won't puff out clouds every tick
 	/// How often we take a drag in seconds
