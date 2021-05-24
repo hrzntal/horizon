@@ -19,10 +19,8 @@
 #define SHUTTLE_TAB_TARGET 4
 #define SHUTTLE_TAB_DOCKING 5
 
-#define TEMPLATE_SHIP_VELOCITY 0.5
 #define SHUTTLE_SLOWDOWN_MARGIN 1
 #define SHUTTLE_MINIMUM_VELOCITY 0.1
-#define SHUTTLE_MINIMUM_TARGET_SPEED 1
 #define SHUTTLE_MAXIMUM_DOCKING_SPEED 0.2
 #define VECTOR_LENGTH(x,y) sqrt(x**2+y**2)
 #define TWO_POINT_DISTANCE(xa,ya,xb,yb) sqrt(((yb-ya)**2) + ((xa-xb)**2))

@@ -369,6 +369,32 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
+	var/list/all_extensions = list()
+	var/list/engine_extensions = list()
+
+/obj/docking_port/mobile/proc/DrawDockingThrust()
+	var/drawn_power = 0
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		if(!ext.turned_on)
+			continue
+		drawn_power += ext.DrawThrust(5)
+
+	if(drawn_power > 1)
+		return TRUE
+	else
+		return FALSE
+
+/obj/docking_port/mobile/proc/TurnEnginesOn()
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		ext.turned_on = TRUE
+
+/obj/docking_port/mobile/proc/TurnEnginesOff()
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		ext.turned_on = FALSE
+
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!id)
@@ -398,6 +424,11 @@
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
 		unregister()
+		for(var/i in all_extensions)
+			var/datum/shuttle_extension/extension = i
+			extension.RemoveFromShuttle()
+		engine_extensions = null
+		all_extensions = null
 		destination = null
 		previous = null
 		QDEL_NULL(assigned_transit) //don't need it where we're goin'!
@@ -561,8 +592,7 @@
 			system_to_spawn_in = current_overmap_object.current_system
 
 		var/datum/overmap_object/shuttle/spawned_shuttle = new /datum/overmap_object/shuttle(system_to_spawn_in, spawn_x_coord, spawn_y_coord)
-		my_overmap_object = spawned_shuttle
-		spawned_shuttle.my_shuttle = src
+		spawned_shuttle.RegisterToShuttle(src)
 		if(my_overmap_object.shuttle_controller)
 			my_overmap_object.shuttle_controller.busy = FALSE
 		if(freeform_port)

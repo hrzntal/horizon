@@ -55,7 +55,9 @@
 			link = "class='linkOff'"
 		dat += "<BR><BR><a [link]>Depart to Overmap</a><BR>"
 
-		dat += "<BR><a [M.my_overmap_object ? "href='?src=[REF(src)];task=overmap_view'" : "class='linkOff'"]>Overmap View</a>"
+		dat += "<a href='?src=[REF(src)];task=engines_on']>Engines On</a> <a href='?src=[REF(src)];task=engines_off']>Engines Off</a>"
+
+		dat += "<BR><BR><a [M.my_overmap_object ? "href='?src=[REF(src)];task=overmap_view'" : "class='linkOff'"]>Overmap View</a>"
 		dat += "<BR><a [M.my_overmap_object ? "href='?src=[REF(src)];task=overmap_ship_controls'" : "class='linkOff'"]>Ship Controls</a></center>"
 		var/datum/browser/popup = new(user, "shuttle_computer", name, 300, 200)
 		popup.set_content(dat.Join())
@@ -69,6 +71,12 @@
 /obj/machinery/computer/shuttle/Topic(href, href_list)
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	switch(href_list["task"])
+		if("engines_off")
+			M.TurnEnginesOff()
+			say("Engines offline.")
+		if("engines_on")
+			M.TurnEnginesOn()
+			say("Engines online.")
 		if("overmap_view")
 			if(M.my_overmap_object)
 				M.my_overmap_object.GrantOvermapView(usr)
@@ -93,14 +101,17 @@
 					to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
 					return
 			if(uses_overmap)
-				M.possible_destinations = possible_destinations
-				M.destination = "overmap"
-				M.mode = SHUTTLE_IGNITING
-				M.setTimer(5 SECONDS)
-				say("Shuttle departing. Please stand away from the doors.")
-				log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" into the overmap.")
-				ui_interact(usr)
-				return
+				if(M.DrawDockingThrust())
+					M.possible_destinations = possible_destinations
+					M.destination = "overmap"
+					M.mode = SHUTTLE_IGNITING
+					M.setTimer(5 SECONDS)
+					say("Shuttle departing. Please stand away from the doors.")
+					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" into the overmap.")
+					ui_interact(usr)
+					return
+				else
+					say("Engine power insufficient to take off.")
 	ui_interact(usr)
 
 /obj/machinery/computer/shuttle/ui_data(mob/user)

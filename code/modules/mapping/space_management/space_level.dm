@@ -9,6 +9,8 @@
 	var/datum/overmap_object/related_overmap_object
 	var/is_overmap_controllable = FALSE
 	var/parallax_direction_override
+	///Extensions for z levels as overmap objects
+	var/list/all_extensions = list()
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())
 	z_value = new_z

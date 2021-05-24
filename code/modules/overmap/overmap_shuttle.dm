@@ -3,7 +3,6 @@
 	visual_type = /obj/effect/abstract/overmap/shuttle
 	var/obj/docking_port/mobile/my_shuttle = null
 	var/angle = 0
-	var/last_relayed_direction
 
 	var/partial_x = 0
 	var/partial_y = 0
@@ -11,8 +10,7 @@
 	var/velocity_x = 0
 	var/velocity_y = 0
 
-	var/target_speed = 5
-	var/max_engine_speed = 10
+	var/impulse_power = 1
 
 	var/helm_command = HELM_IDLE
 	var/destination_x = 0
@@ -46,6 +44,12 @@
 	var/uses_rotation = TRUE
 	var/shuttle_capability = ALL_SHUTTLE_CAPABILITY
 
+	//Extensions
+	var/list/all_extensions = list()
+	var/list/engine_extensions = list()
+
+	var/speed_divisor_from_mass = 1
+
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
@@ -53,6 +57,24 @@
 		if(overmap_object != src)
 			targets += overmap_object
 	return targets
+
+/datum/overmap_object/shuttle/proc/GetCapSpeed()
+	var/cap_speed = 0
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		if(!ext.CanOperate())
+			continue
+		cap_speed += ext.GetCapSpeed(impulse_power)
+	return cap_speed / speed_divisor_from_mass
+
+/datum/overmap_object/shuttle/proc/DrawThrustFromAllEngines()
+	var/draw_thrust = 0
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		if(!ext.CanOperate())
+			continue
+		draw_thrust += ext.DrawThrust(impulse_power)
+	return draw_thrust / speed_divisor_from_mass
 
 /datum/overmap_object/shuttle/proc/DisplayUI(mob/user)
 	var/list/dat = list()
@@ -79,7 +101,23 @@
 			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a>"
 
 		if(SHUTTLE_TAB_ENGINES)
-			dat += "Emginmes"
+			if(engine_extensions.len == 0)
+				dat += "<B>No engines installed.</B>"
+			else
+				dat += "<a href='?src=[REF(src)];task=engines;engines_control=all_on'>All On</a><a href='?src=[REF(src)];task=engines;engines_control=all_off'>All Off</a><a href='?src=[REF(src)];task=engines;engines_control=all_efficiency'>Set All Efficiency</a><HR>"
+				var/iterator = 0
+				for(var/i in engine_extensions)
+					iterator++
+					var/datum/shuttle_extension/engine/engine_ext = i
+					var/can_operate = engine_ext.CanOperate()
+					var/fuel_percent = "[(engine_ext.current_fuel / engine_ext.maximum_fuel)*100]%"
+					var/efficiency_percent = "[engine_ext.current_efficiency*100]%"
+					dat += "<B>Engine [iterator]</B>: [engine_ext.name] - <a href='?src=[REF(src)];task=engines;engines_control=toggle_online;engine_index=[iterator]' [engine_ext.turned_on ? "class='linkOn'" : ""]>[engine_ext.turned_on ? "Online" : "Offline"]</a>"
+					dat += "<BR>Efficiency: <a href='?src=[REF(src)];task=engines;engines_control=set_efficiency;engine_index=[iterator]'>[efficiency_percent]</a>"
+					dat += "<BR>Fuel: [fuel_percent]"
+					dat += "<BR>Status: [can_operate ? "Nominal" : "Not Functioning"]"
+					dat += "<HR>"
+
 
 		if(SHUTTLE_TAB_HELM)
 			dat += "<B>Command: "
@@ -103,16 +141,19 @@
 			dat += " , Y: <a href='?src=[REF(src)];task=helm;helm_control=change_y'>[destination_y]</a>"
 			var/cur_speed = VECTOR_LENGTH(velocity_x, velocity_y)
 			dat += "<BR>Current speed: [cur_speed]"
-			dat += "<BR> - Target: <a href='?src=[REF(src)];task=helm;helm_control=change_target_speed'>[target_speed]</a>"
-			dat += "<BR> - Maximum: [max_engine_speed]"
-			dat += "<BR>Commands:"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_stop'>Full Stop</a>"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_move_dest'>Move to Destination</a>"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_turn_dest'>Turn to Destination</a>"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_follow_sensor'>Follow Sensor Lock</a>"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_turn_sensor'>Turn to Sensor Lock</a>"
-			dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_idle'>Idle</a>"
-			dat += "<BR>Pad Control: <a href='?src=[REF(src)];task=helm;helm_control=pad'>Open</a>"
+			dat += "<BR> - Impulse Power: <a href='?src=[REF(src)];task=helm;helm_control=change_impulse_power'>[impulse_power*100]%</a>"
+			dat += "<BR> - Top speed: [GetCapSpeed()]"
+			if(engine_extensions.len == 0)
+				dat += "<BR><B>No engines installed.</B>"
+			else
+				dat += "<BR>Commands:"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_stop'>Full Stop</a>"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_move_dest'>Move to Destination</a>"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_turn_dest'>Turn to Destination</a>"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_follow_sensor'>Follow Sensor Lock</a>"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_turn_sensor'>Turn to Sensor Lock</a>"
+				dat += "<BR> - <a href='?src=[REF(src)];task=helm;helm_control=command_idle'>Idle</a>"
+				dat += "<BR>Pad Control: <a href='?src=[REF(src)];task=helm;helm_control=pad'>Open</a>"
 
 		if(SHUTTLE_TAB_SENSORS)
 			var/list/targets = GetSensorTargets()
@@ -295,6 +336,37 @@
 	switch(href_list["task"])
 		if("tab")
 			shuttle_ui_tab = text2num(href_list["tab"])
+		if("engines")
+			switch(href_list["engines_control"])
+				if("all_on")
+					for(var/i in engine_extensions)
+						var/datum/shuttle_extension/engine/ext = i
+						ext.turned_on = TRUE
+				if("all_off")
+					for(var/i in engine_extensions)
+						var/datum/shuttle_extension/engine/ext = i
+						ext.turned_on = FALSE
+				if("all_efficiency")
+					var/new_eff = input(usr, "Choose new efficiency", "Engine Control") as num|null
+					if(new_eff)
+						var/new_value = clamp((new_eff/100),0,1)
+						for(var/i in engine_extensions)
+							var/datum/shuttle_extension/engine/ext = i
+							ext.current_efficiency = new_value
+				if("toggle_online")
+					var/index = text2num(href_list["engine_index"])
+					if(length(engine_extensions) < index)
+						return
+					var/datum/shuttle_extension/engine/ext = engine_extensions[index]
+					ext.turned_on = !ext.turned_on
+				if("set_efficiency")
+					var/new_eff = input(usr, "Choose new efficiency", "Engine Control") as num|null
+					if(new_eff)
+						var/index = text2num(href_list["engine_index"])
+						if(length(engine_extensions) < index)
+							return
+						var/datum/shuttle_extension/engine/ext = engine_extensions[index]
+						ext.current_efficiency = clamp((new_eff/100),0,1)
 		if("dock")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_DOCK))
 				return
@@ -407,10 +479,10 @@
 					var/new_y = input(usr, "Choose new Y destination", "Helm Control", destination_y) as num|null
 					if(new_y)
 						destination_y = clamp(new_y, 1, world.maxy)
-				if("change_target_speed")
-					var/new_speed = input(usr, "Choose new target speed", "Helm Control", target_speed) as num|null
+				if("change_impulse_power")
+					var/new_speed = input(usr, "Choose new impulse power (0% - 100%)", "Helm Control", (impulse_power*100)) as num|null
 					if(new_speed)
-						target_speed = clamp(new_speed, SHUTTLE_MINIMUM_TARGET_SPEED, max_engine_speed)
+						impulse_power = clamp((new_speed/100), 0, 1)
 	DisplayUI(usr)
 
 /datum/overmap_object/shuttle/New()
@@ -420,9 +492,22 @@
 	START_PROCESSING(SSfastprocess, src)
 	shuttle_controller = new(src)
 
+/datum/overmap_object/shuttle/proc/RegisterToShuttle(obj/docking_port/mobile/register_shuttle)
+	my_shuttle = register_shuttle
+	my_shuttle.my_overmap_object = src
+	for(var/i in my_shuttle.all_extensions)
+		var/datum/shuttle_extension/extension = i
+		extension.AddToOvermapObject(src)
+
 /datum/overmap_object/shuttle/Destroy()
 	QDEL_NULL(shuttle_controller)
-	my_shuttle = null
+	if(my_shuttle)
+		for(var/i in my_shuttle.all_extensions)
+			var/datum/shuttle_extension/extension = i
+			extension.RemoveFromOvermapObject()
+		my_shuttle = null
+	engine_extensions = null
+	all_extensions = null
 	return ..()
 
 /datum/overmap_object/shuttle/process(delta_time)
@@ -468,26 +553,31 @@
 						target_angle_in_byond_rad -= 360
 		
 					var/vector_len = VECTOR_LENGTH(velocity_x, velocity_y)
-					if(diff < 180 && vector_len < target_speed)
-						var/added_velocity_x = TEMPLATE_SHIP_VELOCITY * sin(target_angle_in_byond_rad)
-						var/added_velocity_y = TEMPLATE_SHIP_VELOCITY * cos(target_angle_in_byond_rad)
-		
-						if(diff > 10)
-							var/angle_multiplier = 1-(diff/360)
-							added_velocity_x *= angle_multiplier
-							added_velocity_y *= angle_multiplier
+					var/speed_cap = GetCapSpeed()
+					if(diff < 180 && vector_len < speed_cap)
+						var/drawn_thrust = DrawThrustFromAllEngines()
+						if(drawn_thrust)
+							var/added_velocity_x = drawn_thrust * sin(target_angle_in_byond_rad)
+							var/added_velocity_y = drawn_thrust * cos(target_angle_in_byond_rad)
 			
-						velocity_x += added_velocity_x
-						velocity_y += added_velocity_y
-			
-						icon_state_to_update_to = SHUTTLE_ICON_FORWARD
-					else if (vector_len > target_speed + SHUTTLE_SLOWDOWN_MARGIN)
+							if(diff > 10)
+								var/angle_multiplier = 1-(diff/360)
+								added_velocity_x *= angle_multiplier
+								added_velocity_y *= angle_multiplier
+				
+							velocity_x += added_velocity_x
+							velocity_y += added_velocity_y
+				
+							icon_state_to_update_to = SHUTTLE_ICON_FORWARD
+					else if (vector_len > speed_cap + SHUTTLE_SLOWDOWN_MARGIN)
 						if(velocity_y)
 							velocity_y *= 0.8
 							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
 						if(velocity_x)
 							velocity_x *= 0.8
 							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
+					else
+						icon_state_to_update_to = SHUTTLE_ICON_FORWARD
 	
 			if(HELM_FULL_STOP)
 				if(!velocity_x && !velocity_y)
@@ -499,20 +589,6 @@
 					if(velocity_x)
 						velocity_x *= 0.7
 						icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
-
-
-
-	switch(last_relayed_direction)
-		if(NORTH)
-			if(target_speed < max_engine_speed)
-				target_speed++
-		if(SOUTH)
-			if(target_speed > SHUTTLE_MINIMUM_TARGET_SPEED)
-				target_speed--
-			else
-				StopMove()
-
-	last_relayed_direction = null
 
 	var/obj/effect/abstract/overmap/shuttle/shuttle_visual = my_visual
 	switch(icon_state_to_update_to)
@@ -535,8 +611,8 @@
 			velocity_x *= 0.95
 			velocity_y *= 0.95
 	
-			var/add_partial_x = round(velocity_x)
-			var/add_partial_y = round(velocity_y)
+			var/add_partial_x = velocity_x
+			var/add_partial_y = velocity_y
 		
 			partial_x += add_partial_x
 			partial_y += add_partial_y
@@ -558,9 +634,10 @@
 				partial_x += 32
 				x = max(x-1,1)
 		
+			if(is_seperate_z_level)
+				update_seperate_z_level_parallax()
+
 			if(did_move)
-				if(is_seperate_z_level)
-					update_seperate_z_level_parallax()
 				update_visual_position()
 				if(shuttle_controller)
 					shuttle_controller.ShuttleMovedOnOvermap()
@@ -607,7 +684,7 @@
 	helm_command = HELM_FULL_STOP
 
 /datum/overmap_object/shuttle/relaymove(mob/living/user, direction)
-	last_relayed_direction = direction
+	return
 
 /datum/overmap_object/shuttle/station
 	name = "Space Station"
@@ -615,6 +692,7 @@
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = STATION_SHUTTLE_CAPABILITY
+	speed_divisor_from_mass = 20 //20 times as harder as a shuttle to move
 
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
@@ -622,6 +700,7 @@
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
+	speed_divisor_from_mass = 1000 //1000 times as harder as a shuttle to move
 
 /datum/overmap_object/shuttle/planet/lavaland
 	name = "Lavaland"

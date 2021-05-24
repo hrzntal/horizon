@@ -19,6 +19,36 @@
 	anchored = TRUE
 	var/engine_power = 1
 	var/state = ENGINE_WELDED //welding shmelding
+	var/extension_type = /datum/shuttle_extension/engine/burst
+	var/datum/shuttle_extension/engine/extension
+
+/obj/structure/shuttle/engine/Initialize()
+	. = ..()
+	if(extension_type)
+		//Late initialize does not seem to work for this (doesnt get caled at all), so a timer
+		addtimer(CALLBACK(src, .proc/CreateExtension))
+
+/obj/structure/shuttle/engine/proc/CreateExtension()
+	extension = new extension_type()
+	if(state == ENGINE_WELDED)
+		ApplyExtension()
+
+/obj/structure/shuttle/engine/proc/ApplyExtension()
+	if(!extension)
+		return
+	if(SSshuttle.is_in_shuttle_bounds(src))
+		var/obj/docking_port/mobile/M = SSshuttle.get_containing_shuttle(src)
+		if(M)
+			extension.AddToShuttle(M)
+	else
+		var/datum/space_level/level = SSmapping.z_list[z]
+		if(level && level.related_overmap_object && level.is_overmap_controllable)
+			extension.AddToZLevel(level)
+
+/obj/structure/shuttle/engine/proc/RemoveExtension()
+	if(!extension)
+		return
+	extension.RemoveExtension()
 
 //Ugh this is a lot of copypasta from emitters, welding need some boilerplate reduction
 /obj/structure/shuttle/engine/can_be_unfasten_wrench(mob/user, silent)
@@ -58,6 +88,7 @@
 				state = ENGINE_WELDED
 				to_chat(user, "<span class='notice'>You weld \the [src] to the floor.</span>")
 				alter_engine_power(engine_power)
+				ApplyExtension()
 
 		if(ENGINE_WELDED)
 			if(!I.tool_start_check(user, amount=0))
@@ -71,11 +102,15 @@
 				state = ENGINE_WRENCHED
 				to_chat(user, "<span class='notice'>You cut \the [src] free from the floor.</span>")
 				alter_engine_power(-engine_power)
+				RemoveExtension()
 	return TRUE
 
 /obj/structure/shuttle/engine/Destroy()
 	if(state == ENGINE_WELDED)
 		alter_engine_power(-engine_power)
+		RemoveExtension()
+	if(extension)
+		qdel(extension)
 	. = ..()
 
 //Propagates the change to the shuttle.
@@ -92,12 +127,14 @@
 	icon_state = "heater"
 	desc = "Directs energy into compressed particles in order to power engines."
 	engine_power = 0 // todo make these into 2x1 parts
+	extension_type = null
 
 /obj/structure/shuttle/engine/platform
 	name = "engine platform"
 	icon_state = "platform"
 	desc = "A platform for engine components."
 	engine_power = 0
+	extension_type = null
 
 /obj/structure/shuttle/engine/propulsion
 	name = "propulsion engine"
@@ -133,6 +170,7 @@
 	name = "engine router"
 	icon_state = "router"
 	desc = "Redirects around energized particles in engine structures."
+	extension_type = null
 
 /obj/structure/shuttle/engine/large
 	name = "engine"
