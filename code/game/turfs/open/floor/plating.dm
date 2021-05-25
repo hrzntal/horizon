@@ -24,7 +24,7 @@
 	return list("platingdmg1", "platingdmg2", "platingdmg3")
 
 /turf/open/floor/plating/setup_burnt_states()
-	return list("panelscorched")
+	return list("panelscorched1", "panelscorched2", "panelscorched3")
 
 /turf/open/floor/plating/examine(mob/user)
 	. = ..()
