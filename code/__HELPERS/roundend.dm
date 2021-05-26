@@ -555,7 +555,7 @@
 		var/datum/mind/service_mind = service_member.mind
 		if(!service_mind.assigned_role)
 			continue
-		for(var/job in GLOB.service_food_positions)
+		for(var/job in GLOB.civillian_positions)
 			if(service_mind.assigned_role != job)
 				continue
 			//general awards

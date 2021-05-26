@@ -14,7 +14,7 @@
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_BOTANIST
 	bounty_types = CIV_JOB_GROW
-	departments = DEPARTMENT_SERVICE
+	departments = DEPARTMENT_CIVILLIAN
 
 	family_heirlooms = list(/obj/item/cultivator, /obj/item/reagent_containers/glass/bucket, /obj/item/toy/plush/beeplushie)
 

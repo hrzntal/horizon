@@ -42,7 +42,7 @@
 
 	outfit = /datum/outfit/job/hop
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_personnel
-	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
+	departments = DEPARTMENT_COMMAND
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SRV
@@ -154,7 +154,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_COOK
 	bounty_types = CIV_JOB_CHEF
-	departments = DEPARTMENT_SERVICE
+	departments = DEPARTMENT_CIVILLIAN
 
 /datum/job/tradership_botanist
 	title = "Ship Botanist"
@@ -172,7 +172,7 @@
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_BOTANIST
 	bounty_types = CIV_JOB_GROW
-	departments = DEPARTMENT_SERVICE
+	departments = DEPARTMENT_CIVILLIAN
 
 /datum/job/tradership_stowaway
 	title = "Stowaway"
@@ -184,10 +184,14 @@
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
 	antag_rep = 7
-	paycheck = PAYCHECK_ASSISTANT // Get a job. Job reassignment changes your paycheck now. Get over it.
-	departments = DEPARTMENT_SERVICE
+	paycheck = PAYCHECK_ASSISTANT
+	departments = DEPARTMENT_MISC
 
 	liver_traits = list(TRAIT_GREYTIDE_METABOLISM)
 
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_ASSISTANT
+
+/datum/job/cyborg/tradership
+	title = "Ship Cyborg"
+	faction = "Tradership"

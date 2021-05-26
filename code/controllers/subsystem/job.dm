@@ -105,6 +105,28 @@ SUBSYSTEM_DEF(job)
 		if(!job.map_check()) //Even though we initialize before mapping, this is fine because the config is loaded at new
 			testing("Removed [job.type] due to map config")
 			continue
+		//Register the job in the global lists
+		if(job.departments & DEPARTMENT_COMMAND)
+			GLOB.command_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SECURITY)
+			GLOB.security_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SERVICE)
+			GLOB.service_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_CARGO)
+			GLOB.supply_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_ENGINEERING)
+			GLOB.engineering_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SCIENCE)
+			GLOB.science_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_MEDICAL)
+			GLOB.medical_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SILICON)
+			GLOB.nonhuman_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_CIVILLIAN)
+			GLOB.civillian_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_MISC)
+			GLOB.misc_positions[job.title] = TRUE
+
 		occupations += job
 		name_occupations[job.title] = job
 		type_occupations[J] = job
