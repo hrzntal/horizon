@@ -1,9 +1,3 @@
 {
-	"version": 1,
-	"map_name": "Runtime Station",
-	"map_path": "map_files/debug",
-	"map_file": "runtimestation.dmm",
-	"shuttles": {
-		"cargo": "cargo_delta"
-	}
+	"map_type": "/datum/map_config/runtimestation"
 }
