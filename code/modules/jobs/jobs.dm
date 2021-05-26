@@ -40,12 +40,12 @@ GLOBAL_LIST_INIT(position_categories, list(
 	EXP_TYPE_ENGINEERING = list("jobs" = engineering_positions, "color" = "#ffeeaa"),
 	EXP_TYPE_SUPPLY = list("jobs" = supply_positions, "color" = "#ddddff"),
 	EXP_TYPE_SILICON = list("jobs" = nonhuman_positions - "pAI", "color" = "#ccffcc"),
-	EXP_TYPE_SERVICE = list("jobs" = service_positions, "color" = "#bbe291"),
+	EXP_TYPE_MISC = list("jobs" = misc_positions, "color" = "#eeeeee"),
 	EXP_TYPE_MEDICAL = list("jobs" = medical_positions, "color" = "#ffddf0"),
 	EXP_TYPE_SCIENCE = list("jobs" = science_positions, "color" = "#ffddff"),
 	EXP_TYPE_SECURITY = list("jobs" = security_positions, "color" = "#ffdddd"),
 	EXP_TYPE_CIVILLIAN = list("jobs" = civillian_positions, "color" = "#dddddd"),
-	EXP_TYPE_MISC = list("jobs" = misc_positions, "color" = "#eeeeee")
+	EXP_TYPE_SERVICE = list("jobs" = service_positions, "color" = "#bbe291")
 ))
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
