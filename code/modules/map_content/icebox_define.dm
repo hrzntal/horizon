@@ -43,4 +43,3 @@
 						"captain" = list("special_charter" = "moon"))
 
 	overmap_object_type = /datum/overmap_object/shuttle/planet/icebox
-	
