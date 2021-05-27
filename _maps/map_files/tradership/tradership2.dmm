@@ -43,6 +43,10 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
+"gh" = (
+/obj/structure/rack,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "gM" = (
 /obj/item/instrument/guitar,
 /turf/open/floor/plating,
@@ -104,7 +108,7 @@
 	pixel_y = 3
 	},
 /obj/item/stack/sheet/iron/fifty,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "lg" = (
 /obj/structure/table,
@@ -120,7 +124,7 @@
 /area/hallway/primary/central)
 "lE" = (
 /obj/machinery/autolathe,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "lY" = (
 /obj/item/kirbyplants/random,
@@ -256,13 +260,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"vF" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "10"
-	},
-/turf/open/floor/plating,
-/area/hallway/primary/central)
 "vK" = (
 /obj/machinery/suit_storage_unit/engine,
 /turf/open/floor/iron/dark,
@@ -332,10 +329,6 @@
 	},
 /turf/open/floor/wood,
 /area/hallway/primary/central)
-"zR" = (
-/obj/machinery/vending/tool,
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
 "Ag" = (
 /obj/machinery/cryopod,
 /obj/machinery/light/small/directional/north,
@@ -359,6 +352,10 @@
 /obj/structure/curtain/bounty,
 /obj/item/bedsheet/dorms,
 /turf/open/floor/wood,
+/area/hallway/primary/central)
+"BV" = (
+/obj/machinery/vending/tool,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "Ca" = (
 /obj/effect/turf_decal/stripes/line{
@@ -419,7 +416,7 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "Fa" = (
 /obj/machinery/mecha_part_fabricator,
@@ -446,7 +443,7 @@
 /area/hallway/primary/central)
 "Gd" = (
 /obj/structure/closet/crate,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "Hv" = (
 /obj/effect/turf_decal/stripes/line{
@@ -542,7 +539,7 @@
 /area/hallway/primary/central)
 "Qa" = (
 /obj/machinery/recharge_station,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/hallway/primary/central)
 "Qe" = (
 /obj/machinery/light/directional/south,
@@ -578,10 +575,6 @@
 "RR" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
-"RU" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "Sd" = (
 /turf/open/floor/iron,
@@ -31125,9 +31118,9 @@ Ng
 Ng
 hX
 jX
-Mr
-zR
-QH
+Ph
+Sd
+BV
 hX
 Mg
 Mg
@@ -31382,9 +31375,9 @@ Ng
 Ng
 hX
 Eh
-IQ
-IQ
-IQ
+Sd
+Sd
+Sd
 hX
 Mg
 Mg
@@ -31639,9 +31632,9 @@ hX
 hX
 hX
 ld
-IQ
-IQ
-zv
+Sd
+Sd
+gh
 hX
 Mg
 Mg
@@ -31896,9 +31889,9 @@ Sd
 Ub
 hX
 lE
-IQ
-IQ
-zv
+Sd
+Sd
+gh
 hX
 Mg
 Mg
@@ -32151,10 +32144,10 @@ nW
 nW
 Sd
 Sd
-vF
-IQ
-IQ
-IQ
+wq
+Sd
+Sd
+Sd
 Qa
 hX
 Mg
@@ -32409,10 +32402,10 @@ hX
 Sd
 Sd
 hX
-zv
-IQ
-IQ
-IQ
+gh
+Sd
+Sd
+Sd
 hX
 Mg
 Mg
@@ -32667,9 +32660,9 @@ Sd
 Sd
 hX
 Gd
-RU
-IQ
-IQ
+Yv
+Sd
+Sd
 hX
 Mg
 Mg
@@ -33951,7 +33944,7 @@ hX
 Sd
 jM
 hX
-IQ
+QH
 Mr
 IQ
 sQ
