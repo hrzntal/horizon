@@ -48,6 +48,9 @@
 			var/list/level_traits = level
 			level_traits[ZTRAIT_STATION] = TRUE
 
+/datum/map_config/proc/get_map_info()
+	return "You're on board the <b>[map_name]</b>, a top of the class NanoTrasen resesearch station."
+
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config
 	if (default_to_box)

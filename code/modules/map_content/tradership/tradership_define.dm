@@ -27,3 +27,7 @@
 	overflow_job = "Deckhand"
 
 	overmap_object_type = /datum/overmap_object/shuttle/station
+
+/datum/map_config/tradership/get_map_info()
+	return "You're aboard the <b>[map_name],</b> a survey and mercantile vessel affiliated with the Free Trade Union. \
+	No meaningful authorities can claim the planets and resources in this uncharted sector, so their exploitation is entirely up to you - mine, poach and deforest all you want."
