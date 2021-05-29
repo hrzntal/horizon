@@ -112,6 +112,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/parallax
 
+	/// Does the user see balloon alerts (minor actions), or chat messages, or both?
+	var/balloon_alerts_pref = BALLOON_ALERTS_BOTH
+
 	///Do we show screentips, if so, how big?
 	var/screentip_pref = TRUE
 	///Color of screentips at top of screen
@@ -1028,6 +1031,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += "High"
 			dat += "</a><br>"
+
+			switch(balloon_alerts_pref)
+				if (BALLOON_ALERTS_NONE)
+					button_name = "Disabled"
+				if (BALLOON_ALERTS_ONLY)
+					button_name = "On-screen Only"
+				if (BALLOON_ALERTS_BOTH)
+					button_name = "Chat and On-screen"
+			dat += "<b>Balloon Alerts:</b> <a href='?_src_=prefs;preference=balloon_alerts_pref'>[button_name]</a><br>"
 
 			dat += "<b>Set screentip mode:</b> <a href='?_src_=prefs;preference=screentipmode'>[screentip_pref ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Screentip color:</b><span style='border: 1px solid #161616; background-color: [screentip_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=screentipcolor'>Change</a><BR>"
@@ -2702,6 +2714,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					parallax = WRAP(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
+
+				if("balloon_alerts_pref")
+					balloon_alerts_pref = WRAP(balloon_alerts_pref + 1, BALLOON_ALERTS_NONE, BALLOON_ALERTS_BOTH + 1)
 
 				if("screentipmode")
 					screentip_pref = !screentip_pref
