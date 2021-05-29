@@ -101,11 +101,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
 /area/hallway/primary/central)
-"om" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
 "pf" = (
 /obj/machinery/telecomms/server/presets/common,
 /turf/open/floor/circuit,
@@ -32878,7 +32873,7 @@ Ld
 Ld
 Ld
 Ld
-om
+Tj
 Tj
 Tj
 Tj
