@@ -9,10 +9,16 @@
 	},
 /mob/living/simple_animal/pet/cat/jerry,
 /obj/structure/cable,
+/obj/machinery/requests_console/directional/north,
 /turf/open/floor/iron,
 /area/commons/lounge)
+"az" = (
+/obj/structure/table/wood,
+/obj/machinery/requests_console/directional/west,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hop)
 "aI" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock,
 /turf/open/floor/plating,
 /area/hallway/primary/fore)
 "aJ" = (
@@ -89,9 +95,9 @@
 /turf/open/openspace,
 /area/cargo/warehouse/upper)
 "cD" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+/obj/machinery/door/airlock,
 /turf/open/floor/iron,
 /area/commons/lounge)
 "cU" = (
@@ -134,6 +140,10 @@
 "dJ" = (
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
+"dY" = (
+/obj/structure/chair/office,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hop)
 "eb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -278,8 +288,8 @@
 /turf/closed/wall,
 /area/command/meeting_room)
 "hP" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
+/obj/machinery/door/airlock,
 /turf/open/floor/plating,
 /area/cargo/warehouse/upper)
 "hZ" = (
@@ -392,6 +402,11 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/commons/toilet)
+"kb" = (
+/obj/structure/cable,
+/obj/machinery/requests_console/directional/south,
+/turf/open/floor/iron/smooth,
+/area/command/meeting_room)
 "kg" = (
 /turf/open/floor/plating,
 /area/hallway/primary/central/fore)
@@ -482,6 +497,7 @@
 "lU" = (
 /obj/machinery/light/directional/east,
 /obj/structure/cable/multilayer/multiz,
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/iron/dark,
 /area/engineering/engine_smes)
 "mc" = (
@@ -500,11 +516,19 @@
 /obj/structure/table/glass,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"mo" = (
+/obj/machinery/requests_console/directional/north,
+/turf/open/floor/iron/dark,
+/area/engineering/main)
 "mt" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"mC" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hop)
 "mF" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible{
@@ -540,8 +564,8 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
 "mX" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
+/obj/machinery/door/airlock,
 /turf/open/floor/plating,
 /area/hallway/primary/central/aft)
 "mY" = (
@@ -562,6 +586,7 @@
 /area/service/kitchen/diner)
 "nE" = (
 /obj/machinery/airalarm/directional/east,
+/obj/structure/closet/secure_closet/hop,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
 "nF" = (
@@ -606,6 +631,10 @@
 "ox" = (
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
+"oP" = (
+/obj/machinery/requests_console/directional/west,
+/turf/open/floor/iron/dark,
+/area/engineering/gravity_generator)
 "oQ" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
@@ -698,6 +727,10 @@
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/service/kitchen/coldroom)
+"rv" = (
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/primary/central/fore)
 "rB" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -726,6 +759,7 @@
 "sa" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/wooden_tv,
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "sr" = (
@@ -742,6 +776,12 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"sz" = (
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hop)
 "sO" = (
 /obj/machinery/modular_computer/console/preset/engineering{
 	dir = 4
@@ -954,6 +994,7 @@
 /area/service/hydroponics)
 "xK" = (
 /obj/machinery/processor,
+/obj/machinery/requests_console/directional/west,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/service/kitchen/coldroom)
 "xO" = (
@@ -982,6 +1023,11 @@
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"yi" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/requests_console/directional/south,
+/turf/open/floor/iron,
+/area/service/hydroponics)
 "yv" = (
 /obj/machinery/vending/coffee,
 /obj/structure/cable,
@@ -1003,6 +1049,7 @@
 	pixel_x = -7;
 	pixel_y = 5
 	},
+/obj/machinery/requests_console/directional/west,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen/diner)
 "yU" = (
@@ -1065,6 +1112,7 @@
 	dir = 8;
 	pixel_x = 12
 	},
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "zW" = (
@@ -1347,6 +1395,7 @@
 /area/medical/medbay)
 "Gx" = (
 /obj/machinery/chem_heater/withbuffer,
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "GE" = (
@@ -1448,7 +1497,7 @@
 /turf/closed/wall,
 /area/command/heads_quarters/captain)
 "IN" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock,
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
 "IU" = (
@@ -1495,8 +1544,8 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "JM" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
+/obj/machinery/door/airlock,
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
 "JN" = (
@@ -1664,6 +1713,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"Ng" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/requests_console/directional/east,
+/turf/open/openspace,
+/area/cargo/warehouse/upper)
 "Nh" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/decal/cleanable/food/plant_smudge,
@@ -1800,8 +1860,8 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
 "Qy" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
+/obj/machinery/door/airlock,
 /turf/open/floor/plating,
 /area/hallway/primary/fore)
 "QQ" = (
@@ -1816,6 +1876,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/hallway/primary/central/aft)
+"Rx" = (
+/obj/structure/bed,
+/obj/item/bedsheet/random,
+/turf/open/floor/wood,
+/area/command/heads_quarters/hop)
 "RT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
 	dir = 6
@@ -1933,8 +1998,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen/diner)
 "TR" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock,
 /turf/open/floor/iron,
 /area/commons/lounge)
 "Ui" = (
@@ -2012,6 +2077,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "VW" = (
@@ -2029,6 +2095,7 @@
 /obj/machinery/modular_computer/console/preset/command{
 	dir = 4
 	},
+/obj/machinery/requests_console/directional/north,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "We" = (
@@ -2093,7 +2160,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/gravity_generator)
 "Xv" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock,
 /turf/open/floor/plating,
 /area/cargo/warehouse/upper)
 "XB" = (
@@ -2124,7 +2191,7 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "XM" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock,
 /turf/open/floor/iron,
 /area/commons/lounge)
 "Ya" = (
@@ -32430,9 +32497,9 @@ iN
 iN
 Wx
 iN
-DT
+yi
 Dc
-Fe
+oP
 Fe
 CS
 Fe
@@ -32661,7 +32728,7 @@ DB
 DB
 DB
 EF
-kg
+rv
 EF
 DB
 DB
@@ -33169,9 +33236,9 @@ DB
 DB
 Zg
 wN
-fI
-IB
-IB
+Rx
+sz
+az
 wN
 wN
 VW
@@ -33427,8 +33494,8 @@ Zg
 Zg
 wN
 fI
-IB
-IB
+dY
+mC
 fI
 wN
 VW
@@ -33685,7 +33752,7 @@ hL
 wN
 fI
 IB
-IB
+mC
 fI
 Oo
 NX
@@ -35480,7 +35547,7 @@ XB
 Ti
 Ti
 Ti
-PC
+kb
 IJ
 IJ
 IJ
@@ -35507,7 +35574,7 @@ xB
 FB
 cr
 We
-po
+Ng
 po
 po
 po
@@ -35773,7 +35840,7 @@ Py
 rp
 OX
 wL
-Cj
+mo
 pu
 AP
 Yk
@@ -37030,7 +37097,7 @@ DB
 DB
 DB
 EF
-kg
+rv
 EF
 DB
 DB

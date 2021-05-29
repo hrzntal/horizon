@@ -8,7 +8,7 @@
 	id = "packageSort2"
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "av" = (
 /obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/wood,
@@ -16,12 +16,12 @@
 "aU" = (
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "bn" = (
 /obj/effect/spawner/randomsnackvend,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "bW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -30,13 +30,13 @@
 	amount = 5
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "cE" = (
 /obj/item/stack/ore/iron{
 	amount = 5
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "cL" = (
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
@@ -46,14 +46,14 @@
 	},
 /obj/effect/turf_decal/box,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "de" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "dK" = (
 /turf/closed/wall,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "ff" = (
 /turf/closed/mineral/random/high_chance,
 /area/space)
@@ -61,7 +61,11 @@
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
+"fC" = (
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "gr" = (
 /obj/structure/cable,
 /turf/open/floor/wood{
@@ -73,7 +77,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "gU" = (
 /obj/structure/table/glass,
 /obj/item/stack/sheet/mineral/plasma/five,
@@ -83,8 +87,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
+"hq" = (
+/obj/structure/fans/tiny,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "hU" = (
 /obj/structure/cable,
+/obj/machinery/requests_console/directional/south,
 /turf/open/floor/wood{
 	icon_state = "wood-broken5"
 	},
@@ -94,15 +104,15 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "iS" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "kg" = (
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "kC" = (
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
@@ -138,11 +148,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "mm" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "nk" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
@@ -152,11 +162,11 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "nL" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "om" = (
 /obj/machinery/door/window/northleft{
 	dir = 2;
@@ -176,20 +186,19 @@
 "os" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "pk" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "pP" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/service/bar)
 "pY" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/hallway/primary/central)
+/turf/open/floor/plating,
+/area/cargo/storage)
 "qI" = (
 /obj/structure/closet/secure_closet/bar{
 	req_access_txt = "25"
@@ -202,18 +211,18 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "tE" = (
 /turf/open/floor/plating/airless,
 /area/science/xenobiology)
 "uG" = (
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/fore/secondary)
 "uK" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "uN" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -224,7 +233,7 @@
 "vg" = (
 /obj/machinery/telecomms/relay/preset/telecomms,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "vy" = (
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology Lab";
@@ -236,7 +245,7 @@
 "vF" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "vT" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -247,32 +256,35 @@
 	pixel_y = 32
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "wu" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "xo" = (
 /obj/structure/cable,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
+"xw" = (
+/turf/closed/wall,
+/area/cargo/storage)
 "xx" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "xJ" = (
 /obj/machinery/door/airlock/external,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "xX" = (
 /obj/effect/spawner/randomarcade,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "xZ" = (
 /obj/structure/chair/stool,
 /turf/open/floor/wood{
@@ -298,7 +310,7 @@
 /mob/living/simple_animal/mouse,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "zM" = (
 /obj/structure/table/wood,
 /obj/structure/cable,
@@ -327,8 +339,9 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "Bm" = (
-/turf/open/space/basic,
-/area/hallway/primary/central)
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "Bn" = (
 /obj/structure/table/wood,
 /obj/item/gun/ballistic/shotgun/doublebarrel,
@@ -340,22 +353,22 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "Cw" = (
 /obj/machinery/light/directional/south,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "CD" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "Dp" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "DF" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -369,11 +382,15 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "EC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/science/xenobiology)
+"Gl" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "GZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -385,7 +402,7 @@
 "HQ" = (
 /obj/structure/ladder,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "Id" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -394,34 +411,34 @@
 	amount = 5
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Iy" = (
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "IU" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "JO" = (
 /obj/structure/disposaloutlet{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Kg" = (
 /turf/open/space/basic,
 /area/space)
 "Kp" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Kr" = (
 /turf/closed/wall,
 /area/service/bar)
 "Kv" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "KU" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -434,12 +451,13 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/machinery/requests_console/directional/east,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "Lv" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "Mg" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -479,14 +497,14 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Pr" = (
 /obj/item/stack/ore/glass{
 	amount = 5
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Qy" = (
 /obj/machinery/jukebox,
 /turf/open/floor/wood,
@@ -499,7 +517,7 @@
 "Rd" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "Rk" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -511,7 +529,7 @@
 "RD" = (
 /mob/living/simple_animal/mouse/brown/tom,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/fore/secondary)
 "RK" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/curtain/bounty,
@@ -539,15 +557,19 @@
 "Ty" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "TE" = (
 /turf/open/floor/wood,
 /area/service/bar)
+"TO" = (
+/obj/machinery/requests_console/directional/west,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "TS" = (
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "TU" = (
 /obj/machinery/door/airlock{
 	name = "Bar Storage";
@@ -561,12 +583,12 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Uq" = (
 /obj/machinery/light/directional/east,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Us" = (
 /obj/structure/curtain/bounty,
 /turf/open/floor/wood,
@@ -576,10 +598,10 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "Vo" = (
 /turf/closed/wall,
-/area/hallway/primary/central)
+/area/maintenance/fore/secondary)
 "WB" = (
 /obj/machinery/processor/slime,
 /obj/machinery/light/directional/east,
@@ -588,11 +610,11 @@
 "Xa" = (
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "Xg" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/fore/secondary)
 "Yi" = (
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/wood,
@@ -601,20 +623,20 @@
 /obj/structure/reagent_dispensers/watertank,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 "YP" = (
 /turf/closed/wall,
-/area/maintenance/central)
+/area/maintenance/port/aft)
 "ZA" = (
 /turf/open/floor/plating,
-/area/maintenance/central/secondary)
+/area/maintenance/starboard/aft)
 "ZB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/ladder,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/cargo/storage)
 
 (1,1,1) = {"
 Kg
@@ -31081,7 +31103,7 @@ kg
 kg
 vg
 YP
-pY
+uN
 uN
 uN
 Kg
@@ -31338,7 +31360,7 @@ os
 kg
 kg
 Lv
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -31595,7 +31617,7 @@ zC
 kg
 kg
 Lv
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -31837,8 +31859,8 @@ Kr
 kg
 os
 vF
-uG
-uG
+pY
+pY
 YP
 kg
 kg
@@ -31846,13 +31868,13 @@ kg
 Kv
 YP
 Iy
-Af
+Gl
 CD
 os
 kg
 kg
 Lv
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -32094,8 +32116,8 @@ Kr
 os
 os
 YP
-uG
-uG
+pY
+pY
 YP
 YP
 YP
@@ -32103,13 +32125,13 @@ YP
 YP
 YP
 Iy
-Af
+Gl
 YP
 YP
 YP
 kg
 YP
-pY
+uN
 uN
 uN
 uN
@@ -32351,22 +32373,22 @@ Kr
 pP
 Kr
 Kr
-uG
-uG
-uG
-uG
+pY
+pY
+pY
+pY
 Ty
-Iy
+TO
 Iy
 Iy
 Iy
 Pr
-Af
+Gl
 bn
 YP
 xX
 YP
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -32609,7 +32631,7 @@ zk
 AP
 Kr
 JO
-uG
+pY
 aU
 Pk
 Pk
@@ -32619,12 +32641,12 @@ wu
 Iy
 Iy
 Iy
-Af
+Gl
 YP
 YP
 YP
-Vo
-Vo
+xw
+xw
 Kg
 Kg
 Kg
@@ -32868,20 +32890,20 @@ RK
 aj
 UH
 de
-uG
-uG
-uG
-uG
+pY
+pY
+pY
+pY
 ip
 cE
 Iy
 Iy
 Cw
-Vo
+xw
 Iy
 Iy
 Iy
-Vo
+xw
 mm
 Kg
 Kg
@@ -33125,19 +33147,19 @@ RK
 aj
 UH
 de
-uG
-uG
-uG
-uG
+pY
+pY
+pY
+pY
 ip
 Iy
 Iy
 Iy
-Af
+Gl
 xJ
+hq
 Iy
-Iy
-Iy
+fC
 xJ
 mm
 Kg
@@ -33382,19 +33404,19 @@ RK
 aj
 UH
 de
-uG
-uG
-uG
-uG
+pY
+pY
+pY
+pY
 ip
 Iy
 Iy
 Iy
-Af
+Gl
 xJ
+fC
 Iy
-Iy
-Iy
+fC
 xJ
 mm
 Kg
@@ -33639,20 +33661,20 @@ RK
 aj
 UH
 de
-uG
-uG
-uG
-uG
+pY
+pY
+pY
+pY
 ZB
 Iy
 Iy
 Iy
-Af
-Vo
+Gl
+xw
 Iy
 Iy
 Kp
-Vo
+xw
 mm
 Kg
 Kg
@@ -33908,8 +33930,8 @@ YK
 dK
 dK
 dK
-Vo
-Vo
+xw
+xw
 Kg
 Kg
 Kg
@@ -34151,21 +34173,21 @@ Kr
 pP
 Kr
 Ez
-uG
-uG
+pY
+pY
 pk
 Iy
 pk
 Iy
 pk
 cE
-Af
-Af
+Gl
+Gl
 ft
 dK
 ZA
 dK
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -34407,22 +34429,22 @@ Kr
 uG
 Xg
 Vo
-uG
-Xg
+pY
+Bm
 lK
 iS
 Uq
 gJ
 TS
 iS
-Af
-Af
+Gl
+Gl
 dK
 dK
 dK
 ZA
 dK
-pY
+uN
 uN
 uN
 uN
@@ -34679,7 +34701,7 @@ nL
 uK
 xo
 Rd
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -34936,7 +34958,7 @@ ZA
 ZA
 nL
 Rd
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -35193,7 +35215,7 @@ ZA
 ZA
 nL
 Rd
-Bm
+Kg
 Kg
 Kg
 Kg
@@ -35450,7 +35472,7 @@ ZA
 ZA
 Xa
 dK
-pY
+uN
 uN
 uN
 uN
