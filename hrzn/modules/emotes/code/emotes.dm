@@ -16,6 +16,77 @@
 /datum/emote/living/custom/check_cooldown(mob/user, intentional)
 	return TRUE
 
+
+//SUBTLE STUFF
+
+/datum/emote/living/custom/subtle
+	key = "subtle"
+	key_third_person = "subtle"
+	message = null
+	mob_type_blacklist_typecache = list(/mob/living/brain)
+
+/datum/emote/living/custom/subtle/run_emote(mob/user, params, type_override = null)
+	var/subtle_message
+	if(is_banned_from(user, "emote"))
+		to_chat(user, "You cannot send subtle emotes (banned).")
+		return FALSE
+	else if(user.client && user.client.prefs.muted & MUTE_IC)
+		to_chat(user, "You cannot send IC messages (muted).")
+		return FALSE
+	else if(!params)
+		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
+		if(subtle_emote && !check_invalid(user, subtle_emote))
+			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
+			switch(type)
+				if("Visible")
+					emote_type = EMOTE_VISIBLE
+				if("Hearable")
+					emote_type = EMOTE_AUDIBLE
+				else
+					alert("Unable to use this emote, must be either hearable or visible.")
+					return
+			subtle_message = subtle_emote
+		else
+			return FALSE
+	else
+		subtle_message = params
+		if(type_override)
+			emote_type = type_override
+	. = TRUE
+	if(!can_run_emote(user))
+		return FALSE
+
+	var/prefix_log_message = "(SUBTLE) [subtle_message]"
+	user.log_message(prefix_log_message, LOG_EMOTE)
+	subtle_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say(subtle_message)]</i></span>"
+
+	for(var/mob/M in GLOB.dead_mob_list)
+		if(!M.client || isnewplayer(M))
+			continue
+		var/T = get_turf(src)
+		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
+			M.show_message(subtle_message)
+
+	if(emote_type == EMOTE_AUDIBLE)
+		user.audible_message(message=subtle_message,hearing_distance=1)
+	else
+		user.visible_message(message=subtle_message,self_message=subtle_message,vision_distance=1)
+
+/mob/living/proc/subtle_keybind()
+	var/message = input(src, "", "subtle") as text|null
+	if(!length(message))
+		return
+	return subtle(message)
+
+/mob/living/verb/subtle()
+	set name = "Subtle"
+	set category = "IC"
+	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+	usr.emote("subtle")
+//
+
 /datum/emote/living/quill
 	key = "quill"
 	key_third_person = "quills"
