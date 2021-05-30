@@ -38,7 +38,7 @@
 	/// How much more items are valuable to the merchant for purchasing (in %)
 	var/buy_margin = 1
 	/// How much more items are expensive for the users to purchase (in %)
-	var/sell_margin = 1.2
+	var/sell_margin = 1.3
 	/// How much more, or less items will he have on stock. Minimum of 1 per datum
 	var/quantity_multiplier = 1
 	/// Amount of disposition gained per each trade
@@ -61,6 +61,10 @@
 	/// An associative list of unique responses
 	var/list/speech
 	var/id
+
+// For the traders to override and do some special interactions after trading
+/datum/trader/proc/AfterTrade(mob/user, obj/machinery/computer/trade_console/console)
+	return
 
 /datum/trader/proc/randomize_haggle()
 	current_haggle = rand(0, haggle_percent)
@@ -95,7 +99,7 @@
 		for(var/b in bought_goods)
 			var/datum/bought_goods/bought_goodie = get_matching_bought_datum(AM)
 			if(bought_goodie)
-				total_value += bought_goodie.GetPrice(AM)
+				total_value += bought_goodie.GetCost(AM)
 				valid_items += AM
 
 	total_value *= TRADE_BARTER_EXTRA_MARGIN
@@ -104,7 +108,7 @@
 	if(total_value < goodie.cost*haggle_percent)
 		//Not enough value
 		disposition -= disposition_per_reject
-		. = get_response("not_enough_value", "It's definetly worth more than that", user)
+		. = get_response("trade_not_enough", "It's definetly worth more than that", user)
 	else
 		//Successfully bartered
 		for(var/i in valid_items)
@@ -118,9 +122,10 @@
 			. = get_response("trade_complete", "Thanks for your business!", user)
 		goodie.current_stock--
 		var/destination_turf = get_turf(console.linked_pad)
-		new goodie.path(destination_turf)
+		goodie.spawn_item(destination_turf)
 		disposition += disposition_per_trade
 		console.linked_pad.do_teleport_effect()
+		AfterTrade(user,console)
 		randomize_haggle()
 	valid_items = null
 
@@ -134,11 +139,11 @@
 		var/atom/movable/AM = i
 		if(goodie.Validate(AM))
 			chosen_item = AM
-			item_value = goodie.GetPrice(AM)
+			item_value = goodie.GetCost(AM)
 			break
 	items_on_pad = null
 	if(!chosen_item)
-		return get_response("unwanted_items", "I'm not interested in these kinds of items!", user)
+		return get_response("trade_found_unwanted", "I'm not interested in these kinds of items!", user)
 	var/proposed_cost = haggled_price ? haggled_price : item_value
 	if(current_credits < proposed_cost)
 		return get_response("out_of_money", "Sorry, I've ran out of credits.", user)
@@ -153,6 +158,7 @@
 			hard_bargain = TRUE
 	qdel(chosen_item)
 	console.linked_pad.do_teleport_effect()
+	AfterTrade(user,console)
 	console.credits_held += proposed_cost
 	current_credits -= proposed_cost
 	randomize_haggle()
@@ -176,7 +182,7 @@
 		if(haggled_price < goodie.cost*haggle_percent)
 			//Too low of a haggle, reject
 			disposition -= disposition_per_reject
-			return get_response("not_enough_value", "It's definetly worth more than that", user)
+			return get_response("trade_not_enough", "It's definetly worth more than that", user)
 		else if(haggled_price < goodie.cost*(haggle_percent+TRADE_HARD_BARGAIN_MARGIN))
 			hard_bargain = TRUE
 
@@ -185,8 +191,9 @@
 	current_credits += proposed_cost
 	goodie.current_stock--
 	var/destination_turf = get_turf(console.linked_pad)
-	new goodie.path(destination_turf)
+	goodie.spawn_item(destination_turf)
 	console.linked_pad.do_teleport_effect()
+	AfterTrade(user,console)
 	randomize_haggle()
 	if(hard_bargain)
 		return get_response("hard_bargain", "You drive a hard bargain, but I'll accept", user)
@@ -208,16 +215,16 @@
 			var/datum/bought_goods/goodie = get_matching_bought_datum(AM)
 			if(goodie)
 				item_count++
-				total_value += goodie.GetPrice(AM)
+				total_value += goodie.GetCost(AM)
 				last_item_name = AM.name
 
 	if(!item_count)
-		return get_response("unwanted_items", "I'm not interested in these kinds of items!", user)
+		return get_response("trade_found_unwanted", "I'm not interested in these kinds of items!", user)
 	if(item_count == 1)
-		. = get_response("appraise_single", "For this ITEM I'm willing to pay VALUE credits.", user)
+		. = get_response("how_much", "For this ITEM I'm willing to pay VALUE credits.", user)
 		. = replacetext(., "ITEM", last_item_name)
 	else
-		. = get_response("appraise_multiple", "For those items I'm willing to pay VALUE credits.", user)
+		. = get_response("how_much", "For those items I'm willing to pay VALUE credits.", user)
 	. = replacetext(., "VALUE", "[total_value]")
 
 /datum/trader/proc/sell_all_on_pad(mob/user, obj/machinery/computer/trade_console/console)
@@ -232,11 +239,11 @@
 		var/datum/bought_goods/goodie = get_matching_bought_datum(AM)
 		if(goodie)
 			item_count++
-			total_value += goodie.GetPrice(AM)
+			total_value += goodie.GetCost(AM)
 			valid_items += AM
 
 	if(!item_count)
-		return get_response("unwanted_items", "I'm not interested in these kinds of items!", user)
+		return get_response("trade_found_unwanted", "I'm not interested in these kinds of items!", user)
 	if(current_credits < total_value)
 		return get_response("out_of_money", "I'm afraid I don't have enough cash!", user)
 	for(var/i in valid_items)
@@ -247,23 +254,28 @@
 	console.credits_held += total_value
 	disposition += disposition_per_trade*item_count
 	console.linked_pad.do_teleport_effect()
+	AfterTrade(user,console)
 	randomize_haggle()
 	return get_response("trade_complete", "Thanks for your business!", user)
 
 /datum/trader/proc/hail_msg(is_success, mob/user)
-	var/key = is_success ? "hail_generic" : "hail_deny"
+	var/key = is_success ? "hail" : "hail_deny"
 	var/default = is_success ? "Greetings, MOB!" : "We're closed!"
 	. = get_response(key, default, user)
 
 /datum/trader/proc/get_user_suffix(mob/user)
 	if(!isliving(user))
 		return
+	if(isAI(user))
+		return TRADE_USER_SUFFIX_AI
 	if(iscyborg(user))
 		return TRADE_USER_SUFFIX_CYBORG
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(isgolem(human_user))
 			return TRADE_USER_SUFFIX_GOLEM
+		if(is_species(human_user, /datum/species/robotic/ipc) || is_species(human_user, /datum/species/robotic/synthliz))
+			return TRADE_USER_SUFFIX_ROBOT_PERSON
 		return human_user.dna.species.id
 
 /datum/trader/proc/get_response(var/key, var/default, mob/user)

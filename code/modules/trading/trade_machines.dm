@@ -97,10 +97,10 @@
 				if(TRADER_SCREEN_SOLD_GOODS)
 					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 					dat += "<tr style='vertical-align:top'>"
-					dat += "<td width=30%>Name:</td>"
+					dat += "<td width=45%>Name:</td>"
 					dat += "<td width=10%>Stock:</td>"
 					dat += "<td width=10%>Price:</td>"
-					dat += "<td width=50%>Actions:</td>"
+					dat += "<td width=35%>Actions:</td>"
 					dat += "</tr>"
 					var/even = TRUE
 					var/goodie_index = 0
@@ -117,9 +117,9 @@
 				if(TRADER_SCREEN_BOUGHT_GOODS)
 					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 					dat += "<tr style='vertical-align:top'>"
-					dat += "<td width=30%>Name:</td>"
+					dat += "<td width=45%>Name:</td>"
 					dat += "<td width=20%>Price:</td>"
-					dat += "<td width=50%>Actions:</td>"
+					dat += "<td width=35%>Actions:</td>"
 					dat += "</tr>"
 					var/even = TRUE
 					var/goodie_index = 0
@@ -129,7 +129,7 @@
 						var/datum/bought_goods/goodie = connected_trader.bought_goods[i]
 						dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
 						dat += "<td>[goodie.name]</td>"
-						dat += "<td>[goodie.price_label]</td>"
+						dat += "<td>[goodie.cost_label]</td>"
 						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=sell;index=[goodie_index]'>Sell</a><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=haggle;index=[goodie_index]'>Haggle</a></td>"
 						dat += "</tr>"
 
@@ -182,7 +182,7 @@
 							last_transmission = connected_trader.requested_barter(living_user, src, goodie)
 						if("haggle")
 							var/proposed_value = input(living_user, "How much credits do you offer?", "Trade Console") as num|null
-							if(QDELETED(connected_trader) || QDELETED(goodie))
+							if(!proposed_value || QDELETED(connected_trader) || QDELETED(goodie))
 								return
 							last_transmission = connected_trader.requested_buy(living_user, src, goodie, proposed_value)
 				if("interact_with_bought")
@@ -195,12 +195,10 @@
 							last_transmission = connected_trader.requested_sell(living_user, src, goodie)
 						if("haggle")
 							var/proposed_value = input(living_user, "How much credits do you demand?", "Trade Console") as num|null
-							if(QDELETED(connected_trader) || QDELETED(goodie))
+							if(!proposed_value || QDELETED(connected_trader) || QDELETED(goodie))
 								return
 							last_transmission = connected_trader.requested_sell(living_user, src, goodie, proposed_value)
 				if("button_show_goods")
-					if(!length(connected_trader.sold_goods))
-						return
 					if(connected_trader.trade_flags & TRADER_SELLS_GOODS)
 						trader_screen_state = TRADER_SCREEN_SOLD_GOODS
 						last_transmission = connected_trader.get_response("trade_show_goods", "This is what I've got to offer!", living_user)
@@ -208,13 +206,11 @@
 						last_transmission = connected_trader.get_response("trade_no_sell_goods", "I don't sell any goods.", living_user)
 						
 				if("button_show_purchasables")
-					if(!length(connected_trader.bought_goods))
-						return
 					if(connected_trader.trade_flags & TRADER_BUYS_GOODS)
 						trader_screen_state = TRADER_SCREEN_BOUGHT_GOODS
-						last_transmission = connected_trader.get_response("trade_what_buy", "Hm, I want.. those..", living_user)
+						last_transmission = connected_trader.get_response("what_want", "Hm, I want.. those..", living_user)
 					else
-						last_transmission = connected_trader.get_response("trade_no_buy", "I don't deal in goods!", living_user)
+						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
 
 				if("button_compliment")
 					if(prob(50))
@@ -231,14 +227,15 @@
 					if(connected_trader.trade_flags & TRADER_BUYS_GOODS)
 						last_transmission = connected_trader.get_appraisal(living_user, src)
 					else
-						last_transmission = connected_trader.get_response("trade_no_buy", "I don't deal in goods!", living_user)
+						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
 				
 				if("button_sell_item")
 					if(!(connected_trader.trade_flags & TRADER_BUYS_GOODS))
-						last_transmission = connected_trader.get_response("trade_no_buy", "I don't deal in goods!", living_user)
+						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
 					else if (!(connected_trader.trade_flags & TRADER_MONEY))
 						last_transmission = connected_trader.get_response("doesnt_use_cash", "I don't deal in cash!", living_user)
-					last_transmission = connected_trader.sell_all_on_pad(living_user, src)
+					else
+						last_transmission = connected_trader.sell_all_on_pad(living_user, src)
 			if(!connected_trader.get_hailed(living_user, src))
 				denied_hail_transmission = last_transmission
 				disconnect_trader()

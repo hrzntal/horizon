@@ -254,6 +254,9 @@ Used by the AI doomsday and the self-destruct nuke.
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new config.overmap_object_type(SSovermap.main_system, rand(5,20), rand(5,20)))
 
+	// Create a trade hub
+	new /datum/overmap_object/trade_hub(SSovermap.main_system, rand(5,20), rand(5,20))
+
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id

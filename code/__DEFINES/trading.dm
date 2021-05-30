@@ -8,11 +8,12 @@
 #define TRADER_BUYS_GOODS (1<<4)
 
 //Cash amounts the traders get
-#define DEFAULT_TRADER_CREDIT_AMOUNT 10000
-#define RICH_TRADER_CREDIT_AMOUNT 30000
-#define POOR_TRADER_CREDIT_AMOUNT 5000
-#define VERY_POOR_TRADER_CREDIT_AMOUNT 2000
+#define DEFAULT_TRADER_CREDIT_AMOUNT 5000
+#define RICH_TRADER_CREDIT_AMOUNT 10000
+#define POOR_TRADER_CREDIT_AMOUNT 3000
+#define VERY_POOR_TRADER_CREDIT_AMOUNT 1000
 
+//TODO:
 //Every time SStrading ticks, if the traders have cash below a threshold they'll gain a small injection of cash
 #define TRADER_LOW_CASH_THRESHOLD 2000
 #define TRADER_PAYCHECK_LOW 200
@@ -54,8 +55,10 @@
 
 #define TRADE_HARD_BARGAIN_MARGIN 0.03
 
-#define TRADE_USER_SUFFIX_CYBORG "cyborg"
+#define TRADE_USER_SUFFIX_AI "ai"
+#define TRADE_USER_SUFFIX_CYBORG "silicon"
 #define TRADE_USER_SUFFIX_GOLEM "golem"
+#define TRADE_USER_SUFFIX_ROBOT_PERSON "robotperson"
 
 #define TRADER_COST_MACRO(margin,variance) (1 * margin * ((100 + (rand(-variance,variance)))/100))
 
@@ -66,8 +69,8 @@ hail_deny //When the trader denies the hail
 trade_show_goods //What the trader says when showing goods
 trade_no_sell_goods //What the trader says when disclaiming that he doesnt sell goods
 
-trade_what_buy //When showing what items he buys
-trade_no_buy //When disclaiming he doesnt buy items
+what_want //When showing what items he buys
+trade_no_goods //When disclaiming he doesnt buy items
 
 compliment_deny //When denies a compliment
 compliment_accept //When accepts a compliment
@@ -77,16 +80,16 @@ insult_good //When he doesnt mind the insult much
 
 pad_empty //When you try and conduct barter/selling but your pad is empty
 
-appraise_single //When he appraises the value of item. ITEM = item name, VALUE = amount of cash worth
+how_much //When he appraises the value of item. ITEM = item name, VALUE = amount of cash worth
 appraise_multiple //When he appraises the value of multiple items.  VALUE = amount of cash worth
 
-unwanted_items //When there's only items that they dont want on the pad
+trade_found_unwanted //When there's only items that they dont want on the pad
 out_of_money //When the trader's out of money to pay us for stuff
 doesnt_use_cash //When he disclaims that he doesnt use cash
 
 trade_complete //Sentence after a successful trade
 hard_bargain //Sentence after the user bargained very closely to the trader's limit
-not_enough_value //Sentence when the trader rejects a haggle or barter offer
+trade_not_enough //Sentence when the trader rejects a haggle or barter offer
 too_much_value //When the user tries to sell something for too high of a price
 out_of_stock //The trader is out of stock on an item the user wants to buy
 user_no_money //When the user doesnt have enough money to perform a trade

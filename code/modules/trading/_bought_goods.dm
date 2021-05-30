@@ -4,17 +4,17 @@
 	var/list/trading_types = list()
 	var/list/compiled_typecache
 	///The price label, if null then it'll initialize as correct price + variance
-	var/price_label
-	var/price = 100
+	var/cost_label
+	var/cost = 100
 	var/trader_price_multiplier = 1
 
 /datum/bought_goods/New(price_multiplier)
 	. = ..()
 	trader_price_multiplier = price_multiplier
-	price *= price_multiplier
-	price = round(price)
-	if(!price_label)
-		price_label = price
+	cost *= price_multiplier
+	cost = round(cost)
+	if(!cost_label)
+		cost_label = "[cost]"
 
 	compiled_typecache = compile_typelist_for_trading(trading_types)
 	trading_types = null
@@ -33,12 +33,16 @@
 	return TRUE
 
 /// This proc is used to dynamically appraise the items, changing their price based off variables, make sure the price label reflects such a possibility if used
-/datum/bought_goods/proc/GetPrice(atom/movable/movable_atom_to_appraise)
-	return price
+/datum/bought_goods/proc/GetCost(atom/movable/movable_atom_to_appraise)
+	return cost
 
 /datum/bought_goods/stack
 	name = "a stack"
 
-/datum/bought_goods/stack/GetPrice(atom/movable/movable_atom_to_appraise)
+/datum/bought_goods/stack/GetCost(atom/movable/movable_atom_to_appraise)
 	var/obj/item/stack/our_stack = movable_atom_to_appraise
-	return price*our_stack.amount
+	return cost*our_stack.amount
+
+/datum/bought_goods/stack/New(price_multiplier)
+	. = ..()
+	cost_label += " each"

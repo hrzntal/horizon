@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(trading)
 	///A dedicated global trade hub
 	var/datum/trade_hub/global_trade_hub
 
+	var/list/trader_types_spawned = list()
+
 	var/next_trade_hub_id = 0
 
 	var/next_trader_id = 0
@@ -32,6 +34,16 @@ SUBSYSTEM_DEF(trading)
 	var/list/passed_trade_hubs = list()
 	if(global_trade_hub)
 		passed_trade_hubs += global_trade_hub
+	if(position)
+		var/datum/space_level/level = SSmapping.z_list[position.z]
+		if(level && level.related_overmap_object)
+			var/datum/overmap_object/oo = level.related_overmap_object
+			var/list/overmap_objects = level.related_overmap_object.current_system.GetObjectsInRadius(oo.x,oo.y,1)
+			for(var/i in overmap_objects)
+				var/datum/overmap_object/iterated_object = i
+				if(istype(iterated_object, /datum/overmap_object/trade_hub))
+					var/datum/overmap_object/trade_hub/th_obj = iterated_object
+					passed_trade_hubs += th_obj.hub
 	return passed_trade_hubs
 
 /datum/controller/subsystem/trading/Initialize(timeofday)

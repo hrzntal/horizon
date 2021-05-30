@@ -25,3 +25,17 @@
 	if(!name)
 		var/atom/movable/thing = path
 		name = initial(thing.name)
+
+/datum/sold_goods/proc/spawn_item(var/turf/destination)
+	new path(destination)
+
+/datum/sold_goods/stack
+	var/amount = 1
+
+/datum/sold_goods/stack/New()
+	. = ..()
+	name = "[amount]x [name]"
+
+/datum/sold_goods/stack/spawn_item(var/turf/destination)
+	var/obj/item/stack/new_stack_path = path
+	new new_stack_path(destination, amount)
