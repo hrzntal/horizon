@@ -112,6 +112,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/parallax
 
+	/// Does the user see balloon alerts (minor actions), or chat messages, or both?
+	var/balloon_alerts_pref = BALLOON_ALERTS_BOTH
+
 	///Do we show screentips, if so, how big?
 	var/screentip_pref = TRUE
 	///Color of screentips at top of screen
@@ -722,7 +725,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								cult = GLOB.culture_factions[pref_faction]
 								prefix = "Faction"
 								more = faction_more_info
-						var/cult_desc 
+						var/cult_desc
 						if(more || length(cult.description) <= 160)
 							cult_desc = cult.description
 						else
@@ -1028,6 +1031,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += "High"
 			dat += "</a><br>"
+
+			switch(balloon_alerts_pref)
+				if (BALLOON_ALERTS_NONE)
+					button_name = "Disabled"
+				if (BALLOON_ALERTS_ONLY)
+					button_name = "On-screen Only"
+				if (BALLOON_ALERTS_BOTH)
+					button_name = "Chat and On-screen"
+			dat += "<b>Balloon Alerts:</b> <a href='?_src_=prefs;preference=balloon_alerts_pref'>[button_name]</a><br>"
 
 			dat += "<b>Set screentip mode:</b> <a href='?_src_=prefs;preference=screentipmode'>[screentip_pref ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Screentip color:</b><span style='border: 1px solid #161616; background-color: [screentip_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=screentipcolor'>Change</a><BR>"
@@ -1683,7 +1695,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			needs_update = TRUE
 			switch(href_list["preference"])
 				if("use_preset")
-					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to use a preset (This will clear your existing markings)?",
+						null,
+						list("Yes", "No")
+					)
 					if(action && action == "Yes")
 						var/list/candidates = GLOB.body_marking_sets.Copy()
 						if(!mismatched_customization)
@@ -1871,7 +1888,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("reset_all_colors")
-					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to reset all colors?",
+						null,
+						list("Yes", "No")
+					)
 					if(action == "Yes")
 						reset_colors()
 
@@ -1941,7 +1963,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_orbit = new_orbit
 
 				if("ghostaccs")
-					var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					var/new_ghost_accs = tgui_alert(
+						usr,
+						"Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",
+						null,
+						list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					)
 					switch(new_ghost_accs)
 						if(GHOST_ACCS_FULL_NAME)
 							ghost_accs = GHOST_ACCS_FULL
@@ -1951,7 +1978,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_accs = GHOST_ACCS_NONE
 
 				if("ghostothers")
-					var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					var/new_ghost_others = tgui_alert(
+						usr,
+						"Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",
+						null,
+						list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					)
 					switch(new_ghost_others)
 						if(GHOST_OTHERS_THEIR_SETTING_NAME)
 							ghost_others = GHOST_OTHERS_THEIR_SETTING
@@ -2428,7 +2460,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		else
 			switch(href_list["preference"])
 				if("reset_loadout")
-					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					var/action = tgui_alert(
+						user,
+						"Are you sure you want to reset your loadout?",
+						null,
+						list("Yes", "No")
+					)
 					if(action && action != "Yes")
 						return
 					loadout = list()
@@ -2439,7 +2476,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("adv_colors")
 					if(allow_advanced_colors)
-						var/action = alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", "Yes", "No")
+						var/action = tgui_alert(
+							user,
+							"Are you sure you want to disable advanced colors? (This will reset your colors back to default)",
+							null,
+							list("Yes", "No")
+						)
 						if(action && action != "Yes")
 							return
 					allow_advanced_colors = !allow_advanced_colors
@@ -2532,7 +2574,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					save_preferences()
 
 				if("keybindings_reset")
-					var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
+					var/choice = tgui_alert(
+						user,
+						"Would you prefer 'hotkey' or 'classic' defaults?",
+						"Setup keybindings",
+						list("Hotkey", "Classic", "Cancel")
+					)
 					if(choice == "Cancel")
 						ShowChoices(user)
 						return
@@ -2667,6 +2714,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					parallax = WRAP(parallax - 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref(parent.mob)
+
+				if("balloon_alerts_pref")
+					balloon_alerts_pref = WRAP(balloon_alerts_pref + 1, BALLOON_ALERTS_NONE, BALLOON_ALERTS_BOTH + 1)
 
 				if("screentipmode")
 					screentip_pref = !screentip_pref

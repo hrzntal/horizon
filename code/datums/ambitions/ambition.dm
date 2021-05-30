@@ -258,7 +258,12 @@
 			if("handle")
 				var/last_ckey = GLOB.ambitions_to_review[src]
 				if(last_ckey && last_ckey != usr.ckey)
-					var/action = alert(usr, "[last_ckey] is already handling this review! Do you want to handle nonetheless?", "", "Yes", "No")
+					var/action = tgui_alert(
+						usr,
+						"[last_ckey] is already handling this review! Do you want to handle nonetheless?",
+						null,
+						list("Yes", "No")
+					)
 					if(action && !(action == "Yes"))
 						return
 				GLOB.ambitions_to_review[src] = usr.ckey
@@ -271,7 +276,12 @@
 					to_chat(my_mind.current, "<span class='boldwarning'>[usr.ckey] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)</span>")
 					message_admins("<span class='adminhelp'>[usr.ckey] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("discard_review")
-				var/action = alert(usr, "Are you sure you want to discard this review request (Use request changes if you want it changed instead)?", "", "Yes", "No")
+				var/action = tgui_alert(
+					usr,
+					"Are you sure you want to discard this review request (Use request changes if you want it changed instead)?",
+					null,
+					list("Yes", "No")
+				)
 				if(action && action == "Yes" && admin_review_requested)
 					admin_review_requested = FALSE
 					admin_approval = FALSE
