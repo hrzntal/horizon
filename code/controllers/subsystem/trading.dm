@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(trading)
 	return next_trader_id
 
 //Gets all available trade hubs from a turf position
-/datum/controller/subsystem/trading/proc/get_available_trade_hubs(var/turf/position)
+/datum/controller/subsystem/trading/proc/get_available_trade_hubs(turf/position)
 	var/list/passed_trade_hubs = list()
 	if(global_trade_hub)
 		passed_trade_hubs += global_trade_hub

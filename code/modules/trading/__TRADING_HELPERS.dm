@@ -1,5 +1,5 @@
 ///Since both datums which otherwise dont inherit, use this exact function, I put it here
-/proc/compile_typelist_for_trading(var/list/passed_list)
+/proc/compile_typelist_for_trading(list/passed_list)
 	var/compiled_types = list()
 	var/list/blacklist_types = list()
 	for(var/type in passed_list)

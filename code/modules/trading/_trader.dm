@@ -278,7 +278,7 @@
 			return TRADE_USER_SUFFIX_ROBOT_PERSON
 		return human_user.dna.species.id
 
-/datum/trader/proc/get_response(var/key, var/default, mob/user)
+/datum/trader/proc/get_response(key, default, mob/user)
 	var/suffix = get_user_suffix(user)
 	if(speech)
 		if(speech["[key]_[suffix]"])

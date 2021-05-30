@@ -2,8 +2,8 @@
 	name = "toys"
 	cost = 100
 	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
-		 				/obj/item/toy/figure = TRADER_BLACKLIST_TYPES,
-		 				/obj/item/toy/cards/singlecard = TRADER_BLACKLIST_TYPES)
+						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES,
+						/obj/item/toy/cards/singlecard = TRADER_BLACKLIST_TYPES)
 
 /datum/bought_goods/toy_figures
 	name = "toy figures"

@@ -26,7 +26,7 @@
 		var/atom/movable/thing = path
 		name = initial(thing.name)
 
-/datum/sold_goods/proc/spawn_item(var/turf/destination)
+/datum/sold_goods/proc/spawn_item(turf/destination)
 	new path(destination)
 
 /datum/sold_goods/stack
@@ -36,6 +36,6 @@
 	. = ..()
 	name = "[amount]x [name]"
 
-/datum/sold_goods/stack/spawn_item(var/turf/destination)
+/datum/sold_goods/stack/spawn_item(turf/destination)
 	var/obj/item/stack/new_stack_path = path
 	new new_stack_path(destination, amount)
