@@ -47,9 +47,9 @@
 	qdel(extension)
 	return ..()
 
-/obj/machinery/atmospherics/components/unary/engine/can_be_node(obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/components/unary/engine/isConnectable(obj/machinery/atmospherics/target, given_layer)
 	if(is_welded)
-		return ..(target)
+		return ..()
 	return FALSE
 
 /obj/machinery/atmospherics/components/unary/engine/proc/weld_down(mapload)
