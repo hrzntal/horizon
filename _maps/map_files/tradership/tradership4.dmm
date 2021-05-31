@@ -9,7 +9,7 @@
 	network = "tcommsat"
 	},
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "cn" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/airless,
@@ -17,7 +17,10 @@
 "cs" = (
 /obj/machinery/telecomms/processor/preset_four,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
+"dO" = (
+/turf/closed/wall,
+/area/maintenance/solars/port/aft)
 "fB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -27,7 +30,7 @@
 	dir = 8
 	},
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "gD" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -37,104 +40,120 @@
 	dir = 8
 	},
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "hg" = (
 /obj/machinery/ntnet_relay,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "hT" = (
 /obj/machinery/telecomms/server/presets/engineering,
 /obj/machinery/light/directional/west,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "hW" = (
 /obj/machinery/power/terminal{
 	dir = 8
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "ib" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "im" = (
 /obj/machinery/telecomms/receiver/preset_right,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "ju" = (
 /obj/machinery/telecomms/server/presets/supply,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "jE" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "kC" = (
 /obj/machinery/telecomms/message_server/preset,
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "ln" = (
 /obj/machinery/telecomms/processor/preset_two,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "lC" = (
 /obj/machinery/blackbox_recorder,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "lK" = (
 /obj/machinery/power/smes/engineering,
+/obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "mP" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "nP" = (
 /obj/machinery/telecomms/bus/preset_four,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
+"nZ" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "oa" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
-/area/hallway/primary/central)
-"om" = (
+/area/maintenance/solars/port/aft)
+"ok" = (
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
+"oV" = (
 /obj/structure/cable,
+/obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "pf" = (
 /obj/machinery/telecomms/server/presets/common,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "pE" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "qM" = (
 /obj/machinery/telecomms/server/presets/command,
 /obj/machinery/light/directional/east,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
+"qP" = (
+/turf/open/floor/iron/dark,
+/area/tcommsat/server)
 "qX" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
 	},
+/obj/structure/cable,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "rQ" = (
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "sZ" = (
 /obj/machinery/power/terminal{
 	dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "ve" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -145,7 +164,7 @@
 /obj/structure/cable,
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "vf" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -155,25 +174,27 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "wC" = (
 /obj/structure/ladder,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "wP" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering";
 	req_access_txt = "10"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "ya" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "yp" = (
+/obj/structure/cable/multilayer/multiz,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "yC" = (
 /turf/closed/mineral/random/high_chance,
 /area/space)
@@ -182,7 +203,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "zC" = (
 /turf/open/floor/plating/airless,
 /area/space)
@@ -195,43 +216,48 @@
 	dir = 1
 	},
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "By" = (
 /obj/machinery/telecomms/bus/preset_one,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Cc" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "DK" = (
 /obj/machinery/telecomms/server/presets/security,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "DY" = (
 /obj/machinery/telecomms/server/presets/service,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Eu" = (
 /obj/machinery/telecomms/bus/preset_three,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
+"Hc" = (
+/obj/structure/cable/multilayer/multiz,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "Hf" = (
 /obj/machinery/telecomms/server/presets/medical,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Hp" = (
 /obj/machinery/telecomms/receiver/preset_left,
+/obj/structure/cable,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "HN" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "IE" = (
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "IQ" = (
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
@@ -241,44 +267,41 @@
 /obj/structure/railing/corner,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
-"Ld" = (
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Lf" = (
 /obj/machinery/door/airlock/external,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "MK" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Ou" = (
 /turf/open/floor/engine/airless,
 /area/space)
 "Ph" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "PA" = (
 /obj/structure/ladder,
 /turf/open/floor/iron,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Qr" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "QM" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Rg" = (
 /obj/machinery/telecomms/hub/preset,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Rx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -289,7 +312,7 @@
 	},
 /obj/machinery/light/directional/east,
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "SH" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -299,7 +322,7 @@
 	dir = 1
 	},
 /turf/open/openspace,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "SU" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -309,27 +332,27 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Tj" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "TB" = (
 /obj/machinery/telecomms/broadcaster/preset_left,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "TI" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Uh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Ux" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -339,7 +362,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "UH" = (
 /obj/structure/lattice,
 /turf/open/openspace/airless/planetary,
@@ -350,41 +373,42 @@
 /area/space)
 "Vd" = (
 /turf/closed/wall,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Vn" = (
 /obj/structure/cable,
 /obj/machinery/power/solar_control{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "VA" = (
 /obj/machinery/telecomms/bus/preset_two,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Wh" = (
 /obj/machinery/light/directional/south,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "WG" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Xb" = (
 /obj/machinery/computer/message_monitor{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 "Xd" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Ye" = (
 /obj/structure/closet/crate/solarpanel_small,
 /turf/open/floor/plating,
-/area/hallway/primary/central)
+/area/maintenance/solars/port/aft)
 "Zw" = (
 /turf/open/openspace/airless/planetary,
 /area/space)
@@ -394,8 +418,9 @@
 /area/space)
 "ZS" = (
 /obj/machinery/telecomms/processor/preset_one,
+/obj/structure/cable,
 /turf/open/floor/circuit,
-/area/hallway/primary/central)
+/area/tcommsat/server)
 
 (1,1,1) = {"
 Zw
@@ -31847,7 +31872,7 @@ Zw
 Zw
 Vd
 hT
-Ld
+qP
 ju
 Vd
 yC
@@ -31878,19 +31903,19 @@ Ou
 Ou
 Ou
 Ou
-Vd
-pE
-pE
-Vd
+dO
+nZ
+nZ
+dO
 yC
 yC
 yC
 Ou
 yC
-Vd
-pE
-pE
-Vd
+dO
+nZ
+nZ
+dO
 Ou
 Ou
 Ou
@@ -32104,7 +32129,7 @@ Zw
 Zw
 Vd
 nP
-Ld
+qP
 VA
 Vd
 yC
@@ -32133,21 +32158,21 @@ Ou
 Ou
 Ou
 Ou
-Vd
-Vd
-Vd
+dO
+dO
+dO
 Vn
 Ye
-Vd
-Vd
-Vd
+dO
+dO
+dO
 yC
 yC
 yC
-Vd
-rQ
-rQ
-Vd
+dO
+ok
+Hc
+dO
 Ou
 Ou
 Ou
@@ -32361,7 +32386,7 @@ Zw
 Vd
 Vd
 pf
-Ld
+qP
 DY
 Vd
 Vd
@@ -32389,22 +32414,22 @@ Ou
 Ou
 Ou
 Ou
-Vd
-Vd
+dO
+dO
 JQ
 Ux
 Ux
 Ux
 ve
 SU
-Vd
+dO
 yC
 yC
 yC
-Vd
+dO
 lK
 rQ
-Vd
+dO
 Ou
 Ou
 Ou
@@ -32618,7 +32643,7 @@ Zw
 Vd
 ya
 cs
-Ld
+qP
 ln
 TB
 Rg
@@ -32643,10 +32668,10 @@ Ou
 Ou
 ZG
 Ou
-Vd
-pE
-Vd
-Vd
+dO
+nZ
+dO
+dO
 rQ
 Qr
 IE
@@ -32654,14 +32679,14 @@ IE
 IE
 IE
 vf
-Vd
-Vd
-Vd
-Vd
-Vd
+dO
+dO
+dO
+dO
+dO
 hW
 rQ
-Vd
+dO
 Ou
 Ou
 Ou
@@ -32874,12 +32899,12 @@ Zw
 Zw
 Vd
 mP
-Ld
-Ld
-Ld
-Ld
-om
 Tj
+Tj
+qP
+qP
+Tj
+oV
 Tj
 Tj
 Wh
@@ -32918,7 +32943,7 @@ Ph
 Ph
 Ph
 rQ
-Vd
+dO
 Ou
 Ou
 Ou
@@ -33131,10 +33156,10 @@ Zw
 Zw
 Vd
 lC
-Ld
-Ld
-Ld
-Ld
+qP
+Tj
+qP
+qP
 sZ
 Vd
 Vd
@@ -33175,7 +33200,7 @@ rQ
 MK
 rQ
 wC
-Vd
+dO
 Ou
 Ou
 Ou
@@ -33389,7 +33414,7 @@ Zw
 Vd
 im
 HN
-Ld
+Tj
 ZS
 Hp
 qX
@@ -33414,10 +33439,10 @@ Ou
 Ou
 ZG
 Ou
-Vd
-pE
-Vd
-Vd
+dO
+nZ
+dO
+dO
 rQ
 yH
 IE
@@ -33425,14 +33450,14 @@ IE
 IE
 IE
 AW
-Vd
-Vd
-Vd
-Vd
-Vd
-pE
-pE
-Vd
+dO
+dO
+dO
+dO
+dO
+nZ
+nZ
+dO
 Ou
 Ou
 Ou
@@ -33646,7 +33671,7 @@ Zw
 Vd
 Vd
 DK
-Ld
+qP
 Hf
 Vd
 Vd
@@ -33674,15 +33699,15 @@ Ou
 Ou
 Ou
 Ou
-Vd
-Vd
+dO
+dO
 gD
 Rx
 fB
 fB
 fB
 SH
-Vd
+dO
 Ou
 Ou
 Ou
@@ -33903,7 +33928,7 @@ Zw
 Zw
 Vd
 Eu
-Ld
+qP
 By
 Vd
 Ou
@@ -33932,14 +33957,14 @@ Ou
 Ou
 Ou
 Ou
-Vd
-Vd
-Vd
+dO
+dO
+dO
 rQ
 rQ
-Vd
-Vd
-Vd
+dO
+dO
+dO
 Ou
 Ou
 Ou
@@ -34160,7 +34185,7 @@ Zw
 Zw
 Vd
 qM
-Ld
+qP
 ib
 Vd
 Ou
@@ -34191,10 +34216,10 @@ Ou
 Ou
 Ou
 Ou
-Vd
-pE
-pE
-Vd
+dO
+nZ
+nZ
+dO
 Ou
 Ou
 Ou
