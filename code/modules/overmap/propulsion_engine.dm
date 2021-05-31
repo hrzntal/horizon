@@ -11,7 +11,7 @@
 	density = TRUE
 	anchored = TRUE
 
-	pipe_color = COLOR_MOSTLY_PURE_ORANGE
+	pipe_color = COLOR_TAN_ORANGE
 	vent_movement = NONE
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY
 	processing_flags = NONE
@@ -28,10 +28,10 @@
 /obj/machinery/atmospherics/components/unary/engine/SetInitDirections()
 	initialize_directions = REVERSE_DIR(dir)
 
-/obj/machinery/atmospherics/components/unary/engine/Initialize()
+/obj/machinery/atmospherics/components/unary/engine/Initialize(mapload)
 	extension = new extension_type(src)
 	if(starts_welded)
-		weld_down()
+		weld_down(mapload)
 		//This needs to be connected a moment after a lot of other initialization stuff happens
 		//Late initialize does not seem to work for this (doesnt get caled at all), so a timer
 		addtimer(CALLBACK(src, .proc/ApplyExtension))
@@ -52,13 +52,15 @@
 		return ..(target)
 	return FALSE
 
-/obj/machinery/atmospherics/components/unary/engine/proc/weld_down()
+/obj/machinery/atmospherics/components/unary/engine/proc/weld_down(mapload)
 	if(is_welded)
 		return
 	is_welded = TRUE
 	can_be_unanchored = FALSE
 	move_resist = INFINITY
 	ApplyExtension()
+	if(mapload) //Atmos isn't initialized at mapload
+		return
 	SetInitDirections()
 	atmosinit()
 	if(length(nodes))
@@ -135,7 +137,7 @@
 		return TRUE
 
 #define ENGINE_MINIMUM_OPERATABLE_MOLES 0.1
-#define ENGINE_BASELINE_MOLE_INTAKE 0.5
+#define ENGINE_BASELINE_MOLE_INTAKE 1
 
 /obj/machinery/atmospherics/components/unary/engine/proc/DrawThrust(impulse_power)
 	var/datum/gas_mixture/gas = airs[1]
@@ -145,7 +147,7 @@
 	var/demand_mutliplier = T20C / gas.temperature
 	var/transfer_moles = ENGINE_BASELINE_MOLE_INTAKE * demand_mutliplier * impulse_power
 	var/returned_efficiency = 1
-	if(transfer_moles < total_moles)
+	if(transfer_moles > total_moles)
 		returned_efficiency = (total_moles / transfer_moles)
 		transfer_moles = total_moles
 
