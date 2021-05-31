@@ -42,7 +42,7 @@
 /obj/item/teleportation_scroll/proc/teleportscroll(mob/user)
 	var/A
 
-	A = tgui_input_list(user, "Area to jump to", "BOOYEA", GLOB.teleportlocs)
+	A = tgui_input_list(user, "Area to jump to", "BOOYEA", GLOB.teleportlocs, default = A)
 	if(!src || QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !A || !uses)
 		return
 	var/area/thearea = GLOB.teleportlocs[A]

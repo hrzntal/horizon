@@ -1,7 +1,13 @@
 /client/proc/manipulate_organs(mob/living/carbon/C in world)
 	set name = "Manipulate Organs"
 	set category = "Debug"
-	var/operation = tgui_input_list(src, "Select organ operation.", "Organ Manipulation", list("add organ", "add implant", "drop organ/implant", "remove organ/implant", "cancel"))
+	var/operation = tgui_input_list(
+		usr,
+		"Select organ operation.",
+		"Organ Manipulation",
+		list("add organ", "add implant", "drop organ/implant", "remove organ/implant", "cancel"),
+		"cancel"
+	)
 	if (!operation)
 		return
 

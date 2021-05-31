@@ -217,14 +217,14 @@
 			if(!is_funmin)
 				return
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Virus Outbreak"))
-			switch(tgui_alert(usr,"Do you want this to be a random disease or do you have something in mind?",,list("Make Your Own","Random","Choose")))
+			switch(tgui_alert(usr,"Do you want this to be a random disease or do you have something in mind?", null, list("Make Your Own","Random","Choose")))
 				if("Make Your Own")
 					AdminCreateVirus(holder)
 				if("Random")
 					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
 					E = DC.runEvent()
 				if("Choose")
-					var/virus = tgui_input_list(holder, "Choose the virus to spread", "BIOHAZARD", sortList(typesof(/datum/disease), /proc/cmp_typepaths_asc))
+					var/virus = tgui_input_list(usr, "Choose the virus to spread", "BIOHAZARD", sortList(typesof(/datum/disease), /proc/cmp_typepaths_asc))
 					var/datum/round_event_control/disease_outbreak/DC = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
 					var/datum/round_event/disease_outbreak/DO = DC.runEvent()
 					DO.virus_type = virus

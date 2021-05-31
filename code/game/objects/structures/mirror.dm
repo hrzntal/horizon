@@ -45,7 +45,7 @@
 
 		//handle facial hair (if necessary)
 		if(H.gender != FEMALE)
-			var/new_style = input(user, "Select a facial hairstyle", "Grooming")  as null|anything in GLOB.facial_hairstyles_list
+			var/new_style = tgui_input_list(user, "Select a facial hairstyle", "Grooming", GLOB.facial_hairstyles_list)
 			if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 				return //no tele-grooming
 			if(new_style)
@@ -54,7 +54,7 @@
 			H.facial_hairstyle = "Shaved"
 
 		//handle normal hair
-		var/new_style = input(user, "Select a hairstyle", "Grooming")  as null|anything in GLOB.hairstyles_list
+		var/new_style = tgui_input_list(user, "Select a hairstyle", "Grooming", GLOB.hairstyles_list)
 		if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return //no tele-grooming
 		if(HAS_TRAIT(H, TRAIT_BALD))

@@ -169,7 +169,7 @@
 //This is here if you want admin created teams to tell each other apart easily.
 /datum/team/custom/proc/admin_force_hud(mob/user)
 	var/list/possible_icons = icon_states('icons/mob/hud.dmi')
-	var/new_hud_state = tgui_input_list(user, "Choose hud icon state", "Custom HUD", sortList(possible_icons))
+	var/new_hud_state = tgui_input_list(user, "Choose hud icon state", "Custom HUD", sortList(possible_icons), default = "traitor")
 	if(!new_hud_state)
 		return
 	//suppose could ask for color too

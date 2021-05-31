@@ -1204,7 +1204,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)] = P
 
-	var/c = tgui_input_list(user, "Please select a PDA", sortList(plist))
+	var/c = tgui_input_list(user, "Please select a PDA", buttons = sortList(plist))
 
 	if (!c)
 		return

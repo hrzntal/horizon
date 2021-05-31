@@ -696,7 +696,7 @@
 				rolelist_dict = list("CANCEL", "FINISH") + rolelist_dict
 				while(!done)
 					to_chat(usr, "You have a total player count of [assoc_value_sum(debug_setup)] in this setup.")
-					var/chosen_role_name = input(usr,"Select a role!","Custom Setup Creation",rolelist_dict[1]) as null|anything in rolelist_dict
+					var/chosen_role_name = tgui_input_list(usr, "Select a role!", "Custom Setup Creation", rolelist_dict, default = rolelist_dict[1])
 					if(chosen_role_name == "CANCEL")
 						return
 					if(chosen_role_name == "FINISH")

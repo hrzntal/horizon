@@ -787,7 +787,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		"Total Time" = /proc/cmp_profile_time_dsc,
 		"Call Count" = /proc/cmp_profile_count_dsc
 	)
-	var/sort = tgui_input_list(src, "Sort type?", "Sort Type", sortlist)
+	var/sort = tgui_input_list(src, "Sort type?", "Sort Type", sortlist, default = "Avg time")
 	if (!sort)
 		return
 	sort = sortlist[sort]

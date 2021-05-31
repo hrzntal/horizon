@@ -366,7 +366,7 @@
 		return
 
 	//Ask the user to pick a channel from what it has available.
-	var/Autochan = input("Select a channel:") as null|anything in list("Default","None") + radio.channels
+	var/Autochan = tgui_input_list(usr, "Select a channel:", buttons = list("Default","None") + radio.channels)
 
 	if(!Autochan)
 		return

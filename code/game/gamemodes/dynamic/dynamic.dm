@@ -236,7 +236,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		log_admin("[key_name(usr)] cleared the forced latejoin ruleset.")
 		message_admins("[key_name(usr)] cleared the forced latejoin ruleset.")
 	else if(href_list["force_midround_rule"])
-		var/added_rule = input(
+		var/added_rule = tgui_input_list(
 			usr,
 			"What ruleset do you want to force right now? This will bypass threat level and population restrictions.",
 			"Execute Ruleset",

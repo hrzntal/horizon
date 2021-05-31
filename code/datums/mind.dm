@@ -552,7 +552,7 @@
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = tgui_input_list(usr, "Which antagonist gets the objective:", "Antagonist", sortList(antag_datums) + "(new custom antag)")
+						var/datum/antagonist/target = tgui_input_list(usr, "Which antagonist gets the objective:", "Antagonist", sortList(antag_datums) + "(new custom antag)", default = "(new custom antag)")
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")

@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(possible_abductor_names, list("Alpha","Beta","Gamma","Delta","E
 	var/list/current_teams = list()
 	for(var/datum/team/abductor_team/T in GLOB.antagonist_teams)
 		current_teams[T.name] = T
-	var/choice = input(admin,"Add to which team ?") as null|anything in (current_teams + "new team")
+	var/choice = tgui_input_list(admin, "Add to which team ?", buttons = (current_teams + "new team"))
 	if (choice == "new team")
 		team = new
 	else if(choice in current_teams)

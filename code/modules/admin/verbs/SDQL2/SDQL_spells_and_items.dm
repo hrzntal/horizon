@@ -475,7 +475,7 @@
 					var/datum/supersample = new superpath
 					var/datum/sample = new path
 					var/list/choosable_vars = map_var_list((sample.vars&supersample.vars)-list_vars[params["list"]], sample)
-					var/chosen_var = input(user, "Select variable to add.", "Add SDQL Spell", null) as null|anything in sortList(choosable_vars)
+					var/chosen_var = tgui_input_list(user, "Select variable to add.", "Add SDQL Spell", sortList(choosable_vars))
 					if(chosen_var)
 						if(islist(sample.vars[choosable_vars[chosen_var]]))
 							list_vars[params["list"]] += list("[choosable_vars[chosen_var]]" = list("type" = "list", "value" = null, "flags" = LIST_VAR_FLAGS_TYPED|LIST_VAR_FLAGS_NAMED))

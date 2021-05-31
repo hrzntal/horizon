@@ -2128,7 +2128,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("facial_hairstyle")
 					needs_update = TRUE
+<<<<<<< HEAD
 					var/new_facial_hairstyle = input(user, "Choose your character's facial-hairstyle:", "Character Preference")  as null|anything in facial_hairstyle_list_for_species(pref_species, null, mismatched_customization)
+=======
+					var/new_facial_hairstyle = tgui_input_list(user, "Choose your character's facial-hairstyle:", "Character Preference", GLOB.facial_hairstyles_list)
+>>>>>>> 1086593976 (More list pickers, and make some alerts instead)
 					if(new_facial_hairstyle)
 						facial_hairstyle = new_facial_hairstyle
 
@@ -2141,7 +2145,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					needs_update = TRUE
 
 				if("underwear")
-					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_list_for_species(pref_species, null, mismatched_customization)
+					var/new_underwear = tgui_input_list(user, "Choose your character's underwear:", "Character Preference", underwear_list_for_species(pref_species, null, mismatched_customization))
 					if(new_underwear)
 						underwear = new_underwear
 
@@ -2310,7 +2314,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("s_tone")
 					needs_update = TRUE
-					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
+					var/new_s_tone = tgui_input_list(user, "Choose your character's skin-tone:", "Character Preference", GLOB.skin_tones)
 					if(new_s_tone)
 						set_skin_tone(new_s_tone)
 
@@ -2328,13 +2332,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/list/valid_paths = list()
 					for(var/datum/outfit/outfit_path as anything in subtypesof(/datum/outfit))
 						valid_paths[initial(outfit_path.name)] = outfit_path
-					var/new_outfit = input(user, "Choose your briefing officer outfit:", "Game Preference") as null|anything in valid_paths
+					var/new_outfit = tgui_input_list(user, "Choose your briefing officer outfit:", "Game Preference", valid_paths)
 					new_outfit = valid_paths[new_outfit]
 					if(new_outfit)
 						brief_outfit = new_outfit
 
 				if("bag")
-					var/new_backpack = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backpacklist
+					var/new_backpack = tgui_input_list(user, "Choose your character's style of bag:", "Character Preference", GLOB.backpacklist)
 					if(new_backpack)
 						backpack = new_backpack
 
@@ -2379,7 +2383,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							friendlyname += " (disabled)"
 						maplist[friendlyname] = VM.map_name
 					maplist[default] = null
-					var/pickedmap = input(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference")  as null|anything in sortList(maplist)
+					var/pickedmap = tgui_input_list(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference", sortList(maplist))
 					if (pickedmap)
 						preferred_map = maplist[pickedmap]
 
@@ -2389,13 +2393,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						clientfps = desiredfps
 						parent.fps = desiredfps
 				if("ui")
-					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in sortList(GLOB.available_ui_styles)
+					var/pickedui = tgui_input_list(user, "Choose your UI style.", "Character Preference", sortList(GLOB.available_ui_styles), default = UI_style)
 					if(pickedui)
 						UI_style = pickedui
 						if (parent && parent.mob && parent.mob.hud_used)
 							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
 				if("pda_style")
-					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
+					var/pickedPDAStyle = tgui_input_list(user, "Choose your PDA style.", "Character Preference", GLOB.pda_styles, default = pda_style)
 					if(pickedPDAStyle)
 						pda_style = pickedPDAStyle
 				if("pda_color")
@@ -2404,7 +2408,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						pda_color = pickedPDAColor
 
 				if("phobia")
-					var/phobiaType = tgui_input_list(user, "What are you scared of?", "Character Preference", phobia, SStraumas.phobia_types)
+					var/phobiaType = tgui_input_list(user, "What are you scared of?", "Character Preference", SStraumas.phobia_types, default = phobia)
 					if(phobiaType)
 						phobia = phobiaType
 

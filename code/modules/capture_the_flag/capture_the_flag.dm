@@ -364,7 +364,7 @@
 		for(var/key in ctf_gear)
 			chosen_class = ctf_gear[key]
 	else if(ctf_gear.len > 3) //a lot of choices, so much that we can't use a basic alert
-		var/result = input(new_team_member, "Select a class.", "CTF") as null|anything in sortList(ctf_gear)
+		var/result = tgui_input_list(new_team_member, "Select a class.", "CTF", sortList(ctf_gear))
 		if(!result || !(GLOB.ghost_role_flags & GHOSTROLE_MINIGAME) || (new_team_member.ckey in recently_dead_ckeys) || !isobserver(new_team_member.mob))
 			return //picked nothing, admin disabled it, cheating to respawn faster, cheating to respawn... while in game?
 		chosen_class = ctf_gear[result]
