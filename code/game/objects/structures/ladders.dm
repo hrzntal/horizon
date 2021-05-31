@@ -10,7 +10,8 @@
 	var/obj/structure/ladder/up     //the ladder above this one
 	var/crafted = FALSE
 	/// Optional travel time for ladder in deciseconds
-	var/travel_time = 0
+	var/travel_time = 1.5 SECONDS
+	var/static/list/climbsounds = list('sound/effects/ladder.ogg','sound/effects/ladder2.ogg','sound/effects/ladder3.ogg','sound/effects/ladder4.ogg')
 
 /obj/structure/ladder/Initialize(mapload, obj/structure/ladder/up, obj/structure/ladder/down)
 	..()
@@ -72,7 +73,21 @@
 
 /obj/structure/ladder/proc/travel(going_up, mob/user, is_ghost, obj/structure/ladder/ladder)
 	if(!is_ghost)
+		var/mob/living/living_user = user
+		if(user.loc != loc) //If not at the ladder location, attempt to move in
+			var/can_move = user.Move(get_turf(src), get_dir(user,src))
+			if(!can_move)
+				to_chat(user, "<span class='warning'>You can't step in!</span>")
+				return
+		if(!(living_user.mobility_flags & MOBILITY_USE))
+			to_chat(user, "<span class='warning'>You can't reach out!</span>")
+			return
+		var/direction = going_up ? "up" : "down"
+		user.visible_message("<span class='notice'>[user] begins to climb [direction] [src].</span>", "<span class='notice'>You begin to climb [direction] [src].</span>")
+		ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src].</span>")
 		ladder.add_fingerprint(user)
+		playsound(src, pick(climbsounds), 50) //Here
+		playsound(ladder, pick(climbsounds), 50) //And at the destination
 		if(!do_after(user, travel_time, target = src))
 			return
 		show_fluff_message(going_up, user)
@@ -86,12 +101,6 @@
 	user.forceMove(T)
 	if(AM)
 		user.start_pulling(AM)
-
-	//reopening ladder radial menu ahead
-	T = get_turf(user)
-	var/obj/structure/ladder/ladder_structure = locate() in T
-	if (ladder_structure)
-		ladder_structure.use(user)
 
 /obj/structure/ladder/proc/use(mob/user, is_ghost=FALSE)
 	if (!is_ghost && !in_range(src, user))
