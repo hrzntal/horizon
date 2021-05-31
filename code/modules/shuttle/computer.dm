@@ -69,6 +69,9 @@
 			ui.open()
 
 /obj/machinery/computer/shuttle/Topic(href, href_list)
+	var/mob/user = usr
+	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	switch(href_list["task"])
 		if("engines_off")
@@ -79,11 +82,11 @@
 			say("Engines online.")
 		if("overmap_view")
 			if(M.my_overmap_object)
-				M.my_overmap_object.GrantOvermapView(usr)
+				M.my_overmap_object.GrantOvermapView(usr, get_turf(src))
 				return
 		if("overmap_ship_controls")
 			if(M.my_overmap_object)
-				M.my_overmap_object.DisplayUI(usr)
+				M.my_overmap_object.DisplayUI(usr, get_turf(src))
 				return
 		if("overmap_launch")
 			if(!uses_overmap)
