@@ -7,8 +7,6 @@
 	req_access = list( )
 
 /obj/machinery/computer/overmap_console/ui_interact(mob/user, datum/tgui/ui)
-	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
 	var/datum/space_level/SL = SSmapping.z_list[z]
 	if(!SL.related_overmap_object || !SL.is_overmap_controllable)
 		return
