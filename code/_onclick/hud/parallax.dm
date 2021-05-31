@@ -86,12 +86,13 @@
 	var/client/C = screenmob.client
 
 	//Apply a parallax direction override from z level if any (for z-level shuttles)
-	var/datum/space_level/current_z_level = SSmapping.z_list[screenmob.z]
-	if(current_z_level.parallax_direction_override)
-		new_parallax_movedir = current_z_level.parallax_direction_override
-
-	if(new_parallax_movedir == C.parallax_movedir)
-		return
+	if(screenmob.z) //No nullspace!
+		var/datum/space_level/current_z_level = SSmapping.z_list[screenmob.z]
+		if(current_z_level.parallax_direction_override)
+			new_parallax_movedir = current_z_level.parallax_direction_override
+	
+		if(new_parallax_movedir == C.parallax_movedir)
+			return
 	var/animatedir = new_parallax_movedir
 	if(new_parallax_movedir == FALSE)
 		var/animate_time = 0
