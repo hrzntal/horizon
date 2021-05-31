@@ -5,6 +5,16 @@
 	var/obj/docking_port/mobile/shuttle
 	var/datum/space_level/z_level
 
+/datum/shuttle_extension/proc/ApplyToPosition(turf/position)
+	if(SSshuttle.is_in_shuttle_bounds(position))
+		var/obj/docking_port/mobile/M = SSshuttle.get_containing_shuttle(position)
+		if(M)
+			AddToShuttle(M)
+	else
+		var/datum/space_level/level = SSmapping.z_list[position.z]
+		if(level && level.related_overmap_object && level.is_overmap_controllable)
+			AddToZLevel(level)
+
 /datum/shuttle_extension/proc/IsApplied()
 	return (overmap_object || shuttle || z_level)
 
@@ -71,9 +81,13 @@
 	var/turned_on = FALSE
 	var/cap_speed_multiplier = 5
 
+/datum/shuttle_extension/engine/proc/UpdateFuel()
+	return
+
 /datum/shuttle_extension/engine/proc/CanOperate()
+	UpdateFuel()
 	if(!turned_on)
-		return
+		return FALSE
 	if(current_fuel < minimum_fuel_to_operate)
 		return FALSE
 	return TRUE
@@ -100,8 +114,30 @@
 	shuttle.engine_extensions -= src
 	..()
 
-/datum/shuttle_extension/engine/propulsion
-	name = "Propulsion Engine"
-
+//used by types of `/obj/structure/shuttle/engine` and works off of magic
 /datum/shuttle_extension/engine/burst
 	name = "Burst Engine"
+
+//used by types of `/obj/structure/shuttle/engine` and works off of hot atmospheric gas
+/datum/shuttle_extension/engine/propulsion
+	name = "Propulsion Engine"
+	///Reference to the physical engine, we'll need to bother it to draw our thrust.
+	var/obj/machinery/atmospherics/components/unary/engine/our_engine
+
+/datum/shuttle_extension/engine/propulsion/New(obj/machinery/atmospherics/components/unary/engine/passed_engine)
+	. = ..()
+	our_engine = passed_engine
+
+/datum/shuttle_extension/engine/propulsion/Destroy()
+	our_engine = null
+	return ..()
+
+/datum/shuttle_extension/engine/propulsion/UpdateFuel()
+	if(our_engine)
+		current_fuel = our_engine.GetCurrentFuel()
+
+/datum/shuttle_extension/engine/propulsion/DrawThrust(impulse_percent)
+	var/engine_multiplier = 1
+	if(our_engine)
+		engine_multiplier = our_engine.DrawThrust(impulse_percent * current_efficiency)
+	return granted_speed * impulse_percent * current_efficiency * engine_multiplier
