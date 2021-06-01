@@ -779,6 +779,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
+"Aj" = (
+/obj/docking_port/stationary/large{
+	name = "FTV Bearcat Cargo Dock"
+	},
+/turf/open/openspace/airless/planetary,
+/area/space)
 "AN" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock,
@@ -33712,7 +33718,7 @@ Mg
 Mg
 Mg
 Mg
-Mg
+Aj
 iF
 ME
 pD

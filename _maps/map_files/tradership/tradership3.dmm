@@ -880,6 +880,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
+"pz" = (
+/obj/docking_port/stationary/medium{
+	dir = 4;
+	name = "FTV Bearcat Starboard Dock"
+	},
+/turf/open/openspace/airless/planetary,
+/area/space)
 "pF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
 /turf/closed/wall,
@@ -2339,14 +2346,10 @@
 /turf/open/floor/iron/dark,
 /area/engineering/main)
 "OO" = (
-/obj/docking_port/stationary{
+/obj/docking_port/stationary/medium{
 	dir = 8;
-	dwidth = 3;
-	height = 5;
-	id = "commonmining_home";
-	name = "SS13: Common Mining Dock";
-	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
-	width = 7
+	name = "FTV Bearcat Port Dock";
+	roundstart_template = /datum/map_template/shuttle/crow
 	},
 /turf/open/openspace/airless/planetary,
 /area/space)
@@ -38317,7 +38320,7 @@ DB
 DB
 DB
 DB
-DB
+pz
 DB
 DB
 DB
