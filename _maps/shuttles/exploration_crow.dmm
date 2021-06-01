@@ -29,7 +29,7 @@
 "dm" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = crow_shutter
+	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
 /area/shuttle/crow/helm)
@@ -52,7 +52,7 @@
 "eT" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = crow_shutter
+	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
 /area/shuttle/crow/cargo)
@@ -139,7 +139,7 @@
 "jh" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = crow_shutter
+	id = "crow_shutter"
 	},
 /turf/open/floor/plating,
 /area/shuttle/crow)
@@ -214,6 +214,7 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/obj/machinery/meter,
 /turf/open/floor/plating,
 /area/shuttle/crow/engineering)
 "pL" = (
@@ -305,11 +306,10 @@
 /turf/open/floor/iron,
 /area/shuttle/crow/cargo)
 "zn" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/obj/machinery/meter,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
+/obj/machinery/atmospherics/components/binary/pump,
 /turf/open/floor/plating,
 /area/shuttle/crow/engineering)
 "zS" = (
@@ -332,8 +332,8 @@
 /turf/open/floor/pod,
 /area/shuttle/crow/helm)
 "AN" = (
-/obj/machinery/atmospherics/components/binary/pump,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/plating,
 /area/shuttle/crow/engineering)
 "AU" = (
@@ -442,6 +442,8 @@
 	id = "crow";
 	launch_status = 0;
 	name = "ESS Crow";
+	port_direction = 8;
+	preferred_direction = 4;
 	width = 15
 	},
 /turf/open/floor/plating,
@@ -473,8 +475,8 @@
 /turf/open/floor/pod,
 /area/shuttle/crow/helm)
 "JJ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/crow/engineering)
 "KC" = (
@@ -526,7 +528,7 @@
 "PR" = (
 /obj/structure/table,
 /obj/machinery/button/door{
-	id = crow_shutter;
+	id = "crow_shutter";
 	name = "safety shutters button"
 	},
 /turf/open/floor/pod,
