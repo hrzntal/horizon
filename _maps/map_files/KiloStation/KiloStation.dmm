@@ -12550,6 +12550,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/paramedic)
 "aPo" = (
@@ -12742,6 +12743,7 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/landmark/start/paramedic,
 /obj/structure/chair/office/light,
+/obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/paramedic)
 "aPP" = (
@@ -12854,6 +12856,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/paramedic)
 "aPZ" = (
@@ -13999,6 +14002,7 @@
 /obj/item/clipboard,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/lobby)
 "aSy" = (
@@ -76655,6 +76659,21 @@
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/service/bar/atrium)
+"sCK" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/iron/showroomfloor,
+/area/medical/medbay/lobby)
 "sCP" = (
 /obj/structure/sign/warning/docking,
 /turf/closed/wall,
@@ -86182,6 +86201,7 @@
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/box,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/lobby)
 "wHi" = (
@@ -111982,7 +112002,7 @@ aAK
 aPn
 aPO
 aPX
-aQt
+sCK
 aQr
 aQD
 cgN
