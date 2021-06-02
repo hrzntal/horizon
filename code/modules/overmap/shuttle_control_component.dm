@@ -11,6 +11,11 @@
 	var/datum/shuttle_freeform_docker/freeform_docker
 	var/turf/control_turf
 
+/datum/overmap_shuttle_controller/proc/NewVisualOffset(x,y)
+	if(mob_controller && mob_controller.client)
+		mob_controller.client.pixel_x = x
+		mob_controller.client.pixel_y = y
+
 /datum/overmap_shuttle_controller/proc/ShuttleMovedOnOvermap()
 	if(mob_controller)
 		mob_controller.update_parallax_contents()
@@ -35,6 +40,8 @@
 	mob_controller.client.perspective = EYE_PERSPECTIVE
 	mob_controller.client.eye = overmap_obj.my_visual
 	mob_controller.client.show_popup_menus = FALSE
+	var/list/new_offsets = overmap_obj.GetVisualOffsets()
+	NewVisualOffset(new_offsets[1],new_offsets[2])
 	mob_controller.remote_control = overmap_obj.my_visual
 	mob_controller.update_parallax_contents()
 	quit_control_button.Grant(mob_controller)
@@ -50,6 +57,8 @@
 		mob_controller.client.perspective = MOB_PERSPECTIVE
 		mob_controller.client.eye = mob_controller
 		mob_controller.client.show_popup_menus = TRUE
+		mob_controller.client.pixel_x = 0
+		mob_controller.client.pixel_y = 0
 		quit_control_button.Remove(mob_controller)
 		stop_shuttle_button.Remove(mob_controller)
 		shuttle_control_button.Remove(mob_controller)

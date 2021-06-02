@@ -29,6 +29,7 @@
 		my_visual = new visual_type(locate(x,y,current_system.z_level))
 		my_visual.name = name
 		my_visual.my_overmap_object = src
+		update_visual_position()
 
 /datum/overmap_object/Destroy()
 	SSovermap.UnregisterObject(src)
@@ -41,10 +42,20 @@
 /datum/overmap_object/proc/relaymove(mob/living/user, direction)
 	return
 
+/datum/overmap_object/proc/Move(new_x, new_y)
+	x = new_x
+	y = new_y
+	update_visual_position()
+
+/datum/overmap_object/proc/SetNewVisualOffsets(passed_x,passed_y)
+	if(my_visual)
+		my_visual.pixel_x = passed_x
+		my_visual.pixel_y = passed_y
+
 /datum/overmap_object/proc/update_visual_position()
 	if(my_visual)
-		my_visual.x = x
-		my_visual.y = y
+		my_visual.x = current_system.GetVisualX(x)
+		my_visual.y = current_system.GetVisualY(y)
 
 /datum/overmap_object/process(delta_time)
 	return

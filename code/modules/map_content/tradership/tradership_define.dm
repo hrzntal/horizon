@@ -26,7 +26,7 @@
 
 	overflow_job = "Deckhand"
 
-	overmap_object_type = /datum/overmap_object/shuttle/station
+	overmap_object_type = /datum/overmap_object/shuttle/ship/bearcat
 
 /datum/map_config/tradership/get_map_info()
 	return "You're aboard the <b>[map_name],</b> a survey and mercantile vessel affiliated with the Free Trade Union. \

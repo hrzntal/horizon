@@ -11,6 +11,9 @@ SUBSYSTEM_DEF(overmap)
 	var/next_unique_id = 0
 	var/list/id_object_lookup = list()
 
+	var/datum/space_level/overmap_reserved_level
+	var/reserved_z_level
+
 /datum/controller/subsystem/overmap/proc/RegisterObject(datum/overmap_object/ovobj)
 	next_unique_id++
 	ovobj.id = next_unique_id
@@ -31,8 +34,12 @@ SUBSYSTEM_DEF(overmap)
  * It needs to be called there so mapping initializes all sorts of templates and other things that will be nessecary in here.
 */
 /datum/controller/subsystem/overmap/proc/MappingInit()
+	//Initialize our reserved level
+	SSmapping.add_new_zlevel("Overmap Level", list(ZTRAIT_LINKAGE = UNAFFECTED))
+	reserved_z_level = world.maxz
+	overmap_reserved_level = SSmapping.z_list[reserved_z_level]
 	//Initialize sun systems
-	main_system = CreateNewSunSystem(new /datum/overmap_sun_system())
+	main_system = CreateNewSunSystem(new /datum/overmap_sun_system(overmap_reserved_level))
 	//Seed some random objects in the main system
 	//Seed some space trash here that will yield random loots
 	//Seed some asteroids that will be mine'able
@@ -41,6 +48,8 @@ SUBSYSTEM_DEF(overmap)
  * CreateNewSunSystem() is called to create and register a new sunsystem
 */
 /datum/controller/subsystem/overmap/proc/CreateNewSunSystem(datum/overmap_sun_system/new_sunsystem)
+	if(length(sun_systems) >= 1)
+		WARNING("Attempted to create more than 1 sun system. Currently not supported! Bother Azarak to implement that")
 	sun_systems += new_sunsystem
 	return new_sunsystem
 
