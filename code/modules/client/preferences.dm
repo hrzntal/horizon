@@ -2454,7 +2454,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("gender")
 					needs_update = TRUE
 					var/list/friendlyGenders = list("Male" = "male", "Female" = "female", "Other" = "plural")
-					var/pickedGender = tgui_input_list(user, "Choose your gender.", "Character Preference", gender, friendlyGenders)
+					var/pickedGender = tgui_input_list(user, "Choose your gender.", "Character Preference", friendlyGenders, default = gender)
 					if(pickedGender && friendlyGenders[pickedGender] != gender)
 						gender = friendlyGenders[pickedGender]
 						//underwear = random_underwear(gender)
