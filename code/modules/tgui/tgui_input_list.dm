@@ -8,6 +8,7 @@
  * * title - The title of the input box, shown on the top of the TGUI window.
  * * buttons - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * timeout - The timeout of the input box, after which the input box will close and qdel itself. Set to zero for no timeout.
+ * * default - The default selected value when opening the input
  */
 /proc/tgui_input_list(mob/user, message, title, list/buttons, timeout = 0, default = null)
 	if (!user)
