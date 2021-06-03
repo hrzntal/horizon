@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list() //Don't read this list, use GetLateJoinTurfs() instead
 
-	var/overflow_role = "Assistant"
+	var/overflow_role
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
@@ -63,10 +63,12 @@ SUBSYSTEM_DEF(job)
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
 	generate_selectable_species()
-	set_overflow_role(CONFIG_GET(string/overflow_job))
+	set_overflow_role()
 	return ..()
 
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)
+	if(!new_overflow_role)
+		new_overflow_role = SSmapping.config.overflow_job
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
 	var/cap = CONFIG_GET(number/overflow_cap)
 
@@ -75,14 +77,17 @@ SUBSYSTEM_DEF(job)
 	new_overflow.total_positions = cap
 
 	if(new_overflow_role != overflow_role)
-		var/datum/job/old_overflow = GetJob(overflow_role)
-		old_overflow.allow_bureaucratic_error = initial(old_overflow.allow_bureaucratic_error)
-		old_overflow.spawn_positions = initial(old_overflow.spawn_positions)
-		old_overflow.total_positions = initial(old_overflow.total_positions)
+		if(overflow_role)
+			var/datum/job/old_overflow = GetJob(overflow_role)
+			old_overflow.allow_bureaucratic_error = initial(old_overflow.allow_bureaucratic_error)
+			old_overflow.spawn_positions = initial(old_overflow.spawn_positions)
+			old_overflow.total_positions = initial(old_overflow.total_positions)
 		overflow_role = new_overflow_role
 		JobDebug("Overflow role set to : [new_overflow_role]")
 
-/datum/controller/subsystem/job/proc/SetupOccupations(faction = "Station")
+/datum/controller/subsystem/job/proc/SetupOccupations(faction)
+	if(!faction)
+		faction = SSmapping.config.job_faction
 	occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
@@ -100,6 +105,28 @@ SUBSYSTEM_DEF(job)
 		if(!job.map_check()) //Even though we initialize before mapping, this is fine because the config is loaded at new
 			testing("Removed [job.type] due to map config")
 			continue
+		//Register the job in the global lists
+		if(job.departments & DEPARTMENT_COMMAND)
+			GLOB.command_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SECURITY)
+			GLOB.security_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SERVICE)
+			GLOB.service_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_CARGO)
+			GLOB.supply_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_ENGINEERING)
+			GLOB.engineering_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SCIENCE)
+			GLOB.science_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_MEDICAL)
+			GLOB.medical_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_SILICON)
+			GLOB.nonhuman_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_CIVILLIAN)
+			GLOB.civillian_positions[job.title] = TRUE
+		if(job.departments & DEPARTMENT_MISC)
+			GLOB.misc_positions[job.title] = TRUE
+
 		occupations += job
 		name_occupations[job.title] = job
 		type_occupations[J] = job

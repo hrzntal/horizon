@@ -22,8 +22,6 @@ require only minor tweaks.
 
 // helpers for modifying jobs, used in various job_changes.dm files
 
-#define MAP_CURRENT_VERSION 1
-
 #define SPACERUIN_MAP_EDGE_PAD 15
 
 // traits

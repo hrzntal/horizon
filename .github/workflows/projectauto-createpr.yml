@@ -21,7 +21,7 @@ jobs:
       - name: Create card in Open Column
         uses: alex-page/github-project-automation-plus@v0.7.1
         with:
-          project: Horzon PRs
+          project: Horizon Pulls
           column: Open
           repo-token: ${{ secrets.TOKEN_ORG_PROJECTBOARD }}
   create-card-draft:
@@ -31,7 +31,7 @@ jobs:
       - name: Create card in Draft Column
         uses: alex-page/github-project-automation-plus@v0.7.1
         with:
-          project: Horzon PRs
+          project: Horizon Pulls
           column: Draft
           repo-token: ${{ secrets.TOKEN_ORG_PROJECTBOARD }}
 

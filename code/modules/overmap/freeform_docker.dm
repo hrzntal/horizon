@@ -295,7 +295,7 @@
 
 /mob/camera/ai_eye/remote/shuttle_freeform
 	visible_icon = FALSE
-	use_static = USE_STATIC_NONE
+	use_static = FALSE
 	var/list/placement_images = list()
 
 /mob/camera/ai_eye/remote/shuttle_freeform/setLoc(T)

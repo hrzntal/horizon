@@ -50,6 +50,10 @@
 #define PARALLAX_LOW     2
 #define PARALLAX_DISABLE 3 //this option must be the highest number
 
+#define BALLOON_ALERTS_NONE 0  // No balloons, msg to chat
+#define BALLOON_ALERTS_ONLY 1  // Only balloons, no chat
+#define BALLOON_ALERTS_BOTH 2  // Both, balloons & chat
+
 #define PIXEL_SCALING_AUTO 0
 #define PIXEL_SCALING_1X 1
 #define PIXEL_SCALING_1_2X 1.5
@@ -79,6 +83,8 @@
 #define EXP_TYPE_SCIENCE "Science"
 #define EXP_TYPE_SUPPLY "Supply"
 #define EXP_TYPE_SECURITY "Security"
+#define EXP_TYPE_CIVILLIAN "Civillian"
+#define EXP_TYPE_MISC "Miscellanous"
 #define EXP_TYPE_SILICON "Silicon"
 #define EXP_TYPE_SERVICE "Service"
 #define EXP_TYPE_ANTAG "Antag"

@@ -1,79 +1,38 @@
-GLOBAL_LIST_INIT(command_positions, list(
-	"Captain",
-	"Head of Personnel",
-	"Head of Security",
-	"Chief Engineer",
-	"Research Director",
-	"Chief Medical Officer"))
+GLOBAL_LIST_EMPTY(command_positions)
 
 
-GLOBAL_LIST_INIT(engineering_positions, list(
-	"Chief Engineer",
-	"Station Engineer",
-	"Atmospheric Technician"))
+GLOBAL_LIST_EMPTY(engineering_positions)
 
 
-GLOBAL_LIST_INIT(medical_positions, list(
-	"Chief Medical Officer",
-	"Medical Doctor",
-	"Paramedic",
-	"Virologist",
-	"Chemist"))
+GLOBAL_LIST_EMPTY(medical_positions)
 
 
-GLOBAL_LIST_INIT(science_positions, list(
-	"Research Director",
-	"Scientist",
-	"Geneticist",
-	"Roboticist"))
+GLOBAL_LIST_EMPTY(science_positions)
 
 
-GLOBAL_LIST_INIT(supply_positions, list(
-	"Quartermaster",
-	"Cargo Technician",
-	"Shaft Miner"))
+GLOBAL_LIST_EMPTY(supply_positions)
 
 
-GLOBAL_LIST_INIT(service_positions, list(
-	"Head of Personnel",
-	"Bartender",
-	"Botanist",
-	"Cook",
-	"Janitor",
-	"Curator",
-	"Psychologist",
-	"Lawyer",
-	"Chaplain",
-	"Clown",
-	"Mime",
-	"Prisoner",
-	"Assistant"))
+GLOBAL_LIST_EMPTY(service_positions)
 
-//we really need to split service into civillian positions officially, until then this is my solution
-GLOBAL_LIST_INIT(service_food_positions, list(
-	"Bartender",
-	"Botanist",
-	"Cook",
-))
 
-GLOBAL_LIST_INIT(security_positions, list(
-	"Head of Security",
-	"Warden",
-	"Detective",
-	"Security Officer"))
+GLOBAL_LIST_EMPTY(civillian_positions)
+
+
+GLOBAL_LIST_EMPTY(misc_positions)
+
+
+GLOBAL_LIST_EMPTY(security_positions)
 
 /// These aren't defacto jobs, but are the special departmental variants for sec officers.
 GLOBAL_LIST_INIT(security_sub_positions, list(
-	"Security Officer (Cargo)",
-	"Security Officer (Engineering)",
-	"Security Officer (Medical)",
-	"Security Officer (Science)",
+	"Security Officer (Cargo)" = TRUE,
+	"Security Officer (Engineering)" = TRUE,
+	"Security Officer (Medical)" = TRUE,
+	"Security Officer (Science)" = TRUE,
 ))
 
-GLOBAL_LIST_INIT(nonhuman_positions, list(
-	"AI",
-	"Cyborg",
-	ROLE_PAI))
+GLOBAL_LIST_INIT(nonhuman_positions, list(ROLE_PAI = TRUE))
 
 // job categories for rendering the late join menu
 GLOBAL_LIST_INIT(position_categories, list(
@@ -81,10 +40,12 @@ GLOBAL_LIST_INIT(position_categories, list(
 	EXP_TYPE_ENGINEERING = list("jobs" = engineering_positions, "color" = "#ffeeaa"),
 	EXP_TYPE_SUPPLY = list("jobs" = supply_positions, "color" = "#ddddff"),
 	EXP_TYPE_SILICON = list("jobs" = nonhuman_positions - "pAI", "color" = "#ccffcc"),
-	EXP_TYPE_SERVICE = list("jobs" = service_positions, "color" = "#bbe291"),
+	EXP_TYPE_MISC = list("jobs" = misc_positions, "color" = "#eeeeee"),
 	EXP_TYPE_MEDICAL = list("jobs" = medical_positions, "color" = "#ffddf0"),
 	EXP_TYPE_SCIENCE = list("jobs" = science_positions, "color" = "#ffddff"),
-	EXP_TYPE_SECURITY = list("jobs" = security_positions, "color" = "#ffdddd")
+	EXP_TYPE_SECURITY = list("jobs" = security_positions, "color" = "#ffdddd"),
+	EXP_TYPE_CIVILLIAN = list("jobs" = civillian_positions, "color" = "#dddddd"),
+	EXP_TYPE_SERVICE = list("jobs" = service_positions, "color" = "#bbe291")
 ))
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
@@ -95,6 +56,8 @@ GLOBAL_LIST_INIT(exp_jobsmap, list(
 	EXP_TYPE_SCIENCE = list("titles" = science_positions),
 	EXP_TYPE_SUPPLY = list("titles" = supply_positions),
 	EXP_TYPE_SECURITY = list("titles" = security_positions),
+	EXP_TYPE_CIVILLIAN = list("titles" = civillian_positions),
+	EXP_TYPE_MISC = list("titles" = misc_positions),
 	EXP_TYPE_SILICON = list("titles" = list("AI","Cyborg")),
 	EXP_TYPE_SERVICE = list("titles" = service_positions)
 ))

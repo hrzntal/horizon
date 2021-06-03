@@ -50,6 +50,9 @@
 
 	var/speed_divisor_from_mass = 1
 
+	//Turf to which you need access range to access in order to do topics (this is done in this way so I dont need to keep track of consoles being in use)
+	var/turf/control_turf
+
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
@@ -76,7 +79,9 @@
 		draw_thrust += ext.DrawThrust(impulse_power)
 	return draw_thrust / speed_divisor_from_mass
 
-/datum/overmap_object/shuttle/proc/DisplayUI(mob/user)
+/datum/overmap_object/shuttle/proc/DisplayUI(mob/user, turf/usage_turf)
+	if(usage_turf)
+		control_turf = usage_turf
 	var/list/dat = list()
 
 	dat += "<center><a href='?src=[REF(src)];task=tab;tab=0' [shuttle_ui_tab == 0 ? "class='linkOn'" : ""]>General</a>"
@@ -278,10 +283,10 @@
 		destination_y = y
 	if(input_x)
 		destination_x += input_x * helm_pad_range
-		destination_x = clamp(destination_x, 1, world.maxx)
+		destination_x = clamp(destination_x, 1, current_system.maxx)
 	if(input_y)
 		destination_y += input_y * helm_pad_range
-		destination_y = clamp(destination_y, 1, world.maxy)
+		destination_y = clamp(destination_y, 1, current_system.maxy)
 	if(helm_pad_engage_immediately)
 		helm_command = HELM_MOVE_TO_DESTINATION
 	return
@@ -299,6 +304,11 @@
 		lock = new(src, ov_obj)
 
 /datum/overmap_object/shuttle/Topic(href, href_list)
+	if(!control_turf)
+		return
+	var/mob/user = usr
+	if(!isliving(user) || !user.canUseTopic(control_turf, BE_CLOSE, FALSE, NO_TK))
+		return
 	if(href_list["pad_topic"])
 		if(!(shuttle_capability & SHUTTLE_CAN_USE_ENGINES))
 			return
@@ -474,11 +484,11 @@
 				if("change_x")
 					var/new_x = input(usr, "Choose new X destination", "Helm Control", destination_x) as num|null
 					if(new_x)
-						destination_x = clamp(new_x, 1, world.maxx)
+						destination_x = clamp(new_x, 1, current_system.maxx)
 				if("change_y")
 					var/new_y = input(usr, "Choose new Y destination", "Helm Control", destination_y) as num|null
 					if(new_y)
-						destination_y = clamp(new_y, 1, world.maxy)
+						destination_y = clamp(new_y, 1, current_system.maxy)
 				if("change_impulse_power")
 					var/new_speed = input(usr, "Choose new impulse power (0% - 100%)", "Helm Control", (impulse_power*100)) as num|null
 					if(new_speed)
@@ -500,6 +510,7 @@
 		extension.AddToOvermapObject(src)
 
 /datum/overmap_object/shuttle/Destroy()
+	control_turf = null
 	QDEL_NULL(shuttle_controller)
 	if(my_shuttle)
 		for(var/i in my_shuttle.all_extensions)
@@ -617,28 +628,35 @@
 			partial_x += add_partial_x
 			partial_y += add_partial_y
 			var/did_move = FALSE
+			var/new_x
+			var/new_y
 			if(partial_y > 16)
 				did_move = TRUE
 				partial_y -= 32
-				y = min(y+1,world.maxy)
+				new_y = min(y+1,current_system.maxy)
 			else if(partial_y < -16)
 				did_move = TRUE
 				partial_y += 32
-				y = max(y-1,1)
+				new_y = max(y-1,1)
 			if(partial_x > 16)
 				did_move = TRUE
 				partial_x -= 32
-				x = min(x+1,world.maxx)
+				new_x = min(x+1,current_system.maxx)
 			else if(partial_x < -16)
 				did_move = TRUE
 				partial_x += 32
-				x = max(x-1,1)
+				new_x = max(x-1,1)
 		
 			if(is_seperate_z_level)
 				update_seperate_z_level_parallax()
 
+			var/list/new_offsets = GetVisualOffsets()
+			SetNewVisualOffsets(new_offsets[1],new_offsets[2])
+
 			if(did_move)
-				update_visual_position()
+				var/passed_x = new_x || x
+				var/passed_y = new_y || y
+				Move(passed_x, passed_y)
 				if(shuttle_controller)
 					shuttle_controller.ShuttleMovedOnOvermap()
 
@@ -646,6 +664,17 @@
 		var/matrix/M = new
 		M.Turn(angle)
 		my_visual.transform = M
+
+/datum/overmap_object/shuttle/proc/GetVisualOffsets()
+	var/list/passed = list()
+	passed += FLOOR(partial_x,1)
+	passed += FLOOR(partial_y,1)
+	return passed
+
+/datum/overmap_object/shuttle/SetNewVisualOffsets(x,y)
+	. = ..()
+	if(shuttle_controller)
+		shuttle_controller.NewVisualOffset(x,y)
 
 /datum/overmap_object/shuttle/proc/update_seperate_z_level_parallax(reset = FALSE)
 	var/established_direction = null
@@ -667,12 +696,14 @@
 		var/datum/space_level/S = i
 		S.parallax_direction_override = established_direction
 
-/datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user)
+/datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user, turf/passed_turf)
 	//Camera control
 	if(!shuttle_controller)
 		return
 	if(user.client && !shuttle_controller.busy)
 		shuttle_controller.SetController(user)
+		if(passed_turf)
+			shuttle_controller.control_turf = passed_turf
 		return TRUE
 
 /datum/overmap_object/shuttle/proc/CommandMove(dest_x, dest_y)
@@ -692,11 +723,21 @@
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = STATION_SHUTTLE_CAPABILITY
-	speed_divisor_from_mass = 20 //20 times as harder as a shuttle to move
+	speed_divisor_from_mass = 40 //20 times as harder as a shuttle to move
+
+/datum/overmap_object/shuttle/ship
+	name = "Ship"
+	visual_type = /obj/effect/abstract/overmap/shuttle/ship
+	is_seperate_z_level = TRUE
+	shuttle_capability = STATION_SHUTTLE_CAPABILITY
+	speed_divisor_from_mass = 20
+
+/datum/overmap_object/shuttle/ship/bearcat
+	name = "FTV Bearcat"
 
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
@@ -704,12 +745,12 @@
 
 /datum/overmap_object/shuttle/planet/lavaland
 	name = "Lavaland"
-	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/lavaland
 
 /datum/overmap_object/shuttle/planet/jungle_planet
 	name = "Jungle Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/jungle_planet
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/jungle_planet
 
 /datum/overmap_object/shuttle/planet/icebox
 	name = "Ice Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/icebox
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet/icebox

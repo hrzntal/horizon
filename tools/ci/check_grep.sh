@@ -96,17 +96,5 @@ if grep -i '/obj/effect/mapping_helpers/custom_icon' _maps/**/*.dmm; then
     echo "Custom icon helper found. Please include dmis as standard assets instead for built-in maps."
     st=1
 fi;
-for json in _maps/*.json
-do
-    map_path=$(jq -r '.map_path' $json)
-    while read map_file; do
-        filename="_maps/$map_path/$map_file"
-        if [ ! -f $filename ]
-        then
-            echo "found invalid file reference to $filename in _maps/$json"
-            st=1
-        fi
-    done < <(jq -r '[.map_file] | flatten | .[]' $json)
-done
 
 exit $st
