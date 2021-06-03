@@ -320,6 +320,8 @@
 
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, datum/preferences/pref_load, list/override_features, list/override_mutantparts, list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
+	if(QDELETED(src))
+		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(mrace && has_dna())
 		var/datum/species/new_race
 		if(ispath(mrace))
