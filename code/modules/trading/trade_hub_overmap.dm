@@ -12,7 +12,5 @@
 	return ..()
 
 /obj/effect/abstract/overmap/trade_hub
-	icon = 'icons/overmap/64x64.dmi'
-	icon_state = "trade_hub"
-	visual_y_offset = -16
-	visual_x_offset = -16
+	icon_state = "trade"
+	color = COLOR_GREEN
