@@ -49,20 +49,19 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 
+
 	/// The overmap object of the main loaded station, for easy access
 	var/datum/overmap_object/station_overmap_object
 
-//dlete dis once #39770 is resolved
-/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
-	if(!config)
+/datum/controller/subsystem/mapping/New()
+	..()
 #ifdef FORCE_MAP
-		config = load_map_config(FORCE_MAP)
+	config = load_map_config(FORCE_MAP)
 #else
-		config = load_map_config(error_if_missing = FALSE)
+	config = load_map_config(error_if_missing = FALSE)
 #endif
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	HACK_LoadMapConfig()
 	if(initialized)
 		return
 	if(config.defaulted)
@@ -199,15 +198,15 @@ Used by the AI doomsday and the self-destruct nuke.
 
 #define INIT_ANNOUNCE(X) to_chat(world, "<span class='boldannounce'>[X]</span>"); log_world(X)
 /datum/controller/subsystem/mapping/proc/LoadGroup(
-					list/errorList, 
-					name, 
-					path, 
-					files, 
-					list/traits, 
-					list/default_traits, 
-					silent = FALSE, 
-					datum/overmap_object/ov_obj = null, 
-					weather_controller_type, 
+					list/errorList,
+					name,
+					path,
+					files,
+					list/traits,
+					list/default_traits,
+					silent = FALSE,
+					datum/overmap_object/ov_obj = null,
+					weather_controller_type,
 					atmosphere_type,
 					day_night_controller_type,
 					rock_color,
@@ -313,14 +312,14 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/picked_plant_color = CHECK_AND_PICK_OR_NULL(config.plant_color)
 	var/picked_grass_color = CHECK_AND_PICK_OR_NULL(config.grass_color)
 	var/picked_water_color = CHECK_AND_PICK_OR_NULL(config.water_color)
-	LoadGroup(FailedZs, 
-			"Station", 
-			config.map_path, 
-			config.map_file, 
-			config.traits, 
-			ZTRAITS_STATION, 
-			ov_obj = station_overmap_object, 
-			weather_controller_type = config.weather_controller_type, 
+	LoadGroup(FailedZs,
+			"Station",
+			config.map_path,
+			config.map_file,
+			config.traits,
+			ZTRAITS_STATION,
+			ov_obj = station_overmap_object,
+			weather_controller_type = config.weather_controller_type,
 			atmosphere_type = config.atmosphere_type,
 			day_night_controller_type = config.day_night_controller_type,
 			rock_color = picked_rock_color,
