@@ -69,7 +69,7 @@
 	var/obj/item/food/clothing/moth_snack
 
 	/// Below you have overrides of the icon file in which the item should look for in case of mutant variants
-	var/worn_icon_digi
+	//Digi moved up to obj/item because of GAGS
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw
 	var/worn_icon_taur_hoof
