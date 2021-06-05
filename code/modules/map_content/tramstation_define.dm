@@ -16,7 +16,7 @@
 
 	allow_custom_shuttles = TRUE
 	shuttles = list(
-		"cargo" = "cargo_tram",
+		"cargo" = "cargo_box",
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_tram",
 		"emergency" = "emergency_tram")
