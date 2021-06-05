@@ -1,6 +1,8 @@
 /datum/overmap_object/shuttle
 	name = "Shuttle"
 	visual_type = /obj/effect/abstract/overmap/shuttle
+	overmap_process = TRUE
+
 	var/obj/docking_port/mobile/my_shuttle = null
 	var/angle = 0
 
@@ -35,6 +37,7 @@
 	var/helm_pad_engage_immediately = TRUE
 
 	var/open_comms_channel = FALSE
+	var/microphone_muted = FALSE
 
 	var/datum/overmap_lock/lock
 
@@ -42,22 +45,48 @@
 
 	var/datum/overmap_shuttle_controller/shuttle_controller
 	var/uses_rotation = TRUE
+	var/fixed_parallax_dir
 	var/shuttle_capability = ALL_SHUTTLE_CAPABILITY
 
 	//Extensions
 	var/list/all_extensions = list()
 	var/list/engine_extensions = list()
+	var/list/shield_extensions = list()
 
 	var/speed_divisor_from_mass = 1
 
 	//Turf to which you need access range to access in order to do topics (this is done in this way so I dont need to keep track of consoles being in use)
 	var/turf/control_turf
 
+	var/last_shield_change_state = 0
+
+/datum/overmap_object/shuttle/GetAllAliveClientMobs()
+	. = ..()
+	if(my_shuttle)
+		//About the most efficient way I could think of doing it
+		var/datum/space_level/transit_level = SSmapping.transit
+		for(var/i in SSmobs.clients_by_zlevel[transit_level.z_value])
+			var/mob/iterated_mob = i
+			var/turf/mob_turf = get_turf(iterated_mob)
+			if(my_shuttle.shuttle_areas[mob_turf.loc])
+				. += iterated_mob
+
+/datum/overmap_object/shuttle/GetAllClientMobs()
+	. = ..()
+	if(my_shuttle)
+		//About the most efficient way I could think of doing it
+		var/datum/space_level/transit_level = SSmapping.transit
+		for(var/i in SSmobs.dead_players_by_zlevel[transit_level.z_value])
+			var/mob/iterated_mob = i
+			var/turf/mob_turf = get_turf(iterated_mob)
+			if(my_shuttle.shuttle_areas[mob_turf.loc])
+				. += iterated_mob
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
-	for(var/overmap_object in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
-		if(overmap_object != src)
+	for(var/ov_obj in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
+		var/datum/overmap_object/overmap_object = ov_obj
+		if(overmap_object != src && overmap_object.overmap_flags & OV_SHOWS_ON_SENSORS)
 			targets += overmap_object
 	return targets
 
@@ -98,12 +127,16 @@
 
 	switch(shuttle_ui_tab)
 		if(SHUTTLE_TAB_GENERAL)
+			var/shield_engaged = IsShieldOn()
 			dat += "Hull: 100% integrity"
-			dat += "<BR>Shields: Not engaged"
+			if(length(shield_extensions))
+				dat += "<BR>Shields: [GetShieldPercent()*100]% <a href='?src=[REF(src)];task=general;general_control=shields' [shield_engaged ? "class='linkOn'" : ""]>[shield_engaged ? "Engaged" : "Disengaged"]</a>"
+			else
+				dat += "<BR>Shields: Not installed"
 			dat += "<BR>Position: X: [x] , Y: [y]"
 			dat += "<BR>Overmap View: <a href='?src=[REF(src)];task=general;general_control=overmap'>Open</a>"
 			dat += "<BR>Send a Hail: <a href='?src=[REF(src)];task=general;general_control=hail'>Send...</a>"
-			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a>"
+			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a> - Microphone: <a href='?src=[REF(src)];task=general;general_control=microphone_muted' [microphone_muted ? "" : "class='linkOn'"]>[microphone_muted ? "Muted" : "Open"]</a>"
 
 		if(SHUTTLE_TAB_ENGINES)
 			if(engine_extensions.len == 0)
@@ -231,7 +264,7 @@
 				dat += "<B>Cannot safely dock in high velocities!</B>"
 			else
 				var/list/z_levels = list()
-				var/list/nearby_objects = current_system.GetObjectsInRadius(x,y,1)
+				var/list/nearby_objects = current_system.GetObjectsOnCoords(x,y)
 				var/list/freeform_z_levels = list()
 				for(var/i in nearby_objects)
 					var/datum/overmap_object/IO = i
@@ -244,8 +277,13 @@
 				var/list/options = params2list(my_shuttle.possible_destinations)
 				for(var/i in SSshuttle.stationary)
 					var/obj/docking_port/stationary/iterated_dock = i
-					if(z_levels["[iterated_dock.z]"] && (iterated_dock.id in options))
-						docks[iterated_dock.name] = iterated_dock
+					if(!z_levels["[iterated_dock.z]"])
+						continue
+					if(!options.Find(iterated_dock.port_destinations))
+						continue
+					if(!my_shuttle.check_dock(iterated_dock, silent = TRUE))
+						continue
+					docks[iterated_dock.name] = iterated_dock
 	
 				dat += "<B>Designated docks:</B>"
 				for(var/key in docks)
@@ -454,10 +492,19 @@
 					destination_y = ov_obj.y
 		if("general")
 			switch(href_list["general_control"])
+				if("shields")
+					var/shields_engaged = IsShieldOn()
+					if(shields_engaged)
+						TurnShieldsOff()
+					else
+						TurnShieldsOn()
 				if("overmap")
 					GrantOvermapView(usr)
+				if("microphone_muted")
+					microphone_muted = !microphone_muted
 				if("comms")
 					open_comms_channel = !open_comms_channel
+					my_visual.update_appearance()
 				if("hail")
 					var/hail_msg = input(usr, "Compose a hail message:", "Hail Message")  as text|null
 					if(hail_msg)
@@ -499,7 +546,6 @@
 	. = ..()
 	destination_x = x
 	destination_y = y
-	START_PROCESSING(SSfastprocess, src)
 	shuttle_controller = new(src)
 
 /datum/overmap_object/shuttle/proc/RegisterToShuttle(obj/docking_port/mobile/register_shuttle)
@@ -518,10 +564,16 @@
 			extension.RemoveFromOvermapObject()
 		my_shuttle = null
 	engine_extensions = null
+	shield_extensions = null
 	all_extensions = null
 	return ..()
 
 /datum/overmap_object/shuttle/process(delta_time)
+	//Process shields
+	for(var/i in shield_extensions)
+		var/datum/shuttle_extension/shield/shield = i
+		shield.process(delta_time)
+
 	var/icon_state_to_update_to = SHUTTLE_ICON_IDLE
 	if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
 		switch(helm_command)
@@ -694,7 +746,10 @@
 
 	for(var/i in related_levels)
 		var/datum/space_level/S = i
-		S.parallax_direction_override = established_direction
+		if(established_direction && fixed_parallax_dir)
+			S.parallax_direction_override = fixed_parallax_dir
+		else
+			S.parallax_direction_override = established_direction
 
 /datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user, turf/passed_turf)
 	//Camera control
@@ -723,7 +778,8 @@
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = STATION_SHUTTLE_CAPABILITY
-	speed_divisor_from_mass = 40 //20 times as harder as a shuttle to move
+	speed_divisor_from_mass = 40
+	clears_hazards_on_spawn = TRUE
 
 /datum/overmap_object/shuttle/ship
 	name = "Ship"
@@ -731,9 +787,11 @@
 	is_seperate_z_level = TRUE
 	shuttle_capability = STATION_SHUTTLE_CAPABILITY
 	speed_divisor_from_mass = 20
+	clears_hazards_on_spawn = TRUE
 
 /datum/overmap_object/shuttle/ship/bearcat
 	name = "FTV Bearcat"
+	fixed_parallax_dir = NORTH
 
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
@@ -742,6 +800,7 @@
 	uses_rotation = FALSE
 	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
 	speed_divisor_from_mass = 1000 //1000 times as harder as a shuttle to move
+	clears_hazards_on_spawn = TRUE
 
 /datum/overmap_object/shuttle/planet/lavaland
 	name = "Lavaland"
@@ -754,3 +813,7 @@
 /datum/overmap_object/shuttle/planet/icebox
 	name = "Ice Planet"
 	visual_type = /obj/effect/abstract/overmap/shuttle/planet/icebox
+
+/datum/overmap_object/shuttle/ess_crow
+	name = "ESS Crow"
+	speed_divisor_from_mass = 4

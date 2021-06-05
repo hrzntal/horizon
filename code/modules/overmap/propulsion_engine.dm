@@ -1,5 +1,6 @@
 /obj/machinery/atmospherics/components/unary/engine
 	name = "propulsion engine"
+	desc = "A simple propulsion engine, expelling gas at high velocities to propel the ship."
 	icon_state = "propulsion"
 	icon = 'icons/turf/shuttle.dmi'
 	circuit = /obj/item/circuitboard/machine/propulsion_engine

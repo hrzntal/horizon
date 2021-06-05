@@ -372,6 +372,8 @@
 	var/list/all_extensions = list()
 	var/list/engine_extensions = list()
 
+	var/overmap_shuttle_type = /datum/overmap_object/shuttle
+
 /obj/docking_port/mobile/proc/DrawDockingThrust()
 	var/drawn_power = 0
 	for(var/i in engine_extensions)
@@ -591,7 +593,7 @@
 			spawn_y_coord = current_overmap_object.y
 			system_to_spawn_in = current_overmap_object.current_system
 
-		var/datum/overmap_object/shuttle/spawned_shuttle = new /datum/overmap_object/shuttle(system_to_spawn_in, spawn_x_coord, spawn_y_coord)
+		var/datum/overmap_object/shuttle/spawned_shuttle = new overmap_shuttle_type(system_to_spawn_in, spawn_x_coord, spawn_y_coord)
 		spawned_shuttle.RegisterToShuttle(src)
 		if(my_overmap_object.shuttle_controller)
 			my_overmap_object.shuttle_controller.busy = FALSE

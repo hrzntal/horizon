@@ -141,3 +141,91 @@
 	if(our_engine)
 		engine_multiplier = our_engine.DrawThrust(impulse_percent * current_efficiency)
 	return granted_speed * impulse_percent * current_efficiency * engine_multiplier
+
+/datum/shuttle_extension/shield
+	name = "Shield Generator"
+	var/on = FALSE
+	var/maximum_shield = 100
+	var/current_shield = 0
+	var/shield_per_process = 0.20
+	var/maximum_buffer = 80
+	var/current_buffer = 0
+	var/buffer_per_process = 0.15
+	var/max_buffer_drain = 10
+	var/obj/machinery/shield_generator/my_generator
+	var/next_operable_time = 0
+	var/operable = TRUE
+
+/datum/shuttle_extension/shield/proc/is_functioning()
+	if(operable && on)
+		return TRUE
+
+/datum/shuttle_extension/shield/proc/take_damage(damage)
+	if(!damage)
+		return
+	current_shield -= damage
+	if(!current_shield)
+		make_inoperable()
+
+/datum/shuttle_extension/shield/proc/make_inoperable(inform = TRUE)
+	current_shield = 0
+	current_buffer = 0
+	operable = FALSE
+	next_operable_time = world.time + 1 MINUTE
+	if(inform && overmap_object)
+		overmap_object.inform_shields_down()
+
+/datum/shuttle_extension/shield/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
+	. = ..()
+	overmap_object.shield_extensions += src
+
+/datum/shuttle_extension/shield/RemoveFromOvermapObject()
+	overmap_object.shield_extensions -= src
+	..()
+
+/datum/shuttle_extension/shield/process(delta_time)
+	if(my_generator && my_generator.machine_stat & NOPOWER)
+		return
+	if(!operable)
+		if(world.time > next_operable_time)
+			operable = TRUE
+			if(overmap_object)
+				overmap_object.inform_shields_up()
+		else
+			return
+	if(on)
+		var/charge_to_gain = shield_per_process
+		//Draw power from the shield buffer
+		if(current_buffer)
+			var/drain = max_buffer_drain
+			if(drain > current_buffer)
+				drain = current_buffer
+			current_buffer -= drain
+			charge_to_gain += drain
+		current_shield += charge_to_gain
+		current_shield = min(current_shield, maximum_shield)
+	else
+		//If the shield generator is off, but has power, it generates a buffer
+		if(current_buffer == maximum_buffer)
+			return
+		current_buffer += buffer_per_process
+		current_buffer = min(current_buffer, maximum_buffer)
+
+/datum/shuttle_extension/shield/proc/turn_on()
+	if(on)
+		return
+	if(my_generator && my_generator.machine_stat & NOPOWER)
+		return
+	on = TRUE
+	if(operable && overmap_object)
+		overmap_object.inform_shields_up()
+
+/datum/shuttle_extension/shield/proc/turn_off(malfunction = FALSE)
+	if(!on)
+		return
+	current_shield = 0
+	on = FALSE
+	if(malfunction)
+		make_inoperable(FALSE)
+	if(operable && overmap_object)
+		overmap_object.inform_shields_down()

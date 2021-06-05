@@ -11,15 +11,27 @@ SUBSYSTEM_DEF(overmap)
 	var/next_unique_id = 0
 	var/list/id_object_lookup = list()
 
+	var/list/objects_to_process = list()
+
 	var/datum/space_level/overmap_reserved_level
 	var/reserved_z_level
+
+/datum/controller/subsystem/overmap/proc/AddObjToProcess(datum/overmap_object/ovobj)
+	objects_to_process += ovobj
+
+/datum/controller/subsystem/overmap/proc/RemoveObjFromProcess(datum/overmap_object/ovobj)
+	objects_to_process -= ovobj
 
 /datum/controller/subsystem/overmap/proc/RegisterObject(datum/overmap_object/ovobj)
 	next_unique_id++
 	ovobj.id = next_unique_id
 	id_object_lookup["[next_unique_id]"] = ovobj
+	if(ovobj.overmap_process)
+		AddObjToProcess(ovobj)
 
 /datum/controller/subsystem/overmap/proc/UnregisterObject(datum/overmap_object/ovobj)
+	if(ovobj.overmap_process)
+		RemoveObjFromProcess(ovobj)
 	id_object_lookup -= ovobj
 
 /datum/controller/subsystem/overmap/proc/GetObjectByID(id)
@@ -54,4 +66,6 @@ SUBSYSTEM_DEF(overmap)
 	return new_sunsystem
 
 /datum/controller/subsystem/overmap/fire(resumed = FALSE)
-	return
+	for(var/i in objects_to_process)
+		var/datum/overmap_object/ov_obj = i
+		ov_obj.process()

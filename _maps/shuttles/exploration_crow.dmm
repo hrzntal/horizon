@@ -444,7 +444,8 @@
 	name = "ESS Crow";
 	port_direction = 8;
 	preferred_direction = 4;
-	width = 15
+	width = 15;
+	overmap_shuttle_type = /datum/overmap_object/shuttle/ess_crow
 	},
 /turf/open/floor/plating,
 /area/shuttle/crow)

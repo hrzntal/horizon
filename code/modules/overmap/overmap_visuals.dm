@@ -6,6 +6,13 @@
 	/// The overmap object this visual effect is representing
 	var/datum/overmap_object/my_overmap_object
 
+/obj/effect/abstract/overmap/Destroy(force)
+	if(!force)
+		message_admins("Overmap visual deleted, assuming badminerry, deleting the associated object, at [ADMIN_VERBOSEJMP(loc)]")
+		qdel(my_overmap_object)
+	else
+		return ..()
+
 /obj/effect/abstract/overmap/ruins
 	icon_state = "event"
 	layer = OVERMAP_LAYER_PLANET
@@ -18,6 +25,25 @@
 	var/shuttle_idle_state = "shuttle"
 	var/shuttle_forward_state = "shuttle_forward"
 	var/shuttle_backward_state = "shuttle_backwards"
+
+/obj/effect/abstract/overmap/shuttle/Destroy(force)
+	if(!force)
+		message_admins("Overmap shuttle attempted to be deleted, ignoring the request, at [ADMIN_VERBOSEJMP(loc)]")
+		return
+	else
+		return ..()
+
+/obj/effect/abstract/overmap/shuttle/update_overlays()
+	. = ..()
+	var/datum/overmap_object/shuttle/my_shuttle = my_overmap_object
+	if(my_shuttle.IsShieldFunctioning())
+		var/mutable_appearance/mut = mutable_appearance(icon, "shield")
+		mut.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+		. += mut
+	if(my_shuttle.open_comms_channel)
+		var/mutable_appearance/mut = mutable_appearance(icon, "radio")
+		mut.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+		. += mut
 
 /obj/effect/abstract/overmap/relaymove(mob/living/user, direction)
 	my_overmap_object.relaymove(user, direction)

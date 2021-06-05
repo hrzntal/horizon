@@ -16,8 +16,41 @@
 	var/x_offset = 0
 	var/y_offset = 0
 	/// The furthest x and y in the sun system
-	var/maxx = 50
-	var/maxy = 50
+	var/maxx = 30
+	var/maxy = 30
+
+/datum/overmap_sun_system/proc/IsOutOfBoundsX(passed_x)
+	return (passed_x > maxx || passed_x < 1)
+
+/datum/overmap_sun_system/proc/IsOutOfBoundsY(passed_y)
+	return (passed_y > maxy || passed_y < 1)
+
+/datum/overmap_sun_system/proc/CoordsHaveHazard(passed_x, passed_y)
+	var/list/objects_to_consider = GetObjectsOnCoords(passed_x, passed_y)
+	for(var/i in objects_to_consider)
+		if(istype(i, /datum/overmap_object/hazard))
+			return TRUE
+	return FALSE
+
+//used by mapping to determine where to place planets, stations, ruins and such
+/datum/overmap_sun_system/proc/GetEmptySpotForZLevelObjectWithinRange(lowx,highx,lowy,highy)
+	return
+	
+/datum/overmap_sun_system/proc/CoordsClearHazard(passed_x, passed_y)
+	var/list/objects_to_consider = GetObjectsOnCoords(passed_x, passed_y)
+	for(var/i in objects_to_consider)
+		if(istype(i, /datum/overmap_object/hazard))
+			var/datum/overmap_object/hazard/our_hazard = i
+			qdel(our_hazard)
+
+/datum/overmap_sun_system/proc/GetObjectsOnCoords(passed_x, passed_y)
+	if(passed_x > maxx || passed_y > maxy)
+		CRASH("Attempted to get objects outside of the sun system")
+	var/list/returned_list = list()
+	var/turf/located = locate(passed_x + x_offset, passed_y + y_offset, z_level)
+	for(var/obj/effect/abstract/overmap/overmap_visual in located.contents)
+		returned_list += overmap_visual.my_overmap_object
+	return returned_list
 
 /datum/overmap_sun_system/proc/GetVisualX(passed_x)
 	return x_offset + passed_x
@@ -68,3 +101,61 @@
 				else if (iterated_y == maxy)
 					highx = iterated_x
 				map_turf.set_coords_overlays(lowx, lowy, highx, highy)
+	//Spawn hazards
+	SeedHazards()
+
+///Map Generation Stuff
+/datum/overmap_sun_system/proc/SeedHazards(cluster_amount = DEFAULT_HAZARD_CLUSTER_AMOUNT, cluster_dropoff = DEFAULT_HAZARD_CLUSTER_DROPOFF, hazard_types = DEFAULT_OVERMAP_HAZARDS)
+	for(var/i in 1 to cluster_amount)
+		var/chosen_type = pick(hazard_types)
+
+		//We try and pick a clear initial spot
+		var/list/initial_loc
+		var/cleared = FALSE
+		var/cleared_tries = 10
+		while(!cleared)
+			cleared_tries--
+			if(cleared_tries <= 0)
+				break
+			var/rand_x = rand(1,maxx)
+			var/rand_y = rand(1,maxy)
+			if(!CoordsHaveHazard(rand_x, rand_y))
+				initial_loc = list(rand_x, rand_y)
+				cleared = TRUE
+		if(!cleared)
+			continue
+
+		var/list/possible_locs = list(initial_loc)
+		var/safefail_count = 30
+		var/spread_prob = 100
+		while(length(possible_locs))
+			safefail_count--
+			if(safefail_count <= 0)
+				WARNING("Sun system hazard generation exited through a safefail")
+				break
+			var/list/chosen_list = pick_n_take(possible_locs)
+			var/chosen_x = chosen_list[1]
+			var/chosen_y = chosen_list[2]
+			if(CoordsHaveHazard(chosen_x, chosen_y))
+				continue
+			new chosen_type(src, chosen_x, chosen_y)
+			//Add adjacent turf to the possible pool to spawn
+			for(var/b in 1 to 4)
+				var/list/step_list
+				switch(b)
+					if(1)
+						step_list = list(chosen_x+1, chosen_y)
+					if(2)
+						step_list = list(chosen_x-1, chosen_y)
+					if(3)
+						step_list = list(chosen_x, chosen_y+1)
+					if(4)
+						step_list = list(chosen_x, chosen_y-1)
+				if(IsOutOfBoundsX(step_list[1]) || IsOutOfBoundsY(step_list[2]))
+					continue
+				if(CoordsHaveHazard(step_list[1], step_list[2]))
+					continue
+				possible_locs += list(step_list) //Dumb byond list appending
+			spread_prob -= cluster_dropoff
+			if(!prob(spread_prob))
+				break

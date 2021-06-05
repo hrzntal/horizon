@@ -1,3 +1,8 @@
+//Bitflags for overmap_flags
+#define OV_SHOWS_ON_SENSORS		(1<<0)
+#define OV_CAN_BE_TARGETED		(1<<1)
+#define OV_CAN_BE_SCANNED		(1<<2)
+
 //Defines for helm command types
 #define HELM_IDLE 0
 #define HELM_FULL_STOP 1
@@ -24,8 +29,8 @@
 #define SHUTTLE_MAXIMUM_DOCKING_SPEED 0.2
 #define VECTOR_LENGTH(x,y) sqrt(x**2+y**2)
 #define TWO_POINT_DISTANCE(xa,ya,xb,yb) sqrt(((yb-ya)**2) + ((xa-xb)**2))
-#define SENSOR_RADIUS 20
-#define OVERMAP_LOCK_RANGE 10
+#define SENSOR_RADIUS 6
+#define OVERMAP_LOCK_RANGE 3
 
 #define SHUTTLE_ICON_IDLE 1
 #define SHUTTLE_ICON_FORWARD 2
@@ -38,6 +43,18 @@
 #define ALL_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_DOCK|SHUTTLE_CAN_USE_ENGINES|SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
 #define STATION_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_ENGINES|SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
 #define PLANET_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
+
+//Generaton stuff
+//Amount of hazard clusters being spawned
+#define DEFAULT_HAZARD_CLUSTER_AMOUNT 42
+//Their "dropoff", which is a value which will be subtracted every time a node spreads, into a chance to continue spreading. Higher dropoff = smaller nodes
+#define DEFAULT_HAZARD_CLUSTER_DROPOFF 4
+//All overmap hazards to be seeded randomly by default
+#define DEFAULT_OVERMAP_HAZARDS list(/datum/overmap_object/hazard/asteroid, \
+									/datum/overmap_object/hazard/dust, \
+									/datum/overmap_object/hazard/electrical_storm,\
+									/datum/overmap_object/hazard/ion_storm,\
+									/datum/overmap_object/hazard/carp_school)
 
 //OVERMAP LAYERS
 

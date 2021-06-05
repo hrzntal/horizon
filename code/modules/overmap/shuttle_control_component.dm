@@ -85,6 +85,8 @@
 	if(A.z != overmap_obj.current_system.z_level)
 		return
 	var/list/modifiers = params2list(params)
+	if(modifiers["shift"] && modifiers["right"])
+		return
 	if(modifiers["shift"])
 		A.examine(source)
 		return COMSIG_CANCEL_CLICKON

@@ -25,25 +25,24 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /proc/spawn_meteors(number = 10, list/meteortypes)
 	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes)
+		spawn_meteor(pickweight(meteortypes))
 
-/proc/spawn_meteor(list/meteortypes)
+/proc/spawn_meteor(meteor_type, dir, z_level)
 	var/turf/pickedstart
 	var/turf/pickedgoal
 	var/max_i = 10//number of tries to spawn meteor.
-	while(!isspaceturf(pickedstart))
-		var/startSide = pick(GLOB.cardinals)
-		var/startZ = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
+	while(!isspaceturf(pickedstart) && !isopenspaceturf(pickedstart))
+		var/startSide = dir || pick(GLOB.cardinals)
+		var/startZ = z_level || pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		pickedstart = spaceDebrisStartLoc(startSide, startZ)
 		pickedgoal = spaceDebrisFinishLoc(startSide, startZ)
 		max_i--
 		if(max_i<=0)
 			return
-	var/Me = pickweight(meteortypes)
-	var/obj/effect/meteor/M = new Me(pickedstart, pickedgoal)
+	var/obj/effect/meteor/M = new meteor_type(pickedstart, pickedgoal)
 	M.dest = pickedgoal
 
-/proc/spaceDebrisStartLoc(startSide, Z)
+/proc/spaceDebrisStartLoc(startSide, Z, extrapadding = 0)
 	var/starty
 	var/startx
 	switch(startSide)
@@ -102,6 +101,8 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	var/timerid = null
 	var/list/meteordrop = list(/obj/item/stack/ore/iron)
 	var/dropamt = 2
+	/// How much damage the meteor would need to deal to the shields to be completely dispersed
+	var/shield_damage = 5
 
 /obj/effect/meteor/Move()
 	if(z != z_original || loc == dest)
@@ -114,7 +115,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 		var/turf/T = get_turf(loc)
 		ram_turf(T)
 
-		if(prob(10) && !isspaceturf(T))//randomly takes a 'hit' from ramming
+		if(prob(10) && !isspaceturf(T) && !isopenspaceturf(T))//randomly takes a 'hit' from ramming
 			get_hit()
 
 /obj/effect/meteor/Destroy()
@@ -227,6 +228,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	meteorsound = 'sound/weapons/gun/smg/shot.ogg'
 	meteordrop = list(/obj/item/stack/ore/glass)
 	threat = 1
+	shield_damage = 2
 
 //Medium-sized
 /obj/effect/meteor/medium
@@ -246,6 +248,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	heavy = TRUE
 	dropamt = 4
 	threat = 10
+	shield_damage = 10
 
 /obj/effect/meteor/big/meteor_effect()
 	..()
@@ -260,6 +263,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
 	threat = 20
+	shield_damage = 15
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
@@ -272,6 +276,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	heavy = TRUE
 	meteordrop = list(/obj/item/stack/ore/uranium)
 	threat = 15
+	shield_damage = 15
 
 
 /obj/effect/meteor/irradiated/meteor_effect()
@@ -342,6 +347,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
 	threat = 50
+	shield_damage = 30
 
 /obj/effect/meteor/tunguska/Move()
 	. = ..()
