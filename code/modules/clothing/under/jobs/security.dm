@@ -225,6 +225,8 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
+	greyscale_config_worn_digi = null
 
 /obj/item/clothing/under/rank/security/officer/beatcop
 	name = "space police uniform"

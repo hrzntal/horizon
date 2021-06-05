@@ -17,6 +17,7 @@
 	fitted = FEMALE_UNIFORM_TOP
 	icon_state = "jumpskirt"
 	mutant_variants = NONE
+	greyscale_config_worn_digi = null
 
 /obj/item/clothing/under/color/random
 	icon_state = "random_jumpsuit"
