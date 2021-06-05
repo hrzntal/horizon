@@ -130,6 +130,9 @@
 	return FALSE
 
 /obj/docking_port/mobile/arrivals/proc/SendToStation()
+	if(!destination)
+		WARNING("Attempted to send arrivals shuttle without a destination set. Possible badminry.")
+		return
 	var/dockTime = CONFIG_GET(number/arrivals_shuttle_dock_window)
 	if(mode == SHUTTLE_CALL && timeLeft(1) > dockTime)
 		if(console)
