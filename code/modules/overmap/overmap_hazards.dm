@@ -1,3 +1,6 @@
+#define SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD 0.5
+#define ASTEROID_AND_DUST_PADDING 40
+
 /datum/overmap_object/hazard
 	name = "badly coded hazard"
 	visual_type = /obj/effect/abstract/overmap/hazard
@@ -61,8 +64,6 @@
 	hazard_color = COLOR_RED
 	visual_type = /obj/effect/abstract/overmap/hazard/opaque
 
-#define SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD 0.5
-
 /datum/overmap_object/hazard/asteroid/process(delta_time)
 	for(var/i in affected_shuttles)
 		var/datum/overmap_object/shuttle/shuttle = i
@@ -94,15 +95,13 @@
 						shuttle.DoShieldImpactEffect(pick('sound/effects/explosioncreak1.ogg', 'sound/effects/explosioncreak2.ogg'), 50, 5, 2)
 				if(!remaining_damage)
 					continue
+			//TODO: ADD HANDLING FOR SHUTTLES!!
 			if(length(shuttle.related_levels))
 				var/datum/space_level/hit_level = pick(shuttle.related_levels)
 				var/dir
 				if(try_directional && hit_level.parallax_direction_override)
 					dir = hit_level.parallax_direction_override
-				spawn_meteor(picked_meteor_type, dir, hit_level.z_value)
-
-#undef SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD
-
+				spawn_meteor(picked_meteor_type, dir, hit_level.z_value, ASTEROID_AND_DUST_PADDING)
 
 /datum/overmap_object/hazard/asteroid/get_random_icon_state()
 	return pick(list("meteor1", "meteor2", "meteor3", "meteor4"))
@@ -112,6 +111,41 @@
 	hazard_color = COLOR_FLOORTILE_GRAY
 	visual_type = /obj/effect/abstract/overmap/hazard/opaque
 
+/datum/overmap_object/hazard/dust/process(delta_time)
+	for(var/i in affected_shuttles)
+		var/datum/overmap_object/shuttle/shuttle = i
+		var/shuttle_velocity = VECTOR_LENGTH(shuttle.velocity_x, shuttle.velocity_y)
+		var/try_directional = FALSE
+		if(shuttle_velocity > SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD)
+			try_directional = TRUE
+		var/probability = 1
+		switch(shuttle_velocity)
+			if(0.25 to 0.5)
+				probability += 4
+			if(0.5 to 1)
+				probability += 7
+			if(1 to 2)
+				probability += 10
+			if(2 to 3)
+				probability += 15
+			if(3 to INFINITY)
+				probability += 25
+		if(prob(probability))
+			var/obj/effect/meteor/picked_meteor_type = pickweight(GLOB.meteorsC)
+			if(shuttle.GetShieldPercent())
+				var/shield_damage = initial(picked_meteor_type.shield_damage)
+				var/remaining_damage = shuttle.AbsorbShield(shield_damage)
+				shuttle.DoShieldImpactEffect('sound/effects/explosion_distant.ogg', 30, 0, 0)
+				if(!remaining_damage)
+					continue
+			//TODO: ADD HANDLING FOR SHUTTLES!!
+			if(length(shuttle.related_levels))
+				var/datum/space_level/hit_level = pick(shuttle.related_levels)
+				var/dir
+				if(try_directional && hit_level.parallax_direction_override)
+					dir = hit_level.parallax_direction_override
+				spawn_meteor(picked_meteor_type, dir, hit_level.z_value, ASTEROID_AND_DUST_PADDING)
+
 /datum/overmap_object/hazard/dust/get_random_icon_state()
 	return pick(list("dust1", "dust2", "dust3", "dust4"))
 
@@ -119,12 +153,40 @@
 	name = "electrical storm"
 	hazard_color = COLOR_YELLOW
 
+#define ELECTRICAL_STORM_ACT_PROB 6
+#define ELECTRICAL_STORM_SHIELD_DAMAGE 8
+
+/datum/overmap_object/hazard/electrical_storm/process(delta_time)
+	for(var/i in affected_shuttles)
+		var/datum/overmap_object/shuttle/shuttle = i
+		if(prob(ELECTRICAL_STORM_ACT_PROB))
+			shuttle.DoShieldImpactEffect(pick('sound/magic/lightningshock.ogg','sound/magic/lightningbolt.ogg'), 10, 2, 1)
+			if(shuttle.GetShieldPercent())
+				var/remaining_damage = shuttle.AbsorbShield(ELECTRICAL_STORM_SHIELD_DAMAGE)
+				if(!remaining_damage)
+					return
+			//Do effect here
+			//TODO: ADD HANDLING FOR SHUTTLES!!
+
+#undef ELECTRICAL_STORM_SHIELD_DAMAGE
+#undef ELECTRICAL_STORM_ACT_PROB
+
 /datum/overmap_object/hazard/electrical_storm/get_random_icon_state()
 	return pick(list("electrical1", "electrical2", "electrical3", "electrical4"))
 
 /datum/overmap_object/hazard/ion_storm
 	name = "ion storm"
 	hazard_color = LIGHT_COLOR_ELECTRIC_CYAN
+
+#define ION_STORM_SHIELD_DRAIN_PER_PROCESS 0.75
+
+//Ion storms currently just drain shields, sluurp
+/datum/overmap_object/hazard/ion_storm/process(delta_time)
+	for(var/i in affected_shuttles)
+		var/datum/overmap_object/shuttle/shuttle = i
+		shuttle.AbsorbShield(ION_STORM_SHIELD_DRAIN_PER_PROCESS)
+
+#undef ION_STORM_SHIELD_DRAIN_PER_PROCESS
 
 /datum/overmap_object/hazard/ion_storm/get_random_icon_state()
 	return pick(list("ion1", "ion2", "ion3", "ion4"))
@@ -135,3 +197,6 @@
 
 /datum/overmap_object/hazard/carp_school/get_random_icon_state()
 	return pick(list("carp1", "carp2", "carp3", "carp4"))
+
+#undef SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD
+#undef ASTEROID_AND_DUST_PADDING

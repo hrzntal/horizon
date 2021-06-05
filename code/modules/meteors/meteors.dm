@@ -27,55 +27,55 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	for(var/i = 0; i < number; i++)
 		spawn_meteor(pickweight(meteortypes))
 
-/proc/spawn_meteor(meteor_type, dir, z_level)
+/proc/spawn_meteor(meteor_type, dir, z_level, padding = MAP_EDGE_PAD)
 	var/turf/pickedstart
 	var/turf/pickedgoal
 	var/max_i = 10//number of tries to spawn meteor.
 	while(!isspaceturf(pickedstart) && !isopenspaceturf(pickedstart))
 		var/startSide = dir || pick(GLOB.cardinals)
 		var/startZ = z_level || pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
-		pickedstart = spaceDebrisStartLoc(startSide, startZ)
-		pickedgoal = spaceDebrisFinishLoc(startSide, startZ)
+		pickedstart = spaceDebrisStartLoc(startSide, startZ, padding)
+		pickedgoal = spaceDebrisFinishLoc(startSide, startZ, padding)
 		max_i--
 		if(max_i<=0)
 			return
 	var/obj/effect/meteor/M = new meteor_type(pickedstart, pickedgoal)
 	M.dest = pickedgoal
 
-/proc/spaceDebrisStartLoc(startSide, Z, extrapadding = 0)
+/proc/spaceDebrisStartLoc(startSide, Z, padding)
 	var/starty
 	var/startx
 	switch(startSide)
 		if(NORTH)
-			starty = world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD)
-			startx = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD))
+			starty = world.maxy-(TRANSITIONEDGE + padding)
+			startx = rand((TRANSITIONEDGE + padding), world.maxx-(TRANSITIONEDGE + padding))
 		if(EAST)
-			starty = rand((TRANSITIONEDGE + MAP_EDGE_PAD),world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD))
-			startx = world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD)
+			starty = rand((TRANSITIONEDGE + padding),world.maxy-(TRANSITIONEDGE + padding))
+			startx = world.maxx-(TRANSITIONEDGE + padding)
 		if(SOUTH)
-			starty = (TRANSITIONEDGE + MAP_EDGE_PAD)
-			startx = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD))
+			starty = (TRANSITIONEDGE + padding)
+			startx = rand((TRANSITIONEDGE + padding), world.maxx-(TRANSITIONEDGE + padding))
 		if(WEST)
-			starty = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD))
-			startx = (TRANSITIONEDGE + MAP_EDGE_PAD)
+			starty = rand((TRANSITIONEDGE + padding), world.maxy-(TRANSITIONEDGE + padding))
+			startx = (TRANSITIONEDGE + padding)
 	. = locate(startx, starty, Z)
 
-/proc/spaceDebrisFinishLoc(startSide, Z)
+/proc/spaceDebrisFinishLoc(startSide, Z, padding)
 	var/endy
 	var/endx
 	switch(startSide)
 		if(NORTH)
-			endy = (TRANSITIONEDGE + MAP_EDGE_PAD)
-			endx = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD))
+			endy = (TRANSITIONEDGE + padding)
+			endx = rand((TRANSITIONEDGE + padding), world.maxx-(TRANSITIONEDGE + padding))
 		if(EAST)
-			endy = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD))
-			endx = (TRANSITIONEDGE + MAP_EDGE_PAD)
+			endy = rand((TRANSITIONEDGE + padding), world.maxy-(TRANSITIONEDGE + padding))
+			endx = (TRANSITIONEDGE + padding)
 		if(SOUTH)
-			endy = world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD)
-			endx = rand((TRANSITIONEDGE + MAP_EDGE_PAD), world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD))
+			endy = world.maxy-(TRANSITIONEDGE + padding)
+			endx = rand((TRANSITIONEDGE + padding), world.maxx-(TRANSITIONEDGE + padding))
 		if(WEST)
-			endy = rand((TRANSITIONEDGE + MAP_EDGE_PAD),world.maxy-(TRANSITIONEDGE + MAP_EDGE_PAD))
-			endx = world.maxx-(TRANSITIONEDGE + MAP_EDGE_PAD)
+			endy = rand((TRANSITIONEDGE + padding),world.maxy-(TRANSITIONEDGE + padding))
+			endx = world.maxx-(TRANSITIONEDGE + padding)
 	. = locate(endx, endy, Z)
 
 ///////////////////////

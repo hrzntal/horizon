@@ -171,7 +171,7 @@
 	current_shield = 0
 	current_buffer = 0
 	operable = FALSE
-	next_operable_time = world.time + 1 MINUTE
+	next_operable_time = world.time + 1 MINUTES
 	if(inform && overmap_object)
 		overmap_object.inform_shields_down()
 
@@ -223,9 +223,14 @@
 /datum/shuttle_extension/shield/proc/turn_off(malfunction = FALSE)
 	if(!on)
 		return
-	current_shield = 0
 	on = FALSE
 	if(malfunction)
 		make_inoperable(FALSE)
+	else
+		//Half of the shields is added to the buffer when voluntairly turned off
+		var/buffer_to_add = current_shield/2
+		current_shield = 0
+		current_buffer += buffer_to_add
+		current_buffer = min(current_buffer, maximum_buffer)
 	if(operable && overmap_object)
 		overmap_object.inform_shields_down()
