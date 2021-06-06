@@ -189,7 +189,7 @@
 	if(!operable)
 		if(world.time > next_operable_time)
 			operable = TRUE
-			if(overmap_object)
+			if(on && overmap_object)
 				overmap_object.inform_shields_up()
 		else
 			return

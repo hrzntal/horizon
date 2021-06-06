@@ -1,5 +1,5 @@
 #define SHUTTLE_VELOCITY_METEORS_DIRECTIONAL_THRESHOLD 0.5
-#define ASTEROID_AND_DUST_PADDING 40
+#define ASTEROID_AND_DUST_PADDING 60
 
 /datum/overmap_object/hazard
 	name = "badly coded hazard"
@@ -154,7 +154,9 @@
 	hazard_color = COLOR_YELLOW
 
 #define ELECTRICAL_STORM_ACT_PROB 6
-#define ELECTRICAL_STORM_SHIELD_DAMAGE 8
+#define ELECTRICAL_STORM_SHIELD_DAMAGE 10
+#define ELECTRICAL_STORM_SEARCH_MARGIN 70
+#define ELECTRICAL_STORM_LIGHTS_OUT_RANGE 25
 
 /datum/overmap_object/hazard/electrical_storm/process(delta_time)
 	for(var/i in affected_shuttles)
@@ -166,10 +168,24 @@
 				if(!remaining_damage)
 					return
 			//Do effect here
+			if(length(shuttle.related_levels))
+				var/datum/space_level/picked_level = pick(shuttle.related_levels)
+				var/turf/epicentre_turf = GetRandomTurfInZLevelWithMargin(ELECTRICAL_STORM_SEARCH_MARGIN, picked_level)
+				if(prob(50))
+					//Light discharge
+					for(var/a in GLOB.apcs_list) //Yes very inefficient
+						var/obj/machinery/power/apc/A = a
+						if(get_dist(epicentre_turf, A) <= ELECTRICAL_STORM_LIGHTS_OUT_RANGE)
+							A.overload_lighting()
+				else
+					//EMP
+					empulse(epicentre_turf, 5, 10)
 			//TODO: ADD HANDLING FOR SHUTTLES!!
 
+#undef ELECTRICAL_STORM_SEARCH_MARGIN
 #undef ELECTRICAL_STORM_SHIELD_DAMAGE
 #undef ELECTRICAL_STORM_ACT_PROB
+#undef ELECTRICAL_STORM_LIGHTS_OUT_RANGE
 
 /datum/overmap_object/hazard/electrical_storm/get_random_icon_state()
 	return pick(list("electrical1", "electrical2", "electrical3", "electrical4"))
@@ -194,6 +210,23 @@
 /datum/overmap_object/hazard/carp_school
 	name = "carp school"
 	hazard_color = LIGHT_COLOR_PURPLE
+
+/datum/overmap_object/hazard/carp_school/process(delta_time)
+	for(var/i in affected_shuttles)
+		var/datum/overmap_object/shuttle/shuttle = i
+		var/probability = shuttle.GetShieldPercent() ? 1 : 5
+		if(prob(probability))
+			if(length(shuttle.related_levels))
+				var/datum/space_level/spawn_level = pick(shuttle.related_levels)
+				var/carp_spawn_list = GetLandmarksInZLevel(/obj/effect/landmark/carpspawn, spawn_level)
+				if(!length(carp_spawn_list))
+					continue
+				var/obj/effect/landmark/picked_spot = pick(carp_spawn_list)
+				if(prob(95))
+					new /mob/living/simple_animal/hostile/carp(picked_spot.loc)
+				else
+					new /mob/living/simple_animal/hostile/carp/megacarp(picked_spot.loc)
+			//TODO: SHUTTLE HANDLING
 
 /datum/overmap_object/hazard/carp_school/get_random_icon_state()
 	return pick(list("carp1", "carp2", "carp3", "carp4"))

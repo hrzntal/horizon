@@ -1830,6 +1830,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/commons/lounge)
+"Fz" = (
+/obj/effect/landmark/carpspawn,
+/turf/open/openspace/airless/planetary,
+/area/space)
 "FB" = (
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
@@ -31918,7 +31922,7 @@ EU
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -32160,7 +32164,7 @@ DB
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -32963,7 +32967,7 @@ wK
 oi
 oi
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -35477,7 +35481,7 @@ DB
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -37083,7 +37087,7 @@ Yk
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -38580,7 +38584,7 @@ DB
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB
@@ -39129,7 +39133,7 @@ DB
 DB
 DB
 DB
-DB
+Fz
 DB
 DB
 DB

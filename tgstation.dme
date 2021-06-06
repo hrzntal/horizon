@@ -2990,6 +2990,7 @@
 #include "code\modules\NTNet\netdata.dm"
 #include "code\modules\NTNet\network.dm"
 #include "code\modules\NTNet\relays.dm"
+#include "code\modules\overmap\_OVERMAP_HELPERS.dm"
 #include "code\modules\overmap\freeform_docker.dm"
 #include "code\modules\overmap\overmap_console.dm"
 #include "code\modules\overmap\overmap_hazards.dm"

@@ -129,6 +129,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/tcommsat/server)
+"pW" = (
+/obj/machinery/shield_generator,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "qM" = (
 /obj/machinery/telecomms/server/presets/command,
 /obj/machinery/light/directional/east,
@@ -261,6 +265,10 @@
 "IQ" = (
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
+/area/space)
+"Jc" = (
+/obj/effect/landmark/carpspawn,
+/turf/open/openspace/airless/planetary,
 /area/space)
 "JQ" = (
 /obj/effect/turf_decal/stripes/corner,
@@ -29068,7 +29076,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -29091,7 +29099,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -32430,10 +32438,10 @@ dO
 lK
 rQ
 dO
-Ou
-Ou
-Ou
-Ou
+dO
+dO
+dO
+dO
 Ou
 Ou
 Ou
@@ -32444,7 +32452,7 @@ Ou
 Ou
 Ou
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -32687,10 +32695,10 @@ dO
 hW
 rQ
 dO
-Ou
-Ou
-Ou
-Ou
+rQ
+rQ
+rQ
+dO
 Ou
 Ou
 Ou
@@ -32943,11 +32951,11 @@ Ph
 Ph
 Ph
 rQ
+WG
+rQ
+pW
+rQ
 dO
-Ou
-Ou
-Ou
-Ou
 Ou
 Ou
 Ou
@@ -33201,10 +33209,10 @@ MK
 rQ
 wC
 dO
-Ou
-Ou
-Ou
-Ou
+rQ
+rQ
+rQ
+dO
 Ou
 Ou
 Ou
@@ -33458,10 +33466,10 @@ dO
 nZ
 nZ
 dO
-Ou
-Ou
-Ou
-Ou
+dO
+dO
+dO
+dO
 Ou
 Ou
 Ou
@@ -35214,7 +35222,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -36259,7 +36267,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -36796,7 +36804,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw

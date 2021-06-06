@@ -78,6 +78,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"fI" = (
+/obj/effect/landmark/carpspawn,
+/turf/open/space/basic,
+/area/space)
 "go" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -29466,7 +29470,7 @@ Kg
 Kg
 Kg
 Kg
-Kg
+fI
 Kg
 Kg
 Kg
@@ -33087,7 +33091,7 @@ Kg
 Kg
 Kg
 Kg
-Kg
+fI
 Kg
 Kg
 Kg
@@ -36926,7 +36930,7 @@ Kg
 Kg
 Kg
 Kg
-Kg
+fI
 Kg
 Kg
 Kg
