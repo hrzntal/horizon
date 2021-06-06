@@ -1,6 +1,7 @@
 /datum/overmap_object/trade_hub
 	name = "Trading Hub"
 	visual_type = /obj/effect/abstract/overmap/trade_hub
+	clears_hazards_on_spawn = TRUE
 	var/datum/trade_hub/hub
 
 /datum/overmap_object/trade_hub/New()
