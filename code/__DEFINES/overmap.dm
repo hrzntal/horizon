@@ -30,8 +30,8 @@
 #define SHUTTLE_MAXIMUM_DOCKING_SPEED 0.2
 #define VECTOR_LENGTH(x,y) sqrt(x**2+y**2)
 #define TWO_POINT_DISTANCE(xa,ya,xb,yb) sqrt(((yb-ya)**2) + ((xa-xb)**2))
-#define SENSOR_RADIUS 6
-#define OVERMAP_LOCK_RANGE 3
+#define SENSOR_RADIUS 4
+#define OVERMAP_LOCK_RANGE 2
 
 #define SHUTTLE_ICON_IDLE 1
 #define SHUTTLE_ICON_FORWARD 2

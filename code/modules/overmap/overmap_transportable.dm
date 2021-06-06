@@ -20,15 +20,16 @@
 	return list(/obj/item/trash/boritos = 100)
 
 /datum/overmap_object/transportable/DoTransport(turf/destination)
-	var/list/loot_list = GetLootTable()
-	var/items_per_transport = rand(items_per_transport_low,items_per_transport_high)
-	for(var/i in 1 to items_per_transport)
-		if(!length(loot_list))
-			break
-		var/picked_type = pickweight(loot_list)
-		while(islist(picked_type))
-			picked_type = pickweight(picked_type)
-		new picked_type(destination)
+	if(destination)
+		var/list/loot_list = GetLootTable()
+		var/items_per_transport = rand(items_per_transport_low,items_per_transport_high)
+		for(var/i in 1 to items_per_transport)
+			if(!length(loot_list))
+				break
+			var/picked_type = pickweight(loot_list)
+			while(islist(picked_type))
+				picked_type = pickweight(picked_type)
+			new picked_type(destination)
 	transports_remaining--
 	if(!transports_remaining)
 		qdel(src)
