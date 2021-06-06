@@ -1,7 +1,8 @@
 //Bitflags for overmap_flags
-#define OV_SHOWS_ON_SENSORS		(1<<0)
-#define OV_CAN_BE_TARGETED		(1<<1)
-#define OV_CAN_BE_SCANNED		(1<<2)
+#define OV_SHOWS_ON_SENSORS (1<<0)
+#define OV_CAN_BE_TARGETED (1<<1)
+#define OV_CAN_BE_SCANNED (1<<2)
+#define OV_CAN_BE_TRANSPORTED (1<<3)
 
 //Defines for helm command types
 #define HELM_IDLE 0
@@ -45,6 +46,14 @@
 #define PLANET_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
 
 //Generaton stuff
+#define TRANSPORTABLE_LOOT_CHANCE_PER_TILE 7
+#define TRANSPORTABLE_LOOT_TABLE list(/datum/overmap_object/transportable/debris = 60, \
+									/datum/overmap_object/transportable/wreckage = 5, \
+									/datum/overmap_object/transportable/trash = 20, \
+									/datum/overmap_object/transportable/wreckage/high_value = 1)
+#define TRANSPORTABLE_SPECIAL_ON_DEBRIS_CHANCE 2
+#define TRANSPORTABLE_SPECIAL_LOOT_TABLE list(/datum/overmap_object/transportable/wreckage/high_value = 100)
+
 //Amount of hazard clusters being spawned
 #define DEFAULT_HAZARD_CLUSTER_AMOUNT 42
 //Their "dropoff", which is a value which will be subtracted every time a node spreads, into a chance to continue spreading. Higher dropoff = smaller nodes
@@ -62,5 +71,6 @@
 #define OVERMAP_LAYER_HAZARD 3.1
 #define OVERMAP_LAYER_PLANET 3.2
 #define OVERMAP_LAYER_STATION 3.3
-#define OVERMAP_LAYER_SHIP 3.4
-#define OVERMAP_LAYER_SHUTTLE 3.5
+#define OVERMAP_LAYER_LOOT 3.4
+#define OVERMAP_LAYER_SHIP 3.5
+#define OVERMAP_LAYER_SHUTTLE 3.6

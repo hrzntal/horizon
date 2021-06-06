@@ -234,3 +234,14 @@
 		current_buffer = min(current_buffer, maximum_buffer)
 	if(operable && overmap_object)
 		overmap_object.inform_shields_down()
+
+/datum/shuttle_extension/transporter
+	name = "Transporter"
+
+/datum/shuttle_extension/transporter/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
+	. = ..()
+	overmap_object.transporter_extensions += src
+
+/datum/shuttle_extension/transporter/RemoveFromOvermapObject()
+	overmap_object.transporter_extensions -= src
+	..()

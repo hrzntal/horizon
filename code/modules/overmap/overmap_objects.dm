@@ -7,6 +7,8 @@
 	var/x = 0
 	/// It's y coordinate
 	var/y = 0
+	var/partial_x = 0
+	var/partial_y = 0
 	/// The sunsystem it is stationed in
 	var/datum/overmap_sun_system/current_system
 	/// Whether it should make a visual dummy or not
@@ -22,6 +24,9 @@
 	/// When this object is spawned it will clear all the hazards in its current position
 	var/clears_hazards_on_spawn = FALSE
 	var/overmap_flags = OV_SHOWS_ON_SENSORS|OV_CAN_BE_TARGETED|OV_CAN_BE_SCANNED
+
+/datum/overmap_object/proc/DoTransport(turf/destination)
+	return
 
 //Gets all alive client mobs in the contained overmap object
 /datum/overmap_object/proc/GetAllAliveClientMobs()
@@ -104,10 +109,16 @@
 	update_visual_position()
 	. = TRUE
 
-/datum/overmap_object/proc/SetNewVisualOffsets(passed_x,passed_y)
+/datum/overmap_object/proc/UpdateVisualOffsets()
 	if(my_visual)
-		my_visual.pixel_x = passed_x
-		my_visual.pixel_y = passed_y
+		my_visual.pixel_x = FLOOR(partial_x,1)
+		my_visual.pixel_y = FLOOR(partial_y,1)
+
+/datum/overmap_object/proc/GetVisualOffsets()
+	var/list/passed = list()
+	passed += FLOOR(partial_x,1)
+	passed += FLOOR(partial_y,1)
+	return passed
 
 /datum/overmap_object/proc/update_visual_position()
 	if(my_visual)

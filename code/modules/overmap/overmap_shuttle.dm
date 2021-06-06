@@ -6,9 +6,6 @@
 	var/obj/docking_port/mobile/my_shuttle = null
 	var/angle = 0
 
-	var/partial_x = 0
-	var/partial_y = 0
-
 	var/velocity_x = 0
 	var/velocity_y = 0
 
@@ -52,6 +49,7 @@
 	var/list/all_extensions = list()
 	var/list/engine_extensions = list()
 	var/list/shield_extensions = list()
+	var/list/transporter_extensions = list()
 
 	var/speed_divisor_from_mass = 1
 
@@ -565,6 +563,7 @@
 		my_shuttle = null
 	engine_extensions = null
 	shield_extensions = null
+	transporter_extensions = null
 	all_extensions = null
 	return ..()
 
@@ -702,8 +701,7 @@
 			if(is_seperate_z_level)
 				update_seperate_z_level_parallax()
 
-			var/list/new_offsets = GetVisualOffsets()
-			SetNewVisualOffsets(new_offsets[1],new_offsets[2])
+			UpdateVisualOffsets()
 
 			if(did_move)
 				var/passed_x = new_x || x
@@ -717,16 +715,10 @@
 		M.Turn(angle)
 		my_visual.transform = M
 
-/datum/overmap_object/shuttle/proc/GetVisualOffsets()
-	var/list/passed = list()
-	passed += FLOOR(partial_x,1)
-	passed += FLOOR(partial_y,1)
-	return passed
-
-/datum/overmap_object/shuttle/SetNewVisualOffsets(x,y)
+/datum/overmap_object/shuttle/UpdateVisualOffsets()
 	. = ..()
 	if(shuttle_controller)
-		shuttle_controller.NewVisualOffset(x,y)
+		shuttle_controller.NewVisualOffset(FLOOR(partial_x,1),FLOOR(partial_y,1))
 
 /datum/overmap_object/shuttle/proc/update_seperate_z_level_parallax(reset = FALSE)
 	var/established_direction = null

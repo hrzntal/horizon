@@ -74,6 +74,7 @@
 	my_space_level = passed_level
 	z_level = my_space_level.z_value
 	//Initialize the turfs
+	var/list/transportables_loot_list = TRANSPORTABLE_LOOT_TABLE
 	for(var/iterated_x in 1 to maxx+1)
 		for(var/iterated_y in 1 to maxy+1)
 			var/turf/located = locate(iterated_x + x_offset, iterated_y + y_offset, z_level)
@@ -101,11 +102,15 @@
 				else if (iterated_y == maxy)
 					highx = iterated_x
 				map_turf.set_coords_overlays(lowx, lowy, highx, highy)
+				if(prob(TRANSPORTABLE_LOOT_CHANCE_PER_TILE))
+					var/transp_type = pickweight(transportables_loot_list)
+					new transp_type(src, iterated_x, iterated_y)
 	//Spawn hazards
 	SeedHazards()
 
 ///Map Generation Stuff
 /datum/overmap_sun_system/proc/SeedHazards(cluster_amount = DEFAULT_HAZARD_CLUSTER_AMOUNT, cluster_dropoff = DEFAULT_HAZARD_CLUSTER_DROPOFF, hazard_types = DEFAULT_OVERMAP_HAZARDS)
+	var/list/transportables_loot_list = TRANSPORTABLE_SPECIAL_LOOT_TABLE
 	for(var/i in 1 to cluster_amount)
 		var/chosen_type = pick(hazard_types)
 
@@ -139,6 +144,9 @@
 			if(CoordsHaveHazard(chosen_x, chosen_y))
 				continue
 			new chosen_type(src, chosen_x, chosen_y)
+			if(prob(TRANSPORTABLE_SPECIAL_ON_DEBRIS_CHANCE))
+				var/transp_type = pickweight(transportables_loot_list)
+				new transp_type(src, chosen_x, chosen_y)
 			//Add adjacent turf to the possible pool to spawn
 			for(var/b in 1 to 4)
 				var/list/step_list
