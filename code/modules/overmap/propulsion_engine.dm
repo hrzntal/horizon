@@ -34,7 +34,7 @@
 	if(starts_welded)
 		weld_down(mapload)
 		//This needs to be connected a moment after a lot of other initialization stuff happens
-		//Late initialize does not seem to work for this (doesnt get caled at all), so a timer
+		//Late initialize will fail to apply this correctly as atmos wont yet fully initialize (despite the lies they want you to believe in)
 		addtimer(CALLBACK(src, .proc/ApplyExtension))
 	. = ..()
 

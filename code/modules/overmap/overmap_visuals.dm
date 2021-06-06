@@ -5,6 +5,13 @@
 	icon_state = "event"
 	/// The overmap object this visual effect is representing
 	var/datum/overmap_object/my_overmap_object
+	/// If true value, then will force qdel on init (cant pass a hint due to the needed force)
+	var/qdel_init
+
+/obj/effect/abstract/overmap/Initialize()
+	. = ..()
+	if(qdel_init)
+		qdel(src, TRUE)
 
 /obj/effect/abstract/overmap/Destroy(force)
 	if(!force)

@@ -78,7 +78,11 @@
 	current_system.overmap_objects -= src
 	if(my_visual)
 		my_visual.my_overmap_object = null
-		qdel(my_visual, TRUE)
+		//So we can delete the objects within mapping processes
+		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
+			my_visual.qdel_init = TRUE
+		else
+			qdel(my_visual, TRUE)
 	return ..()
 
 /datum/overmap_object/proc/relaymove(mob/living/user, direction)

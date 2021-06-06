@@ -15,17 +15,18 @@
 
 /obj/machinery/shield_generator/Initialize()
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/shield_generator/LateInitialize()
+	. = ..()
 	extension = new extension_type()
-	addtimer(CALLBACK(src, .proc/ApplyExtension))
+	extension.ApplyToPosition(get_turf(src))
 	power_change()
 
 /obj/machinery/shield_generator/Destroy()
 	extension.RemoveExtension()
 	QDEL_NULL(extension)
 	return ..()
-
-/obj/machinery/shield_generator/proc/ApplyExtension()
-	extension.ApplyToPosition(get_turf(src))
 
 /obj/machinery/shield_generator/power_change()
 	. = ..()

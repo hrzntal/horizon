@@ -179,7 +179,7 @@
 							A.overload_lighting()
 				else
 					//EMP
-					empulse(epicentre_turf, 5, 10)
+					empulse(epicentre_turf, 4, 10)
 			//TODO: ADD HANDLING FOR SHUTTLES!!
 
 #undef ELECTRICAL_STORM_SEARCH_MARGIN
