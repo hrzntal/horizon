@@ -6,6 +6,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn_digi
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "jumpsuit"
 	worn_icon = 'icons/mob/clothing/under/color.dmi'
@@ -16,6 +17,7 @@
 	fitted = FEMALE_UNIFORM_TOP
 	icon_state = "jumpskirt"
 	mutant_variants = NONE
+	greyscale_config_worn_digi = null
 
 /obj/item/clothing/under/color/random
 	icon_state = "random_jumpsuit"

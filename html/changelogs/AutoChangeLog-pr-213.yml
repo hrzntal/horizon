@@ -1,0 +1,5 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - rscadd: "Added a new trading system. With the use of trading console and trading pad you'll be able to connect to various traders which sell and buy thematic things. This system is yet to be fleshed out and tweaked. Those will be mapped into the Bearcat shortly"
+  - rscadd: "Added overmap trading hubs to visit and connect to their networks to access more traders"

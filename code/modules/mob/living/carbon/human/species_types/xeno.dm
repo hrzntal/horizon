@@ -5,7 +5,6 @@
 	say_mod = "hisses"
 	default_color = "0F0"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Xenomorph Tail", "legs" = "Digitigrade Legs", "xenodorsal" = ACC_RANDOM, "xenohead" = ACC_RANDOM, "taur" = "None")
