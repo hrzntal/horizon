@@ -4,7 +4,7 @@
 		lock.Resolve()
 
 	//Process target commands
-	if(lock)
+	if(lock) //Lock needs to be checked again as Resolve() may delete and null it
 		switch(target_command)
 			if(TARGET_BEAM_ON_BOARD)
 				if(!(lock.target.overmap_flags & OV_CAN_BE_TRANSPORTED) && !CapableOfTransporting())
