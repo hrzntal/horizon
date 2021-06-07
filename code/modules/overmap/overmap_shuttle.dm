@@ -51,6 +51,7 @@
 	var/list/shield_extensions = list()
 	var/list/transporter_extensions = list()
 
+
 	var/speed_divisor_from_mass = 1
 
 	//Turf to which you need access range to access in order to do topics (this is done in this way so I dont need to keep track of consoles being in use)

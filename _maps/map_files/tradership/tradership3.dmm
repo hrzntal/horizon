@@ -622,14 +622,6 @@
 /obj/structure/table/optable,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
-"kY" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/lattice/catwalk,
-/obj/structure/railing,
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/openspace,
-/area/cargo/warehouse/upper)
 "lv" = (
 /turf/closed/wall,
 /area/service/kitchen/coldroom)
@@ -722,6 +714,13 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
+"mM" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/four,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "mQ" = (
 /obj/structure/sign/poster/contraband/random,
 /turf/closed/wall,
@@ -832,13 +831,6 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "ox" = (
-/turf/open/floor/iron,
-/area/cargo/warehouse/upper)
-"oI" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance/four,
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
 "oL" = (
@@ -1305,13 +1297,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"xB" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/airalarm/directional/east,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/closet/crate,
-/turf/open/floor/iron,
-/area/cargo/warehouse/upper)
 "xE" = (
 /obj/structure/bed/roller,
 /turf/open/floor/iron/white,
@@ -1495,6 +1480,11 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"Av" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/transporter,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "AC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/closed/wall,
@@ -1635,10 +1625,6 @@
 /obj/structure/ladder,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
-"CR" = (
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/iron,
-/area/cargo/warehouse/upper)
 "CT" = (
 /obj/machinery/power/supermatter_crystal/shard/engine,
 /turf/open/floor/engine,
@@ -1839,16 +1825,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/hallway/primary/central/fore)
+"Fw" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/lattice/catwalk,
+/obj/structure/railing,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/openspace,
+/area/cargo/warehouse/upper)
 "Fy" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/commons/lounge)
-"Fz" = (
-/obj/effect/landmark/carpspawn,
-/turf/open/openspace/airless/planetary,
-/area/space)
+"FA" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "FB" = (
 /obj/structure/lattice/catwalk,
 /turf/open/openspace,
@@ -1876,6 +1871,13 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/service/kitchen/coldroom)
+"FR" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/closet/crate,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "FW" = (
 /turf/open/floor/engine/airless,
 /area/space)
@@ -2430,9 +2432,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/command/meeting_room)
-"PQ" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/crate,
+"PX" = (
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
 "PY" = (
@@ -2553,11 +2554,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay)
-"Sn" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/transporter,
-/turf/open/floor/iron,
-/area/cargo/warehouse/upper)
 "Sp" = (
 /obj/machinery/computer/station_alert{
 	dir = 1
@@ -2784,6 +2780,10 @@
 	},
 /turf/open/openspace,
 /area/cargo/warehouse/upper)
+"Wg" = (
+/obj/effect/landmark/carpspawn,
+/turf/open/openspace/airless/planetary,
+/area/space)
 "Wm" = (
 /obj/machinery/computer/atmos_control/tank/nitrogen_tank{
 	dir = 1
@@ -31947,7 +31947,7 @@ EU
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -32189,7 +32189,7 @@ DB
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -32992,7 +32992,7 @@ wK
 oi
 oi
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -35022,11 +35022,11 @@ Eg
 Vj
 mc
 ze
-Sn
+Av
 DF
 eV
 FB
-kY
+Fw
 dI
 xO
 xO
@@ -35506,7 +35506,7 @@ DB
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -35536,7 +35536,7 @@ nN
 nN
 Yh
 ze
-CR
+PX
 ox
 FB
 FB
@@ -36050,7 +36050,7 @@ sV
 tI
 BK
 ze
-PQ
+FA
 Tu
 FB
 FB
@@ -36307,8 +36307,8 @@ HH
 uL
 tQ
 ze
-oI
-xB
+mM
+FR
 ZF
 cr
 We
@@ -37112,7 +37112,7 @@ Yk
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -38609,7 +38609,7 @@ DB
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
@@ -39158,7 +39158,7 @@ DB
 DB
 DB
 DB
-Fz
+Wg
 DB
 DB
 DB
