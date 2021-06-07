@@ -37,10 +37,18 @@
 /datum/overmap_object/transportable/debris
 	name = "debris"
 	visual_type = /obj/effect/abstract/overmap/debris
-	transports_remaining_low = 2
-	transports_remaining_high = 4
-	items_per_transport_low = 2
-	items_per_transport_high = 4
+	transports_remaining_low = 1
+	transports_remaining_high = 2
+	items_per_transport_low = 1
+	items_per_transport_high = 2
+
+/datum/overmap_object/transportable/debris/GetLootTable()
+	return list(/obj/effect/spawner/lootdrop/material_scarce = 100,
+				/obj/effect/spawner/lootdrop/material = 10,
+				/obj/effect/spawner/lootdrop/maintenance = 15,
+				/obj/effect/spawner/lootdrop/ore_scarce = 50,
+				/obj/effect/spawner/lootdrop/ore = 5,
+				/obj/effect/spawner/lootdrop/crate_spawner = 1)
 
 /obj/effect/abstract/overmap/debris
 	icon_state = "smallobject"
@@ -54,10 +62,25 @@
 	transports_remaining_low = 2
 	transports_remaining_high = 4
 	items_per_transport_low = 2
-	items_per_transport_high = 4
+	items_per_transport_high = 3
+
+/datum/overmap_object/transportable/wreckage/GetLootTable()
+	return list(/obj/effect/spawner/lootdrop/material = 70,
+				/obj/effect/spawner/lootdrop/ore = 20,
+				/obj/effect/spawner/lootdrop/space/rareseed = 10,
+				/obj/effect/spawner/lootdrop/space/fancytech = 5,
+				/obj/effect/spawner/lootdrop/space/cashmoney = 10,
+				/obj/effect/spawner/lootdrop/armory_contraband = 2,
+				/obj/effect/spawner/lootdrop/maintenance = 50,
+				/obj/effect/spawner/lootdrop/material_scarce = 10,
+				/obj/effect/spawner/lootdrop/space/fancytool/advmedicalonly = 5,
+				/obj/effect/spawner/lootdrop/crate_spawner = 3
+				)
 
 //For wreckages in storms and such
 /datum/overmap_object/transportable/wreckage/high_value
+	transports_remaining_low = 4
+	transports_remaining_high = 8
 
 /obj/effect/abstract/overmap/wreckage
 	icon_state = "mediumobject"
@@ -73,7 +96,7 @@
 	items_per_transport_high = 5
 
 /datum/overmap_object/transportable/trash/GetLootTable()
-	return GLOB.maintenance_loot
+	return list(/obj/effect/spawner/lootdrop/maintenance = 100)
 
 /obj/effect/abstract/overmap/trash
 	icon_state = "smallobject"

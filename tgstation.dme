@@ -2999,6 +2999,7 @@
 #include "code\modules\overmap\overmap_lock.dm"
 #include "code\modules\overmap\overmap_objects.dm"
 #include "code\modules\overmap\overmap_shuttle.dm"
+#include "code\modules\overmap\overmap_shuttle_process.dm"
 #include "code\modules\overmap\overmap_shuttle_shields.dm"
 #include "code\modules\overmap\overmap_shuttle_transporter.dm"
 #include "code\modules\overmap\overmap_transportable.dm"

@@ -622,6 +622,14 @@
 /obj/structure/table/optable,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"kY" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/lattice/catwalk,
+/obj/structure/railing,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/openspace,
+/area/cargo/warehouse/upper)
 "lv" = (
 /turf/closed/wall,
 /area/service/kitchen/coldroom)
@@ -829,6 +837,8 @@
 "oI" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/four,
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
 "oL" = (
@@ -1299,6 +1309,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/closet/crate,
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
 "xE" = (
@@ -1624,6 +1635,10 @@
 /obj/structure/ladder,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
+"CR" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "CT" = (
 /obj/machinery/power/supermatter_crystal/shard/engine,
 /turf/open/floor/engine,
@@ -2415,6 +2430,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/command/meeting_room)
+"PQ" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "PY" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -2533,6 +2553,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"Sn" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/transporter,
+/turf/open/floor/iron,
+/area/cargo/warehouse/upper)
 "Sp" = (
 /obj/machinery/computer/station_alert{
 	dir = 1
@@ -34997,11 +35022,11 @@ Eg
 Vj
 mc
 ze
-Tu
+Sn
 DF
 eV
 FB
-Pi
+kY
 dI
 xO
 xO
@@ -35511,7 +35536,7 @@ nN
 nN
 Yh
 ze
-ox
+CR
 ox
 FB
 FB
@@ -36025,7 +36050,7 @@ sV
 tI
 BK
 ze
-Tu
+PQ
 Tu
 FB
 FB

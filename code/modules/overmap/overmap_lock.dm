@@ -14,11 +14,10 @@
 	var/is_calibrated = FALSE
 
 /datum/overmap_lock/proc/Resolve()
-	var/distance = TWO_POINT_DISTANCE(target.x,target.y,parent.x,parent.y)
-	if(distance > OVERMAP_LOCK_RANGE)
-		qdel(src)
-		return FALSE
-	return TRUE
+	if(IN_LOCK_RANGE(target,parent))
+		return TRUE
+	qdel(src)
+	return FALSE
 
 /datum/overmap_lock/New(source, aimed)
 	parent = source

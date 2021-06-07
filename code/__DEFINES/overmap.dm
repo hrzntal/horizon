@@ -30,6 +30,8 @@
 #define SHUTTLE_MAXIMUM_DOCKING_SPEED 0.2
 #define VECTOR_LENGTH(x,y) sqrt(x**2+y**2)
 #define TWO_POINT_DISTANCE(xa,ya,xb,yb) sqrt(((yb-ya)**2) + ((xa-xb)**2))
+#define TWO_POINT_DISTANCE_OV(o1,o2) TWO_POINT_DISTANCE(o1.x,o1.y,o2.x,o2.y)
+#define IN_LOCK_RANGE(o1,o2) (TWO_POINT_DISTANCE_OV(o1,o2) <= OVERMAP_LOCK_RANGE)
 #define SENSOR_RADIUS 4
 #define OVERMAP_LOCK_RANGE 2
 

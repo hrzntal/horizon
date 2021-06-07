@@ -85,6 +85,13 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
 /area/cargo/warehouse)
+"eF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cargo/warehouse)
 "eL" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -507,6 +514,7 @@
 /area/hallway/primary/central)
 "rA" = (
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/crate/large,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "sj" = (
@@ -543,9 +551,9 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/aft/secondary)
 "sW" = (
-/obj/effect/turf_decal/bot,
 /obj/machinery/light_switch/directional/east,
-/obj/structure/closet/crate/large,
+/obj/machinery/trade_pad,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "tk" = (
@@ -745,9 +753,12 @@
 /turf/open/floor/iron,
 /area/construction/storage_wing)
 "yV" = (
-/obj/effect/turf_decal/bot,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
+/obj/machinery/computer/trade_console{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "zv" = (
@@ -948,6 +959,10 @@
 /obj/machinery/requests_console/directional/north,
 /turf/open/floor/iron,
 /area/construction/storage_wing)
+"Gx" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/iron,
+/area/cargo/warehouse)
 "GH" = (
 /obj/machinery/atmospherics/pipe/multiz/supply/hidden/layer4,
 /turf/closed/wall,
@@ -33472,7 +33487,7 @@ pD
 iF
 Hv
 gW
-gW
+Gx
 RR
 rA
 du
@@ -34501,8 +34516,8 @@ Ag
 bF
 hX
 oT
-mR
-mR
+eF
+Tt
 du
 gW
 Yk

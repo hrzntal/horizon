@@ -19,7 +19,7 @@
 
 /obj/machinery/transporter/LateInitialize()
 	. = ..()
-	extension = new extension_type()
+	extension = new extension_type(src)
 	extension.ApplyToPosition(get_turf(src))
 	power_change()
 

@@ -138,7 +138,7 @@
 		return TRUE
 
 #define ENGINE_MINIMUM_OPERATABLE_MOLES 0.1
-#define ENGINE_BASELINE_MOLE_INTAKE 1
+#define ENGINE_BASELINE_MOLE_INTAKE 0.7
 
 /obj/machinery/atmospherics/components/unary/engine/proc/DrawThrust(impulse_power)
 	var/datum/gas_mixture/gas = airs[1]

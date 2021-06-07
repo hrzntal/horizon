@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(trading)
 		var/datum/space_level/level = SSmapping.z_list[position.z]
 		if(level && level.related_overmap_object)
 			var/datum/overmap_object/oo = level.related_overmap_object
-			var/list/overmap_objects = level.related_overmap_object.current_system.GetObjectsInRadius(oo.x,oo.y,1)
+			var/list/overmap_objects = level.related_overmap_object.current_system.GetObjectsInRadius(oo.x,oo.y,0)
 			for(var/i in overmap_objects)
 				var/datum/overmap_object/iterated_object = i
 				if(istype(iterated_object, /datum/overmap_object/trade_hub))

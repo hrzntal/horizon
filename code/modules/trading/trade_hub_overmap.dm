@@ -15,3 +15,4 @@
 /obj/effect/abstract/overmap/trade_hub
 	icon_state = "trade"
 	color = COLOR_GREEN
+	layer = OVERMAP_LAYER_STATION

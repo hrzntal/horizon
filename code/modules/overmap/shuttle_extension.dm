@@ -76,7 +76,7 @@
 	var/current_fuel = 100
 	var/maximum_fuel = 100
 	var/current_efficiency = 1
-	var/granted_speed = 0.25
+	var/granted_speed = 0.35
 	var/minimum_fuel_to_operate = 1
 	var/turned_on = FALSE
 	var/cap_speed_multiplier = 5
@@ -237,6 +237,18 @@
 
 /datum/shuttle_extension/transporter
 	name = "Transporter"
+	var/transporter_progress = 0
+	var/progress_to_success = 10
+	///Reference to the physical transporter
+	var/obj/machinery/transporter/our_machine
+
+/datum/shuttle_extension/transporter/New(obj/machinery/transporter/passed_machine)
+	. = ..()
+	our_machine = passed_machine
+
+/datum/shuttle_extension/transporter/Destroy()
+	our_machine = null
+	return ..()
 
 /datum/shuttle_extension/transporter/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
 	. = ..()
@@ -245,3 +257,23 @@
 /datum/shuttle_extension/transporter/RemoveFromOvermapObject()
 	overmap_object.transporter_extensions -= src
 	..()
+
+/datum/shuttle_extension/transporter/proc/CanTransport()
+	if(!overmap_object.lock)
+		return FALSE
+	var/datum/overmap_object/target = overmap_object.lock.target
+	if(TWO_POINT_DISTANCE_OV(shuttle,target) < 1)
+		return TRUE
+	return FALSE
+
+/datum/shuttle_extension/transporter/proc/ProcessTransport()
+	transporter_progress++
+	if(transporter_progress >= progress_to_success)
+		var/turf/destination = null
+		if(our_machine)
+			destination = get_turf(our_machine)
+			do_sparks(3, TRUE, destination)
+		overmap_object.lock.target.DoTransport(destination)
+		transporter_progress = 0
+		return TRUE
+	return FALSE
