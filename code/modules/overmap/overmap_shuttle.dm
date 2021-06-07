@@ -682,19 +682,19 @@
 			var/did_move = FALSE
 			var/new_x
 			var/new_y
-			if(partial_y > 16)
+			while(partial_y > 16)
 				did_move = TRUE
 				partial_y -= 32
 				new_y = min(y+1,current_system.maxy)
-			else if(partial_y < -16)
+			while(partial_y < -16)
 				did_move = TRUE
 				partial_y += 32
 				new_y = max(y-1,1)
-			if(partial_x > 16)
+			while(partial_x > 16)
 				did_move = TRUE
 				partial_x -= 32
 				new_x = min(x+1,current_system.maxx)
-			else if(partial_x < -16)
+			while(partial_x < -16)
 				did_move = TRUE
 				partial_x += 32
 				new_x = max(x-1,1)
