@@ -15,10 +15,9 @@
 
 /obj/machinery/transporter/Initialize()
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	addtimer(CALLBACK(src, .proc/TimedInitialize))
 
-/obj/machinery/transporter/LateInitialize()
-	. = ..()
+/obj/machinery/transporter/proc/TimedInitialize()
 	extension = new extension_type(src)
 	extension.ApplyToPosition(get_turf(src))
 	power_change()
