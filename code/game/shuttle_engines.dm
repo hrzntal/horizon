@@ -24,14 +24,14 @@
 
 /obj/structure/shuttle/engine/Initialize()
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/structure/shuttle/engine/LateInitialize()
-	. = ..()
 	if(extension_type)
-		extension = new extension_type()
-		if(state == ENGINE_WELDED)
-			ApplyExtension()
+		//Late initialize does not seem to work for this (doesnt get caled at all), so a timer
+		addtimer(CALLBACK(src, .proc/CreateExtension))
+
+/obj/structure/shuttle/engine/proc/CreateExtension()
+	extension = new extension_type()
+	if(state == ENGINE_WELDED)
+		ApplyExtension()
 
 /obj/structure/shuttle/engine/proc/ApplyExtension()
 	if(!extension)
