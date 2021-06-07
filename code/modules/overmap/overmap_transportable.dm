@@ -56,7 +56,7 @@
 	color = COLOR_GRAY
 
 /datum/overmap_object/transportable/wreckage
-	name = "wreckage"
+	name = "small wreckage"
 	visual_type = /obj/effect/abstract/overmap/wreckage
 	randomized_offsets = FALSE
 	transports_remaining_low = 2
