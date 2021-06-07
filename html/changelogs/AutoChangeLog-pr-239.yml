@@ -1,0 +1,5 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - bugfix: "Fixes shuttle extensions not applying on mapload"
+  - bugfix: "Shuttles traversing more than 1 tile per second will now properly move"

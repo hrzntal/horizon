@@ -15,10 +15,9 @@
 
 /obj/machinery/shield_generator/Initialize()
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	addtimer(CALLBACK(src, .proc/TimedInitialize))
 
-/obj/machinery/shield_generator/LateInitialize()
-	. = ..()
+/obj/machinery/shield_generator/proc/TimedInitialize()
 	extension = new extension_type()
 	extension.ApplyToPosition(get_turf(src))
 	power_change()
