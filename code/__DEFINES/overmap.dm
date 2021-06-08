@@ -3,6 +3,7 @@
 #define OV_CAN_BE_TARGETED (1<<1)
 #define OV_CAN_BE_SCANNED (1<<2)
 #define OV_CAN_BE_TRANSPORTED (1<<3)
+#define OV_CAN_BE_ATTACKED (1<<4)
 
 //Defines for helm command types
 #define HELM_IDLE 0
@@ -39,6 +40,13 @@
 #define SHUTTLE_ICON_FORWARD 2
 #define SHUTTLE_ICON_BACKWARD 3
 
+//Projectiles
+#define OVERMAP_PROJECTILE_COLLISION_DISTANCE 5
+//Damage types
+#define OV_DAMTYPE_LASER 1
+#define OV_DAMTYPE_BALLISTIC 2
+#define OV_DAMTYPE_MINING 3
+
 #define SHUTTLE_CAN_USE_DOCK		(1<<0)
 #define SHUTTLE_CAN_USE_ENGINES		(1<<1)
 #define SHUTTLE_CAN_USE_SENSORS		(1<<2)
@@ -48,6 +56,8 @@
 #define PLANET_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
 
 //Generaton stuff
+#define ORE_ROCK_PER_TILE_CHANCE 9
+
 #define TRANSPORTABLE_LOOT_CHANCE_PER_TILE 7
 #define TRANSPORTABLE_LOOT_TABLE list(/datum/overmap_object/transportable/debris = 60, \
 									/datum/overmap_object/transportable/wreckage = 5, \
@@ -76,3 +86,4 @@
 #define OVERMAP_LAYER_LOOT 3.4
 #define OVERMAP_LAYER_SHIP 3.5
 #define OVERMAP_LAYER_SHUTTLE 3.6
+#define OVERMAP_LAYER_PROJECTILE 3.7

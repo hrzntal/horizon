@@ -1,5 +1,6 @@
 /datum/overmap_object/projectile
-	visual_type = /obj/effect/abstract/overmap
+	name = "projectile"
+	visual_type = /obj/effect/abstract/overmap/projectile
 	overmap_process = TRUE
 	overmap_flags = NONE
 	/// Parent of the projectile, used for avoiding it
@@ -13,15 +14,17 @@
 	/// Whether it only hits the target, or can hit things that get inbetween
 	var/only_hits_target = TRUE
 	/// Vector velocity of the projectile
-	var/speed = 3
+	var/speed = 5
 	/// Maximum distance in pixels (32 per tile)
-	var/max_distance = 96
+	var/max_distance = 64
 	var/distance_so_far = 0
 
 	var/absolute_dest_x = 0
 	var/absolute_dest_y = 0
 
 	var/last_angle
+
+	var/visual_rotation = TRUE
 
 /datum/overmap_object/projectile/New(datum/overmap_sun_system/passed_system, x_coord, y_coord, part_x, part_y, passed_parent, passed_target)
 	. = ..()
@@ -38,40 +41,94 @@
 	absolute_dest_x = (target.x * 32) + target.partial_x
 	absolute_dest_y = (target.y * 32) + target.partial_y
 
+	UpdateAngle()
+
+/datum/overmap_object/projectile/proc/UpdateAngle()
+	var/absolute_pos_x = (x*32)+partial_x
+	var/aboslute_pos_y = (y*32)+partial_y
+	var/target_angle = ATAN2((absolute_dest_y-aboslute_pos_y),(absolute_dest_x-absolute_pos_x))
+	if(target_angle < 0)
+		target_angle = 360 + target_angle
+	if(target_angle > 180)
+		target_angle -= 360
+	last_angle = target_angle
+	if(visual_rotation)
+		var/matrix/M = new
+		M.Turn(last_angle)
+		my_visual.transform = M
+
 /datum/overmap_object/projectile/process()
-	var/new_angle = FALSE
 	if(homing_on_target && target)
-		new_angle = TRUE
 		absolute_dest_x = (target.x * 32) + target.partial_x
 		absolute_dest_y = (target.y * 32) + target.partial_y
-	if(!last_angle)
-		new_angle = TRUE
+		UpdateAngle()
 
-	if(new_angle)
-		var/absolute_pos_x = (x*32)+partial_x
-		var/aboslute_pos_y = (y*32)+partial_y
-		var/target_angle = ATAN2((absolute_dest_x-aboslute_pos_y,absolute_dest_x-absolute_pos_x)
-		if(target_angle < 0)
-			target_angle = 360 + target_angle
-		if(target_angle > 180)
-			target_angle -= 360
-		last_angle = new_angle
-
+	//Movement
 	var/x_to_add = sin(last_angle) * speed
 	var/y_to_add = cos(last_angle) * speed
 	partial_x += x_to_add
 	partial_y += y_to_add
-	distance_so_far += speed
+	var/did_move = FALSE
+	var/new_x
+	var/new_y
+	while(partial_y > 16)
+		did_move = TRUE
+		partial_y -= 32
+		new_y = min(y+1,current_system.maxy)
+	while(partial_y < -16)
+		did_move = TRUE
+		partial_y += 32
+		new_y = max(y-1,1)
+	while(partial_x > 16)
+		did_move = TRUE
+		partial_x -= 32
+		new_x = min(x+1,current_system.maxx)
+	while(partial_x < -16)
+		did_move = TRUE
+		partial_x += 32
+		new_x = max(x-1,1)
+	UpdateVisualOffsets()
+	if(did_move)
+		var/passed_x = new_x || x
+		var/passed_y = new_y || y
+		Move(passed_x, passed_y)
 
-	return
+	//Collisions
+	var/my_absolute_pos_x = (x*32)+partial_x
+	var/my_aboslute_pos_y = (y*32)+partial_y
+	if(!(only_hits_target && !target)) //Dont even try collisions if thats true
+		var/list/possible_targets = current_system.GetObjectsOnCoords(x, y)
+		for(var/i in possible_targets)
+			var/datum/overmap_object/evaluatee = i
+			if(!(evaluatee.overmap_flags & OV_CAN_BE_ATTACKED))
+				continue
+			if(only_hits_target && evaluatee != target)
+				continue
+			if(avoids_parent && evaluatee == parent)
+				continue
+			//Check distance
+			var/evaluatee_absolute_pos_x = (evaluatee.x*32)+evaluatee.partial_x
+			var/evaluatee_aboslute_pos_y = (evaluatee.y*32)+evaluatee.partial_y
+			var/distance_in_pixels = TWO_POINT_DISTANCE(my_absolute_pos_x,my_aboslute_pos_y,evaluatee_absolute_pos_x,evaluatee_aboslute_pos_y)
+			if(distance_in_pixels > OVERMAP_PROJECTILE_COLLISION_DISTANCE)
+				continue
+			//And finally, hit
+			HitObject(evaluatee)
+			qdel(src)
+			return
+
+	//Distance cap
+	distance_so_far += speed
+	if(distance_so_far >= max_distance)
+		qdel(src)
 
 /datum/overmap_object/projectile/proc/LoseParent()
-	parent = null
 	UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
+	parent = null
 
 /datum/overmap_object/projectile/proc/LoseTarget()
-	target = null
 	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	target = null
 
 /datum/overmap_object/projectile/Destroy()
 	if(parent)
@@ -84,5 +141,22 @@
 	return
 
 /datum/overmap_object/projectile/damaging
-	var/damage_type = NONE
-	var/damage_amount = 20
+	var/damage_type = OV_DAMTYPE_LASER
+	var/damage_amount = 10
+
+/datum/overmap_object/projectile/damaging/HitObject(datum/overmap_object/hit_object)
+	hit_object.DealtDamage(damage_type, damage_amount)
+
+/datum/overmap_object/projectile/damaging/mining
+	visual_type = /obj/effect/abstract/overmap/projectile/mining
+	damage_type = OV_DAMTYPE_MINING
+	damage_amount = 5
+
+/obj/effect/abstract/overmap/projectile
+	animate_movement = NO_STEPS
+	icon = 'icons/overmap/overmap_projectiles.dmi'
+	icon_state = "white_laser"
+	layer = OVERMAP_LAYER_PROJECTILE
+
+/obj/effect/abstract/overmap/projectile/mining
+	icon_state = "orange_laser"

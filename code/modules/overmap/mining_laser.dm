@@ -22,7 +22,7 @@
 	playsound(src, 'sound/weapons/lasercannonfire.ogg', 65, TRUE)
 	var/turf/effect_spot = get_turf(src)
 	effect_spot = get_step(effect_spot, dir)
-	var/obj/effect = /obj/effect/temp_visual/mining_laser_fire(effect_spot)
+	var/obj/effect = new /obj/effect/temp_visual/mining_laser_fire(effect_spot)
 	effect.dir = dir
 
 /obj/machinery/mining_laser/Destroy()

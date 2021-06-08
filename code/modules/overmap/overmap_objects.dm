@@ -25,6 +25,9 @@
 	var/clears_hazards_on_spawn = FALSE
 	var/overmap_flags = OV_SHOWS_ON_SENSORS|OV_CAN_BE_TARGETED|OV_CAN_BE_SCANNED
 
+/datum/overmap_object/proc/DealtDamage(damage_type, damage_amount)
+	return
+
 /datum/overmap_object/proc/DoTransport(turf/destination)
 	return
 
