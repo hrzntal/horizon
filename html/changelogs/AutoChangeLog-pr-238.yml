@@ -1,5 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Adds overmap \"loot\" and Transporters to collect it. In order to collect the loot, - fly to it and lock on it as your target and then do \"Beam on Board\" in the overmap ops console."
-  - rscadd: "FTV Bearcat now has a trading console, pad and a transporter"

@@ -1,6 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Added shield generators which will protect your ship/shuttle/station from all sorts of peril. You can turn them on/off on the overmap ops console"
-  - rscadd: "Added lots of hazards on the overmap which will affect the passing ships, ranging from asteroids to electrical storms."
-  - rscadd: "Tweaked a lot of overmap stuff, mostly small improvements backend or frontend"

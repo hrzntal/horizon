@@ -15,3 +15,20 @@
       into the Bearcat shortly
   - rscadd: Added overmap trading hubs to visit and connect to their networks to access
       more traders
+2021-06-08:
+  Avunia Takiya:
+  - qol: Lobby music is now at 30% - four ears, rejoice!
+  - spellcheck: All resesearch stations have been downgraded to research stations.
+      Sorry Reese's Lovers!
+  Azarak:
+  - bugfix: Fixes shuttle extensions not applying on mapload
+  - bugfix: Shuttles traversing more than 1 tile per second will now properly move
+  - rscadd: Added shield generators which will protect your ship/shuttle/station from
+      all sorts of peril. You can turn them on/off on the overmap ops console
+  - rscadd: Added lots of hazards on the overmap which will affect the passing ships,
+      ranging from asteroids to electrical storms.
+  - rscadd: Tweaked a lot of overmap stuff, mostly small improvements backend or frontend
+  - rscadd: Adds overmap "loot" and Transporters to collect it. In order to collect
+      the loot, - fly to it and lock on it as your target and then do "Beam on Board"
+      in the overmap ops console.
+  - rscadd: FTV Bearcat now has a trading console, pad and a transporter
