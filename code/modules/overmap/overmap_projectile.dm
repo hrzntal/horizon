@@ -68,30 +68,7 @@
 	var/y_to_add = cos(last_angle) * speed
 	partial_x += x_to_add
 	partial_y += y_to_add
-	var/did_move = FALSE
-	var/new_x
-	var/new_y
-	while(partial_y > 16)
-		did_move = TRUE
-		partial_y -= 32
-		new_y = min(y+1,current_system.maxy)
-	while(partial_y < -16)
-		did_move = TRUE
-		partial_y += 32
-		new_y = max(y-1,1)
-	while(partial_x > 16)
-		did_move = TRUE
-		partial_x -= 32
-		new_x = min(x+1,current_system.maxx)
-	while(partial_x < -16)
-		did_move = TRUE
-		partial_x += 32
-		new_x = max(x-1,1)
-	UpdateVisualOffsets()
-	if(did_move)
-		var/passed_x = new_x || x
-		var/passed_y = new_y || y
-		Move(passed_x, passed_y)
+	ProcessPartials()
 
 	//Collisions
 	var/my_absolute_pos_x = (x*32)+partial_x

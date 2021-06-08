@@ -140,37 +140,13 @@
 
 			partial_x += add_partial_x
 			partial_y += add_partial_y
-			var/did_move = FALSE
-			var/new_x
-			var/new_y
-			while(partial_y > 16)
-				did_move = TRUE
-				partial_y -= 32
-				new_y = min(y+1,current_system.maxy)
-			while(partial_y < -16)
-				did_move = TRUE
-				partial_y += 32
-				new_y = max(y-1,1)
-			while(partial_x > 16)
-				did_move = TRUE
-				partial_x -= 32
-				new_x = min(x+1,current_system.maxx)
-			while(partial_x < -16)
-				did_move = TRUE
-				partial_x += 32
-				new_x = max(x-1,1)
+
+			if(ProcessPartials())
+				if(shuttle_controller)
+					shuttle_controller.ShuttleMovedOnOvermap()
 
 			if(is_seperate_z_level)
 				update_seperate_z_level_parallax()
-
-			UpdateVisualOffsets()
-
-			if(did_move)
-				var/passed_x = new_x || x
-				var/passed_y = new_y || y
-				Move(passed_x, passed_y)
-				if(shuttle_controller)
-					shuttle_controller.ShuttleMovedOnOvermap()
 
 	//Update rotation
 	if(uses_rotation)
