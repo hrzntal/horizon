@@ -141,9 +141,8 @@
 			partial_x += add_partial_x
 			partial_y += add_partial_y
 
-			if(ProcessPartials())
-				if(shuttle_controller)
-					shuttle_controller.ShuttleMovedOnOvermap()
+			if(ProcessPartials() && shuttle_controller)
+				shuttle_controller.ShuttleMovedOnOvermap()
 
 			if(is_seperate_z_level)
 				update_seperate_z_level_parallax()
