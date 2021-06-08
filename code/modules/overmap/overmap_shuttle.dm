@@ -50,7 +50,7 @@
 	var/list/engine_extensions = list()
 	var/list/shield_extensions = list()
 	var/list/transporter_extensions = list()
-
+	var/list/weapon_extensions = list()
 
 	var/speed_divisor_from_mass = 1
 
@@ -564,6 +564,7 @@
 	engine_extensions = null
 	shield_extensions = null
 	transporter_extensions = null
+	weapon_extensions = null
 	all_extensions = null
 	return ..()
 
