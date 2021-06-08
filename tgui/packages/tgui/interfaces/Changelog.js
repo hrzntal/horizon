@@ -90,6 +90,8 @@ export class Changelog extends Component {
         } else {
           self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
         }
+      }).catch(async (err_reason) => {
+        self.setData(err_reason);
       });
   }
 
