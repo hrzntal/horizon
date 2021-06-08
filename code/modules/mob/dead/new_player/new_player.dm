@@ -48,6 +48,11 @@
 	if (client?.interviewee)
 		return
 
+	if(!GLOB.mainmenu_tgui)
+		GLOB.mainmenu_tgui = new /datum/mainmenu(src)
+
+	GLOB.mainmenu_tgui.ui_interact(src)
+
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)
 	var/list/output = list("<center>")
@@ -80,7 +85,7 @@
 	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>[greeting_title]</div>", 400, 300)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output.Join())
-	popup.open(FALSE)
+	//popup.open(FALSE)
 
 /mob/dead/new_player/proc/playerpolls()
 	var/list/output = list()
@@ -525,6 +530,8 @@
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+
+	src.client.uiclose(GLOB.mainmenu_tgui)
 
 // Used to make sure that a player has a valid job preference setup, used to knock players out of eligibility for anything if their prefs don't make sense.
 // A "valid job preference setup" in this situation means at least having one job set to low, or not having "return to lobby" enabled
