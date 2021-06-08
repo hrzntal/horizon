@@ -110,12 +110,22 @@ Slimecrossing Armor
 	throw_range = 3
 	mutant_variants = NONE
 
-/obj/item/clothing/head/peaceflower/attack_hand(mob/user, list/modifiers)
+/obj/item/clothing/head/peaceflower/proc/at_peace_check(mob/user)
 	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(src == C.head)
+		var/mob/living/carbon/carbon_user = user
+		if(src == carbon_user.head)
 			to_chat(user, "<span class='warning'>You feel at peace. <b style='color:pink'>Why would you want anything else?</b></span>")
-			return
+			return TRUE
+	return FALSE
+
+/obj/item/clothing/head/peaceflower/attack_hand(mob/user, list/modifiers)
+	if(at_peace_check(user))
+		return
+	return ..()
+
+/obj/item/clothing/head/peaceflower/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+	if(at_peace_check(usr))
+		return
 	return ..()
 
 /obj/item/clothing/suit/armor/heavy/adamantine
