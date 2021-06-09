@@ -38,7 +38,10 @@
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 
+	/// The type of the overmap object the station will act as on the overmap
 	var/overmap_object_type = /datum/overmap_object/shuttle/station
+	/// The weather controller the station levels will have
+	var/weather_controller_type = /datum/weather_controller
 
 /datum/map_config/New()
 	//Make sure that all levels in station do have this z trait

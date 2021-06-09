@@ -283,12 +283,14 @@
 	if(!user_area || !user_turf || (user_area.type in excluded_areas))
 		to_chat(user, "<span class='warning'>Something is preventing you from using the staff here.</span>")
 		return
+	var/datum/weather_controller/weather_controller = SSmapping.GetLevelWeatherController(user_turf.z)
 	var/datum/weather/A
-	for(var/V in SSweather.processing)
-		var/datum/weather/W = V
-		if((user_turf.z in W.impacted_z_levels) && W.area_type == user_area.type)
-			A = W
-			break
+	if(weather_controller.current_weathers)
+		for(var/V in weather_controller.current_weathers)
+			var/datum/weather/W = V
+			if((user_turf.z in W.impacted_z_levels) && W.area_type == user_area.type)
+				A = W
+				break
 
 	if(A)
 		if(A.stage != END_STAGE)
@@ -302,7 +304,7 @@
 			log_game("[user] ([key_name(user)]) has dispelled a storm at [AREACOORD(user_turf)]")
 			return
 	else
-		A = new storm_type(list(user_turf.z))
+		A = weather_controller.RunWeather(storm_type, FALSE)
 		A.name = "staff storm"
 		log_game("[user] ([key_name(user)]) has summoned [A] at [AREACOORD(user_turf)]")
 		if (is_special_character(user))

@@ -921,7 +921,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!isnum(z_level))
 		return
 
-	SSweather.run_weather(weather_type, z_level)
+	var/datum/weather_controller/weather_controller = SSmapping.GetLevelWeatherController(z_level)
+	if(!weather_controller)
+		return
+	weather_controller.RunWeather(weather_type)
 
 	message_admins("[key_name_admin(usr)] started weather of type [weather_type] on the z-level [z_level].")
 	log_admin("[key_name(usr)] started weather of type [weather_type] on the z-level [z_level].")

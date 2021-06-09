@@ -24,6 +24,8 @@
 	/// When this object is spawned it will clear all the hazards in its current position
 	var/clears_hazards_on_spawn = FALSE
 	var/overmap_flags = OV_SHOWS_ON_SENSORS|OV_CAN_BE_TARGETED|OV_CAN_BE_SCANNED
+	/// Linked weather controller, expect this to apply to all related_levels
+	var/datum/weather_controller/weather_controller
 
 /datum/overmap_object/proc/DoTransport(turf/destination)
 	return
@@ -74,6 +76,8 @@
 		current_system.CoordsClearHazard(x, y)
 
 /datum/overmap_object/Destroy()
+	if(weather_controller)
+		weather_controller.UnlinkOvermapObject()
 	//As we are destroyed we exit other objects
 	for(var/other_obj in current_system.GetObjectsOnCoords(x, y))
 		var/datum/overmap_object/other_overmap_obj = other_obj
