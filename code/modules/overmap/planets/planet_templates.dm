@@ -67,7 +67,7 @@
 /datum/planet_template/jungle_planet
 	name = "Jungle Planet"
 	area_type = /area/jungle_planet
-	generator_type = /datum/map_generator/jungle_planet_generator
+	generator_type = /datum/map_generator/planet_gen/jungle
 
 	default_traits_input = ZTRAITS_JUNGLE_PLANET
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle_planet
