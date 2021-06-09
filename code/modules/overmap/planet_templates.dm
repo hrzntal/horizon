@@ -23,7 +23,7 @@
 			WARNING("No area type passed on planet generation")
 		if(!generator_type)
 			WARNING("No generator type passed on planet generation")
-		var/datum/space_level/new_level = SSmapping.add_new_zlevel(name, default_traits_input)
+		var/datum/space_level/new_level = SSmapping.add_new_zlevel(name, default_traits_input, overmap_obj = linked_overmap_object)
 		var/area/new_area = new area_type()
 		var/list/turfs = block(locate(1,1,new_level.z_value),locate(world.maxx,world.maxy,new_level.z_value))
 		new_area.contents.Add(turfs)
