@@ -658,7 +658,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/mutable_appearance/gradient_overlay = mutable_appearance(layer = -HAIR_LAYER)
 		if(!hair_hidden && !H.getorgan(/obj/item/organ/brain)) //Applies the debrained overlay if there is no brain
 			if(!(NOBLOOD in species_traits))
-				hair_overlay.icon = 'icons/mob/human_face.dmi'
+				hair_overlay.icon = 'icons/mob/sprite_accessory/human_face.dmi'
 				hair_overlay.icon_state = "debrained"
 
 		else if(H.hairstyle && (HAIR in species_traits))
@@ -744,7 +744,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	if(noggin && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
 		if(species_human.lip_style && (LIPS in species_traits))
-			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
+			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/sprite_accessory/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
 			lip_overlay.color = species_human.lip_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				lip_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
@@ -755,7 +755,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(!(NOEYESPRITES in species_traits))
 			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
-			var/eye_icon = eyes_icon || 'icons/mob/human_face.dmi'
+			var/eye_icon = eyes_icon || 'icons/mob/sprite_accessory/human_face.dmi'
 			var/list/eye_overlays = list()
 			var/obscured = species_human.check_obscured_slots(TRUE) //eyes that shine in the dark shouldn't show when you have glasses
 			var/add_pixel_x = 0
