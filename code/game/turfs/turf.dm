@@ -76,8 +76,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
 /turf/Initialize(mapload)
-	HandleInitialGasString()
 	SHOULD_CALL_PARENT(FALSE)
+	HandleInitialGasString()
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
