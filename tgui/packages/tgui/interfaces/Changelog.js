@@ -78,6 +78,8 @@ export class Changelog extends Component {
         const result = await changelogData.text();
         const errorRegex = /^Cannot find/;
 
+        throw result;
+
         if (errorRegex.test(result)) {
           const timeout = 50 + attemptNumber * 50;
 
