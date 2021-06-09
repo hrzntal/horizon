@@ -262,7 +262,7 @@
 	if(!overmap_object.lock)
 		return FALSE
 	var/datum/overmap_object/target = overmap_object.lock.target
-	if(TWO_POINT_DISTANCE_OV(shuttle,target) < 1)
+	if(TWO_POINT_DISTANCE_OV(overmap_object,target) < 1)
 		return TRUE
 	return FALSE
 
@@ -277,3 +277,51 @@
 		transporter_progress = 0
 		return TRUE
 	return FALSE
+
+/datum/shuttle_extension/weapon
+	name = "Weapon"
+	var/next_fire = 0
+	var/fire_cooldown = 3 SECONDS
+
+/datum/shuttle_extension/weapon/AddToOvermapObject(datum/overmap_object/shuttle/object_to_add)
+	. = ..()
+	overmap_object.weapon_extensions += src
+
+/datum/shuttle_extension/weapon/RemoveFromOvermapObject()
+	overmap_object.weapon_extensions -= src
+	..()
+
+/datum/shuttle_extension/weapon/proc/PostFire(datum/overmap_object/target)
+	return
+
+/datum/shuttle_extension/weapon/proc/Fire(datum/overmap_object/target)
+	next_fire = world.time + fire_cooldown
+	PostFire(target)
+
+/datum/shuttle_extension/weapon/proc/CanFire(datum/overmap_object/target)
+	if(next_fire > world.time)
+		return FALSE
+	if(TWO_POINT_DISTANCE_OV(overmap_object,target) >= 1)
+		return FALSE
+	return TRUE
+
+/datum/shuttle_extension/weapon/mining_laser
+	name = "Mining Laser"
+	///Reference to the physical weapon machine
+	var/obj/machinery/mining_laser/our_laser
+
+/datum/shuttle_extension/weapon/mining_laser/New(obj/machinery/mining_laser/passed_machine)
+	. = ..()
+	our_laser = passed_machine
+
+/datum/shuttle_extension/weapon/mining_laser/Destroy()
+	our_laser = null
+	return ..()
+
+/datum/shuttle_extension/weapon/mining_laser/Fire(datum/overmap_object/target)
+	. = ..()
+	new /datum/overmap_object/projectile/damaging/mining(overmap_object.current_system, overmap_object.x, overmap_object.y, overmap_object.partial_x, overmap_object.partial_y, overmap_object, target)
+
+/datum/shuttle_extension/weapon/mining_laser/PostFire(datum/overmap_object/target)
+	if(our_laser)
+		our_laser.PostFire()
