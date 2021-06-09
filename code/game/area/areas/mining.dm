@@ -36,7 +36,6 @@
 	map_generator = /datum/map_generator/cave_generator
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
-	underground = TRUE
 
 /area/mine/lobby
 	name = "Mining Station"
@@ -198,6 +197,7 @@
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED | NO_ALERTS
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
+	underground = TRUE
 
 /area/icemoon/underground/unexplored // mobs and megafauna and ruins spawn here
 	name = "Icemoon Caves"
