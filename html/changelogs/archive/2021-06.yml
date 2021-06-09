@@ -32,3 +32,10 @@
       the loot, - fly to it and lock on it as your target and then do "Beam on Board"
       in the overmap ops console.
   - rscadd: FTV Bearcat now has a trading console, pad and a transporter
+2021-06-09:
+  Azarak:
+  - rscadd: Added the possibility of creating projectiles on the overmap, currently
+      those are only used for attacking ore asteroids to "mine" them, they will drop
+      ore chunks which can be transported on board
+  - rscadd: Added a mining laser to shoot overmap projectiles, currently not installed
+      in any vessel

@@ -6,6 +6,16 @@
 	//Process target commands
 	if(lock) //Lock needs to be checked again as Resolve() may delete and null it
 		switch(target_command)
+			if(TARGET_FIRE_ONCE, TARGET_KEEP_FIRING)
+				if(!length(weapon_extensions) || !(lock.target.overmap_flags & OV_CAN_BE_ATTACKED))
+					target_command = TARGET_IDLE
+				else
+					for(var/i in weapon_extensions)
+						var/datum/shuttle_extension/weapon/weapon_extension = i
+						if(weapon_extension.CanFire(lock.target))
+							weapon_extension.Fire(lock.target)
+					if(target_command == TARGET_FIRE_ONCE)
+						target_command = TARGET_IDLE
 			if(TARGET_BEAM_ON_BOARD)
 				if(!(lock.target.overmap_flags & OV_CAN_BE_TRANSPORTED) && !CapableOfTransporting())
 					target_command = TARGET_IDLE
@@ -130,37 +140,12 @@
 
 			partial_x += add_partial_x
 			partial_y += add_partial_y
-			var/did_move = FALSE
-			var/new_x
-			var/new_y
-			if(partial_y > 16)
-				did_move = TRUE
-				partial_y -= 32
-				new_y = min(y+1,current_system.maxy)
-			else if(partial_y < -16)
-				did_move = TRUE
-				partial_y += 32
-				new_y = max(y-1,1)
-			if(partial_x > 16)
-				did_move = TRUE
-				partial_x -= 32
-				new_x = min(x+1,current_system.maxx)
-			else if(partial_x < -16)
-				did_move = TRUE
-				partial_x += 32
-				new_x = max(x-1,1)
+
+			if(ProcessPartials() && shuttle_controller)
+				shuttle_controller.ShuttleMovedOnOvermap()
 
 			if(is_seperate_z_level)
 				update_seperate_z_level_parallax()
-
-			UpdateVisualOffsets()
-
-			if(did_move)
-				var/passed_x = new_x || x
-				var/passed_y = new_y || y
-				Move(passed_x, passed_y)
-				if(shuttle_controller)
-					shuttle_controller.ShuttleMovedOnOvermap()
 
 	//Update rotation
 	if(uses_rotation)
