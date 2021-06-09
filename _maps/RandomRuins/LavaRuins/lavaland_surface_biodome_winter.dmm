@@ -255,7 +255,7 @@
 /obj/machinery/light/built/directional/north,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/pod/dark{
-	initial_gas_mix = "LAVALAND_ATMOS"
+	initial_gas_mix = "PLANETARY_ATMOS"
 	},
 /area/ruin/powered/snow_biodome)
 "qt" = (

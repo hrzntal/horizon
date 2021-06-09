@@ -42,6 +42,8 @@
 	var/overmap_object_type = /datum/overmap_object/shuttle/station
 	/// The weather controller the station levels will have
 	var/weather_controller_type = /datum/weather_controller
+	/// Type of the atmosphere that will be loaded on station
+	var/atmosphere_type
 
 /datum/map_config/New()
 	//Make sure that all levels in station do have this z trait

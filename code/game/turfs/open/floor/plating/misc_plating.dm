@@ -8,7 +8,7 @@
 
 /turf/open/floor/plating/icemoon
 	icon_state = "plating"
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/plating/abductor
 	name = "alien floor"
@@ -48,7 +48,7 @@
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	desc = "The ground is covered in volcanic ash."
 	baseturfs = /turf/open/floor/plating/ashplanet/wateryrock //I assume this will be a chasm eventually, once this becomes an actual surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 	planetary_atmos = TRUE
 	attachment_holes = FALSE
 	footstep = FOOTSTEP_SAND
@@ -251,7 +251,7 @@
 	return
 
 /turf/open/floor/plating/ice/icemoon
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 	slowdown = 0
 
 /turf/open/floor/plating/ice/icemoon/no_planet_atmos
@@ -276,7 +276,7 @@
 	initial_gas_mix = "n2=82;plasma=24;TEMP=120"
 
 /turf/open/floor/plating/snowed/icemoon
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/plating/snowed/smoothed
 	icon = 'icons/turf/floors/snow_turf.dmi'
@@ -291,7 +291,7 @@
 	temperature = 255.37
 
 /turf/open/floor/plating/snowed/smoothed/icemoon
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/plating/grass
 	name = "grass"
@@ -322,7 +322,7 @@
 		icon = smooth_icon
 
 /turf/open/floor/plating/grass/lavaland
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/plating/sandy_dirt
 	gender = PLURAL
@@ -343,7 +343,7 @@
 /turf/open/floor/plating/lavaland_atmos
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/lava/smooth/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/plating/elevatorshaft
 	name = "elevator shaft"

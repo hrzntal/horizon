@@ -1,6 +1,5 @@
 /datum/atmosphere
 	var/gas_string
-	var/id
 
 	var/list/base_gases // A list of gases to always have
 	var/list/normal_gases // A list of allowed gases:base_amount

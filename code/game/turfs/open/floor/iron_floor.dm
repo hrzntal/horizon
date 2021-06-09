@@ -34,7 +34,7 @@
 	initial_gas_mix = TCOMMS_ATMOS
 
 /turf/open/floor/iron/icemoon
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 
 /turf/open/floor/iron/edge
 	icon_state = "floor_edge"

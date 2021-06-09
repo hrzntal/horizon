@@ -325,9 +325,8 @@
 /// what pressure you have to be under to increase the effect of equipment meant for lavaland
 #define LAVALAND_EQUIPMENT_EFFECT_PRESSURE 50
 
-//ATMOS MIX IDS
-#define LAVALAND_DEFAULT_ATMOS "LAVALAND_ATMOS"
-#define ICEMOON_DEFAULT_ATMOS "ICEMOON_ATMOS"
+//Define to be used in inital_gas if you want it to be planetary
+#define PLANETARY_ATMOS "PLANETARY_ATMOS"
 
 //ATMOSIA GAS MONITOR TAGS
 #define ATMOS_GAS_MONITOR_INPUT_O2 "o2_in"

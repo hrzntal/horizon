@@ -85,7 +85,7 @@
 
 // Chasms for Lavaland, with planetary atmos and lava glow
 /turf/open/chasm/lavaland
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/chasm/lavaland
 	light_range = 1.9 //slightly less range than lava
@@ -97,7 +97,7 @@
 	icon = 'icons/turf/floors/icechasms.dmi'
 	icon_state = "icechasms-255"
 	base_icon_state = "icechasms"
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = PLANETARY_ATMOS
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/chasm/icemoon
 	light_range = 1.9

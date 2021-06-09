@@ -11,6 +11,8 @@
 
 	var/datum/overmap_object/overmap_type
 
+	var/atmosphere_type
+
 	var/weather_controller_type = /datum/weather_controller
 
 /datum/planet_template/proc/LoadTemplate(datum/overmap_sun_system/system, coordinate_x, coordinate_y)
@@ -19,13 +21,17 @@
 	if(map_path)
 		if(!map_file)
 			WARNING("No map file passed on planet generation")
-		SSmapping.LoadGroup(null, name, map_path, map_file, default_traits = default_traits_input,  ov_obj = linked_overmap_object, weather_controller_type = weather_controller_type)
+		SSmapping.LoadGroup(null, name, map_path, map_file, default_traits = default_traits_input,  ov_obj = linked_overmap_object, weather_controller_type = weather_controller_type, atmosphere_type = atmosphere_type)
 	else
 		if(!area_type)
 			WARNING("No area type passed on planet generation")
 		if(!generator_type)
 			WARNING("No generator type passed on planet generation")
 		var/datum/space_level/new_level = SSmapping.add_new_zlevel(name, default_traits_input, overmap_obj = linked_overmap_object)
+		if(atmosphere_type)
+			var/datum/atmosphere/atmos = new atmosphere_type()
+			SSair.register_planetary_atmos(atmos, new_level.z_value)
+			qdel(atmos)
 		var/area/new_area = new area_type()
 		var/list/turfs = block(locate(1,1,new_level.z_value),locate(world.maxx,world.maxy,new_level.z_value))
 		new_area.contents.Add(turfs)
@@ -58,6 +64,7 @@
 
 	overmap_type = /datum/overmap_object/shuttle/planet/lavaland
 	weather_controller_type = /datum/weather_controller/lavaland
+	atmosphere_type = /datum/atmosphere/lavaland
 
 /datum/planet_template/lavaland/SeedRuins(list/z_levels)
 	var/list/lava_ruins = SSmapping.levels_by_trait(ZTRAIT_LAVA_RUINS)
