@@ -22,5 +22,6 @@ SUBSYSTEM_DEF(weather)
 	for(var/i in weather_controllers)
 		var/datum/weather_controller/iterated_controller = i
 		if(iterated_controller.current_weathers)
-			returned_weathers += iterated_controller.current_weathers[iterated_controller.current_weathers]
+			for(var/b in iterated_controller.current_weathers)
+				returned_weathers += iterated_controller.current_weathers[b]
 	return returned_weathers
