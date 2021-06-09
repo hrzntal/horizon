@@ -17,6 +17,8 @@
 		z_list += S
 
 /datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level, datum/overmap_object/overmap_obj = null)
+	UNTIL(!adding_new_zlevel)
+	adding_new_zlevel = TRUE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
 	var/new_z = z_list.len + 1
 	if (world.maxz < new_z)
@@ -30,6 +32,7 @@
 		if(istype(overmap_obj, /datum/overmap_object/shuttle)) //TODO: better method
 			S.is_overmap_controllable = TRUE
 	z_list += S
+	adding_new_zlevel = FALSE
 	return S
 
 /datum/controller/subsystem/mapping/proc/get_level(z)
