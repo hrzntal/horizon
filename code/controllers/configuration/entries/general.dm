@@ -518,3 +518,6 @@
 
 /datum/config_entry/number/cryo_min_ssd_time
 	config_entry_value = 15
+
+/// URL for admins to be redirected to for 2FA
+/datum/config_entry/string/admin_2fa_url
