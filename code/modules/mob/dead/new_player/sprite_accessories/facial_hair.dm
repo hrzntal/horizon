@@ -89,11 +89,11 @@
 
 /datum/sprite_accessory/facial_hair/fiveoclock
 	name = "Beard (Five o Clock Shadow)"
-	icon_state = "facial_fiveoclock"
+	icon_state = "facial_5oclock"
 
 /datum/sprite_accessory/facial_hair/fiveoclockm
 	name = "Beard (Five o Clock Moustache)"
-	icon_state = "facial_5oclockmoustache"
+	icon_state = "facial_5oclock_moustache"
 
 /datum/sprite_accessory/facial_hair/sevenoclock
 	name = "Beard (Seven o Clock Shadow)"
@@ -101,7 +101,7 @@
 
 /datum/sprite_accessory/facial_hair/sevenoclockm
 	name = "Beard (Seven o Clock Moustache)"
-	icon_state = "facial_7oclockmoustache"
+	icon_state = "facial_7oclock_moustache"
 
 /datum/sprite_accessory/facial_hair/moustache
 	name = "Moustache"
@@ -153,32 +153,8 @@
 
 /datum/sprite_accessory/facial_hair/sideburn
 	name = "Sideburns"
-	icon_state = "facial_sideburn"
+	icon_state = "facial_sideburns"
 
 /datum/sprite_accessory/facial_hair/shaved
 	name = "Shaved"
 	icon_state = null
-
-/datum/sprite_accessory/facial_hair/sideburns
-	name = "Sideburns"
-	icon_state = "facial_sideburns"
-
-/datum/sprite_accessory/facial_hair/goatee
-	name = "Goatee"
-	icon_state = "facial_goatee"
-
-/datum/sprite_accessory/facial_hair/fiveoclock
-	name = "Beard (Five o Clock)"
-	icon_state = "facial_5oclock"
-
-/datum/sprite_accessory/facial_hair/hornadorns
-	name = "Hornadorns"
-	icon_state = "facial_hornadorns"
-
-/datum/sprite_accessory/facial_hair/chinhorns
-	name = "Chin Horns"
-	icon_state = "facial_chinhorns"
-
-/datum/sprite_accessory/facial_hair/tribeard
-	name = "Tri-beard"
-	icon_state = "facial_tribeard"
