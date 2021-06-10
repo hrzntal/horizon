@@ -35,9 +35,6 @@
 /datum/species/ethereal
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_skeleton.ogg')
 
-/datum/species/dwarf
-	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
-
 /datum/species/mammal
 	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
 
