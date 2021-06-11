@@ -44,6 +44,14 @@
 	var/weather_controller_type = /datum/weather_controller
 	/// Type of the atmosphere that will be loaded on station
 	var/atmosphere_type
+	/// Possible rock colors of the loaded map
+	var/list/rock_color
+	/// Possible plant colors of the loaded map
+	var/list/plant_color
+	/// Possible grass colors of the loaded map
+	var/list/grass_color
+	/// Possible water colors of the loaded map
+	var/list/water_color
 
 /datum/map_config/New()
 	//Make sure that all levels in station do have this z trait

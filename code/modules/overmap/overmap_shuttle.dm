@@ -646,18 +646,19 @@
 	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
 	speed_divisor_from_mass = 1000 //1000 times as harder as a shuttle to move
 	clears_hazards_on_spawn = TRUE
+	var/planet_color = COLOR_WHITE
+
+/datum/overmap_object/shuttle/planet/New()
+	. = ..()
+	my_visual.color = planet_color
 
 /datum/overmap_object/shuttle/planet/lavaland
 	name = "Lavaland"
-	visual_type = /obj/effect/abstract/overmap/shuttle/planet/lavaland
-
-/datum/overmap_object/shuttle/planet/jungle_planet
-	name = "Jungle Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/planet/jungle_planet
+	planet_color = LIGHT_COLOR_BLOOD_MAGIC
 
 /datum/overmap_object/shuttle/planet/icebox
 	name = "Ice Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/planet/icebox
+	planet_color = COLOR_TEAL
 
 /datum/overmap_object/shuttle/ess_crow
 	name = "ESS Crow"

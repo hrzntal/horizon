@@ -91,3 +91,6 @@
 //Helpful getters
 #define STATION_OVERMAP_OBJECT SSmapping.station_overmap_object
 #define STATION_WEATHER_CONTROLLER SSmapping.station_overmap_object.weather_controller
+
+///Due to the lack of even knowing where to put it in, I'm putting my helper defines stuff here - Azarak
+#define CHECK_AND_PICK_OR_NULL(some_list) some_list ? pick(some_list) : null

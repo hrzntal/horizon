@@ -77,12 +77,3 @@
 	shuttle_idle_state = "globe"
 	shuttle_forward_state = "globe"
 	shuttle_backward_state = "globe"
-
-/obj/effect/abstract/overmap/shuttle/planet/lavaland
-	color = LIGHT_COLOR_BLOOD_MAGIC
-
-/obj/effect/abstract/overmap/shuttle/planet/jungle_planet
-	color = COLOR_VERY_PALE_LIME_GREEN
-
-/obj/effect/abstract/overmap/shuttle/planet/icebox
-	color = COLOR_TEAL

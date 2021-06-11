@@ -1,0 +1,95 @@
+/datum/planet_template/chlorine_planet
+	name = "Chlorine Planet"
+	area_type = /area/planet/chlorine
+	generator_type = /datum/map_generator/planet_gen/chlorine
+
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/chlorine_sand)
+	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
+	atmosphere_type = /datum/atmosphere/chlorine
+
+	rock_color = list(COLOR_GRAY, COLOR_PALE_GREEN_GRAY, COLOR_PALE_BTL_GREEN)
+
+/datum/overmap_object/shuttle/planet/chlorine
+	name = "Chlorine Planet"
+	planet_color = COLOR_PALE_BTL_GREEN
+
+/area/planet/chlorine
+	name = "Chlorine Planet Surface"
+	ambientsounds = list('sound/effects/wind/desert0.ogg','sound/effects/wind/desert1.ogg','sound/effects/wind/desert2.ogg','sound/effects/wind/desert3.ogg','sound/effects/wind/desert4.ogg','sound/effects/wind/desert5.ogg')
+
+/datum/map_generator/planet_gen/chlorine
+	possible_biomes = list(
+	BIOME_LOW_HEAT = list(
+		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_water,
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		),
+	BIOME_LOWMEDIUM_HEAT = list(
+		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_water,
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		),
+	BIOME_HIGHMEDIUM_HEAT = list(
+		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		),
+	BIOME_HIGH_HEAT = list(
+		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_desert
+		)
+	)
+	high_height_biome = /datum/biome/mountain
+	perlin_zoom = 65
+
+/datum/biome/chlorine_desert
+	turf_type = /turf/open/floor/plating/planetary/chlorine_sand
+
+/datum/biome/chlorine_water
+	turf_type = /turf/open/floor/plating/planetary/water/chlorine
+
+/datum/atmosphere/chlorine
+	base_gases = list(
+		/datum/gas/nitrogen=80,
+		/datum/gas/carbon_dioxide=20
+	) //CO2 because chlorine gas isn't a thing now
+	normal_gases = list(
+		/datum/gas/oxygen=5,
+		/datum/gas/nitrogen=5
+	)
+	restricted_chance = 0
+
+	minimum_pressure = ONE_ATMOSPHERE - 30 
+	maximum_pressure = ONE_ATMOSPHERE
+
+	minimum_temp = T20C - 100
+	maximum_temp = T20C
+
+/turf/open/floor/plating/planetary/chlorine_sand
+	gender = PLURAL
+	name = "chlorinated sand"
+	desc = "Sand that has been heavily contaminated by chlorine."
+	baseturfs = /turf/open/floor/plating/planetary/chlorine_sand
+	icon = 'icons/planet/chlorine/chlorine_floor.dmi'
+	icon_state = "sand"
+	base_icon_state = "sand"
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_SAND
+
+/turf/open/floor/plating/planetary/chlorine_sand/Initialize()
+	. = ..()
+	if(prob(20))
+		icon_state = "[base_icon_state][rand(1,11)]"
+
+/turf/open/floor/plating/planetary/water/chlorine
+	name = "chlorine marsh"
+	desc = "A pool of noxious liquid chlorine. It's full of silt and plant matter."
+	color = "#d2e0b7"
+	baseturfs = /turf/open/floor/plating/planetary/water/chlorine

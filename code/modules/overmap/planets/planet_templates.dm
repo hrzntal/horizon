@@ -2,32 +2,73 @@
 	var/name = "Planet Template"
 	/// Map path to file to supply for the planet to be loaded from
 	var/map_path
+	/// Name of the map file
 	var/map_file
-	/// ALTERNATIVELY you can supply an area and a map generator
+	// ALTERNATIVELY you can supply an area and a map generator
+	/// Area type of the level to set to, only matters if not loading from file
 	var/area_type
+	/// Generator type for the level, only matters if not loading from file
 	var/generator_type
 
+	/// Traits that the levels will recieve
 	var/default_traits_input
-
-	var/datum/overmap_object/overmap_type
-
+	/// The type of the overmap object that will be created
+	var/datum/overmap_object/overmap_type = /datum/overmap_object/shuttle/planet
+	/// The type of the atmosphere that will be set for the turfs in its z levels to draw from
 	var/atmosphere_type
-
+	/// The type of the weather controller that will be created for the planet
 	var/weather_controller_type = /datum/weather_controller
+	/// Possible rock colors of the loaded planet
+	var/list/rock_color
+	/// Possible plant colors of the loaded planet
+	var/list/plant_color
+	/// Possible grass colors of the loaded planet
+	var/list/grass_color
+	/// Possible water colors of the loaded planet
+	var/list/water_color
+	/// Whether you want the selected plant color to act for grass too
+	var/plant_color_as_grass = FALSE
 
 /datum/planet_template/proc/LoadTemplate(datum/overmap_sun_system/system, coordinate_x, coordinate_y)
 	var/old_z = world.maxz
 	var/datum/overmap_object/linked_overmap_object = new overmap_type(system, coordinate_x, coordinate_y)
+	var/picked_rock_color = CHECK_AND_PICK_OR_NULL(rock_color)
+	var/picked_plant_color = CHECK_AND_PICK_OR_NULL(plant_color)
+	var/picked_grass_color
+	if(plant_color_as_grass)
+		picked_grass_color = picked_plant_color
+	else
+		picked_grass_color = CHECK_AND_PICK_OR_NULL(grass_color)
+	var/picked_water_color = CHECK_AND_PICK_OR_NULL(water_color)
 	if(map_path)
 		if(!map_file)
 			WARNING("No map file passed on planet generation")
-		SSmapping.LoadGroup(null, name, map_path, map_file, default_traits = default_traits_input,  ov_obj = linked_overmap_object, weather_controller_type = weather_controller_type, atmosphere_type = atmosphere_type)
+		SSmapping.LoadGroup(null, 
+							name, 
+							map_path, 
+							map_file, 
+							default_traits = default_traits_input,  
+							ov_obj = linked_overmap_object, 
+							weather_controller_type = weather_controller_type, 
+							atmosphere_type = atmosphere_type,
+							rock_color = picked_rock_color,
+							plant_color = picked_plant_color,
+							grass_color = picked_grass_color,
+							water_color = picked_water_color)
 	else
 		if(!area_type)
 			WARNING("No area type passed on planet generation")
 		if(!generator_type)
 			WARNING("No generator type passed on planet generation")
 		var/datum/space_level/new_level = SSmapping.add_new_zlevel(name, default_traits_input, overmap_obj = linked_overmap_object)
+		if(picked_rock_color)
+			new_level.rock_color = picked_rock_color
+		if(picked_plant_color)
+			new_level.plant_color = picked_plant_color
+		if(picked_grass_color)
+			new_level.grass_color = picked_grass_color
+		if(picked_water_color)
+			new_level.water_color = picked_water_color
 		if(atmosphere_type)
 			var/datum/atmosphere/atmos = new atmosphere_type()
 			SSair.register_planetary_atmos(atmos, new_level.z_value)
@@ -77,11 +118,3 @@
 		seedRuins(z_levels, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), SSmapping.lava_ruins_templates)
 		for (var/lava_z in z_levels)
 			spawn_rivers(lava_z)
-
-/datum/planet_template/jungle_planet
-	name = "Jungle Planet"
-	area_type = /area/jungle_planet
-	generator_type = /datum/map_generator/planet_gen/jungle
-
-	default_traits_input = ZTRAITS_JUNGLE_PLANET
-	overmap_type = /datum/overmap_object/shuttle/planet/jungle_planet

@@ -49,6 +49,8 @@
 	var/list/returned_list = list()
 	var/turf/located = locate(passed_x + x_offset, passed_y + y_offset, z_level)
 	for(var/obj/effect/abstract/overmap/overmap_visual in located.contents)
+		if(!overmap_visual)
+			continue
 		returned_list += overmap_visual.my_overmap_object
 	return returned_list
 

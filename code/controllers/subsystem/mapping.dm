@@ -196,7 +196,22 @@ Used by the AI doomsday and the self-destruct nuke.
 	z_list = SSmapping.z_list
 
 #define INIT_ANNOUNCE(X) to_chat(world, "<span class='boldannounce'>[X]</span>"); log_world(X)
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, datum/overmap_object/ov_obj = null, weather_controller_type, atmosphere_type)
+/datum/controller/subsystem/mapping/proc/LoadGroup(
+					list/errorList, 
+					name, 
+					path, 
+					files, 
+					list/traits, 
+					list/default_traits, 
+					silent = FALSE, 
+					datum/overmap_object/ov_obj = null, 
+					weather_controller_type, 
+					atmosphere_type,
+					rock_color,
+					plant_color,
+					grass_color,
+					water_color
+					)
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -233,12 +248,20 @@ Used by the AI doomsday and the self-destruct nuke.
 	for (var/level in traits)
 		space_levels += add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, null, overmap_obj = ov_obj)
 		++i
-	if(atmosphere_type)
-		var/datum/atmosphere/atmos = new atmosphere_type()
-		for(var/c in space_levels)
-			var/datum/space_level/level = c
+	for(var/c in space_levels)
+		var/datum/space_level/level = c
+		if(atmosphere_type)
+			var/datum/atmosphere/atmos = new atmosphere_type()
 			SSair.register_planetary_atmos(atmos, level.z_value)
-		qdel(atmos)
+			qdel(atmos)
+		if(rock_color)
+			level.rock_color = rock_color
+		if(plant_color)
+			level.plant_color = plant_color
+		if(grass_color)
+			level.grass_color = grass_color
+		if(water_color)
+			level.water_color = water_color
 	//Apply the weather controller to the levels if able
 	if(weather_controller_type)
 		var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
@@ -269,7 +292,23 @@ Used by the AI doomsday and the self-destruct nuke.
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	station_overmap_object = new config.overmap_object_type(SSovermap.main_system, rand(3,10), rand(3,10))
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = station_overmap_object, weather_controller_type = config.weather_controller_type, atmosphere_type = config.atmosphere_type)
+	var/picked_rock_color = CHECK_AND_PICK_OR_NULL(config.rock_color)
+	var/picked_plant_color = CHECK_AND_PICK_OR_NULL(config.plant_color)
+	var/picked_grass_color = CHECK_AND_PICK_OR_NULL(config.grass_color)
+	var/picked_water_color = CHECK_AND_PICK_OR_NULL(config.water_color)
+	LoadGroup(FailedZs, 
+			"Station", 
+			config.map_path, 
+			config.map_file, 
+			config.traits, 
+			ZTRAITS_STATION, 
+			ov_obj = station_overmap_object, 
+			weather_controller_type = config.weather_controller_type, 
+			atmosphere_type = config.atmosphere_type,
+			rock_color = picked_rock_color,
+			plant_color = picked_plant_color,
+			grass_color = picked_grass_color,
+			water_color = picked_water_color)
 
 	// Create a trade hub
 	new /datum/overmap_object/trade_hub(SSovermap.main_system, rand(5,20), rand(5,20))
@@ -292,6 +331,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		lavaland_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	var/datum/planet_template/planet_template = planet_templates[/datum/planet_template/jungle_planet]
+	planet_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
