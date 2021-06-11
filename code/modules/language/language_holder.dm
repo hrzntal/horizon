@@ -53,7 +53,9 @@ Key procs
 	var/atom/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-/datum/language_holder/New(_owner, datum/preferences/pref_load)
+/datum/language_holder/New(atom/_owner, datum/preferences/pref_load)
+	if(_owner && QDELETED(_owner))
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
 		understood_languages.Cut()
