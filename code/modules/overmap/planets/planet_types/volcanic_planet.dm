@@ -6,9 +6,10 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
 	overmap_type = /datum/overmap_object/shuttle/planet/volcanic
 	atmosphere_type = /datum/atmosphere/volcanic
+	weather_controller_type = /datum/weather_controller/lavaland
 
 	rock_color = list(COLOR_DARK_GRAY)
-	plant_color = list("#a23c05","#3f1f0d","#662929","#ba6222","#7a5b3a","#471429")
+	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")
 	plant_color_as_grass = TRUE
 
 /datum/overmap_object/shuttle/planet/volcanic
@@ -53,6 +54,8 @@
 
 /datum/biome/basalt
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+	flora_types = list(/obj/structure/flora/rock, /obj/structure/flora/rock/pile, /obj/structure/flora/ash/tall_shroom, /obj/structure/flora/ash/leaf_shroom, /obj/structure/flora/ash/cap_shroom, /obj/structure/flora/ash/stem_shroom, /obj/structure/flora/ash/cacti)
+	flora_density = 7
 
 /datum/biome/lava
 	turf_type = /turf/open/lava/smooth/lava_land_surface

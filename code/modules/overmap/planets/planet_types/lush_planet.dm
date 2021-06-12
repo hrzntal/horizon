@@ -6,10 +6,16 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/dirt)
 	overmap_type = /datum/overmap_object/shuttle/planet/lush
 	atmosphere_type = /datum/atmosphere/lush
+	weather_controller_type = /datum/weather_controller/lush
 
 	rock_color = list(COLOR_ASTEROID_ROCK, COLOR_GRAY, COLOR_BROWN)
 	plant_color = list("#215a00","#195a47","#5a7467","#9eab88","#6e7248")
 	plant_color_as_grass = TRUE
+
+/datum/weather_controller/lush
+	possible_weathers = list(/datum/weather/rain = 30,
+							/datum/weather/rain/heavy = 30,
+							/datum/weather/rain/heavy/storm = 30)
 
 /datum/overmap_object/shuttle/planet/lush
 	name = "Lush Planet"
@@ -53,6 +59,8 @@
 
 /datum/biome/grass
 	turf_type = /turf/open/floor/plating/planetary/grass
+	flora_types = list(/obj/structure/flora/tree/jungle, /obj/structure/flora/planetary/palebush,/obj/structure/flora/rock/pile, /obj/structure/flora/ausbushes/ywflowers, /obj/structure/flora/ausbushes/brflowers, /obj/structure/flora/ausbushes/brflowers, /obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/goldenbush, /obj/structure/flora/planetary/leafybush, /obj/structure/flora/planetary/grassybush, /obj/structure/flora/planetary/fernybush, /obj/structure/flora/planetary/sunnybush, /obj/structure/flora/planetary_grass/sparsegrass, /obj/structure/flora/planetary_grass/fullgrass)
+	flora_density = 7
 
 /datum/biome/coast
 	turf_type = /turf/open/floor/plating/planetary/sand

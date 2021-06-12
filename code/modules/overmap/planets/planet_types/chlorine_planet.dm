@@ -6,8 +6,12 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/chlorine_sand)
 	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
 	atmosphere_type = /datum/atmosphere/chlorine
+	weather_controller_type = /datum/weather_controller/chlorine
 
 	rock_color = list(COLOR_GRAY, COLOR_PALE_GREEN_GRAY, COLOR_PALE_BTL_GREEN)
+
+/datum/weather_controller/chlorine
+	possible_weathers = list(/datum/weather/acid_rain = 100)
 
 /datum/overmap_object/shuttle/planet/chlorine
 	name = "Chlorine Planet"

@@ -107,6 +107,9 @@
 	weather_controller_type = /datum/weather_controller/lavaland
 	atmosphere_type = /datum/atmosphere/lavaland
 
+	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")
+	plant_color_as_grass = TRUE
+
 /datum/planet_template/lavaland/SeedRuins(list/z_levels)
 	var/list/lava_ruins = SSmapping.levels_by_trait(ZTRAIT_LAVA_RUINS)
 	//Only account for the levels we loaded, in case we load 2 lavalands

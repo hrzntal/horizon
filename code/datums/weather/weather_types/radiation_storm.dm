@@ -7,10 +7,9 @@
 	telegraph_message = "<span class='danger'>The air begins to grow warm.</span>"
 
 	weather_message = "<span class='userdanger'><i>You feel waves of heat wash over you! Find shelter!</i></span>"
-	weather_overlay = "ash_storm"
+	weather_overlay = "rad_storm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
-	weather_color = "green"
 	weather_sound = 'sound/misc/bloblarm.ogg'
 
 	end_duration = 100
@@ -21,6 +20,7 @@
 	/area/ai_monitored/turret_protected/ai, /area/commons/storage/emergency/starboard, /area/commons/storage/emergency/port, /area/shuttle, /area/security/prison/safe, /area/security/prison/toilet)
 
 	immunity_type = RAD
+	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/rad_storm/telegraph()
 	..()

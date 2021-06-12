@@ -96,7 +96,7 @@
 
 /turf/open/floor/plating/planetary/sand
 	gender = PLURAL
-	name = "desert sand"
+	name = "sand"
 	desc = "It's coarse and gets everywhere."
 	baseturfs = /turf/open/floor/plating/planetary/sand
 	icon_state = "sand"
@@ -138,3 +138,74 @@
 	.=..()
 	if(prob(15))
 		icon_state = "[initial(icon_state)][rand(0,12)]"
+
+/obj/structure/flora/planetary
+	name = "bush"
+	desc = "Some kind of plant."
+	icon = 'icons/planet/grayscale_flora.dmi'
+	var/variants = 0
+
+/obj/structure/flora/planetary/Initialize()
+	. = ..()
+	if(!color)
+		var/datum/space_level/level = SSmapping.z_list[z]
+		color = level.plant_color
+	icon_state = "[icon_state]_[rand(1,variants)]"
+
+/obj/structure/flora/planetary/firstbush
+	icon_state = "firstbush"
+	variants = 4
+
+/obj/structure/flora/planetary/leafybush
+	icon_state = "leafybush"
+	variants = 3
+
+/obj/structure/flora/planetary/palebush
+	icon_state = "palebush"
+	variants = 4
+
+/obj/structure/flora/planetary/grassybush
+	icon_state = "grassybush"
+	variants = 4
+
+/obj/structure/flora/planetary/fernybush
+	icon_state = "fernybush"
+	variants = 3
+
+/obj/structure/flora/planetary/sunnybush
+	icon_state = "sunnybush"
+	variants = 3
+
+/obj/structure/flora/planetary/genericbush
+	icon_state = "genericbush"
+	variants = 4
+
+/obj/structure/flora/planetary/pointybush
+	icon_state = "pointybush"
+	variants = 4
+
+/obj/structure/flora/planetary/lavendergrass
+	name = "grass"
+	icon_state = "lavendergrass"
+	variants = 4
+
+/obj/structure/flora/planetary_grass
+	name = "grass"
+	desc = "Some kind of plant."
+	icon = 'icons/planet/grayscale_flora.dmi'
+	var/variants = 0
+
+/obj/structure/flora/planetary_grass/Initialize()
+	. = ..()
+	if(!color)
+		var/datum/space_level/level = SSmapping.z_list[z]
+		color = level.grass_color
+	icon_state = "[icon_state]_[rand(1,variants)]"
+
+/obj/structure/flora/planetary_grass/sparsegrass
+	icon_state = "sparsegrass"
+	variants = 3
+
+/obj/structure/flora/planetary_grass/fullgrass
+	icon_state = "fullgrass"
+	variants = 3

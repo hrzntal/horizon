@@ -6,10 +6,14 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/dry_seafloor)
 	overmap_type = /datum/overmap_object/shuttle/planet/desert
 	atmosphere_type = /datum/atmosphere/desert
+	weather_controller_type = /datum/weather_controller/desert
 
 	rock_color = list(COLOR_BEIGE, COLOR_PALE_YELLOW, COLOR_GRAY, COLOR_BROWN)
-	plant_color = list("#efdd6f","#7b4a12","#e49135","#ba6222","#5c755e","#701732")
+	plant_color = list("#7b4a12","#e49135","#ba6222")
 	grass_color = list("#b8701f")
+
+/datum/weather_controller/desert
+	possible_weathers = list(/datum/weather/sandstorm = 100)
 
 /datum/overmap_object/shuttle/planet/desert
 	name = "Desert Planet"
@@ -35,7 +39,7 @@
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/dry_seafloor,
-		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/dry_seafloor,
+		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/desert,
 		BIOME_HIGH_HUMIDITY = /datum/biome/desert
 		),
@@ -51,6 +55,8 @@
 
 /datum/biome/desert
 	turf_type = /turf/open/floor/plating/planetary/sand/desert
+	flora_types = list(/obj/structure/flora/planetary/palebush,/obj/structure/flora/rock/pile,/obj/structure/flora/rock, /obj/structure/flora/ash/cacti)
+	flora_density = 3
 
 /datum/biome/dry_seafloor
 	turf_type = /turf/open/floor/plating/planetary/dry_seafloor

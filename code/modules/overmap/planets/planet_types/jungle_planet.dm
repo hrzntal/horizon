@@ -6,6 +6,7 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle
 	atmosphere_type = /datum/atmosphere/jungle
+	weather_controller_type = /datum/weather_controller/lush
 
 	rock_color = list(COLOR_BEIGE_GRAYISH, COLOR_BEIGE, COLOR_ASTEROID_ROCK)
 	plant_color = list(COLOR_PALE_BTL_GREEN)

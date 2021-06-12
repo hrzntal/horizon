@@ -6,10 +6,17 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/dirt)
 	overmap_type = /datum/overmap_object/shuttle/planet/snow
 	atmosphere_type = /datum/atmosphere/snow
+	weather_controller_type = /datum/weather_controller/snow_planet
 
 	rock_color = list(COLOR_DARK_BLUE_GRAY, COLOR_GUNMETAL, COLOR_GRAY, COLOR_DARK_GRAY)
 	plant_color = list("#d0fef5","#93e1d8","#93e1d8", "#b2abbf", "#3590f3", "#4b4e6d")
-	plant_color_as_grass = TRUE
+	grass_color = list("#d0fef5")
+
+/datum/weather_controller/snow_planet
+	possible_weathers = list(/datum/weather/snow_storm = 50,
+							/datum/weather/snowfall = 50,
+							/datum/weather/snowfall/heavy = 50,
+							/datum/weather/hailstorm = 50)
 
 /datum/overmap_object/shuttle/planet/snow
 	name = "Snow Planet"
@@ -51,9 +58,13 @@
 
 /datum/biome/grass_tundra
 	turf_type = /turf/open/floor/plating/planetary/grass
+	flora_types = list(/obj/structure/flora/planetary/firstbush,/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/planetary/fernybush,/obj/structure/flora/planetary_grass/fullgrass,/obj/structure/flora/ash/chilly, /obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy)
+	flora_density = 30
 
 /datum/biome/snow
 	turf_type = /turf/open/floor/plating/planetary/snow
+	flora_types = list(/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy, /obj/structure/flora/rock/icy)
+	flora_density = 12
 
 /datum/biome/frozen_lake
 	turf_type = /turf/open/floor/plating/planetary/ice
@@ -72,6 +83,10 @@
 	slowdown = 2
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/snow/Initialize()
 	. = ..()
@@ -108,7 +123,7 @@
 	normal_gases = list(
 		/datum/gas/oxygen=5,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=2
+		/datum/gas/carbon_dioxide=1
 	)
 	restricted_chance = 0
 

@@ -300,6 +300,9 @@
 	icon_state = "fullgrass_[rand(1, 3)]"
 	. = ..()
 
+/obj/structure/flora/ausbushes/goldenbush
+	icon_state = "goldenbush"
+
 /obj/item/kirbyplants
 	name = "potted plant"
 	icon = 'icons/obj/flora/plants.dmi'
