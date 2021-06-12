@@ -79,10 +79,8 @@
 	return ..()
 
 /datum/emote/living/cough/get_sound(mob/living/user)
-/* TODO: READD WHEN VOXES ARE BACK
 	if(isvox(user))
 		return 'hrzn/modules/emotes/sound/emotes/voxcough.ogg'
-*/
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return pick('hrzn/modules/emotes/sound/emotes/male/male_cough_1.ogg',
@@ -97,10 +95,8 @@
 	vary = TRUE
 
 /datum/emote/living/sneeze/get_sound(mob/living/user)
-/* TODO: READD WHEN VOXES ARE BACK
 	if(isvox(user))
 		return 'hrzn/modules/emotes/sound/emotes/voxsneeze.ogg'
-*/
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return 'hrzn/modules/emotes/sound/emotes/male/male_sneeze.ogg'
@@ -465,7 +461,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'hrzn/modules/emotes/sound/voice/long_awoo.ogg'
-	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
+	cooldown = 3 SECONDS
 
 /datum/emote/living/rattle
 	key = "rattle"

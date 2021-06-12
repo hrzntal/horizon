@@ -138,6 +138,20 @@
 		if(can_weather_act(L))
 			weather_act(L)
 
+/datum/weather/Destroy()
+	my_controller.current_weathers -= type
+	UNSETEMPTY(my_controller.current_weathers)
+	my_controller = null
+	return ..()
+
+/datum/weather/process()
+	if(aesthetic || stage != MAIN_STAGE)
+		return
+	for(var/i in GLOB.mob_living_list)
+		var/mob/living/L = i
+		if(can_weather_act(L))
+			weather_act(L)
+
 /**
  * Telegraphs the beginning of the weather on the impacted z levels
  *

@@ -4,10 +4,10 @@
 
 /datum/species/synth
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_silicon.ogg')
-/* All of the disabled ones here can be readded once the species are in. We should probably find a way to do this better though.
+
 /datum/species/robotic
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_silicon.ogg')
-*/
+
 /datum/species/android
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_silicon.ogg')
 
@@ -34,13 +34,10 @@
 
 /datum/species/ethereal
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_skeleton.ogg')
-/*
-/datum/species/dwarf
-	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
 
 /datum/species/mammal
 	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
-*/
+
 /datum/species/jelly
 	screamsounds = list('hrzn/modules/emotes/sound/emotes/jelly_scream.ogg')
 
@@ -52,22 +49,21 @@
 
 /datum/species/shadow
 	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
-/*
+
 /datum/species/robotic/synthliz
 	screamsounds = list('hrzn/modules/emotes/sound/voice/scream_silicon.ogg')
-*/
+
 /datum/species/vampire
 	femalescreamsounds = list('hrzn/modules/emotes/sound/voice/scream_f1.ogg', 'hrzn/modules/emotes/sound/voice/scream_f2.ogg')
-/*
+
 /datum/species/vox
 	screamsounds = list('hrzn/modules/emotes/sound/emotes/voxscream.ogg')
 
 /datum/species/xeno
 	screamsounds = list('sound/voice/hiss6.ogg')
-*/
+
 /datum/species/zombie
 	screamsounds = list('hrzn/modules/emotes/sound/emotes/zombie_scream.ogg')
-/*
+
 /datum/species/tajaran
 	screamsounds = list('hrzn/modules/emotes/sound/emotes/cat_scream.ogg')
-*/
