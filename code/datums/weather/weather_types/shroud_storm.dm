@@ -6,7 +6,7 @@
 	telegraph_duration = 300
 	telegraph_overlay = "electric_ash"
 
-	weather_message = "<span class='userdanger'><i>Electric storm is upon you! Seek shelter!</i></span>"
+	weather_message = "<span class='userdanger'><i>An electric storm is upon you! Seek shelter!</i></span>"
 	weather_overlay = "electric_storm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
