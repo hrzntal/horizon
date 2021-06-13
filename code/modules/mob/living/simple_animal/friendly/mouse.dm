@@ -26,7 +26,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	var/body_color //brown, gray and white, leave blank for random
 	gold_core_spawnable = FRIENDLY_SPAWN
-	var/chew_probability = 0
+	var/chew_probability = 1
 	can_be_held = TRUE
 	held_state = "mouse_gray"
 	faction = list("rat")
