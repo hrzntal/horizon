@@ -12,7 +12,7 @@
 	weather_duration_upper = 1500
 
 	end_duration = 100
-	end_message = "<span class='boldannounce'>The storm dissipiates.</span>"
+	end_message = "<span class='boldannounce'>The storm dissipates.</span>"
 	end_overlay = "electric_ash"
 
 	area_type = /area
