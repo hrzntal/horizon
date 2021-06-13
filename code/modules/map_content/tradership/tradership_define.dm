@@ -18,7 +18,7 @@
 	space_ruin_levels = 7
 	space_empty_levels = 1
 
-	minetype = "lavaland"
+	minetype = "none"
 
 	allow_custom_shuttles = TRUE
 
@@ -27,6 +27,8 @@
 	overflow_job = "Deckhand"
 
 	overmap_object_type = /datum/overmap_object/shuttle/ship/bearcat
+
+	amount_of_planets_spawned = 2
 
 /datum/map_config/tradership/get_map_info()
 	return "You're aboard the <b>[map_name],</b> a survey and mercantile vessel affiliated with the Free Trade Union. \

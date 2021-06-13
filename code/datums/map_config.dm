@@ -53,6 +53,8 @@
 	/// Possible water colors of the loaded map
 	var/list/water_color
 
+	var/amount_of_planets_spawned = 1
+
 /datum/map_config/New()
 	//Make sure that all levels in station do have this z trait
 	. = ..()

@@ -331,6 +331,16 @@ Used by the AI doomsday and the self-destruct nuke.
 		lavaland_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+
+	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
+	if(config.amount_of_planets_spawned)
+		for(var/i in 1 to config.amount_of_planets_spawned)
+			if(!length(planet_list))
+				break
+			var/picked_planet_type = pickweight(planet_list)
+			planet_list -= picked_planet_type
+			var/datum/planet_template/picked_template = planet_templates[picked_planet_type]
+			picked_template.LoadTemplate(SSovermap.main_system, rand(5,25), rand(5,25))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
