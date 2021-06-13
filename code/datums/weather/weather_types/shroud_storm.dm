@@ -5,15 +5,18 @@
 	telegraph_message = "<span class='warning'>You hear thunder in the distance, static electricity rising in the air, wind starts to pickup..</span>"
 	telegraph_duration = 300
 	telegraph_overlay = "electric_ash"
+	telegraph_skyblock = 0.2
 
 	weather_message = "<span class='userdanger'><i>An electric storm is upon you! Seek shelter!</i></span>"
 	weather_overlay = "electric_storm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
+	weather_skyblock = 0.4
 
 	end_duration = 100
 	end_message = "<span class='boldannounce'>The storm dissipates.</span>"
 	end_overlay = "electric_ash"
+	end_skyblock = 0.2
 
 	area_type = /area
 	protect_indoors = TRUE
@@ -32,7 +35,7 @@
 	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/shroud_storm/weather_act(mob/living/L)
-	if(prob(20))
+	if(prob(10))
 		L.electrocute_act(rand(5, 20), "weather", TRUE)
 	if(prob(10))
 		empulse(L, 0, 3)

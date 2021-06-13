@@ -7,6 +7,7 @@
 	overmap_type = /datum/overmap_object/shuttle/planet/volcanic
 	atmosphere_type = /datum/atmosphere/volcanic
 	weather_controller_type = /datum/weather_controller/lavaland
+	day_night_controller_type = null //Ash blocks off the sky
 
 	rock_color = list(COLOR_DARK_GRAY)
 	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")

@@ -13,6 +13,8 @@
 	var/list/all_extensions = list()
 	/// Weather controller for this level
 	var/datum/weather_controller/weather_controller
+	/// Linked day and night controller, expect this to apply to all related_levels
+	var/datum/day_night_controller/day_night_controller
 	/// An override of rock colors on this level
 	var/rock_color = COLOR_ASTEROID_ROCK
 	/// An override of plant colors on this level

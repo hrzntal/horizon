@@ -207,6 +207,7 @@ Used by the AI doomsday and the self-destruct nuke.
 					datum/overmap_object/ov_obj = null, 
 					weather_controller_type, 
 					atmosphere_type,
+					day_night_controller_type,
 					rock_color,
 					plant_color,
 					grass_color,
@@ -248,12 +249,13 @@ Used by the AI doomsday and the self-destruct nuke.
 	for (var/level in traits)
 		space_levels += add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, null, overmap_obj = ov_obj)
 		++i
+	var/datum/atmosphere/atmos
+	if(atmosphere_type)
+		atmos = new atmosphere_type()
 	for(var/c in space_levels)
 		var/datum/space_level/level = c
-		if(atmosphere_type)
-			var/datum/atmosphere/atmos = new atmosphere_type()
+		if(atmos)
 			SSair.register_planetary_atmos(atmos, level.z_value)
-			qdel(atmos)
 		if(rock_color)
 			level.rock_color = rock_color
 		if(plant_color)
@@ -262,11 +264,16 @@ Used by the AI doomsday and the self-destruct nuke.
 			level.grass_color = grass_color
 		if(water_color)
 			level.water_color = water_color
+	if(atmos)
+		qdel(atmos)
 	//Apply the weather controller to the levels if able
 	if(weather_controller_type)
 		var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
 		if(ov_obj)
 			weather_controller.LinkOvermapObject(ov_obj)
+	if(day_night_controller_type)
+		var/datum/day_night_controller/day_night = new day_night_controller_type(space_levels)
+		day_night.LinkOvermapObject(ov_obj)
 	space_levels = null
 
 	// load the maps
@@ -305,6 +312,7 @@ Used by the AI doomsday and the self-destruct nuke.
 			ov_obj = station_overmap_object, 
 			weather_controller_type = config.weather_controller_type, 
 			atmosphere_type = config.atmosphere_type,
+			day_night_controller_type = config.day_night_controller_type,
 			rock_color = picked_rock_color,
 			plant_color = picked_plant_color,
 			grass_color = picked_grass_color,

@@ -26,6 +26,8 @@
 	var/overmap_flags = OV_SHOWS_ON_SENSORS|OV_CAN_BE_TARGETED|OV_CAN_BE_SCANNED
 	/// Linked weather controller, expect this to apply to all related_levels
 	var/datum/weather_controller/weather_controller
+	/// Linked day and night controller, expect this to apply to all related_levels
+	var/datum/day_night_controller/day_night_controller
 
 /datum/overmap_object/proc/ProcessPartials()
 	var/did_move = FALSE

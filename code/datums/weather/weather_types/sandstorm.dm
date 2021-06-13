@@ -10,6 +10,7 @@
 	weather_overlay = "sandstorm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
+	weather_skyblock = 0.2
 
 	end_duration = 100
 	end_message = "<span class='boldannounce'>The storm dissipiates.</span>"

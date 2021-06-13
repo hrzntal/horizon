@@ -24,6 +24,8 @@
 	var/telegraph_sound
 	/// The overlay applied to all tiles on the z-level
 	var/telegraph_overlay
+	/// Amount of skyblock during the telegraph. Skyblock makes day/night effects "blocked"
+	var/telegraph_skyblock = 0
 
 	/// Displayed in chat once the weather begins in earnest
 	var/weather_message = "<span class='userdanger'>The wind begins to blow ferociously!</span>"
@@ -39,6 +41,8 @@
 	var/weather_overlay
 	/// Color to apply to the area while weather is occuring
 	var/weather_color = null
+	/// Amount of skyblock during the weather. Skyblock makes day/night effects "blocked"
+	var/weather_skyblock = 0
 
 	/// Displayed once the weather is over
 	var/end_message = "<span class='danger'>The wind relents its assault.</span>"
@@ -48,6 +52,8 @@
 	var/end_sound
 	/// Area overlay while weather is ending
 	var/end_overlay
+	/// Amount of skyblock during the end. Skyblock makes day/night effects "blocked"
+	var/end_skyblock = 0
 
 	/// Types of area to affect
 	var/area_type = /area/space
@@ -100,10 +106,16 @@
 	var/lightning_in_progress = FALSE
 	/// Chance for a thunder to happen
 	var/thunder_chance = 0
-	var/opacity_in_main_stage = TRUE
+	/// Whether the main stage will block vision
+	var/opacity_in_main_stage = FALSE
+	/// Overlays for the lightning effect
+	var/obj/effect/lightning_add/lightning_add
+	var/obj/effect/lightning_overlay/lightning_overlay
 
 /datum/weather/New(datum/weather_controller/passed_controller)
 	..()
+	lightning_add = new
+	lightning_overlay = new
 	my_controller = passed_controller
 	my_controller.current_weathers[type] = src
 	var/list/z_levels = list()
@@ -120,12 +132,6 @@
 	if(sound_weak_inside)
 		sound_weak_inside = new sound_weak_inside(list(), FALSE, TRUE)
 
-/datum/weather/Destroy()
-	my_controller.current_weathers -= type
-	UNSETEMPTY(my_controller.current_weathers)
-	my_controller = null
-	return ..()
-
 /datum/weather/process()
 	if(stage != MAIN_STAGE)
 		return
@@ -139,6 +145,8 @@
 			weather_act(L)
 
 /datum/weather/Destroy()
+	qdel(lightning_add)
+	qdel(lightning_overlay)
 	my_controller.current_weathers -= type
 	UNSETEMPTY(my_controller.current_weathers)
 	my_controller = null
@@ -163,6 +171,8 @@
 	if(stage == STARTUP_STAGE)
 		return
 	stage = STARTUP_STAGE
+	my_controller.skyblock += telegraph_skyblock
+	my_controller.UpdateSkyblock()
 	var/list/affectareas = list()
 	for(var/V in get_areas(area_type))
 		affectareas += V
@@ -215,6 +225,9 @@
 	if(stage >= MAIN_STAGE)
 		return
 	stage = MAIN_STAGE
+	my_controller.skyblock -= telegraph_skyblock
+	my_controller.skyblock += weather_skyblock
+	my_controller.UpdateSkyblock()
 	update_areas()
 	for(var/M in GLOB.player_list)
 		var/turf/mob_turf = get_turf(M)
@@ -246,6 +259,9 @@
 	if(stage >= WIND_DOWN_STAGE)
 		return
 	stage = WIND_DOWN_STAGE
+	my_controller.skyblock += end_skyblock
+	my_controller.skyblock -= weather_skyblock
+	my_controller.UpdateSkyblock()
 	update_areas()
 	for(var/M in GLOB.player_list)
 		var/turf/mob_turf = get_turf(M)
@@ -276,6 +292,8 @@
 	if(stage == END_STAGE)
 		return 1
 	stage = END_STAGE
+	my_controller.skyblock -= end_skyblock
+	my_controller.UpdateSkyblock()
 	update_areas()
 	if(sound_weak_outside)
 		sound_weak_outside.start()
@@ -364,8 +382,8 @@
 	for(var/V in impacted_areas)
 		var/area/N = V
 		N.luminosity++
-		N.add_overlay(/obj/effect/lightning_add)
-		N.add_overlay(/obj/effect/lightning_overlay)
+		N.add_overlay(lightning_add)
+		N.add_overlay(lightning_overlay)
 
 /datum/weather/proc/do_thunder_sound()
 	var/picked_sound = THUNDER_SOUND
@@ -384,8 +402,8 @@
 	lightning_in_progress = FALSE
 	for(var/V in impacted_areas)
 		var/area/N = V
-		N.cut_overlay(/obj/effect/lightning_add)
-		N.cut_overlay(/obj/effect/lightning_overlay)
+		N.cut_overlay(lightning_add)
+		N.cut_overlay(lightning_overlay)
 		N.luminosity--
 
 /obj/effect/lightning_add

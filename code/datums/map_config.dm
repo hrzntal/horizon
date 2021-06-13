@@ -42,6 +42,8 @@
 	var/overmap_object_type = /datum/overmap_object/shuttle/station
 	/// The weather controller the station levels will have
 	var/weather_controller_type = /datum/weather_controller
+	/// Type of our day and night controller, can be left blank for none
+	var/day_night_controller_type
 	/// Type of the atmosphere that will be loaded on station
 	var/atmosphere_type
 	/// Possible rock colors of the loaded map
