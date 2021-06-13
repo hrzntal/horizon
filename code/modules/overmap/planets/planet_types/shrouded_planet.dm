@@ -7,11 +7,31 @@
 	overmap_type = /datum/overmap_object/shuttle/planet/shrouded
 	atmosphere_type = /datum/atmosphere/shrouded
 	weather_controller_type = /datum/weather_controller/shrouded
+	day_night_controller_type = /datum/day_night_controller/shrouded
 
 	rock_color = list(COLOR_INDIGO, COLOR_DARK_BLUE_GRAY, COLOR_NAVY_BLUE)
 	plant_color = list("#3c5434", "#2f6655", "#0e703f", "#495139", "#394c66", "#1a3b77", "#3e3166", "#52457c", "#402d56", "#580d6d")
 	plant_color_as_grass = TRUE
 	water_color = list("#3e3960")
+
+/datum/day_night_controller/shrouded
+	midnight_color = COLOR_BLACK
+	midnight_light = 0
+
+	morning_color = "#c4faff"
+	morning_light = 0.4
+
+	noon_color = "#bffff2"
+	noon_light = 0.7
+
+	midday_color = "#bffff2"
+	midday_light = 0.7
+
+	evening_color = "#c43f3f"
+	evening_light = 0.4
+
+	night_color = "#0000a6"
+	night_light = 0.1
 
 /datum/weather_controller/shrouded
 	possible_weathers = list(/datum/weather/shroud_storm = 100)

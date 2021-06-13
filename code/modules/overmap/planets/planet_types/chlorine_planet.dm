@@ -7,11 +7,31 @@
 	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
 	atmosphere_type = /datum/atmosphere/chlorine
 	weather_controller_type = /datum/weather_controller/chlorine
+	day_night_controller_type = /datum/day_night_controller/chlorine
 
 	rock_color = list(COLOR_GRAY, COLOR_PALE_GREEN_GRAY, COLOR_PALE_BTL_GREEN)
 
 /datum/weather_controller/chlorine
 	possible_weathers = list(/datum/weather/acid_rain = 100)
+
+/datum/day_night_controller/chlorine
+	midnight_color = COLOR_BLACK
+	midnight_light = 0
+
+	morning_color = "#c4faff"
+	morning_light = 0.4
+
+	noon_color = "#fff79c"
+	noon_light = 0.7
+
+	midday_color = "#fff79c"
+	midday_light = 0.7
+
+	evening_color = "#c43f3f"
+	evening_light = 0.4
+
+	night_color = "#0000a6"
+	night_light = 0.1
 
 /datum/overmap_object/shuttle/planet/chlorine
 	name = "Chlorine Planet"
