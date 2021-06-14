@@ -271,9 +271,6 @@ Used by the AI doomsday and the self-destruct nuke.
 	station_overmap_object = new config.overmap_object_type(SSovermap.main_system, rand(3,10), rand(3,10))
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = station_overmap_object, weather_controller_type = config.weather_controller_type, atmosphere_type = config.atmosphere_type)
 
-	// Create a trade hub
-	new /datum/overmap_object/trade_hub(SSovermap.main_system, rand(5,20), rand(5,20))
-
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id

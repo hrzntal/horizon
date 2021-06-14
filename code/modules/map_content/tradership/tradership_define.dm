@@ -20,6 +20,8 @@
 
 	minetype = "lavaland"
 
+	global_trading_hub_type = /datum/trade_hub/worldwide/bearcat
+
 	allow_custom_shuttles = TRUE
 
 	job_faction = "Tradership"
