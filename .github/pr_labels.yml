@@ -6,39 +6,29 @@ labels:
   # Area Labels
   - label: "Area : Administration"
     matcher:
-      body:
-        - ":cl:.*admin.*\\/:cl:/is"
+      body: ":cl:.*\\nadmin:.*\\/:cl:"
   - label: "Area : Balance"
     matcher:
-      body:
-        - ":cl:.*balance.*\/:cl:/is"
-        - ":cl:.*rebalance.*\/:cl:/is"
+      body: ":cl:.*\\n(?:re)?balance:.*\\/:cl:"
   - label: "Area : Configuration"
     matcher:
-      body:
-        - ":cl:.*config.*\/:cl:/is"
+      body: ":cl:.*\\nconfig:.*\\/:cl:"
       files:
         any:
           - "code/controllers/configuration/entries/**/*"
           - "config/**/*"
   - label: "Area : Grammar & Formatting"
     matcher:
-      body:
-        - ":cl:.*spellcheck.*\/:cl:/is"
-        - ":cl:.*typo.*\/:cl:/is"
+      body: ":cl:.*\\n(?:spellcheck|typo):.*\\/:cl:"
   - label: "Area : Sounds"
     matcher:
-      body:
-        - ":cl:.*soundadd.*\/:cl:/is"
-        - ":cl:.*sounddel.*\/:cl:/is"
+      body: ":cl:.*\\nsound(?:add|del):.*\\/:cl:"
       files:
         any:
           - "sound/**/*"
   - label: "Area : Sprites"
     matcher:
-      body:
-        - ":cl:.*imageadd.*\/:cl:/is"
-        - ":cl:.*imagedel.*\/:cl:/is"
+      body: ":cl:.*\\nimage(?:add|del):.*\\/:cl:"
       files:
         any:
           - "icons/**/*"
@@ -56,29 +46,17 @@ labels:
   - label: "Type : Fix"
     matcher:
       title: ".*fixes.*"
-      body:
-        - ":cl:.*fix.*\/:cl:/is"
-        - ":cl:.*fixes.*\/:cl:/is"
-        - ":cl:.*bugfix.*\/:cl:/is"
+      body: ":cl:.*\\n(?:bug)?fix(?:es)?:.*\\/:cl:"
       branch: "^fix/.*"
   - label: "Type : Quality of Life"
     matcher:
-      body:
-        - ":cl:.*qol.*\/:cl:/is"
+      body: ":cl:.*\\nqol:.*\\/:cl:"
   - label: "Type : Refactor"
     matcher:
-      body:
-        - ":cl:.*code.*\/:cl:/is"
-        - ":cl:.*code_imp.*\/:cl:/is"
-        - ":cl:.*refactor.*\/:cl:/is"
+      body: ":cl:.*\\n(?:code(?:_imp)?|refactor):.*\\/:cl:"
   - label: "Type : Removal"
     matcher:
-      body:
-        - ":cl:.*del.*\/:cl:/is"
-        - ":cl:.*dels.*\/:cl:/is"
-        - ":cl:.*sounddel.*\/:cl:/is"
-        - ":cl:.*imagedel.*\/:cl:/is"
-        - ":cl:.*rscdel.*\/:cl:/is"
+      body: ":cl:.*\\n(?:sound|image|rsc)?dels?:.*\\/:cl:"
   # Warn Labels
   - label: "Warn : Config Update"
     matcher:
