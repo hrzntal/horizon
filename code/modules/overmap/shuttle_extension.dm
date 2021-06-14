@@ -76,7 +76,7 @@
 	var/current_fuel = 100
 	var/maximum_fuel = 100
 	var/current_efficiency = 1
-	var/granted_speed = 0.35
+	var/granted_speed = 0.5
 	var/minimum_fuel_to_operate = 1
 	var/turned_on = FALSE
 	var/cap_speed_multiplier = 5

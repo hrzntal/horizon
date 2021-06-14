@@ -137,8 +137,8 @@
 			to_chat(user, "<span class='notice'>You cut \the [src] free from the floor.</span>")
 		return TRUE
 
-#define ENGINE_MINIMUM_OPERATABLE_MOLES 0.1
-#define ENGINE_BASELINE_MOLE_INTAKE 0.7
+#define ENGINE_MINIMUM_OPERATABLE_MOLES 0.05
+#define ENGINE_BASELINE_MOLE_INTAKE 0.25
 
 /obj/machinery/atmospherics/components/unary/engine/proc/DrawThrust(impulse_power)
 	var/datum/gas_mixture/gas = airs[1]
