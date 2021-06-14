@@ -746,6 +746,7 @@
 
 /// One random selection of some materials, heavily weighted for common drops
 /obj/effect/spawner/lootdrop/material
+	name = "material spawner"
 	lootcount = 1
 	loot = list(
 		/obj/item/stack/sheet/iron{amount = 15} = 50,
@@ -761,6 +762,7 @@
 
 //Really low amounts/chances of materials
 /obj/effect/spawner/lootdrop/material_scarce
+	name = "scarce material spawner"
 	lootcount = 1
 	loot = list(
 		/obj/item/stack/sheet/iron{amount = 5} = 60,
@@ -776,6 +778,7 @@
 
 /// One random selection of some ore, heavily weighted for common drops
 /obj/effect/spawner/lootdrop/ore
+	name = "ore spawner"
 	lootcount = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 15} = 50,
@@ -790,6 +793,7 @@
 	)
 
 /obj/effect/spawner/lootdrop/ore_scarce
+	name = "scarce ore spawner"
 	lootcount = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 5} = 50,
@@ -804,6 +808,7 @@
 	)
 
 /obj/effect/spawner/lootdrop/ore_rich
+	name = "rich ore spawner"
 	lootcount = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 34} = 50,
@@ -815,4 +820,97 @@
 		/obj/item/stack/ore/titanium{amount = 15} = 5,
 		/obj/item/stack/ore/gold{amount = 15} = 5,
 		/obj/item/stack/ore/bluespace_crystal{amount = 6} = 2
+	)
+
+/obj/effect/spawner/lootdrop/tool
+	name = "tool spawner"
+	loot = list(
+		/obj/item/wrench = 1,
+		/obj/item/screwdriver = 1,
+		/obj/item/weldingtool = 1,
+		/obj/item/crowbar = 1,
+		/obj/item/wirecutters = 1,
+		/obj/item/flashlight = 1,
+		/obj/item/weldingtool/largetank = 1,
+		/obj/item/multitool = 1
+	)
+
+/obj/effect/spawner/lootdrop/scanner
+	name = "scanner spawner"
+	loot = list(
+		/obj/item/mining_scanner = 1,
+		/obj/item/t_scanner = 1,
+		/obj/item/healthanalyzer = 1,
+		/obj/item/analyzer = 1,
+		/obj/item/radio = 1
+	)
+
+/obj/effect/spawner/lootdrop/powercell
+	name = "powercell spawner"
+	loot = list(
+		/obj/item/stock_parts/cell = 1,
+		/obj/item/stock_parts/cell/crap = 1,
+		/obj/item/stock_parts/cell/upgraded = 1,
+		/obj/item/stock_parts/cell/upgraded/plus = 1,
+		/obj/item/stock_parts/cell/high = 1
+	)
+
+/obj/effect/spawner/lootdrop/bomb_supply
+	name = "bomb supply spawner"
+	loot = list(
+		/obj/item/assembly/igniter = 1,
+		/obj/item/assembly/prox_sensor = 1,
+		/obj/item/assembly/signaler = 1,
+		/obj/item/assembly/timer = 1
+	)
+
+/obj/effect/spawner/lootdrop/toolbox
+	name = "toolbox spawner"
+	loot = list(
+		/obj/item/storage/toolbox/mechanical = 20,
+		/obj/item/storage/toolbox/emergency = 20,
+		/obj/item/storage/toolbox/electrical = 20,
+		/obj/item/storage/toolbox/syndicate = 1
+	)
+
+/obj/effect/spawner/lootdrop/tech_supply
+	name = "tech supply spawner"
+	loot = list(
+		/obj/effect/spawner/lootdrop/toolbox = 1,
+		/obj/effect/spawner/lootdrop/bomb_supply = 1,
+		/obj/effect/spawner/lootdrop/powercell = 1,
+		/obj/effect/spawner/lootdrop/scanner = 1,
+		/obj/effect/spawner/lootdrop/tool = 1,
+		/obj/item/storage/belt/utility = 1,
+		/obj/item/clothing/gloves/color/yellow = 1,
+		/obj/item/clothing/gloves/color/fyellow = 1,
+		/obj/item/stack/cable_coil = 1
+	)
+
+/obj/effect/spawner/lootdrop/medical
+	name = "medical equipment spawner"
+	loot = list(
+		/obj/effect/spawner/lootdrop/toolbox = 1,
+		/obj/effect/spawner/lootdrop/bomb_supply = 1,
+		/obj/effect/spawner/lootdrop/powercell = 1,
+		/obj/effect/spawner/lootdrop/scanner = 1,
+		/obj/effect/spawner/lootdrop/tool = 1,
+		/obj/item/storage/belt/utility = 1,
+		/obj/item/clothing/gloves/color/yellow = 1,
+		/obj/item/clothing/gloves/color/fyellow = 1,
+		/obj/item/stack/cable_coil = 1
+	)
+
+/obj/effect/spawner/lootdrop/medicine
+	name = "medicine spawner"
+	loot = list(
+		/obj/effect/spawner/lootdrop/toolbox = 1,
+		/obj/effect/spawner/lootdrop/bomb_supply = 1,
+		/obj/effect/spawner/lootdrop/powercell = 1,
+		/obj/effect/spawner/lootdrop/scanner = 1,
+		/obj/effect/spawner/lootdrop/tool = 1,
+		/obj/item/storage/belt/utility = 1,
+		/obj/item/clothing/gloves/color/yellow = 1,
+		/obj/item/clothing/gloves/color/fyellow = 1,
+		/obj/item/stack/cable_coil = 1
 	)
