@@ -1,0 +1,123 @@
+
+version: v1
+
+labels:
+  # Add-only Labels
+  # Area Labels
+  - label: "Area : Administration"
+    matcher:
+      body:
+        - ":cl:.*admin.*\\/:cl:/is"
+  - label: "Area : Balance"
+    matcher:
+      body:
+        - ":cl:.*balance.*\/:cl:/is"
+        - ":cl:.*rebalance.*\/:cl:/is"
+  - label: "Area : Configuration"
+    matcher:
+      body:
+        - ":cl:.*config.*\/:cl:/is"
+      files:
+        any:
+          - "code/controllers/configuration/entries/**/*"
+          - "config/**/*"
+  - label: "Area : Grammar & Formatting"
+    matcher:
+      body:
+        - ":cl:.*spellcheck.*\/:cl:/is"
+        - ":cl:.*typo.*\/:cl:/is"
+  - label: "Area : Sounds"
+    matcher:
+      body:
+        - ":cl:.*soundadd.*\/:cl:/is"
+        - ":cl:.*sounddel.*\/:cl:/is"
+      files:
+        any:
+          - "sound/**/*"
+  - label: "Area : Sprites"
+    matcher:
+      body:
+        - ":cl:.*imageadd.*\/:cl:/is"
+        - ":cl:.*imagedel.*\/:cl:/is"
+      files:
+        any:
+          - "icons/**/*"
+  - label: "Area : UI/UX"
+    matcher:
+      files:
+        any:
+          - "code/tgui/**/*"
+          - "code/tgui_panel/**/*"
+          - "tgui/**/*"
+  # Type Labels
+  - label: "Type : Mirror"
+    matcher:
+      branch: "^mirror/.*"
+  - label: "Type : Fix"
+    matcher:
+      title: ".*fixes.*"
+      body:
+        - ":cl:.*fix.*\/:cl:/is"
+        - ":cl:.*fixes.*\/:cl:/is"
+        - ":cl:.*bugfix.*\/:cl:/is"
+      branch: "^fix/.*"
+  - label: "Type : Quality of Life"
+    matcher:
+      body:
+        - ":cl:.*qol.*\/:cl:/is"
+  - label: "Type : Refactor"
+    matcher:
+      body:
+        - ":cl:.*code.*\/:cl:/is"
+        - ":cl:.*code_imp.*\/:cl:/is"
+        - ":cl:.*refactor.*\/:cl:/is"
+  - label: "Type : Removal"
+    matcher:
+      body:
+        - ":cl:.*del.*\/:cl:/is"
+        - ":cl:.*dels.*\/:cl:/is"
+        - ":cl:.*sounddel.*\/:cl:/is"
+        - ":cl:.*imagedel.*\/:cl:/is"
+        - ":cl:.*rscdel.*\/:cl:/is"
+  # Warn Labels
+  - label: "Warn : Config Update"
+    matcher:
+      files:
+        any:
+          - "code/controllers/configuration/entries/**/*"
+          - "config/**/*"
+
+  # Synced labels
+  - label: "Area : Database"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "SQL/**/*"
+  - label: "Area : Mapping"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "_maps/**/*"
+  - label: "Area : Tools"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "tools/**/*"
+          - "BUILD.bat"
+  - label: "Area : Repository"
+    sync: true
+    matcher:
+      files:
+        any:
+          - .github/**/*
+          - .vscode/**/*
+          - .dockerignore
+          - .gitignore
+          - .gitattributes
+          - .git-blame-ignore-revs
+          - .editorconfig
+          - Dockerfile
+          - README.md
