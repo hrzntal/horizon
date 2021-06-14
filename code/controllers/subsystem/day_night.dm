@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(day_night)
-	name = "Day and Night"
+	name = "Day and Night Cycle"
 	flags = SS_BACKGROUND
 	wait = 1 MINUTES
 	runlevels = RUNLEVEL_GAME
