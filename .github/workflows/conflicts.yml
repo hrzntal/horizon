@@ -1,13 +1,15 @@
 name: 'Check for merge conflicts'
+
 on:
   push:
     branches:
       - main
+
 jobs:
   triage:
     runs-on: ubuntu-20.04
     steps:
       - uses: mschilde/auto-label-merge-conflicts@5bf764da5b1bea5df116bf5f6b2703878324800a
         with:
-          CONFLICT_LABEL_NAME: 'Status:Merge Conflict'
+          CONFLICT_LABEL_NAME: 'Status : Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
