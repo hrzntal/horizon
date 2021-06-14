@@ -1036,6 +1036,7 @@
 	loot = list(
 		/obj/item/grenade/c4/x4 = 1,
 		/obj/item/grenade/c4 = 1,
+		/obj/item/grenade/frag = 1,
 		/obj/item/grenade/flashbang = 1,
 		/obj/item/grenade/empgrenade = 1
 	)
