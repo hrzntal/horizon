@@ -163,5 +163,6 @@
 	return
 
 /datum/overmap_object/ruins
-	name = "Cluster of ruins"
+	name = "Cluster of Ruins"
 	visual_type = /obj/effect/abstract/overmap/ruins
+	clears_hazards_on_spawn = TRUE

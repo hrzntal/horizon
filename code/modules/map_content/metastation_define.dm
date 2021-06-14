@@ -4,8 +4,7 @@
 	map_file = "MetaStation.dmm"
 
 	traits = null
-	space_ruin_levels = 7
-	space_empty_levels = 1
+	space_ruin_levels = 3
 
 	minetype = "lavaland"
 

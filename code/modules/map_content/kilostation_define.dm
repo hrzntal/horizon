@@ -4,8 +4,7 @@
 	map_file = "KiloStation.dmm"
 
 	traits = null
-	space_ruin_levels = 4
-	space_empty_levels = 1
+	space_ruin_levels = 3
 
 	minetype = "lavaland"
 

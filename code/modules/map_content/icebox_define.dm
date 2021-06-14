@@ -26,8 +26,7 @@
 						"Ice Ruins" = TRUE,
 						"Baseturf" = "/turf/open/openspace/icemoon/keep_below")
 					)
-	space_ruin_levels = 0
-	space_empty_levels = 0
+	space_ruin_levels = 2
 
 	minetype = "none"
 

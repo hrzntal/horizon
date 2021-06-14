@@ -9,8 +9,7 @@
 						list("Down" = -1,
 						"Baseturf" = "/turf/open/openspace",
 						"Linkage" = "Cross"))
-	space_ruin_levels = 7
-	space_empty_levels = 1
+	space_ruin_levels = 3
 
 	minetype = "lavaland"
 
