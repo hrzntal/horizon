@@ -1077,3 +1077,99 @@
 		/obj/effect/spawner/lootdrop/tactical_gear = 1,
 		/obj/effect/spawner/lootdrop/grenade = 1
 	)
+
+/obj/effect/spawner/lootdrop/eyewear
+	name = "eyewear spawner"
+	loot = list(
+		/obj/item/clothing/glasses/meson = 1,
+		/obj/item/clothing/glasses/science = 1,
+		/obj/item/clothing/glasses/welding = 1,
+		/obj/item/clothing/glasses/hud/health = 1,
+		/obj/item/clothing/glasses/sunglasses = 1
+	)
+
+/obj/effect/spawner/lootdrop/clothes
+	name = "clothes spawner"
+	loot = list(
+		/obj/item/clothing/under/color/random = 1,
+		/obj/item/clothing/under/color/grey = 1,
+		/obj/item/clothing/under/misc/overalls = 1,
+		/obj/item/clothing/under/misc/assistantformal = 1,
+		/obj/item/clothing/under/suit/black = 1,
+		/obj/item/clothing/under/suit/black/skirt = 1,
+		/obj/item/clothing/under/suit/white = 1,
+		/obj/item/clothing/under/suit/white/skirt = 1,
+		/obj/item/clothing/under/suit/beige,
+		/obj/item/clothing/under/pants/classicjeans = 1,
+		/obj/item/clothing/under/pants/blackjeans = 1,
+		/obj/item/clothing/under/pants/khaki = 1,
+		/obj/item/clothing/under/pants/camo = 1,
+		/obj/item/clothing/under/rank/civilian/bartender = 1,
+		/obj/item/clothing/under/rank/civilian/bartender/skirt = 1
+	)
+
+/obj/effect/spawner/lootdrop/headgear
+	name = "headgear spawner"
+	loot = list(
+		/obj/item/clothing/head/welding = 1,
+		/obj/item/clothing/head/ushanka = 1,
+		/obj/item/clothing/head/soft/grey = 1,
+		/obj/item/clothing/head/soft/black = 1,
+		/obj/item/clothing/head/chefhat = 1,
+		/obj/item/clothing/head/beret = 1,
+		/obj/item/clothing/head/beret/black = 1,
+		/obj/item/clothing/head/fedora/curator = 1,
+		/obj/item/clothing/head/helmet/old = 1,
+		/obj/item/clothing/head/bandana = 1
+	)
+
+/obj/effect/spawner/lootdrop/gloves
+	name = "gloves spawner"
+	loot = list(
+		/obj/item/clothing/gloves/color/black = 3,
+		/obj/item/clothing/gloves/color/fyellow = 3,
+		/obj/item/clothing/gloves/color/yellow = 1,
+		/obj/item/clothing/gloves/color/grey = 3,
+		/obj/item/clothing/gloves/fingerless = 3,
+		/obj/item/clothing/gloves/color/light_brown = 3,
+		/obj/item/clothing/gloves/color/brown = 3
+	)
+
+/obj/effect/spawner/lootdrop/shoes
+	name = "shoes spawner"
+	loot = list(
+		/obj/item/clothing/shoes/sneakers/black = 1,
+		/obj/item/clothing/shoes/sneakers/brown = 1,
+		/obj/item/clothing/shoes/sneakers/blue = 1,
+		/obj/item/clothing/shoes/jackboots = 1
+	)
+
+/obj/effect/spawner/lootdrop/suit
+	name = "suit spawner"
+	loot = list(
+		/obj/item/clothing/suit/toggle/labcoat = 1,
+		/obj/item/clothing/suit/pirate = 1,
+		/obj/item/clothing/suit/poncho = 1,
+		/obj/item/clothing/suit/jacket/letterman = 1,
+		/obj/item/clothing/suit/toggle/chef = 1,
+		/obj/item/clothing/suit/hooded/wintercoat = 1,
+		/obj/item/clothing/suit/hooded/wintercoat/aformal = 1
+	)
+
+/obj/effect/spawner/lootdrop/cash
+	name = "cash spawner"
+	loot = list(
+		/obj/item/stack/spacecash/c1 = 4,
+		/obj/item/stack/spacecash/c10 = 4,
+		/obj/item/stack/spacecash/c20 = 4,
+		/obj/item/stack/spacecash/c50 = 3,
+		/obj/item/stack/spacecash/c100 = 2,
+		/obj/item/stack/spacecash/c200 = 2,
+		/obj/item/stack/spacecash/c500 = 1,
+		/obj/item/stack/spacecash/c1000 = 1
+	)
+
+/obj/effect/spawner/lootdrop/cash/five
+	name = "5x cash spawner"
+	fan_out_items = TRUE
+	lootcount = 5
