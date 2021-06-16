@@ -3,7 +3,7 @@
 	area_type = /area/planet/desert
 	generator_type = /datum/map_generator/planet_gen/desert
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/dry_seafloor)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/desert
 	atmosphere_type = /datum/atmosphere/desert
 	weather_controller_type = /datum/weather_controller/desert

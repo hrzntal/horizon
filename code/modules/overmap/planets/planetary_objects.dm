@@ -82,6 +82,21 @@
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+
+/turf/open/floor/plating/planetary/rock
+	name = "rock"
+	icon_state = "rock_floor"
+	base_icon_state = "rock_floor"
+	footstep = FOOTSTEP_GENERIC_HEAVY
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/plating/planetary/rock/Initialize()
+	. = ..()
+	var/datum/space_level/level = SSmapping.z_list[z]
+	color = level.rock_color
+
 /turf/open/floor/plating/planetary/mud
 	gender = PLURAL
 	name = "mud"
