@@ -30,6 +30,12 @@
 	var/list/water_color
 	/// Whether you want the selected plant color to act for grass too
 	var/plant_color_as_grass = FALSE
+	/// Whether the planet will spawn planetary ruins
+	var/spawns_planetary_ruins = TRUE
+	/// Flags to check whether planetary ruins can be spawned
+	var/planet_flags = PLANET_HABITABLE|PLANET_WATER|PLANET_WRECKAGES
+	/// Budget for ruins
+	var/ruin_budget = 40
 
 /datum/planet_template/proc/LoadTemplate(datum/overmap_sun_system/system, coordinate_x, coordinate_y)
 	var/old_z = world.maxz
@@ -102,7 +108,16 @@
 
 //Due to the particular way ruins are seeded right now this will be handled through a proc, rather than data-driven as of now
 /datum/planet_template/proc/SeedRuins(list/z_levels)
-	return
+	if(!spawns_planetary_ruins)
+		return
+	var/eligible_ruins = SSmapping.planet_ruins_templates.Copy()
+	for(var/ruin_name in eligible_ruins)
+		var/datum/map_template/ruin/planetary/planetary_ruin = eligible_ruins[ruin_name]
+		if(!(planet_flags & planetary_ruin.planet_requirements))
+			eligible_ruins -= ruin_name
+
+	seedRuins(z_levels, ruin_budget, list(area_type), eligible_ruins)
+
 
 /datum/planet_template/lavaland
 	name = "Lavaland"
@@ -117,6 +132,8 @@
 
 	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")
 	plant_color_as_grass = TRUE
+	spawns_planetary_ruins = FALSE
+	planet_flags = PLANET_VOLCANIC|PLANET_WRECKAGES
 
 /datum/planet_template/lavaland/SeedRuins(list/z_levels)
 	var/list/lava_ruins = SSmapping.levels_by_trait(ZTRAIT_LAVA_RUINS)

@@ -1,0 +1,769 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"co" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"cs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/stack/sheet/glass{
+	amount = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/tech_supply,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"dB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ea" = (
+/obj/structure/window/reinforced/spawner/west,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"eg" = (
+/obj/structure/window/reinforced/spawner/east,
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"gB" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"hb" = (
+/obj/item/stack/sheet/glass{
+	amount = 5
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"iC" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"jb" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/melee_weapon,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"jP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ky" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"lU" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/obj/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"mg" = (
+/obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"mi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"mw" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"mF" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/spawner/lootdrop/maintenance/four,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/pacman,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"nm" = (
+/obj/structure/table,
+/obj/item/reagent_containers/food/drinks/coffee,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"nN" = (
+/obj/structure/cable,
+/obj/item/storage/toolbox/electrical,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/powercell,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"pd" = (
+/obj/structure/window/reinforced/spawner/west,
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"pf" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 1
+	},
+/turf/closed/wall/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ps" = (
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/tech_supply/five,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"qu" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/medkit,
+/obj/effect/spawner/lootdrop/medkit,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/unpowered/crashed_pod)
+"qW" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"rQ" = (
+/obj/effect/spawner/lootdrop/maintenance/eight,
+/obj/item/seeds/random,
+/obj/item/seeds/potato,
+/obj/item/seeds/tomato,
+/obj/item/seeds/wheat,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"sF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/circuitboard/computer/solar_control,
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ud" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/cash,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"up" = (
+/obj/structure/rack,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/pickaxe/emergency,
+/obj/item/tank/internals/oxygen,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/clothing/suit/space/fragile,
+/obj/item/clothing/head/helmet/space/fragile,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"uq" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"uJ" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/spawner/lootdrop/away_loot,
+/obj/item/seeds/random,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"vc" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"vg" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"vp" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/obj/item/storage/box/donkpockets,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"vW" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"wR" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"xr" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/effect/spawner/lootdrop/maintenance/four,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"xA" = (
+/obj/structure/window/shuttle,
+/obj/structure/shuttle/engine/heater{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"zs" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/medicine,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/powercell,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"zV" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"AU" = (
+/obj/machinery/hydroponics/constructable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"BF" = (
+/obj/effect/spawner/lootdrop/maintenance/four,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"CV" = (
+/obj/item/reagent_containers/glass/bottle/nutrient/l4z,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/powercell,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Dc" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/clothes,
+/obj/effect/spawner/lootdrop/clothes,
+/obj/effect/spawner/lootdrop/shoes,
+/obj/effect/spawner/lootdrop/headgear,
+/obj/effect/spawner/lootdrop/gloves,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"DZ" = (
+/obj/machinery/firealarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit/old,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ER" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating,
+/area/template_noop)
+"EW" = (
+/obj/structure/bed/pod,
+/obj/item/bedsheet/medical,
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/unpowered/crashed_pod)
+"Fn" = (
+/obj/machinery/vending/coffee,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Fv" = (
+/obj/machinery/atmospherics/components/unary/tank/air,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"HM" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"HR" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"Je" = (
+/obj/item/storage/toolbox/emergency,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"JH" = (
+/obj/structure/cable,
+/obj/item/stack/sheet/iron/ten,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/tech_supply,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"Kp" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Lb" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"LQ" = (
+/obj/item/stack/sheet/glass/fifty,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/machinery/airalarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Mb" = (
+/obj/structure/window/shuttle,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"NX" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"On" = (
+/obj/item/reagent_containers/glass/bottle/nutrient/rh,
+/obj/structure/rack,
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Ot" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"OU" = (
+/obj/machinery/light/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/tech_supply,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Qn" = (
+/obj/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"Qu" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"QS" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"RB" = (
+/obj/structure/table,
+/obj/machinery/airalarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/food/candy,
+/obj/item/geiger_counter,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"RR" = (
+/obj/item/electronics/tracker,
+/turf/open/floor/plating,
+/area/template_noop)
+"RZ" = (
+/obj/machinery/door/airlock/shuttle/glass,
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Sp" = (
+/obj/machinery/autolathe,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"SM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/tech_supply,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Tr" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/template_noop)
+"Ts" = (
+/obj/machinery/pipedispenser,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Ub" = (
+/obj/structure/rack,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/pickaxe/emergency,
+/obj/item/tank/internals/oxygen,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/flashlight,
+/obj/item/clothing/suit/space/fragile,
+/obj/item/clothing/head/helmet/space/fragile,
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"UN" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/cash,
+/obj/machinery/firealarm/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/radio,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"UO" = (
+/obj/effect/spawner/lootdrop/medical,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/unpowered/crashed_pod)
+"UX" = (
+/obj/item/stack/sheet/iron/ten,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"Vt" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"Vx" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/clothes,
+/obj/effect/spawner/lootdrop/clothes,
+/obj/effect/spawner/lootdrop/shoes,
+/obj/effect/spawner/lootdrop/headgear,
+/obj/effect/spawner/lootdrop/gloves,
+/obj/effect/spawner/lootdrop/suit,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"WF" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/unpowered/crashed_pod)
+"WW" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/unpowered/crashed_pod)
+"Xg" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"XD" = (
+/obj/effect/spawner/lootdrop/medicine/five,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/unpowered/crashed_pod)
+"XP" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium/white,
+/area/ruin/unpowered/crashed_pod)
+"Yf" = (
+/obj/item/stack/sheet/iron/ten,
+/turf/open/floor/plating,
+/area/template_noop)
+"YH" = (
+/obj/item/solar_assembly,
+/turf/open/floor/plating,
+/area/template_noop)
+"Zl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+"ZI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/mineral/titanium,
+/area/ruin/unpowered/crashed_pod)
+
+(1,1,1) = {"
+YH
+Yf
+YH
+RR
+Qu
+Qu
+ky
+Qu
+Qu
+Qn
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+"}
+(2,1,1) = {"
+Tr
+Tr
+Tr
+Tr
+Qu
+Ub
+mw
+Qu
+iC
+nm
+iC
+Fn
+Qu
+UO
+qu
+Qu
+"}
+(3,1,1) = {"
+YH
+ER
+Tr
+hb
+Qu
+up
+mw
+Qu
+Zl
+Zl
+wR
+jP
+XP
+XD
+EW
+Qu
+"}
+(4,1,1) = {"
+Qu
+Qu
+Mb
+Qu
+Qu
+vc
+HR
+Qu
+pd
+ea
+jP
+UN
+Qu
+Qu
+Qu
+Qu
+"}
+(5,1,1) = {"
+pf
+xA
+nN
+JH
+Qu
+Vt
+jP
+Qu
+WW
+HM
+jP
+RB
+Qu
+Lb
+ud
+Qn
+"}
+(6,1,1) = {"
+Qu
+Qu
+UX
+QS
+Qn
+Fv
+SM
+Qu
+WW
+Ot
+jP
+jP
+RZ
+vg
+gB
+Qn
+"}
+(7,1,1) = {"
+pf
+xA
+UX
+WF
+Qn
+Fv
+vW
+Qu
+WW
+Ot
+jP
+Dc
+Qu
+jb
+zs
+Qn
+"}
+(8,1,1) = {"
+pf
+lU
+cs
+sF
+Qu
+OU
+DZ
+Qu
+WW
+co
+jP
+Vx
+Qu
+Qu
+Qu
+Qu
+"}
+(9,1,1) = {"
+Qu
+Qu
+ps
+LQ
+Qu
+Kp
+jP
+Qu
+eg
+mg
+jP
+Dc
+Qu
+uJ
+rQ
+Qu
+"}
+(10,1,1) = {"
+pf
+xA
+Je
+wR
+Xg
+ZI
+mi
+Xg
+jP
+dB
+wR
+jP
+Xg
+BF
+CV
+Qn
+"}
+(11,1,1) = {"
+Qu
+Qu
+xr
+mF
+Qu
+Ts
+Sp
+Qu
+uq
+vp
+NX
+zV
+Qu
+AU
+On
+Qu
+"}
+(12,1,1) = {"
+qW
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qn
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+"}

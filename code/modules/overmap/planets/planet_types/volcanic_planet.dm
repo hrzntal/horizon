@@ -12,6 +12,7 @@
 	rock_color = list(COLOR_DARK_GRAY)
 	plant_color = list("#a23c05","#662929","#ba6222","#7a5b3a")
 	plant_color_as_grass = TRUE
+	planet_flags = PLANET_VOLCANIC|PLANET_WRECKAGES
 
 /datum/overmap_object/shuttle/planet/volcanic
 	name = "Volcanic Planet"

@@ -11,6 +11,8 @@
 	var/placement_weight = 1 //How often should this ruin appear
 	var/cost = 0 //Cost in ruin budget placement system
 	var/allow_duplicates = TRUE
+	/// Keeping track for `allow_duplicates` variable
+	var/already_placed = FALSE
 	var/list/always_spawn_with = null //These ruin types will be spawned along with it (where dependent on the flag) eg list(/datum/map_template/ruin/space/teleporter_space = SPACERUIN_Z)
 	var/list/never_spawn_with = null //If this ruin is spawned these will not eg list(/datum/map_template/ruin/base_alternate)
 

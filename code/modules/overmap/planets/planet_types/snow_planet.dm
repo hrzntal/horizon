@@ -11,6 +11,7 @@
 	rock_color = list(COLOR_DARK_BLUE_GRAY, COLOR_GUNMETAL, COLOR_GRAY, COLOR_DARK_GRAY)
 	plant_color = list("#d0fef5","#93e1d8","#93e1d8", "#b2abbf", "#3590f3", "#4b4e6d")
 	grass_color = list("#d0fef5")
+	planet_flags = PLANET_HABITABLE|PLANET_WATER|PLANET_WRECKAGES|PLANET_ICE
 
 /datum/weather_controller/snow_planet
 	possible_weathers = list(/datum/weather/snow_storm = 50,

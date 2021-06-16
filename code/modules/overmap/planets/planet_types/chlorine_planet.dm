@@ -10,6 +10,7 @@
 	day_night_controller_type = /datum/day_night_controller/chlorine
 
 	rock_color = list(COLOR_GRAY, COLOR_PALE_GREEN_GRAY, COLOR_PALE_BTL_GREEN)
+	planet_flags = PLANET_WATER|PLANET_WRECKAGES|PLANET_REMOTE
 
 /datum/weather_controller/chlorine
 	possible_weathers = list(/datum/weather/acid_rain = 100)

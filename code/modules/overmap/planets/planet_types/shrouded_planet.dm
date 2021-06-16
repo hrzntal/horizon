@@ -13,6 +13,7 @@
 	plant_color = list("#3c5434", "#2f6655", "#0e703f", "#495139", "#394c66", "#1a3b77", "#3e3166", "#52457c", "#402d56", "#580d6d")
 	plant_color_as_grass = TRUE
 	water_color = list("#3e3960")
+	planet_flags = PLANET_WATER|PLANET_WRECKAGES|PLANET_REMOTE
 
 /datum/day_night_controller/shrouded
 	midnight_color = COLOR_BLACK

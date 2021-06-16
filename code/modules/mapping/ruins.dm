@@ -83,6 +83,8 @@
 			forced_ruins[R] = -1
 		if(R.unpickable)
 			continue
+		if(R.already_placed)
+			continue
 		ruins_available[R] = R.placement_weight
 	while(budget > 0 && (ruins_available.len || forced_ruins.len))
 		var/datum/map_template/ruin/current_pick
@@ -146,6 +148,7 @@
 			if(!current_pick.allow_duplicates)
 				for(var/datum/map_template/ruin/R in ruins_available)
 					if(R.id == current_pick.id)
+						R.already_placed = TRUE
 						ruins_available -= R
 			if(current_pick.never_spawn_with)
 				for(var/blacklisted_type in current_pick.never_spawn_with)

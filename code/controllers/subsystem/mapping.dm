@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/lava_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
+	var/list/planet_ruins_templates = list()
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
@@ -181,6 +182,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	lava_ruins_templates = SSmapping.lava_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
+	planet_ruins_templates = SSmapping.planet_ruins_templates
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
@@ -500,6 +502,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
+		else if (istype(R, /datum/map_template/ruin/planetary))
+			planet_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")

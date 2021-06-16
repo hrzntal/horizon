@@ -9,6 +9,7 @@
 	weather_controller_type = /datum/weather_controller/desert
 
 	rock_color = list(COLOR_BEIGE_GRAYISH, COLOR_BEIGE, COLOR_GRAY, COLOR_BROWN)
+	planet_flags = PLANET_WRECKAGES|PLANET_REMOTE
 
 /datum/overmap_object/shuttle/planet/barren
 	name = "Barren Planet"

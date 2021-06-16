@@ -2483,6 +2483,7 @@
 #include "code\modules\map_content\multiz_debug_define.dm"
 #include "code\modules\map_content\runtimestation_define.dm"
 #include "code\modules\map_content\tramstation_define.dm"
+#include "code\modules\map_content\ruins\planetary\planet_ruins.dm"
 #include "code\modules\map_content\tradership\tradership_define.dm"
 #include "code\modules\map_content\tradership\tradership_jobs.dm"
 #include "code\modules\mapping\map_template.dm"
