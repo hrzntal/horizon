@@ -72,9 +72,8 @@
 	icon_file = 'icons/mob/clothing/under/color.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
-/datum/greyscale_config/jumpsuit_worn_digi
+/datum/greyscale_config/jumpsuit_worn/digi
 	icon_file = 'icons/mob/clothing/under/color_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
 /datum/greyscale_config/jumpsuit_inhand_left
 	name = "Held Jumpsuit, Left"
@@ -96,9 +95,8 @@
 	icon_file = 'icons/mob/clothing/under/color.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
-/datum/greyscale_config/jumpsuit_prison_worn_digi
+/datum/greyscale_config/jumpsuit_prison_worn/digi
 	icon_file = 'icons/mob/clothing/under/color_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
 /datum/greyscale_config/jumpsuit_prison_inhand_left
 	name = "Held Prison Jumpsuit, Left"
@@ -153,9 +151,8 @@
 	icon_file = 'icons/mob/clothing/feet.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
-/datum/greyscale_config/sneakers_worn_digi
+/datum/greyscale_config/sneakers_worn/digi
 	icon_file = 'icons/mob/clothing/feet_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
 /datum/greyscale_config/sneakers_orange
 	name = "Orange Sneakers"
@@ -167,9 +164,8 @@
 	icon_file = 'icons/mob/clothing/feet.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
-/datum/greyscale_config/sneakers_orange_worn_digi
+/datum/greyscale_config/sneakers_orange_worn/digi
 	icon_file = 'icons/mob/clothing/feet_gags_digi.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
 /datum/greyscale_config/sneakers_wheelys
 	name = "Wheeled Sneakers"
