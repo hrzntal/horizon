@@ -213,7 +213,7 @@
 /turf/open/floor/plating/planetary/concrete
 	gender = PLURAL
 	name = "concrete"
-	desc = "A flat expanse of artificial stone-like artificial material."
+	desc = "A flat expanse of artificial stone-like material."
 	icon_state = "concrete"
 	base_icon_state = "concrete"
 	footstep = FOOTSTEP_GENERIC_HEAVY
