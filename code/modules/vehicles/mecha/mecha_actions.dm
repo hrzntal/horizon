@@ -129,12 +129,12 @@
 
 /obj/vehicle/sealed/mecha/proc/toggle_strafe()
 	if(!(mecha_flags & CANSTRAFE))
-		chassis.balloon_alert(occupants, "this mecha doesn't support strafing!", "[icon2html(src, occupants)]<span class='notice'>This mecha does not support strafing.</span>")
+		balloon_alert(occupants, "this mecha doesn't support strafing!", "[icon2html(src, occupants)]<span class='notice'>This mecha does not support strafing.</span>")
 		return
 
 	strafe = !strafe
 
-	chassis.balloon_alert(occupants, "strafing mode [strafe?"on":"off"].", "[icon2html(src, occupants)]<span class='notice'>Toggled strafing mode [strafe?"on":"off"].</span>")
+	balloon_alert(occupants, "strafing mode [strafe?"on":"off"].", "[icon2html(src, occupants)]<span class='notice'>Toggled strafing mode [strafe?"on":"off"].</span>")
 	log_message("Toggled strafing mode [strafe?"on":"off"].", LOG_MECHA)
 
 	for(var/occupant in occupants)
