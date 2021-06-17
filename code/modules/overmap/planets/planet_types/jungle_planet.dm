@@ -3,7 +3,7 @@
 	area_type = /area/planet/jungle
 	generator_type = /datum/map_generator/planet_gen/jungle
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle
 	atmosphere_type = /datum/atmosphere/jungle
 	weather_controller_type = /datum/weather_controller/lush

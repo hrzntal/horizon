@@ -70,3 +70,7 @@
   - rscadd: The hubs can have guaranteed traders and the FTV Bearcat has a guaranteed
       medical and mining trader in the global network.
   - bugfix: Shuttles can now properly access localized trading houses
+2021-06-16:
+  Azarak:
+  - rscadd: Adds a variety of loot spawner helpers and a clear terrain helper for
+      mapping

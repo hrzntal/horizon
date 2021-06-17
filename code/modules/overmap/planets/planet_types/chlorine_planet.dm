@@ -3,7 +3,7 @@
 	area_type = /area/planet/chlorine
 	generator_type = /datum/map_generator/planet_gen/chlorine
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/chlorine_sand)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
 	atmosphere_type = /datum/atmosphere/chlorine
 	weather_controller_type = /datum/weather_controller/chlorine

@@ -3,7 +3,7 @@
 	area_type = /area/planet/lush
 	generator_type = /datum/map_generator/planet_gen/lush
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/dirt)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/lush
 	atmosphere_type = /datum/atmosphere/lush
 	weather_controller_type = /datum/weather_controller/lush

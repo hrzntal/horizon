@@ -32,7 +32,7 @@
 	stock_low = 1
 	stock_high = 1
 	cost = 1000
-	path = /obj/item/gun/energy/e_gun/nuclear
+	path = /obj/item/gun/ballistic/automatic/pistol
 
 /datum/sold_goods/m1911
 	stock_low = 1

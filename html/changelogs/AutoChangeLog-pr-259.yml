@@ -1,0 +1,4 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - bugfix: "Fixes bad makarov path in trading. Previously it could show up as an AEG"

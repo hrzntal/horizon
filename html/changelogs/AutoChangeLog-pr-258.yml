@@ -1,4 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Adds a variety of loot spawner helpers and a clear terrain helper for mapping"

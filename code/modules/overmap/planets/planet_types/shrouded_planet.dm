@@ -3,7 +3,7 @@
 	area_type = /area/planet/shrouded
 	generator_type = /datum/map_generator/planet_gen/shrouded
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/shrouded_sand)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/shrouded
 	atmosphere_type = /datum/atmosphere/shrouded
 	weather_controller_type = /datum/weather_controller/shrouded
