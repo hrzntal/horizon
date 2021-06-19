@@ -92,6 +92,11 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating,
 /area/cargo/warehouse)
+"ev" = (
+/obj/structure/cable,
+/obj/machinery/vending/autodrobe,
+/turf/open/floor/plating,
+/area/commons/vacant_room)
 "eL" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -300,6 +305,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/maintenance/aft/secondary)
+"lh" = (
+/obj/machinery/vending/assist,
+/turf/open/floor/plating,
+/area/commons/vacant_room)
 "li" = (
 /obj/effect/decal/cleanable/greenglow/ecto,
 /obj/machinery/requests_console/directional/north,
@@ -904,6 +913,12 @@
 	},
 /turf/open/floor/iron,
 /area/construction/storage_wing)
+"Ey" = (
+/obj/structure/industrial_lift{
+	id = CARGOLIFT
+	},
+/turf/open/openspace,
+/area/cargo/warehouse)
 "EP" = (
 /turf/closed/wall,
 /area/commons/cryopods)
@@ -1157,6 +1172,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/maintenance/aft/secondary)
+"MY" = (
+/obj/machinery/vending/wardrobe,
+/turf/open/floor/plating,
+/area/commons/vacant_room)
 "Ng" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/white,
@@ -1170,6 +1189,9 @@
 "NS" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/engineering/storage)
 "OH" = (
@@ -1289,6 +1311,10 @@
 "RL" = (
 /turf/open/floor/engine/airless,
 /area/space)
+"RO" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/plating,
+/area/commons/vacant_room)
 "RR" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/wooden,
@@ -1300,6 +1326,9 @@
 /area/hallway/primary/central)
 "SM" = (
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/engineering/storage)
 "Te" = (
@@ -1410,6 +1439,14 @@
 /obj/effect/decal/cleanable/food/plant_smudge,
 /turf/open/floor/iron/white,
 /area/science/research/abandoned)
+"Ya" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/button/elevator{
+	id = CARGOLIFT;
+	pixel_x = 28
+	},
+/turf/open/floor/iron,
+/area/cargo/warehouse)
 "Ye" = (
 /obj/machinery/door/airlock{
 	id_tag = "Dorm5";
@@ -1473,6 +1510,11 @@
 "Zj" = (
 /turf/closed/wall,
 /area/construction/storage_wing)
+"Zv" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/railing,
+/turf/closed/wall,
+/area/cargo/warehouse)
 "Zw" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -34263,8 +34305,8 @@ gW
 gW
 uK
 Lu
-Vh
-qe
+Ya
+Ey
 qe
 qe
 qe
@@ -34520,7 +34562,7 @@ ch
 Tt
 du
 gW
-Yk
+Zv
 qe
 qe
 qe
@@ -36068,10 +36110,10 @@ CX
 YK
 wW
 WG
-Rr
+MY
 Wn
 Rr
-Rr
+RO
 Ny
 If
 ax
@@ -36325,7 +36367,7 @@ AY
 Ur
 tX
 WG
-Rr
+lh
 gM
 Rr
 tl
@@ -36582,7 +36624,7 @@ AY
 Ur
 AY
 WG
-Wn
+ev
 Wn
 Rr
 wp
