@@ -322,6 +322,8 @@
 	melee_damage_upper = 10
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
+	attack_sound = 'sound/items/welder.ogg'
+	attack_vis_effect = ATTACK_EFFECT_PUNCH
 
 	butcher_results = null
 	footstep_type = null
