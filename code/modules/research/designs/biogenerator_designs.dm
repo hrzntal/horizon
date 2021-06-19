@@ -66,6 +66,14 @@
 	build_path = /obj/item/food/monkeycube
 	category = list("initial","Food")
 
+/datum/design/meat_product
+	name = "Meat Product"
+	id = "meatproduct"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass= 200)
+	build_path = /obj/item/food/meat/slab/meatproduct
+	category = list("initial","Food")
+
 /datum/design/ez_nut   //easy nut :)
 	name = "25u E-Z Nutrient"
 	id = "ez_nut"

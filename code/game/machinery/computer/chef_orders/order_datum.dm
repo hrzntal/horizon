@@ -141,6 +141,12 @@
 	item_instance = /obj/item/food/fishmeat
 	cost_per_order = 12
 
+/datum/orderable_item/meatproduct
+	name = "Meat Product"
+	category_index = CATEGORY_MILK_EGGS
+	item_instance = /obj/item/food/meat/slab/meatproduct
+	cost_per_order = 25
+
 /datum/orderable_item/spider_eggs
 	name = "Spider Eggs"
 	category_index = CATEGORY_MILK_EGGS
