@@ -32,7 +32,7 @@
 	amount = 5
 	},
 /obj/machinery/button/elevator{
-	id = CARGOLIFT;
+	id = "CARGOLIFT";
 	pixel_y = 23
 	},
 /turf/open/floor/iron,

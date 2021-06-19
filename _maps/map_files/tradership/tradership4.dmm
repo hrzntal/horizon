@@ -322,7 +322,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/lattice/catwalk,
 /obj/machinery/button/elevator{
-	id = CARGOLIFT;
+	id = "CARGOLIFT";
 	pixel_x = 27
 	},
 /turf/open/openspace,
