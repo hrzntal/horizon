@@ -65,6 +65,10 @@
 
 	totallums += dynamic_lumcount
 
+	/// Nessecary for day/night and thunder to properly illuminate stuff
+	var/area/A = loc
+	totallums += A.luminosity
+
 	return CLAMP01(totallums)
 
 // Returns a boolean whether the turf is on soft lighting.
