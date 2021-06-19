@@ -6,29 +6,29 @@ labels:
   # Area Labels
   - label: "Area : Administration"
     matcher:
-      body: ":cl:.*\\nadmin:.*\\/:cl:"
+      body: ":cl:.*\\\\nadmin:.*\\\\n\\/:cl:"
   - label: "Area : Balance"
     matcher:
-      body: ":cl:.*\\n(?:re)?balance:.*\\/:cl:"
+      body: ":cl:.*\\\\n(?:re)?balance:.*\\\\n\\/:cl:"
   - label: "Area : Configuration"
     matcher:
-      body: ":cl:.*\\nconfig:.*\\/:cl:"
+      body: ":cl:.*\\\\nconfig:.*\\\\n\\/:cl:"
       files:
         any:
           - "code/controllers/configuration/entries/**/*"
           - "config/**/*"
   - label: "Area : Grammar & Formatting"
     matcher:
-      body: ":cl:.*\\n(?:spellcheck|typo):.*\\/:cl:"
+      body: ":cl:.*\\\\n(?:spellcheck|typo):.*\\\\n\\/:cl:"
   - label: "Area : Sounds"
     matcher:
-      body: ":cl:.*\\nsound(?:add|del):.*\\/:cl:"
+      body: ":cl:.*\\\\nsound(?:add|del):.*\\\\n\\/:cl:"
       files:
         any:
           - "sound/**/*"
   - label: "Area : Sprites"
     matcher:
-      body: ":cl:.*\\nimage(?:add|del):.*\\/:cl:"
+      body: ":cl:.*\\\\nimage(?:add|del):.*\\\\n\\/:cl:"
       files:
         any:
           - "icons/**/*"
@@ -46,17 +46,17 @@ labels:
   - label: "Type : Fix"
     matcher:
       title: ".*fixes.*"
-      body: ":cl:.*\\n(?:bug)?fix(?:es)?:.*\\/:cl:"
+      body: ":cl:.*\\\\n(?:bug)?fix(?:es)?:.*\\\\n\\/:cl:"
       branch: "^fix/.*"
   - label: "Type : Quality of Life"
     matcher:
-      body: ":cl:.*\\nqol:.*\\/:cl:"
+      body: ":cl:.*\\\\nqol:.*\\\\n\\/:cl:"
   - label: "Type : Refactor"
     matcher:
-      body: ":cl:.*\\n(?:code(?:_imp)?|refactor):.*\\/:cl:"
+      body: ":cl:.*\\\\n(?:code(?:_imp)?|refactor):.*\\\\n\\/:cl:"
   - label: "Type : Removal"
     matcher:
-      body: ":cl:.*\\n(?:sound|image|rsc)?dels?:.*\\/:cl:"
+      body: ":cl:.*\\\\n(?:sound|image|rsc)?dels?:.*\\\\n\\/:cl:"
   # Warn Labels
   - label: "Warn : Config Update"
     matcher:
