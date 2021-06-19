@@ -89,7 +89,7 @@
 	base_icon_state = "rock_floor"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/rock/Initialize()
@@ -135,7 +135,7 @@
 	base_icon_state = "dry"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/wasteland
@@ -233,7 +233,7 @@
 	base_icon_state = "concrete"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/concrete/reinforced

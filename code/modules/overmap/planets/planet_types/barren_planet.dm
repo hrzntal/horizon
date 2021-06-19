@@ -63,7 +63,7 @@
 	base_icon_state = "barren"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /datum/atmosphere/barren
