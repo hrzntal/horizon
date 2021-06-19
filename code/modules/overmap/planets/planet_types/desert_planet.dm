@@ -57,6 +57,12 @@
 	turf_type = /turf/open/floor/plating/planetary/sand/desert
 	flora_types = list(/obj/structure/flora/planetary/palebush,/obj/structure/flora/rock/pile,/obj/structure/flora/rock, /obj/structure/flora/ash/cacti)
 	flora_density = 3
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/antlion = 100, 
+		/mob/living/simple_animal/tindalos = 60,
+		/mob/living/simple_animal/thinbug = 60,
+		/mob/living/simple_animal/hostile/lizard = 20,
+		/mob/living/simple_animal/hostile/planet/antlion/mega = 10)
 
 /datum/biome/dry_seafloor
 	turf_type = /turf/open/floor/plating/planetary/dry_seafloor

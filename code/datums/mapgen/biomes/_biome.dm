@@ -8,14 +8,14 @@
 	var/fauna_density = 0
 	///list of type paths of objects that can be spawned when the turf spawns flora
 	var/list/flora_types = list(/obj/structure/flora/grass/jungle)
-	///list of type paths of mobs that can be spawned when the turf spawns fauna
-	var/list/fauna_types = list()
+	///list of type paths of mobs that can be spawned when the turf spawns fauna, and their weight
+	var/list/fauna_weight_types = list()
 
 ///This proc handles the creation of a turf of a specific biome type
 /datum/biome/proc/generate_turf(turf/gen_turf)
 	gen_turf.ChangeTurf(turf_type, null, CHANGETURF_DEFER_CHANGE)
-	if(length(fauna_types) && prob(fauna_density))
-		var/mob/fauna = pick(fauna_types)
+	if(length(fauna_weight_types) && prob(fauna_density))
+		var/mob/fauna = pickweight(fauna_weight_types)
 		new fauna(gen_turf)
 
 	if(length(flora_types) && prob(flora_density))

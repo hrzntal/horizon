@@ -66,9 +66,19 @@
 	turf_type = /turf/open/floor/plating/grass/jungle
 	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/tree/jungle, /obj/structure/flora/rock/jungle, /obj/structure/flora/junglebush, /obj/structure/flora/junglebush/b, /obj/structure/flora/junglebush/c, /obj/structure/flora/junglebush/large, /obj/structure/flora/rock/pile/largejungle)
 	flora_density = 40
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/jungle/leaper = 100, 
+		/mob/living/simple_animal/hostile/jungle/mega_arachnid = 100,
+		/mob/living/simple_animal/hostile/jungle/mook = 100,
+		/mob/living/simple_animal/hostile/jungle/seedling = 100)
 
 /datum/biome/jungle/deep
 	flora_density = 65
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/jungle/leaper = 100, 
+		/mob/living/simple_animal/hostile/jungle/mega_arachnid = 100,
+		/mob/living/simple_animal/hostile/jungle/mook = 100,
+		/mob/living/simple_animal/hostile/jungle/seedling = 100)
 
 /datum/biome/wasteland
 	turf_type = /turf/open/floor/plating/dirt/jungle/wasteland

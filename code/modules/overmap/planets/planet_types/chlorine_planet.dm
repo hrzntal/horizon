@@ -74,6 +74,13 @@
 
 /datum/biome/chlorine_desert
 	turf_type = /turf/open/floor/plating/planetary/chlorine_sand
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/jelly = 100, 
+		/mob/living/simple_animal/tindalos = 50,
+		/mob/living/simple_animal/thinbug = 50,
+		/mob/living/simple_animal/yithian = 50,
+		/mob/living/simple_animal/hostile/planet/samak/alt = 100,
+		/mob/living/simple_animal/hostile/planet/jelly/mega = 5)
 
 /datum/biome/chlorine_water
 	turf_type = /turf/open/floor/plating/planetary/water/chlorine

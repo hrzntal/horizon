@@ -44,6 +44,7 @@
 	sound_weak_outside = /datum/looping_sound/weather/wind/indoors
 	sound_weak_inside = /datum/looping_sound/weather/wind
 
+	immunity_type = "snow"
 	aesthetic = FALSE
 	thunder_chance = 2
 

@@ -3033,6 +3033,7 @@
 #include "code\modules\overmap\sun_system.dm"
 #include "code\modules\overmap\transporter.dm"
 #include "code\modules\overmap\planets\planet_templates.dm"
+#include "code\modules\overmap\planets\planetary_mobs.dm"
 #include "code\modules\overmap\planets\planetary_objects.dm"
 #include "code\modules\overmap\planets\PlanetGenerator.dm"
 #include "code\modules\overmap\planets\planet_types\barren_planet.dm"

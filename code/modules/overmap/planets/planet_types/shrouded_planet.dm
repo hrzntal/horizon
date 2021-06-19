@@ -79,6 +79,10 @@
 
 /datum/biome/shrouded_sand
 	turf_type = /turf/open/floor/plating/planetary/shrouded_sand
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/royalcrab = 100, 
+		/mob/living/simple_animal/hostile/planet/jelly/alt = 100,
+		/mob/living/simple_animal/hostile/planet/shantak/alt = 100)
 
 /datum/biome/shrouded_tar
 	turf_type = /turf/open/floor/plating/planetary/water/tar

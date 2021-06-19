@@ -61,11 +61,20 @@
 	turf_type = /turf/open/floor/plating/planetary/grass
 	flora_types = list(/obj/structure/flora/planetary/firstbush,/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/planetary/fernybush,/obj/structure/flora/planetary_grass/fullgrass,/obj/structure/flora/ash/chilly, /obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy)
 	flora_density = 30
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/samak = 1, 
+		/mob/living/simple_animal/hostile/planet/diyaab = 1, 
+		/mob/living/simple_animal/hostile/planet/shantak = 1)
 
 /datum/biome/snow
 	turf_type = /turf/open/floor/plating/planetary/snow
 	flora_types = list(/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy, /obj/structure/flora/rock/icy)
 	flora_density = 12
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/samak = 100, 
+		/mob/living/simple_animal/hostile/planet/diyaab = 100, 
+		/mob/living/simple_animal/hostile/planet/shantak = 100,
+		/mob/living/simple_animal/hostile/planet/royalcrab/giant = 8)
 
 /datum/biome/frozen_lake
 	turf_type = /turf/open/floor/plating/planetary/ice

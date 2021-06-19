@@ -58,6 +58,12 @@
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	flora_types = list(/obj/structure/flora/rock, /obj/structure/flora/rock/pile, /obj/structure/flora/ash/tall_shroom, /obj/structure/flora/ash/leaf_shroom, /obj/structure/flora/ash/cap_shroom, /obj/structure/flora/ash/stem_shroom, /obj/structure/flora/ash/cacti)
 	flora_density = 7
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/hostile/megafauna/dragon = 4, 
+		/mob/living/simple_animal/hostile/planet/charbaby = 100, 
+		/mob/living/simple_animal/hostile/planet/shantak/lava = 100,
+		/mob/living/simple_animal/hostile/asteroid/goliath/beast = 100,
+		/mob/living/simple_animal/thinbug = 50)
 
 /datum/biome/lava
 	turf_type = /turf/open/lava/smooth/lava_land_surface

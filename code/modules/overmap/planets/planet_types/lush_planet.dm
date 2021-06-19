@@ -61,6 +61,10 @@
 	turf_type = /turf/open/floor/plating/planetary/grass
 	flora_types = list(/obj/structure/flora/tree/jungle, /obj/structure/flora/planetary/palebush,/obj/structure/flora/rock/pile, /obj/structure/flora/ausbushes/ywflowers, /obj/structure/flora/ausbushes/brflowers, /obj/structure/flora/ausbushes/brflowers, /obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/goldenbush, /obj/structure/flora/planetary/leafybush, /obj/structure/flora/planetary/grassybush, /obj/structure/flora/planetary/fernybush, /obj/structure/flora/planetary/sunnybush, /obj/structure/flora/planetary_grass/sparsegrass, /obj/structure/flora/planetary_grass/fullgrass)
 	flora_density = 7
+	fauna_density = 0.5
+	fauna_weight_types = list(/mob/living/simple_animal/tindalos = 1, 
+		/mob/living/simple_animal/yithian = 1, 
+		/mob/living/simple_animal/hostile/planet/jelly = 1)
 
 /datum/biome/coast
 	turf_type = /turf/open/floor/plating/planetary/sand
