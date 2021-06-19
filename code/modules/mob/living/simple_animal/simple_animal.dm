@@ -254,6 +254,8 @@
 
 /mob/living/simple_animal/proc/handle_automated_movement()
 	set waitfor = FALSE
+	if(AIStatus == AI_OFF)
+		return FALSE
 	if(!stop_automated_movement && wander)
 		if((isturf(loc) || allow_movement_on_non_turfs) && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
