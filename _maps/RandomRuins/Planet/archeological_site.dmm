@@ -77,6 +77,10 @@
 /obj/effect/spawner/clear,
 /turf/template_noop,
 /area/template_noop)
+"Z" = (
+/obj/item/clothing/head/fedora/curator,
+/turf/open/floor/plating/planetary/wasteland,
+/area/template_noop)
 
 (1,1,1) = {"
 P
@@ -141,7 +145,7 @@ A
 (7,1,1) = {"
 a
 E
-E
+Z
 E
 E
 E
