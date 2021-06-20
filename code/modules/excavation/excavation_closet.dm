@@ -1,7 +1,7 @@
 /obj/structure/closet/excavation
 	name = "excavation closet"
 	icon_state = "mining"
-	desc = "Contains equipment nessecary for conducting excavation."
+	desc = "Contains equipment necessary for conducting excavation."
 
 /obj/structure/closet/excavation/PopulateContents()
 	..()
