@@ -2,6 +2,7 @@
 #define VALUES_PER_TRANSITION 5
 #define TRANSITION_VALUE (1 / VALUES_PER_TRANSITION)
 #define ALL_TRANSITIONS (VALUES_PER_TRANSITION * 6)
+#define TWEAK_HOUR_SHIFT 1.5 //The amount of hours we tweak forwards to make the cycle more earth-like
 
 /datum/day_night_controller
 	/// YOU NEED TO FILL OUT ALL OF THEM
@@ -52,10 +53,15 @@
 		GetAreas() //Need to get it later because otherwise it wont get the areas, quirky stuff
 	//Station time goes from 0 to 864000, which makes 600 a 1 minute
 	var/time = station_time() / 600 / 60 //600 - minutes //60 - hours. We get from 0 to 24 here
+	
+	//We add a "tweak" offset to make the cycle more earth-like
+	time += TWEAK_HOUR_SHIFT
+	if(time > 24)
+		time -= 24
+
 	time = time / 4 * VALUES_PER_TRANSITION //4 hours per transition and 5 transitions
-	time = FLOOR(time, 1)
-	if(time > ALL_TRANSITIONS || time <= 0)
-		CRASH("Tried to set an invalid day/night transition of [time]. Bad time calculation.")
+	time = CEILING(time, 1)
+	time = clamp(time, 1, ALL_TRANSITIONS)
 	for(var/i in affected_areas)
 		var/area/my_area = i
 		my_area.cut_overlay(effect)
