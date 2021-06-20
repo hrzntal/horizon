@@ -57,7 +57,7 @@
 
 /obj/item/excavation_pick/hand_pick
 	name = "hand pickaxe"
-	desc = "A smaller, more precise version of the pickaxe. Will dig 10 centimentres in."
+	desc = "A smaller, more precise version of the pickaxe. Will dig 10 centimeters in."
 	w_class = WEIGHT_CLASS_NORMAL
 	dig_speed = 2 SECONDS
 	icon_state = "pick_hand"
