@@ -18,7 +18,11 @@
 
 /area/planet/jungle
 	name = "Jungle Planet Surface"
-	ambientsounds = list('sound/ambience/jungle.ogg', 'sound/ambience/eeriejungle1.ogg', 'sound/ambience/eeriejungle2.ogg')
+	ambientsounds = list(
+		'sound/ambience/jungle.ogg',
+		'sound/ambience/eeriejungle1.ogg',
+		'sound/ambience/eeriejungle2.ogg',
+	)
 	min_ambience_cooldown = 2 MINUTES
 	max_ambience_cooldown = 3 MINUTES
 
@@ -28,57 +32,86 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/plains,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/mudlands,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/mudlands,
-		BIOME_HIGH_HUMIDITY = /datum/biome/water
+		BIOME_HIGH_HUMIDITY = /datum/biome/water,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/plains,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/jungle,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/jungle,
-		BIOME_HIGH_HUMIDITY = /datum/biome/mudlands
+		BIOME_HIGH_HUMIDITY = /datum/biome/mudlands,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/plains,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/plains,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/jungle/deep,
-		BIOME_HIGH_HUMIDITY = /datum/biome/jungle
+		BIOME_HIGH_HUMIDITY = /datum/biome/jungle,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/wasteland,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/plains,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/jungle,
-		BIOME_HIGH_HUMIDITY = /datum/biome/jungle/deep
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/jungle/deep,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
 
 /datum/biome/mudlands
 	turf_type = /turf/open/floor/plating/dirt/jungle/dark
-	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/rock/jungle, /obj/structure/flora/rock/pile/largejungle)
+	flora_types = list(
+		/obj/structure/flora/grass/jungle,
+		/obj/structure/flora/grass/jungle/b,
+		/obj/structure/flora/rock/jungle,
+		/obj/structure/flora/rock/pile/largejungle,
+	)
 	flora_density = 3
 
 /datum/biome/plains
 	turf_type = /turf/open/floor/plating/grass/jungle
-	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/tree/jungle, /obj/structure/flora/rock/jungle, /obj/structure/flora/junglebush, /obj/structure/flora/junglebush/b, /obj/structure/flora/junglebush/c, /obj/structure/flora/junglebush/large, /obj/structure/flora/rock/pile/largejungle)
+	flora_types = list(
+		/obj/structure/flora/grass/jungle,
+		/obj/structure/flora/grass/jungle/b,
+		/obj/structure/flora/tree/jungle,
+		/obj/structure/flora/rock/jungle,
+		/obj/structure/flora/junglebush,
+		/obj/structure/flora/junglebush/b,
+		/obj/structure/flora/junglebush/c,
+		/obj/structure/flora/junglebush/large,
+		/obj/structure/flora/rock/pile/largejungle,
+	)
 	flora_density = 15
 
 /datum/biome/jungle
 	turf_type = /turf/open/floor/plating/grass/jungle
-	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/tree/jungle, /obj/structure/flora/rock/jungle, /obj/structure/flora/junglebush, /obj/structure/flora/junglebush/b, /obj/structure/flora/junglebush/c, /obj/structure/flora/junglebush/large, /obj/structure/flora/rock/pile/largejungle)
+	flora_types = list(
+		/obj/structure/flora/grass/jungle,
+		/obj/structure/flora/grass/jungle/b,
+		/obj/structure/flora/tree/jungle,
+		/obj/structure/flora/rock/jungle,
+		/obj/structure/flora/junglebush,
+		/obj/structure/flora/junglebush/b,
+		/obj/structure/flora/junglebush/c,
+		/obj/structure/flora/junglebush/large,
+		/obj/structure/flora/rock/pile/largejungle,
+	)
 	flora_density = 40
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/jungle/leaper = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/jungle/leaper = 100,
 		/mob/living/simple_animal/hostile/jungle/mega_arachnid = 100,
 		/mob/living/simple_animal/hostile/jungle/mook = 100,
-		/mob/living/simple_animal/hostile/jungle/seedling = 100)
+		/mob/living/simple_animal/hostile/jungle/seedling = 100,
+	)
 
 /datum/biome/jungle/deep
 	flora_density = 65
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/jungle/leaper = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/jungle/leaper = 100,
 		/mob/living/simple_animal/hostile/jungle/mega_arachnid = 100,
 		/mob/living/simple_animal/hostile/jungle/mook = 100,
-		/mob/living/simple_animal/hostile/jungle/seedling = 100)
+		/mob/living/simple_animal/hostile/jungle/seedling = 100,
+	)
 
 /datum/biome/wasteland
 	turf_type = /turf/open/floor/plating/dirt/jungle/wasteland
@@ -86,12 +119,12 @@
 /datum/atmosphere/jungle
 	base_gases = list(
 		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20
+		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
 		/datum/gas/oxygen=5,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=2
+		/datum/gas/carbon_dioxide=2,
 	)
 	restricted_chance = 0
 

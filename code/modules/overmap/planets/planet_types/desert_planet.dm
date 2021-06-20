@@ -21,7 +21,14 @@
 
 /area/planet/desert
 	name = "Desert Planet Surface"
-	ambientsounds = list('sound/effects/wind/desert0.ogg','sound/effects/wind/desert1.ogg','sound/effects/wind/desert2.ogg','sound/effects/wind/desert3.ogg','sound/effects/wind/desert4.ogg','sound/effects/wind/desert5.ogg')
+	ambientsounds = list(
+		'sound/effects/wind/desert0.ogg',
+		'sound/effects/wind/desert1.ogg',
+		'sound/effects/wind/desert2.ogg',
+		'sound/effects/wind/desert3.ogg',
+		'sound/effects/wind/desert4.ogg',
+		'sound/effects/wind/desert5.ogg',
+	)
 
 /datum/map_generator/planet_gen/desert
 	possible_biomes = list(
@@ -29,40 +36,47 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/desert,
-		BIOME_HIGH_HUMIDITY = /datum/biome/desert
+		BIOME_HIGH_HUMIDITY = /datum/biome/desert,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/desert,
-		BIOME_HIGH_HUMIDITY = /datum/biome/desert
+		BIOME_HIGH_HUMIDITY = /datum/biome/desert,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/dry_seafloor,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/desert,
-		BIOME_HIGH_HUMIDITY = /datum/biome/desert
+		BIOME_HIGH_HUMIDITY = /datum/biome/desert,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/dry_seafloor,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/dry_seafloor,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/dry_seafloor,
-		BIOME_HIGH_HUMIDITY = /datum/biome/desert
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/desert,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
 
 /datum/biome/desert
 	turf_type = /turf/open/floor/plating/planetary/sand/desert
-	flora_types = list(/obj/structure/flora/planetary/palebush,/obj/structure/flora/rock/pile,/obj/structure/flora/rock, /obj/structure/flora/ash/cacti)
+	flora_types = list(
+		/obj/structure/flora/planetary/palebush,
+		/obj/structure/flora/rock/pile,
+		/obj/structure/flora/rock,
+		/obj/structure/flora/ash/cacti,
+	)
 	flora_density = 3
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/antlion = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/planet/antlion = 100,
 		/mob/living/simple_animal/tindalos = 60,
 		/mob/living/simple_animal/thinbug = 60,
 		/mob/living/simple_animal/hostile/lizard = 20,
-		/mob/living/simple_animal/hostile/planet/antlion/mega = 10)
+		/mob/living/simple_animal/hostile/planet/antlion/mega = 10,
+	)
 
 /datum/biome/dry_seafloor
 	turf_type = /turf/open/floor/plating/planetary/dry_seafloor
@@ -70,15 +84,15 @@
 /datum/atmosphere/desert
 	base_gases = list(
 		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20
+		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
 		/datum/gas/oxygen=5,
-		/datum/gas/nitrogen=5
+		/datum/gas/nitrogen=5,
 	)
 	restricted_chance = 0
 
-	minimum_pressure = ONE_ATMOSPHERE 
+	minimum_pressure = ONE_ATMOSPHERE
 	maximum_pressure = ONE_ATMOSPHERE  + 50
 
 	minimum_temp = T20C + 20

@@ -30,40 +30,50 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/mountain,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/mountain,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/basalt,
-		BIOME_HIGH_HUMIDITY = /datum/biome/basalt
+		BIOME_HIGH_HUMIDITY = /datum/biome/basalt,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/basalt,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/basalt,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/basalt,
-		BIOME_HIGH_HUMIDITY = /datum/biome/basalt
+		BIOME_HIGH_HUMIDITY = /datum/biome/basalt,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/basalt,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/basalt,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/basalt,
-		BIOME_HIGH_HUMIDITY = /datum/biome/lava
+		BIOME_HIGH_HUMIDITY = /datum/biome/lava,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/basalt,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/basalt,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/lava,
-		BIOME_HIGH_HUMIDITY = /datum/biome/lava
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/lava,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
 
 /datum/biome/basalt
 	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	flora_types = list(/obj/structure/flora/rock, /obj/structure/flora/rock/pile, /obj/structure/flora/ash/tall_shroom, /obj/structure/flora/ash/leaf_shroom, /obj/structure/flora/ash/cap_shroom, /obj/structure/flora/ash/stem_shroom, /obj/structure/flora/ash/cacti)
+	flora_types = list(
+		/obj/structure/flora/rock,
+		/obj/structure/flora/rock/pile,
+		/obj/structure/flora/ash/tall_shroom,
+		/obj/structure/flora/ash/leaf_shroom,
+		/obj/structure/flora/ash/cap_shroom,
+		/obj/structure/flora/ash/stem_shroom,
+		/obj/structure/flora/ash/cacti,
+	)
 	flora_density = 7
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/megafauna/dragon = 4, 
-		/mob/living/simple_animal/hostile/planet/charbaby = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/megafauna/dragon = 4,
+		/mob/living/simple_animal/hostile/planet/charbaby = 100,
 		/mob/living/simple_animal/hostile/planet/shantak/lava = 100,
 		/mob/living/simple_animal/hostile/asteroid/goliath/beast = 100,
-		/mob/living/simple_animal/thinbug = 50)
+		/mob/living/simple_animal/thinbug = 50,
+	)
 
 /datum/biome/lava
 	turf_type = /turf/open/lava/smooth/lava_land_surface
@@ -71,12 +81,12 @@
 /datum/atmosphere/volcanic
 	base_gases = list(
 		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20
+		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
 		/datum/gas/oxygen=5,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=2
+		/datum/gas/carbon_dioxide=2,
 	)
 	restricted_chance = 0
 

@@ -40,7 +40,14 @@
 
 /area/planet/chlorine
 	name = "Chlorine Planet Surface"
-	ambientsounds = list('sound/effects/wind/desert0.ogg','sound/effects/wind/desert1.ogg','sound/effects/wind/desert2.ogg','sound/effects/wind/desert3.ogg','sound/effects/wind/desert4.ogg','sound/effects/wind/desert5.ogg')
+	ambientsounds = list(
+		'sound/effects/wind/desert0.ogg',
+		'sound/effects/wind/desert1.ogg',
+		'sound/effects/wind/desert2.ogg',
+		'sound/effects/wind/desert3.ogg',
+		'sound/effects/wind/desert4.ogg',
+		'sound/effects/wind/desert5.ogg',
+	)
 
 /datum/map_generator/planet_gen/chlorine
 	possible_biomes = list(
@@ -48,26 +55,26 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_water,
-		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_water,
-		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
-		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_water,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/chlorine_desert,
-		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_desert
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/chlorine_desert,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
@@ -75,12 +82,14 @@
 /datum/biome/chlorine_desert
 	turf_type = /turf/open/floor/plating/planetary/chlorine_sand
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/jelly = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/planet/jelly = 100,
 		/mob/living/simple_animal/tindalos = 50,
 		/mob/living/simple_animal/thinbug = 50,
 		/mob/living/simple_animal/yithian = 50,
 		/mob/living/simple_animal/hostile/planet/samak/alt = 100,
-		/mob/living/simple_animal/hostile/planet/jelly/mega = 5)
+		/mob/living/simple_animal/hostile/planet/jelly/mega = 5,
+	)
 
 /datum/biome/chlorine_water
 	turf_type = /turf/open/floor/plating/planetary/water/chlorine
@@ -96,7 +105,7 @@
 	)
 	restricted_chance = 0
 
-	minimum_pressure = ONE_ATMOSPHERE - 30 
+	minimum_pressure = ONE_ATMOSPHERE - 30
 	maximum_pressure = ONE_ATMOSPHERE
 
 	minimum_temp = T20C - 100

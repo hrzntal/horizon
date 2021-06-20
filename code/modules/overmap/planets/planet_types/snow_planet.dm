@@ -14,10 +14,12 @@
 	planet_flags = PLANET_HABITABLE|PLANET_WATER|PLANET_WRECKAGES|PLANET_ICE
 
 /datum/weather_controller/snow_planet
-	possible_weathers = list(/datum/weather/snow_storm = 50,
-							/datum/weather/snowfall = 50,
-							/datum/weather/snowfall/heavy = 50,
-							/datum/weather/hailstorm = 50)
+	possible_weathers = list(
+		/datum/weather/snow_storm = 50,
+		/datum/weather/snowfall = 50,
+		/datum/weather/snowfall/heavy = 50,
+		/datum/weather/hailstorm = 50,
+	)
 
 /datum/overmap_object/shuttle/planet/snow
 	name = "Snow Planet"
@@ -25,7 +27,13 @@
 
 /area/planet/snow
 	name = "Snow Planet Surface"
-	ambientsounds = list('sound/effects/wind/tundra0.ogg','sound/effects/wind/tundra1.ogg','sound/effects/wind/tundra2.ogg','sound/effects/wind/spooky0.ogg','sound/effects/wind/spooky1.ogg')
+	ambientsounds = list(
+		'sound/effects/wind/tundra0.ogg',
+		'sound/effects/wind/tundra1.ogg',
+		'sound/effects/wind/tundra2.ogg',
+		'sound/effects/wind/spooky0.ogg',
+		'sound/effects/wind/spooky1.ogg',
+	)
 
 /datum/map_generator/planet_gen/snow
 	possible_biomes = list(
@@ -33,48 +41,75 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/snowy_mountainside,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/snow,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/snow,
-		BIOME_HIGH_HUMIDITY = /datum/biome/frozen_lake
+		BIOME_HIGH_HUMIDITY = /datum/biome/frozen_lake,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/snow,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/snow,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/snow,
-		BIOME_HIGH_HUMIDITY = /datum/biome/frozen_lake
+		BIOME_HIGH_HUMIDITY = /datum/biome/frozen_lake,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/grass_tundra,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/snow,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/snow,
-		BIOME_HIGH_HUMIDITY = /datum/biome/snow
+		BIOME_HIGH_HUMIDITY = /datum/biome/snow,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/grass_tundra,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/snow,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/snow,
-		BIOME_HIGH_HUMIDITY = /datum/biome/snow
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/snow,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
 
 /datum/biome/grass_tundra
 	turf_type = /turf/open/floor/plating/planetary/grass
-	flora_types = list(/obj/structure/flora/planetary/firstbush,/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/planetary/fernybush,/obj/structure/flora/planetary_grass/fullgrass,/obj/structure/flora/ash/chilly, /obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy)
+	flora_types = list(
+		/obj/structure/flora/planetary/firstbush,
+		/obj/structure/flora/planetary_grass/sparsegrass,
+		/obj/structure/flora/planetary/fernybush,
+		/obj/structure/flora/planetary_grass/fullgrass,
+		/obj/structure/flora/ash/chilly,
+		/obj/structure/flora/grass,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/bush,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/rock/pile/icy,
+	)
 	flora_density = 30
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/samak = 1, 
-		/mob/living/simple_animal/hostile/planet/diyaab = 1, 
-		/mob/living/simple_animal/hostile/planet/shantak = 1)
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/planet/samak = 1,
+		/mob/living/simple_animal/hostile/planet/diyaab = 1,
+		/mob/living/simple_animal/hostile/planet/shantak = 1,
+	)
 
 /datum/biome/snow
 	turf_type = /turf/open/floor/plating/planetary/snow
-	flora_types = list(/obj/structure/flora/planetary_grass/sparsegrass,/obj/structure/flora/grass,/obj/structure/flora/grass/brown, /obj/structure/flora/grass/green, /obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/tree/pine, /obj/structure/flora/rock/pile/icy, /obj/structure/flora/rock/icy)
+	flora_types = list(
+		/obj/structure/flora/planetary_grass/sparsegrass,
+		/obj/structure/flora/grass,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/bush,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/rock/pile/icy,
+		/obj/structure/flora/rock/icy,
+	)
 	flora_density = 12
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/samak = 100, 
-		/mob/living/simple_animal/hostile/planet/diyaab = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/planet/samak = 100,
+		/mob/living/simple_animal/hostile/planet/diyaab = 100,
 		/mob/living/simple_animal/hostile/planet/shantak = 100,
-		/mob/living/simple_animal/hostile/planet/royalcrab/giant = 8)
+		/mob/living/simple_animal/hostile/planet/royalcrab/giant = 8,
+	)
 
 /datum/biome/frozen_lake
 	turf_type = /turf/open/floor/plating/planetary/ice
@@ -128,12 +163,12 @@
 /datum/atmosphere/snow
 	base_gases = list(
 		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20
+		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
 		/datum/gas/oxygen=5,
 		/datum/gas/nitrogen=5,
-		/datum/gas/carbon_dioxide=1
+		/datum/gas/carbon_dioxide=1,
 	)
 	restricted_chance = 0
 

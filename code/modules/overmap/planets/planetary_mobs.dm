@@ -14,7 +14,12 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list(
+		"min_oxy" = 0, "max_oxy" = 0,
+		"min_tox" = 0, "max_tox" = 0,
+		"min_co2" = 0, "max_co2" = 0,
+		"min_n2" = 0, "max_n2" = 0,
+	)
 	minbodytemp = 0
 	maxbodytemp = 1500
 	weather_immunities = list("snow", "lava", "ash", "acid")
@@ -27,7 +32,11 @@
 	aggro_vision_range = 8
 	see_in_dark = 3
 
-	butcher_results = list(/obj/item/food/meat/slab = 2, /obj/item/stack/sheet/bone = 2, /obj/item/stack/sheet/animalhide/generic = 1)
+	butcher_results = list(
+		/obj/item/food/meat/slab = 2,
+		/obj/item/stack/sheet/bone = 2,
+		/obj/item/stack/sheet/animalhide/generic = 1
+	)
 
 /mob/living/simple_animal/hostile/planet/samak
 	name = "samak"
@@ -128,7 +137,12 @@
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
 	mob_size = MOB_SIZE_TINY
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list(
+		"min_oxy" = 0, "max_oxy" = 0,
+		"min_tox" = 0, "max_tox" = 0,
+		"min_co2" = 0, "max_co2" = 0,
+		"min_n2" = 0, "max_n2" = 0,
+	)
 	minbodytemp = 0
 	maxbodytemp = 1500
 	weather_immunities = list("snow", "lava", "ash", "acid")
@@ -142,7 +156,12 @@
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
 	mob_size = MOB_SIZE_TINY
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list(
+		"min_oxy" = 0, "max_oxy" = 0,
+		"min_tox" = 0, "max_tox" = 0,
+		"min_co2" = 0, "max_co2" = 0,
+		"min_n2" = 0, "max_n2" = 0,
+	)
 	minbodytemp = 0
 	maxbodytemp = 1500
 	weather_immunities = list("snow", "lava", "ash", "acid")
@@ -158,7 +177,12 @@
 	speak_chance = 1
 	emote_hear = list("scratches the ground","chitters")
 	mob_size = MOB_SIZE_TINY
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list(
+		"min_oxy" = 0, "max_oxy" = 0,
+		"min_tox" = 0, "max_tox" = 0,
+		"min_co2" = 0, "max_co2" = 0,
+		"min_n2" = 0, "max_n2" = 0,
+	)
 	minbodytemp = 0
 	maxbodytemp = 1500
 	weather_immunities = list("snow", "lava", "ash", "acid")

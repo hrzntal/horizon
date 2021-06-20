@@ -43,7 +43,10 @@
 
 /area/planet/shrouded
 	name = "Shrouded Planet Surface"
-	ambientsounds = list("sound/ambience/spookyspace1.ogg", "sound/ambience/spookyspace2.ogg")
+	ambientsounds = list(
+		"sound/ambience/spookyspace1.ogg",
+		"sound/ambience/spookyspace2.ogg",
+	)
 	min_ambience_cooldown = 2 MINUTES
 	max_ambience_cooldown = 4 MINUTES
 
@@ -53,26 +56,26 @@
 		BIOME_LOW_HUMIDITY = /datum/biome/mountain,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
-		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_sand
+		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_sand,
 		),
 	BIOME_LOWMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
-		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar
+		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar,
 		),
 	BIOME_HIGHMEDIUM_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
-		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar
+		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar,
 		),
 	BIOME_HIGH_HEAT = list(
 		BIOME_LOW_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_LOWMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
 		BIOME_HIGHMEDIUM_HUMIDITY = /datum/biome/shrouded_sand,
-		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar
-		)
+		BIOME_HIGH_HUMIDITY = /datum/biome/shrouded_tar,
+		),
 	)
 	high_height_biome = /datum/biome/mountain
 	perlin_zoom = 65
@@ -80,9 +83,11 @@
 /datum/biome/shrouded_sand
 	turf_type = /turf/open/floor/plating/planetary/shrouded_sand
 	fauna_density = 0.5
-	fauna_weight_types = list(/mob/living/simple_animal/hostile/planet/royalcrab = 100, 
+	fauna_weight_types = list(
+		/mob/living/simple_animal/hostile/planet/royalcrab = 100,
 		/mob/living/simple_animal/hostile/planet/jelly/alt = 100,
-		/mob/living/simple_animal/hostile/planet/shantak/alt = 100)
+		/mob/living/simple_animal/hostile/planet/shantak/alt = 100,
+	)
 
 /datum/biome/shrouded_tar
 	turf_type = /turf/open/floor/plating/planetary/water/tar
@@ -108,11 +113,11 @@
 /datum/atmosphere/shrouded
 	base_gases = list(
 		/datum/gas/nitrogen=80,
-		/datum/gas/oxygen=20
+		/datum/gas/oxygen=20,
 	)
 	normal_gases = list(
 		/datum/gas/bz=2,
-		/datum/gas/carbon_dioxide=2
+		/datum/gas/carbon_dioxide=2,
 	)
 	restricted_chance = 0
 
