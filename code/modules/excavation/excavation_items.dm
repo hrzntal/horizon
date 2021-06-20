@@ -30,8 +30,8 @@
 	. = ..()
 	var/amber = prob(50) ? TRUE : FALSE
 	var/flora = prob(50) ? TRUE : FALSE
-	icon_state = "[amber?"amber":"rock"]_[flora ?"flora":"fauna"]_[rand(1,7)]"
-	desc = "You see a fossil of some sort of a [flora ?"plant":"creature"], it is encased in [amber?"amber":"rock"]"
+	icon_state = "[amber ? "amber" : "rock"]_[flora ? "flora" : "fauna"]_[rand(1,7)]"
+	desc = "You see a fossil of some sort of a [flora ? "plant" : "creature"], it is encased in [amber ? "amber" : "rock"]"
 	name = "[amber?"amber":"rock"] fossil"
 
 /obj/item/excavation_junk
