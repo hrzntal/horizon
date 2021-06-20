@@ -29,6 +29,9 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
 /turf/open/openspace,
 /area/maintenance/solars/port/aft)
 "gD" = (
@@ -85,6 +88,10 @@
 /obj/machinery/blackbox_recorder,
 /turf/open/floor/circuit,
 /area/tcommsat/server)
+"lE" = (
+/obj/structure/grille,
+/turf/open/openspace/airless/planetary,
+/area/space)
 "lK" = (
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable,
@@ -109,12 +116,18 @@
 	dir = 1
 	},
 /obj/structure/lattice/catwalk,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
 /turf/open/openspace,
 /area/maintenance/solars/port/aft)
 "ok" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
+"oE" = (
+/turf/closed/wall/r_wall,
 /area/maintenance/solars/port/aft)
 "oV" = (
 /obj/structure/cable,
@@ -167,6 +180,9 @@
 	},
 /obj/structure/cable,
 /obj/machinery/light/directional/west,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "vf" = (
@@ -177,6 +193,9 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "vS" = (
@@ -198,6 +217,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/tcommsat/server)
+"xg" = (
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "ya" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/circuit,
@@ -221,6 +245,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
+/obj/machinery/door/firedoor/border_only,
 /turf/closed/wall,
 /area/maintenance/solars/port/aft)
 "zC" = (
@@ -232,6 +257,9 @@
 	},
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
 	dir = 1
 	},
 /turf/open/openspace,
@@ -258,6 +286,11 @@
 /obj/machinery/telecomms/bus/preset_three,
 /turf/open/floor/circuit,
 /area/tcommsat/server)
+"FM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "Hc" = (
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
@@ -275,6 +308,10 @@
 /obj/machinery/telecomms/processor/preset_three,
 /turf/open/floor/circuit,
 /area/tcommsat/server)
+"Iu" = (
+/obj/structure/grille,
+/turf/open/floor/engine/airless,
+/area/space)
 "IE" = (
 /turf/open/openspace,
 /area/maintenance/solars/port/aft)
@@ -290,6 +327,7 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/railing/corner,
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Lf" = (
@@ -299,6 +337,11 @@
 /area/maintenance/solars/port/aft)
 "MK" = (
 /obj/machinery/light/small/directional/east,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
+"Nf" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Ou" = (
@@ -316,6 +359,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
 /obj/structure/cable,
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "QM" = (
@@ -325,6 +369,7 @@
 	id = "CARGOLIFT";
 	pixel_x = 27
 	},
+/obj/machinery/door/firedoor/border_only,
 /turf/open/openspace,
 /area/maintenance/solars/port/aft)
 "Rg" = (
@@ -340,6 +385,9 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
 /turf/open/openspace,
 /area/maintenance/solars/port/aft)
 "SH" = (
@@ -373,6 +421,7 @@
 "TI" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
+/obj/machinery/door/firedoor/border_only,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Uh" = (
@@ -380,6 +429,9 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Ux" = (
@@ -390,6 +442,9 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "UH" = (
@@ -401,7 +456,7 @@
 /turf/open/floor/plating/airless,
 /area/space)
 "Vd" = (
-/turf/closed/wall,
+/turf/closed/wall/r_wall,
 /area/tcommsat/server)
 "Vn" = (
 /obj/structure/cable,
@@ -423,6 +478,10 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
+"WY" = (
+/obj/structure/lattice,
+/turf/open/floor/engine/airless,
+/area/space)
 "Xb" = (
 /obj/machinery/computer/message_monitor{
 	dir = 4
@@ -432,6 +491,7 @@
 "Xd" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
+/obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Ye" = (
@@ -31383,7 +31443,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Zw
 Zw
@@ -31640,7 +31700,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 Vd
@@ -31896,9 +31956,9 @@ Zw
 Zw
 Zw
 Zw
-Zw
-Zw
-Zw
+lE
+lE
+UH
 Vd
 hT
 qP
@@ -31932,23 +31992,23 @@ Ou
 Ou
 Ou
 Ou
-dO
-nZ
-nZ
-dO
+oE
+FM
+FM
+oE
 yC
 yC
 yC
 Ou
 yC
-dO
+oE
 nZ
 nZ
-dO
+oE
 Ou
-Ou
-Ou
-Ou
+Iu
+Iu
+Iu
 Ou
 Ou
 Ou
@@ -32153,7 +32213,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Zw
 Vd
@@ -32187,25 +32247,25 @@ Ou
 Ou
 Ou
 Ou
-dO
-dO
-dO
+oE
+oE
+oE
 Vn
 Ye
-dO
-dO
-dO
+oE
+oE
+oE
 yC
 yC
 yC
-dO
+oE
 ok
 Hc
-dO
+oE
 Ou
+WY
 Ou
-Ou
-Ou
+WY
 Ou
 Ou
 Ou
@@ -32410,7 +32470,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 Vd
@@ -32443,26 +32503,26 @@ Ou
 Ou
 Ou
 Ou
-dO
-dO
+oE
+oE
 JQ
 Ux
 Ux
 Ux
 ve
 SU
-dO
+oE
 yC
 yC
 yC
-dO
+oE
 lK
 rQ
-dO
-dO
-dO
-dO
-dO
+oE
+oE
+oE
+oE
+oE
 Ou
 Ou
 Ou
@@ -32667,8 +32727,8 @@ Zw
 Zw
 Zw
 Zw
-Zw
-Zw
+lE
+UH
 Vd
 ya
 cs
@@ -32697,10 +32757,10 @@ Ou
 Ou
 ZG
 Ou
-dO
+oE
 nZ
-dO
-dO
+oE
+oE
 rQ
 Qr
 IE
@@ -32708,20 +32768,20 @@ IE
 IE
 IE
 vf
-dO
-dO
-dO
-dO
-dO
+oE
+oE
+oE
+oE
+oE
 hW
 rQ
 dO
 rQ
 rQ
 rQ
-dO
-Ou
-Ou
+oE
+WY
+Iu
 Ou
 Ou
 Ou
@@ -32924,7 +32984,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 mP
@@ -32968,7 +33028,7 @@ Uh
 Xd
 Ph
 Ph
-Ph
+xg
 Ph
 Ph
 rQ
@@ -32976,9 +33036,9 @@ WG
 rQ
 pW
 rQ
-dO
+oE
 Ou
-Ou
+Iu
 Ou
 Ou
 Ou
@@ -33181,7 +33241,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 lC
@@ -33222,7 +33282,7 @@ IE
 IE
 IE
 oa
-WG
+Nf
 rQ
 rQ
 rQ
@@ -33233,9 +33293,9 @@ dO
 rQ
 rQ
 rQ
-dO
-Ou
-Ou
+oE
+WY
+Iu
 Ou
 Ou
 Ou
@@ -33438,8 +33498,8 @@ Zw
 Zw
 Zw
 Zw
-Zw
-Zw
+lE
+UH
 Vd
 im
 HN
@@ -33468,10 +33528,10 @@ Ou
 Ou
 ZG
 Ou
-dO
+oE
 nZ
-dO
-dO
+oE
+oE
 rQ
 yH
 IE
@@ -33479,18 +33539,18 @@ IE
 IE
 IE
 AW
-dO
-dO
-dO
-dO
-dO
+oE
+oE
+oE
+oE
+oE
 nZ
 nZ
-dO
-dO
-dO
-dO
-dO
+oE
+oE
+oE
+oE
+oE
 Ou
 Ou
 Ou
@@ -33695,7 +33755,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 Vd
@@ -33728,15 +33788,15 @@ Ou
 Ou
 Ou
 Ou
-dO
-dO
+oE
+oE
 gD
 Rx
 fB
 fB
 fB
 SH
-dO
+oE
 Ou
 Ou
 Ou
@@ -33745,9 +33805,9 @@ Ou
 Ou
 Ou
 Ou
+WY
 Ou
-Ou
-Ou
+WY
 Ou
 Ou
 Ou
@@ -33952,7 +34012,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Zw
 Vd
@@ -33986,14 +34046,14 @@ Ou
 Ou
 Ou
 Ou
-dO
-dO
-dO
+oE
+oE
+oE
 rQ
 rQ
-dO
-dO
-dO
+oE
+oE
+oE
 Ou
 Ou
 Ou
@@ -34002,9 +34062,9 @@ Ou
 Ou
 Ou
 Ou
-Ou
-Ou
-Ou
+Iu
+Iu
+Iu
 Ou
 Ou
 Ou
@@ -34209,9 +34269,9 @@ Zw
 Zw
 Zw
 Zw
-Zw
-Zw
-Zw
+lE
+lE
+UH
 Vd
 qM
 qP
@@ -34245,10 +34305,10 @@ Ou
 Ou
 Ou
 Ou
-dO
-nZ
-nZ
-dO
+oE
+FM
+FM
+oE
 Ou
 Ou
 Ou
@@ -34467,7 +34527,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Vd
 Vd
@@ -34724,7 +34784,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+lE
 Zw
 Zw
 Zw
