@@ -88,7 +88,7 @@
 
 	if(istype(I, /obj/item/excavation_measuring_tape))
 		if(current_dig_depth)
-			to_chat(user, "<span class='notice'>You measure the hole is [current_dig_depth] centimeters deep.</span>")
+			to_chat(user, "<span class='notice'>You measure the hole being [current_dig_depth] centimeters deep.</span>")
 		return COMPONENT_NO_AFTERATTACK
 
 	if(istype(I, /obj/item/excavation_depth_scanner))
