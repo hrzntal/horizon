@@ -57,7 +57,7 @@
 /turf/open/floor/plating,
 /area/shuttle/crow/cargo)
 "fw" = (
-/obj/structure/closet,
+/obj/structure/closet/excavation,
 /turf/open/floor/pod,
 /area/shuttle/crow)
 "fJ" = (
@@ -246,17 +246,17 @@
 /area/shuttle/crow/cargo)
 "tN" = (
 /obj/structure/table,
-/obj/item/storage/firstaid,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27;
 	pixel_y = 1
 	},
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/pod,
 /area/shuttle/crow)
 "um" = (
 /obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet,
+/obj/structure/closet/excavation,
 /turf/open/floor/pod,
 /area/shuttle/crow)
 "uo" = (
@@ -442,10 +442,10 @@
 	id = "crow";
 	launch_status = 0;
 	name = "ESS Crow";
+	overmap_shuttle_type = /datum/overmap_object/shuttle/ess_crow;
 	port_direction = 8;
 	preferred_direction = 4;
-	width = 15;
-	overmap_shuttle_type = /datum/overmap_object/shuttle/ess_crow
+	width = 15
 	},
 /turf/open/floor/plating,
 /area/shuttle/crow)

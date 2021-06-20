@@ -103,3 +103,10 @@
 	suffix = "spider_nest.dmm"
 	planet_requirements = PLANET_HABITABLE
 
+/datum/map_template/ruin/planetary/archeological_site
+	name = "Archeological Site"
+	id = "archeological_site"
+	description = "An archeological site."
+	cost = 5
+	suffix = "archeological_site.dmm"
+	planet_requirements = PLANET_HABITABLE

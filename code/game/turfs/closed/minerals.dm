@@ -38,6 +38,8 @@
 	if(!color && turn_to_level_color)
 		var/datum/space_level/level = SSmapping.z_list[z]
 		color = level.rock_color
+	if(prob(3))
+		AddComponent(/datum/component/digsite)
 
 
 /turf/closed/mineral/proc/Spread_Vein()

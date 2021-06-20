@@ -138,6 +138,11 @@
 	clawfootstep = FOOTSTEP_GENERIC_HEAVY
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+/turf/open/floor/plating/planetary/dry_seafloor/Initialize()
+	. = ..()
+	if(prob(3))
+		AddComponent(/datum/component/digsite)
+
 /turf/open/floor/plating/planetary/wasteland
 	name = "cracked earth"
 	desc = "Looks a bit dry."
@@ -153,6 +158,8 @@
 	.=..()
 	if(prob(15))
 		icon_state = "[initial(icon_state)][rand(0,12)]"
+	if(prob(3))
+		AddComponent(/datum/component/digsite)
 
 /obj/structure/flora/planetary
 	name = "bush"
