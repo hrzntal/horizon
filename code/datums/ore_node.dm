@@ -159,7 +159,7 @@
 	var/ore_variety = 5
 
 /obj/effect/ore_node_spawner/generous
-	ore_density = 5
+	ore_density = 6
 
 /obj/effect/ore_node_spawner/scarce
 	ore_density = 3
@@ -198,3 +198,13 @@
 		compiled_list[ore_type] = round(ore_amount * ore_density)
 	new /datum/ore_node(x, y, z, compiled_list, rand(5,8))
 	qdel(src)
+
+/datum/ore_node_seeder
+	var/list/spawners_weight = list(/obj/effect/ore_node_spawner = 100)
+	var/spawners_amount = 10
+
+/datum/ore_node_seeder/proc/SeedToLevel(z)
+	for(var/i in 1 to spawners_amount)
+		var/picked_type = pickweight(spawners_weight)
+		var/turf/loc_to_spawn = locate(rand(1,world.maxx), rand(1,world.maxy), z)
+		new picked_type(loc_to_spawn)

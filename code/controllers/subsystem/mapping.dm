@@ -213,7 +213,8 @@ Used by the AI doomsday and the self-destruct nuke.
 					rock_color,
 					plant_color,
 					grass_color,
-					water_color
+					water_color,
+					ore_node_seeder_type
 					)
 	. = list()
 	var/start_time = REALTIMEOFDAY
@@ -254,8 +255,13 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/datum/atmosphere/atmos
 	if(atmosphere_type)
 		atmos = new atmosphere_type()
+	var/datum/ore_node_seeder/ore_node_seeder
+	if(ore_node_seeder_type)
+		ore_node_seeder = new ore_node_seeder_type
 	for(var/c in space_levels)
 		var/datum/space_level/level = c
+		if(ore_node_seeder)
+			ore_node_seeder.SeedToLevel(level.z_value)
 		if(atmos)
 			SSair.register_planetary_atmos(atmos, level.z_value)
 		if(rock_color)
@@ -268,6 +274,8 @@ Used by the AI doomsday and the self-destruct nuke.
 			level.water_color = water_color
 	if(atmos)
 		qdel(atmos)
+	if(ore_node_seeder)
+		qdel(ore_node_seeder)
 	//Apply the weather controller to the levels if able
 	if(weather_controller_type)
 		var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
@@ -318,7 +326,8 @@ Used by the AI doomsday and the self-destruct nuke.
 			rock_color = picked_rock_color,
 			plant_color = picked_plant_color,
 			grass_color = picked_grass_color,
-			water_color = picked_water_color)
+			water_color = picked_water_color,
+			ore_node_seeder_type = config.ore_node_seeder_type)
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"

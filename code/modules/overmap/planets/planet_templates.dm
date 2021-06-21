@@ -36,6 +36,8 @@
 	var/planet_flags = PLANET_HABITABLE|PLANET_WATER|PLANET_WRECKAGES
 	/// Budget for ruins
 	var/ruin_budget = 40
+	/// Type of our ore node seeder
+	var/ore_node_seeder_type = /datum/ore_node_seeder
 
 /datum/planet_template/proc/LoadTemplate(datum/overmap_sun_system/system, coordinate_x, coordinate_y)
 	var/old_z = world.maxz
@@ -63,7 +65,9 @@
 							rock_color = picked_rock_color,
 							plant_color = picked_plant_color,
 							grass_color = picked_grass_color,
-							water_color = picked_water_color)
+							water_color = picked_water_color,
+							ore_node_seeder_type = ore_node_seeder_type
+							)
 	else
 		if(!area_type)
 			WARNING("No area type passed on planet generation")
@@ -82,6 +86,10 @@
 			var/datum/atmosphere/atmos = new atmosphere_type()
 			SSair.register_planetary_atmos(atmos, new_level.z_value)
 			qdel(atmos)
+		if(ore_node_seeder_type)
+			var/datum/ore_node_seeder/seeder = new ore_node_seeder_type
+			seeder.SeedToLevel(new_level.z_value)
+			qdel(seeder)
 		if(day_night_controller_type)
 			var/datum/day_night_controller/day_night = new day_night_controller_type(list(new_level))
 			day_night.LinkOvermapObject(linked_overmap_object)
