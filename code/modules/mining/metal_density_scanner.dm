@@ -17,6 +17,7 @@
 	var/readout_progress = 0
 
 /obj/item/metal_density_scanner/update_icon_state()
+	. = ..()
 	if(!turned_on)
 		icon_state = initial(icon_state)
 	else

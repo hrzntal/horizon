@@ -98,6 +98,7 @@
 		. += "<span class='warning'>It's not braced sufficiently.</span>"
 
 /obj/machinery/power/mining_drill/update_icon_state()
+	. = ..()
 	if(simple_icon_states)
 		if(panel_open)
 			icon_state = "[initial(icon_state)]_open"
@@ -371,6 +372,7 @@
 	var/obj/machinery/power/mining_drill/connected_drill
 
 /obj/machinery/mining_brace/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = "mining_brace_active"
 	else
