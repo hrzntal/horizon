@@ -201,7 +201,7 @@
 
 /datum/ore_node_seeder
 	var/list/spawners_weight = list(/obj/effect/ore_node_spawner = 100)
-	var/spawners_amount = 10
+	var/spawners_amount = 6
 
 /datum/ore_node_seeder/proc/SeedToLevel(z)
 	for(var/i in 1 to spawners_amount)
