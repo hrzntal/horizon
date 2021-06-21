@@ -351,7 +351,7 @@
 		/obj/item/stock_parts/manipulator = 3)
 	needs_anchored = FALSE
 
-#undef DRILL_MINING_DELAY
+#undef DRILL_MINING_SPEED
 #undef DRILL_ACTIVE_POWER_USAGE
 
 /obj/machinery/mining_brace
