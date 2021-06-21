@@ -63,6 +63,7 @@
 "fJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plating,
 /area/shuttle/crow/engineering)
 "fM" = (
@@ -250,7 +251,11 @@
 	pixel_x = 27;
 	pixel_y = 1
 	},
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 1;
+	pixel_y = -20
+	},
+/obj/machinery/recharger,
 /turf/open/floor/pod,
 /area/shuttle/crow)
 "um" = (

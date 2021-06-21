@@ -110,3 +110,19 @@
 	cost = 5
 	suffix = "archeological_site.dmm"
 	planet_requirements = PLANET_HABITABLE
+
+/datum/map_template/ruin/planetary/old_drill_site
+	name = "Old Drill Site"
+	id = "old_drill_site"
+	description = "An old drill site."
+	cost = 5
+	suffix = "old_drill_site.dmm"
+	planet_requirements = PLANET_HABITABLE
+
+/datum/map_template/ruin/planetary/mining_facility
+	name = "Mining Facility"
+	id = "mining_facility"
+	description = "A mining facility."
+	cost = 5
+	suffix = "mining_facility.dmm"
+	planet_requirements = PLANET_HABITABLE

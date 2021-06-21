@@ -23,6 +23,8 @@
 	var/grass_color = COLOR_DARK_MODERATE_LIME_GREEN
 	/// An override of water colors on this level
 	var/water_color = COLOR_WHITE
+	/// A list of all ore nodes on this level
+	var/list/ore_nodes = list()
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())
 	z_value = new_z
