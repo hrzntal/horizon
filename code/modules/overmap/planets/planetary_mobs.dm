@@ -422,3 +422,4 @@
 	health = 40
 	maxHealth = 40
 	jelly_scale = 0.5
+	split_type = null
