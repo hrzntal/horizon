@@ -37,6 +37,7 @@
 			. += item.cost_per_order //add its price
 
 /obj/machinery/computer/chef_order/ui_interact(mob/user, datum/tgui/ui)
+	..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ProduceConsole", name)

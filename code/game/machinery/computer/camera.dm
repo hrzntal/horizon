@@ -62,6 +62,7 @@
 		network += "[port.id]_[i]"
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui)
+	..()
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 

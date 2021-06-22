@@ -7,6 +7,7 @@
 	req_access = list( )
 
 /obj/machinery/computer/overmap_console/ui_interact(mob/user, datum/tgui/ui)
+	..()
 	var/datum/space_level/SL = SSmapping.z_list[z]
 	if(!SL.related_overmap_object || !SL.is_overmap_controllable)
 		return
