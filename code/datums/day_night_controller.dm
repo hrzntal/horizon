@@ -2,7 +2,7 @@
 #define VALUES_PER_TRANSITION 5
 #define TRANSITION_VALUE (1 / VALUES_PER_TRANSITION)
 #define ALL_TRANSITIONS (VALUES_PER_TRANSITION * 6)
-#define TWEAK_HOUR_SHIFT 1.5 //The amount of hours we tweak forwards to make the cycle more earth-like
+#define TWEAK_HOUR_SHIFT -1.5 //The amount of hours we tweak forwards to make the cycle more earth-like
 
 /datum/day_night_controller
 	/// YOU NEED TO FILL OUT ALL OF THEM
@@ -56,8 +56,8 @@
 	
 	//We add a "tweak" offset to make the cycle more earth-like
 	time += TWEAK_HOUR_SHIFT
-	if(time > 24)
-		time -= 24
+	if(time < 0)
+		time += 24
 
 	time = time / 4 * VALUES_PER_TRANSITION //4 hours per transition and 5 transitions
 	time = CEILING(time, 1)
