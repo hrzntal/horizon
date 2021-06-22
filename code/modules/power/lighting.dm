@@ -251,6 +251,9 @@
 	var/bulb_emergency_pow_mul = 0.75 // the multiplier for determining the light's power in emergency mode
 	var/bulb_emergency_pow_min = 0.5 // the minimum value for the light's power in emergency mode
 
+	/// Whether we are currently in the process of turning on
+	var/turning_on = FALSE
+
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
 	icon_state = "tube-broken"
@@ -408,6 +411,9 @@
 		return
 	. += mutable_appearance(overlayicon, base_state, layer, plane)
 
+#define LIGHT_ON_DELAY_UPPER 3 SECONDS
+#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
@@ -430,16 +436,12 @@
 				CO = nightshift_light_color
 		var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
 		if(!matching)
-			switchcount++
-			if(rigged)
-				if(status == LIGHT_OK && trigger)
-					explode()
-			else if( prob( min(60, (switchcount^2)*0.01) ) )
-				if(trigger)
-					burn_out()
+			if(trigger)
+				if(!turning_on)
+					turning_on = TRUE
+					addtimer(CALLBACK(src, .proc/turn_on, FALSE, BR, PO, CO), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
 			else
-				use_power = ACTIVE_POWER_USE
-				set_light(BR, PO, CO)
+				turn_on(TRUE, BR, PO, CO)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -459,6 +461,27 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
+
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+
+/obj/machinery/light/proc/turn_on(instant, brightness, bulb_power, bulb_color)
+	if(QDELETED(src))
+		return
+	turning_on = FALSE
+	if(!on)
+		return
+	switchcount++
+	if(rigged)
+		if(status == LIGHT_OK && !instant)
+			explode()
+	else if( prob( min(60, (switchcount^2)*0.01) ) )
+		if(!instant)
+			burn_out()
+	else
+		use_power = ACTIVE_POWER_USE
+		set_light(brightness, bulb_power, bulb_color)
+		playsound(src, 'sound/effects/light/light_on.ogg', 65, 1)
 
 /obj/machinery/light/update_atom_colour()
 	..()
@@ -636,6 +659,8 @@
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
+	if(!A)
+		return FALSE
 	return A.lightswitch && A.power_light
 
 // returns whether this light has emergency power

@@ -26,7 +26,7 @@
 	dir = EAST
 	pixel_x = -26
 
-/obj/machinery/light_switch/Initialize()
+/obj/machinery/light_switch/Initialize(mapload)
 	. = ..()
 	if(istext(area))
 		area = text2path(area)
@@ -39,6 +39,12 @@
 		name = "light switch ([area.name])"
 
 	update_appearance()
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/light_switch/LateInitialize()
+	if(area.lightswitch)
+		do_switch()
 
 /obj/machinery/light_switch/update_appearance(updates=ALL)
 	. = ..()
@@ -62,7 +68,10 @@
 
 /obj/machinery/light_switch/interact(mob/user)
 	. = ..()
+	playsound(src, 'sound/effects/light/lightswitch.ogg', 100, 1)
+	do_switch()
 
+/obj/machinery/light_switch/proc/do_switch()
 	area.lightswitch = !area.lightswitch
 	area.update_appearance()
 
