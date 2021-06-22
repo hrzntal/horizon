@@ -2589,6 +2589,7 @@
 #include "code\modules\mob\dead\new_player\sprite_accessories\ipc.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\lizard_body_markings.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\moth_antennae.dm"
+#include "code\modules\mob\dead\new_player\sprite_accessories\neck.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\skrell_hair.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\snout.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\spines.dm"

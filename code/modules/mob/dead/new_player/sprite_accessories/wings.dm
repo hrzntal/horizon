@@ -48,7 +48,6 @@
 	color_src = USE_ONE_COLOR
 	default_color = "FFF"
 
-//TODO: seperate moth wings from moth fluff
 /datum/sprite_accessory/wings/moth
 	icon = 'icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
 	default_color = "FFF"
