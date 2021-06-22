@@ -101,4 +101,4 @@
 /datum/sprite_accessory/neck/mothfluff/fsnow
 	name = "Snow (Top)"
 	icon_state = "fsnow"
-	relevent_layers = list(BODY_TOP_LAYER)
+	relevent_layers = list(BODY_FRONT_LAYER)
