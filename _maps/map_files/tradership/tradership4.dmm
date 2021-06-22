@@ -74,6 +74,7 @@
 /area/tcommsat/server)
 "jE" = (
 /obj/machinery/light/small/directional/west,
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron,
 /area/tcommsat/server)
 "kC" = (
@@ -355,6 +356,11 @@
 /obj/structure/ladder,
 /turf/open/floor/iron,
 /area/tcommsat/server)
+"Qd" = (
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/west,
+/turf/open/floor/plating,
+/area/maintenance/solars/port/aft)
 "Qr" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
@@ -408,6 +414,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/light_switch/directional/west,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "Tj" = (
@@ -472,6 +479,11 @@
 "Wh" = (
 /obj/machinery/light/directional/south,
 /obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/tcommsat/server)
+"WB" = (
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron/dark,
 /area/tcommsat/server)
 "WG" = (
@@ -32994,7 +33006,7 @@ qP
 qP
 Tj
 oV
-Tj
+WB
 Tj
 Wh
 Vd
@@ -33029,7 +33041,7 @@ Xd
 Ph
 Ph
 xg
-Ph
+Qd
 Ph
 rQ
 WG
