@@ -6,7 +6,6 @@
 	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/barren)
 	overmap_type = /datum/overmap_object/shuttle/planet/barren
 	atmosphere_type = /datum/atmosphere/barren
-	weather_controller_type = /datum/weather_controller/desert
 
 	rock_color = list(COLOR_BEIGE_GRAYISH, COLOR_BEIGE, COLOR_GRAY, COLOR_BROWN)
 	planet_flags = PLANET_WRECKAGES|PLANET_REMOTE
