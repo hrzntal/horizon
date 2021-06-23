@@ -23,7 +23,7 @@
 			ui.close()
 		return
 
-	if(world.time > next_click && in_range(get_turf(src), user))
+	if(makes_click_noises && world.time > next_click && in_range(get_turf(src), user))
 		next_click = world.time + 0.75 SECONDS
 		playsound(src, get_sfx("terminal_type"), 35)
 
