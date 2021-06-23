@@ -189,7 +189,7 @@
 		if(!M.client || isnewplayer(M))
 			continue
 		var/T = get_turf(src)
-		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
+		if(M.stat == DEAD && M.client && client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
 			M.show_message("[FOLLOW_LINK(M, src)] [ghost_text]")
 
 	visible_message(text, visible_message_flags = EMOTE_MESSAGE)
