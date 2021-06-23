@@ -665,25 +665,9 @@ This is here to make the tiles around the station mininuke change when it's arme
 			if(istype(comfort_item, /obj/item/bedsheet) || istype(comfort_item, /obj/structure/bed))
 				disk_comfort_level++
 
-		if(last_disk_move < world.time - 5000 && prob((world.time - 5000 - last_disk_move)*0.0001))
-			var/datum/round_event_control/operative/loneop = locate(/datum/round_event_control/operative) in SSevents.control
-			if(istype(loneop) && loneop.occurrences < loneop.max_occurrences)
-				loneop.weight += 1
-				if(loneop.weight % 5 == 0 && SSticker.totalPlayers > 1)
-					if(disk_comfort_level >= 2)
-						visible_message("<span class='notice'>[src] sleeps soundly. Sleep tight, disky.</span>")
-					message_admins("[src] is stationary in [ADMIN_VERBOSEJMP(newturf)]. The weight of Lone Operative is now [loneop.weight].")
-				log_game("[src] is stationary for too long in [loc_name(newturf)], and has increased the weight of the Lone Operative event to [loneop.weight].")
+		if(last_disk_move < world.time - 5000 && prob((world.time - 5000 - last_disk_move)*0.0001) && disk_comfort_level >= 2)
+			visible_message("<span class='notice'>[src] sleeps soundly. Sleep tight, disky.</span>")
 
-	else
-		lastlocation = newturf
-		last_disk_move = world.time
-		var/datum/round_event_control/operative/loneop = locate(/datum/round_event_control/operative) in SSevents.control
-		if(istype(loneop) && loneop.occurrences < loneop.max_occurrences && prob(loneop.weight))
-			loneop.weight = max(loneop.weight - 1, 0)
-			if(loneop.weight % 5 == 0 && SSticker.totalPlayers > 1)
-				message_admins("[src] is on the move (currently in [ADMIN_VERBOSEJMP(newturf)]). The weight of Lone Operative is now [loneop.weight].")
-			log_game("[src] being on the move has reduced the weight of the Lone Operative event to [loneop.weight].")
 
 /obj/item/disk/nuclear/examine(mob/user)
 	. = ..()
