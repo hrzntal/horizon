@@ -52,11 +52,6 @@
 	var/comp_light_luminosity = 3 //The brightness of that light
 	var/comp_light_color //The color of that light
 
-	/// Keeping track of the cooldown for the keyboard click sound
-	var/next_click = 0
-	/// Whether this modular computer makes click noises.
-	var/makes_click_noises = TRUE
-
 
 /obj/item/modular_computer/Initialize()
 	. = ..()

@@ -90,7 +90,6 @@
 	var/obj/machinery/mech_bay_recharge_port/recharge_port
 
 /obj/machinery/computer/mech_bay_power_console/ui_interact(mob/user, datum/tgui/ui)
-	..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MechBayPowerConsole", name)

@@ -63,7 +63,6 @@
 			next_warning = world.time + minimum_time_between_warnings
 
 /obj/machinery/computer/bank_machine/ui_interact(mob/user, datum/tgui/ui)
-	..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BankMachine", name)

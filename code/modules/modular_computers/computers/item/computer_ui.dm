@@ -23,10 +23,6 @@
 			ui.close()
 		return
 
-	if(makes_click_noises && world.time > next_click && in_range(get_turf(src), user))
-		next_click = world.time + 0.75 SECONDS
-		playsound(src, get_sfx("terminal_type"), 35)
-
 	// If we have an active program switch to it now.
 	if(active_program)
 		if(ui) // This is the main laptop screen. Since we are switching to program's UI close it for now.

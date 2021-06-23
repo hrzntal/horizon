@@ -16,7 +16,6 @@
 	has_light = TRUE //LED flashlight!
 	comp_light_luminosity = 2.3 //Same as the PDA
 	looping_sound = FALSE
-	makes_click_noises = FALSE //Touchscreen, I guess?
 	var/has_variants = TRUE
 	var/finish_color = null
 
