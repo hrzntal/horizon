@@ -1,6 +1,7 @@
 /datum/species/moth
 	name = "Mothman"
 	id = "moth"
+	flavor_text = "An insectoid race known for their mothlike appearance, and love of light. They love to eat veggies, dairy, and cloth, but hate fruits. Meats and raw food are outright toxic to them."
 	say_mod = "flutters"
 	default_color = "00FF00"
 	species_traits = list(

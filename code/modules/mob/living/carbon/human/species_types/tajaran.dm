@@ -1,6 +1,7 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = "tajaran"
+	flavor_text = "A fully-furred bipedal feline. Most enjoy meats, and fried foods, but will eat just about anything."
 	default_color = "444"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

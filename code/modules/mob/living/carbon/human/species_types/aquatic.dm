@@ -1,6 +1,7 @@
 /datum/species/aquatic
 	name = "Aquatic"
 	id = "aquatic"
+	flavor_text = "A generalized term used for most aquatic species. Most enjoy meats, and fried foods, but will eat just about anything."
 	default_color = "444"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR, FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

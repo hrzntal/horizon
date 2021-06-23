@@ -2,6 +2,7 @@
 	// Reptilian humanoids with scaled skin and tails.
 	name = "Lizardperson"
 	id = "lizard"
+	flavor_text = "A generalized term used for most reptilian species. Most reptiles are unable to digest dairy, or starchy products, such as bread, potatoes, and tortillas. Cold-blooded, even the lightest jacket or change in temperature can cause them harm."
 	say_mod = "hisses"
 	default_color = "0F0"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
@@ -83,6 +84,7 @@ Lizard subspecies: ASHWALKERS
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
 	id = "ashlizard"
+	flavor_text = "A reptillian species adapted to harsher enviornments. They can breathe in low pressure areas, hold their breath for extended periods, and have an immunity to most viral outbreaks. Similar to normal Lizardpeople, they cannot eat grains or dairy."
 	limbs_id = "lizard"
 	species_traits = list(
 		MUTCOLORS,

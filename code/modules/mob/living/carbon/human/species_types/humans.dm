@@ -1,6 +1,7 @@
 /datum/species/human
 	name = "Human"
 	id = "human"
+	flavor_text = "One of the most well-known species across the stars. Most enjoy fried foods, and dislike raw or uncooked meats."
 	default_color = "FFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")

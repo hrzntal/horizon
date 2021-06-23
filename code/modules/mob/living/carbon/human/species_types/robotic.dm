@@ -62,6 +62,7 @@
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = "ipc"
+	flavor_text = "A robotic lifeform. Most sport a screen, instead of a humanoid face. Surface level damage is easy to repair, but they're sensitive to electronic disruptions."
 	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS_PARTSONLY,EYECOLOR,LIPS,HAIR,NOEYESPRITES,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "ipc_screen" = ACC_RANDOM, "ipc_chassis" = ACC_RANDOM)
@@ -125,6 +126,7 @@
 /datum/species/robotic/synthliz
 	name = "Synthetic Lizardperson"
 	id = "synthliz"
+	flavor_text = "A robotic lifeform. This model looks similar to reptiles. Surface level damage is easy to repair, but they're sensitive to electronic disruptions."
 	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")

@@ -1,6 +1,7 @@
 /datum/species/unathi
 	name = "Unathi"
 	id = "unathi"
+	flavor_text = "A reptilian species."
 	default_color = "444"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

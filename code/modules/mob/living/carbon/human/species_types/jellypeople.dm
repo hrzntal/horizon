@@ -776,6 +776,7 @@
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
 	id = "slimeperson"
+	flavor_text = "A slime-based lifeform with the ability to regenerate. Eating will slowly build up more mass, but anti-toxin based medicine will result in a purge. Highly vulnerable to the cold, but resistant to heat and burns. This variant has body-morphinc capabilities."
 	limbs_id = "slime"
 	limbs_icon = 'icons/mob/species/slime_parts_greyscale.dmi'
 	default_color = "0FF"

@@ -1,6 +1,7 @@
 /datum/species/ethereal
 	name = "Ethereal"
 	id = "ethereal"
+	flavor_text = "A genderless, energy-based lifeform. These creatures grow brighter the more energy they absorb, but over-indulgence will result in injury to both them, and those around them. They have a high body heat, and sensitivity to the cold."
 	attack_verb = "burn"
 	attack_sound = 'sound/weapons/etherealhit.ogg'
 	miss_sound = 'sound/weapons/etherealmiss.ogg'
