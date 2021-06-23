@@ -1,7 +1,7 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = "mammal"
-	flavor_text = "A term encompassing most humanioids with animal-like qualities."
+	flavor_text = "A term encompassing most humanoids with animal-like qualities."
 	default_color = "4B4B4B"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

@@ -1,7 +1,7 @@
 /datum/species/plasmaman
 	name = "Plasmaman"
 	id = "plasmaman"
-	flavor_text = "A skeletal creature composed of gaseous or liquid plasma. Any contact with an oxygenated enviornment will their unstable form to burst into flame. They have a resistance to the cold, immunity to radiation, and a weakness to heat. Must breathe plasma to survive."
+	flavor_text = "A skeletal creature composed of gaseous or liquid plasma. Any contact with an oxygenated environment will cause their unstable form to burst into flame. They have a resistance to the cold, immunity to radiation, and a weakness to heat. Must breathe plasma to survive."
 	say_mod = "rattles"
 	sexes = 0
 	meat = /obj/item/stack/sheet/mineral/plasma

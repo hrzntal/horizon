@@ -84,7 +84,7 @@ Lizard subspecies: ASHWALKERS
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
 	id = "ashlizard"
-	flavor_text = "A reptillian species adapted to harsher enviornments. They can breathe in low pressure areas, hold their breath for extended periods, and have an immunity to most viral outbreaks. Similar to normal Lizardpeople, they cannot eat grains or dairy."
+	flavor_text = "A reptilian species adapted to harsher environments. They can breathe in low pressure areas, hold their breath for extended periods, and have an immunity to most viral outbreaks. Similar to normal Lizardpeople, they cannot eat grains or dairy."
 	limbs_id = "lizard"
 	species_traits = list(
 		MUTCOLORS,

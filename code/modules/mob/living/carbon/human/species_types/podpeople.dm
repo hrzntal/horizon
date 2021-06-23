@@ -2,7 +2,7 @@
 	// A mutation caused by a human being ressurected in a revival pod. These regain health in light, and begin to wither in darkness.
 	name = "Primal Podperson"
 	id = "pod"
-	flavor_text = "A plant-based lifeform that does well it suitibly-lit enviornments. Feeds off of light, and plants, but shies away from meat, and dairy. Over-exposure to light may cause issues with their metabolism."
+	flavor_text = "A plant-based lifeform that does well in suitably-lit environments. Feeds off of light and plants, but shies away from meat and dairy. Over-exposure to light may cause issues with their metabolism."
 	default_color = "5C0"
 	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
@@ -58,7 +58,7 @@
 /datum/species/pod/podweak
 	name = "Podperson"
 	id = "podweak"
-	flavor_text = "A plant-based lifeform that does well it suitibly-lit enviornments. Feeds off of light, and plants, but shies away from meat, and dairy. Over-exposure to light may cause issues with their metabolism."
+	flavor_text = "A plant-based lifeform that does well in suitably-lit environments. Feeds off of light and plants, but shies away from meat and dairy. Over-exposure to light may cause issues with their metabolism."
 	limbs_id = "pod"
 	species_traits = list(MUTCOLORS,EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	default_mutant_bodyparts = list()

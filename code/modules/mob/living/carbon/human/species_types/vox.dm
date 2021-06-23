@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = "vox"
-	flavor_text = "Bird-like humanoids. Require N2 to breathe, rather than oxygen."
+	flavor_text = "Bird-like humanoids. Require nitrogen to breathe, rather than oxygen."
 	eyes_icon = 'icons/mob/species/vox_eyes.dmi'
 	limbs_icon = 'icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "shrieks"
