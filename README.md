@@ -2,8 +2,8 @@
 
 [![GitHub continuous integrations status](https://img.shields.io/github/workflow/status/hrzntal/horizon/CI%20Suite/main?style=for-the-badge)](https://github.com/hrzntal/horizon/actions?query=workflow%3A%22CI+Suite%22)
 [![Open GitHub pull requests](https://img.shields.io/github/issues-pr/hrzntal/horizon?color=blue&style=for-the-badge)](https://github.com/hrzntal/horizon/pulls)
-[![Open GitHub issues marked as tracked bugs](https://img.shields.io/github/issues/hrzntal/horizon/Issue:Tracked%20Bug?label=Bug%20Reports&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22Issue%3ATracked+Bug%22)
-[![Open GitHub issues marked as feature requests](https://img.shields.io/github/issues/hrzntal/horizon/Issue:Feature%20Request?label=Feature%20Requests&color=a180f2&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22Issue%3AFeature+Request%22)
+[![Open GitHub issues marked as tracked bugs](https://img.shields.io/github/issues/hrzntal/horizon/Issue%20:%20Tracked%20Bug?label=Bug%20Reports&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22Issue%3ATracked+Bug%22)
+[![Open GitHub issues marked as feature requests](https://img.shields.io/github/issues/hrzntal/horizon/Issue%20:%20Feature%20Request?label=Feature%20Requests&color=a180f2&style=for-the-badge)](https://github.com/hrzntal/horizon/issues?q=is%3Aissue+is%3Aopen+label%3A%22Issue%3AFeature+Request%22)
 
 ![Built with Resentment](https://img.shields.io/static/v1?label=Built%20with&message=Resentment&labelColor=e36d25&color=d15d27&style=for-the-badge)
 ![Contains Tasty Spaghetti Code](https://img.shields.io/static/v1?label=Contains&message=Tasty%20Spaghetti%20Code&labelColor=31c4f3&color=389ad5&style=for-the-badge)
