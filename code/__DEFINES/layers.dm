@@ -115,16 +115,12 @@
 #define LIGHTING_PLANE 100
 #define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
 
-///Lighting objects that are "free floating"
-#define O_LIGHTING_VISUAL_PLANE 110
-#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
-
 ///Things that should render ignoring lighting
-#define ABOVE_LIGHTING_PLANE 120
+#define ABOVE_LIGHTING_PLANE 110
 #define ABOVE_LIGHTING_RENDER_TARGET "ABOVE_LIGHTING_PLANE"
 
 ///visibility + hiding of things outside of light source range
-#define BYOND_LIGHTING_PLANE 130
+#define BYOND_LIGHTING_PLANE 120
 #define BYOND_LIGHTING_RENDER_TARGET "BYOND_LIGHTING_PLANE"
 
 
