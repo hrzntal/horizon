@@ -405,8 +405,6 @@
 	if(!name)
 		name = "shuttle"
 
-	SSshuttle.mobile += src
-
 	var/counter = SSshuttle.assoc_mobile[id]
 	if(!replace || !counter)
 		if(counter)
@@ -414,10 +412,12 @@
 			SSshuttle.assoc_mobile[id] = counter
 			id = "[id]_[counter]"
 			name = "[name] [counter]"
-			//Re link machinery to new shuttle id
-			linkup()
 		else
 			SSshuttle.assoc_mobile[id] = 1
+
+	SSshuttle.mobile += src
+	//Link machinery to new shuttle
+	linkup()
 
 /obj/docking_port/mobile/unregister()
 	. = ..()
