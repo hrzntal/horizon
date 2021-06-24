@@ -43,8 +43,6 @@
 	var/alert_silenced = FALSE
 	/// Whether to highlight our program in the main screen. Intended for alerts, but loosely available for any need to notify of changed conditions. Think Windows task bar highlighting. Available even if alerts are muted.
 	var/alert_pending = FALSE
-	/// Keeping track of the cooldown for the keyboard click sound
-	var/next_click = 0
 
 /datum/computer_file/program/New(obj/item/modular_computer/comp = null)
 	..()
@@ -220,8 +218,8 @@
 		return
 
 	var/mob/user = usr
-	if(computer.makes_click_noises && world.time > next_click && in_range(get_turf(computer), user))
-		next_click = world.time + 0.75 SECONDS
+	if(computer.makes_click_noises && world.time > computer.next_click && in_range(get_turf(computer), user))
+		computer.next_click = world.time + 0.75 SECONDS
 		playsound(computer, get_sfx("terminal_type"), 35)
 
 	if(computer)
