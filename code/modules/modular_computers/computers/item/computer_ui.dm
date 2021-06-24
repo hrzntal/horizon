@@ -100,9 +100,7 @@
 
 	var/mob/user = usr
 
-	if(makes_click_noises && world.time > next_click && in_range(get_turf(src), user))
-		next_click = world.time + 0.75 SECONDS
-		playsound(src, get_sfx("terminal_type"), 35)
+	keyboard_noise(user)
 
 	var/obj/item/computer_hardware/hard_drive/hard_drive = all_components[MC_HDD]
 	switch(action)

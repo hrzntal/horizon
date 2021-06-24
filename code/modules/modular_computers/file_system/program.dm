@@ -218,9 +218,7 @@
 		return
 
 	var/mob/user = usr
-	if(computer.makes_click_noises && world.time > computer.next_click && in_range(get_turf(computer), user))
-		computer.next_click = world.time + 0.75 SECONDS
-		playsound(computer, get_sfx("terminal_type"), 35)
+	computer.keyboard_noise(user)
 
 	if(computer)
 		switch(action)

@@ -83,6 +83,11 @@
 	physical = null
 	return ..()
 
+/obj/item/modular_computer/proc/keyboard_noise(mob/user)
+	if(makes_click_noises && world.time > next_click && in_range(get_turf(src), user))
+		next_click = world.time + 0.75 SECONDS
+		playsound(src, get_sfx("terminal_type"), 35)
+
 /obj/item/modular_computer/pre_attack_secondary(atom/A, mob/living/user, params)
 	if(active_program?.tap(A, user, params))
 		user.do_attack_animation(A) //Emulate this animation since we kill the attack in three lines
