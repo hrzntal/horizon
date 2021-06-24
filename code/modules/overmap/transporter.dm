@@ -15,12 +15,12 @@
 
 /obj/machinery/transporter/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/TimedInitialize))
-
-/obj/machinery/transporter/proc/TimedInitialize()
 	extension = new extension_type(src)
 	extension.ApplyToPosition(get_turf(src))
 	power_change()
+
+/obj/machinery/transporter/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	extension.ApplyToPosition(get_turf(src))
 
 /obj/machinery/transporter/Destroy()
 	extension.RemoveExtension()

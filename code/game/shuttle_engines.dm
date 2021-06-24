@@ -25,11 +25,10 @@
 /obj/structure/shuttle/engine/Initialize()
 	. = ..()
 	if(extension_type)
-		//Late initialize does not seem to work for this (doesnt get caled at all), so a timer
-		addtimer(CALLBACK(src, .proc/CreateExtension))
+		extension = new extension_type()
+		ApplyExtension()
 
-/obj/structure/shuttle/engine/proc/CreateExtension()
-	extension = new extension_type()
+/obj/structure/shuttle/engine/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(state == ENGINE_WELDED)
 		ApplyExtension()
 

@@ -15,12 +15,12 @@
 
 /obj/machinery/shield_generator/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/TimedInitialize))
-
-/obj/machinery/shield_generator/proc/TimedInitialize()
 	extension = new extension_type()
 	extension.ApplyToPosition(get_turf(src))
 	power_change()
+
+/obj/machinery/shield_generator/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	extension.ApplyToPosition(get_turf(src))
 
 /obj/machinery/shield_generator/Destroy()
 	extension.RemoveExtension()

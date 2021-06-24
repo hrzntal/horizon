@@ -12,10 +12,10 @@
 
 /obj/machinery/mining_laser/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/TimedInitialize))
-
-/obj/machinery/mining_laser/proc/TimedInitialize()
 	extension = new extension_type(src)
+	extension.ApplyToPosition(get_turf(src))
+
+/obj/machinery/mining_laser/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	extension.ApplyToPosition(get_turf(src))
 
 /obj/machinery/mining_laser/proc/PostFire()

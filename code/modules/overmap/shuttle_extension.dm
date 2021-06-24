@@ -6,6 +6,8 @@
 	var/datum/space_level/z_level
 
 /datum/shuttle_extension/proc/ApplyToPosition(turf/position)
+	if(IsApplied())
+		return
 	if(SSshuttle.is_in_shuttle_bounds(position))
 		var/obj/docking_port/mobile/M = SSshuttle.get_containing_shuttle(position)
 		if(M)

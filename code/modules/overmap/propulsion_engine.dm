@@ -33,15 +33,12 @@
 	extension = new extension_type(src)
 	if(starts_welded)
 		weld_down(mapload)
-		//This needs to be connected a moment after a lot of other initialization stuff happens
-		//Late initialize will fail to apply this correctly as atmos wont yet fully initialize (despite the lies they want you to believe in)
-		addtimer(CALLBACK(src, .proc/ApplyExtension))
+		extension.ApplyToPosition(get_turf(src))
 	. = ..()
 
-/obj/machinery/atmospherics/components/unary/engine/proc/ApplyExtension()
-	if(extension.IsApplied()) //This can and will be a case due to nessecary timer help
-		return
-	extension.ApplyToPosition(get_turf(src))
+/obj/machinery/atmospherics/components/unary/engine/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(is_welded)
+		extension.ApplyToPosition(get_turf(src))
 
 /obj/machinery/atmospherics/components/unary/engine/Destroy()
 	extension.RemoveExtension()
@@ -59,7 +56,7 @@
 	is_welded = TRUE
 	can_be_unanchored = FALSE
 	move_resist = INFINITY
-	ApplyExtension()
+	extension.ApplyToPosition(get_turf(src))
 	if(mapload) //Atmos isn't initialized at mapload
 		return
 	SetInitDirections()
