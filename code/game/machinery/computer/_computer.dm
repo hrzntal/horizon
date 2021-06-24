@@ -25,10 +25,11 @@
 /obj/machinery/computer/Destroy()
 	. = ..()
 
-/obj/machinery/computer/ui_act(mob/user, datum/tgui/ui)
+/obj/machinery/computer/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
+	var/mob/user = usr
 	if(world.time > next_click && in_range(user, src))
 		next_click = world.time + 0.75 SECONDS
 		playsound(src, get_sfx("terminal_type"), 35)

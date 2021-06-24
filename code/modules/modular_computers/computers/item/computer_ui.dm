@@ -98,6 +98,12 @@
 	if(.)
 		return
 
+	var/mob/user = usr
+
+	if(makes_click_noises && world.time > next_click && in_range(get_turf(src), user))
+		next_click = world.time + 0.75 SECONDS
+		playsound(src, get_sfx("terminal_type"), 35)
+
 	var/obj/item/computer_hardware/hard_drive/hard_drive = all_components[MC_HDD]
 	switch(action)
 		if("PC_exit")
@@ -107,7 +113,6 @@
 			shutdown_computer()
 			return TRUE
 		if("PC_minimize")
-			var/mob/user = usr
 			if(!active_program || !all_components[MC_CPU])
 				return
 
@@ -122,7 +127,6 @@
 		if("PC_killprogram")
 			var/prog = params["name"]
 			var/datum/computer_file/program/P = null
-			var/mob/user = usr
 			if(hard_drive)
 				P = hard_drive.find_file_by_name(prog)
 
@@ -135,7 +139,6 @@
 		if("PC_runprogram")
 			var/prog = params["name"]
 			var/datum/computer_file/program/P = null
-			var/mob/user = usr
 			if(hard_drive)
 				P = hard_drive.find_file_by_name(prog)
 
@@ -176,7 +179,6 @@
 			return toggle_flashlight()
 
 		if("PC_light_color")
-			var/mob/user = usr
 			var/new_color
 			while(!new_color)
 				new_color = input(user, "Choose a new color for [src]'s flashlight.", "Light Color",light_color) as color|null
@@ -189,7 +191,6 @@
 
 		if("PC_Eject_Disk")
 			var/param = params["name"]
-			var/mob/user = usr
 			switch(param)
 				if("removable storage disk")
 					var/obj/item/computer_hardware/hard_drive/portable/portable_drive = all_components[MC_SDD]
