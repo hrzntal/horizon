@@ -14,6 +14,8 @@
 	var/icon_screen = "generic"
 	var/time_to_screwdrive = 20
 	var/authenticated = 0
+	/// Keeping track of the cooldown for the keyboard click sound
+	var/next_click = 0
 
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -22,6 +24,14 @@
 
 /obj/machinery/computer/Destroy()
 	. = ..()
+
+/obj/machinery/computer/ui_act(mob/user, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+	if(world.time > next_click && in_range(user, src))
+		next_click = world.time + 0.75 SECONDS
+		playsound(src, get_sfx("terminal_type"), 35)
 
 /obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))
