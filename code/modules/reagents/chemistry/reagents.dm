@@ -103,6 +103,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/process_flags = REAGENT_ORGANIC
 	///The icon override used for glass sprites, needed for modularity
 	var/glass_icon
+	///How good of an accelerant is this reagent
+	var/accelerant_quality = 0
 
 /datum/reagent/New()
 	SHOULD_CALL_PARENT(TRUE)

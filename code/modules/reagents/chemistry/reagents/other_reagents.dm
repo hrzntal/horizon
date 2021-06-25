@@ -383,6 +383,7 @@
 	ph = 0.1
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+	accelerant_quality = 20
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.set_fire_stacks(min(M.fire_stacks + (1.5 * delta_time), 5))
@@ -1131,6 +1132,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+	accelerant_quality = 10
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
