@@ -39,7 +39,7 @@ services:
   setup:
     environment:
       TGS_BYOND: 514.1554
-      TGS_REPO: https://github.com/tgstation/tgstation
+      TGS_REPO: https://github.com/hrzntal/horizon
     build:
       context: ./SetupProgram
       dockerfile: Dockerfile

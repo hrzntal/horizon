@@ -8,8 +8,8 @@ Double-click `BUILD.bat` in the root directory of the source code. This'll take
 a little while, and if everything's done right you'll get a message like this:
 
 ```
-saving tgstation.dmb (DEBUG mode)
-tgstation.dmb - 0 errors, 0 warnings
+saving horizon.dmb (DEBUG mode)
+horizon.dmb - 0 errors, 0 warnings
 ```
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
@@ -43,7 +43,7 @@ and install it themselves. Directions can be found at the [rust-g
 repo](https://github.com/tgstation/rust-g).
 
 Finally, to start the server, run Dream Daemon and enter the path to your
-compiled tgstation.dmb file. Make sure to set the port to the one you
+compiled horizon.dmb file. Make sure to set the port to the one you
 specified in the config.txt, and set the Security box to 'Safe'. Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
@@ -62,7 +62,7 @@ the new version.
 ## HOSTING
 
 If you'd like a more robust server hosting option for tgstation and its
-derivatives. Check out our server tools suite at
+derivatives. Check out tgstation's server tools suite at
 https://github.com/tgstation/tgstation-server
 
 If you decide to go this route, here are /tg/ specific details on hosting with TGS.
@@ -91,9 +91,9 @@ Web delivery of game resources makes it quicker for players to join and reduces 
 
 ### All In One Amazon Web Services Hosting and Content delivery network.
 **Important Note**
-It is very Importat to note that since AWS is all highly integrated its "easier" than some solutions. However the Price to ***Performance Ratio is terrible***.
+It is very Important to note that since AWS is all highly integrated its "easier" than some solutions. However the Price to ***Performance Ratio is terrible***.
 
-/tg/ Using around 7TB of bandwidth a month. These costs add up. So AWS is probly only a solution for low to mid pop servers
+/tg/ Using around 7TB of bandwidth a month. These costs add up. So AWS is probably only a solution for low to mid pop servers
 
 **Please use [AWS Cost Estimator](https://calculator.s3.amazonaws.com/index.html) to determine if this solution is right for you.**
 
@@ -136,10 +136,10 @@ It is highly recommended to reference AWS support documentation while reading th
 ```Batch
 @echo off
 cd "C:\Program Files\Amazon\AWSCLIV2"
-aws s3 cp "C:\Instance_Path\Game\Live\tgstation.rsc" s3://BucketName/tgstation.rsc --acl public-read
+aws s3 cp "C:\Instance_Path\Game\Live\horizon.rsc" s3://BucketName/horizon.rsc --acl public-read
 ```
 
-7. In your TGS4's instance's static config files edit resources.txt to point to the resource file uploaded by the batch file. it should resemble `http://BucketName.s3.AWSRegion.amazonaws.com/tgstation.rsc` You can get this url from the S3 object management page after its been uploaded for the first time. *Make sure you do not use use HTTPS. Byond can not do encryption*
+7. In your TGS4's instance's static config files edit resources.txt to point to the resource file uploaded by the batch file. it should resemble `http://BucketName.s3.AWSRegion.amazonaws.com/horizon.rsc` You can get this url from the S3 object management page after its been uploaded for the first time. *Make sure you do not use use HTTPS. Byond can not do encryption*
 7. Tell TGS4 to fetch and deploy. If everything goes according to plan, your server will be compiled and the resource uploaded automatically to amazon S3. You can verify that by checking on the file your bucket via aws web management.
 7. Test your client side connection.
 	* Tell TGS4 to run the compiled server

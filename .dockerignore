@@ -17,11 +17,11 @@ cfg
 data
 SQL
 node_modules
-tgstation.dmb
-tgstation.int
-tgstation.rsc
-tgstation.lk
-tgstation.dyn.rsc
+horizon.dmb
+horizon.int
+horizon.rsc
+horizon.lk
+horizon.dyn.rsc
 *.dll
 Dockerfile
 tools/bootstrap/.cache
