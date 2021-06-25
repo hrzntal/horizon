@@ -10,6 +10,10 @@
 #define TURF_FIRE_BURN_RATE_PER_POWER 0.02
 #define TURF_FIRE_BURN_CARBON_DIOXIDE_MULTIPLIER 0.75
 
+#define TURF_FIRE_STATE_SMALL 1
+#define TURF_FIRE_STATE_MEDIUM 2
+#define TURF_FIRE_STATE_LARGE 3
+
 /obj/effect/abstract/turf_fire
 	icon = 'icons/effects/turf_fire.dmi'
 	icon_state = "fire_small"
@@ -24,6 +28,8 @@
 	var/fire_power = 20
 	/// Is it magical, if it is then it wont interact with atmos, and it will not loose power by itself. Mainly for adminbus events or mapping
 	var/magical = FALSE
+	/// Visual state of the fire. Kept track to not do too many updates.
+	var/current_fire_state
 
 ///All the subtypes are for adminbussery and or mapping
 /obj/effect/abstract/turf_fire/magical
@@ -128,14 +134,27 @@
 	UpdateFireState()
 
 /obj/effect/abstract/turf_fire/proc/UpdateFireState()
+	var/new_state
 	switch(fire_power)
 		if(0 to 10)
+			new_state = TURF_FIRE_STATE_SMALL
+		if(11 to 24)
+			new_state = TURF_FIRE_STATE_MEDIUM
+		if(25 to INFINITY)
+			new_state = TURF_FIRE_STATE_LARGE
+
+	if(new_state == current_fire_state)
+		return
+	current_fire_state = new_state
+
+	switch(current_fire_state)
+		if(TURF_FIRE_STATE_SMALL)
 			icon_state = "fire_small"
 			set_light_range(1.5)
-		if(11 to 24)
+		if(TURF_FIRE_STATE_MEDIUM)
 			icon_state = "fire_medium"
 			set_light_range(2.5)
-		if(25 to INFINITY)
+		if(TURF_FIRE_STATE_LARGE)
 			icon_state = "fire_big"
 			set_light_range(3)
 
@@ -150,3 +169,7 @@
 #undef TURF_FIRE_BURN_RATE_BASE
 #undef TURF_FIRE_BURN_RATE_PER_POWER
 #undef TURF_FIRE_BURN_CARBON_DIOXIDE_MULTIPLIER
+
+#undef TURF_FIRE_STATE_SMALL
+#undef TURF_FIRE_STATE_MEDIUM
+#undef TURF_FIRE_STATE_LARGE
