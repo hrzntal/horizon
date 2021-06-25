@@ -117,6 +117,8 @@
 	if(!magical)
 		if(prob(fire_power))
 			open_turf.burn_tile()
+		if(prob(6))
+			playsound(open_turf, 'sound/effects/comfyfire.ogg', 40, TRUE)
 		UpdateFireState()
 
 /obj/effect/abstract/turf_fire/proc/on_entered(datum/source, atom/movable/AM)

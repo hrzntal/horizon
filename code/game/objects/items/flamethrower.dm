@@ -198,6 +198,7 @@
 	power = my_fraction.get_total_accelerant_quality() * FLAMETHROWER_POWER_MULTIPLIER
 	if(power < REQUIRED_POWER_TO_FIRE_FLAMETHROWER)
 		return
+	playsound(src, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	operating = TRUE
 	var/turfs_flamed = 0
 	var/turf/previousturf = get_turf(src)
