@@ -6,6 +6,8 @@
 	var/barefootstep = null
 	var/clawfootstep = null
 	var/heavyfootstep = null
+	/// Reference to the turf fire on the turf
+	var/obj/effect/abstract/turf_fire/turf_fire
 
 //direction is direction of travel of A
 /turf/open/zPassIn(atom/movable/A, direction, turf/source)
@@ -285,3 +287,10 @@
 		air.garbage_collect()
 		air_update_turf(FALSE, FALSE)
 
+/turf/open/IgniteTurf(power)
+	if(turf_fire)
+		turf_fire.AddPower(power)
+		return
+	if(isopenspaceturf(src) || isspaceturf(src))
+		return
+	new /obj/effect/abstract/turf_fire(src, power)

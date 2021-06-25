@@ -61,6 +61,9 @@
 	var/bypassing = FALSE
 	var/visual_update_tick = 0
 
+#define IGNITE_TURF_CHANCE 30
+#define IGNITE_TURF_LOW_POWER 8
+#define IGNITE_TURF_HIGH_POWER 22
 
 /obj/effect/hotspot/Initialize(mapload, starting_volume, starting_temperature)
 	. = ..()
@@ -76,6 +79,14 @@
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, src, loc_connections)
+
+	if(prob(IGNITE_TURF_CHANCE))
+		var/turf/my_turf = loc
+		my_turf.IgniteTurf(rand(IGNITE_TURF_LOW_POWER,IGNITE_TURF_HIGH_POWER))
+
+#undef IGNITE_TURF_CHANCE
+#undef IGNITE_TURF_LOW_POWER
+#undef IGNITE_TURF_HIGH_POWER
 
 /obj/effect/hotspot/proc/perform_exposure()
 	var/turf/open/location = loc
