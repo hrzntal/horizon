@@ -21,6 +21,7 @@
 	gas_transfer_coefficient = 0.001 //cargo cult time, this var does nothing but just in case someone actually makes it do something
 	permeability_coefficient = 0.001
 	resistance_flags = FIRE_PROOF
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/atmos/captain
 	name = "captain's gas mask"
@@ -28,6 +29,7 @@
 	icon_state = "gas_cap"
 	inhand_icon_state = "gas_cap"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	mutant_variants = NONE
 
 // **** Welding gas mask ****
 
@@ -185,6 +187,7 @@
 	inhand_icon_state = "monkeymask"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"

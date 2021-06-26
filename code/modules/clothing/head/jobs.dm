@@ -77,11 +77,13 @@
 	icon_state = "nun_hood"
 	flags_inv = HIDEHAIR
 	flags_cover = HEADCOVERSEYES
+	mutant_variants = NONE
 
 /obj/item/clothing/head/bishopmitre
 	name = "bishop mitre"
 	desc = "An opulent hat that functions as a radio to God. Or as a lightning rod, depending on who you ask."
 	icon_state = "bishopmitre"
+	mutant_variants = NONE
 
 //Detective
 /obj/item/clothing/head/fedora/det_hat
@@ -185,6 +187,7 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 30, ACID = 60, WOUND = 6)
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/warden
+	mutant_variants = NONE
 
 /obj/item/clothing/head/warden/drill
 	name = "warden's campaign hat"

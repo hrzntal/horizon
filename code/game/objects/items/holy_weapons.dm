@@ -108,6 +108,7 @@
 	inhand_icon_state = "cage"
 	dynamic_hair_suffix = ""
 	worn_y_offset = 7
+	mutant_variants = NONE
 
 /obj/item/storage/box/holy/sentinel
 	name = "Stone Sentinel Kit"
@@ -149,6 +150,7 @@
 	inhand_icon_state = "witchhunterhat"
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEEYES|HIDEHAIR
+	mutant_variants = NONE
 
 /obj/item/storage/box/holy/adept
 	name = "Divine Adept Kit"
@@ -164,6 +166,7 @@
 	inhand_icon_state = "crusader"
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/armor/riot/chaplain/adept
 	name = "adept robes"
@@ -196,6 +199,7 @@
 	icon_state = "chaplain_hood"
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/chaplain_hoodie/leader
 	name = "leader hoodie"

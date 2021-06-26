@@ -55,6 +55,7 @@
 	light_range = 2 //luminosity when on
 	light_system = MOVABLE_LIGHT
 	flags_cover = HEADCOVERSEYES
+	mutant_variants = NONE
 	heat = 999
 
 	dog_fashion = /datum/dog_fashion/head
@@ -162,6 +163,7 @@
 	icon_state = "kitty"
 	color = "#999999"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 	dog_fashion = /datum/dog_fashion/head/kitty
 
@@ -200,6 +202,7 @@
 	clothing_flags = SNUG_FIT
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 	dog_fashion = /datum/dog_fashion/head/cardborg
 
@@ -329,6 +332,7 @@
 	icon_state = "clockwork_helmet_old"
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEHAIR
+	mutant_variants = NONE
 	armor = list(MELEE = 5, BULLET = 0, LASER = -5, ENERGY = -15, BOMB = 10, BIO = 0, RAD = 0, FIRE = 20, ACID = 20)
 
 /obj/item/clothing/head/foilhat
@@ -339,6 +343,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = -5,ENERGY = -15, BOMB = 0, BIO = 0, RAD = -5, FIRE = 0, ACID = 0)
 	equip_delay_other = 140
 	clothing_flags = ANTI_TINFOIL_MANEUVER
+	mutant_variants = NONE
 	var/datum/brain_trauma/mild/phobia/conspiracies/paranoia
 	var/warped = FALSE
 
