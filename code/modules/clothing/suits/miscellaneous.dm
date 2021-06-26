@@ -644,6 +644,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	flags_inv = HIDEGLOVES|HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	alternate_worn_layer = UNDER_HEAD_LAYER
+	mutant_variants = NONE
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/ghost_sheet/spooky
