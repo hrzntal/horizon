@@ -23,7 +23,7 @@
 	else
 		to_chat(finder, "<span class='notice'>It's grown quite large, and writhes slightly as you look at it.</span>")
 		if(prob(10))
-			AttemptGrow(0)
+			AttemptGrow(FALSE)
 
 /obj/item/organ/body_egg/alien_embryo/on_life(delta_time, times_fired)
 	. = ..()
@@ -66,12 +66,12 @@
 	if(stage == 6 && prob(50))
 		for(var/datum/surgery/S in owner.surgeries)
 			if(S.location == BODY_ZONE_CHEST && istype(S.get_surgery_step(), /datum/surgery_step/manipulate_organs))
-				AttemptGrow(0)
+				AttemptGrow(FALSE)
 				return
 		AttemptGrow()
 
 
-/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow(gib_on_success=TRUE)
+/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow(violent = TRUE)
 	if(!owner || bursting)
 		return
 
@@ -114,13 +114,16 @@
 		new_xeno.notransform = 0
 		new_xeno.invisibility = 0
 
-	if(gib_on_success)
+	var/obj/item/bodypart/affecting = get_bodypart(BODY_ZONE_CHEST)
+	if(violent)
 		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
-		owner.gib(TRUE)
+		to_chat(owner, "<span class='userdanger'>The shock sends you unconscious!</span>")
+		affecting.receive_damage(brute = 60, wound_bonus = 10)
+		owner.AdjustUnconscious(10 SECONDS)
 	else
 		new_xeno.visible_message("<span class='danger'>[new_xeno] wriggles out of [owner]!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>")
-		owner.adjustBruteLoss(40)
-		owner.cut_overlay(overlay)
+		affecting.receive_damage(brute = 40)
+	owner.cut_overlay(overlay)
 	qdel(src)
 
 
