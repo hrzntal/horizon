@@ -114,7 +114,7 @@
 		new_xeno.notransform = 0
 		new_xeno.invisibility = 0
 
-	var/obj/item/bodypart/affecting = get_bodypart(BODY_ZONE_CHEST)
+	var/obj/item/bodypart/affecting = owner.get_bodypart(BODY_ZONE_CHEST)
 	if(violent)
 		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
 		to_chat(owner, "<span class='userdanger'>The shock sends you unconscious!</span>")
