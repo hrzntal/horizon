@@ -341,15 +341,14 @@
 /datum/weather/proc/update_areas()
 	for(var/V in impacted_areas)
 		var/area/N = V
-		if(stage == MAIN_STAGE)
-			if(multiply_blend_on_main_stage)
-				N.blend_mode = BLEND_MULTIPLY
-			else
-				N.blend_mode = BLEND_OVERLAY
-			if(opacity_in_main_stage)
-				N.set_opacity(TRUE)
-			else
-				N.set_opacity(FALSE)
+		if(stage == MAIN_STAGE && multiply_blend_on_main_stage)
+			N.blend_mode = BLEND_MULTIPLY
+		else
+			N.blend_mode = BLEND_OVERLAY
+		if(stage == MAIN_STAGE && opacity_in_main_stage)
+			N.set_opacity(TRUE)
+		else
+			N.set_opacity(FALSE)
 		N.layer = overlay_layer
 		N.plane = overlay_plane
 		N.icon = 'icons/effects/weather_effects.dmi'
