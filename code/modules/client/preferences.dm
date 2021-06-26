@@ -1034,7 +1034,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			switch(balloon_alerts_pref)
 				if (BALLOON_ALERTS_NONE)
-					button_name = "Disabled"
+					button_name = "Disabled (Chat only)"
 				if (BALLOON_ALERTS_ONLY)
 					button_name = "On-screen Only"
 				if (BALLOON_ALERTS_BOTH)

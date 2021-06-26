@@ -39,7 +39,9 @@
 
 	// User has balloon alerts disabled
 	if (viewer_client?.prefs.balloon_alerts_pref != BALLOON_ALERTS_ONLY)
-		to_chat(viewer, chat_text ? chat_text : text)
+		if(!chat_text)
+			chat_text = "<span class='notice'>[src] - [text]</span>"
+		to_chat(viewer, chat_text)
 	if (viewer_client?.prefs.balloon_alerts_pref == BALLOON_ALERTS_NONE)
 		return
 
