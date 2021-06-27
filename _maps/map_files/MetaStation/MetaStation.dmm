@@ -7518,6 +7518,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"bmZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/computer/shuttle_purchase{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "bng" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -51689,17 +51698,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
-"oRL" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_home";
-	name = "SS13: Auxiliary Dock, Station-Port";
-	width = 35
-	},
-/turf/open/space/basic,
-/area/space)
 "oRQ" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/neutral{
@@ -62365,6 +62363,13 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/service/chapel/main)
+"srH" = (
+/obj/docking_port/stationary/huge{
+	dir = 2;
+	name = "SS13: Auxiliary Dock, Station-Port"
+	},
+/turf/open/space/basic,
+/area/space)
 "ssm" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/bot,
@@ -89648,7 +89653,7 @@ quc
 aox
 aVs
 bKS
-aWT
+bmZ
 aVs
 aVs
 aVs
@@ -89909,7 +89914,7 @@ aWU
 bOd
 xhi
 dYu
-aaa
+srH
 aaa
 aaa
 aaa
@@ -90166,7 +90171,7 @@ aWU
 bOd
 aZZ
 dYu
-oRL
+aaa
 aaa
 aaa
 aaa

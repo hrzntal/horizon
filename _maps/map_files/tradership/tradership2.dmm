@@ -941,7 +941,7 @@
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "Aj" = (
-/obj/docking_port/stationary/large{
+/obj/docking_port/stationary/huge{
 	name = "FTV Bearcat Cargo Dock"
 	},
 /turf/open/openspace/airless/planetary,
@@ -32545,7 +32545,7 @@ Mg
 Mg
 Mg
 Mg
-Mg
+GV
 Mg
 WQ
 WQ
@@ -34596,7 +34596,7 @@ Mg
 Mg
 Mg
 Mg
-GV
+Mg
 Mg
 Mg
 Mg

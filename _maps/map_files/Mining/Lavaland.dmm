@@ -4685,13 +4685,9 @@
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "Uq" = (
-/obj/docking_port/stationary{
+/obj/docking_port/stationary/huge{
 	dir = 2;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_lavaland";
-	name = "lavaland wastes";
-	width = 35
+	name = "Lavaland Clearing"
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)

@@ -85,6 +85,11 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/shuttle_loading
 
+	/// List of all sold shuttles for consoles to buy them
+	var/list/sold_shuttles = list()
+	/// Assoc list of "[dock_id]-[shuttle_types]" to a list of possible sold shuttles for those
+	var/list/sold_shuttles_cache = list()
+
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	ordernum = rand(1, 9000)
 
@@ -116,7 +121,28 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/emergency/backup placed on the map!")
 	if(!supply)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
+
+	init_sold_shuttles()
 	return ..()
+
+/datum/controller/subsystem/shuttle/proc/init_sold_shuttles()
+	for(var/type in subtypesof(/datum/sold_shuttle))
+		var/datum/sold_shuttle/sold_shuttle = type
+		if(initial(sold_shuttle.shuttle_id))
+			sold_shuttles += new sold_shuttle()
+
+/datum/controller/subsystem/shuttle/proc/get_sold_shuttles_cache(dock_id, shuttle_types)
+	var/cache_key = "[dock_id]-[shuttle_types]"
+	if(!sold_shuttles_cache[cache_key])
+		var/list/new_cache_list = list()
+		for(var/i in sold_shuttles)
+			var/datum/sold_shuttle/sold_shuttle = i
+			if(!sold_shuttle.allowed_docks[dock_id])
+				continue
+			if(shuttle_types & sold_shuttle.shuttle_type)
+				new_cache_list += sold_shuttle
+		sold_shuttles_cache[cache_key] = new_cache_list
+	return sold_shuttles_cache[cache_key]
 
 /datum/controller/subsystem/shuttle/proc/initial_load()
 	for(var/s in stationary)

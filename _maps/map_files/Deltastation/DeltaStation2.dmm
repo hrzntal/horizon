@@ -1441,13 +1441,9 @@
 /turf/open/floor/iron,
 /area/maintenance/port/aft)
 "agS" = (
-/obj/docking_port/stationary{
+/obj/docking_port/stationary/huge{
 	dir = 8;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_home";
-	name = "SS13: Auxiliary Dock, Station-Fore";
-	width = 35
+	name = "SS13: Auxiliary Dock, Station-Fore"
 	},
 /turf/open/space/basic,
 /area/space)
@@ -91920,10 +91916,10 @@
 /area/service/library/abandoned)
 "sDV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/shuttle/mining/common{
+/obj/effect/turf_decal/delivery,
+/obj/machinery/computer/shuttle_purchase{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "sEb" = (

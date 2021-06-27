@@ -1917,10 +1917,6 @@
 	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/abandoned/engine)
-"kG" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w,
-/turf/template_noop,
-/area/shuttle/abandoned/engine)
 "vk" = (
 /obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
@@ -2119,7 +2115,7 @@ ar
 at
 bm
 at
-kG
+aa
 at
 bm
 at
@@ -2138,7 +2134,7 @@ as
 aT
 bn
 at
-kG
+aa
 at
 cr
 cy
@@ -2157,7 +2153,7 @@ at
 aU
 bo
 at
-kG
+aa
 at
 cs
 cz
@@ -2176,7 +2172,7 @@ at
 bl
 aV
 at
-kG
+aa
 at
 bp
 bl

@@ -19375,6 +19375,20 @@
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"dpt" = (
+/obj/effect/turf_decal/tile{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/obj/machinery/computer/shuttle_purchase,
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "dpv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -23037,13 +23051,9 @@
 	},
 /area/command/heads_quarters/rd)
 "eJP" = (
-/obj/docking_port/stationary{
+/obj/docking_port/stationary/huge{
 	dir = 2;
-	dwidth = 11;
-	height = 22;
-	id = "whiteship_home";
-	name = "SS13: Auxiliary Dock, Station-Port";
-	width = 35
+	name = "SS13: Auxiliary Dock, Station-Port"
 	},
 /turf/open/openspace/airless/planetary,
 /area/space)
@@ -150330,7 +150340,7 @@ aYr
 aYr
 aYr
 awZ
-vbr
+dpt
 aZs
 awZ
 awZ

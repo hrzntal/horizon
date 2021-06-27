@@ -112,7 +112,9 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "bS" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/computer/shuttle_purchase{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/hallway/primary/central/fore)
 "ce" = (
@@ -526,6 +528,10 @@
 /obj/item/pipe_dispenser,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
+"iF" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron,
+/area/hallway/primary/central/fore)
 "iH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1056,7 +1062,8 @@
 "pz" = (
 /obj/docking_port/stationary/medium{
 	dir = 4;
-	name = "FTV Bearcat Starboard Dock"
+	name = "FTV Bearcat Starboard Dock";
+	roundstart_template = /datum/map_template/shuttle/crow
 	},
 /turf/open/openspace/airless/planetary,
 /area/space)
@@ -2920,10 +2927,9 @@
 /turf/open/floor/iron/dark,
 /area/engineering/main)
 "OO" = (
-/obj/docking_port/stationary/medium{
+/obj/docking_port/stationary/large{
 	dir = 8;
-	name = "FTV Bearcat Port Dock";
-	roundstart_template = /datum/map_template/shuttle/crow
+	name = "FTV Bearcat Port Dock"
 	},
 /turf/open/openspace/airless/planetary,
 /area/space)
@@ -32891,8 +32897,8 @@ DB
 DB
 DB
 DB
-Wg
 DB
+Wg
 DB
 DB
 DB
@@ -34940,7 +34946,7 @@ Eh
 wN
 VW
 NX
-NX
+iF
 bS
 Oy
 xS
@@ -39311,7 +39317,7 @@ DB
 DB
 DB
 DB
-Wg
+DB
 DB
 DB
 DB
@@ -40862,7 +40868,7 @@ DB
 DB
 DB
 DB
-DB
+Wg
 DB
 DB
 mY
