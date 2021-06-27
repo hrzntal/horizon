@@ -137,6 +137,7 @@
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
 	mob_size = MOB_SIZE_TINY
+	pass_flags = PASSTABLE | PASSMOB
 	atmos_requirements = list(
 		"min_oxy" = 0, "max_oxy" = 0,
 		"min_tox" = 0, "max_tox" = 0,
@@ -156,6 +157,7 @@
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
 	mob_size = MOB_SIZE_TINY
+	pass_flags = PASSTABLE | PASSMOB
 	atmos_requirements = list(
 		"min_oxy" = 0, "max_oxy" = 0,
 		"min_tox" = 0, "max_tox" = 0,
@@ -177,6 +179,7 @@
 	speak_chance = 1
 	emote_hear = list("scratches the ground","chitters")
 	mob_size = MOB_SIZE_TINY
+	pass_flags = PASSTABLE | PASSMOB
 	atmos_requirements = list(
 		"min_oxy" = 0, "max_oxy" = 0,
 		"min_tox" = 0, "max_tox" = 0,
