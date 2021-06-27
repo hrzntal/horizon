@@ -341,9 +341,8 @@
 
 /datum/sprite_accessory/snouts/mammal/sbeak
 	name = "Corvid Beak"
-	icon_state = "sbeak"
-	extra = TRUE
-	//extra_color_src = MATRIXED
+	icon_state = "corvid"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/snouts/mammal/akula/shark_light
 	name = "Shark Light"
