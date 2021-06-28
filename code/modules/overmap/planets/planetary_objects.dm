@@ -18,6 +18,9 @@
 	planetary_atmos = TRUE
 	tiled_dirt = FALSE
 
+/turf/open/floor/plating/planetary/setup_broken_states()
+	return list(base_icon_state)
+
 /turf/open/floor/plating/planetary/water
 	gender = PLURAL
 	name = "water"
