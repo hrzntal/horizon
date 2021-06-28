@@ -289,3 +289,16 @@
 
 /area/shuttle/crow/helm
 	name = "ESS Crow Helm"
+
+//Common shuttles
+
+/area/shuttle/vulture
+	name = "MS Vulture"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/vulture
+
+/area/shuttle/vulture/helm
+	name = "MS Vulture Helm"
+
+/area/shuttle/vulture/dorm
+	name = "MS Vulture Quarters"

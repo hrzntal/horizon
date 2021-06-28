@@ -45,18 +45,6 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"aj" = (
-/obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 14;
-	height = 13;
-	id = "caravanpirate_ambush";
-	name = "Trade Route";
-	roundstart_template = /datum/map_template/shuttle/ruin/pirate_cutter;
-	width = 22
-	},
-/turf/template_noop,
-/area/template_noop)
 "ak" = (
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
@@ -1232,6 +1220,17 @@
 	icon_state = "platingdmg1"
 	},
 /area/ruin/unpowered)
+"tG" = (
+/obj/docking_port/stationary{
+	dwidth = 7;
+	height = 13;
+	id = "caravanpirate_ambush";
+	name = "Trade Route";
+	roundstart_template = /datum/map_template/shuttle/ruin/pirate_cutter;
+	width = 22
+	},
+/turf/template_noop,
+/area/template_noop)
 "tH" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
@@ -3654,7 +3653,6 @@ aa
 aa
 aa
 aa
-aj
 aa
 aa
 aa
@@ -3667,6 +3665,7 @@ aa
 aa
 aa
 aa
+tG
 af
 af
 af

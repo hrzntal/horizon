@@ -61,28 +61,24 @@
 		TryFindDock()
 	if(!catalogue)
 		GetCatalogue()
-	var/blocked_msg = DockBlocked()
-	if(blocked_msg)
-		dat += blocked_msg
+	if(selected_shuttle)
+		dat += "<a href='?src=[REF(src)];task=back'>Back</a>"
 	else
-		if(selected_shuttle)
-			dat += "<a href='?src=[REF(src)];task=back'>Back</a>"
-		else
-			dat += "---"
-		dat += "<HR>"
-		if(selected_shuttle)
-			var/shown_name = selected_rename ? selected_rename : selected_shuttle.name
-			dat += "<b>[shown_name]</b> <a href='?src=[REF(src)];task=selected;selected_task=rename'>Rename</a>"
-			dat += "<BR><i>[selected_shuttle.desc]<BR>[selected_shuttle.detailed_desc]</i><BR>Cost: [selected_shuttle.cost] cr.<BR>Stock remaining: [selected_shuttle.stock]"
-			dat += "<BR><center><a href='?src=[REF(src)];task=selected;selected_task=purchase'>Purchase</a></center>"
-		else
-			var/index = 0
-			for(var/i in catalogue)
-				index++
-				var/datum/sold_shuttle/iterated_shuttle = i
-				dat += "<b>[iterated_shuttle.name]</b> <a href='?src=[REF(src)];task=select;index=[index]'>Select</a>"
-				dat += "<BR><i>[iterated_shuttle.desc]</i><BR>Cost: [iterated_shuttle.cost] cr.<BR>Stock remaining: [selected_shuttle.stock]"
-				dat += "<HR>"
+		dat += "---"
+	dat += "<HR>"
+	if(selected_shuttle)
+		var/shown_name = selected_rename ? selected_rename : selected_shuttle.name
+		dat += "<b>[shown_name]</b> <a href='?src=[REF(src)];task=selected;selected_task=rename'>Rename</a>"
+		dat += "<BR><i>[selected_shuttle.desc]<BR>[selected_shuttle.detailed_desc]</i><BR>Cost: [selected_shuttle.cost] cr.<BR>Stock remaining: [selected_shuttle.stock]"
+		dat += "<BR><center><a href='?src=[REF(src)];task=selected;selected_task=purchase'>Purchase</a></center>"
+	else
+		var/index = 0
+		for(var/i in catalogue)
+			index++
+			var/datum/sold_shuttle/iterated_shuttle = i
+			dat += "<b>[iterated_shuttle.name]</b> <a href='?src=[REF(src)];task=select;index=[index]'>Select</a>"
+			dat += "<BR><i>[iterated_shuttle.desc]</i><BR>Cost: [iterated_shuttle.cost] cr.<BR>Stock remaining: [iterated_shuttle.stock]"
+			dat += "<HR>"
 	var/datum/browser/popup = new(user, "shuttle_purchase", name, 450, 600)
 	popup.set_content(dat.Join())
 	popup.open()
@@ -97,7 +93,7 @@
 
 /obj/machinery/computer/shuttle_purchase/Topic(href, href_list)
 	var/mob/user = usr
-	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) || DockBlocked())
+	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	switch(href_list["task"])
 		if("back")
@@ -113,6 +109,9 @@
 				return
 			switch(href_list["selected_task"])
 				if("purchase")
+					if(DockBlocked())
+						say("Dock currently blocked!")
+						return
 					if(!selected_shuttle.stock)
 						say("Out of stock!")
 						return
@@ -130,7 +129,7 @@
 						to_chat(carbon_user, "<span class='warning'>You can't afford this!</span>")
 						return
 					selected_shuttle.stock--
-					say("Thank you for the purchase! Enjoy your shuttle.")
+					say("Thank you for the purchase! Your shuttle will arrive shortly.")
 					SpawnSelectedShuttle(carbon_user)
 				if("rename")
 					var/renamed = input(usr, "Choose the ship's desired name:","Ship Customization") as text|null

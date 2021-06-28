@@ -656,7 +656,7 @@
 	id = "caravanpirate";
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
 	name = "Pirate Cutter";
-	port_direction = 8;
+	port_direction = 4;
 	preferred_direction = 4;
 	width = 22
 	},
