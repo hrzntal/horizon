@@ -88,10 +88,16 @@
 		UnregisterNode()
 
 /obj/machinery/power/mining_drill/proc/UpdateAnchored()
+	var/target_anchored
 	if(terminal || length(connected_braces) || initial(anchored))
-		anchored = TRUE
+		target_anchored = TRUE
 	else
-		anchored = FALSE
+		target_anchored = FALSE
+	if(target_anchored == anchored)
+		return
+	anchored = target_anchored
+	if(!anchored && current_node)
+		UnregisterNode()
 	update_icon()
 
 /obj/machinery/power/mining_drill/proc/RegisterNode(datum/ore_node/node)
