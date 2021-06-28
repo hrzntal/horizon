@@ -219,7 +219,7 @@
 	display_name = "Bluespace Travel"
 	description = "Application of Bluespace for static teleportation technology."
 	prereq_ids = list("practical_bluespace")
-	design_ids = list("tele_station", "tele_hub", "teleconsole" "launchpad", "launchpad_console", "bluespace_pod")
+	design_ids = list("tele_station", "tele_hub", "teleconsole", "launchpad", "launchpad_console", "bluespace_pod")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
 /datum/techweb_node/micro_bluespace
