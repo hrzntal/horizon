@@ -321,6 +321,7 @@
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	heat_protection = HEAD
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/cultrobes
 	name = "ancient cultist robes"

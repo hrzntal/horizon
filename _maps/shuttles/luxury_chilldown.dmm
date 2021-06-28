@@ -1,0 +1,1353 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"au" = (
+/obj/machinery/door/airlock/silver/glass,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chilldown)
+"aA" = (
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/item/toy/prize/ripley,
+/obj/item/clothing/gloves/cargo_gauntlet,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"aZ" = (
+/obj/machinery/suit_storage_unit/pirate,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"bG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"cE" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"cH" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"de" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "pirateportexternal"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"dh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"dT" = (
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/effect/spawner/lootdrop/alcohol_bottle,
+/obj/item/clothing/glasses/cold,
+/obj/item/clothing/glasses/cold,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"ei" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"eK" = (
+/obj/structure/shuttle/engine/router,
+/turf/open/floor/plating/airless,
+/area/shuttle/chilldown)
+"eY" = (
+/obj/machinery/button/door{
+	id = "silverbridge";
+	name = "Window Shutters Control";
+	pixel_y = -5
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/chilldown)
+"fu" = (
+/obj/machinery/light/floor,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"fN" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"fT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"gg" = (
+/obj/vehicle/sealed/mecha/working/ripley,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"gi" = (
+/obj/structure/bed/pod,
+/obj/item/toy/figure/cargotech,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"gx" = (
+/obj/machinery/light/red/directional/west,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"ht" = (
+/obj/machinery/door/airlock/silver,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"hW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"iS" = (
+/obj/structure/fans/tiny,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/poddoor/shutters{
+	id = "silverbridge_cargo"
+	},
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"iY" = (
+/obj/structure/mecha_wreckage/ripley/mk2,
+/obj/effect/decal/cleanable/xenoblood,
+/obj/effect/decal/cleanable/xenoblood/xgibs,
+/obj/effect/decal/cleanable/xenoblood/xgibs/body,
+/obj/effect/decal/cleanable/xenoblood/xgibs/up,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"jb" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"je" = (
+/turf/template_noop,
+/area/template_noop)
+"jm" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "piratestarboardexternal"
+	},
+/obj/docking_port/mobile{
+	dir = 4;
+	dwidth = 13;
+	height = 3;
+	id = "chilldown";
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "The Chilldown";
+	preferred_direction = 4;
+	width = 26
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"jo" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"jG" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 9
+	},
+/turf/closed/indestructible/reinforced,
+/area/shuttle/chilldown)
+"jM" = (
+/obj/structure/closet/crate,
+/obj/item/toy/toy_xeno,
+/obj/item/toy/sprayoncan,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"jO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"jQ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"jX" = (
+/obj/machinery/light/red/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"ko" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"ky" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"kF" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"lb" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"lk" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"lu" = (
+/obj/machinery/suit_storage_unit/pirate,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"lL" = (
+/obj/structure/shuttle/engine/huge{
+	dir = 8
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"mm" = (
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"mI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"nB" = (
+/obj/machinery/computer/shuttle/chilldown{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"nY" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "pirateportexternal"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"pk" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 9
+	},
+/obj/machinery/mining_laser{
+	dir = 9
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/chilldown)
+"pp" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"pJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"pU" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/carpet/royalblack,
+/area/shuttle/chilldown)
+"qA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"qI" = (
+/obj/effect/decal/cleanable/blood/xtracks{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"rB" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/chilldown)
+"rM" = (
+/obj/structure/closet/crate,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"sx" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chilldown)
+"ti" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"ue" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"vw" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 10
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"vz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/computer/camera_advanced/syndie{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"vH" = (
+/obj/structure/bed/pod,
+/obj/item/toy/plush/pkplush,
+/obj/machinery/light/floor,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"vM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"vP" = (
+/obj/structure/bed/pod,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"wa" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"xe" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/mopbucket,
+/obj/item/mop,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"xo" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chilldown)
+"xs" = (
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"xO" = (
+/obj/machinery/button/door{
+	id = "silverbridge_cargo";
+	name = "Window Shutters Control";
+	pixel_y = -5
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/chilldown)
+"xR" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "silverbridge"
+	},
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"zB" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters{
+	id = "silverbridge_cargo"
+	},
+/obj/structure/plasticflaps,
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"zN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"zQ" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "piratestarboardexternal"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fans/tiny,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Ae" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/circuit/red/anim,
+/area/shuttle/chilldown)
+"Aj" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"AE" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/shuttle/chilldown)
+"AR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"Br" = (
+/obj/effect/decal/cleanable/robot_debris/old,
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"BK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"BO" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 9
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"Ch" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"CH" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"CP" = (
+/obj/machinery/power/smes/engineering{
+	charge = 1e+006
+	},
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"CW" = (
+/obj/structure/lattice/catwalk,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/template_noop,
+/area/shuttle/chilldown)
+"Dt" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/closed/indestructible/reinforced,
+/area/shuttle/chilldown)
+"Gy" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"GG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"GK" = (
+/obj/structure/bed/pod,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"GL" = (
+/obj/effect/decal/cleanable/robot_debris/up,
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"HD" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "silverbridge"
+	},
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"HK" = (
+/obj/machinery/computer/cargo/express{
+	dir = 4
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"HS" = (
+/obj/structure/closet/crate,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Ia" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Ig" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/item/radio/intercom{
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/chilldown)
+"Ix" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"Jo" = (
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"Jq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"JL" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"JV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"Kq" = (
+/obj/machinery/light/directional/west,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Lk" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"LQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"Mo" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters{
+	id = "silverbridge_cargo"
+	},
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"MA" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"Oq" = (
+/obj/effect/decal/cleanable/blood/xtracks{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"Ox" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"OT" = (
+/obj/machinery/door/airlock/silver,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Pg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Qj" = (
+/turf/closed/indestructible/reinforced,
+/area/shuttle/chilldown)
+"Qm" = (
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"QI" = (
+/obj/machinery/atmospherics/components/unary/tank/air,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"QO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"QU" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 4
+	},
+/obj/item/flashlight/seclite,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 10
+	},
+/obj/item/multitool,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Rl" = (
+/obj/effect/decal/cleanable/robot_debris/down,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/chilldown)
+"Rp" = (
+/obj/machinery/light/red/directional/north,
+/obj/item/stack/conveyor{
+	amount = 30
+	},
+/obj/item/conveyor_switch_construct,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Rs" = (
+/obj/structure/sign/warning/coldtemp,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/chilldown)
+"RE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"RH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"RY" = (
+/obj/machinery/light/directional/east,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Sh" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"Si" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Su" = (
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Sv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"SC" = (
+/obj/machinery/light/floor,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"TT" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"TV" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 10
+	},
+/obj/machinery/mining_laser{
+	dir = 10
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/chilldown)
+"Ut" = (
+/obj/structure/rack,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 150
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"UA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chilldown)
+"UJ" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/chilldown)
+"Ww" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"Wy" = (
+/obj/machinery/transporter,
+/obj/machinery/ore_silo,
+/turf/open/floor/pod/dark,
+/area/shuttle/chilldown)
+"Xl" = (
+/obj/structure/fans/tiny,
+/obj/structure/plasticflaps,
+/obj/machinery/door/poddoor/shutters{
+	id = "silverbridge_cargo"
+	},
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"Xw" = (
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chilldown)
+"XB" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+"XX" = (
+/obj/structure/bookcase/random/fiction,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"Ye" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/shuttle/chilldown)
+"Yz" = (
+/obj/effect/decal/cleanable/oil/streak,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/shuttle/chilldown)
+"YL" = (
+/obj/structure/curtain/bounty,
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/circuit,
+/area/shuttle/chilldown)
+"ZD" = (
+/obj/machinery/door/airlock/silver/glass,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/shuttle/chilldown)
+"ZW" = (
+/obj/effect/decal/cleanable/robot_debris/down,
+/turf/open/floor/circuit/off,
+/area/shuttle/chilldown)
+
+(1,1,1) = {"
+je
+je
+Rs
+nY
+rB
+Jo
+Jo
+lL
+je
+jG
+Dt
+Dt
+Qj
+jm
+Rs
+je
+je
+"}
+(2,1,1) = {"
+je
+BO
+rB
+TT
+rB
+Jo
+Jo
+Jo
+UJ
+Qj
+Yz
+bG
+Qj
+jb
+rB
+vw
+je
+"}
+(3,1,1) = {"
+je
+AE
+rB
+jQ
+Rl
+Ww
+Ww
+Ww
+eK
+Qj
+bG
+GL
+Qj
+zN
+rB
+AE
+je
+"}
+(4,1,1) = {"
+pk
+rB
+rB
+de
+rB
+HD
+xR
+HD
+rB
+xs
+Ix
+Ix
+rB
+zQ
+rB
+rB
+TV
+"}
+(5,1,1) = {"
+rB
+rB
+Su
+Si
+rB
+aZ
+lu
+aZ
+Br
+HK
+Qm
+Qm
+rB
+Si
+QI
+rB
+rB
+"}
+(6,1,1) = {"
+rB
+CP
+Lk
+Si
+ht
+wa
+wa
+wa
+hW
+wa
+wa
+Ch
+cH
+Si
+GG
+ko
+rB
+"}
+(7,1,1) = {"
+rB
+QU
+Pg
+qA
+rB
+RY
+Qm
+Ia
+Ox
+Ia
+Ia
+RY
+rB
+xe
+GG
+Wy
+rB
+"}
+(8,1,1) = {"
+rB
+rB
+au
+Rs
+rB
+rB
+OT
+rB
+rB
+rB
+OT
+rB
+rB
+Rs
+au
+rB
+rB
+"}
+(9,1,1) = {"
+HD
+JL
+fT
+cE
+xO
+HS
+Qm
+iY
+gx
+gg
+Qm
+aA
+lb
+Kq
+pJ
+Gy
+HD
+"}
+(10,1,1) = {"
+HD
+Ut
+fT
+CH
+xs
+HS
+Xw
+Xw
+UA
+UA
+Xw
+dT
+xs
+Ia
+fT
+mm
+HD
+"}
+(11,1,1) = {"
+eY
+Qm
+ue
+lk
+ZD
+Qm
+Xw
+sx
+sx
+UA
+UA
+Qm
+ZD
+ei
+wa
+Qm
+rB
+"}
+(12,1,1) = {"
+HD
+Qm
+ue
+Aj
+jo
+ti
+UA
+Xw
+Xw
+UA
+xo
+ei
+Ig
+Ch
+Ch
+Ia
+HD
+"}
+(13,1,1) = {"
+HD
+XX
+pJ
+CH
+xs
+Rp
+fu
+Ia
+Qm
+Ia
+jO
+jX
+xs
+Qm
+pJ
+pp
+HD
+"}
+(14,1,1) = {"
+rB
+rB
+pU
+rB
+rB
+zB
+Mo
+Mo
+iS
+iS
+Mo
+Xl
+rB
+rB
+pU
+rB
+rB
+"}
+(15,1,1) = {"
+xs
+dh
+Sv
+XB
+Rs
+kF
+ap
+vM
+SC
+vM
+vM
+Sh
+Rs
+fN
+RH
+YL
+rB
+"}
+(16,1,1) = {"
+xs
+ap
+BK
+MA
+xR
+Jo
+vM
+CW
+Ye
+CW
+Oq
+Jo
+HD
+LQ
+JV
+YL
+rB
+"}
+(17,1,1) = {"
+xs
+ky
+QO
+mI
+HD
+je
+vM
+Ye
+CW
+CW
+vM
+je
+HD
+Jq
+RE
+YL
+rB
+"}
+(18,1,1) = {"
+xs
+nB
+ZW
+vz
+rB
+je
+ap
+CW
+CW
+Ye
+Oq
+je
+rB
+RH
+vP
+GK
+rB
+"}
+(19,1,1) = {"
+xs
+xs
+xs
+xs
+rB
+je
+ap
+CW
+Ye
+Ye
+Oq
+je
+rB
+Sv
+Qm
+Qm
+rB
+"}
+(20,1,1) = {"
+je
+je
+je
+je
+rB
+je
+SC
+Ye
+Ye
+Ye
+qI
+je
+rB
+AR
+vH
+GK
+rB
+"}
+(21,1,1) = {"
+je
+je
+je
+je
+rB
+je
+je
+je
+je
+je
+je
+je
+rB
+vM
+Ia
+Ia
+rB
+"}
+(22,1,1) = {"
+je
+je
+je
+je
+rB
+je
+je
+je
+je
+je
+je
+je
+rB
+ap
+GK
+gi
+rB
+"}
+(23,1,1) = {"
+je
+je
+je
+je
+rB
+Ae
+je
+je
+je
+je
+je
+Ae
+rB
+vM
+vM
+vM
+rB
+"}
+(24,1,1) = {"
+je
+je
+je
+je
+rB
+je
+je
+je
+je
+je
+je
+je
+rB
+dh
+rM
+jM
+rB
+"}
+(25,1,1) = {"
+je
+je
+je
+je
+rB
+Ae
+je
+je
+je
+je
+je
+Ae
+rB
+rB
+rB
+rB
+rB
+"}
+(26,1,1) = {"
+je
+je
+je
+je
+rB
+je
+je
+je
+je
+je
+je
+je
+rB
+je
+je
+je
+je
+"}
+(27,1,1) = {"
+je
+je
+je
+je
+rB
+Ae
+je
+je
+je
+je
+je
+Ae
+rB
+je
+je
+je
+je
+"}

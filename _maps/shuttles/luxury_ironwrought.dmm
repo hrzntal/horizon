@@ -1,0 +1,2328 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ae" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/docking_port/mobile{
+	callTime = 250;
+	dir = 2;
+	dwidth = 11;
+	height = 17;
+	id = "ironwrought";
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "The Ironwrought";
+	port_direction = 8;
+	preferred_direction = 4;
+	width = 34
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"ai" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/north,
+/obj/structure/bed,
+/obj/machinery/airalarm/all_access{
+	heating_temp_setpoint = 400;
+	pixel_y = 24
+	},
+/obj/item/bedsheet,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ironwrought)
+"aj" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"ak" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/door/poddoor{
+	id = "whiteship_windows"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"am" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"an" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/airlock{
+	name = "Cabin 2"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ironwrought)
+"ao" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/door/airlock{
+	name = "Cabin 1"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ironwrought)
+"ap" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"aq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"au" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/airalarm/all_access{
+	heating_temp_setpoint = 400;
+	pixel_y = 24
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"av" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aw" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"ax" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"ay" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/obj/machinery/airalarm/all_access{
+	pixel_y = 24
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"az" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"aB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small/built/directional/north,
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/freezer{
+	locked = 0;
+	name = "fridge"
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle,
+/obj/item/reagent_containers/food/drinks/waterbottle{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/food/chocolatebar,
+/obj/item/food/muffin/berry{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/food/muffin/berry,
+/obj/item/food/tofu,
+/obj/item/food/burrito,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Hospital Ship Crew Quarters APC";
+	pixel_y = 23
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"aH" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/accessory/medal/bronze_heart{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/accessory/medal/conduct,
+/obj/item/clothing/accessory/medal/silver/valor{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aL" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/wardrobe/white/medical,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/secure_closet/personal,
+/obj/item/storage/photo_album,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/sign/warning/nosmoking{
+	pixel_y = -30
+	},
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aR" = (
+/obj/structure/closet/crate{
+	name = "food crate"
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/donkpockets,
+/obj/machinery/light/small/built/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"aT" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/space_heater,
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"aU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/bot,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/mop,
+/obj/item/storage/bag/trash{
+	pixel_x = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"aV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/airalarm/all_access{
+	dir = 1;
+	heating_temp_setpoint = 400;
+	pixel_y = -24
+	},
+/obj/machinery/light/small/built/directional/south,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"aW" = (
+/obj/machinery/meter,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"aX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"aZ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"ba" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"bb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/item/plate{
+	pixel_x = 6
+	},
+/obj/item/kitchen/fork{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/soda_cans/cola{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/food/meat/steak/plain,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"bc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"bd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/bin,
+/obj/item/trash/pistachios,
+/obj/machinery/airalarm/all_access{
+	dir = 1;
+	heating_temp_setpoint = 400;
+	pixel_y = -24
+	},
+/obj/item/trash/can,
+/obj/item/light/bulb/broken,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"bf" = (
+/obj/machinery/door/poddoor{
+	id = "whiteship_bridge"
+	},
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"bg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bi" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bm" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bo" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bp" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/airalarm/all_access{
+	heating_temp_setpoint = 400;
+	pixel_y = 24
+	},
+/obj/machinery/light/small/built/directional/north,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"bs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bt" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bw" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bx" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -4
+	},
+/obj/item/folder/blue{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/folder/white,
+/obj/item/pen{
+	pixel_x = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"by" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light/small/built/directional/west,
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/ore_silo,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/mineral/ore_redemption,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/obj/machinery/transporter,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/firecloset{
+	anchored = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bH" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/reinforced,
+/obj/item/wrench,
+/obj/item/crowbar,
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"bK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/computer/crew{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"bM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/engineering/glass,
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor{
+	id = "whiteship_forge"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought/engine)
+"bQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bS" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bT" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bU" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"bV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor{
+	id = "whiteship_forge"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought/engine)
+"bW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bX" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"bY" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"bZ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"ca" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"cb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/computer/shuttle/ironwrought{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"cd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"ce" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_forge";
+	name = "Bridge Blast Door Control";
+	pixel_x = 6
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cf" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light/small/directional/west,
+/obj/structure/tank_holder/extinguisher/advanced,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"cg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_forge";
+	name = "Bridge Blast Door Control";
+	pixel_x = 6
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"ch" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1;
+	name = "Connector Port (Air Supply)"
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"ci" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"cj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
+	dir = 1
+	},
+/obj/machinery/light/small/built/directional/east,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought/engine)
+"ck" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/emcloset/anchored,
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_forge";
+	name = "Bridge Blast Door Control";
+	pixel_x = 6
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cm" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/wrench,
+/obj/machinery/light/small/built/directional/west,
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_windows";
+	name = "Windows Blast Door Control";
+	pixel_x = -6
+	},
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_bridge";
+	name = "Bridge Blast Door Control";
+	pixel_x = 6
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"cn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"co" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"cp" = (
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cq" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 10
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cs" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/firealarm/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cu" = (
+/obj/machinery/power/smes/engineering{
+	charge = 1e+006
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cv" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cw" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cx" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/obj/item/megaphone{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"cy" = (
+/obj/machinery/power/port_gen/pacman{
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/item/wrench,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cz" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/bot,
+/obj/item/weldingtool/largetank,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"cC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"cD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/north,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cJ" = (
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"cM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 4
+	},
+/obj/item/flashlight{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/bot,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 10
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"cN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cS" = (
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cX" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/obj/structure/table,
+/obj/item/t_scanner/adv_mining_scanner,
+/obj/item/storage/backpack/duffelbag/mining_conscript,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"cY" = (
+/obj/structure/sign/departments/engineering,
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"cZ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"da" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"db" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"de" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"df" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/corner,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dg" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dh" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small/directional/south,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"di" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/directional/south,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"do" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"dp" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/bot,
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"dr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"ds" = (
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/built/directional/east,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"dt" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/ironwrought)
+"dv" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/obj/item/storage/box/zipties,
+/obj/item/assembly/flash/handheld,
+/obj/item/melee/classic_baton/telescopic,
+/obj/machinery/light/small/built/directional/west,
+/obj/machinery/airalarm/all_access{
+	dir = 4;
+	heating_temp_setpoint = 400;
+	pixel_x = -24
+	},
+/obj/machinery/power/apc/auto_name/north,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/ironwrought)
+"fP" = (
+/obj/machinery/airalarm/engine{
+	dir = 4;
+	heating_temp_setpoint = 400
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"fS" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/door/poddoor{
+	id = "whiteship_bridge"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"hg" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"ho" = (
+/obj/machinery/mining_laser{
+	dir = 5
+	},
+/turf/open/floor/circuit/red/anim,
+/area/shuttle/ironwrought)
+"hW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/obj/machinery/airalarm/engine{
+	heating_temp_setpoint = 400
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"it" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/shuttle/ironwrought)
+"jM" = (
+/obj/structure/tank_holder/oxygen,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"jZ" = (
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"kG" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w,
+/turf/template_noop,
+/area/shuttle/ironwrought)
+"pb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/vehicle/sealed/mecha/working/ripley/mining{
+	dir = 1
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"pP" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"pZ" = (
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"rE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"sh" = (
+/obj/machinery/airalarm/engine{
+	dir = 8;
+	heating_temp_setpoint = 400
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"sy" = (
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel/airless,
+/area/shuttle/ironwrought)
+"wY" = (
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"yu" = (
+/obj/structure/tank_holder,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"zn" = (
+/obj/machinery/mining_laser{
+	dir = 6
+	},
+/turf/open/floor/circuit/red/anim,
+/area/shuttle/ironwrought)
+"Bv" = (
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"Dc" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"EK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/airalarm/all_access{
+	heating_temp_setpoint = 400;
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"Hf" = (
+/obj/effect/spawner/structure/window/shuttle,
+/obj/machinery/door/poddoor{
+	id = "whiteship_windows"
+	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ironwrought)
+"JI" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"JU" = (
+/obj/structure/shuttle/engine/propulsion/right{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/ironwrought)
+"KF" = (
+/obj/structure/closet/crate/solarpanel_small,
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"KR" = (
+/obj/machinery/airalarm/engine{
+	heating_temp_setpoint = 400
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"LY" = (
+/obj/structure/sign/warning/nosmoking{
+	pixel_y = 30
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"MQ" = (
+/obj/machinery/power/solar_control,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"OM" = (
+/obj/structure/cable,
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"Pp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought)
+"RL" = (
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel/airless,
+/area/shuttle/ironwrought)
+"Tw" = (
+/obj/structure/shuttle/engine/propulsion/left{
+	dir = 8
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/shuttle/ironwrought)
+"Uc" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+"XW" = (
+/obj/machinery/space_heater{
+	on = 1;
+	target_temperature = 400
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/shuttle/ironwrought)
+"Yx" = (
+/obj/machinery/button/door/directional/south{
+	id = "whiteship_forge";
+	name = "Bridge Blast Door Control";
+	pixel_x = 6
+	},
+/turf/closed/indestructible/riveted/boss{
+	name = "Riveted Molten Iron"
+	},
+/area/shuttle/ironwrought/engine)
+"YI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/shuttle/ironwrought)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+Tw
+JU
+aa
+Tw
+JU
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cJ
+pP
+pP
+aa
+pP
+pP
+cJ
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+cJ
+cJ
+cJ
+cJ
+cJ
+cJ
+bg
+cJ
+it
+cJ
+bg
+cJ
+cJ
+cJ
+cJ
+cJ
+cJ
+"}
+(4,1,1) = {"
+Dc
+cp
+cp
+cp
+hg
+jZ
+cp
+by
+it
+dt
+cp
+cp
+JI
+cp
+cp
+cp
+hg
+"}
+(5,1,1) = {"
+cJ
+cJ
+cJ
+cJ
+cJ
+cp
+bi
+cJ
+it
+cJ
+cq
+wY
+cJ
+cJ
+cJ
+cJ
+cJ
+"}
+(6,1,1) = {"
+it
+it
+it
+it
+cJ
+jM
+bj
+cJ
+aa
+cJ
+bj
+yu
+cJ
+it
+it
+it
+it
+"}
+(7,1,1) = {"
+Bv
+aa
+Bv
+aa
+cJ
+jM
+bk
+cJ
+aa
+cJ
+bk
+KF
+cJ
+aa
+Bv
+aa
+Bv
+"}
+(8,1,1) = {"
+Bv
+aa
+Bv
+aa
+cJ
+MQ
+YI
+cJ
+aa
+cJ
+YI
+KF
+cJ
+aa
+Bv
+aa
+Bv
+"}
+(9,1,1) = {"
+RL
+Bv
+sy
+Bv
+cJ
+cJ
+bm
+cJ
+kG
+cJ
+Uc
+OM
+OM
+Bv
+sy
+Bv
+sy
+"}
+(10,1,1) = {"
+Bv
+aa
+Bv
+aa
+cJ
+aT
+bn
+cJ
+kG
+cJ
+cr
+cy
+cJ
+aa
+Bv
+aa
+Bv
+"}
+(11,1,1) = {"
+Bv
+aa
+Bv
+aa
+cJ
+aU
+bo
+cJ
+kG
+cJ
+cs
+cz
+cJ
+aa
+Bv
+aa
+Bv
+"}
+(12,1,1) = {"
+RL
+Bv
+aa
+cJ
+cJ
+bl
+aV
+cJ
+kG
+cJ
+bp
+YI
+cJ
+cJ
+aa
+Bv
+RL
+"}
+(13,1,1) = {"
+Bv
+aa
+aa
+cJ
+aF
+aW
+bq
+cJ
+Hf
+cJ
+cu
+cB
+cM
+cJ
+aa
+aa
+Bv
+"}
+(14,1,1) = {"
+Bv
+aa
+aa
+cJ
+cY
+aX
+cJ
+cJ
+bM
+Pp
+Pp
+cC
+cY
+cJ
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+cJ
+cJ
+aH
+de
+bw
+bz
+bN
+cd
+cv
+cD
+cN
+cJ
+cJ
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+cJ
+cJ
+au
+aI
+aZ
+cJ
+bA
+bO
+ce
+Pp
+dq
+cO
+cZ
+cJ
+cJ
+aa
+"}
+(17,1,1) = {"
+aa
+ak
+am
+av
+aJ
+ba
+pZ
+sh
+bP
+pZ
+rE
+cF
+cP
+da
+dk
+ak
+aa
+"}
+(18,1,1) = {"
+cJ
+cJ
+cJ
+aw
+cJ
+pZ
+pZ
+bB
+bQ
+cf
+hW
+dq
+dq
+db
+dl
+cJ
+cJ
+"}
+(19,1,1) = {"
+cJ
+ai
+an
+ax
+aK
+pZ
+bs
+bC
+bR
+cg
+rE
+dk
+cR
+dc
+dq
+pb
+cJ
+"}
+(20,1,1) = {"
+cJ
+cJ
+cJ
+ay
+aL
+KR
+bt
+bD
+bS
+ch
+rE
+cS
+cS
+de
+cR
+dq
+cJ
+"}
+(21,1,1) = {"
+cJ
+ai
+ao
+az
+aM
+pZ
+bu
+bE
+bT
+ci
+rE
+XW
+dq
+de
+dn
+dr
+cJ
+"}
+(22,1,1) = {"
+cY
+cJ
+cJ
+aA
+cJ
+Yx
+bI
+bF
+bU
+cj
+rE
+cJ
+LY
+df
+cJ
+cJ
+cY
+"}
+(23,1,1) = {"
+ae
+aj
+ap
+aB
+aN
+pZ
+pZ
+fP
+bV
+pZ
+pZ
+cS
+cS
+dg
+do
+ds
+dt
+"}
+(24,1,1) = {"
+cJ
+cJ
+cJ
+aC
+aO
+bb
+cJ
+bG
+bW
+ck
+cJ
+dk
+dq
+dh
+cJ
+cJ
+cJ
+"}
+(25,1,1) = {"
+ho
+ak
+aq
+aD
+cV
+bc
+bw
+bH
+bX
+cl
+cw
+da
+cV
+di
+dp
+ak
+zn
+"}
+(26,1,1) = {"
+aa
+cJ
+cJ
+aE
+aQ
+bd
+cJ
+cJ
+bY
+cJ
+cJ
+EK
+cW
+dj
+cJ
+cJ
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+cJ
+cJ
+aR
+cJ
+cJ
+dv
+bZ
+cm
+cJ
+cJ
+cX
+cJ
+cJ
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+cJ
+cY
+cJ
+bx
+bJ
+ca
+cn
+cx
+cJ
+cY
+cJ
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+bf
+fS
+bK
+cb
+co
+fS
+fS
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+fS
+fS
+fS
+fS
+fS
+aa
+aa
+aa
+aa
+aa
+aa
+"}

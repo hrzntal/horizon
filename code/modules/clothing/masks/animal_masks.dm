@@ -18,6 +18,7 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 	clothing_flags = VOICEBOX_TOGGLABLE
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
+	mutant_variants = NONE
 
 	var/animal_type ///what kind of animal the masks represents. used for automatic name and description generation.
 	var/list/animal_sounds ///phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.

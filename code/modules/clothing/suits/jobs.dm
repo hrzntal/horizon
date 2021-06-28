@@ -191,6 +191,7 @@
 	inhand_icon_state = "techpriest"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hooded/techpriest
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/techpriest
 	name = "techpriest's hood"

@@ -183,7 +183,6 @@
 	selection_color = "#dddddd"
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
-	antag_rep = 7
 	paycheck = PAYCHECK_ASSISTANT
 	departments = DEPARTMENT_MISC
 

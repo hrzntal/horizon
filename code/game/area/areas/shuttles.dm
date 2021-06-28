@@ -302,3 +302,30 @@
 
 /area/shuttle/vulture/dorm
 	name = "MS Vulture Quarters"
+
+/area/shuttle/barrow
+	name = "The Barrows"
+	requires_power = FALSE
+	area_limited_icon_smoothing = /area/shuttle/barrow
+
+/area/shuttle/barrow/helm
+	name = "The Barrows Helm"
+
+/area/shuttle/barrow/medbay
+	name = "The Barrows Medbay"
+
+/area/shuttle/barrow/bar
+	name = "The Barrows Bar"
+
+/area/shuttle/chilldown
+	name = "The Chilldown"
+	requires_power = FALSE
+	area_limited_icon_smoothing = /area/shuttle/chilldown
+
+/area/shuttle/ironwrought
+	name = "The Ironwrought"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/ironwrought
+
+/area/shuttle/ironwrought/engine
+	name = "The Ironwrought Core"

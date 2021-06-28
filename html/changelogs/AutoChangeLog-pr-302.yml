@@ -1,4 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - balance: "Chest bursting no longer gibs, now instead it'll deal 60 damage to chest and send the victim unconscious for 10 seconds"

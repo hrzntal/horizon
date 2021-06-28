@@ -90,6 +90,7 @@
 	desc = "These were once used by plague doctors. They're pretty much useless."
 	icon_state = "plaguedoctor"
 	permeability_coefficient = 0.01
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hasturhood
 	name = "hastur's hood"
@@ -144,6 +145,7 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEHAIR|HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES
+	mutant_variants = NONE
 
 /obj/item/clothing/head/justice/blue
 	icon_state = "justiceblue"
@@ -227,6 +229,7 @@
 	icon_state = "bowler"
 	inhand_icon_state = "bowler"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/witchwig
 	name = "witch costume wig"
@@ -234,6 +237,7 @@
 	icon_state = "witch"
 	inhand_icon_state = "witch"
 	flags_inv = HIDEHAIR
+	mutant_variants = NONE
 
 /obj/item/clothing/head/chicken
 	name = "chicken suit head"
@@ -242,6 +246,7 @@
 	inhand_icon_state = "chickensuit"
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/griffin
 	name = "griffon head"
@@ -250,12 +255,14 @@
 	inhand_icon_state = "griffinhat"
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/bearpelt
 	name = "bear pelt hat"
 	desc = "Fuzzy."
 	icon_state = "bearpelt"
 	inhand_icon_state = "bearpelt"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/xenos
 	name = "xenos helmet"
@@ -265,6 +272,7 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	mutant_variants = NONE
 
 /obj/item/clothing/head/fedora
 	name = "fedora"
@@ -392,12 +400,14 @@
 	name = "lizardskin cloche hat"
 	desc = "How many lizards died to make this hat? Not enough."
 	icon_state = "lizard"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/papersack
 	name = "paper sack hat"
 	desc = "A paper sack with crude holes cut out for eyes. Useful for hiding one's identity or ugliness."
 	icon_state = "papersack"
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/papersack/smiley
 	name = "paper sack hat"
@@ -411,6 +421,7 @@
 	armor = list(MELEE = 15, BULLET = 0, LASER = 0,ENERGY = 10, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 5)
 	resistance_flags = FIRE_PROOF
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/crown/fancy
 	name = "magnificent crown"
@@ -429,6 +440,7 @@
 	icon_state = "lobster_hat"
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/drfreezehat
 	name = "doctor freeze's wig"
@@ -441,22 +453,26 @@
 	desc = "Walk like an Egyptian."
 	icon_state = "pharoah_hat"
 	inhand_icon_state = "pharoah_hat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/nemes
 	name = "headdress of Nemes"
 	desc = "Lavish space tomb not included."
 	icon_state = "nemes_headdress"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/delinquent
 	name = "delinquent hat"
 	desc = "Good grief."
 	icon_state = "delinquent"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/frenchberet
 	name = "french beret"
 	desc = "A quality beret, infused with the aroma of chain-smoking, wine-swilling Parisians. You feel less inclined to engage in military conflict, for some reason."
 	icon_state = "beret"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/frenchberet/equipped(mob/M, slot)
 	. = ..()
@@ -493,28 +509,33 @@
 	name = "Hat of the Honkmother"
 	desc = "It's hard for parishoners to see a banana peel on the floor when they're looking up at your glorious chapeau."
 	icon_state = "clownmitre"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/kippah
 	name = "kippah"
 	desc = "Signals that you follow the Jewish Halakha. Keeps the head covered and the soul extra-Orthodox."
 	icon_state = "kippah"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/medievaljewhat
 	name = "medieval Jewish hat"
 	desc = "A silly looking hat, intended to be placed on the heads of the station's oppressed religious minorities."
 	icon_state = "medievaljewhat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/taqiyahwhite
 	name = "white taqiyah"
 	desc = "An extra-mustahabb way of showing your devotion to Allah."
 	icon_state = "taqiyahwhite"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small
+	mutant_variants = NONE
 
 /obj/item/clothing/head/taqiyahred
 	name = "red taqiyah"
 	desc = "An extra-mustahabb way of showing your devotion to Allah."
 	icon_state = "taqiyahred"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small
+	mutant_variants = NONE
 
 /obj/item/clothing/head/shrine_wig
 	name = "shrine maiden's wig"
@@ -524,6 +545,7 @@
 	inhand_icon_state = "shrine_wig"
 	dynamic_hair_suffix = ""
 	worn_y_offset = 1
+	mutant_variants = NONE
 
 /obj/item/clothing/head/intern
 	name = "\improper CentCom Head Intern beancap"
@@ -538,12 +560,15 @@
 	icon_state = "capcap"
 	inhand_icon_state = "that"
 	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
+	
+	mutant_variants = NONE
 
 /obj/item/clothing/head/jackbros
 	name = "frosty hat"
 	desc = "Hee-ho!"
 	icon_state = "JackFrostHat"
 	inhand_icon_state = "JackFrostHat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/weddingveil
 	name = "wedding veil"

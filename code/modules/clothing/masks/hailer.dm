@@ -186,6 +186,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK
 	custom_price = PAYCHECK_HARD * 1.5
 	actions_types = list(/datum/action/item_action/halt)
+	mutant_variants = NONE
 
 /obj/item/clothing/mask/whistle/ui_action_click(mob/user, action)
 	if(cooldown < world.time - 100)

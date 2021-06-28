@@ -1,4 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Wraps chat text of balloon alerts in notice span and adds a source prefix"

@@ -38,6 +38,7 @@
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
 	hoodtype = /obj/item/clothing/head/hooded/flashsuit
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/flashsuit
 	name = "flash button"
@@ -45,6 +46,7 @@
 	icon_state = "flashsuit"
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/pirate
 	name = "pirate coat"
@@ -274,6 +276,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/carp_hood/equipped(mob/living/carbon/human/user, slot)
 	..()
@@ -296,6 +299,7 @@
 	allowed = list()
 	hoodtype = /obj/item/clothing/head/hooded/ian_hood
 	dog_fashion = /datum/dog_fashion/back
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/ian_hood
 	name = "corgi hood"
@@ -576,6 +580,7 @@
 	icon_state = "ablativehood"
 	armor = list(MELEE = 10, BULLET = 10, LASER = 60, ENERGY = 60, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	strip_delay = 30
+	mutant_variants = NONE
 	var/hit_reflect_chance = 50
 
 /obj/item/clothing/head/hooded/ablative/equipped(mob/living/carbon/human/user, slot)
@@ -608,6 +613,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/ablative
 	strip_delay = 30
 	equip_delay_other = 40
+	mutant_variants = NONE
 	var/hit_reflect_chance = 50
 
 /obj/item/clothing/suit/hooded/ablative/Initialize()
@@ -638,6 +644,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	flags_inv = HIDEGLOVES|HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	alternate_worn_layer = UNDER_HEAD_LAYER
+	mutant_variants = NONE
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/ghost_sheet/spooky

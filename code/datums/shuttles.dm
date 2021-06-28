@@ -708,3 +708,18 @@
 	suffix = "crow"
 	name = "ESS Crow"
 	who_can_purchase = null
+
+/datum/map_template/shuttle/barrow
+	port_id = "whiteship"
+	suffix = "the_barrows"
+	name = "The Barrows"
+
+/datum/map_template/shuttle/chilldown
+	port_id = "luxury"
+	suffix = "chilldown"
+	name = "The Chilldown"
+
+/datum/map_template/shuttle/ironwrought
+	port_id = "luxury"
+	suffix = "ironwrought"
+	name = "The Ironwrought"

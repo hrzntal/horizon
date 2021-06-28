@@ -9371,6 +9371,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"bJL" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/commons/cryopods)
 "bJO" = (
 /obj/structure/chair{
 	dir = 1
@@ -23055,6 +23059,17 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/restrooms)
+"ffb" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/commons/cryopods)
 "ffm" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -27097,6 +27112,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
 "gAH" = (
@@ -64706,6 +64722,7 @@
 /area/science/xenobiology)
 "tfr" = (
 /obj/machinery/door/airlock/glass,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
 "tfz" = (
@@ -115292,7 +115309,7 @@ aaa
 mKd
 mbU
 jsJ
-jsJ
+ffb
 xBC
 lHs
 oMv
@@ -115549,7 +115566,7 @@ aaa
 sLD
 uBw
 owL
-owL
+bJL
 tfr
 lHu
 dUA

@@ -248,3 +248,72 @@
 2021-06-26:
   Azarak:
   - bugfix: Fixes invisible non-colorable bodyparts, commonly found on IPC's
+2021-06-27:
+  Azarak:
+  - balance: Chest bursting no longer gibs, now instead it'll deal 60 damage to chest
+      and send the victim unconscious for 10 seconds
+  - rscadd: Turfs can now be ignited and will slowly burn, igniting anyone on them
+  - rscadd: Hotspots have 30% chance to ignite a turf, making fiery explosions leave
+      cool residual flame.
+  - balance: Flamethrowers have been reworked to use chemicals instead and now leave
+      fire and hotspots on the turfs. They require an open reagent container instead
+      of plasma tank now.
+  - balance: Firealarms now trigger from 80*C upwards (from 200*C) or -10*C downwards
+      (from -3*C). They also trigger immediately when they're on a turf fire
+  - rscadd: Wraps chat text of balloon alerts in notice span and adds a source prefix
+2021-06-28:
+  /tg/station:
+  - code_imp: Added an optimization to the input subsystem.
+  - rscadd: Knee-jerk reaction tests, right click someone's leg with a hammer-like
+      item to check on their brain health! A sharp kick indicates a healthy brain,
+      a delayed but sharp kick a mildly damaged one, and a delayed weak kick a severely
+      damaged one. The healthier the brain, the louder the kick, so blind doctors
+      keep those ears perked!
+  - bugfix: Some screwdriver inhand icons have been fixed to not show an error
+  - bugfix: Some prison jumpsuit inhand icons have been fixed to not show an error
+  - bugfix: Fixed reagent multiplication exploit with 1u foam
+  - bugfix: Smoking no longer spills spaghetti from your pockets
+  - bugfix: Lit cigarettes no longer keep falling off
+  - spellcheck: Removed extra "the" from item knockdown messages
+  - bugfix: Fixes AND/OR gates not properly functioning because of null inputs.
+  - bugfix: Mime crayons don't make you multicolored when you eat them.
+  - bugfix: Fixed not being able to add telecomms frequency filters
+  - bugfix: Changed the color of command frequency in telecomms and headset GUI from
+      blue to yellow to match chat color
+  - bugfix: Starlight condensation now heals you on glass tiles exposed to space,
+      multi-z stations, lavaland, and unroofed structures correctly.
+  - bugfix: The Cryopod bays on Icebox, Metastation and Deltastation have been wired
+      into the station's power grid
+  - qol: adds a substantial number of fire alarms to Tramstation areas that had few/none
+  - bugfix: Fixed duplicate PunPun in Tramstation bar
+  - bugfix: Fixed duplicated chemistry locker embedded in the Tramstation HPLC machine
+  - bugfix: Fixed some incorrect uses of UnregisterSignal
+  - rscadd: GAGS flowers (Rainbow bunch flowers now look prettier!)
+  - refactor: Rainbow bunch flowers now use GAGS instead of their old method of greyscaling
+  - bugfix: Screwdrivers no longer cause an error icon while in the belt
+  - bugfix: Mime shoes no longer runtime when generating their icon. This may fix
+      some graphical oddity or do nothing at all since they get colored pure white
+      anyway.
+  - qol: Microwaves now use Right Click instead of Alt click to turn on.
+  - imageadd: The desk, green and banana lamps have been resprited.
+  - bugfix: Offering an item multiple times no longer causes runtimes
+  - bugfix: Chairs no longer runtime when being deconstructed
+  - bugfix: Fix oversight where Dynamic can assign antag datums to the minds of players
+      who will be forcefully returned to the lobby.
+  - rscadd: Some new holidays have been added.
+  - imageadd: Better greyscale support has been added to datum materials allowing
+      objects to have more complex compositions of sprites. The golden cleric mace
+      is extra shiny now.
+  - code_imp: removed the piece of code that causes carpotoxin to qdel temporal scars
+      (hopefully I identified it correctly)
+  - bugfix: Fixed dynamic latejoins.
+  Azarak:
+  - bugfix: Fixes mutant variants for head and mask, and HIDESNOUT flag
+  - rscadd: Planetary critters now have pass flags
+  - bugfix: Fixes corvid snout
+  - bugfix: Weather blend mode and opacity fix
+  rhodochrositech:
+  - rscadd: Adds the Chilldown, Luxury Cargo Shuttle
+  - rscadd: Adds The Ironwrought, Mining/Engineering environment shuttle.
+  - rscadd: Adds a Whiteship, The Barrows (V1), a mobile ship ready to provide a roleplay
+      medical mystery at the bar.

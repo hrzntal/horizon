@@ -97,11 +97,13 @@
 	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 5)
 	can_flashlight = TRUE
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/old
 	name = "degrading helmet"
 	desc = "Standard issue security helmet. Due to degradation the helmet's visor obstructs the users ability to see long distances."
 	tint = 2
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/blueshirt
 	name = "blue helmet"
@@ -109,6 +111,7 @@
 	icon_state = "blueshift"
 	inhand_icon_state = "blueshift"
 	custom_premium_price = PAYCHECK_HARD
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
@@ -154,6 +157,7 @@
 	can_toggle = 1
 	toggle_cooldown = 20
 	dog_fashion = null
+	mutant_variants = NONE
 	///Looping sound datum for the siren helmet
 	var/datum/looping_sound/siren/weewooloop
 
@@ -200,6 +204,7 @@
 	desc = "A police officer's Hat. This hat emphasizes that you are THE LAW."
 	icon_state = "policehelm"
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/constable
 	name = "constable helmet"
@@ -208,6 +213,7 @@
 	inhand_icon_state = "constable"
 	custom_price = PAYCHECK_HARD * 1.5
 	worn_y_offset = 4
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/swat/nanotrasen
 	name = "\improper SWAT helmet"
@@ -228,6 +234,7 @@
 	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
 	strip_delay = 80
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/thunderdome/holosuit
 	cold_protection = null
@@ -245,6 +252,7 @@
 	inhand_icon_state = "roman"
 	strip_delay = 100
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/roman/fake
 	desc = "An ancient helmet made of plastic and leather."
@@ -279,6 +287,7 @@
 	armor = list(MELEE = 15, BULLET = 10, LASER = 20,ENERGY = 10, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	// Offer about the same protection as a hardhat.
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/bluetaghelm
 	name = "blue laser tag helmet"
@@ -289,6 +298,7 @@
 	armor = list(MELEE = 15, BULLET = 10, LASER = 20,ENERGY = 10, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	// Offer about the same protection as a hardhat.
 	dog_fashion = null
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/knight
 	name = "medieval helmet"
@@ -345,6 +355,7 @@
 	resistance_flags = FLAMMABLE
 	armor = list(MELEE = 20, BULLET = 10, LASER = 30, ENERGY = 40, BOMB = 15, BIO = 0, RAD = 0, FIRE = 40, ACID = 50, WOUND = 5)
 	strip_delay = 60
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/rus_helmet
 	name = "russian helmet"
@@ -353,6 +364,7 @@
 	inhand_icon_state = "rus_helmet"
 	armor = list(MELEE = 25, BULLET = 30, LASER = 0, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 20, FIRE = 20, ACID = 50, WOUND = 5)
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/helmet
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/rus_ushanka
 	name = "battle ushanka"
@@ -363,6 +375,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	armor = list(MELEE = 25, BULLET = 20, LASER = 20, ENERGY = 30, BOMB = 20, BIO = 50, RAD = 20, FIRE = -10, ACID = 50, WOUND = 5)
+	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/infiltrator
 	name = "infiltrator helmet"
@@ -385,6 +398,7 @@
 	material_flags = MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS //Can change color and add prefix
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	mutant_variants = NONE
 
 //monkey sentience caps
 
@@ -395,6 +409,7 @@
 	icon_state = "monkeymind"
 	inhand_icon_state = "monkeymind"
 	strip_delay = 100
+	mutant_variants = NONE
 	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
 	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
 	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)

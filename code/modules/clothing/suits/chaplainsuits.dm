@@ -5,6 +5,7 @@
 
 /obj/item/clothing/suit/hooded/chaplainsuit
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	mutant_variants = NONE
 
 //Suits
 /obj/item/clothing/suit/chaplainsuit/holidaypriest
@@ -53,6 +54,7 @@
 	inhand_icon_state = "monkfrock"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hooded/monkhabit
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hooded/monkhabit
 	name = "monk's hood"
@@ -61,6 +63,7 @@
 	inhand_icon_state = "monkhood"
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEEARS
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/chaplainsuit/monkrobeeast
 	name = "eastern monk's robes"
