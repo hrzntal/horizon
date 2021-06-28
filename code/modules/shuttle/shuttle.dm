@@ -436,6 +436,9 @@
 		QDEL_NULL(assigned_transit) //don't need it where we're goin'!
 		shuttle_areas = null
 		remove_ripples()
+		if(freeform_port)
+			qdel(freeform_port, TRUE)
+			freeform_port = null
 	. = ..()
 
 /obj/docking_port/mobile/Initialize(mapload)
@@ -574,6 +577,9 @@
 		mode = SHUTTLE_IDLE
 		return
 	previous = null
+	if(freeform_port)
+		qdel(freeform_port, TRUE)
+		freeform_port = null
 	if(destination == "overmap")
 		destination = null
 		timer = INFINITY
@@ -597,14 +603,6 @@
 		spawned_shuttle.RegisterToShuttle(src)
 		if(my_overmap_object.shuttle_controller)
 			my_overmap_object.shuttle_controller.busy = FALSE
-		if(freeform_port)
-			if(freeform_port?.get_docked())
-				freeform_port.delete_after = TRUE
-				freeform_port.id = null
-				freeform_port.name = "Old [freeform_port.name]"
-				freeform_port = null
-			else
-				QDEL_NULL(freeform_port)
 	else if(!destination)
 		// sent to transit with no destination -> unlimited timer
 		timer = INFINITY
