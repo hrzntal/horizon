@@ -240,7 +240,7 @@
 	if(mining_progress_ticker > 100)
 		mining_progress_ticker -= 100
 		//Try find node if not connected
-		if(!current_node && !SSshuttle.is_in_shuttle_bounds(src))
+		if(!current_node)
 			var/datum/ore_node/node = GetNearbyOreNode(get_turf(src))
 			if(!node)
 				errored = TRUE
@@ -270,6 +270,10 @@
 	if(terminal && panel_open)
 		terminal.dismantle(user, W)
 		return TRUE
+
+/obj/machinery/power/mining_drill/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	if(current_node)
+		UnregisterNode()
 
 /obj/machinery/power/mining_drill/proc/turn_on()
 	active = TRUE
