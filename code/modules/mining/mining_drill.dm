@@ -264,6 +264,9 @@
 		dump_ticker++
 		if(dump_ticker > 5)
 			dump_ore()
+			//"Dig" into the ground too
+			var/turf/my_turf = get_turf(src)
+			my_turf.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /obj/machinery/power/mining_drill/disconnect_terminal()
 	if(terminal)
