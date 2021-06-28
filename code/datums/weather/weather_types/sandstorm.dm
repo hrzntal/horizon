@@ -30,7 +30,6 @@
 	sound_weak_inside = /datum/looping_sound/weather/wind
 
 	opacity_in_main_stage = TRUE
-	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/sandstorm/weather_act(mob/living/L)
 	if(iscarbon(L))
