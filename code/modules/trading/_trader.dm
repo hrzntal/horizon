@@ -308,6 +308,8 @@
 	InitializeStock()
 
 /datum/trader/proc/Tick()
+	if(current_credits < (initial(current_credits)*(TRADER_LOW_CASH_THRESHOLD/100)))
+		current_credits += rand(TRADER_PAYCHECK_LOW, TRADER_PAYCHECK_HIGH)
 	if(rotates_stock && prob(rotate_stock_chance))
 		RotateStock()
 

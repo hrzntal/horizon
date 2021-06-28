@@ -234,6 +234,7 @@
 
 /datum/trader/mining
 	name = "Rock'n'Drill Mining Inc"
+	current_credits = RICH_TRADER_CREDIT_AMOUNT
 	buy_margin = 1.3
 	sell_margin = 2
 	possible_origins = list("Automated Smelter AH-532", "CMV Locust", "The Galactic Foundry Company", "Crucible LLC")
