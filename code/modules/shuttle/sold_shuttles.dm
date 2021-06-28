@@ -36,7 +36,7 @@
 /datum/sold_shuttle/crow
 	name = "ESS Crow - sister"
 	desc = "A medium sized exploration shuttle, sister to the ESS Crow, named the same oddly."
-	detailed_desc = "It's medium sized and is equipped with 4 propulsion engine, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies."
+	detailed_desc = "It's medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies."
 	shuttle_id = "exploration_crow"
 	cost = 10000
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
