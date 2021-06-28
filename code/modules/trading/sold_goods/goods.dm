@@ -372,3 +372,19 @@
 	stock_low = 1
 	cost = 200
 	path = /mob/living/simple_animal/hostile/lizard
+
+/datum/sold_goods/excavation_pick_set
+	path = /obj/item/storage/excavation_pick_set/full
+
+/datum/sold_goods/excavation_measuring_tape
+	path = /obj/item/excavation_measuring_tape
+
+/datum/sold_goods/excavation_depth_scanner
+	path = /obj/item/excavation_depth_scanner
+
+/datum/sold_goods/excavation_locator
+	path = /obj/item/excavation_locator
+
+/datum/sold_goods/anomalous_crystal
+	cost = 1000
+	path = /obj/item/anomalous_sliver/crystal

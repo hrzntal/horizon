@@ -69,3 +69,23 @@
 	name = "pets"
 	cost = 150
 	trading_types = list(/mob/living/simple_animal/pet = TRADER_SUBTYPES)
+
+/datum/bought_goods/fossil
+	name = "fossils"
+	cost = 500
+	trading_types = list(/obj/item/fossil = TRADER_THIS_TYPE)
+
+/datum/bought_goods/excavation_junk
+	name = "ancient artifacts"
+	cost = 300
+	trading_types = list(/obj/item/excavation_junk = TRADER_THIS_TYPE)
+
+/datum/bought_goods/excavation_artifact
+	name = "unknown artifacts"
+	cost = 500
+	trading_types = list(/obj/item/unknown_artifact = TRADER_THIS_TYPE)
+
+/datum/bought_goods/anomalous_crystal
+	name = "anomalous crystals"
+	cost = 1000
+	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)

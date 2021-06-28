@@ -34,12 +34,16 @@
 		do_sparks(1, TRUE, src)
 		qdel(src)
 
+/obj/item/anomalous_sliver/sliver
+	desc = "A piece of an anomalous crystal, just as energized, warm and brittle."
+
 /obj/item/anomalous_sliver/sliver/Initialize()
 	. = ..()
 	icon_state = "sliver[rand(1,4)]"
 
 /obj/item/anomalous_sliver/crystal
 	name = "anomalous crystal"
+	desc = "It seems warm to the touch and pulsating with energy, it's very hard and you can probably cut a piece out of it with something sharp. It seems very brittle."
 	icon_state = "crystal"
 	w_class = WEIGHT_CLASS_SMALL
 	power = 100

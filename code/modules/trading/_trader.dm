@@ -17,9 +17,9 @@
 	var/list/possible_sold_goods
 	/// Associative list of bought goods datums, key is type, value is chance that the datum will apply
 	var/list/possible_bought_goods
-	/// List of sold good datums
+	/// List of sold good datums. If you want all of them to be guaranteed, make sure `target_sold_goods_amount` is greater than the amount of items in here
 	var/list/sold_goods = list()
-	/// List of bought goods datums
+	/// List of bought goods datums. If you want all of them to be guaranteed, make sure `target_bought_goods_amount` is greater than the amount of items in here
 	var/list/bought_goods = list()
 	/// Cash they hold, they won't be able to pay out if it gets too low
 	var/current_credits = DEFAULT_TRADER_CREDIT_AMOUNT
