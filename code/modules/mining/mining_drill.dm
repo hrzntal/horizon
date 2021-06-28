@@ -240,7 +240,7 @@
 	if(mining_progress_ticker > 100)
 		mining_progress_ticker -= 100
 		//Try find node if not connected
-		if(!current_node)
+		if(!current_node && !SSshuttle.is_in_shuttle_bounds(src))
 			var/datum/ore_node/node = GetNearbyOreNode(get_turf(src))
 			if(!node)
 				errored = TRUE
