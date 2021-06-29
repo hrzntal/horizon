@@ -97,7 +97,7 @@
 	extra_range = -11
 	falloff_distance = 1
 	falloff_exponent = 5
-	volume = 50
+	volume = 10
 
 /datum/looping_sound/computer
 	start_sound = 'sound/machines/computer/computer_start.ogg'
