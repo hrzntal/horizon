@@ -65,7 +65,7 @@
 	var/struct = new spawn_type(location, blob_type)
 	other_structures[struct] = TRUE
 	our_core.max_integrity += 10
-	our_core.obj_integrity += 10
+	our_core.update_integrity(our_core.get_integrity() + 10)
 	return struct
 
 /datum/mold_controller/Destroy()
@@ -162,7 +162,7 @@
 	active_resin[new_resin] = TRUE
 	new_resin.CalcDir()
 	our_core.max_integrity += 2
-	our_core.obj_integrity += 2
+	our_core.update_integrity(our_core.get_integrity() + 2)
 	return new_resin
 
 /datum/mold_controller/proc/ActivateAdjacentResinRecursive(turf/centrum_turf, iterations = 1)
