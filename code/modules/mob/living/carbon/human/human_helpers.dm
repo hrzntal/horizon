@@ -101,7 +101,7 @@
 	. = ..()
 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
 		if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS))
-			balloon_alert(src, "fingers are too big!")
+			balloon_alert(src, "fingers are too big!", "<span class='warning'>Your meaty finger are too large for the trigger guard!</span>")
 			return FALSE
 	if(HAS_TRAIT(src, TRAIT_NOGUNS))
 		to_chat(src, "<span class='warning'>You can't bring yourself to use a ranged weapon!</span>")
