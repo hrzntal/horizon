@@ -82,6 +82,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_corners = corners
 	var/old_directional_opacity = directional_opacity
 	var/old_rcd_memory = rcd_memory
+	var/old_underlying_area = underlying_area
 
 	var/old_bp = blueprint_data
 	blueprint_data = null
@@ -98,6 +99,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
 		callback.InvokeAsync(W)
+
+	W.underlying_area = old_underlying_area
 
 	if(new_baseturfs)
 		W.baseturfs = baseturfs_string_list(new_baseturfs, W)

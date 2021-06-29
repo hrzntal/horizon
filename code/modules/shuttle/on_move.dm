@@ -153,9 +153,11 @@ All ShuttleMove procs go here
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
 
+	var/area/target_area = oldT.underlying_area ? oldT.underlying_area : underlying_old_area
 	contents -= oldT
-	underlying_old_area.contents += oldT
-	oldT.change_area(src, underlying_old_area)
+	target_area.contents += oldT
+	oldT.change_area(src, target_area)
+	oldT.underlying_area = null
 	//The old turf has now been given back to the area that turf originaly belonged to
 
 	var/area/old_dest_area = newT.loc
@@ -164,6 +166,7 @@ All ShuttleMove procs go here
 	old_dest_area.contents -= newT
 	contents += newT
 	newT.change_area(old_dest_area, src)
+	newT.underlying_area = old_dest_area
 	return TRUE
 
 // Called on areas after everything has been moved

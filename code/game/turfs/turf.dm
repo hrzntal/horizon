@@ -64,6 +64,9 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	/// See __DEFINES/construction.dm for RCD_MEMORY_*.
 	var/rcd_memory
 
+	/// Reference to an underlying area in a turf. Used by shuttles to restore original areas back
+	var/area/underlying_area
+
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list("x", "y", "z")
 	if(var_name in banned_edits)
