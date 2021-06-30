@@ -100,11 +100,12 @@
 
 /area/proc/UpdateDayNightTurfs(rebuild = FALSE, datum/day_night_controller/newsub, full_unsub = FALSE, find_controller = FALSE)
 	if(find_controller)
-		var/datum/space_level/level = SSmapping.z_list[z]
-		if(level && level.day_night_controller)
-			newsub = level.day_night_controller
-			rebuild = TRUE
-		else if(subbed_day_night_controller)
+		if(length(SSmapping.z_list) <= z) //Goddamn areas that are out of the world??
+			var/datum/space_level/level = SSmapping.z_list[z]
+			if(level && level.day_night_controller)
+				newsub = level.day_night_controller
+				rebuild = TRUE
+		if(!newsub && subbed_day_night_controller)
 			full_unsub = TRUE
 	if(full_unsub)
 		if(subbed_day_night_controller)
