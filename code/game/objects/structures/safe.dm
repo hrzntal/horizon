@@ -45,9 +45,10 @@ FLOOR SAFES
 	for(var/i in 1 to number_of_tumblers)
 		tumblers.Add(rand(0, 99))
 
-	if(!mapload)
-		return
+	if(mapload)
+		return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/safe/LateInitialize()
 	// Put as many items on our turf inside as possible
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
