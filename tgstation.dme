@@ -2514,6 +2514,7 @@
 #include "code\modules\map_content\metastation_define.dm"
 #include "code\modules\map_content\multiz_debug_define.dm"
 #include "code\modules\map_content\runtimestation_define.dm"
+#include "code\modules\map_content\skyport_define.dm"
 #include "code\modules\map_content\tramstation_define.dm"
 #include "code\modules\map_content\ruins\planetary\planet_ruins.dm"
 #include "code\modules\map_content\tradership\tradership_define.dm"
