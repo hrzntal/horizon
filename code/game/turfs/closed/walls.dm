@@ -90,11 +90,29 @@
 	if(girder_type)
 		new /obj/item/stack/sheet/iron(src)
 
+/turf/proc/create_rubble(adjacent = FALSE)
+	var/rubble_type = prob(50) ? /obj/structure/rubble/medium : /obj/structure/rubble/large
+	var/turf/destination = src
+	if(adjacent)
+		ImmediateCalculateAdjacentTurfs()
+		var/list/adjacent_turfs = GetAtmosAdjacentTurfs()
+		var/list/free_turfs = list()
+		for(var/i in adjacent_turfs)
+			var/turf/Turf = i
+			if(!Turf.is_blocked_turf(TRUE))
+				free_turfs += Turf
+		if(length(free_turfs))
+			destination = pick(free_turfs)
+		else if(length(adjacent_turfs))
+			destination = pick(adjacent_turfs)
+	new rubble_type(destination)
+
 /turf/closed/wall/ex_act(severity, target)
 	if(target == src)
 		dismantle_wall(1,1)
 		return
 
+	var/make_rubble = prob(50) ? TRUE : FALSE
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			//SN src = null
@@ -102,10 +120,19 @@
 			NT.contents_explosion(severity, target)
 			return
 		if(EXPLODE_HEAVY)
-			dismantle_wall(prob(50), TRUE)
+			if(prob(50))
+				dismantle_wall(TRUE, TRUE)
+				if(make_rubble)
+					create_rubble()
+			else
+				dismantle_wall(FALSE, TRUE)
+				if(make_rubble)
+					create_rubble(TRUE)
 		if(EXPLODE_LIGHT)
 			if (prob(hardness))
 				dismantle_wall(0,1)
+				if(make_rubble)
+					create_rubble(TRUE)
 	if(!density)
 		..()
 
