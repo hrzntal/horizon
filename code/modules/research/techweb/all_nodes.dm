@@ -1129,7 +1129,7 @@
 		"damagemod",
 		"drill",
 		"mining_brace",
-		"mining_density_scanner",
+		"metal_density_scanner",
 		"mining_drill",
 		"mining_equipment_vendor",
 		"ore_redemption",
