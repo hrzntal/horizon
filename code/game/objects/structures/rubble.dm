@@ -7,7 +7,6 @@
 	can_buckle = TRUE
 	layer = TABLE_LAYER
 	buckle_lying = 90
-	custom_materials = list(/datum/material/iron = 2000)
 	max_integrity = 100
 	integrity_failure = 0.33
 	resistance_flags = FIRE_PROOF | ACID_PROOF
