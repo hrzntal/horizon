@@ -111,6 +111,14 @@
 	suffix = "archeological_site.dmm"
 	planet_requirements = PLANET_HABITABLE
 
+/datum/map_template/ruin/planetary/abandoned_factory
+	name = "Abandoned Factory"
+	id = "abandoned_factory"
+	description = "An abandoned factory."
+	cost = 5
+	suffix = "abandoned_factory.dmm"
+	planet_requirements = PLANET_HABITABLE
+
 /datum/map_template/ruin/planetary/old_drill_site
 	name = "Old Drill Site"
 	id = "old_drill_site"
