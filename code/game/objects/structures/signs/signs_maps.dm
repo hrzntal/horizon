@@ -56,3 +56,7 @@
 	desc = "A direction sign, pointing out which way the station's AI Upload is."
 	icon_state = "direction_upload"
 
+/obj/structure/sign/directions/pods
+	name = "pods sign"
+	desc = "A direction sign, pointing out which way the emergency escape pods are."
+	icon_state = "direction_pods"

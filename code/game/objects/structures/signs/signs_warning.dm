@@ -187,3 +187,104 @@
 	icon_state = "radshelter"
 	is_editable = TRUE
 
+/obj/structure/sign/warning/turrets
+	name = "\improper TURRETS sign"
+	sign_change_name = "Warning - Turrets"
+	desc = "A warning sign which reads 'TURRETS'."
+	icon_state = "turrets"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/falling
+	name = "\improper FALLING HAZARD sign"
+	sign_change_name = "Warning - Falling Hazard"
+	desc = "A warning sign which reads 'FALLING HAZARD'."
+	icon_state = "falling"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/movingparts
+	name = "\improper MOVING PARTS sign"
+	sign_change_name = "Warning - Moving Parts"
+	desc = "A warning sign which reads 'MOVING PARTS'."
+	icon_state = "movingparts"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/armory
+	name = "\improper ARMORY sign"
+	sign_change_name = "Warning - Armory"
+	desc = "A warning sign which reads 'ARMORY'."
+	icon_state = "armory"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/server
+	name = "\improper SERVER sign"
+	sign_change_name = "Warning - Server"
+	desc = "A warning sign which reads 'SERVER'."
+	icon_state = "server"
+	is_editable = TRUE
+
+//////////SMALL SIGNS
+
+/obj/structure/sign/warning/vacuum_small
+	name = "\improper HARD VACUUM AHEAD sign"
+	sign_change_name = "Warning - Hard Vacuum (small)"
+	desc = "A warning sign which reads 'HARD VACUUM AHEAD'."
+	icon_state = "space-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/movingparts_small
+	name = "\improper MOVING PARTS sign"
+	sign_change_name = "Warning - Moving Parts (small)"
+	desc = "A warning sign which reads 'MOVING PARTS'."
+	icon_state = "movingparts-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/armory_small
+	name = "\improper ARMORY sign"
+	sign_change_name = "Warning - Armory (small)"
+	desc = "A warning sign which reads 'ARMORY'."
+	icon_state = "armory-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/server_small
+	name = "\improper SERVER sign"
+	sign_change_name = "Warning - Server (small)"
+	desc = "A warning sign which reads 'SERVER'."
+	icon_state = "server-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/fire_small
+	name = "\improper DANGER: FIRE sign"
+	sign_change_name = "Warning - Fire Hazard (small)"
+	desc = "A warning sign which reads 'DANGER: FIRE'."
+	icon_state = "fire-small"
+	resistance_flags = FIRE_PROOF
+	is_editable = TRUE
+
+/obj/structure/sign/warning/nosmoking_small
+	name = "\improper NO SMOKING sign"
+	sign_change_name = "Warning - No Smoking (small)"
+	desc = "A warning sign which reads 'NO SMOKING'."
+	icon_state = "nosmoking-small"
+	resistance_flags = FLAMMABLE
+	is_editable = TRUE
+
+/obj/structure/sign/warning/securearea_small
+	name = "\improper SECURE AREA sign"
+	sign_change_name = "Warning - Secure Area (small)"
+	desc = "A warning sign which reads 'SECURE AREA'."
+	icon_state = "securearea-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/electricshock_small
+	name = "\improper HIGH VOLTAGE sign"
+	sign_change_name = "Warning - High Voltage (small)"
+	desc = "A warning sign which reads 'HIGH VOLTAGE'."
+	icon_state = "shock-small"
+	is_editable = TRUE
+
+/obj/structure/sign/warning/radiation_small
+	name = "\improper HAZARDOUS RADIATION sign"
+	sign_change_name = "Warning - Radiation (small)"
+	desc = "A warning sign alerting the user of potential radiation hazards."
+	icon_state = "radiation-small"
+	is_editable = TRUE
