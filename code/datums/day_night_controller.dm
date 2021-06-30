@@ -44,6 +44,21 @@
 	var/obj/effect/fullbright/effect
 	/// Whether we have applied luminosity to the areas
 	var/has_applied_luminosity = FALSE
+	var/last_color = "#FFFFFF"
+	var/last_alpha = 1
+	var/list/subscribed_blend_areas = list()
+
+/datum/day_night_controller/proc/subscribe_blend_area(area/area_to_sub)
+	subscribed_blend_areas[area_to_sub] = TRUE
+	area_to_sub.subbed_day_night_controller = src
+	area_to_sub.last_day_night_luminosity = FALSE
+
+/datum/day_night_controller/proc/unsubscribe_blend_area(area/area_to_unsub)
+	subscribed_blend_areas -= area_to_unsub
+	area_to_unsub.subbed_day_night_controller = null
+	area_to_unsub.last_day_night_color = null
+	area_to_unsub.last_day_night_alpha = null
+	area_to_unsub.last_day_night_luminosity = null
 
 /datum/day_night_controller/process()
 	update_areas()
@@ -67,6 +82,7 @@
 		my_area.cut_overlay(effect)
 
 	var/target_color = color_lookup_table["[time]"]
+	last_color = target_color
 	var/target_light = light_lookup_table["[time]"]
 
 	if(linked_overmap_object && linked_overmap_object.weather_controller)
@@ -74,8 +90,11 @@
 		if(target_light < 0)
 			target_light = 0
 
+	target_light *= 255
+	last_alpha = target_light
+
 	effect.color = target_color
-	effect.alpha = 255 * target_light
+	effect.alpha = target_light
 	var/do_luminosity = (target_light > MINIMUM_LIGHT_FOR_LUMINOSITY) ? TRUE : FALSE
 
 	for(var/i in affected_areas)
@@ -88,17 +107,26 @@
 		my_area.add_overlay(effect)
 	has_applied_luminosity = do_luminosity
 
+	for(var/i in subscribed_blend_areas)
+		var/area/iterated_area = i
+		iterated_area.UpdateDayNightTurfsSimple()
+
 /datum/day_night_controller/proc/GetAreas()
 	//Get the areas
+	var/list/possible_blending_areas = list()
 	for(var/i in get_areas(/area))
 		var/area/my_area = i
 		if(!z_level_lookup["[my_area.z]"])
 			continue
 		if(!my_area.outdoors)
+			possible_blending_areas += my_area
 			continue
 		if(my_area.underground)
 			continue
 		affected_areas += my_area
+	for(var/i in possible_blending_areas)
+		var/area/my_area = i
+		my_area.UpdateDayNightTurfs(TRUE, src)
 
 /datum/day_night_controller/New(list/space_level)
 	. = ..()
