@@ -274,7 +274,7 @@
 	name = "\improper Tcomms sign"
 	sign_change_name = "Department - Engineering: Tcomms (small)"
 	desc = "A sign labelling an area where telecommunication machinery and servers are stored."
-	icon_state = "tcomms-small"
+	icon_state = "tcomm-small"
 	is_editable = TRUE
 
 /obj/structure/sign/departments/cargo/small
