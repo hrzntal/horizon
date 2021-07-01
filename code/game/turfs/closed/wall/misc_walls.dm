@@ -123,9 +123,7 @@
 	rad_insulation = RAD_HEAVY_INSULATION
 
 /turf/closed/wall/concrete/deconstruction_hints(mob/user)
-	switch(d_state)
-		if(INTACT)
-			return "<span class='notice'>Nothing's going to cut that.</span>"
+	return "<span class='notice'>Nothing's going to cut that.</span>"
 
 /turf/closed/wall/concrete/try_decon(obj/item/I, mob/user, turf/T)
     if(I.tool_behaviour == TOOL_WELDER)
