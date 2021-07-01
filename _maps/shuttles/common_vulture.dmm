@@ -193,7 +193,7 @@
 	id = "vulture";
 	launch_status = 0;
 	name = "MS Vulture";
-	port_direction = 2;
+	port_direction = 8;
 	width = 15
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{

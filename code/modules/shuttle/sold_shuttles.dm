@@ -41,3 +41,66 @@
 	cost = 10000
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
+
+/datum/sold_shuttle/platform_small
+	name = "Small Shuttle Platform"
+	desc = "Empty 'build your own shuttle' platform. It's small sized (13x9) and of rectangular shape. It comes with some construction supplies."
+	detailed_desc = "The construction supplies contain:\
+		<BR> - 1 Shuttle Computer (Circuit board)\
+		<BR> - 2 Propulsion Engines (Circuit board)\
+		<BR> - 1 Rapid Pipe Dispenser\
+		<BR> - 1 Rapid Construction Device\
+		<BR> - 1 mechanical Toolbox\
+		<BR> - 1 electrical Toolbox\
+		<BR> - 1 APC electronics\
+		<BR> - 1 air alarm electronics\
+		<BR> - 1 air canister\
+		<BR> - 50 iron sheets\
+		<BR> - 50 glass sheets\
+		<BR> - 50 titanium sheets\
+		"
+	cost = 3000
+	shuttle_id = "common_platform_small"
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+
+/datum/sold_shuttle/platform_medium
+	name = "Medium Shuttle Platform"
+	desc = "Empty 'build your own shuttle' platform. It's medium sized (17x13) and of a bullet shape. It comes with some construction supplies."
+	detailed_desc = "The construction supplies contain:\
+		<BR> - 1 Shuttle Computer (Circuit board)\
+		<BR> - 3 Propulsion Engines (Circuit board)\
+		<BR> - 1 Rapid Pipe Dispenser\
+		<BR> - 1 Rapid Construction Device\
+		<BR> - 1 mechanical Toolbox\
+		<BR> - 1 electrical Toolbox\
+		<BR> - 1 APC electronics\
+		<BR> - 1 air alarm electronics\
+		<BR> - 2 air canisters\
+		<BR> - 100 iron sheets\
+		<BR> - 100 glass sheets\
+		<BR> - 100 titanium sheets\
+		"
+	cost = 5000
+	shuttle_id = "common_platform_medium"
+	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
+
+/datum/sold_shuttle/platform_large
+	name = "Large Shuttle Platform"
+	desc = "Empty 'build your own shuttle' platform. It's large sized (23x15) and of a bullet shape. It comes with some construction supplies."
+	detailed_desc = "The construction supplies contain:\
+		<BR> - 1 Shuttle Computer (Circuit board)\
+		<BR> - 5 Propulsion Engines (Circuit board)\
+		<BR> - 1 Rapid Pipe Dispenser\
+		<BR> - 1 Rapid Construction Device\
+		<BR> - 1 mechanical Toolbox\
+		<BR> - 1 electrical Toolbox\
+		<BR> - 1 APC electronics\
+		<BR> - 1 air alarm electronics\
+		<BR> - 4 air canister\
+		<BR> - 200 iron sheets\
+		<BR> - 200 glass sheets\
+		<BR> - 200 titanium sheets\
+		"
+	cost = 10000
+	shuttle_id = "common_platform_large"
+	allowed_docks = list(DOCKS_LARGE_UPWARDS)

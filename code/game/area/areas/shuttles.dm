@@ -292,6 +292,11 @@
 
 //Common shuttles
 
+/area/shuttle/platform
+	name = "Platform Shuttle"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/platform
+
 /area/shuttle/vulture
 	name = "MS Vulture"
 	requires_power = TRUE
