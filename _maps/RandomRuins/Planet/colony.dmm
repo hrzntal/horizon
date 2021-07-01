@@ -56,7 +56,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/outdoors/cargo_bay)
 "mo" = (
 /turf/open/floor/engine/n2,
@@ -65,11 +65,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "oD" = (
 /obj/structure/railing,
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/outdoors/cargo_bay)
 "oJ" = (
 /turf/open/floor/iron,
@@ -129,7 +129,7 @@
 /turf/open/floor/engine/airless,
 /area/ruin/unpowered/colony/atmos)
 "BT" = (
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "BY" = (
 /turf/open/floor/iron,
@@ -188,7 +188,7 @@
 /area/ruin/unpowered/colony/atmos)
 "Nm" = (
 /obj/structure/grille,
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/outdoors/cargo_bay)
 "NA" = (
 /turf/closed/wall/r_wall,
@@ -197,7 +197,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "Pi" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
@@ -208,16 +208,16 @@
 /area/ruin/unpowered/colony/ops)
 "Qv" = (
 /obj/structure/grille,
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "RS" = (
 /turf/closed/wall,
 /area/ruin/unpowered/colony/operating_theatre)
 "SJ" = (
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/outdoors/cargo_bay)
 "Tt" = (
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/ops)
 "Tv" = (
 /turf/open/floor/plating,
@@ -229,18 +229,18 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/ruin/unpowered/colony/outdoors/cargo_bay)
 "Yx" = (
 /obj/machinery/power/tracker,
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "YZ" = (
 /turf/closed/wall/r_wall,
 /area/ruin/unpowered/colony/engineering)
 "Zf" = (
 /obj/machinery/power/solar,
-/turf/open/floor/plating/planetary/concrete,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 
 (1,1,1) = {"

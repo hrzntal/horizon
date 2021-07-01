@@ -3,7 +3,7 @@
 	area_type = /area/planet/jungle
 	generator_type = /datum/map_generator/planet_gen/jungle
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/jungle
 	atmosphere_type = /datum/atmosphere/jungle
 	weather_controller_type = /datum/weather_controller/lush
@@ -57,7 +57,7 @@
 	perlin_zoom = 65
 
 /datum/biome/mudlands
-	turf_type = /turf/open/floor/plating/dirt/jungle/dark
+	turf_type = /turf/open/floor/planetary/dirt/jungle/dark
 	flora_types = list(
 		/obj/structure/flora/grass/jungle,
 		/obj/structure/flora/grass/jungle/b,
@@ -67,7 +67,7 @@
 	flora_density = 3
 
 /datum/biome/plains
-	turf_type = /turf/open/floor/plating/grass/jungle
+	turf_type = /turf/open/floor/planetary/grass
 	flora_types = list(
 		/obj/structure/flora/grass/jungle,
 		/obj/structure/flora/grass/jungle/b,
@@ -82,7 +82,7 @@
 	flora_density = 15
 
 /datum/biome/jungle
-	turf_type = /turf/open/floor/plating/grass/jungle
+	turf_type = /turf/open/floor/planetary/grass
 	flora_types = list(
 		/obj/structure/flora/grass/jungle,
 		/obj/structure/flora/grass/jungle/b,
@@ -114,7 +114,7 @@
 	)
 
 /datum/biome/wasteland
-	turf_type = /turf/open/floor/plating/planetary/wasteland
+	turf_type = /turf/open/floor/planetary/wasteland
 
 /datum/atmosphere/jungle
 	base_gases = list(

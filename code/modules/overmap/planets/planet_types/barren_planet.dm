@@ -3,7 +3,7 @@
 	area_type = /area/planet/barren
 	generator_type = /datum/map_generator/planet_gen/barren
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/barren)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/barren)
 	overmap_type = /datum/overmap_object/shuttle/planet/barren
 	atmosphere_type = /datum/atmosphere/barren
 
@@ -51,12 +51,12 @@
 	perlin_zoom = 65
 
 /datum/biome/barren
-	turf_type = /turf/open/floor/plating/planetary/barren
+	turf_type = /turf/open/floor/planetary/barren
 
-/turf/open/floor/plating/planetary/barren
+/turf/open/floor/planetary/barren
 	gender = PLURAL
 	name = "barren rock"
-	baseturfs = /turf/open/floor/plating/planetary/barren
+	baseturfs = /turf/open/floor/planetary/barren
 	icon = 'icons/planet/barren/barren_floor.dmi'
 	icon_state = "barren"
 	base_icon_state = "barren"

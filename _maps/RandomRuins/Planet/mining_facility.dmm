@@ -12,7 +12,7 @@
 "bc" = (
 /obj/machinery/power/mining_drill,
 /obj/effect/ore_node_spawner/generous,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "cG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -187,7 +187,7 @@
 /area/ruin/unpowered)
 "Es" = (
 /obj/structure/cable,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "Ey" = (
 /obj/structure/filingcabinet,
@@ -232,7 +232,7 @@
 "Jx" = (
 /obj/machinery/mining_brace,
 /obj/structure/cable,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "KM" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -253,7 +253,7 @@
 /area/ruin/unpowered)
 "LJ" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "Md" = (
 /obj/item/kirbyplants/random,
@@ -279,11 +279,11 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered)
 "OG" = (
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "PE" = (
 /obj/item/stack/cable_coil,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "PG" = (
 /obj/machinery/conveyor_switch/oneway{
@@ -360,7 +360,7 @@
 /area/ruin/unpowered)
 "Zw" = (
 /obj/machinery/mining_brace,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "ZJ" = (
 /obj/structure/table/wood,

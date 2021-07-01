@@ -14,7 +14,7 @@
 "bn" = (
 /obj/structure/fence/door,
 /obj/structure/barricade/wooden/crude,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "bw" = (
 /obj/structure/fence/corner{
@@ -40,7 +40,7 @@
 /area/ruin/unpowered)
 "bZ" = (
 /obj/structure/fence,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "cf" = (
 /turf/closed/wall/r_wall,
@@ -249,7 +249,7 @@
 	},
 /obj/machinery/light/small/broken/directional/north,
 /obj/effect/decal/cleanable/oil/slippery,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/ruin/unpowered)
 "ju" = (
 /obj/effect/decal/cleanable/oil,
@@ -502,7 +502,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/clear,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "uU" = (
 /obj/structure/fence{
@@ -520,7 +520,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/ruin/unpowered)
 "vB" = (
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "vL" = (
 /obj/machinery/door/poddoor/shutters{
@@ -582,7 +582,7 @@
 	open = 1
 	},
 /obj/effect/spawner/clear,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "zK" = (
 /obj/machinery/conveyor{
@@ -614,7 +614,7 @@
 "Bn" = (
 /obj/structure/girder,
 /obj/structure/pitgrate,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/ruin/unpowered)
 "Bo" = (
 /obj/structure/fence/corner{
@@ -706,7 +706,7 @@
 /obj/structure/fence{
 	dir = 8
 	},
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "FT" = (
 /obj/effect/decal/cleanable/blood/footprints{
@@ -727,7 +727,7 @@
 /area/ruin/unpowered)
 "Gd" = (
 /obj/structure/pitgrate,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/ruin/unpowered)
 "Gm" = (
 /obj/structure/fence,
@@ -821,7 +821,7 @@
 	},
 /area/ruin/unpowered)
 "JI" = (
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/ruin/unpowered)
 "JL" = (
 /obj/structure/fence,
@@ -857,7 +857,7 @@
 /area/template_noop)
 "La" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/ruin/unpowered)
 "LH" = (
 /obj/effect/decal/cleanable/molten_object/large,
@@ -1185,7 +1185,7 @@
 /obj/structure/fence/door{
 	dir = 8
 	},
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "ZI" = (
 /obj/machinery/door/airlock/maintenance/external{

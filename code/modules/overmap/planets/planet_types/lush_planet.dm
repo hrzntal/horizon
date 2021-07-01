@@ -3,7 +3,7 @@
 	area_type = /area/planet/lush
 	generator_type = /datum/map_generator/planet_gen/lush
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/lush
 	atmosphere_type = /datum/atmosphere/lush
 	weather_controller_type = /datum/weather_controller/lush
@@ -67,7 +67,7 @@
 	perlin_zoom = 65
 
 /datum/biome/grass
-	turf_type = /turf/open/floor/plating/planetary/grass
+	turf_type = /turf/open/floor/planetary/grass
 	flora_types = list(
 		/obj/structure/flora/tree/jungle,
 		/obj/structure/flora/planetary/palebush,
@@ -93,13 +93,13 @@
 	)
 
 /datum/biome/coast
-	turf_type = /turf/open/floor/plating/planetary/sand
+	turf_type = /turf/open/floor/planetary/sand
 
 /datum/biome/heavy_mud
-	turf_type = /turf/open/floor/plating/planetary/mud
+	turf_type = /turf/open/floor/planetary/mud
 
 /datum/biome/wasteland
-	turf_type = /turf/open/floor/plating/planetary/wasteland
+	turf_type = /turf/open/floor/planetary/wasteland
 
 /datum/atmosphere/lush
 	base_gases = list(

@@ -3,7 +3,7 @@
 	area_type = /area/planet/desert
 	generator_type = /datum/map_generator/planet_gen/desert
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/desert
 	atmosphere_type = /datum/atmosphere/desert
 	weather_controller_type = /datum/weather_controller/desert
@@ -61,7 +61,7 @@
 	perlin_zoom = 65
 
 /datum/biome/desert
-	turf_type = /turf/open/floor/plating/planetary/sand/desert
+	turf_type = /turf/open/floor/planetary/sand/desert
 	flora_types = list(
 		/obj/structure/flora/planetary/palebush,
 		/obj/structure/flora/rock/pile,
@@ -79,7 +79,7 @@
 	)
 
 /datum/biome/dry_seafloor
-	turf_type = /turf/open/floor/plating/planetary/dry_seafloor
+	turf_type = /turf/open/floor/planetary/dry_seafloor
 
 /datum/atmosphere/desert
 	base_gases = list(
@@ -98,7 +98,7 @@
 	minimum_temp = T20C + 20
 	maximum_temp = T20C + 80
 
-/turf/open/floor/plating/planetary/sand/desert
+/turf/open/floor/planetary/sand/desert
 	gender = PLURAL
 	name = "desert sand"
-	baseturfs = /turf/open/floor/plating/planetary/sand/desert
+	baseturfs = /turf/open/floor/planetary/sand/desert

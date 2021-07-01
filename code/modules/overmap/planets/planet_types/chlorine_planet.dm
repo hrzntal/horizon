@@ -3,7 +3,7 @@
 	area_type = /area/planet/chlorine
 	generator_type = /datum/map_generator/planet_gen/chlorine
 
-	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/plating/planetary/rock)
+	default_traits_input = list(ZTRAIT_MINING = TRUE, ZTRAIT_BASETURF = /turf/open/floor/planetary/rock)
 	overmap_type = /datum/overmap_object/shuttle/planet/chlorine
 	atmosphere_type = /datum/atmosphere/chlorine
 	weather_controller_type = /datum/weather_controller/chlorine
@@ -80,7 +80,7 @@
 	perlin_zoom = 65
 
 /datum/biome/chlorine_desert
-	turf_type = /turf/open/floor/plating/planetary/chlorine_sand
+	turf_type = /turf/open/floor/planetary/chlorine_sand
 	fauna_density = 0.5
 	fauna_weight_types = list(
 		/mob/living/simple_animal/hostile/planet/jelly = 100,
@@ -92,7 +92,7 @@
 	)
 
 /datum/biome/chlorine_water
-	turf_type = /turf/open/floor/plating/planetary/water/chlorine
+	turf_type = /turf/open/floor/planetary/water/chlorine
 
 /datum/atmosphere/chlorine
 	base_gases = list(
@@ -111,26 +111,26 @@
 	minimum_temp = T20C - 100
 	maximum_temp = T20C
 
-/turf/open/floor/plating/planetary/chlorine_sand
+/turf/open/floor/planetary/chlorine_sand
 	gender = PLURAL
 	name = "chlorinated sand"
 	desc = "Sand that has been heavily contaminated by chlorine."
-	baseturfs = /turf/open/floor/plating/planetary/chlorine_sand
+	baseturfs = /turf/open/floor/planetary/chlorine_sand
 	icon = 'icons/planet/chlorine/chlorine_floor.dmi'
 	icon_state = "sand"
 	base_icon_state = "sand"
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
-	heavyfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
-/turf/open/floor/plating/planetary/chlorine_sand/Initialize()
+/turf/open/floor/planetary/chlorine_sand/Initialize()
 	. = ..()
 	if(prob(20))
 		icon_state = "[base_icon_state][rand(1,11)]"
 
-/turf/open/floor/plating/planetary/water/chlorine
+/turf/open/floor/planetary/water/chlorine
 	name = "chlorine marsh"
 	desc = "A pool of noxious liquid chlorine. It's full of silt and plant matter."
 	color = "#d2e0b7"
-	baseturfs = /turf/open/floor/plating/planetary/water/chlorine
+	baseturfs = /turf/open/floor/planetary/water/chlorine

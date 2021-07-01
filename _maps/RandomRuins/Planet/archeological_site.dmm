@@ -6,18 +6,18 @@
 /area/template_noop)
 "d" = (
 /obj/item/excavation_measuring_tape,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "o" = (
 /obj/structure/fence{
 	dir = 8
 	},
 /obj/effect/spawner/clear,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "v" = (
 /obj/effect/spawner/digsite,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "y" = (
 /obj/structure/fence/cut/large{
@@ -39,12 +39,12 @@
 /turf/template_noop,
 /area/template_noop)
 "E" = (
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "F" = (
 /obj/structure/fence/door/opened,
 /obj/effect/spawner/clear,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "K" = (
 /obj/effect/spawner/clear,
@@ -53,7 +53,7 @@
 /area/template_noop)
 "M" = (
 /obj/item/excavation_depth_scanner,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "O" = (
 /obj/structure/table/wood/bar,
@@ -70,7 +70,7 @@
 /area/template_noop)
 "S" = (
 /obj/item/excavation_locator,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 "Y" = (
 /obj/item/chair/stool,
@@ -79,7 +79,7 @@
 /area/template_noop)
 "Z" = (
 /obj/item/clothing/head/fedora/curator,
-/turf/open/floor/plating/planetary/wasteland,
+/turf/open/floor/planetary/wasteland,
 /area/template_noop)
 
 (1,1,1) = {"

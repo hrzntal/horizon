@@ -5,52 +5,52 @@
 "c" = (
 /obj/machinery/power/mining_drill/old,
 /obj/effect/ore_node_spawner/generous,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "l" = (
 /obj/item/stack/ore/iron,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "q" = (
 /obj/effect/spawner/lootdrop/tech_supply,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "x" = (
 /obj/item/stack/ore/iron{
 	amount = 3
 	},
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "D" = (
 /obj/item/stack/ore/iron{
 	amount = 4
 	},
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "M" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "O" = (
 /obj/item/stack/cable_coil,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "Q" = (
 /obj/effect/spawner/lootdrop/toolbox,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "R" = (
 /obj/item/pickaxe,
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "S" = (
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 "W" = (
 /obj/item/stack/ore/iron{
 	amount = 2
 	},
-/turf/open/floor/plating/planetary/rock,
+/turf/open/floor/planetary/rock,
 /area/template_noop)
 
 (1,1,1) = {"
