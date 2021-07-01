@@ -253,6 +253,8 @@
 
 	/// Whether we are currently in the process of turning on
 	var/turning_on = FALSE
+	/// Whether we take time to turn on/update lighting, unless update() is called with an instant argument
+	var/delayed = TRUE
 
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
@@ -312,6 +314,7 @@
 	bulb_colour = "#FFD6AA"
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
+	delayed = FALSE
 
 /obj/machinery/light/small/broken
 	status = LIGHT_BROKEN
@@ -436,10 +439,10 @@
 				CO = nightshift_light_color
 		var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
 		if(!matching)
-			if(trigger)
+			if(delayed && trigger)
 				if(!turning_on)
 					turning_on = TRUE
-					addtimer(CALLBACK(src, .proc/turn_on, FALSE, BR, PO, CO), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+					addtimer(CALLBACK(src, .proc/turn_on, FALSE), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
 			else
 				turn_on(TRUE, BR, PO, CO)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
@@ -465,12 +468,28 @@
 #undef LIGHT_ON_DELAY_UPPER
 #undef LIGHT_ON_DELAY_LOWER
 
-/obj/machinery/light/proc/turn_on(instant, brightness, bulb_power, bulb_color)
+/obj/machinery/light/proc/turn_on(instant, arg_brightness, arg_power, arg_color)
 	if(QDELETED(src))
 		return
 	turning_on = FALSE
 	if(!on)
 		return
+	if(!instant) //Due to possible desynchronization (flicking light switches and fire alarms rapidly for example). We need to check the colors again
+		arg_brightness = brightness
+		arg_power = bulb_power
+		arg_color = bulb_colour
+		if(color)
+			arg_color = color
+		var/area/A = get_area(src)
+		if (A?.fire)
+			arg_color = bulb_emergency_colour
+		else if (nightshift_enabled)
+			arg_brightness = nightshift_brightness
+			arg_power = nightshift_light_power
+			if(!color)
+				arg_color = nightshift_light_color
+		if(light && arg_brightness == light.light_range && arg_power == light.light_power && arg_color == light.light_color)
+			return
 	switchcount++
 	if(rigged)
 		if(status == LIGHT_OK && !instant)
@@ -480,12 +499,13 @@
 			burn_out()
 	else
 		use_power = ACTIVE_POWER_USE
-		set_light(brightness, bulb_power, bulb_color)
-		playsound(src, 'sound/effects/light/light_on.ogg', 65, 1)
+		set_light(arg_brightness, arg_power, arg_color)
+		if(!instant)
+			playsound(src, 'sound/effects/light/light_on.ogg', 65, 1)
 
 /obj/machinery/light/update_atom_colour()
 	..()
-	update()
+	update(FALSE)
 
 /obj/machinery/light/proc/broken_sparks(start_only=FALSE)
 	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && Master.current_runlevel)
