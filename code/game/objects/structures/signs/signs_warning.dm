@@ -224,67 +224,38 @@
 
 //////////SMALL SIGNS
 
-/obj/structure/sign/warning/vacuum_small
-	name = "\improper HARD VACUUM AHEAD sign"
+/obj/structure/sign/warning/vacuum/small
 	sign_change_name = "Warning - Hard Vacuum (small)"
-	desc = "A warning sign which reads 'HARD VACUUM AHEAD'."
 	icon_state = "space-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/movingparts_small
-	name = "\improper MOVING PARTS sign"
+/obj/structure/sign/warning/movingparts/small
 	sign_change_name = "Warning - Moving Parts (small)"
-	desc = "A warning sign which reads 'MOVING PARTS'."
 	icon_state = "movingparts-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/armory_small
-	name = "\improper ARMORY sign"
+/obj/structure/sign/warning/armory/small
 	sign_change_name = "Warning - Armory (small)"
-	desc = "A warning sign which reads 'ARMORY'."
 	icon_state = "armory-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/server_small
-	name = "\improper SERVER sign"
+/obj/structure/sign/warning/server/small
 	sign_change_name = "Warning - Server (small)"
-	desc = "A warning sign which reads 'SERVER'."
 	icon_state = "server-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/fire_small
-	name = "\improper DANGER: FIRE sign"
+/obj/structure/sign/warning/fire/small
 	sign_change_name = "Warning - Fire Hazard (small)"
-	desc = "A warning sign which reads 'DANGER: FIRE'."
 	icon_state = "fire-small"
-	resistance_flags = FIRE_PROOF
-	is_editable = TRUE
 
-/obj/structure/sign/warning/nosmoking_small
-	name = "\improper NO SMOKING sign"
+/obj/structure/sign/warning/nosmoking/small
 	sign_change_name = "Warning - No Smoking (small)"
-	desc = "A warning sign which reads 'NO SMOKING'."
 	icon_state = "nosmoking-small"
-	resistance_flags = FLAMMABLE
-	is_editable = TRUE
 
-/obj/structure/sign/warning/securearea_small
-	name = "\improper SECURE AREA sign"
+/obj/structure/sign/warning/securearea/small
 	sign_change_name = "Warning - Secure Area (small)"
-	desc = "A warning sign which reads 'SECURE AREA'."
 	icon_state = "securearea-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/electricshock_small
-	name = "\improper HIGH VOLTAGE sign"
+/obj/structure/sign/warning/electricshock/small
 	sign_change_name = "Warning - High Voltage (small)"
-	desc = "A warning sign which reads 'HIGH VOLTAGE'."
 	icon_state = "shock-small"
-	is_editable = TRUE
 
-/obj/structure/sign/warning/radiation_small
-	name = "\improper HAZARDOUS RADIATION sign"
+/obj/structure/sign/warning/radiation/small
 	sign_change_name = "Warning - Radiation (small)"
-	desc = "A warning sign alerting the user of potential radiation hazards."
 	icon_state = "radiation-small"
-	is_editable = TRUE

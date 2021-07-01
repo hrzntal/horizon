@@ -215,75 +215,45 @@
 
 ///////SMALL SIGNS
 
-/obj/structure/sign/departments/deck1_small
-	name = "\improper Deck 1 sign"
+/obj/structure/sign/departments/deck1/small
 	sign_change_name = "Location - Deck 1"
-	desc = "A sign labelling the deck."
 	icon_state = "deck-1-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/deck2_small
-	name = "\improper Deck 2 sign"
+/obj/structure/sign/departments/deck2/small
 	sign_change_name = "Location - Deck 2 (small)"
-	desc = "A sign labelling the deck."
 	icon_state = "deck-2-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/deck3_small
-	name = "\improper Deck 3 sign"
+/obj/structure/sign/departments/deck3/small
 	sign_change_name = "Location - Deck 3 (small)"
-	desc = "A sign labelling the deck."
 	icon_state = "deck-3-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/deck4_small
-	name = "\improper Deck 4 sign"
+/obj/structure/sign/departments/deck4/small
 	sign_change_name = "Location - Deck 4 (small)"
-	desc = "A sign labelling the deck."
 	icon_state = "deck-4-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/deck5_small
-	name = "\improper Deck 5 sign"
+/obj/structure/sign/departments/deck5/small
 	sign_change_name = "Location - Deck 5 (small)"
-	desc = "A sign labelling the deck."
 	icon_state = "deck-5-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/examroom_small
-	name = "\improper Exam Room sign"
+/obj/structure/sign/departments/examroom/small
 	sign_change_name = "Department - Medbay: Exam Room (small)"
-	desc = "A guidance sign which reads 'Exam Room'."
 	icon_state = "examroom-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/science_small
-	name = "\improper Science sign"
+/obj/structure/sign/departments/science/small
 	sign_change_name = "Department - Science (small)"
-	desc = "A sign labelling an area where research and science is performed."
 	icon_state = "science-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/chemistry_small
-	name = "\improper Chemistry sign"
+/obj/structure/sign/departments/chemistry/small
 	sign_change_name = "Department - Medbay: Chemistry (small)"
-	desc = "A sign labelling an area containing chemical equipment."
 	icon_state = "chemistry-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/botany_small
-	name = "\improper Botany sign"
+/obj/structure/sign/departments/botany/small
 	sign_change_name = "Department - Botany (small)"
-	desc = "A sign labelling an area as a place where plants are grown."
 	icon_state = "hydro-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/xenobio_small
-	name = "\improper Xenobiology sign"
+/obj/structure/sign/departments/xenobio/small
 	sign_change_name = "Department - Science: Xenobiology (small)"
-	desc = "A sign labelling an area as a place where xenobiological entities are researched."
 	icon_state = "xenobio-small"
-	is_editable = TRUE
 
 /obj/structure/sign/departments/mail_small
 	name = "\improper Mail sign"
@@ -292,19 +262,13 @@
 	icon_state = "mail-small"
 	is_editable = TRUE
 
-/obj/structure/sign/departments/custodian_small
-	name = "\improper Janitor sign"
+/obj/structure/sign/departments/custodian/small
 	sign_change_name = "Department - Janitor (small)"
-	desc = "A sign labelling an area where the janitor works."
 	icon_state = "janitor-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/engineering_small
-	name = "\improper Engineering sign"
+/obj/structure/sign/departments/engineering/small
 	sign_change_name = "Department - Engineering (small)"
-	desc = "A sign labelling an area where engineers work."
 	icon_state = "engine"
-	is_editable = TRUE
 
 /obj/structure/sign/departments/tcomms_small
 	name = "\improper Tcomms sign"
@@ -313,12 +277,9 @@
 	icon_state = "tcomms-small"
 	is_editable = TRUE
 
-/obj/structure/sign/departments/cargo_small
-	name = "\improper Cargo sign"
+/obj/structure/sign/departments/cargo/small
 	sign_change_name = "Department - Cargo (small)"
-	desc = "A sign labelling an area where cargo ships dock."
 	icon_state = "cargo-small"
-	is_editable = TRUE
 
 /obj/structure/sign/departments/bridge_small
 	name = "\improper Bridge sign"
@@ -334,26 +295,13 @@
 	icon_state = "forensics-small"
 	is_editable = TRUE
 
-/obj/structure/sign/departments/security_cuffs_small
-	name = "\improper Security sign"
+/obj/structure/sign/departments/security/cuffs_small
 	sign_change_name = "Department - Security (small, cuffs)"
-	desc = "A sign labelling an area where law is law."
 	icon_state = "sec_cuff-small"
-	is_editable = TRUE
 
-/obj/structure/sign/departments/security_scale_small
-	name = "\improper Security sign"
+/obj/structure/sign/departments/security/scale_small
 	sign_change_name = "Department - Security (small, scale)"
-	desc = "A sign labelling an area where law is law."
 	icon_state = "sec_scale-small"
-	is_editable = TRUE
-
-/obj/structure/sign/departments/eva_small
-	name = "\improper E.V.A sign"
-	sign_change_name = "Department - Command: E.V.A (small)"
-	desc = "A sign labelling an area where equipment for extra vehicular activities is held."
-	icon_state = "eva-small"
-	is_editable = TRUE
 
 /obj/structure/sign/departments/eva_small
 	name = "\improper E.V.A sign"
@@ -369,12 +317,9 @@
 	icon_state = "hop-small"
 	is_editable = TRUE
 
-/obj/structure/sign/departments/evac_small
-	name = "\improper Evacuation sign"
+/obj/structure/sign/departments/evac/small
 	sign_change_name = "Location - Evacuation (small)"
-	desc = "A sign labelling an area where evacuation procedures take place."
-	icon_state = "evac"
-	is_editable = TRUE
+	icon_state = "evac-small"
 
 /obj/structure/sign/departments/wc_small
 	name = "\improper W.C. sign"
