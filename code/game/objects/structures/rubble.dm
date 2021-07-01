@@ -7,7 +7,7 @@
 	can_buckle = TRUE
 	layer = TABLE_LAYER
 	buckle_lying = 90
-	max_integrity = 100
+	max_integrity = 300
 	integrity_failure = 0.33
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
