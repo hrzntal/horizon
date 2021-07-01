@@ -26,9 +26,6 @@
 	intact = FALSE
 	var/can_build_on = TRUE
 
-/turf/open/floor/planetary/welder_act(mob/living/user, obj/item/I)
-	return
-
 /turf/open/floor/planetary/ex_act(severity, target)
 	. = SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, severity, target)
 	contents_explosion(severity, target)
