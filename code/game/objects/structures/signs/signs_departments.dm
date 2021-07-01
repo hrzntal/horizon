@@ -216,7 +216,7 @@
 ///////SMALL SIGNS
 
 /obj/structure/sign/departments/deck1/small
-	sign_change_name = "Location - Deck 1"
+	sign_change_name = "Location - Deck 1 (small)"
 	icon_state = "deck-1-small"
 
 /obj/structure/sign/departments/deck2/small
