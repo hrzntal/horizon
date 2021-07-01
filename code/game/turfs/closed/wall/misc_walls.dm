@@ -126,6 +126,6 @@
 	return "<span class='notice'>Nothing's going to cut that.</span>"
 
 /turf/closed/wall/concrete/try_decon(obj/item/I, mob/user, turf/T)
-    if(I.tool_behaviour == TOOL_WELDER)
-        to_chat(user, "<span class='warning'>This wall is way too hard to cut through!</span>")
-    return FALSE
+	if(I.tool_behaviour == TOOL_WELDER)
+		to_chat(user, "<span class='warning'>This wall is way too hard to cut through!</span>")
+	return FALSE
