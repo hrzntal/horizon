@@ -268,7 +268,7 @@
 
 /obj/structure/sign/departments/engineering/small
 	sign_change_name = "Department - Engineering (small)"
-	icon_state = "engine"
+	icon_state = "engine-small"
 
 /obj/structure/sign/departments/tcomms_small
 	name = "\improper Tcomms sign"
