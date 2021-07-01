@@ -50,8 +50,8 @@
 		<BR> - 2 Propulsion Engines (Circuit board)\
 		<BR> - 1 Rapid Pipe Dispenser\
 		<BR> - 1 Rapid Construction Device\
-		<BR> - 1 mechanical Toolbox\
-		<BR> - 1 electrical Toolbox\
+		<BR> - 1 mechanical toolbox\
+		<BR> - 1 electrical toolbox\
 		<BR> - 1 APC electronics\
 		<BR> - 1 air alarm electronics\
 		<BR> - 1 air canister\
@@ -71,8 +71,8 @@
 		<BR> - 3 Propulsion Engines (Circuit board)\
 		<BR> - 1 Rapid Pipe Dispenser\
 		<BR> - 1 Rapid Construction Device\
-		<BR> - 1 mechanical Toolbox\
-		<BR> - 1 electrical Toolbox\
+		<BR> - 1 mechanical toolbox\
+		<BR> - 1 electrical toolbox\
 		<BR> - 1 APC electronics\
 		<BR> - 1 air alarm electronics\
 		<BR> - 2 air canisters\
@@ -92,8 +92,8 @@
 		<BR> - 5 Propulsion Engines (Circuit board)\
 		<BR> - 1 Rapid Pipe Dispenser\
 		<BR> - 1 Rapid Construction Device\
-		<BR> - 1 mechanical Toolbox\
-		<BR> - 1 electrical Toolbox\
+		<BR> - 1 mechanical toolbox\
+		<BR> - 1 electrical toolbox\
 		<BR> - 1 APC electronics\
 		<BR> - 1 air alarm electronics\
 		<BR> - 4 air canister\
