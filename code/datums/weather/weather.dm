@@ -108,14 +108,9 @@
 	var/thunder_chance = 0
 	/// Whether the main stage will block vision
 	var/opacity_in_main_stage = FALSE
-	/// Overlays for the lightning effect
-	var/obj/effect/lightning_add/lightning_add
-	var/obj/effect/lightning_overlay/lightning_overlay
 
 /datum/weather/New(datum/weather_controller/passed_controller)
 	..()
-	lightning_add = new
-	lightning_overlay = new
 	my_controller = passed_controller
 	my_controller.current_weathers[type] = src
 	var/list/z_levels = list()
@@ -145,8 +140,6 @@
 			weather_act(L)
 
 /datum/weather/Destroy()
-	qdel(lightning_add)
-	qdel(lightning_overlay)
 	my_controller.current_weathers -= type
 	UNSETEMPTY(my_controller.current_weathers)
 	my_controller = null
@@ -376,13 +369,15 @@
 	if(lightning_in_progress)
 		return
 	lightning_in_progress = TRUE
-	addtimer(CALLBACK(src, .proc/end_thunder), 4 SECONDS)
+	addtimer(CALLBACK(src, .proc/end_thunder), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/do_thunder_sound), 2 SECONDS)
+	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
+	appearance_to_add.plane = LIGHTING_PLANE
+	appearance_to_add.layer = OBJ_LAYER
 	for(var/V in impacted_areas)
 		var/area/N = V
 		N.luminosity++
-		N.add_overlay(lightning_add)
-		N.add_overlay(lightning_overlay)
+		N.underlays += appearance_to_add
 
 /datum/weather/proc/do_thunder_sound()
 	var/picked_sound = THUNDER_SOUND
@@ -399,20 +394,10 @@
 	if(!lightning_in_progress)
 		return
 	lightning_in_progress = FALSE
+	var/mutable_appearance/appearance_to_remove = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
+	appearance_to_remove.plane = LIGHTING_PLANE
+	appearance_to_remove.layer = OBJ_LAYER
 	for(var/V in impacted_areas)
 		var/area/N = V
-		N.cut_overlay(lightning_add)
-		N.cut_overlay(lightning_overlay)
+		N.underlays += appearance_to_remove
 		N.luminosity--
-
-/obj/effect/lightning_add
-	icon = 'icons/effects/weather_effects.dmi'
-	icon_state = "lightning_flash"
-	plane = LIGHTING_PLANE
-	blend_mode = BLEND_ADD
-
-/obj/effect/lightning_overlay
-	icon = 'icons/effects/weather_effects.dmi'
-	icon_state = "lightning_flash"
-	plane = LIGHTING_PLANE
-	blend_mode = BLEND_OVERLAY

@@ -40,8 +40,6 @@
 	var/datum/overmap_object/linked_overmap_object
 	/// All the areas that are affected by day/night
 	var/list/affected_areas = list()
-	/// The effect we apply and cut to the area's overlays
-	var/obj/effect/fullbright/effect
 	/// Whether we have applied luminosity to the areas
 	var/has_applied_luminosity = FALSE
 	var/last_color = "#FFFFFF"
@@ -77,12 +75,8 @@
 	time = time / 4 * VALUES_PER_TRANSITION //4 hours per transition and 5 transitions
 	time = CEILING(time, 1)
 	time = clamp(time, 1, ALL_TRANSITIONS)
-	for(var/i in affected_areas)
-		var/area/my_area = i
-		my_area.cut_overlay(effect)
 
 	var/target_color = color_lookup_table["[time]"]
-	last_color = target_color
 	var/target_light = light_lookup_table["[time]"]
 
 	if(linked_overmap_object && linked_overmap_object.weather_controller)
@@ -91,10 +85,24 @@
 			target_light = 0
 
 	target_light *= 255
+
+	if(target_color == last_color && target_light == last_alpha)
+		return
+
+	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white")
+	appearance_to_add.plane = LIGHTING_PLANE
+	appearance_to_add.layer = OBJ_LAYER
+	appearance_to_add.color = last_color
+	appearance_to_add.alpha = last_alpha
+	for(var/i in affected_areas)
+		var/area/my_area = i
+		my_area.underlays -= appearance_to_add
+
+	last_color = target_color
 	last_alpha = target_light
 
-	effect.color = target_color
-	effect.alpha = target_light
+	appearance_to_add.color = target_color
+	appearance_to_add.alpha = target_light
 	var/do_luminosity = (target_light > MINIMUM_LIGHT_FOR_LUMINOSITY) ? TRUE : FALSE
 
 	for(var/i in affected_areas)
@@ -104,7 +112,7 @@
 				my_area.luminosity++
 			else
 				my_area.luminosity--
-		my_area.add_overlay(effect)
+		my_area.underlays += appearance_to_add
 	has_applied_luminosity = do_luminosity
 
 	for(var/i in subscribed_blend_areas)
@@ -130,7 +138,6 @@
 
 /datum/day_night_controller/New(list/space_level)
 	. = ..()
-	effect = new
 	z_levels = space_level
 	for(var/i in z_levels)
 		var/datum/space_level/level = i
@@ -171,7 +178,6 @@
 
 /// In theory this should never be destroyed, unless you plan to dynamically change existing z levels
 /datum/day_night_controller/Destroy()
-	qdel(effect)
 	if(linked_overmap_object)
 		UnlinkOvermapObject()
 	for(var/i in z_levels)
