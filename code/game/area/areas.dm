@@ -226,8 +226,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!areas_in_z["[z]"])
 		areas_in_z["[z]"] = list()
 	areas_in_z["[z]"] += src
-	if(!outdoors)
-		UpdateDayNightTurfs(find_controller = TRUE)
+	UpdateDayNightTurfs(find_controller = TRUE)
 
 /**
  * Destroy an area and clean it up

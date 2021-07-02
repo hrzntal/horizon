@@ -99,6 +99,8 @@
 			last_day_night_luminosity = null
 
 /area/proc/UpdateDayNightTurfs(rebuild = FALSE, datum/day_night_controller/newsub, full_unsub = FALSE, find_controller = FALSE)
+	if(outdoors)
+		return
 	if(find_controller)
 		if(SSmapping && SSmapping.z_list) //Goddamn areas that initialize out of order?!
 			var/datum/space_level/level = SSmapping.z_list[z]
