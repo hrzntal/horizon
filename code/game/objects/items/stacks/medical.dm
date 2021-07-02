@@ -154,6 +154,7 @@
 
 	if(limb.current_gauze)
 		to_chat(user, "<span class='warning'>[user==M ? "Your" : "[M]'s"] [limb.name] is already bandaged!</span>")
+		return
 
 	user.visible_message("<span class='warning'>[user] begins wrapping the wounds on [M]'s [limb.name] with [src]...</span>", "<span class='warning'>You begin wrapping the wounds on [user == M ? "your" : "[M]'s"] [limb.name] with [src]...</span>")
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
