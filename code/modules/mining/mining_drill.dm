@@ -283,6 +283,7 @@
 /obj/machinery/power/mining_drill/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
 	if(current_node)
 		UnregisterNode()
+	return ..()
 
 /obj/machinery/power/mining_drill/proc/turn_on()
 	active = TRUE
