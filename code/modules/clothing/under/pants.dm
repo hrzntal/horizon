@@ -105,3 +105,11 @@
 	name = "yoga pants"
 	desc = "Comfy!"
 	icon_state = "yoga_pants"
+
+/obj/item/clothing/under/pants/cargoshorts
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "cargo shorts"
+	body_parts_covered = GROIN
+	desc = "No such thing as too many pockets."
+	icon_state = "cargo_shorts"

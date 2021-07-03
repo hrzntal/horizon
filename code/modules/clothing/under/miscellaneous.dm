@@ -191,3 +191,12 @@
 	desc = "What is the point of this, anyway?"
 	icon_state = "keyholesweater"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/trishirt
+	icon = 'icons/horizon/obj/clothing/uniforms.dmi'
+	worn_icon = 'icons/horizon/mob/clothing/uniform.dmi'
+	name = "tri shirt"
+	desc = "Fashion from a bygone age."
+	icon_state = "tri_shirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	can_adjust = FALSE
