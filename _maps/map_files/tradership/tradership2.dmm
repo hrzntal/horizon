@@ -1406,6 +1406,10 @@
 "Ny" = (
 /turf/closed/wall,
 /area/commons/vacant_room)
+"NA" = (
+/obj/structure/sign/departments/deck2,
+/turf/closed/wall,
+/area/cargo/warehouse)
 "NI" = (
 /turf/open/floor/iron/white,
 /area/science)
@@ -33585,7 +33589,7 @@ My
 KW
 sk
 OX
-sk
+NA
 sk
 sk
 sk
@@ -34876,7 +34880,7 @@ qe
 qe
 Ui
 pG
-sk
+NA
 Vq
 Sd
 QG
@@ -35384,7 +35388,7 @@ sk
 mg
 sk
 sk
-sk
+NA
 sk
 sk
 OX

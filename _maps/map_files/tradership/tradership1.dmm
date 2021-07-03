@@ -100,6 +100,10 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"dq" = (
+/obj/effect/decal/cleanable/food/pie_smudge,
+/turf/open/floor/carpet,
+/area/service/bar)
 "dz" = (
 /obj/structure/cable,
 /obj/machinery/disposal/bin,
@@ -137,6 +141,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"eP" = (
+/obj/structure/sign/departments/deck1,
+/turf/closed/wall,
+/area/security/brig)
 "ff" = (
 /turf/closed/mineral/random/high_chance,
 /area/space)
@@ -400,6 +408,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"op" = (
+/obj/structure/sign/departments/deck1,
+/turf/closed/wall,
+/area/maintenance/port/aft)
 "os" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1015,6 +1027,11 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
+"JW" = (
+/obj/structure/bed,
+/obj/item/bedsheet/purple,
+/turf/open/floor/carpet,
+/area/service/bar)
 "JZ" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -1083,7 +1100,8 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "My" = (
-/turf/open/floor/plating,
+/obj/machinery/vending/boozeomat,
+/turf/closed/wall,
 /area/service/bar)
 "MI" = (
 /obj/effect/turf_decal/tile/red{
@@ -1108,6 +1126,7 @@
 /area/service/bar)
 "ND" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/departments/deck1,
 /turf/closed/wall,
 /area/maintenance/port/aft)
 "NG" = (
@@ -1339,16 +1358,15 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "Tt" = (
-/obj/structure/table/wood,
-/obj/machinery/chem_dispenser/drinks/beer,
-/obj/machinery/vending/boozeomat{
-	pixel_x = -32
-	},
-/turf/open/floor/wood,
+/obj/item/organ/ears/cat,
+/turf/open/floor/carpet,
 /area/service/bar)
 "Tv" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks,
+/obj/machinery/chem_dispenser/drinks/beer{
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
 /area/service/bar)
 "Ty" = (
@@ -33110,7 +33128,7 @@ os
 YP
 Iy
 mc
-YP
+op
 YP
 YP
 YP
@@ -33359,7 +33377,7 @@ Kg
 Kg
 Kg
 QL
-Kr
+My
 TU
 Kr
 rt
@@ -33616,7 +33634,7 @@ Kg
 Kg
 Kg
 GZ
-Tt
+DF
 Op
 Oq
 zk
@@ -34124,7 +34142,7 @@ Kg
 Kg
 Kg
 Kg
-Kg
+fI
 Kg
 Kg
 Kg
@@ -34387,7 +34405,7 @@ Kg
 Kg
 Kg
 GZ
-My
+TE
 Sc
 DF
 xZ
@@ -35415,7 +35433,7 @@ Kg
 Kg
 Kg
 GZ
-kX
+Tt
 kX
 Kr
 RM
@@ -35431,7 +35449,7 @@ TS
 ev
 Ds
 EQ
-Ul
+eP
 Ul
 Ul
 zB
@@ -35672,7 +35690,7 @@ Kg
 Kg
 Kg
 QL
-kX
+dq
 Pl
 Kr
 uG
@@ -35929,7 +35947,7 @@ Kg
 Kg
 Kg
 QL
-kX
+JW
 kX
 Kr
 TD

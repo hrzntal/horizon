@@ -1175,6 +1175,13 @@
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/service/kitchen/coldroom)
+"ry" = (
+/obj/structure/sign/departments/wc_small{
+	pixel_x = 28;
+	pixel_y = -1
+	},
+/turf/open/floor/iron,
+/area/hallway/primary/aft)
 "rB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1207,8 +1214,8 @@
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "rW" = (
-/obj/structure/sign/departments/chemistry/pharmacy,
-/turf/closed/wall,
+/obj/machinery/smartfridge/organ,
+/turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "sa" = (
 /obj/structure/table/wood,
@@ -2891,6 +2898,10 @@
 /obj/machinery/meter,
 /turf/open/floor/plating/airless,
 /area/hallway/primary/central)
+"Nl" = (
+/obj/structure/sign/departments/deck3,
+/turf/closed/wall,
+/area/hallway/primary/aft)
 "NF" = (
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/plating,
@@ -2944,6 +2955,7 @@
 /turf/open/floor/plating,
 /area/command/heads_quarters/hop)
 "Oy" = (
+/obj/structure/sign/departments/deck3,
 /turf/closed/wall,
 /area/hallway/primary/central/aft)
 "OM" = (
@@ -3017,6 +3029,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/command/meeting_room)
+"PP" = (
+/obj/structure/sign/departments/deck3,
+/turf/closed/wall,
+/area/commons/lounge)
 "PQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -33931,7 +33947,7 @@ DB
 DB
 DB
 DB
-DB
+Wg
 DB
 DB
 DB
@@ -35496,7 +35512,7 @@ Un
 jG
 TR
 ec
-ze
+PP
 iS
 Kd
 hP
@@ -35764,7 +35780,7 @@ xO
 xO
 xO
 xO
-Py
+Nl
 rp
 yU
 wL
@@ -37295,7 +37311,7 @@ Un
 ze
 cD
 ec
-ze
+PP
 iS
 Kd
 Xv
@@ -37818,7 +37834,7 @@ Pw
 IN
 rp
 OX
-rp
+ry
 Mn
 Mn
 uy
@@ -38813,7 +38829,7 @@ DB
 DB
 DB
 DB
-DB
+Wg
 DB
 DB
 DB

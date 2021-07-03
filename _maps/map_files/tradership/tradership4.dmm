@@ -304,6 +304,10 @@
 /obj/structure/cable,
 /turf/open/floor/circuit,
 /area/tcommsat/server)
+"HJ" = (
+/obj/structure/sign/departments/deck4,
+/turf/closed/wall/r_wall,
+/area/maintenance/solars/port/aft)
 "HN" = (
 /obj/machinery/telecomms/processor/preset_three,
 /turf/open/floor/circuit,
@@ -30172,7 +30176,7 @@ Zw
 Zw
 Zw
 Zw
-Zw
+Jc
 Zw
 Zw
 Zw
@@ -32263,7 +32267,7 @@ oE
 oE
 Vn
 Ye
-oE
+HJ
 oE
 oE
 yC
@@ -34059,7 +34063,7 @@ Ou
 Ou
 oE
 oE
-oE
+HJ
 rQ
 rQ
 oE
