@@ -96,11 +96,10 @@
 
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
-		for(var/b in bought_goods)
-			var/datum/bought_goods/bought_goodie = get_matching_bought_datum(AM)
-			if(bought_goodie)
-				total_value += bought_goodie.GetCost(AM)
-				valid_items += AM
+		var/datum/bought_goods/bought_goodie = get_matching_bought_datum(AM)
+		if(bought_goodie)
+			total_value += bought_goodie.GetCost(AM)
+			valid_items += AM
 
 	total_value *= TRADE_BARTER_EXTRA_MARGIN
 	//Always treat barter as if it's haggling
@@ -211,12 +210,11 @@
 
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
-		for(var/b in bought_goods)
-			var/datum/bought_goods/goodie = get_matching_bought_datum(AM)
-			if(goodie)
-				item_count++
-				total_value += goodie.GetCost(AM)
-				last_item_name = AM.name
+		var/datum/bought_goods/goodie = get_matching_bought_datum(AM)
+		if(goodie)
+			item_count++
+			total_value += goodie.GetCost(AM)
+			last_item_name = AM.name
 
 	if(!item_count)
 		return get_response("trade_found_unwanted", "I'm not interested in these kinds of items!", user)
