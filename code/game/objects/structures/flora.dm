@@ -1,6 +1,6 @@
 /obj/structure/flora
 	resistance_flags = FLAMMABLE
-	max_integrity = 150
+	max_integrity = 40
 	anchored = TRUE
 
 //trees
@@ -10,6 +10,7 @@
 	density = TRUE
 	pixel_x = -16
 	layer = FLY_LAYER
+	max_integrity = 150
 	var/log_amount = 10
 
 /obj/structure/flora/tree/attackby(obj/item/W, mob/user, params)
@@ -402,6 +403,7 @@
 	icon_state = "basalt"
 	desc = "A volcanic rock. Pioneers used to ride these babies for miles."
 	icon = 'icons/obj/flora/rocks.dmi'
+	max_integrity = 150
 	resistance_flags = FIRE_PROOF
 	density = TRUE
 	/// Itemstack that is dropped when a rock is mined with a pickaxe
