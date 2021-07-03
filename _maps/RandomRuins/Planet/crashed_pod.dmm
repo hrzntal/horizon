@@ -64,7 +64,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/open/floor/planetary/rock,
+/turf/open/floor/planetary/concrete,
 /area/template_noop)
 "jb" = (
 /obj/structure/chair/comfy/shuttle,
@@ -486,6 +486,9 @@
 /obj/item/radio,
 /turf/open/floor/mineral/titanium,
 /area/ruin/unpowered/crashed_pod)
+"RE" = (
+/turf/open/floor/planetary/concrete,
+/area/template_noop)
 "RR" = (
 /turf/template_noop,
 /area/template_noop)
@@ -709,7 +712,7 @@ YH
 (5,1,1) = {"
 YH
 YH
-YH
+RE
 xA
 xA
 nN
@@ -729,7 +732,7 @@ YH
 "}
 (6,1,1) = {"
 YH
-YH
+RE
 iC
 xA
 uq
@@ -749,9 +752,9 @@ gB
 Vj
 "}
 (7,1,1) = {"
-YH
-YH
-YH
+RE
+RE
+RE
 qW
 lU
 cs
@@ -770,9 +773,9 @@ zs
 JH
 "}
 (8,1,1) = {"
-YH
-YH
-YH
+RE
+RE
+RE
 qW
 lU
 cs
@@ -793,7 +796,7 @@ JH
 (9,1,1) = {"
 YH
 YH
-YH
+RE
 qW
 lU
 ps
@@ -813,8 +816,8 @@ nq
 "}
 (10,1,1) = {"
 YH
-YH
-YH
+RE
+RE
 Qu
 Qu
 Je

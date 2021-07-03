@@ -42,7 +42,6 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "fR" = (
-/obj/effect/spawner/lootdrop/away_loot,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
