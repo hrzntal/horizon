@@ -21,9 +21,7 @@
 	},
 /area/ruin/unpowered)
 "ae" = (
-/obj/item/stack/sheet/iron,
-/obj/structure/lattice,
-/turf/template_noop,
+/turf/open/space/basic,
 /area/template_noop)
 "af" = (
 /obj/structure/fluff/broken_flooring{
@@ -51,29 +49,36 @@
 /turf/template_noop,
 /area/template_noop)
 "ak" = (
-/obj/item/stack/rods,
-/turf/open/floor/plating/airless{
-	icon_state = "platingdmg2"
-	},
-/area/ruin/unpowered)
-"al" = (
 /obj/structure/fluff/broken_flooring{
 	dir = 4;
-	icon_state = "singular"
+	icon_state = "plating";
+	name = "broken plating"
 	},
 /obj/structure/lattice,
 /turf/template_noop,
+/area/ruin/unpowered)
+"al" = (
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	dir = 1;
+	icon_state = "plating";
+	name = "broken plating"
+	},
+/turf/template_noop,
 /area/template_noop)
 "am" = (
-/obj/item/stack/rods,
-/turf/open/floor/plating/airless,
+/obj/item/stack/sheet/iron,
+/obj/structure/lattice,
+/turf/template_noop,
 /area/ruin/unpowered)
 "an" = (
 /obj/machinery/light/broken/directional/west,
 /turf/open/floor/iron/airless,
 /area/ruin/unpowered)
 "ao" = (
-/obj/structure/closet/emcloset,
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg3"
 	},
@@ -90,8 +95,10 @@
 	},
 /area/ruin/unpowered)
 "ar" = (
-/obj/structure/girder,
-/turf/open/floor/plating/airless,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless{
+	icon_state = "platingdmg2"
+	},
 /area/ruin/unpowered)
 "as" = (
 /obj/item/stack/sheet/iron,
@@ -110,16 +117,24 @@
 	},
 /area/ruin/unpowered)
 "av" = (
-/obj/effect/decal/remains/human,
-/turf/open/floor/iron/airless,
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	dir = 4;
+	icon_state = "plating";
+	name = "broken plating"
+	},
+/turf/template_noop,
 /area/ruin/unpowered)
 "aw" = (
-/obj/item/stack/sheet/iron,
-/turf/open/floor/iron/airless,
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	icon_state = "pile"
+	},
+/turf/template_noop,
 /area/ruin/unpowered)
 "ax" = (
-/mob/living/simple_animal/hostile/retaliate/ghost,
-/turf/open/floor/iron/airless,
+/obj/item/stack/rods,
+/turf/open/floor/plating/airless,
 /area/ruin/unpowered)
 "ay" = (
 /obj/item/stack/tile/iron/base,
@@ -188,6 +203,7 @@
 /turf/open/floor/iron/airless,
 /area/ruin/unpowered)
 "aH" = (
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered)
 "aI" = (
@@ -394,14 +410,16 @@
 /area/ruin/unpowered)
 "bu" = (
 /obj/structure/fluff/broken_flooring,
+/obj/structure/lattice,
 /turf/template_noop,
 /area/ruin/unpowered)
 "bv" = (
-/obj/structure/fluff/broken_flooring{
-	icon_state = "pile"
+/obj/item/storage/secure/safe/directional/south,
+/obj/effect/spawner/lootdrop/cash/five,
+/turf/open/floor/plating/airless{
+	icon_state = "platingdmg1"
 	},
-/turf/template_noop,
-/area/template_noop)
+/area/ruin/unpowered)
 "bw" = (
 /obj/structure/lattice,
 /obj/structure/fluff/broken_flooring{
@@ -412,11 +430,6 @@
 /turf/template_noop,
 /area/ruin/unpowered)
 "bx" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "plating";
-	name = "broken plating"
-	},
 /obj/structure/lattice,
 /turf/template_noop,
 /area/ruin/unpowered)
@@ -428,20 +441,15 @@
 /turf/open/floor/iron/airless,
 /area/ruin/unpowered)
 "bz" = (
-/obj/structure/lattice,
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "plating";
-	name = "broken plating"
-	},
 /turf/template_noop,
 /area/ruin/unpowered)
 "bA" = (
-/obj/structure/fluff/broken_flooring{
-	icon_state = "singular"
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/armory_contraband,
+/turf/open/floor/plating/airless{
+	icon_state = "platingdmg1"
 	},
-/turf/template_noop,
-/area/template_noop)
+/area/ruin/unpowered)
 "bC" = (
 /obj/structure/lattice,
 /obj/structure/fluff/broken_flooring{
@@ -450,11 +458,10 @@
 /turf/template_noop,
 /area/ruin/unpowered)
 "bD" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "singular"
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating/airless{
+	icon_state = "platingdmg3"
 	},
-/turf/open/floor/iron/airless,
 /area/ruin/unpowered)
 "bE" = (
 /obj/structure/lattice,
@@ -472,12 +479,11 @@
 /turf/template_noop,
 /area/ruin/unpowered)
 "bG" = (
-/obj/structure/fluff/broken_flooring{
-	dir = 4;
-	icon_state = "singular"
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating/airless{
+	icon_state = "platingdmg3"
 	},
-/turf/template_noop,
-/area/template_noop)
+/area/ruin/unpowered)
 "bH" = (
 /obj/structure/fluff/broken_flooring{
 	icon_state = "plating";
@@ -495,9 +501,46 @@
 	},
 /turf/template_noop,
 /area/ruin/unpowered)
+"fY" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/iron/airless,
+/area/ruin/unpowered)
+"hs" = (
+/mob/living/simple_animal/hostile/retaliate/ghost,
+/turf/open/floor/iron/airless,
+/area/ruin/unpowered)
+"oI" = (
+/obj/item/stack/sheet/iron,
+/turf/open/floor/iron/airless,
+/area/ruin/unpowered)
+"qT" = (
+/obj/structure/fluff/broken_flooring{
+	icon_state = "singular"
+	},
+/turf/template_noop,
+/area/template_noop)
+"vM" = (
+/obj/structure/fluff/broken_flooring{
+	dir = 4;
+	icon_state = "singular"
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/unpowered)
+"Cd" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless,
+/area/ruin/unpowered)
+"SI" = (
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	dir = 4;
+	icon_state = "singular"
+	},
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
-aa
+ae
 aa
 aa
 aa
@@ -520,13 +563,13 @@ aa
 aa
 "}
 (2,1,1) = {"
+ae
 aa
 aa
 aa
 aa
 aa
-bA
-aa
+qT
 ac
 ac
 aa
@@ -543,12 +586,12 @@ aa
 aa
 "}
 (3,1,1) = {"
+ae
 aa
 aa
 aa
 aa
 ac
-aa
 ac
 bC
 bE
@@ -566,14 +609,14 @@ af
 aa
 "}
 (4,1,1) = {"
-aa
+ae
 aa
 aa
 aa
 ac
 ap
-aw
-ag
+ai
+oI
 ag
 be
 bH
@@ -589,13 +632,13 @@ aa
 aa
 "}
 (5,1,1) = {"
-aa
+ae
 aa
 aa
 aa
 bw
 ad
-ag
+ai
 ag
 ag
 ah
@@ -612,15 +655,15 @@ aa
 aa
 "}
 (6,1,1) = {"
+ae
 aa
 aa
 aa
-ac
 ap
 ap
+ai
 at
-bD
-ag
+vM
 ai
 ai
 ai
@@ -635,14 +678,14 @@ ac
 aa
 "}
 (7,1,1) = {"
+ae
 aa
 ac
-ac
-ac
+al
 be
+ap
 ai
-aw
-ag
+oI
 ag
 aE
 aH
@@ -658,13 +701,13 @@ aa
 aa
 "}
 (8,1,1) = {"
+ae
 aa
 ac
-ac
 ap
-am
+ap
+ax
 ai
-ag
 ag
 ag
 ai
@@ -681,14 +724,14 @@ ac
 aa
 "}
 (9,1,1) = {"
+ae
 aa
-ac
 ac
 ap
 ah
+bv
 ai
-av
-ag
+fY
 aC
 ai
 aI
@@ -704,15 +747,15 @@ ac
 aa
 "}
 (10,1,1) = {"
+ae
 aa
-aa
-aa
+ac
 ap
-ah
+ao
+bA
 aq
 ag
-aw
-ag
+oI
 ai
 aJ
 aR
@@ -727,14 +770,14 @@ ac
 aa
 "}
 (11,1,1) = {"
-aa
-aa
+ae
+ac
 bw
 as
 ai
 ai
+ai
 ag
-ax
 ag
 ai
 aK
@@ -757,7 +800,7 @@ ag
 an
 ag
 ag
-ag
+hs
 ag
 ai
 aL
@@ -796,7 +839,7 @@ ac
 ac
 "}
 (14,1,1) = {"
-aa
+ae
 bu
 ag
 ag
@@ -819,13 +862,13 @@ ac
 ac
 "}
 (15,1,1) = {"
-aa
-aa
+ae
+ac
+bx
 ad
 ai
 ai
 ai
-ag
 ag
 ag
 aF
@@ -842,13 +885,13 @@ aa
 aa
 "}
 (16,1,1) = {"
+ae
 aa
-ac
+bx
 ap
 ap
-ao
+bD
 ai
-ag
 ag
 ag
 aG
@@ -865,13 +908,13 @@ aa
 aa
 "}
 (17,1,1) = {"
+ae
 aa
-ac
 bx
 ak
-ap
+ar
+bG
 ai
-ag
 ag
 ag
 ai
@@ -888,13 +931,13 @@ aa
 aa
 "}
 (18,1,1) = {"
-aa
-aa
 ae
+aa
+aa
+am
 ap
-ap
+ah
 aq
-ag
 ag
 aC
 ai
@@ -911,13 +954,13 @@ aa
 aa
 "}
 (19,1,1) = {"
-aa
+ae
 aa
 aa
 bz
+av
 ap
 ai
-ag
 ag
 ag
 ai
@@ -934,13 +977,13 @@ aa
 aa
 "}
 (20,1,1) = {"
+ae
 aa
 aa
 aa
-ac
+bx
 ap
 ai
-ag
 ag
 ag
 ai
@@ -957,13 +1000,13 @@ aA
 aa
 "}
 (21,1,1) = {"
+ae
 aa
 aa
 aa
-aa
+aw
 as
-ar
-ag
+Cd
 ag
 ag
 ai
@@ -980,15 +1023,15 @@ aa
 aa
 "}
 (22,1,1) = {"
+ae
 aa
 aa
 aa
 aa
-ac
+bx
 ap
-aw
 at
-ag
+oI
 ai
 ai
 ai
@@ -1003,13 +1046,13 @@ aa
 aa
 "}
 (23,1,1) = {"
-aa
-bv
-aa
+ae
 aa
 aa
 aa
-al
+aa
+aa
+ac
 ac
 bF
 ai
@@ -1026,7 +1069,7 @@ aa
 aa
 "}
 (24,1,1) = {"
-aa
+ae
 aa
 aa
 aa
@@ -1034,7 +1077,7 @@ aa
 aa
 aa
 ac
-ac
+SI
 aa
 aa
 aa
@@ -1057,7 +1100,7 @@ aa
 aa
 aa
 aa
-bG
+aa
 aa
 aa
 aa
