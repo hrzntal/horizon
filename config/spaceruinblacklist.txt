@@ -15,7 +15,6 @@
 #_maps/RandomRuins/SpaceRuins/caravanambush.dmm
 #_maps/RandomRuins/SpaceRuins/clericden.dmm
 #_maps/RandomRuins/SpaceRuins/cloning_facility.dmm
-#_maps/RandomRuins/SpaceRuins/clownplanet.dmm
 #_maps/RandomRuins/SpaceRuins/crashedclownship.dmm
 #_maps/RandomRuins/SpaceRuins/crashedship.dmm
 #_maps/RandomRuins/SpaceRuins/deepstorage.dmm
@@ -38,8 +37,6 @@
 #_maps/RandomRuins/SpaceRuins/oldstation.dmm
 #_maps/RandomRuins/SpaceRuins/oldteleporter.dmm
 #_maps/RandomRuins/SpaceRuins/onehalf.dmm
-#_maps/RandomRuins/SpaceRuins/originalcontent.dmm
-#_maps/RandomRuins/SpaceRuins/shuttlerelic.dmm
 #_maps/RandomRuins/SpaceRuins/spacehotel.dmm
 #_maps/RandomRuins/SpaceRuins/thederelict.dmm
 #_maps/RandomRuins/SpaceRuins/turretedoutpost.dmm
