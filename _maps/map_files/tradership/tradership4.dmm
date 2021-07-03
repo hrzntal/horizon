@@ -212,8 +212,7 @@
 /area/maintenance/solars/port/aft)
 "wP" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "10"
+	name = "Engineering"
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
