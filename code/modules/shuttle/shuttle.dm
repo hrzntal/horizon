@@ -374,6 +374,9 @@
 
 	var/overmap_shuttle_type = /datum/overmap_object/shuttle
 
+	/// The direction override that overmap objects representing this shuttle apply to it. Needs to be tracked seperately to the old method because shuttles should work fine without overmap objects. Null means not overriden, direction means it is (with 0 being stop)
+	var/overmap_parallax_dir
+
 /obj/docking_port/mobile/proc/DrawDockingThrust()
 	var/drawn_power = 0
 	for(var/i in engine_extensions)

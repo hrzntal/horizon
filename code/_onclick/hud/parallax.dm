@@ -85,14 +85,8 @@
 	var/mob/screenmob = viewmob || mymob
 	var/client/C = screenmob.client
 
-	//Apply a parallax direction override from z level if any (for z-level shuttles)
-	if(SSmapping && SSmapping.z_list && screenmob.z) //No nullspace!
-		var/datum/space_level/current_z_level = SSmapping.z_list[screenmob.z]
-		if(current_z_level.parallax_direction_override)
-			new_parallax_movedir = current_z_level.parallax_direction_override
-	
-		if(new_parallax_movedir == C.parallax_movedir)
-			return
+	if(new_parallax_movedir == C.parallax_movedir)
+		return
 	var/animatedir = new_parallax_movedir
 	if(new_parallax_movedir == FALSE)
 		var/animate_time = 0
@@ -172,8 +166,19 @@
 		return
 	var/area/areaobj = posobj.loc
 
+	var/destined_parallax_movedir = areaobj.parallax_movedir
+	var/datum/space_level/my_level
+	if(SSmapping && screenmob.z)
+		my_level = SSmapping.z_list[screenmob.z]
+	if(my_level && my_level.related_overmap_object)
+		destined_parallax_movedir = my_level.parallax_direction_override
+	else if(SSshuttle.is_in_shuttle_bounds(screenmob))
+		var/obj/docking_port/mobile/mobile_shuttle = SSshuttle.get_containing_shuttle(screenmob)
+		if(mobile_shuttle && !isnull(mobile_shuttle.overmap_parallax_dir))
+			destined_parallax_movedir = mobile_shuttle.overmap_parallax_dir
+
 	// Update the movement direction of the parallax if necessary (for shuttles)
-	set_parallax_movedir(areaobj.parallax_movedir, FALSE, screenmob)
+	set_parallax_movedir(destined_parallax_movedir, FALSE, screenmob)
 
 	var/force
 	if(!C.previous_turf || (C.previous_turf.z != posobj.z))
@@ -219,7 +224,7 @@
 			L.offset_y += 480
 
 
-		if(!areaobj.parallax_movedir && C.dont_animate_parallax <= world.time && (offset_x || offset_y) && abs(offset_x) <= max(C.parallax_throttle/world.tick_lag+1,1) && abs(offset_y) <= max(C.parallax_throttle/world.tick_lag+1,1) && (round(abs(change_x)) > 1 || round(abs(change_y)) > 1))
+		if(!destined_parallax_movedir && C.dont_animate_parallax <= world.time && (offset_x || offset_y) && abs(offset_x) <= max(C.parallax_throttle/world.tick_lag+1,1) && abs(offset_y) <= max(C.parallax_throttle/world.tick_lag+1,1) && (round(abs(change_x)) > 1 || round(abs(change_y)) > 1))
 			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
 			animate(L, transform=matrix(), time = last_delay)
 

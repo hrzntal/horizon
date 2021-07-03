@@ -1,0 +1,6 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - rscadd: "Overmap shuttles will now properly respect velocity to animate parallax"
+  - bugfix: "Fixes parallax oddities."
+  - bugfix: "Client's parallax is now updated immediately when an overmap object changes its movement state"

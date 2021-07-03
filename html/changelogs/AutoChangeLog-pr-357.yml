@@ -1,0 +1,4 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - balance: "All flora now has 40 integrity (from 150), with the exceptions of trees and rocks"

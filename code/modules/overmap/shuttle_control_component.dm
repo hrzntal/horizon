@@ -16,10 +16,6 @@
 		mob_controller.client.pixel_x = x
 		mob_controller.client.pixel_y = y
 
-/datum/overmap_shuttle_controller/proc/ShuttleMovedOnOvermap()
-	if(mob_controller)
-		mob_controller.update_parallax_contents()
-
 /datum/overmap_shuttle_controller/New(datum/overmap_object/shuttle/passed_ov_obj)
 	overmap_obj = passed_ov_obj
 	quit_control_button = new

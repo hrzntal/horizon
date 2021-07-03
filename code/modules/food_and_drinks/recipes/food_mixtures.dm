@@ -1,6 +1,7 @@
 /datum/crafting_recipe/food
 	var/real_parts
 	category = CAT_FOOD
+	time = 5 // Food is crafted in much larger quantities than other craftables. IE: Chicken Nuggets + Sausage Links + Crackers, ect. Parent object time is 30.
 
 /datum/crafting_recipe/food/New()
 	real_parts = parts.Copy()

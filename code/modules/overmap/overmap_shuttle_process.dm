@@ -128,8 +128,6 @@
 		if(velocity_length < SHUTTLE_MINIMUM_VELOCITY)
 			velocity_x = 0
 			velocity_y = 0
-			if(is_seperate_z_level)
-				update_seperate_z_level_parallax(TRUE)
 		else
 			//"Friction"
 			velocity_x *= 0.95
@@ -141,11 +139,8 @@
 			partial_x += add_partial_x
 			partial_y += add_partial_y
 
-			if(ProcessPartials() && shuttle_controller)
-				shuttle_controller.ShuttleMovedOnOvermap()
-
-			if(is_seperate_z_level)
-				update_seperate_z_level_parallax()
+			ProcessPartials()
+		update_perceived_parallax()
 
 	//Update rotation
 	if(uses_rotation)
