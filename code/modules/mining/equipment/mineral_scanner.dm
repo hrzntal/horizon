@@ -22,11 +22,12 @@
 		mineral_scan_pulse(get_turf(user))
 
 //Debug item to identify all ore spread quickly
-/obj/item/mining_scanner/admin
+/obj/item/mining_scanner/debug
 
-/obj/item/mining_scanner/admin/attack_self(mob/user)
+/obj/item/mining_scanner/debug/attack_self(mob/user)
 	for(var/turf/closed/mineral/M in world)
 		if(M.scan_state)
+			M.icon = 'icons/effects/ore_visuals.dmi'
 			M.icon_state = M.scan_state
 	qdel(src)
 
