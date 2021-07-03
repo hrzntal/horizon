@@ -6,8 +6,8 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	anchored = TRUE
 	icon = 'icons/turf/walls/wall.dmi'
-	icon_state = "wall-0"
-	base_icon_state = "wall"
+	icon_state = "icon-0"
+	base_icon_state = "icon"
 	layer = LOW_OBJ_LAYER
 	density = TRUE
 	opacity = TRUE
