@@ -84,7 +84,7 @@
 		/obj/structure/flora/planetary_grass/sparsegrass,
 		/obj/structure/flora/planetary_grass/fullgrass,
 	)
-	flora_density = 7
+	flora_density = 10
 	fauna_density = 0.5
 	fauna_weight_types = list(
 		/mob/living/simple_animal/tindalos = 1,
