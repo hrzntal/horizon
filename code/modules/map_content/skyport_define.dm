@@ -4,7 +4,7 @@
 	map_file = list("skyport.dmm")
 
 	traits = list(	list("Up" = 1,
-						 "Baseturf" = "/turf/closed/mineral/random/jungle",
+						 "Baseturf" = "/turf/open/floor/planetary/wasteland",
 						 "Mining" = TRUE,
 						 "Gravity" = TRUE),
 					list("Up" = 1,
