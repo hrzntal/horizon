@@ -552,6 +552,7 @@
 	for(var/i in my_shuttle.all_extensions)
 		var/datum/shuttle_extension/extension = i
 		extension.AddToOvermapObject(src)
+	update_perceived_parallax()
 
 /datum/overmap_object/shuttle/Destroy()
 	control_turf = null
@@ -573,9 +574,9 @@
 	if(shuttle_controller)
 		shuttle_controller.NewVisualOffset(FLOOR(partial_x,1),FLOOR(partial_y,1))
 
-/datum/overmap_object/shuttle/proc/update_seperate_z_level_parallax(reset = FALSE)
-	var/established_direction = null
-	if(!reset)
+/datum/overmap_object/shuttle/proc/update_perceived_parallax()
+	var/established_direction = FALSE
+	if(velocity_y || velocity_x)
 		var/absx = abs(velocity_x)
 		var/absy = abs(velocity_y)
 		if(absy > absx)
@@ -589,12 +590,24 @@
 			else
 				established_direction = WEST
 
-	for(var/i in related_levels)
-		var/datum/space_level/S = i
-		if(established_direction && fixed_parallax_dir)
-			S.parallax_direction_override = fixed_parallax_dir
-		else
-			S.parallax_direction_override = established_direction
+	var/changed = FALSE
+	if(my_shuttle)
+		var/direction_to_set = established_direction ? (my_shuttle.preferred_direction ? my_shuttle.preferred_direction : established_direction) : FALSE
+		if(direction_to_set != my_shuttle.overmap_parallax_dir)
+			my_shuttle.overmap_parallax_dir = direction_to_set
+			changed = TRUE
+	else if (is_seperate_z_level && length(related_levels))
+		for(var/i in related_levels)
+			var/datum/space_level/level = i
+			var/direction_to_set = (established_direction && fixed_parallax_dir) ? fixed_parallax_dir : established_direction
+			if(direction_to_set != level.parallax_direction_override)
+				level.parallax_direction_override = direction_to_set
+				changed = TRUE
+
+	if(changed)
+		for(var/i in GetAllClientMobs())
+			var/mob/mob = i
+			mob.hud_used.update_parallax()
 
 /datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user, turf/passed_turf)
 	//Camera control
