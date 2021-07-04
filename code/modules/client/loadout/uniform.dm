@@ -96,6 +96,11 @@
 	path = /obj/item/clothing/under/costume/cheongsam/red
 	cost = 3
 
+/datum/loadout_item/uniform/trishirt
+	name = "Tri Shirt Combo"
+	path = /obj/item/clothing/under/trishirt
+	cost = 3
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -287,6 +292,9 @@
 	name = "Athletic Shorts"
 	path = /obj/item/clothing/under/shorts/red
 
+/datum/loadout_item/uniform/shorts/cargoshorts
+	name = "Cargo Shorts"
+	path = /obj/item/clothing/under/pants/cargoshorts
 
 //SWEATERS
 /datum/loadout_item/uniform/sweater

@@ -1,4 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - code_imp: "Fixes bad code in the trader datum"

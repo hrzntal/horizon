@@ -180,3 +180,30 @@
   - rscadd: Added the Supercruiser Mezzeriah, a lighter and more agile ship with dual
       silos. Not designed for landing, and is in designed to be a moderate strike
       craft.
+2021-07-04:
+  Azarak:
+  - bugfix: You will now be able to excavate rock turfs properly
+  - rscadd: Overmap shuttles will now properly respect velocity to animate parallax
+  - bugfix: Fixes parallax oddities.
+  - bugfix: Client's parallax is now updated immediately when an overmap object changes
+      its movement state
+  - rscadd: Increased flora density on lush planets by ~40%
+  - bugfix: Fixes parallax runtime
+  - balance: All flora now has 40 integrity (from 150), with the exceptions of trees
+      and rocks
+  - bugfix: Fixes and clarifies the admin debug ore scanner
+  - code_imp: Fixes bad code in the trader datum
+  CypressBz:
+  - rscdel: removes clownplanet.dmnm and all references to it in the code
+  - rscdel: removes originalcontent.dmm and all references to it in the code
+  - rscdel: removes shuttlerelic.dmm and all references to it in the code
+  - rscdel: removes lavaland_biodome_clown_planet.dmm and all references to it in
+      the code
+  FedTheCat:
+  - rscadd: Adds Cargo Shorts
+  - rscadd: Adds Tri Shirt
+  MissFox0810:
+  - qol: Bearcat changes, read the pr
+  Owai-Seek:
+  - qol: Food is significantly faster to craft.
+  - rscadd: Basic Mining Kit

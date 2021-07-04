@@ -324,8 +324,7 @@
 /area/construction/storage_wing)
 "kN" = (
 /obj/machinery/door/airlock/research{
-	name = "Research and Development Lab";
-	req_one_access_txt = "7"
+	name = "Research and Development Lab"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -423,8 +422,7 @@
 /area/cargo/warehouse)
 "mO" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "10"
+	name = "Engineering"
 	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -555,6 +553,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/science)
+"pJ" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/warehouse)
 "pO" = (
 /obj/structure/table/wood,
 /obj/machinery/button/door/directional/south{
@@ -1020,14 +1023,8 @@
 	pixel_y = 0;
 	req_access_txt = "47"
 	},
-/obj/structure/table,
-/obj/item/experi_scanner{
-	pixel_x = -4
-	},
-/obj/item/experi_scanner{
-	pixel_x = 4
-	},
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/mecha_part_fabricator,
 /turf/open/floor/iron/white,
 /area/science)
 "CN" = (
@@ -1083,9 +1080,15 @@
 /turf/closed/wall,
 /area/commons/cryopods)
 "Fa" = (
-/obj/machinery/mecha_part_fabricator,
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable,
+/obj/structure/table,
+/obj/item/experi_scanner{
+	pixel_x = 4
+	},
+/obj/item/experi_scanner{
+	pixel_x = -4
+	},
 /turf/open/floor/iron/white,
 /area/science)
 "Fv" = (
@@ -1374,13 +1377,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/cargo/warehouse)
 "MN" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "10"
+	name = "Engineering"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1405,6 +1406,10 @@
 "Ny" = (
 /turf/closed/wall,
 /area/commons/vacant_room)
+"NA" = (
+/obj/structure/sign/departments/deck2,
+/turf/closed/wall,
+/area/cargo/warehouse)
 "NI" = (
 /turf/open/floor/iron/white,
 /area/science)
@@ -1518,8 +1523,7 @@
 /area/cargo/warehouse)
 "QE" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "10"
+	name = "Engineering"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -33585,7 +33589,7 @@ My
 KW
 sk
 OX
-sk
+NA
 sk
 sk
 sk
@@ -33830,7 +33834,7 @@ Mg
 Mg
 Mg
 Mg
-iF
+pJ
 ME
 pD
 iF
@@ -34087,7 +34091,7 @@ Mg
 Mg
 Mg
 Aj
-iF
+pJ
 ME
 pD
 iF
@@ -34876,7 +34880,7 @@ qe
 qe
 Ui
 pG
-sk
+NA
 Vq
 Sd
 QG
@@ -35384,7 +35388,7 @@ sk
 mg
 sk
 sk
-sk
+NA
 sk
 sk
 OX
