@@ -9,7 +9,7 @@
 	layer = ROOF_LAYER
 	CanAtmosPassVertical = ATMOS_PASS_PROC
 
-/obj/effect/abstract/shuttle_roof/Initialized()
+/obj/effect/abstract/shuttle_roof/Initialize()
 	. = ..()
 	air_update_turf(TRUE, TRUE)
 
