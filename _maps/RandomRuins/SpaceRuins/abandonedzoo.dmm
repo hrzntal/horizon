@@ -105,16 +105,28 @@
 /area/ruin/space/has_grav/abandonedzoo)
 "aG" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/floragun,
-/turf/open/floor/iron/dark/side,
+/obj/item/clipboard,
+/obj/item/clothing/mask/surgical,
+/obj/item/razor,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/side{
+	dir = 10
+	},
 /area/ruin/space/has_grav/abandonedzoo)
 "aI" = (
-/obj/structure/table/reinforced,
-/obj/machinery/computer/med_data/laptop{
-	dir = 8;
-	pixel_y = 1
+/obj/effect/turf_decal/tile/green{
+	dir = 1
 	},
-/turf/open/floor/iron/dark/side,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "aK" = (
 /obj/structure/window/reinforced{
@@ -138,14 +150,17 @@
 /area/ruin/space/has_grav/abandonedzoo)
 "aN" = (
 /obj/structure/table/reinforced,
-/obj/item/folder,
-/obj/item/gps/spaceruin,
-/turf/open/floor/iron/dark/side,
+/obj/item/storage/box/syringes{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/storage/box/beakers,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/abandonedzoo)
 "aO" = (
-/obj/structure/chair/office/light{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
@@ -156,13 +171,13 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "aP" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/glass/bottle/random_virus,
-/obj/item/reagent_containers/dropper,
-/turf/open/floor/iron/dark/side,
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/abandonedzoo)
 "aQ" = (
 /obj/structure/window/reinforced{
@@ -171,6 +186,36 @@
 /turf/template_noop,
 /area/template_noop)
 "aS" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/floragun,
+/turf/open/floor/iron/dark/side{
+	dir = 10
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"aT" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/med_data/laptop{
+	dir = 8;
+	pixel_y = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"aV" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
+"aW" = (
 /obj/machinery/power/apc/unlocked{
 	dir = 8;
 	environ = 0;
@@ -182,36 +227,25 @@
 /obj/item/melee/baton/cattleprod,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"aT" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/space/eva,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/clothing/head/helmet/space/eva,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"aV" = (
-/obj/machinery/smartfridge/chemistry,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"aW" = (
-/obj/structure/table/reinforced,
-/obj/item/gun/syringe,
-/turf/open/floor/iron/dark/side,
+/obj/effect/spawner/lootdrop,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
 /area/ruin/space/has_grav/abandonedzoo)
 "aY" = (
-/obj/structure/table/reinforced,
-/obj/item/gun/energy/temperature{
-	pin = /obj/item/firing_pin
+/obj/structure/rack,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/clothing/suit/space/hardsuit/medical,
+/turf/open/floor/iron/dark/side{
+	dir = 1
 	},
-/turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
 "aZ" = (
-/obj/structure/table/reinforced,
-/obj/item/cultivator,
-/obj/item/shovel,
-/turf/open/floor/iron/dark/side,
+/obj/machinery/smartfridge/chemistry,
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
 /area/ruin/space/has_grav/abandonedzoo)
 "bb" = (
 /obj/machinery/door/airlock/hatch{
@@ -230,6 +264,33 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "bd" = (
+/obj/structure/table/reinforced,
+/obj/item/grenade/chem_grenade/antiweed{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/grenade/chem_grenade/antiweed{
+	pixel_x = 4
+	},
+/obj/item/grenade/chem_grenade/antiweed{
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/obj/item/gun/syringe,
+/turf/open/floor/iron/dark/corner{
+	dir = 4
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"be" = (
+/obj/structure/table/reinforced,
+/obj/item/cultivator,
+/obj/item/shovel,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"bf" = (
 /obj/machinery/power/terminal,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -244,57 +305,101 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
-"be" = (
+"bh" = (
+/obj/structure/table/reinforced,
+/obj/item/folder,
+/obj/item/gps/spaceruin,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
+"bi" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bottle/random_virus,
+/obj/item/reagent_containers/dropper,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
+"bk" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/food/carrotfries,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
+"bl" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bottle/mutagen,
+/obj/item/reagent_containers/hypospray/medipen/stimpack,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
+"bm" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/cable,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
-"bf" = (
+"bn" = (
 /obj/structure/cable,
 /obj/machinery/power/smes/engineering,
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
-"bh" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bi" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/hypospray/medipen/stimpack,
-/obj/item/reagent_containers/glass/bottle/mutagen,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bk" = (
-/obj/structure/table/optable,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bl" = (
-/obj/machinery/computer/operating{
+"bp" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/dark/corner{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bm" = (
-/obj/structure/closet/wardrobe/science_white,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bn" = (
-/obj/structure/table/reinforced,
-/obj/item/food/carrotfries,
-/turf/open/floor/iron/dark/side,
-/area/ruin/space/has_grav/abandonedzoo)
-"bp" = (
-/obj/structure/bed,
-/obj/item/bedsheet/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
 "br" = (
 /obj/structure/table/reinforced,
-/obj/machinery/microwave,
-/turf/open/floor/iron/dark/side,
+/obj/item/surgicaldrill,
+/obj/item/hemostat,
+/obj/item/scalpel,
+/obj/item/surgical_drapes,
+/obj/item/retractor,
+/obj/item/cautery,
+/obj/item/circular_saw,
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/iron/dark/corner,
 /area/ruin/space/has_grav/abandonedzoo)
 "bs" = (
 /obj/structure/cable,
@@ -318,14 +423,15 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/abandonedzoo)
 "by" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
+/obj/machinery/space_heater,
+/obj/machinery/light/directional/west,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/dark/side{
+	dir = 10
 	},
-/turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/abandonedzoo)
 "bA" = (
-/obj/structure/table/reinforced,
-/obj/machinery/reagentgrinder,
+/obj/structure/table/optable,
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
 "bB" = (
@@ -395,19 +501,10 @@
 /turf/template_noop,
 /area/template_noop)
 "bQ" = (
-/obj/structure/table/reinforced,
-/obj/item/grenade/chem_grenade/antiweed{
-	pixel_x = 3;
-	pixel_y = 5
+/obj/machinery/computer/operating{
+	dir = 8
 	},
-/obj/item/grenade/chem_grenade/antiweed{
-	pixel_x = 4
-	},
-/obj/item/grenade/chem_grenade/antiweed{
-	pixel_x = -3;
-	pixel_y = -1
-	},
-/obj/machinery/light/directional/north,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
 "bR" = (
@@ -480,12 +577,11 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "kF" = (
-/obj/machinery/space_heater,
-/obj/structure/disposalpipe/segment{
-	dir = 9
+/obj/structure/disposalpipe/segment,
+/obj/structure/closet/wardrobe/science_white,
+/turf/open/floor/iron/dark/side{
+	dir = 10
 	},
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark/side,
 /area/ruin/space/has_grav/abandonedzoo)
 "lo" = (
 /obj/machinery/door/airlock/external,
@@ -529,11 +625,20 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "uA" = (
-/obj/structure/rack,
-/obj/item/crowbar,
-/obj/item/shield/riot,
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark/side,
+/obj/structure/table/reinforced,
+/obj/machinery/microwave,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"vk" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/temperature{
+	pin = /obj/item/firing_pin
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 1
+	},
 /area/ruin/space/has_grav/abandonedzoo)
 "wc" = (
 /obj/machinery/light/small/directional/east,
@@ -567,6 +672,21 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
+"xi" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/abandonedzoo)
 "xW" = (
 /obj/structure/flora/rock,
 /obj/machinery/light/directional/south,
@@ -588,19 +708,41 @@
 /area/ruin/space/has_grav/abandonedzoo)
 "Ct" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/syringes{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/storage/box/beakers,
+/obj/machinery/reagentgrinder,
 /obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/side,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/ruin/space/has_grav/abandonedzoo)
+"Gp" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/closet/wardrobe/science_white,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "GX" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
 /obj/structure/cable,
-/turf/open/floor/iron/dark/side,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 "Ig" = (
 /obj/machinery/light/directional/north,
@@ -622,12 +764,9 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/abandonedzoo)
 "OR" = (
-/obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/clothing/mask/surgical,
-/obj/item/razor,
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark/side,
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/abandonedzoo)
 "Po" = (
 /obj/machinery/light/small/directional/east,
@@ -649,17 +788,21 @@
 /mob/living/simple_animal/hostile/bee,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/abandonedzoo)
-"ZP" = (
-/obj/structure/table/reinforced,
-/obj/item/surgicaldrill,
-/obj/item/hemostat,
-/obj/item/scalpel,
-/obj/item/surgical_drapes,
-/obj/item/retractor,
-/obj/item/cautery,
-/obj/item/circular_saw,
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/side,
+"PS" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/abandonedzoo)
 
 (1,1,1) = {"
@@ -753,12 +896,12 @@ ai
 as
 ar
 ac
-at
-aS
+aW
+aO
 Ck
 Ck
-be
-at
+Ck
+bm
 ac
 bx
 bE
@@ -773,19 +916,19 @@ ac
 ac
 ac
 ac
-aE
-at
-aT
+aP
+aY
 ay
-bd
+ay
+aO
 bf
-at
+bn
 aE
 ac
 ac
 ac
 ac
-ab
+OR
 aa
 "}
 (7,1,1) = {"
@@ -793,15 +936,15 @@ aa
 aa
 aa
 at
-at
-at
-at
-uA
+aG
+aS
+aZ
+aV
 ay
 Ck
 GX
-at
-at
+bp
+kF
 by
 bF
 bK
@@ -814,16 +957,16 @@ aa
 aa
 aa
 ag
-OR
-aG
-aN
-aV
 ay
-Ck
-bh
-bm
-bp
-kF
+ay
+PS
+aV
+aO
+xi
+aO
+ay
+ay
+Gp
 at
 at
 at
@@ -835,12 +978,12 @@ aa
 aa
 aa
 ag
+aI
 ay
 ay
 aO
-ay
-ay
-Ck
+bh
+bk
 ay
 ay
 ay
@@ -857,15 +1000,15 @@ aa
 aa
 ag
 ay
+aO
+aO
+aO
+bi
+bl
 ay
 ay
-ay
-ay
-Ck
-ay
-ay
-ay
-ay
+aO
+aO
 bG
 Po
 lo
@@ -877,16 +1020,16 @@ aa
 aa
 aa
 ag
-Ct
-aI
-aP
-aW
+ay
+aO
+ay
+ay
 ay
 Ck
-bi
-bn
-br
-bA
+ay
+ay
+ay
+ay
 at
 at
 at
@@ -898,16 +1041,16 @@ aa
 aa
 aa
 at
-at
-at
-at
-bQ
+aN
+aT
+bd
 ay
-Ck
-ZP
-at
-at
-at
+ay
+xi
+ay
+br
+uA
+Ct
 at
 aa
 aa
@@ -921,12 +1064,12 @@ ac
 ac
 ac
 aE
-at
-aY
+vk
 ay
-Ck
-bk
-at
+aO
+xi
+ay
+bA
 bs
 ac
 ac
@@ -942,12 +1085,12 @@ gE
 gE
 aA
 ac
-at
-aZ
+be
+ay
 ay
 Ck
-bl
-at
+ay
+bQ
 ac
 bB
 Ng

@@ -56,6 +56,7 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "ao" = (
@@ -68,6 +69,7 @@
 /area/ruin/space/has_grav/turretedoutpost)
 "aq" = (
 /obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "ar" = (
@@ -83,6 +85,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/lootdrop/space/syndiecosmetic,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "at" = (
@@ -93,6 +96,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "au" = (
@@ -104,6 +108,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "av" = (
@@ -119,10 +124,12 @@
 /area/ruin/space/has_grav/turretedoutpost)
 "aw" = (
 /obj/machinery/door/airlock/public/glass,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "ax" = (
 /obj/machinery/door/airlock,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "ay" = (
@@ -140,6 +147,7 @@
 /area/ruin/space/has_grav/turretedoutpost)
 "aA" = (
 /obj/structure/tank_dispenser/oxygen,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aB" = (
@@ -186,6 +194,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aH" = (
@@ -201,16 +210,19 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aI" = (
 /obj/machinery/door/airlock/public/glass,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aK" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
 /obj/machinery/light/directional/east,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "aL" = (
@@ -222,6 +234,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/lootdrop/space/syndiecosmetic,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aM" = (
@@ -238,21 +251,25 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aN" = (
 /obj/structure/chair/office,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "aO" = (
 /obj/structure/chair/comfy/beige{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "aP" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "aQ" = (
@@ -300,6 +317,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka{
 	pixel_x = 3
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 "aW" = (
@@ -326,6 +344,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/lootdrop/space/syndiecosmetic,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "aZ" = (
@@ -335,6 +354,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/lootdrop/space/syndiecosmetic,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "ba" = (
@@ -342,6 +362,9 @@
 /obj/item/food/breadslice/meat,
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/turretedoutpost)
+"sc" = (
+/turf/closed/wall/r_wall/rust,
 /area/ruin/space/has_grav/turretedoutpost)
 "tK" = (
 /obj/effect/turf_decal/tile/red,
@@ -354,7 +377,17 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/turretedoutpost)
+"vJ" = (
+/obj/structure/frame/computer,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/turretedoutpost)
+"Ct" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/turretedoutpost)
 "Nu" = (
 /obj/machinery/door/airlock/external,
@@ -362,6 +395,10 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/turretedoutpost)
+"OD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/turretedoutpost)
 
 (1,1,1) = {"
@@ -434,10 +471,10 @@ al
 ao
 ad
 ad
+sc
 ad
 ad
-ad
-ad
+sc
 ao
 al
 ab
@@ -457,7 +494,7 @@ ay
 aL
 aL
 aL
-ad
+sc
 ad
 al
 ab
@@ -471,12 +508,12 @@ ab
 ab
 ab
 al
-ad
+sc
 as
-az
-az
-az
-az
+Ct
+Ct
+Ct
+Ct
 aW
 ad
 al
@@ -491,14 +528,14 @@ aa
 ab
 aa
 al
-ad
+sc
 at
-az
+Ct
 aG
 aG
-az
+Ct
 aX
-ad
+sc
 al
 ab
 ab
@@ -511,14 +548,14 @@ ab
 ab
 aa
 al
-ad
+sc
 au
-az
+Ct
 aH
 aM
-az
+Ct
 aY
-ad
+sc
 al
 aa
 aa
@@ -533,12 +570,12 @@ aa
 al
 ad
 av
-az
-az
-az
+Ct
+Ct
+Ct
 az
 aZ
-ad
+sc
 al
 ab
 aa
@@ -552,12 +589,12 @@ ab
 aa
 al
 ad
-ad
+sc
 aA
-az
-az
+Ct
+Ct
 aQ
-ad
+sc
 ad
 al
 ab
@@ -573,7 +610,7 @@ ac
 ac
 ac
 ad
-ad
+sc
 aI
 aI
 ad
@@ -589,15 +626,15 @@ aa
 aa
 ac
 ad
+sc
+sc
 ad
-ad
-ad
-ad
+sc
 aB
 tK
 tK
 aR
-ad
+sc
 al
 ab
 ab
@@ -612,12 +649,12 @@ ad
 ae
 am
 ap
-ad
+sc
 aC
-ag
-ag
+OD
+OD
 aS
-ad
+sc
 al
 ab
 aa
@@ -634,10 +671,10 @@ an
 aq
 ad
 aD
-ag
+OD
 aN
 aT
-ad
+sc
 al
 aa
 aa
@@ -648,14 +685,14 @@ aa
 aa
 aa
 ac
-ad
-af
-ag
-ag
+sc
+vJ
+OD
+OD
 aw
-ag
-ag
-ag
+OD
+OD
+OD
 aU
 ad
 ac
@@ -668,14 +705,14 @@ ab
 aa
 ab
 ac
-ad
-af
-ag
-ag
-ad
-ad
+sc
+vJ
+OD
+OD
 ad
 ad
+sc
+sc
 ad
 ad
 ad
@@ -688,17 +725,17 @@ aa
 aa
 aa
 ac
-ad
-ag
-ag
-ag
+sc
+OD
+OD
+OD
 ax
-ag
-ag
+OD
+OD
 aO
 aV
 ba
-ad
+sc
 ac
 ab
 ab
@@ -710,15 +747,15 @@ ab
 ac
 ad
 ah
-ag
+OD
 ar
 ad
 aE
-ag
-ag
-ag
-ag
-ad
+OD
+OD
+OD
+OD
+sc
 ac
 aa
 aa
@@ -733,12 +770,12 @@ ai
 ai
 ad
 ad
-ad
+sc
+OD
 ag
 ag
 ag
-ag
-ad
+sc
 ac
 aa
 aa
@@ -751,7 +788,7 @@ ac
 ad
 aj
 ak
-ad
+sc
 al
 ad
 aK
@@ -771,13 +808,13 @@ ac
 ad
 ak
 ak
-ad
+sc
 al
 ad
 ad
-ad
-ad
-ad
+sc
+sc
+sc
 ad
 ac
 ab

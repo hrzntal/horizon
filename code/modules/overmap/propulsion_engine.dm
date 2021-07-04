@@ -30,6 +30,7 @@
 	initialize_directions = REVERSE_DIR(dir)
 
 /obj/machinery/atmospherics/components/unary/engine/Initialize(mapload)
+	AddComponent(/datum/component/engine_effect)
 	extension = new extension_type(src)
 	if(starts_welded)
 		weld_down(mapload)
@@ -150,10 +151,8 @@
 		transfer_moles = total_moles
 
 	var/datum/gas_mixture/removed = gas.remove(transfer_moles)
-	//Dumps used air out of the engine - TODO in the future remove this for a cool flame effect that burns people (would need implementing an "in-use" state, which currently isnt present)
-	var/turf/dump_place = get_turf(src)
-	dump_place = get_step(dump_place,dir) //Step into the direction we're dumping the waste
-	dump_place.assume_air(removed)
+	qdel(removed)
+	SEND_SIGNAL(src, COMSIG_ENGINE_DRAWN_POWER)
 	return returned_efficiency
 
 #undef ENGINE_BASELINE_MOLE_INTAKE

@@ -1,133 +1,213 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/template_noop,
-/area/template_noop)
-"b" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
-"c" = (
-/obj/structure/lattice,
-/turf/open/floor/plating/asteroid/airless,
-/area/ruin/unpowered/no_grav)
-"d" = (
-/turf/open/floor/plating/asteroid/airless,
-/area/ruin/unpowered/no_grav)
-"e" = (
-/obj/structure/lattice,
-/turf/open/floor/plating/airless,
-/area/ruin/unpowered/no_grav)
-"f" = (
-/turf/closed/wall,
+"bc" = (
+/mob/living/simple_animal/butterfly,
+/turf/open/floor/iron/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic)
-"g" = (
+"bf" = (
 /turf/closed/wall/rust,
 /area/ruin/space/has_grav/powered/aesthetic)
-"h" = (
-/obj/effect/overlay/palmtree_r,
+"bD" = (
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/airless{
+	icon_state = "stairs-l"
+	},
+/area/ruin/unpowered/no_grav)
+"bK" = (
+/obj/effect/overlay/palmtree_l,
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered/no_grav)
+"bP" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"dJ" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/pod/dark,
+/area/ruin/unpowered/no_grav)
+"er" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/unpowered/no_grav)
+"gJ" = (
+/obj/effect/turf_decal/stripes/asteroid/line,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/unpowered/no_grav)
+"ji" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/spawner/lootdrop/space/fancytech,
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered/no_grav)
+"oZ" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"ps" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"qg" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "TEMP=2.7"
+	},
+/area/ruin/unpowered/no_grav)
+"qY" = (
+/turf/open/floor/holofloor/beach/coast_t,
+/area/ruin/space/has_grav/powered/aesthetic)
+"sP" = (
+/obj/item/instrument/eguitar,
 /turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic)
-"i" = (
+"sX" = (
+/turf/open/floor/holofloor/beach/coast_b,
+/area/ruin/space/has_grav/powered/aesthetic)
+"tL" = (
+/obj/machinery/jukebox/disco,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"un" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/sunglasses/big{
+	name = "aesthetic sunglasses"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"xv" = (
+/obj/structure/window{
+	dir = 4
+	},
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"yQ" = (
+/turf/closed/wall,
+/area/ruin/unpowered/no_grav)
+"zy" = (
+/obj/item/statuebust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"BF" = (
+/obj/structure/window{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Ch" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/obj/item/clothing/suit/space/hardsuit/carp,
+/obj/item/clothing/head/helmet/space/hardsuit/carp,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"DQ" = (
+/obj/structure/chair/stool/directional/east,
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Eo" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Fp" = (
+/obj/structure/table/reinforced,
+/obj/item/taperecorder,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"FT" = (
+/obj/machinery/door/airlock/hatch,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Gy" = (
+/obj/structure/window{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Jd" = (
+/obj/effect/turf_decal/sand,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/iron/airless,
+/area/ruin/unpowered/no_grav)
+"Jj" = (
 /obj/structure/musician/piano,
 /obj/structure/window{
 	dir = 8
 	},
 /turf/open/floor/iron/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic)
-"j" = (
-/obj/structure/chair/stool/directional/east,
+"JK" = (
+/turf/template_noop,
+/area/template_noop)
+"KX" = (
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic)
-"k" = (
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"l" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"m" = (
-/obj/structure/table/reinforced,
-/obj/item/taperecorder,
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"n" = (
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"o" = (
-/obj/structure/window{
-	dir = 4
-	},
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"p" = (
+"LL" = (
 /obj/effect/overlay/palmtree_l,
 /turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic)
-"q" = (
-/turf/open/floor/holofloor/beach,
-/area/ruin/space/has_grav/powered/aesthetic)
-"r" = (
+"NP" = (
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered/no_grav)
+"Ol" = (
+/obj/structure/lattice,
+/turf/open/floor/plating/airless,
+/area/ruin/unpowered/no_grav)
+"Os" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/template_noop)
+"OI" = (
 /obj/structure/window{
 	dir = 8
 	},
 /turf/open/floor/iron/vaporwave,
 /area/ruin/space/has_grav/powered/aesthetic)
-"s" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/glasses/sunglasses/big{
-	name = "aesthetic sunglasses"
-	},
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"t" = (
-/obj/item/instrument/eguitar,
-/turf/open/floor/holofloor/beach,
-/area/ruin/space/has_grav/powered/aesthetic)
-"u" = (
-/turf/open/floor/holofloor/beach/coast_t,
-/area/ruin/space/has_grav/powered/aesthetic)
-"v" = (
-/obj/item/statuebust,
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"w" = (
-/mob/living/simple_animal/butterfly,
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"x" = (
-/obj/structure/closet/crate/bin,
-/obj/item/tape/random,
-/obj/item/gps/spaceruin,
+"Qy" = (
+/obj/effect/overlay/palmtree_r,
 /turf/open/floor/plating/asteroid/airless,
 /area/ruin/unpowered/no_grav)
-"y" = (
-/turf/open/floor/holofloor/beach/coast_b,
+"Rn" = (
+/turf/closed/wall,
 /area/ruin/space/has_grav/powered/aesthetic)
-"z" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/hatch,
-/turf/open/floor/pod/dark,
+"Tc" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic)
-"A" = (
+"Te" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/sand/plating,
 /turf/open/floor/plating{
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/unpowered/no_grav)
-"B" = (
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
+"TA" = (
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"TV" = (
+/turf/closed/wall/rust,
 /area/ruin/unpowered/no_grav)
-"C" = (
+"VG" = (
 /obj/structure/statue/sandstone/venus{
 	anchored = 1;
 	desc = "Ugh, this is merely an ugly amateurish replica of the other statue! The letters RIPGOAT are scribbled onto the base.";
@@ -138,17 +218,32 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/unpowered/no_grav)
-"D" = (
+"VT" = (
+/obj/structure/closet/crate/bin,
+/obj/item/tape/random,
+/obj/item/gps/spaceruin,
+/turf/open/floor/plating/asteroid/airless,
+/area/ruin/unpowered/no_grav)
+"VV" = (
 /obj/effect/turf_decal/sand,
 /turf/open/floor/iron/airless{
-	icon_state = "recharge_floor_asteroid"
+	icon_state = "stairs-r"
 	},
 /area/ruin/unpowered/no_grav)
-"E" = (
+"VW" = (
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/vaporwave,
+/area/ruin/space/has_grav/powered/aesthetic)
+"Wa" = (
 /obj/effect/turf_decal/sand,
-/turf/open/floor/iron/airless,
+/turf/open/floor/iron/airless{
+	icon_state = "stairs-m"
+	},
 /area/ruin/unpowered/no_grav)
-"F" = (
+"Wp" = (
 /obj/structure/statue/sandstone/venus{
 	anchored = 1;
 	dir = 4
@@ -158,388 +253,337 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/ruin/unpowered/no_grav)
-"G" = (
-/obj/effect/turf_decal/stripes/asteroid/line,
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/area/ruin/unpowered/no_grav)
-"H" = (
-/obj/effect/overlay/palmtree_l,
-/turf/open/floor/plating/asteroid/airless,
-/area/ruin/unpowered/no_grav)
-"I" = (
-/obj/effect/turf_decal/sand,
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/airless,
-/area/ruin/unpowered/no_grav)
-"J" = (
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/airless{
-	icon_state = "stairs-l"
-	},
-/area/ruin/unpowered/no_grav)
-"K" = (
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/airless{
-	icon_state = "stairs-m"
-	},
-/area/ruin/unpowered/no_grav)
-"L" = (
-/obj/effect/turf_decal/sand,
-/turf/open/floor/iron/airless{
-	icon_state = "stairs-r"
-	},
-/area/ruin/unpowered/no_grav)
-"M" = (
-/obj/effect/overlay/palmtree_r,
-/turf/open/floor/plating/asteroid/airless,
-/area/ruin/unpowered/no_grav)
-"O" = (
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/iron/vaporwave,
+"WA" = (
+/turf/open/floor/holofloor/beach,
 /area/ruin/space/has_grav/powered/aesthetic)
-"P" = (
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/vaporwave,
-/area/ruin/space/has_grav/powered/aesthetic)
-"Q" = (
-/obj/structure/closet/crate/bin,
-/obj/effect/spawner/lootdrop/space/fancytech,
+"Xa" = (
+/obj/structure/lattice,
 /turf/open/floor/plating/asteroid/airless,
 /area/ruin/unpowered/no_grav)
-"R" = (
-/obj/machinery/light/small/directional/north,
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating{
-	initial_gas_mix = "TEMP=2.7"
-	},
+"XO" = (
+/turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-b
-a
-a
-a
-a
-a
-a
-a
-a
+JK
+JK
+JK
+JK
+JK
+JK
+Os
+JK
+JK
+JK
+JK
+JK
+JK
+JK
+JK
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-d
-c
-d
-a
-b
-a
-a
-a
-a
-a
+JK
+JK
+JK
+JK
+JK
+NP
+Xa
+NP
+JK
+Os
+JK
+JK
+JK
+JK
+JK
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-d
-d
-c
-d
-d
-c
-d
-d
-a
-a
-a
+JK
+JK
+JK
+JK
+NP
+NP
+Xa
+NP
+NP
+Xa
+NP
+NP
+JK
+JK
+JK
 "}
 (4,1,1) = {"
-a
-a
-a
-d
-d
-d
-e
-c
-d
-e
-d
-d
-d
-a
-a
+JK
+JK
+JK
+NP
+NP
+NP
+Ol
+Xa
+NP
+Ol
+NP
+NP
+NP
+JK
+JK
 "}
 (5,1,1) = {"
-a
-a
-a
-d
-f
-f
-g
-g
-g
-f
-g
-A
-d
-d
-a
+JK
+JK
+JK
+NP
+Rn
+Rn
+bf
+bf
+bf
+Rn
+bf
+Te
+NP
+NP
+JK
 "}
 (6,1,1) = {"
-a
-a
-c
-Q
-f
-h
-q
-h
-u
-y
-f
-R
-d
-d
-a
+JK
+JK
+Xa
+ji
+Rn
+Tc
+WA
+Tc
+qY
+sX
+Rn
+er
+NP
+NP
+JK
 "}
 (7,1,1) = {"
-a
-b
-c
-e
-g
-i
-r
-r
-r
-r
-f
-B
-H
-d
-d
+JK
+Os
+Xa
+Ol
+bf
+Jj
+Gy
+Gy
+OI
+OI
+Rn
+qg
+bK
+NP
+NP
 "}
 (8,1,1) = {"
-a
-a
-d
-d
-f
-j
-k
-k
-v
-P
-f
-C
-I
-A
-d
+JK
+JK
+NP
+NP
+Rn
+DQ
+ps
+ps
+zy
+bP
+Rn
+VG
+Jd
+Te
+NP
 "}
 (9,1,1) = {"
-a
-a
-d
-d
-f
-k
-k
-k
-k
-k
-f
-D
-J
-I
-d
+JK
+JK
+NP
+NP
+Rn
+tL
+TA
+ps
+ps
+TA
+Rn
+TV
+TV
+bD
+NP
 "}
 (10,1,1) = {"
-a
-a
-d
-c
-f
-l
-l
-k
-k
-k
-z
-E
-K
-E
-I
+JK
+JK
+NP
+Xa
+Rn
+oZ
+Eo
+TA
+ps
+ps
+FT
+XO
+dJ
+Wa
+Jd
 "}
 (11,1,1) = {"
-a
-a
-d
-c
-g
-m
-s
-k
-k
-k
-f
-D
-L
-E
-I
+JK
+JK
+NP
+Xa
+bf
+Fp
+un
+TA
+TA
+Ch
+Rn
+yQ
+TV
+VV
+Jd
 "}
 (12,1,1) = {"
-a
-a
-d
-c
-g
-O
-n
-k
-w
-P
-g
-F
-I
-A
-A
+JK
+JK
+NP
+Xa
+bf
+KX
+VW
+ps
+bc
+bP
+bf
+Wp
+Jd
+Te
+Te
 "}
 (13,1,1) = {"
-b
-b
-c
-e
-f
-o
-o
-o
-o
-o
-f
-G
-M
-d
-d
+Os
+Os
+Xa
+Ol
+Rn
+xv
+xv
+xv
+BF
+xv
+Rn
+gJ
+Qy
+NP
+NP
 "}
 (14,1,1) = {"
-a
-a
-d
-d
-g
-p
-t
-p
-u
-y
-g
-R
-d
-d
-a
+JK
+JK
+NP
+NP
+bf
+LL
+sP
+LL
+qY
+sX
+bf
+er
+NP
+NP
+JK
 "}
 (15,1,1) = {"
-a
-a
-d
-d
-f
-f
-g
-f
-g
-g
-g
-A
-d
-d
-a
+JK
+JK
+NP
+NP
+Rn
+Rn
+bf
+Rn
+bf
+bf
+bf
+Te
+NP
+NP
+JK
 "}
 (16,1,1) = {"
-a
-a
-a
-d
-d
-d
-e
-c
-x
-e
-d
-d
-d
-a
-a
+JK
+JK
+JK
+NP
+NP
+NP
+Ol
+Xa
+VT
+Ol
+NP
+NP
+NP
+JK
+JK
 "}
 (17,1,1) = {"
-a
-a
-a
-a
-a
-d
-c
-d
-d
-c
-d
-d
-d
-a
-a
+JK
+JK
+JK
+JK
+JK
+NP
+Xa
+NP
+NP
+Xa
+NP
+NP
+NP
+JK
+JK
 "}
 (18,1,1) = {"
-a
-a
-a
-a
-a
-a
-b
-d
-d
-d
-d
-a
-a
-a
-a
+JK
+JK
+JK
+JK
+JK
+JK
+Os
+NP
+NP
+NP
+NP
+JK
+JK
+JK
+JK
 "}
 (19,1,1) = {"
-a
-a
-a
-a
-a
-a
-b
-a
-a
-a
-a
-a
-a
-a
-a
+JK
+JK
+JK
+JK
+JK
+JK
+Os
+JK
+JK
+JK
+JK
+JK
+JK
+JK
+JK
 "}

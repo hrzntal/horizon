@@ -2539,6 +2539,13 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
+"IQ" = (
+/obj/structure/marker_beacon/burgundy,
+/obj/structure/sign/warning/fire{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/airless,
+/area/space)
 "IU" = (
 /obj/structure/table/glass,
 /obj/item/stack/cable_coil,
@@ -3469,10 +3476,6 @@
 /obj/effect/decal/cleanable/food/plant_smudge,
 /turf/open/floor/iron,
 /area/service/hydroponics)
-"WA" = (
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/plating/airless,
-/area/space)
 "WH" = (
 /obj/structure/cable,
 /obj/machinery/firealarm/directional/south,
@@ -32178,7 +32181,7 @@ ij
 NK
 NK
 ij
-WA
+IQ
 DB
 DB
 DB
@@ -32949,7 +32952,7 @@ ij
 AC
 NK
 ij
-WA
+IQ
 DB
 DB
 DB
@@ -35287,7 +35290,7 @@ Tz
 kb
 fJ
 kb
-DB
+IQ
 DB
 DB
 DB
@@ -37857,7 +37860,7 @@ eU
 kb
 kb
 kb
-DB
+IQ
 DB
 DB
 Wg
@@ -39888,7 +39891,7 @@ ij
 AC
 NK
 ij
-WA
+IQ
 DB
 DB
 DB
@@ -40659,7 +40662,7 @@ ij
 NK
 NK
 ij
-WA
+IQ
 DB
 DB
 DB

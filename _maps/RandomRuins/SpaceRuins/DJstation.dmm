@@ -2,16 +2,13 @@
 "aa" = (
 /turf/template_noop,
 /area/template_noop)
-"ab" = (
-/obj/structure/grille,
-/turf/open/floor/plating/airless,
-/area/ruin/space/djstation/solars)
 "ac" = (
 /obj/machinery/power/solar/fake,
+/obj/structure/cable,
 /turf/open/floor/iron/solarpanel/airless,
 /area/ruin/space/djstation/solars)
 "ad" = (
-/turf/open/floor/plating/airless,
+/turf/template_noop,
 /area/ruin/space/djstation/solars)
 "ae" = (
 /obj/structure/lattice,
@@ -30,14 +27,18 @@
 "ai" = (
 /obj/machinery/telecomms/relay/preset/ruskie,
 /obj/machinery/light/directional/north,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "aj" = (
 /obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "ak" = (
 /obj/item/multitool,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "al" = (
@@ -45,10 +46,12 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "am" = (
 /obj/item/extinguisher,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "an" = (
@@ -57,10 +60,15 @@
 	name = "power storage unit"
 	},
 /obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "ao" = (
 /obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "ap" = (
@@ -76,38 +84,46 @@
 	pixel_y = -32
 	},
 /obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "as" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/space/eva,
-/obj/item/clothing/head/helmet/space/eva,
 /obj/item/clothing/mask/breath,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/clothing/suit/space/orange,
+/obj/item/clothing/head/helmet/space/orange,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "at" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "au" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "av" = (
 /obj/machinery/vending/snack,
 /obj/machinery/light/small/directional/north,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "aw" = (
-/turf/open/floor/iron/cafeteria,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "ax" = (
 /obj/machinery/light_switch/directional/north,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "ay" = (
 /obj/machinery/newscaster/directional/north,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "az" = (
 /obj/structure/table,
@@ -116,26 +132,23 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/turf/open/floor/iron,
-/area/ruin/space/djstation)
-"aA" = (
-/obj/effect/turf_decal/tile/bar,
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
-	},
+/obj/effect/spawner/lootdrop/donkpockets,
 /turf/open/floor/iron,
 /area/ruin/space/djstation)
 "aB" = (
 /obj/effect/spawner/lootdrop/crate_spawner,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aC" = (
 /obj/machinery/light_switch/directional/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aD" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aE" = (
@@ -152,13 +165,18 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/space/djstation)
 "aG" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen"
 	},
-/turf/open/floor/iron/cafeteria,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "aH" = (
 /obj/structure/table,
@@ -167,23 +185,36 @@
 	freerange = 1;
 	name = "Pirate Radio Listening Channel"
 	},
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/glass/reinforced,
 /area/ruin/space/djstation)
 "aI" = (
 /obj/structure/chair/office/light,
-/turf/open/floor/iron/cafeteria,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/glass/reinforced,
 /area/ruin/space/djstation)
 "aJ" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Rest Room"
 	},
-/turf/open/floor/iron/cafeteria,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "aK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aL" = (
 /obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /turf/open/floor/iron/grimy,
@@ -195,6 +226,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/djstation)
 "aN" = (
@@ -203,22 +235,22 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/djstation)
 "aO" = (
-/obj/structure/chair{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/djstation)
 "aP" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/glass/reinforced,
 /area/ruin/space/djstation)
 "aQ" = (
 /obj/structure/table,
@@ -229,23 +261,27 @@
 	listening = 0;
 	name = "Pirate Radio Broadcast Channel"
 	},
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/glass/reinforced,
 /area/ruin/space/djstation)
 "aR" = (
 /obj/structure/table,
 /obj/item/paper/fluff/ruins/djstation,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/glass/reinforced,
 /area/ruin/space/djstation)
 "aS" = (
 /obj/structure/frame/computer{
 	anchored = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aT" = (
 /obj/structure/chair{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aU" = (
@@ -254,6 +290,8 @@
 /area/ruin/space/djstation)
 "aV" = (
 /obj/structure/closet,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/lootdrop/clothes,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/djstation)
 "aW" = (
@@ -268,27 +306,29 @@
 /area/ruin/space/djstation)
 "aY" = (
 /obj/machinery/light/directional/east,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "aZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/airless,
 /area/template_noop)
 "ba" = (
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/djstation)
 "bb" = (
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "bc" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/machinery/space_heater,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "bd" = (
 /obj/structure/window/reinforced{
@@ -297,7 +337,8 @@
 /obj/structure/rack,
 /obj/item/clothing/under/costume/soviet,
 /obj/item/clothing/head/ushanka,
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "be" = (
 /obj/structure/sink{
@@ -306,6 +347,7 @@
 	pixel_y = 2
 	},
 /obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/djstation)
 "bf" = (
@@ -321,19 +363,21 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "bh" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = -32
 	},
-/turf/open/floor/iron/cafeteria,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
 /area/ruin/space/djstation)
 "bi" = (
 /obj/machinery/door/airlock/external{
 	name = "Ruskie DJ Station"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
 "bj" = (
@@ -343,6 +387,118 @@
 /obj/structure/disposaloutlet,
 /turf/open/floor/plating/airless,
 /area/template_noop)
+"cp" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/binary/pump/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"cN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"jz" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/djstation)
+"lq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"mR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"oM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"oV" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"rh" = (
+/obj/structure/cable,
+/obj/machinery/power/tracker,
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/space/djstation/solars)
+"rw" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/layer4{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"td" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"ts" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"uk" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/space/djstation)
+"yY" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"zL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"zO" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"Au" = (
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"Bb" = (
+/obj/machinery/power/solar/fake,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/space/djstation/solars)
+"BY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
 "Co" = (
 /obj/machinery/door/airlock/external{
 	name = "Ruskie DJ Station"
@@ -352,20 +508,89 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/djstation)
+"Fc" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/airless,
+/area/ruin/space/djstation/solars)
+"IW" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"KS" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"KU" = (
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"Lm" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/djstation)
+"NH" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"Py" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"QM" = (
+/obj/structure/cable,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"Vk" = (
+/obj/machinery/power/solar_control,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"VR" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"Yn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/textured,
+/area/ruin/space/djstation)
+"Zh" = (
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/djstation/solars)
+"ZF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/ruin/space/djstation)
+"ZG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/grimy,
+/area/ruin/space/djstation)
 
 (1,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 aa
 af
 ag
@@ -379,18 +604,13 @@ aa
 aa
 "}
 (2,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ab
+ad
 ac
 ad
 ac
 ad
 ac
-ab
+ad
 aa
 af
 az
@@ -404,22 +624,17 @@ bj
 aa
 "}
 (3,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ab
+ad
 ac
 ad
 ac
 ad
 ac
-ab
+ad
 aa
 af
-aA
-aA
+aO
+uk
 aN
 af
 ae
@@ -429,22 +644,17 @@ aa
 aa
 "}
 (4,1,1) = {"
-aa
-aa
-aa
-aa
-ae
-ab
+ad
 ac
 ad
 ac
 ad
 ac
-ab
+ad
 aa
 af
-aA
-aA
+aO
+uk
 aO
 af
 af
@@ -454,23 +664,18 @@ aa
 aa
 "}
 (5,1,1) = {"
-aa
-aa
-aa
-ae
-ae
-ab
-ac
 ad
 ac
-ad
+Zh
 ac
-ab
+Zh
+ac
+ad
 aa
 af
-aA
-aA
-aA
+Lm
+jz
+aO
 aX
 ba
 be
@@ -479,13 +684,8 @@ aa
 aa
 "}
 (6,1,1) = {"
-ab
-ab
-ab
-ab
-ab
 af
-ag
+IW
 ag
 af
 ag
@@ -504,24 +704,19 @@ aa
 aa
 "}
 (7,1,1) = {"
-ab
-ac
-ac
-ac
-ac
 ag
-ah
-ah
-ah
+NH
+ZF
+Py
 am
-ah
+rw
 ap
 af
 au
-aw
-aw
-aw
-aw
+oM
+cN
+Yn
+Yn
 af
 af
 af
@@ -529,24 +724,19 @@ aa
 aa
 "}
 (8,1,1) = {"
-ab
-ad
-ad
-ad
-ad
 ag
+Vk
+ts
+cp
 ah
-ah
-ah
-ah
-ah
+BY
 aq
 af
 av
-aw
+zO
 aH
 aP
-aw
+KU
 bb
 bg
 af
@@ -554,49 +744,39 @@ aa
 aa
 "}
 (9,1,1) = {"
-ab
-ac
-ac
-ac
-ac
 af
 ai
-ah
+yY
 aj
 an
 ao
-ao
+zL
 at
 aw
-aw
+VR
 aI
 aQ
-aw
-aw
-aw
+KU
+oM
+oM
 af
 aa
 aa
 "}
 (10,1,1) = {"
-ab
-ad
-ad
-ad
-ad
 ag
-ah
-ah
+KS
+ZF
 ak
-ah
-ah
-ah
+lq
+td
+Au
 af
 ax
-aw
+Yn
 aH
 aR
-aw
+mR
 bc
 bh
 af
@@ -604,38 +784,28 @@ af
 af
 "}
 (11,1,1) = {"
-ab
-ac
-ac
-ac
-ac
 ag
-ah
+QM
 ah
 al
-ah
-ah
+ZF
+oV
 as
 af
 ay
+KU
 aw
-aw
-aw
+KU
 aY
 bd
-aw
+oM
 bi
-ah
+lq
 Co
 "}
 (12,1,1) = {"
-ab
-ab
-ab
-ab
-ab
 af
-ag
+IW
 ag
 af
 ag
@@ -654,18 +824,13 @@ af
 af
 "}
 (13,1,1) = {"
-aa
-aa
-ae
-ae
-ae
-ab
-ac
 ad
 ac
-ad
+Fc
+Bb
+Fc
 ac
-ab
+ad
 aa
 af
 aB
@@ -679,22 +844,17 @@ aa
 aa
 "}
 (14,1,1) = {"
-aa
-aa
-aa
-aa
-ae
-ab
+ad
 ac
 ad
 ac
 ad
 ac
-ab
+ad
 aa
 af
 aC
-aK
+ZG
 aT
 af
 aa
@@ -704,22 +864,17 @@ aa
 aa
 "}
 (15,1,1) = {"
-aa
-aa
-aa
-aa
-ae
-ab
-ac
 ad
 ac
 ad
+Bb
+ad
 ac
-ab
+ad
 aa
 af
 aD
-aK
+ZG
 aU
 af
 ae
@@ -729,18 +884,13 @@ aa
 aa
 "}
 (16,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ab
-ac
 ad
 ac
 ad
+rh
+ad
 ac
-ab
+ad
 aa
 af
 aE
@@ -754,49 +904,19 @@ aa
 aa
 "}
 (17,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 aa
 af
 ag
 ag
 ag
 af
-aa
-aa
-aa
-aa
-aa
-"}
-(18,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ae
-ae
-aa
-ae
-aa
-aa
-ae
-aa
 aa
 aa
 aa
