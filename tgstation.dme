@@ -531,6 +531,7 @@
 #include "code\datums\components\egg_layer.dm"
 #include "code\datums\components\electrified_buckle.dm"
 #include "code\datums\components\embedded.dm"
+#include "code\datums\components\engine_effect.dm"
 #include "code\datums\components\explodable.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\forensics.dm"

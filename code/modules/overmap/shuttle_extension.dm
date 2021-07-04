@@ -119,6 +119,17 @@
 //used by types of `/obj/structure/shuttle/engine` and works off of magic
 /datum/shuttle_extension/engine/burst
 	name = "Burst Engine"
+	///Reference to the physical engine, we'll need to bother it to draw our thrust, just for the effect.
+	var/obj/structure/shuttle/engine/our_engine
+
+/datum/shuttle_extension/engine/burst/New(obj/structure/shuttle/engine/passed_engine)
+	. = ..()
+	our_engine = passed_engine
+
+/datum/shuttle_extension/engine/burst/DrawThrust(impulse_percent)
+	if(our_engine)
+		our_engine.DrawThrust()
+	return ..()
 
 //used by types of `/obj/structure/shuttle/engine` and works off of hot atmospheric gas
 /datum/shuttle_extension/engine/propulsion

@@ -26,22 +26,15 @@
 	var/extension_type = /datum/shuttle_extension/engine/propulsion
 	var/datum/shuttle_extension/engine/propulsion/extension
 
-	/// Whether the shuttle is currently spewing exhaust fumes and playing a looped sound
-	var/is_flaming = FALSE
-	/// The time when we should stop processing, get's bumped up every time we get drawn thrust
-	var/stop_flame_time = 0
-	/// Our looped sound for when we are flaming
-	var/datum/looping_sound/engine/looped_sound
-
 /obj/machinery/atmospherics/components/unary/engine/SetInitDirections()
 	initialize_directions = REVERSE_DIR(dir)
 
 /obj/machinery/atmospherics/components/unary/engine/Initialize(mapload)
+	AddComponent(/datum/component/engine_effect)
 	extension = new extension_type(src)
 	if(starts_welded)
 		weld_down(mapload)
 		extension.ApplyToPosition(get_turf(src))
-	looped_sound = new(list(src), FALSE)
 	. = ..()
 
 /obj/machinery/atmospherics/components/unary/engine/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
@@ -51,9 +44,6 @@
 /obj/machinery/atmospherics/components/unary/engine/Destroy()
 	extension.RemoveExtension()
 	qdel(extension)
-	if(is_flaming)
-		StopFlaming()
-	qdel(looped_sound)
 	return ..()
 
 /obj/machinery/atmospherics/components/unary/engine/isConnectable(obj/machinery/atmospherics/target, given_layer)
@@ -162,9 +152,7 @@
 
 	var/datum/gas_mixture/removed = gas.remove(transfer_moles)
 	qdel(removed)
-	stop_flame_time = world.time + 3 SECONDS
-	if(!is_flaming)
-		StartFlaming()
+	SEND_SIGNAL(src, COMSIG_ENGINE_DRAWN_POWER)
 	return returned_efficiency
 
 #undef ENGINE_BASELINE_MOLE_INTAKE
@@ -180,30 +168,6 @@
 	return percentage
 
 #undef ENGINE_PRESSURE_POINT_FULL
-
-/obj/machinery/atmospherics/components/unary/engine/proc/StartFlaming()
-	is_flaming = TRUE
-	looped_sound.start()
-	START_PROCESSING(SSobj, src)
-	DoFirePlume()
-
-/obj/machinery/atmospherics/components/unary/engine/proc/StopFlaming()
-	is_flaming = FALSE
-	looped_sound.stop()
-	STOP_PROCESSING(SSobj, src)
-
-/obj/machinery/atmospherics/components/unary/engine/proc/DoFirePlume()
-	var/turf/dump_place = get_turf(src)
-	dump_place = get_step(dump_place,dir)
-	if(!dump_place.is_blocked_turf(TRUE))
-		new /datum/fireplume_controller(dump_place, dir)
-
-/obj/machinery/atmospherics/components/unary/engine/process()
-	if(world.time > stop_flame_time)
-		StopFlaming()
-		return
-	if(prob(80))
-		DoFirePlume()
 
 /obj/machinery/atmospherics/components/unary/engine/not_welded
 	starts_welded = FALSE
