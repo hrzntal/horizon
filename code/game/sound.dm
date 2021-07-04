@@ -65,17 +65,17 @@ falloff_distance - Distance at which falloff begins. Sound is at peak volume (in
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 
-		if(above_turf && istransparentturf(above_turf))
+		if(above_turf && above_turf.IsTransparent())
 			listeners += hearers(maxdistance,above_turf)
 
-		if(below_turf && istransparentturf(turf_source))
+		if(below_turf && turf_source.IsTransparent())
 			listeners += hearers(maxdistance,below_turf)
 
 	else
-		if(above_turf && istransparentturf(above_turf))
+		if(above_turf && above_turf.IsTransparent())
 			listeners += SSmobs.clients_by_zlevel[above_turf.z]
 
-		if(below_turf && istransparentturf(turf_source))
+		if(below_turf && turf_source.IsTransparent())
 			listeners += SSmobs.clients_by_zlevel[below_turf.z]
 
 	for(var/P in listeners)

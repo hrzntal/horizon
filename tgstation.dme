@@ -3485,6 +3485,7 @@
 #include "code\modules\shuttle\ripple.dm"
 #include "code\modules\shuttle\shuttle.dm"
 #include "code\modules\shuttle\shuttle_purchase_console.dm"
+#include "code\modules\shuttle\shuttle_roof.dm"
 #include "code\modules\shuttle\shuttle_rotate.dm"
 #include "code\modules\shuttle\sold_shuttles.dm"
 #include "code\modules\shuttle\spaceship_navigation_beacon.dm"

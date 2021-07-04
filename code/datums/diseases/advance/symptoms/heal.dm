@@ -89,9 +89,9 @@
 			if (levels_of_glass)
 				return STARLIGHT_CAN_HEAL_WITH_PENALTY // glass gives penalty
 			return STARLIGHT_CAN_HEAL // if can heal fully
-		if(istransparentturf(turf_to_check) && !(istype(turf_to_check, /turf/open/openspace)))
+		if(turf_to_check.IsTransparent() && !(istype(turf_to_check, /turf/open/openspace)))
 			levels_of_glass += 1
-		if(istransparentturf(turf_to_check) || istype(turf_to_check, /turf/open/openspace))
+		if(turf_to_check.IsTransparent() || istype(turf_to_check, /turf/open/openspace))
 			if(direction == ZTRAIT_UP)
 				turf_to_check = turf_to_check.above()
 			else
