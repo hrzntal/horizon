@@ -102,6 +102,7 @@
 /area/service/kitchen/diner)
 "bE" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "bL" = (
@@ -1853,6 +1854,10 @@
 /obj/machinery/transporter,
 /turf/open/floor/iron,
 /area/cargo/warehouse/upper)
+"Ay" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/engine,
+/area/engineering/supermatter/room)
 "AC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/closed/wall,
@@ -2709,6 +2714,7 @@
 /area/engineering/atmos)
 "KY" = (
 /obj/machinery/firealarm/directional/west,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark,
 /area/engineering/engine_smes)
 "Lc" = (
@@ -3349,6 +3355,10 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
+"UN" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/engine,
+/area/engineering/supermatter/room)
 "UO" = (
 /turf/open/floor/iron/dark,
 /area/command/bridge)
@@ -3427,6 +3437,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"VM" = (
+/obj/structure/cable,
+/obj/structure/closet/radiation,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/dark,
+/area/engineering/main)
 "VW" = (
 /turf/closed/wall,
 /area/hallway/primary/central/fore)
@@ -35541,7 +35557,7 @@ kr
 xZ
 xZ
 Ko
-mI
+UN
 vU
 AI
 DB
@@ -35786,7 +35802,7 @@ yU
 wL
 Ai
 ne
-iB
+VM
 Yk
 me
 Cu
@@ -37589,7 +37605,7 @@ kA
 Yk
 Dv
 ah
-mI
+Ay
 mI
 BT
 mI
