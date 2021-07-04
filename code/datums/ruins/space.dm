@@ -124,13 +124,6 @@
 	description = "A caravan route used by passing cargo freights has been ambushed by a salvage team manned by the syndicate. \
 	The caravan managed to send off a distress message before being surrounded, their video feed cutting off as the sound of gunfire and a parrot was heard."
 
-/datum/map_template/ruin/space/originalcontent
-	id = "paperwizard"
-	suffix = "originalcontent.dmm"
-	name = "A Giant Ball of Paper in Space"
-	description = "Sightings of a giant wad of paper hurling through the depths of space have been recently reported by multiple outposts near this sector. \
-	A giant wad of paper, really? Damn prank callers."
-
 /datum/map_template/ruin/space/mech_transport
 	id = "mech-transport"
 	suffix = "mechtransport.dmm"
@@ -155,12 +148,6 @@
 	suffix = "turretedoutpost.dmm"
 	name = "Unnamed Turreted Outpost"
 	description = "We'd ask them to stop blaring that ruskiepop music, but none of us are brave enough to go near those death turrets they have."
-
-/datum/map_template/ruin/space/oldshuttle
-	id = "spaceman-origins"
-	suffix = "shuttlerelic.dmm"
-	name = "Strange Ship"
-	description = "A ship seemingly lost, drifting along the stars. This thing looks like it belongs in ancient times."
 
 /datum/map_template/ruin/space/way_home
 	id = "way-home"
@@ -275,12 +262,6 @@
 	suffix = "hilbertshoteltestingsite.dmm"
 	name = "Hilbert Research Facility"
 	description = "A research facility of great bluespace discoveries. Long since abandoned, willingly or not..."
-
-/datum/map_template/ruin/space/clownplanet
-	id = "clownplanet"
-	suffix = "clownplanet.dmm"
-	name = "Clown Planet"
-	description = "Thought lost in 2552, this minor planet has recently been rediscovered."
 
 /datum/map_template/ruin/space/clericden
 	id = "clericden"

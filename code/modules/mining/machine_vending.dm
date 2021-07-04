@@ -273,3 +273,16 @@
 	new /obj/item/gun/energy/kinetic_accelerator(src)
 	new /obj/item/kitchen/knife/combat/survival(src)
 	new /obj/item/flashlight/seclite(src)
+
+/obj/item/storage/backpack/duffelbag/mining_conscript/basic
+	name = "basic mining kit"
+	desc = "A bare-minimum kit for mining."
+	icon_state = "duffel-explorer"
+	inhand_icon_state = "duffel-explorer"
+
+/obj/item/storage/backpack/duffelbag/mining_conscript/basic/PopulateContents()
+	new /obj/item/clothing/suit/hooded/explorer(src)
+	new /obj/item/clothing/mask/gas/explorer(src)
+	new /obj/item/storage/bag/ore(src)
+	new /obj/item/pickaxe(src)
+	new /obj/item/flashlight/lantern(src)

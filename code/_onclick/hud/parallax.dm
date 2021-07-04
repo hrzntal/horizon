@@ -168,7 +168,7 @@
 
 	var/destined_parallax_movedir = areaobj.parallax_movedir
 	var/datum/space_level/my_level
-	if(SSmapping && screenmob.z)
+	if(SSmapping && SSmapping.z_list && screenmob.z)
 		my_level = SSmapping.z_list[screenmob.z]
 	if(my_level && my_level.related_overmap_object)
 		destined_parallax_movedir = my_level.parallax_direction_override
