@@ -13,6 +13,11 @@
 	. = ..()
 	air_update_turf(TRUE, TRUE)
 
+//Pass the attackby to the turf "above" it. This is for ease of building on openspace while a shuttle is under it
+/obj/effect/abstract/shuttle_roof/attackby(obj/item/I, mob/user, params)
+	var/turf/my_turf = loc
+	my_turf.attackby(I, user, params)
+
 /obj/effect/abstract/shuttle_roof/CanAtmosPass(turf/T)
 	var/turf/below_turf = SSmapping.get_turf_below(src)
 	if(T == below_turf)
