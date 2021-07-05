@@ -558,8 +558,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
  */
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
 	H.remove_overlay(HAIR_LAYER)
-	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
-	if(!HD) //Decapitated
+	var/obj/item/bodypart/head/noggin = H.get_bodypart(BODY_ZONE_HEAD)
+	if(!noggin) //Decapitated
 		return
 
 	if(HAS_TRAIT(H, TRAIT_HUSK))
@@ -574,7 +574,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/dynamic_fhair_suffix = ""
 
 	//for augmented heads
-	if(HD.status == BODYPART_ROBOTIC && !(ROBOTIC_LIMBS in species_traits)) //People with robotic limbs as their species quality can have hair
+	if(noggin.status == BODYPART_ROBOTIC && !(ROBOTIC_LIMBS in species_traits)) //People with robotic limbs as their species quality can have hair
 		return
 
 	//we check if our hat or helmet hides our facial hair.
@@ -630,6 +630,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				facial_overlay.color = forced_colour
 
 			facial_overlay.alpha = hair_alpha
+
+			var/mutable_appearance/facial_em_blocker = mutable_appearance(fhair_file, fhair_state, plane = EMISSIVE_PLANE, alpha = hair_alpha, appearance_flags = KEEP_APART)
+			facial_em_blocker.color = GLOB.em_block_color
+			facial_overlay.overlays += facial_em_blocker
 
 			standing += facial_overlay
 
@@ -710,6 +714,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					hair_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 					hair_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
 		if(hair_overlay.icon)
+			var/mutable_appearance/hair_em_block = mutable_appearance(hair_overlay.icon, hair_overlay.icon_state, plane = EMISSIVE_PLANE, alpha = hair_alpha, appearance_flags = KEEP_APART)
+			hair_em_block.color = GLOB.em_block_color
+			hair_overlay.overlays += hair_em_block
+
 			standing += hair_overlay
 			standing += gradient_overlay
 
@@ -731,9 +739,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	var/list/standing = list()
 
-	var/obj/item/bodypart/head/HD = species_human.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/head/noggin = species_human.get_bodypart(BODY_ZONE_HEAD)
 
-	if(HD && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
+	if(noggin && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
 		if(species_human.lip_style && (LIPS in species_traits))
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
@@ -764,11 +772,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
 			if(!no_eyeslay)//we need eyes
+				eye_overlays += mutable_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
 				if(eye_organ.overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-					eye_overlays += mutable_appearance(eye_icon, eye_organ.eye_icon_state, -BODY_LAYER)
-					eye_overlays += mutable_appearance(eye_icon, eye_organ.eye_icon_state, -BODY_LAYER, EMISSIVE_PLANE)
-				else
-					eye_overlays += mutable_appearance(eye_icon, eye_organ.eye_icon_state, -BODY_LAYER)
+					eye_overlays += emissive_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
 				for(var/mutable_appearance/eye_overlay as anything in eye_overlays)
 					eye_overlay.pixel_x += add_pixel_x
 					eye_overlay.pixel_y += add_pixel_y
@@ -829,39 +835,38 @@ GLOBAL_LIST_EMPTY(customizable_races)
  * * H - Human, whoever we're handling the body for
  * * forced_colour - The forced color of an accessory. Leave null to use mutant color.
  */
-/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/source, forced_colour)
 	var/list/standing = list()
 
-	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
 
 	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more agressive updating than most limbs.
 	var/update_needed = FALSE
 	var/not_digitigrade = TRUE
-	for(var/X in H.bodyparts)
-		var/obj/item/bodypart/O = X
-		if(!O.use_digitigrade)
+	for(var/obj/item/bodypart/bodypart as anything in source.bodyparts)
+		if(!bodypart.use_digitigrade)
 			continue
 		not_digitigrade = FALSE
 		if(!(DIGITIGRADE in species_traits)) //Someone cut off a digitigrade leg and tacked it on
 			species_traits += DIGITIGRADE
 		var/should_be_squished = FALSE
-		if((H.wear_suit && H.wear_suit.flags_inv & HIDEJUMPSUIT && !(H.wear_suit.mutant_variants & STYLE_DIGITIGRADE) && (H.wear_suit.body_parts_covered & LEGS)) || (H.w_uniform && (H.w_uniform.body_parts_covered & LEGS) && !(H.w_uniform.mutant_variants & STYLE_DIGITIGRADE)))
+		if((source.wear_suit && source.wear_suit.flags_inv & HIDEJUMPSUIT && !(source.wear_suit.mutant_variants & STYLE_DIGITIGRADE) && (source.wear_suit.body_parts_covered & LEGS)) || (source.w_uniform && (source.w_uniform.body_parts_covered & LEGS) && !(source.w_uniform.mutant_variants & STYLE_DIGITIGRADE)))
 			should_be_squished = TRUE
-		if(O.use_digitigrade == FULL_DIGITIGRADE && should_be_squished)
-			O.use_digitigrade = SQUISHED_DIGITIGRADE
+		if(bodypart.use_digitigrade == FULL_DIGITIGRADE && should_be_squished)
+			bodypart.use_digitigrade = SQUISHED_DIGITIGRADE
 			update_needed = TRUE
-		else if(O.use_digitigrade == SQUISHED_DIGITIGRADE && !should_be_squished)
-			O.use_digitigrade = FULL_DIGITIGRADE
+		else if(bodypart.use_digitigrade == SQUISHED_DIGITIGRADE && !should_be_squished)
+			bodypart.use_digitigrade = FULL_DIGITIGRADE
 			update_needed = TRUE
 	if(update_needed)
-		H.update_body_parts()
+		source.update_body_parts()
 	if(not_digitigrade && (DIGITIGRADE in species_traits)) //Curse is lifted
 		species_traits -= DIGITIGRADE
 
 	if(!mutant_bodyparts)
-		H.remove_overlay(BODY_BEHIND_LAYER)
-		H.remove_overlay(BODY_ADJ_LAYER)
-		H.remove_overlay(BODY_FRONT_LAYER)
+		source.remove_overlay(BODY_BEHIND_LAYER)
+		source.remove_overlay(BODY_ADJ_LAYER)
+		source.remove_overlay(BODY_FRONT_LAYER)
 		return
 
 	var/list/bodyparts_to_add = list()
@@ -871,29 +876,29 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(!S || S.icon_state == "none")
 			continue
-		if(S.is_hidden(H, HD))
+		if(S.is_hidden(source, noggin))
 			continue
 		var/render_state
 		if(S.special_render_case)
-			render_state = S.get_special_render_state(H)
+			render_state = S.get_special_render_state(source)
 		else
 			render_state = S.icon_state
 		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add[S] = render_state
 
-	var/husked = HAS_TRAIT(H, TRAIT_HUSK)
+	var/husked = HAS_TRAIT(source, TRAIT_HUSK)
 	if(husked)
 		new_renderkey += "-husk"
 
-	if(new_renderkey == H.mutant_renderkey)
+	if(new_renderkey == source.mutant_renderkey)
 		return
-	H.mutant_renderkey = new_renderkey
+	source.mutant_renderkey = new_renderkey
 
-	H.remove_overlay(BODY_BEHIND_LAYER)
-	H.remove_overlay(BODY_ADJ_LAYER)
-	H.remove_overlay(BODY_FRONT_LAYER)
+	source.remove_overlay(BODY_BEHIND_LAYER)
+	source.remove_overlay(BODY_ADJ_LAYER)
+	source.remove_overlay(BODY_FRONT_LAYER)
 
-	var/g = (H.body_type == FEMALE) ? "f" : "m"
+	var/g = (source.body_type == FEMALE) ? "f" : "m"
 
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/S = bodypart
@@ -905,15 +910,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		var/override_color = forced_colour
 		if(!override_color && S.special_colorize)
-			override_color = S.get_special_render_colour(H, render_state)
+			override_color = S.get_special_render_colour(source, render_state)
 
 		if(S.special_icon_case)
-			icon_to_use = S.get_special_icon(H, render_state)
+			icon_to_use = S.get_special_icon(source, render_state)
 		else
 			icon_to_use = S.icon
 
 		if(S.special_x_dimension)
-			x_shift = S.get_special_x_dimension(H, render_state)
+			x_shift = S.get_special_x_dimension(source, render_state)
 		else
 			x_shift = S.dimension_x
 
@@ -932,6 +937,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
 
+			if(S.em_block)
+				var/mutable_appearance/em_overlay = mutable_appearance(accessory_overlay.icon, accessory_overlay.icon_state, plane = EMISSIVE_PLANE, alpha = accessory_overlay.alpha, appearance_flags = KEEP_APART)
+				em_overlay.color = GLOB.em_block_color
+				accessory_overlay.overlays |= em_overlay
 
 			if(!override_color)
 				if(husked)
@@ -958,18 +967,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							if(fixed_mut_color)
 								accessory_overlay.color = "#[fixed_mut_color]"
 							else
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+								accessory_overlay.color = "#[source.dna.features["mcolor"]]"
 						if(HAIR)
 							if(hair_color == "mutcolor")
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+								accessory_overlay.color = "#[source.dna.features["mcolor"]]"
 							else if(hair_color == "fixedmutcolor")
 								accessory_overlay.color = "#[fixed_mut_color]"
 							else
-								accessory_overlay.color = "#[H.hair_color]"
+								accessory_overlay.color = "#[source.hair_color]"
 						if(FACEHAIR)
-							accessory_overlay.color = "#[H.facial_hair_color]"
+							accessory_overlay.color = "#[source.facial_hair_color]"
 						if(EYECOLOR)
-							accessory_overlay.color = "#[H.eye_color]"
+							accessory_overlay.color = "#[source.eye_color]"
 			else
 				accessory_overlay.color = override_color
 			standing += accessory_overlay
@@ -1002,20 +1011,20 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						if(fixed_mut_color)
 							extra_accessory_overlay.color = "#[fixed_mut_color]"
 						else
-							extra_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra_accessory_overlay.color = "#[source.dna.features["mcolor"]]"
 					if(MUTCOLORS2)
-						extra_accessory_overlay.color = "#[H.dna.features["mcolor2"]]"
+						extra_accessory_overlay.color = "#[source.dna.features["mcolor2"]]"
 					if(MUTCOLORS3)
-						extra_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+						extra_accessory_overlay.color = "#[source.dna.features["mcolor3"]]"
 					if(HAIR)
 						if(hair_color == "mutcolor")
-							extra_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+							extra_accessory_overlay.color = "#[source.dna.features["mcolor3"]]"
 						else
-							extra_accessory_overlay.color = "#[H.hair_color]"
+							extra_accessory_overlay.color = "#[source.hair_color]"
 					if(FACEHAIR)
-						extra_accessory_overlay.color = "#[H.facial_hair_color]"
+						extra_accessory_overlay.color = "#[source.facial_hair_color]"
 					if(EYECOLOR)
-						extra_accessory_overlay.color = "#[H.eye_color]"
+						extra_accessory_overlay.color = "#[source.eye_color]"
 
 				standing += extra_accessory_overlay
 
@@ -1033,16 +1042,16 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						if(fixed_mut_color)
 							extra2_accessory_overlay.color = "#[fixed_mut_color]"
 						else
-							extra2_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra2_accessory_overlay.color = "#[source.dna.features["mcolor"]]"
 					if(MUTCOLORS2)
-						extra2_accessory_overlay.color = "#[H.dna.features["mcolor2"]]"
+						extra2_accessory_overlay.color = "#[source.dna.features["mcolor2"]]"
 					if(MUTCOLORS3)
-						extra2_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+						extra2_accessory_overlay.color = "#[source.dna.features["mcolor3"]]"
 					if(HAIR)
 						if(hair_color == "mutcolor3")
-							extra2_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra2_accessory_overlay.color = "#[source.dna.features["mcolor"]]"
 						else
-							extra2_accessory_overlay.color = "#[H.hair_color]"
+							extra2_accessory_overlay.color = "#[source.hair_color]"
 
 				standing += extra2_accessory_overlay
 			if (specific_alpha != 255 && !override_color)
@@ -1051,12 +1060,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					if (!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
 						overlay.alpha = specific_alpha
 
-			H.overlays_standing[layer] += standing
+			source.overlays_standing[layer] += standing
 			standing = list()
 
-	H.apply_overlay(BODY_BEHIND_LAYER)
-	H.apply_overlay(BODY_ADJ_LAYER)
-	H.apply_overlay(BODY_FRONT_LAYER)
+	source.apply_overlay(BODY_BEHIND_LAYER)
+	source.apply_overlay(BODY_ADJ_LAYER)
+	source.apply_overlay(BODY_FRONT_LAYER)
 
 
 //This exists so sprite accessories can still be per-layer without having to include that layer's

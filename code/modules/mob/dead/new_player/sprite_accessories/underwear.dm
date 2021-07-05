@@ -6,6 +6,7 @@
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 	use_static = FALSE
+	em_block = FALSE
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
 
@@ -312,6 +313,7 @@
 /datum/sprite_accessory/undershirt
 	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 	use_static = TRUE
+	em_block = FALSE
 
 /datum/sprite_accessory/undershirt/nude
 	name = "Nude"
@@ -756,6 +758,7 @@
 /datum/sprite_accessory/socks
 	icon = 'icons/mob/sprite_accessory/underwear.dmi'
 	use_static = TRUE
+	em_block = FALSE
 
 /datum/sprite_accessory/socks/nude
 	name = "Nude"
