@@ -39,9 +39,9 @@
 
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/update_icon_nopipes()
 	cut_overlays()
-	//if(showpipe)
-		//var/image/cap = getpipeimage(icon, "dpvent_cap", dir, pipe_color, piping_layer = piping_layer)
-		//add_overlay(cap)
+	if(showpipe)
+		var/image/cap = getpipeimage(icon, "dpvent_cap", dir, pipe_color, piping_layer = piping_layer)
+		add_overlay(cap)
 
 	if(!on || !is_operational)
 		icon_state = "vent_off"

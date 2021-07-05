@@ -18,8 +18,8 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 /obj/machinery/atmospherics/pipe/smart/Initialize()
 	. = ..()
 
-/obj/machinery/atmospherics/pipe/smart/update_icon_state()
-	. = ..() //Compiles state from parent and then ignores it, unfortunately
+/obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
+	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	var/bitfield = NONE
 	//This can actually compile an incorrect icon, because a correct one needs atleast 2 bits. I am meaning to rework smart pipes later so this wont be the case
 	for(var/i in 1 to device_type)

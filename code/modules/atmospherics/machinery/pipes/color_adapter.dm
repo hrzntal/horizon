@@ -44,10 +44,10 @@
 	for(var/i in 1 to device_type)
 		if(!nodes[i])
 			continue
-		//var/image/pipe = getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "pipe-3", get_dir(src, nodes[i]), nodes[i].pipe_color)
-		//PIPING_LAYER_DOUBLE_SHIFT(pipe, piping_layer)
-		//pipe.layer = layer + 0.01
-		//. += pipe
+		var/image/pipe = getpipeimage('icons/obj/atmospherics/pipes/manifold.dmi', "pipe-3", get_dir(src, nodes[i]), nodes[i].pipe_color)
+		PIPING_LAYER_DOUBLE_SHIFT(pipe, piping_layer)
+		pipe.layer = layer + 0.01
+		. += pipe
 
 /obj/machinery/atmospherics/pipe/color_adapter/layer1
 	icon_state = "adapter_map-1"

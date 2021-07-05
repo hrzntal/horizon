@@ -60,7 +60,7 @@
 
 	var/connected = 0 //Direction bitset
 
-	var/underlay_pipe_layer = shift_underlay_only ? piping_layer : "3"
+	var/underlay_pipe_layer = shift_underlay_only ? piping_layer : 3
 	for(var/i in 1 to device_type) //adds intact pieces
 		if(!nodes[i])
 			continue
@@ -81,20 +81,6 @@
 		PIPING_LAYER_SHIFT(src, piping_layer)
 	return ..()
 
-/**
- * Called by update_icon() when showpipe is TRUE, set the image for the underlay pipe
- * Arguments:
- * * -state: icon_state of the selected pipe
- * * -dir: direction of the pipe
- * * -color: color of the pipe
- */
-///obj/machinery/atmospherics/components/proc/get_pipe_underlay(state, dir, color = null)
-	//if(color)
-	//	. = getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', state, dir, color, piping_layer = shift_underlay_only ? piping_layer : 3)
-	//else
-	//	. = getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', state, dir, piping_layer = shift_underlay_only ? piping_layer : 3)
-	//return
-	
 // Pipenet stuff; housekeeping
 
 /obj/machinery/atmospherics/components/nullifyNode(i)
