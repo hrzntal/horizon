@@ -51,17 +51,18 @@
 
 	. = list()
 
-	if(istype(A, /obj/machinery/atmospherics/pipe/layer_manifold))
-		for(var/i in PIPING_LAYER_MIN to PIPING_LAYER_MAX)
-			. += get_attached_image(get_dir(src, A), i, COLOR_VERY_LIGHT_GRAY)
-		return
-	. += get_attached_image(get_dir(src, A), A.piping_layer, A.pipe_color)
+	//if(istype(A, /obj/machinery/atmospherics/pipe/layer_manifold))
+	//	for(var/i in PIPING_LAYER_MIN to PIPING_LAYER_MAX)
+	//		. += get_attached_image(get_dir(src, A), i, COLOR_VERY_LIGHT_GRAY)
+	//	return
+	//. += get_attached_image(get_dir(src, A), A.piping_layer, A.pipe_color)
 
 /obj/machinery/atmospherics/pipe/layer_manifold/proc/get_attached_image(p_dir, p_layer, p_color)
 	// Uses pipe-3 because we don't want the vertical shifting
-	var/image/I = getpipeimage(icon, "pipe-3", p_dir, p_color, p_layer)
-	I.layer = layer - 0.01
-	return I
+	//var/image/I = getpipeimage(icon, "pipe-3", p_dir, p_color, p_layer)
+	//I.layer = layer - 0.01
+	//return I
+	return
 
 /obj/machinery/atmospherics/pipe/layer_manifold/SetInitDirections()
 	switch(dir)

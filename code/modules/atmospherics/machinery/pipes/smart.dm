@@ -7,61 +7,42 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 	name = "pipe"
 	desc = "A one meter section of regular pipe."
 
-	vis_flags = VIS_INHERIT_ICON | VIS_INHERIT_ICON_STATE | VIS_INHERIT_DIR | VIS_INHERIT_ID
-
 	device_type = QUATERNARY
 	construction_type = /obj/item/pipe/quaternary
 	pipe_state = "manifold4w"
 	connection_num = 0
-	var/list/connections
-	var/static/list/mutable_appearance/center_cache = list()
-	var/mutable_appearance/pipe_appearance
 
 /* We use New() instead of Initialize() because these values are used in update_icon()
  * in the mapping subsystem init before Initialize() is called in the atoms subsystem init.
  */
 /obj/machinery/atmospherics/pipe/smart/Initialize()
-	icon_state = ""
 	. = ..()
+
+/obj/machinery/atmospherics/pipe/smart/update_icon_state()
+	. = ..() //Compiles state from parent and then ignores it, unfortunately
+	var/bitfield = NONE
+	//This can actually compile an incorrect icon, because a correct one needs atleast 2 bits. I am meaning to rework smart pipes later so this wont be the case
+	for(var/i in 1 to device_type)
+		if(!nodes[i])
+			continue
+		var/obj/machinery/atmospherics/node = nodes[i]
+		var/connected_dir = get_dir(src, node)
+		switch(connected_dir)
+			if(NORTH)
+				bitfield |= NORTH_FULLPIPE
+			if(SOUTH)
+				bitfield |= SOUTH_FULLPIPE
+			if(EAST)
+				bitfield |= EAST_FULLPIPE
+			if(WEST)
+				bitfield |= WEST_FULLPIPE
+	icon_state = "[bitfield]_[piping_layer]"
 
 /obj/machinery/atmospherics/pipe/smart/SetInitDirections(init_dir)
 	if(init_dir)
 		initialize_directions =	init_dir
 	else
 		initialize_directions = ALL_CARDINALS
-
-/obj/machinery/atmospherics/pipe/smart/proc/check_connections()
-	var/mutable_appearance/center
-	connection_num = 0
-	connections = NONE
-	for(var/direction in GLOB.cardinals)
-		var/turf/turf = get_step(src, direction)
-		if(!turf)
-			continue
-		for(var/obj/machinery/atmospherics/machine in turf)
-			if(connection_check(machine, piping_layer))
-				connections |= direction
-				connection_num++
-				break
-
-	switch(connection_num)
-		if(0)
-			center = mutable_appearance('icons/obj/atmospherics/pipes/manifold.dmi', "manifold4w_center")
-			dir = SOUTH
-		if(1)
-			center = mutable_appearance('icons/obj/atmospherics/pipes/simple.dmi', "pipe00-3")
-			dir = connections
-		if(2)
-			center = mutable_appearance('icons/obj/atmospherics/pipes/simple.dmi', "pipe00-3")
-			dir = check_binary_direction(connections)
-		if(3)
-			center = mutable_appearance('icons/obj/atmospherics/pipes/manifold.dmi', "manifold_center")
-			dir = check_manifold_direction(connections)
-
-		if(4)
-			center = mutable_appearance('icons/obj/atmospherics/pipes/manifold.dmi', "manifold4w_center")
-			dir = NORTH
-	return center
 
 /obj/machinery/atmospherics/pipe/smart/proc/check_binary_direction(direction)
 	switch(direction)
@@ -84,24 +65,6 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 			return NORTH
 		else
 			return null
-
-/obj/machinery/atmospherics/pipe/smart/update_overlays()
-	. = ..()
-	var/mutable_appearance/center = center_cache["[piping_layer]"]
-	center = check_connections()
-	PIPING_LAYER_DOUBLE_SHIFT(center, piping_layer)
-	center_cache["[piping_layer]"] = center
-	pipe_appearance = center
-	. += center
-
-	update_layer()
-
-	//Add non-broken pieces
-	for(var/i in 1 to device_type)
-		if(!nodes[i])
-			continue
-		. += pipe_overlay('icons/obj/atmospherics/pipes/manifold.dmi', "pipe-[piping_layer]", get_dir(src, nodes[i]), set_layer = (layer + 0.01))
-
 
 //mapping helpers
 /obj/machinery/atmospherics/pipe/smart/simple

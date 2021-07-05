@@ -98,8 +98,8 @@
 
 /obj/machinery/atmospherics/components/binary/thermomachine/update_overlays()
 	. = ..()
-	. += getpipeimage(icon, "pipe", dir, COLOR_LIME, piping_layer)
-	. += getpipeimage(icon, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer)
+	//. += getpipeimage(icon, "pipe", dir, COLOR_LIME, piping_layer)
+	//. += getpipeimage(icon, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer)
 	if(skipping_work && on)
 		var/mutable_appearance/skipping = mutable_appearance(icon, "blinking")
 		. += skipping

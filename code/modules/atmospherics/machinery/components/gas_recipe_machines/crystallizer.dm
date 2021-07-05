@@ -81,8 +81,8 @@
 /obj/machinery/atmospherics/components/binary/crystallizer/update_overlays()
 	. = ..()
 	cut_overlays()
-	add_overlay(getpipeimage(icon, "pipe", dir, COLOR_LIME, piping_layer))
-	add_overlay(getpipeimage(icon, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer))
+	//add_overlay(getpipeimage(icon, "pipe", dir, COLOR_LIME, piping_layer))
+	//add_overlay(getpipeimage(icon, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer))
 
 /obj/machinery/atmospherics/components/binary/crystallizer/update_icon_state()
 	. = ..()
