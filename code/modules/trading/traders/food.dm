@@ -1,6 +1,6 @@
 /datum/trader/pizzaria
 	name = "Pizza Shop Employee"
-	possible_origins = list("Papa Joe's", "Pizza Ship", "Dominator Pizza", "Little Kaezars", "Pizza Planet", "Cheese Louise", "Little Taste o' Neo-Italy", "Pizza Gestapo")
+	possible_origins = list("Papa Joe's", "Pizza Ship", "Dominator Pizza", "Little Kaezars", "Pizza Planet", "Cheese Louise", "Pizza Police")
 	trade_flags = TRADER_MONEY|TRADER_SELLS_GOODS
 	speech = list("hail"    = "Hello! Welcome to ORIGIN, may I take your order?",
 				"hail_deny"         = "Beeeep... I'm sorry, your connection has been severed.",
