@@ -407,12 +407,12 @@
 
 	var/area/A = get_area(src)
 	if(emergency_mode || (A?.fire))
-		. += mutable_appearance(overlayicon, "[base_state]_emergency", layer, plane)
+		. += mutable_appearance(overlayicon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
-		. += mutable_appearance(overlayicon, "[base_state]_nightshift", layer, plane)
+		. += mutable_appearance(overlayicon, "[base_state]_nightshift")
 		return
-	. += mutable_appearance(overlayicon, base_state, layer, plane)
+	. += mutable_appearance(overlayicon, base_state)
 
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
 #define LIGHT_ON_DELAY_LOWER 1 SECONDS
