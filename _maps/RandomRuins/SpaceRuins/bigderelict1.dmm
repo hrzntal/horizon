@@ -34,6 +34,7 @@
 /obj/structure/sign/warning/vacuum{
 	pixel_y = 32
 	},
+/obj/item/clothing/head/helmet,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/cargobay)
 "ai" = (
@@ -69,6 +70,7 @@
 	start_charge = 0
 	},
 /obj/structure/cable,
+/obj/item/gps/spaceruin,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/cargobay)
 "ap" = (
@@ -192,6 +194,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/derelictoutpost)
 "aM" = (
+/obj/structure/alien/resin/wall/creature,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "aN" = (
@@ -265,10 +268,6 @@
 "aZ" = (
 /turf/closed/wall,
 /area/ruin/space/has_grav/derelictoutpost)
-"ba" = (
-/obj/item/clothing/head/helmet,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "bb" = (
 /obj/machinery/power/smes,
 /obj/structure/cable,
@@ -313,6 +312,7 @@
 /obj/structure/sign/warning/vacuum{
 	pixel_y = 32
 	},
+/obj/effect/spawner/lootdrop/energy_weapon,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "bl" = (
@@ -360,16 +360,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "bq" = (
-/obj/effect/mob_spawn/human/corpse/nanotrasensoldier{
-	head = null;
-	name = "Tradeport Officer";
-	random = 1
-	},
-/obj/item/paper/crumpled/ruins/bigderelict1/coward,
 /obj/effect/decal/cleanable/blood/old{
 	name = "dried blood splatter";
 	pixel_x = -29
 	},
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "br" = (
@@ -482,6 +477,7 @@
 	icon_state = "trails_1";
 	name = "dried blood trail"
 	},
+/obj/structure/alien/resin/wall/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "bF" = (
@@ -499,18 +495,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "bH" = (
-/obj/item/ammo_casing/c45{
-	caliber = null;
-	desc = "A .45 bullet casing. This one is spent.";
-	name = "spent bullet casing"
-	},
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "bI" = (
-/obj/item/gun/ballistic/automatic/pistol/m1911{
-	spawnwithmagazine = 0
-	},
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "bJ" = (
@@ -653,9 +642,16 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "bY" = (
-/obj/item/gps/spaceruin,
+/obj/structure/alien/weeds/creature,
+/mob/living/simple_animal/hostile/netherworld{
+	desc = "Awh its so sm-OH GOD WHAT THE FUCK.";
+	health = 25;
+	maxHealth = 25;
+	name = "hatchling";
+	resize = 0.85
+	},
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/derelictoutpost/powerstorage)
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
 "ca" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -665,6 +661,7 @@
 	start_charge = 0
 	},
 /obj/structure/cable,
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "cb" = (
@@ -777,6 +774,7 @@
 "cq" = (
 /obj/structure/barricade/wooden,
 /obj/structure/cable,
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "cr" = (
@@ -786,6 +784,7 @@
 	},
 /obj/structure/barricade/wooden,
 /obj/structure/cable,
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
 "cu" = (
@@ -1132,13 +1131,8 @@
 /turf/open/floor/plating/asteroid,
 /area/ruin/space/has_grav/derelictoutpost)
 "du" = (
-/obj/structure/alien/weeds/creature,
-/obj/item/gun/ballistic/automatic/pistol/m1911{
-	spawnwithmagazine = 0
-	},
-/obj/item/ammo_box/magazine/m45,
-/turf/open/floor/plating/asteroid,
-/area/ruin/space/has_grav/derelictoutpost)
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
 "dv" = (
 /obj/effect/decal/cleanable/blood/old{
 	dir = 9;
@@ -1304,7 +1298,6 @@
 /area/ruin/space/has_grav/derelictoutpost)
 "dP" = (
 /obj/structure/alien/weeds/creature,
-/obj/structure/glowshroom/single,
 /obj/effect/decal/cleanable/blood/old{
 	dir = 8;
 	icon_state = "trails_1";
@@ -1319,6 +1312,7 @@
 	icon_state = "trails_1";
 	name = "dried blood trail"
 	},
+/obj/structure/alien/resin/membrane/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 "dR" = (
@@ -1550,7 +1544,6 @@
 "eA" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/cargostorage)
@@ -1639,19 +1632,140 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/derelictoutpost/cargobay)
+"qk" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/derelictoutpost/cargostorage)
+"sw" = (
+/obj/structure/alien/resin/wall/creature,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost)
 "uV" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/alien/weeds/creature,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
+"vL" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/alien/resin/wall/creature,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/derelictoutpost)
+"vX" = (
+/obj/structure/alien/weeds/creature,
+/turf/closed/wall,
+/area/ruin/space/has_grav/derelictoutpost)
+"xu" = (
+/obj/structure/alien/resin/wall/creature,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/plating/asteroid,
+/area/ruin/space/has_grav/derelictoutpost)
+"yc" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/derelictoutpost/powerstorage)
+"BP" = (
+/obj/machinery/button/door/directional/north{
+	id = "bigderelictshipdock";
+	name = "tradepost entry doors"
+	},
+/obj/effect/mob_spawn/human/corpse/nanotrasensoldier{
+	head = null;
+	name = "Tradeport Officer";
+	random = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
+"GD" = (
+/turf/open/floor/plating/asteroid,
+/area/ruin/space/has_grav/derelictoutpost)
+"Hl" = (
+/obj/structure/alien/weeds/creature,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/alien/resin/wall/creature,
+/turf/open/floor/plating/asteroid,
+/area/ruin/space/has_grav/derelictoutpost)
+"HZ" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/powerstorage)
+"Kc" = (
+/turf/closed/wall,
+/area/ruin/unpowered/no_grav)
+"Kk" = (
+/turf/closed/wall,
+/area/template_noop)
+"Lo" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
 "LB" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/derelictoutpost)
+"MW" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/powerstorage)
+"PA" = (
+/obj/item/paper/crumpled/ruins/bigderelict1/coward,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
+"QF" = (
+/obj/structure/alien/resin/membrane/creature,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/plating/asteroid,
+/area/ruin/space/has_grav/derelictoutpost)
+"QK" = (
+/obj/structure/alien/resin/membrane/creature,
+/obj/structure/alien/weeds/creature,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost)
+"QW" = (
+/turf/open/floor/plating/asteroid,
+/area/template_noop)
+"Sj" = (
+/turf/closed/wall/r_wall/rust,
+/area/ruin/space/has_grav/derelictoutpost/powerstorage)
+"Vr" = (
+/obj/item/ammo_casing/c45{
+	caliber = null;
+	desc = "A .45 bullet casing. This one is spent.";
+	name = "spent bullet casing"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
+"Xu" = (
+/turf/closed/wall/rust,
+/area/ruin/space/has_grav/derelictoutpost)
+"YM" = (
+/obj/structure/alien/weeds/creature,
+/obj/structure/alien/resin/wall/creature,
+/turf/open/floor/plating/asteroid,
+/area/ruin/space/has_grav/derelictoutpost)
+"YZ" = (
+/obj/structure/cable,
+/obj/item/gun/ballistic/automatic/pistol/m1911{
+	spawnwithmagazine = 0
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/derelictoutpost/cargobay)
+"ZX" = (
+/obj/structure/alien/weeds/creature,
+/obj/structure/alien/resin/wall/creature,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
 
 (1,1,1) = {"
@@ -1702,9 +1816,9 @@ aA
 aA
 aA
 aA
+yc
 aA
-aA
-aA
+yc
 aA
 aA
 ad
@@ -1737,7 +1851,7 @@ aa
 aB
 aM
 uV
-ba
+bI
 bq
 bH
 bJ
@@ -1770,27 +1884,27 @@ aa
 aa
 aa
 aa
-aA
-aA
+yc
+yc
 aA
 bb
-br
+HZ
 bI
-bY
+bJ
 co
 aS
 ab
 ab
 ab
+du
 ab
 ab
 ab
 ab
 ab
 ab
-ab
-ab
-ab
+du
+du
 aZ
 aZ
 ad
@@ -1811,10 +1925,10 @@ aC
 aA
 bc
 bs
-bs
-bs
+MW
+MW
 bJ
-aS
+Sj
 cT
 ak
 dp
@@ -1844,13 +1958,13 @@ ad
 ad
 aC
 aC
-aA
+yc
 bb
 br
 bJ
 ca
 cq
-aS
+Sj
 cT
 bx
 dq
@@ -1864,7 +1978,7 @@ dd
 ak
 ab
 aR
-aZ
+Xu
 ad
 aa
 aa
@@ -1874,30 +1988,30 @@ aa
 aa
 ab
 ab
-ab
-ab
-ab
+du
+du
+du
 ab
 ab
 ab
 aS
-aS
-aS
-aS
-aS
+Sj
+Sj
+Sj
+Sj
 cr
-aS
+Sj
 cU
 da
 ab
+du
 ab
-ab
-dL
+qk
 dL
 ei
 ei
 ew
-dL
+qk
 dL
 aR
 aZ
@@ -1921,14 +2035,14 @@ aJ
 az
 bK
 cb
-an
+Lo
 cG
 ak
 db
 ab
 dv
 dm
-dL
+qk
 dT
 dW
 dW
@@ -1943,8 +2057,8 @@ aa
 aa
 "}
 (9,1,1) = {"
-ab
-ab
+du
+du
 ab
 aj
 ak
@@ -1957,20 +2071,20 @@ ak
 ak
 ak
 ak
-an
+Lo
 cH
 cV
 dc
-ab
+du
 dw
 dE
-dL
+qk
 dU
 dW
 dW
 ex
 eB
-dL
+qk
 aR
 aZ
 ad
@@ -1993,14 +2107,14 @@ ae
 ae
 ae
 ae
-ae
-an
+cv
+Lo
 bx
 bx
 ab
 dx
 cm
-dL
+qk
 dV
 ej
 eo
@@ -2031,12 +2145,12 @@ at
 aq
 ae
 cI
-bx
+bY
 cV
 ab
 dy
 ds
-dL
+qk
 dW
 dW
 dW
@@ -2072,7 +2186,7 @@ ak
 ab
 dz
 dF
-dL
+qk
 dX
 dW
 dW
@@ -2080,7 +2194,7 @@ ex
 eD
 dL
 aR
-aZ
+Xu
 aC
 ad
 aa
@@ -2108,7 +2222,7 @@ cW
 ab
 ds
 dG
-dL
+qk
 dX
 dW
 ep
@@ -2116,7 +2230,7 @@ ey
 eE
 dL
 aR
-aZ
+Xu
 aC
 aC
 ad
@@ -2144,7 +2258,7 @@ aN
 ab
 ds
 dG
-dL
+qk
 dY
 dW
 eq
@@ -2152,7 +2266,7 @@ ex
 dW
 dL
 aR
-aZ
+Xu
 aC
 aC
 ad
@@ -2186,9 +2300,9 @@ dW
 dW
 ex
 dX
-dL
+qk
 aR
-aZ
+Xu
 aC
 aC
 ad
@@ -2270,7 +2384,7 @@ ad
 ac
 ae
 ag
-ae
+Vr
 ae
 ae
 ae
@@ -2288,13 +2402,13 @@ de
 ab
 dA
 cm
-dL
+qk
 eb
 dW
 es
 ex
 eG
-dL
+qk
 aR
 aZ
 aC
@@ -2304,10 +2418,10 @@ ad
 "}
 (19,1,1) = {"
 ab
-ab
-ab
-aj
-an
+du
+du
+BP
+YZ
 an
 an
 an
@@ -2324,7 +2438,7 @@ df
 ab
 dA
 cR
-dL
+qk
 ec
 dW
 et
@@ -2332,7 +2446,7 @@ ey
 eH
 dL
 aR
-aZ
+Xu
 aC
 aC
 ad
@@ -2342,7 +2456,7 @@ ad
 aa
 ab
 ah
-ak
+PA
 ao
 av
 az
@@ -2360,13 +2474,13 @@ dg
 ab
 dx
 cR
-dL
+qk
 ed
 el
 eu
 ez
 eI
-dL
+qk
 aR
 aZ
 aC
@@ -2377,13 +2491,13 @@ ad
 (21,1,1) = {"
 aa
 ab
+du
+du
 ab
 ab
-ab
-ab
-ab
-ab
-ab
+du
+du
+du
 ab
 ab
 bx
@@ -2399,7 +2513,7 @@ aZ
 dL
 dL
 dL
-dL
+qk
 dL
 eJ
 dL
@@ -2421,7 +2535,7 @@ ad
 ad
 ad
 ad
-aZ
+Xu
 by
 bC
 bC
@@ -2471,12 +2585,12 @@ aZ
 dN
 aZ
 aZ
+Xu
+Xu
+Xu
+Xu
 aZ
-aZ
-aZ
-aZ
-aZ
-aZ
+Xu
 ad
 ad
 aa
@@ -2601,7 +2715,7 @@ aa
 aa
 aa
 aY
-aZ
+Xu
 bC
 bU
 bC
@@ -2617,9 +2731,9 @@ aZ
 cm
 cm
 cm
-ad
-ad
-aa
+Kc
+Kc
+Kk
 aa
 aa
 aa
@@ -2642,7 +2756,7 @@ bD
 bn
 ch
 cA
-bF
+sw
 bl
 dk
 bl
@@ -2652,10 +2766,10 @@ dP
 cR
 cR
 cR
-cm
-cm
-aa
-aa
+GD
+GD
+QW
+Kk
 aa
 aa
 aa
@@ -2672,25 +2786,25 @@ aa
 aa
 aK
 aK
-aZ
+Xu
 bi
 bj
 bn
 bj
 cj
-bF
+sw
 ci
 bl
 dm
 dC
 dC
 dQ
-eg
 cR
-cR
-cR
-cm
-cm
+YM
+YM
+YM
+GD
+GD
 cm
 aa
 aa
@@ -2708,23 +2822,23 @@ aa
 aa
 aL
 aR
-LB
-bj
-bl
+vL
+bF
+ZX
 bn
 ci
 cA
-bF
+sw
 bl
 bl
-bF
-bF
-bF
-bF
+sw
+sw
+sw
+QK
 cR
-cR
+YM
 ev
-dD
+Hl
 cR
 cR
 cm
@@ -2746,19 +2860,19 @@ aK
 aK
 aZ
 bk
-bl
+ZX
 bn
 cj
 cj
-bF
+sw
 bl
 dl
-bF
+sw
 bl
 ci
 bl
 cR
-dD
+xu
 bl
 cR
 eg
@@ -2780,24 +2894,24 @@ aa
 aa
 ad
 ad
-aZ
+Xu
 bl
-bl
+ZX
 bV
 ck
-aZ
-bF
-bF
-bF
+vX
+sw
+sw
+sw
 bF
 cC
 bl
 cC
 dD
-cm
-cm
-cm
-cm
+xu
+xu
+xu
+xu
 cR
 dR
 aa
@@ -2816,21 +2930,21 @@ aa
 aa
 ad
 ad
-aZ
+Xu
 bm
 bE
 bW
 bj
-bF
-bF
+bl
+bl
 ci
 bl
-bF
-bF
-bF
+sw
+bl
+sw
 bl
 cR
-cm
+xu
 cR
 cR
 cR
@@ -2852,23 +2966,23 @@ aa
 aa
 ad
 ad
-aZ
+Xu
 bn
 bF
 aZ
 bF
-bF
+sw
 bl
 bl
 dk
 cC
 bl
-bF
+sw
 bl
 bl
-cm
+xu
 dt
-cm
+xu
 cm
 cm
 cm
@@ -2892,19 +3006,19 @@ aZ
 bo
 bF
 bl
-bF
+sw
 cC
 bl
-bF
-bF
-bF
+sw
+sw
+sw
 bl
-bF
+sw
 dk
 cR
-cm
+xu
 cR
-cm
+xu
 aa
 aa
 aa
@@ -2928,19 +3042,19 @@ LB
 bn
 bF
 bl
-bF
-bF
-bF
-bF
+sw
+sw
+sw
+sw
 ci
-bF
+sw
+ZX
+sw
 bl
-bF
-bl
-cm
-cm
+xu
+xu
 eg
-dR
+QF
 aa
 aa
 aa
@@ -2967,16 +3081,16 @@ bX
 cl
 cD
 cR
-cm
+xu
 dm
-cm
+xu
 dD
-cm
-cm
-cm
+xu
+xu
+xu
 cR
 bl
-dR
+QF
 aa
 aa
 aa
@@ -2997,22 +3111,22 @@ aa
 aa
 ad
 aZ
-aZ
-aZ
-aZ
+Xu
+Xu
+Xu
 aZ
 cE
 cR
-cm
+xu
 dn
-du
+cR
 cR
 dt
 cR
 cR
 cR
 ev
-cm
+xu
 aa
 aa
 aa
@@ -3043,12 +3157,12 @@ cZ
 do
 cR
 cm
-cm
-dR
-dR
-dR
-cm
-cm
+xu
+QF
+QF
+QF
+xu
+xu
 aa
 aa
 aa

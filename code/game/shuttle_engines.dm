@@ -25,8 +25,12 @@
 /obj/structure/shuttle/engine/Initialize()
 	. = ..()
 	if(extension_type)
-		extension = new extension_type()
+		AddComponent(/datum/component/engine_effect)
+		extension = new extension_type(src)
 		ApplyExtension()
+
+/obj/structure/shuttle/engine/proc/DrawThrust()
+	SEND_SIGNAL(src, COMSIG_ENGINE_DRAWN_POWER)
 
 /obj/structure/shuttle/engine/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(state == ENGINE_WELDED)

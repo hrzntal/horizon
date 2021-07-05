@@ -207,3 +207,21 @@
   Owai-Seek:
   - qol: Food is significantly faster to craft.
   - rscadd: Basic Mining Kit
+2021-07-05:
+  Azarak:
+  - rscadd: Added engine effects to shuttle engines - fire plume and looping sound
+  - rscadd: Bearcat now has fire warnings around the engines
+  - bugfix: Fixed nulls in managed_overlays
+  CypressBz:
+  - rscadd: Many new decorations to many ruins.
+  - rscadd: many more loot spawns to many ruins
+  - rscadd: filth and rust to many maps, to make them look lived in, and ruinous.
+  - rscadd: more randomization on certain things like vending machines and other interactables
+  - rscadd: obstacles and things to extend dungeon diving slightly in some of the
+      high loot ruins
+  - rscdel: outdated looking decor in places
+  - rscdel: reduces some maps size, by condensing them, or removing edge fluff
+  - balance: adds more space cash where it seems logical, as well as plenty of new
+      loot spawners
+  FedTheCat:
+  - code_imp: Changed req access to null.

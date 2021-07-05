@@ -388,3 +388,31 @@
 /datum/sold_goods/anomalous_crystal
 	cost = 1000
 	path = /obj/item/anomalous_sliver/crystal
+
+/datum/sold_goods/mining_kit
+	cost = 850
+	path = /obj/item/storage/backpack/duffelbag/mining_conscript/basic
+
+/datum/sold_goods/liquid_pump
+	cost = 700
+	path = /obj/machinery/plumbing/liquid_pump
+
+/datum/sold_goods/grey_bull
+	cost = 50
+	path = /obj/item/reagent_containers/food/drinks/soda_cans/grey_bull
+
+/datum/sold_goods/budget_insuls
+	cost = 355
+	path = /obj/item/clothing/gloves/color/fyellow
+
+/datum/sold_goods/belt/nitrogen
+	cost = 160
+	path = /obj/item/tank/internals/nitrogen/belt
+
+/datum/sold_goods/belt/plasma
+	cost = 180
+	path = /obj/item/tank/internals/plasmaman/belt
+
+/datum/sold_goods/emergency_oxygen
+	cost = 90
+	path = /obj/item/tank/internals/emergency_oxygen

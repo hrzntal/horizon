@@ -85,7 +85,8 @@
 	possible_sold_goods = list(/datum/sold_goods/clothing_boots = 100,
 								/datum/sold_goods/clothing_boots/two = 100,
 								/datum/sold_goods/clothing_boots/three = 100,
-								/datum/sold_goods/clothing_boots/four = 100)
+								/datum/sold_goods/clothing_boots/four = 100,
+								/datum/sold_goods/budget_insuls = 100)
 	target_sold_goods_amount = 4
 
 /datum/trader/clothingshop/hatglovesaccessories
@@ -138,7 +139,8 @@
 								/datum/sold_goods/anomaly_neutralizer = 100,
 								/datum/sold_goods/random_medical_stack = 100,
 								/datum/sold_goods/random_medical_stack/two = 100,
-								/datum/sold_goods/flash = 100)
+								/datum/sold_goods/flash = 100,
+								/datum/sold_goods/grey_bull = 100)
 	target_sold_goods_amount = 14
 
 /datum/trader/robots
@@ -264,8 +266,10 @@
 								/datum/sold_goods/stack/gold_ten = 100,
 								/datum/sold_goods/stack/uranium_ten = 100,
 								/datum/sold_goods/stack/plasma_ten = 100,
-								/datum/sold_goods/stack/diamond_five = 100)
-	target_sold_goods_amount = 5
+								/datum/sold_goods/stack/diamond_five = 100,
+								/datum/sold_goods/mining_kit = 100,
+								/datum/sold_goods/liquid_pump = 100)
+	target_sold_goods_amount = 7
 	target_bought_goods_amount = 5
 
 /datum/trader/petshop
@@ -299,3 +303,13 @@
 		)
 	target_sold_goods_amount = 6
 	target_bought_goods_amount = 5
+
+/datum/trader/atmospherics
+	name = "Atmospheric Shop Employee"
+	possible_origins = list("Fill Up Tanker", "Gasser'up", "Tank Topper", "Uncle Joe's Jenkem Emporium")
+	possible_sold_goods = list(
+		/datum/sold_goods/belt/nitrogen = 100,
+		/datum/sold_goods/belt/plasma = 100,
+		/datum/sold_goods/emergency_oxygen = 100,
+	)
+	target_bought_goods_amount = 3

@@ -1,0 +1,7 @@
+author: "rhodochrositech"
+delete-after: True
+changes: 
+  - rscadd: "Adds new trader, the Farming Apprentice, who sells foods (Wheat, Corn) and livestock (Chickies, Cows, Goats)"
+  - rscadd: "Adds a new trader, the Atmospheric trader, who sells internal items (Plasmaman, Vox, and tiny blue atmos can internals)"
+  - rscadd: "Adds a mining conscription kit to the mineral buyer to have access to equipment"
+  - rscadd: "Adds a budget insul for over half the price of a vendor insul, and grey bull (Shock Protection) to the Pharmacy"
