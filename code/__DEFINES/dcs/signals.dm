@@ -1307,3 +1307,6 @@
 
 /// Called in /obj/structure/moneybot/add_money(). (to_add)
 #define COMSIG_MONEYBOT_ADD_MONEY "moneybot_add_money"
+
+/// Sent by /obj/effect/abstract/shuttle_roof on Initialize() and Destroy()
+#define COMSIG_TURF_UPDATE_TRANSPARENCY "turf_update_transparency"
