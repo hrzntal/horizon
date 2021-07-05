@@ -629,7 +629,7 @@
 	name = "Medicine Allergy"
 	desc = "Ever since you were a kid, you've been allergic to certain chemicals..."
 	value = -4
-	gain_text = "<span class='danger'>You feel your immune system shift.</span>"
+	gain_text = "<span class='danger'>You feel your immune system shift lightly.</span>"
 	lose_text = "<span class='notice'>You feel your immune system phase back into perfect shape.</span>"
 	medical_record_text = "Patient's immune system responds undesirably to certain chemicals."
 	hardcore_value = 3
@@ -703,8 +703,7 @@
 	value = -6
 	gain_text = "<span class='danger'>You feel your immune system shift.</span>"
 	medical_record_text = "Patient's immune system responds violently to certain chemicals."
-	var/list/allergies = list()
-	var/list/blacklist = list(
+	blacklist = list(
 		/datum/reagent/medicine/c2,
 		/datum/reagent/medicine/epinephrine,
 		/datum/reagent/medicine/adminordrazine,
