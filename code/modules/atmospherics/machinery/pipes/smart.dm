@@ -21,12 +21,13 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 /obj/machinery/atmospherics/pipe/smart/update_pipe_icon()
 	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	var/bitfield = NONE
-	//This can actually compile an incorrect icon, because a correct one needs atleast 2 bits. I am meaning to rework smart pipes later so this wont be the case
+	var/bits = 0
 	for(var/i in 1 to device_type)
 		if(!nodes[i])
 			continue
 		var/obj/machinery/atmospherics/node = nodes[i]
 		var/connected_dir = get_dir(src, node)
+		bits++
 		switch(connected_dir)
 			if(NORTH)
 				bitfield |= NORTH_FULLPIPE
@@ -36,6 +37,33 @@ GLOBAL_LIST_INIT(atmos_components, typecacheof(list(/obj/machinery/atmospherics)
 				bitfield |= EAST_FULLPIPE
 			if(WEST)
 				bitfield |= WEST_FULLPIPE
+	//Add a short pipe somewhere, so we dont have an incorrect sprite
+	if(bits == 1)
+		var/reverse_dir = REVERSE_DIR(bitfield)
+		if(initialize_directions & reverse_dir)
+			switch(reverse_dir)
+				if(NORTH)
+					bitfield |= NORTH_SHORTPIPE
+				if(SOUTH)
+					bitfield |= SOUTH_SHORTPIPE
+				if(EAST)
+					bitfield |= EAST_SHORTPIPE
+				if(WEST)
+					bitfield |= WEST_SHORTPIPE
+		else
+			for(var/cardinal in GLOB.cardinals)
+				if(initialize_directions & cardinal)
+					switch(cardinal)
+						if(NORTH)
+							bitfield |= NORTH_SHORTPIPE
+						if(SOUTH)
+							bitfield |= SOUTH_SHORTPIPE
+						if(EAST)
+							bitfield |= EAST_SHORTPIPE
+						if(WEST)
+							bitfield |= WEST_SHORTPIPE
+					break
+
 	icon_state = "[bitfield]_[piping_layer]"
 
 /obj/machinery/atmospherics/pipe/smart/SetInitDirections(init_dir)

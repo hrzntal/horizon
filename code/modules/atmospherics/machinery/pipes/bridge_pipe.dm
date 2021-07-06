@@ -13,10 +13,6 @@
 	construction_type = /obj/item/pipe/binary
 	pipe_state = "bridge_center"
 
-/obj/machinery/atmospherics/pipe/bridge_pipe/Initialize()
-	icon_state = ""
-	. = ..()
-
 /obj/machinery/atmospherics/pipe/bridge_pipe/SetInitDirections()
 	switch(dir)
 		if(NORTH, SOUTH)
