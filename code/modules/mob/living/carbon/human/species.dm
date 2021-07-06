@@ -772,9 +772,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
 			if(!no_eyeslay)//we need eyes
-				eye_overlays += mutable_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
+				eye_overlays += mutable_appearance(eye_icon, eye_organ.eye_icon_state, -BODY_LAYER)
 				if(eye_organ.overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-					eye_overlays += emissive_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
+					eye_overlays += emissive_appearance(eye_icon, eye_organ.eye_icon_state, -BODY_LAYER)
 				for(var/mutable_appearance/eye_overlay as anything in eye_overlays)
 					eye_overlay.pixel_x += add_pixel_x
 					eye_overlay.pixel_y += add_pixel_y
