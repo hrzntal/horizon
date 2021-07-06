@@ -1,5 +1,4 @@
 /obj/machinery/atmospherics/pipe
-	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	damage_deflection = 12
 	var/datum/gas_mixture/air_temporary //used when reconstructing a pipeline that broke
 	var/volume = 0
@@ -142,3 +141,65 @@
 		pipe_color = paint_color
 		update_node_icon()
 	return paintable
+
+/obj/machinery/atmospherics/pipe/simple
+	icon = 'icons/obj/atmospherics/pipes/simple.dmi'
+	icon_state = "pipe11-3"
+
+	name = "pipe"
+	desc = "A one meter section of regular pipe."
+
+	dir = SOUTH
+	initialize_directions = SOUTH|NORTH
+	pipe_flags = PIPING_CARDINAL_AUTONORMALIZE
+
+	device_type = BINARY
+
+	construction_type = /obj/item/pipe/binary/bendable
+	pipe_state = "simple"
+
+/obj/machinery/atmospherics/pipe/simple/SetInitDirections()
+	if(ISDIAGONALDIR(dir))
+		initialize_directions = dir
+		return
+	switch(dir)
+		if(NORTH, SOUTH)
+			initialize_directions = SOUTH|NORTH
+		if(EAST, WEST)
+			initialize_directions = EAST|WEST
+
+/obj/machinery/atmospherics/pipe/manifold
+	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
+	icon_state = "manifold-3"
+
+	name = "pipe manifold"
+	desc = "A manifold composed of regular pipes."
+
+	dir = SOUTH
+	initialize_directions = EAST|NORTH|WEST
+
+	device_type = TRINARY
+
+	construction_type = /obj/item/pipe/trinary
+	pipe_state = "manifold"
+
+/obj/machinery/atmospherics/pipe/manifold/SetInitDirections()
+	initialize_directions = ALL_CARDINALS
+	initialize_directions &= ~dir
+
+/obj/machinery/atmospherics/pipe/manifold4w
+	icon = 'icons/obj/atmospherics/pipes/manifold.dmi'
+	icon_state = "manifold4w-3"
+
+	name = "4-way pipe manifold"
+	desc = "A manifold composed of regular pipes."
+
+	initialize_directions = ALL_CARDINALS
+
+	device_type = QUATERNARY
+
+	construction_type = /obj/item/pipe/quaternary
+	pipe_state = "manifold4w"
+
+/obj/machinery/atmospherics/pipe/manifold4w/SetInitDirections()
+	initialize_directions = initial(initialize_directions)

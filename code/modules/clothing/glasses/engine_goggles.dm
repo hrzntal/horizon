@@ -141,26 +141,26 @@
 /obj/item/clothing/glasses/meson/engine/proc/show_connections()
 	var/mob/living/carbon/human/user = loc
 
-	for(var/obj/machinery/atmospherics/pipe/smart/smart in connection_images)
-		if(get_dist(loc, smart.loc) > range)
-			connection_images -= smart
+	for(var/obj/machinery/atmospherics/pipe/pipe in connection_images)
+		if(get_dist(loc, pipe.loc) > range)
+			connection_images -= pipe
 
-	for(var/obj/machinery/atmospherics/pipe/smart/smart in orange(range, user))
-		if(!connection_images[smart])
-			connection_images[smart] = list()
+	for(var/obj/machinery/atmospherics/pipe/pipe in orange(range, user))
+		if(!connection_images[pipe])
+			connection_images[pipe] = list()
 		for(var/direction in GLOB.cardinals)
-			if(!(smart.GetInitDirections() & direction))
+			if(!(pipe.GetInitDirections() & direction))
 				continue
-			if(!connection_images[smart][dir2text(direction)])
+			if(!connection_images[pipe][dir2text(direction)])
 				var/image/arrow
-				arrow = new('icons/obj/atmospherics/pipes/simple.dmi', get_turf(smart), "connection_overlay")
+				arrow = new('icons/obj/atmospherics/pipes/simple.dmi', get_turf(pipe), "connection_overlay")
 				arrow.dir = direction
-				arrow.layer = smart.layer
-				arrow.color = smart.pipe_color
-				PIPING_LAYER_DOUBLE_SHIFT(arrow, smart.piping_layer)
-				connection_images[smart][dir2text(direction)] = arrow
+				arrow.layer = pipe.layer
+				arrow.color = pipe.pipe_color
+				PIPING_LAYER_DOUBLE_SHIFT(arrow, pipe.piping_layer)
+				connection_images[pipe][dir2text(direction)] = arrow
 			if(connection_images.len)
-				flick_overlay(connection_images[smart][dir2text(direction)], list(user.client), 1.5 SECONDS)
+				flick_overlay(connection_images[pipe][dir2text(direction)], list(user.client), 1.5 SECONDS)
 
 /obj/item/clothing/glasses/meson/engine/update_icon_state()
 	icon_state = inhand_icon_state = "trayson-[mode]"
