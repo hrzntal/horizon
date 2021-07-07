@@ -1210,6 +1210,7 @@
 #include "code\game\objects\items\paiwire.dm"
 #include "code\game\objects\items\pet_carrier.dm"
 #include "code\game\objects\items\pinpointer.dm"
+#include "code\game\objects\items\pipe_casing.dm"
 #include "code\game\objects\items\pitchfork.dm"
 #include "code\game\objects\items\plushes.dm"
 #include "code\game\objects\items\pneumaticCannon.dm"

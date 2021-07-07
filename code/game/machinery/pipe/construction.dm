@@ -46,7 +46,7 @@ Buildable meters
 
 /obj/item/pipe/binary/bendable/pipe_bent
 	pipe_type = /obj/machinery/atmospherics/pipe/simple
-	dir = NORTH|EAST
+	dir = SOUTH|EAST
 
 /obj/item/pipe/trinary/pipe_manifold
 	pipe_type = /obj/machinery/atmospherics/pipe/manifold
@@ -54,10 +54,16 @@ Buildable meters
 /obj/item/pipe/quaternary/pipe_manifold4w
 	pipe_type = /obj/machinery/atmospherics/pipe/manifold4w
 
+/obj/item/pipe/directional/connector
+	pipe_type = /obj/machinery/atmospherics/components/unary/portables_connector
+
+/obj/item/pipe/binary/layer_manifold
+	pipe_type = /obj/machinery/atmospherics/pipe/layer_manifold
+
 /obj/item/pipe/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Ctrl+Shift+Click to align on the next layer.</span>"
 	. += "<span class='notice'>It's aligned on layer [piping_layer].</span>"
+	. += "<span class='notice'>Ctrl+Shift+Click to align on the next layer.</span>"
 
 /obj/item/pipe/CtrlShiftClick(mob/user)
 	. = ..()
@@ -201,16 +207,6 @@ Buildable meters
 		if((machine.pipe_flags & flags & PIPING_ONE_PER_TURF)) //Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
 			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
 			return TRUE
-
-		if(pipe_count == 1 && istype(machine, /obj/machinery/atmospherics/pipe) && ispath(pipe_type, /obj/machinery/atmospherics/pipe/simple) && lowertext(machine.pipe_color) != lowertext(pipe_color) && machine.connection_num < 3)
-			var/direction = machine.dir
-			if((direction & EAST|WEST || direction & SOUTH|NORTH) && !ISDIAGONALDIR(direction))
-				pipe_type = /obj/machinery/atmospherics/pipe/bridge_pipe
-				if(EWCOMPONENT(direction))
-					dir = NORTH
-				if(NSCOMPONENT(direction))
-					dir = EAST
-				continue
 
 		if(flags & PIPING_BRIDGE && !(machine.pipe_flags & PIPING_BRIDGE) && check_ninety_degree_dir(machine)) //continue if we are placing a bridge pipe over a normal pipe only (prevent duplicates)
 			continue
