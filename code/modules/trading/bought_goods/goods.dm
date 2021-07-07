@@ -23,16 +23,22 @@
 /datum/bought_goods/lungs
 	name = "lungs"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/lungs = TRADER_THIS_TYPE)
 
 /datum/bought_goods/heart
 	name = "hearts"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/heart = TRADER_THIS_TYPE)
 
 /datum/bought_goods/liver
 	name = "livers"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/liver = TRADER_THIS_TYPE)
 
 /datum/bought_goods/stack/iron
