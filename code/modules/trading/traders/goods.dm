@@ -230,7 +230,8 @@
 								/datum/sold_goods/bottle_epinephrine = 100)
 	possible_bought_goods = list(/datum/bought_goods/liver = 100,
 								/datum/bought_goods/lungs = 100,
-								/datum/bought_goods/heart = 100)
+								/datum/bought_goods/heart = 100,
+								/datum/bought_goods/reagent/meth = 100)
 	target_sold_goods_amount = 15
 	target_bought_goods_amount = 4
 

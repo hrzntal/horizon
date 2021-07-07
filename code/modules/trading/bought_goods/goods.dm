@@ -95,3 +95,9 @@
 	name = "anomalous crystals"
 	cost = 1000
 	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
+
+/datum/bought_goods/reagent/meth
+	cost = 40
+	reagent_type = /datum/reagent/drug/methamphetamine
+	stock_low = 20
+	stock_high = 50
