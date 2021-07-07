@@ -37,12 +37,16 @@
 	return ..()
 
 /obj/machinery/meter/Initialize(mapload, new_piping_layer)
+	. = ..()
 	if(!isnull(new_piping_layer))
 		target_layer = new_piping_layer
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/meter/LateInitialize()
+	. = ..()
 	SSair.start_processing_machine(src)
 	if(!target)
 		reattach_to_layer()
-	return ..()
 
 /obj/machinery/meter/proc/reattach_to_layer()
 	var/obj/machinery/atmospherics/candidate

@@ -34,6 +34,10 @@ const TOOLS = [
     name: 'Destroy',
     bitmask: 4,
   },
+  {
+    name: 'Paint',
+    bitmask: 8,
+  },
 ];
 
 const SelectionSection = (props, context) => {
@@ -212,10 +216,10 @@ const SmartPipeBlockSection = (props, context) => {
                 icon="info"
                 tooltipPosition="right"
                 tooltip={multiline`
-                This is a panel for blocking certain connection
-                directions for the smart pipes.
+                This is a panel for choosing connection
+                directions for normal pipes.
                 The button in the center resets to
-                default (all directions can connect)`} />
+                default (all directions)`} />
             </Stack.Item>
             <Stack.Item>
               <Button iconRotation={-90} icon="arrow-right"

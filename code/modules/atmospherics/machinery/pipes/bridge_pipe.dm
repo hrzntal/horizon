@@ -26,4 +26,5 @@
 	PIPING_LAYER_DOUBLE_SHIFT(center, piping_layer)
 	. += center
 
+/obj/machinery/atmospherics/pipe/bridge_pipe/update_layer()
 	layer = HIGH_PIPE_LAYER //to stay above all sorts of pipes

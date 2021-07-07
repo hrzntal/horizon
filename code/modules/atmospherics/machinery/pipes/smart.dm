@@ -8,57 +8,60 @@
 	var/passed_directions = NONE
 	var/dir_count = 0
 	var/turf/my_turf = loc
-	for(var/cardinal in directions)
-		var/turf/step_turf = get_step(my_turf, cardinal)
-		var/obj/effect/mapping_helpers/smart_pipe/other_smart_pipe = locate() in step_turf
-		if(other_smart_pipe)
-			var/opp = REVERSE_DIR(cardinal)
-			if(other_smart_pipe.get_node_directions() & opp && connect_smart_pipe_check(other_smart_pipe))
-				passed_directions |= cardinal
-				dir_count++
-				continue
-		var/obj/machinery/atmospherics/atmosmachine = locate() in step_turf
-		if(atmosmachine && connect_atmos_machinery_check(atmosmachine, cardinal))
-			passed_directions |= cardinal
-			dir_count++
+	for(var/cardinal in GLOB.cardinals)
+		if(!(directions & cardinal))
 			continue
+		var/turf/step_turf = get_step(my_turf, cardinal)
+		if(!step_turf)
+			WARNING("no step turf")
+		for(var/i in step_turf)
+			var/atom/movable/AM = i
+			if(istype(AM, /obj/effect/mapping_helpers/smart_pipe))
+				var/obj/effect/mapping_helpers/smart_pipe/other_smart_pipe = AM
+				if(connect_smart_pipe_check(other_smart_pipe, cardinal))
+					passed_directions |= cardinal
+					dir_count++
+					continue
+			else if (istype(AM, /obj/machinery/atmospherics))
+				var/obj/machinery/atmospherics/atmosmachine = AM
+				if(connect_atmos_machinery_check(atmosmachine, cardinal))
+					passed_directions |= cardinal
+					dir_count++
+					continue
 	if(dir_count <= 0)
 		WARNING("Smart pipe mapping helper failed to spawn, connected to [dir_count] directions, at [loc.x],[loc.y],[loc.z]")
 	else
 		switch(dir_count)
 			if(1) //Simple pipe with exposed rear
-				message_admins("simple exposed")
 				spawn_pipe(passed_directions,/obj/machinery/atmospherics/pipe/simple)
 			if(2) //Simple pipe
-				message_admins("simple")
 				var/pipe_dir = passed_directions
-				//Prune non/diagonal directions
+				//Prune non diagonal directions
 				if(passed_directions & NORTH && passed_directions & SOUTH)
 					pipe_dir = NORTH
 				if(passed_directions & EAST && passed_directions & WEST)
 					pipe_dir = EAST
 				spawn_pipe(pipe_dir, /obj/machinery/atmospherics/pipe/simple)
 			if(3) //Manifold
-				message_admins("mani")
 				for(var/cardinal in GLOB.cardinals)
 					if(!(passed_directions & cardinal))
-						spawn_pipe(cardinal, /obj/machinery/atmospherics/pipe/manifold4w-3)
+						spawn_pipe(cardinal, /obj/machinery/atmospherics/pipe/manifold)
 						break
 			if(4) //4 way manifold
-				message_admins("4way mani")
-				spawn_pipe(NORTH, /obj/machinery/atmospherics/pipe/manifold)
-
-	message_admins("[passed_directions]")
+				spawn_pipe(NORTH, /obj/machinery/atmospherics/pipe/manifold4w)
 
 	return ..()
 
 /obj/effect/mapping_helpers/smart_pipe/proc/spawn_pipe(direction, type)
-	var/obj/machinery/atmospherics/pipe/built_pipe = new type(loc)
+	var/obj/machinery/atmospherics/pipe/built_pipe = new type(loc, arg_pipe_layer = piping_layer, arg_pipe_color = pipe_color, arg_hide = hide)
 	built_pipe.setDir(direction)
-	built_pipe.on_construction(pipe_color, piping_layer)
+	built_pipe.SetInitDirections()
 
 //Whether we can connect to another smart pipe helper, doesn't care about directions
-/obj/effect/mapping_helpers/smart_pipe/proc/connect_smart_pipe_check(obj/effect/mapping_helpers/smart_pipe/other_pipe)
+/obj/effect/mapping_helpers/smart_pipe/proc/connect_smart_pipe_check(obj/effect/mapping_helpers/smart_pipe/other_pipe, passed_dir)
+	var/opp = REVERSE_DIR(passed_dir)
+	if(!(other_pipe.get_node_directions() & opp))
+		return FALSE
 	if(piping_layer == other_pipe.piping_layer && (pipe_color == COLOR_VERY_LIGHT_GRAY || other_pipe.pipe_color == COLOR_VERY_LIGHT_GRAY || lowertext(pipe_color) == lowertext(other_pipe.pipe_color)))
 		return TRUE
 	return FALSE
@@ -69,7 +72,7 @@
 	if(!(atmosmachine.initialize_directions & opp))
 		return FALSE
 	//Check layer
-	if(piping_layer != atmosmachine && !(atmosmachine.pipe_flags & PIPING_ALL_LAYER))
+	if(piping_layer != atmosmachine.piping_layer && !(atmosmachine.pipe_flags & PIPING_ALL_LAYER))
 		return FALSE
 	//Check color
 	if(pipe_color != COLOR_VERY_LIGHT_GRAY && atmosmachine.pipe_color != COLOR_VERY_LIGHT_GRAY && lowertext(pipe_color) != lowertext(atmosmachine.pipe_color))

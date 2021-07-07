@@ -16,15 +16,22 @@
 
 	vis_flags = VIS_INHERIT_PLANE
 
-/obj/machinery/atmospherics/pipe/New()
+/obj/machinery/atmospherics/pipe/New(loc, process = TRUE, setdir, init_dir = ALL_CARDINALS, arg_pipe_layer, arg_pipe_color, arg_hide)
+	if(!isnull(arg_pipe_layer))
+		piping_layer = arg_pipe_layer
+
+	if(!isnull(arg_pipe_color))
+		pipe_color = arg_pipe_color
+
+	if(!isnull(arg_hide))
+		hide = arg_hide
 	add_atom_colour(pipe_color, FIXED_COLOUR_PRIORITY)
 	volume = 35 * device_type
 	..()
 
 ///I have no idea why there's a new and at this point I'm too afraid to ask
-/obj/machinery/atmospherics/pipe/Initialize(mapload)
+/obj/machinery/atmospherics/pipe/Initialize()
 	. = ..()
-
 	if(hide)
 		AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE) //if changing this, change the subtypes RemoveElements too, because thats how bespoke works
 
@@ -202,4 +209,4 @@
 	pipe_state = "manifold4w"
 
 /obj/machinery/atmospherics/pipe/manifold4w/SetInitDirections()
-	initialize_directions = initial(initialize_directions)
+	initialize_directions = ALL_CARDINALS

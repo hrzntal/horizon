@@ -23,11 +23,9 @@ Buildable meters
 	///Type of pipe-object made, selected from the RPD
 	var/RPD_type
 	///Whether it can be painted
-	var/paintable = FALSE
+	var/paintable = TRUE
 	///Color of the pipe is going to be made from this pipe-object
-	var/pipe_color
-	///Initial direction of the created pipe (either made from the RPD or after unwrenching the pipe)
-	var/p_init_dir = SOUTH
+	var/pipe_color = COLOR_VERY_LIGHT_GRAY
 
 /obj/item/pipe/directional
 	RPD_type = PIPE_UNARY
@@ -43,18 +41,33 @@ Buildable meters
 /obj/item/pipe/quaternary
 	RPD_type = PIPE_ONEDIR
 
+/obj/item/pipe/binary/pipe_simple
+	pipe_type = /obj/machinery/atmospherics/pipe/simple
+
+/obj/item/pipe/binary/bendable/pipe_bent
+	pipe_type = /obj/machinery/atmospherics/pipe/simple
+	dir = NORTH|EAST
+
+/obj/item/pipe/trinary/pipe_manifold
+	pipe_type = /obj/machinery/atmospherics/pipe/manifold
+
+/obj/item/pipe/quaternary/pipe_manifold4w
+	pipe_type = /obj/machinery/atmospherics/pipe/manifold4w
+
 /obj/item/pipe/ComponentInitialize()
 	//Flipping handled manually due to custom handling for trinary pipes
 	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
 
-/obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from, device_color, device_init_dir = SOUTH)
+/obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from, device_color)
 	if(make_from)
 		make_from_existing(make_from)
 	else
-		p_init_dir = device_init_dir
-		pipe_type = _pipe_type
-		pipe_color = device_color
-		setDir(_dir)
+		if(!isnull(_pipe_type))
+			pipe_type = _pipe_type
+		if(!isnull(device_color))
+			paint(device_color)
+		if(!isnull(_dir))
+			setDir(_dir)
 
 	update()
 	pixel_x += rand(-5, 5)
@@ -62,13 +75,11 @@ Buildable meters
 	return ..()
 
 /obj/item/pipe/proc/make_from_existing(obj/machinery/atmospherics/make_from)
-	p_init_dir = make_from.initialize_directions
 	setDir(make_from.dir)
 	pipename = make_from.name
-	add_atom_colour(make_from.color, FIXED_COLOUR_PRIORITY)
 	pipe_type = make_from.type
 	paintable = make_from.paintable
-	pipe_color = make_from.pipe_color
+	paint(make_from.pipe_color)
 
 /obj/item/pipe/trinary/flippable/make_from_existing(obj/machinery/atmospherics/components/trinary/make_from)
 	..()
@@ -79,6 +90,14 @@ Buildable meters
 	if(loc)
 		setPipingLayer(piping_layer)
 	return ..()
+
+/obj/item/pipe/proc/paint(paint_color)
+	if(paintable && paint_color != pipe_color)
+		add_atom_colour(paint_color, FIXED_COLOUR_PRIORITY)
+		pipe_color = paint_color
+		pipename = null
+		update()
+	return paintable
 
 /obj/item/pipe/proc/setPipingLayer(new_layer = PIPING_LAYER_DEFAULT)
 	var/obj/machinery/atmospherics/fakeA = pipe_type
@@ -92,7 +111,9 @@ Buildable meters
 
 /obj/item/pipe/proc/update()
 	var/obj/machinery/atmospherics/fakeA = pipe_type
-	name = "[initial(fakeA.name)] fitting"
+	if(!pipename)
+		pipename = "[GLOB.pipe_color_name[pipe_color]] [initial(fakeA.name)]"
+	name = "[pipename] fitting"
 	icon_state = initial(fakeA.pipe_state)
 	if(ispath(pipe_type,/obj/machinery/atmospherics/pipe/heat_exchanging))
 		resistance_flags |= FIRE_PROOF | LAVA_PROOF
@@ -167,7 +188,7 @@ Buildable meters
 			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
 			return TRUE
 
-		if(pipe_count == 1 && istype(machine, /obj/machinery/atmospherics/pipe) && ispath(pipe_type, /obj/machinery/atmospherics/pipe) && lowertext(machine.pipe_color) != lowertext(pipe_color) && machine.connection_num < 3)
+		if(pipe_count == 1 && istype(machine, /obj/machinery/atmospherics/pipe) && ispath(pipe_type, /obj/machinery/atmospherics/pipe/simple) && lowertext(machine.pipe_color) != lowertext(pipe_color) && machine.connection_num < 3)
 			var/direction = machine.dir
 			if((direction & EAST|WEST || direction & SOUTH|NORTH) && !ISDIAGONALDIR(direction))
 				pipe_type = /obj/machinery/atmospherics/pipe/bridge_pipe
@@ -183,12 +204,12 @@ Buildable meters
 		if((machine.piping_layer != piping_layer) && !((machine.pipe_flags | flags) & PIPING_ALL_LAYER)) //don't continue if either pipe goes across all layers
 			continue
 
-		if(machine.GetInitDirections() & SSair.get_init_dirs(pipe_type, fixed_dir(), p_init_dir)) // matches at least one direction on either type of pipe
+		if(machine.GetInitDirections() & SSair.get_init_dirs(pipe_type, fixed_dir())) // matches at least one direction on either type of pipe
 			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
 			return TRUE
 	// no conflicts found
 
-	var/obj/machinery/atmospherics/built_machine = new pipe_type(loc, , , p_init_dir)
+	var/obj/machinery/atmospherics/built_machine = new pipe_type(loc)
 	build_pipe(built_machine)
 	built_machine.on_construction(pipe_color, piping_layer)
 	transfer_fingerprints_to(built_machine)
@@ -203,7 +224,7 @@ Buildable meters
 
 /obj/item/pipe/proc/build_pipe(obj/machinery/atmospherics/A)
 	A.setDir(fixed_dir())
-	A.SetInitDirections(p_init_dir)
+	A.SetInitDirections()
 
 	if(pipename)
 		A.name = pipename
