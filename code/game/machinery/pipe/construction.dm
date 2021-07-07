@@ -54,6 +54,20 @@ Buildable meters
 /obj/item/pipe/quaternary/pipe_manifold4w
 	pipe_type = /obj/machinery/atmospherics/pipe/manifold4w
 
+/obj/item/pipe/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Ctrl+Shift+Click to align on the next layer.</span>"
+	. += "<span class='notice'>It's aligned on layer [piping_layer].</span>"
+
+/obj/item/pipe/CtrlShiftClick(mob/user)
+	. = ..()
+	if(. || !in_range(user, src))
+		return
+	piping_layer++
+	if(piping_layer > PIPING_LAYER_MAX)
+		piping_layer = PIPING_LAYER_MIN
+	to_chat(user, "<span class='notice'>You align \the [src] onto layer [piping_layer].</span>")
+
 /obj/item/pipe/ComponentInitialize()
 	//Flipping handled manually due to custom handling for trinary pipes
 	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
