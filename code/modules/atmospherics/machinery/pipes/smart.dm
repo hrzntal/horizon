@@ -12,8 +12,8 @@
 		if(!(directions & cardinal))
 			continue
 		var/turf/step_turf = get_step(my_turf, cardinal)
-		if(!step_turf)
-			WARNING("no step turf")
+		if(step_turf == my_turf)
+			continue
 		for(var/i in step_turf)
 			var/atom/movable/AM = i
 			if(istype(AM, /obj/effect/mapping_helpers/smart_pipe))
