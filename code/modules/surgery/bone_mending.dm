@@ -53,7 +53,8 @@
 		/obj/item/stack/medical/bone_gel = 100,
 		/obj/item/stack/sticky_tape/surgical = 100,
 		/obj/item/stack/sticky_tape/super = 50,
-		/obj/item/stack/sticky_tape = 30)
+		/obj/item/stack/sticky_tape = 30,
+		TOOL_WRENCH = 30)
 	time = 40
 
 /datum/surgery_step/repair_bone_hairline/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -93,7 +94,8 @@
 		/obj/item/bonesetter = 100,
 		/obj/item/stack/sticky_tape/surgical = 60,
 		/obj/item/stack/sticky_tape/super = 40,
-		/obj/item/stack/sticky_tape = 20)
+		/obj/item/stack/sticky_tape = 20,
+		TOOL_WRENCH = 20)
 	time = 40
 
 /datum/surgery_step/reset_compound_fracture/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
