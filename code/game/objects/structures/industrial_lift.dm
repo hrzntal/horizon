@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	)
 	AddElement(/datum/element/connect_loc, src, loc_connections)
 	RegisterSignal(src, COMSIG_MOVABLE_BUMP, .proc/GracefullyBreak)
-
+	AddElement(/datum/element/footstep_override, FOOTSTEP_LATTICE, FOOTSTEP_HARD_BAREFOOT, FOOTSTEP_LATTICE, FOOTSTEP_LATTICE)
 	if(!lift_master_datum)
 		lift_master_datum = new(src)
 

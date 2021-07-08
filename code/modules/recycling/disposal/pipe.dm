@@ -6,6 +6,7 @@
 	icon = 'icons/obj/atmospherics/pipes/disposal.dmi'
 	anchored = TRUE
 	density = FALSE
+	plane = FLOOR_PLANE
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 	dir = NONE // dir will contain dominant direction for junction pipes
 	max_integrity = 200

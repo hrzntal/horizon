@@ -21,6 +21,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	baseturfs = /turf/open/openspace
 	intact = FALSE //this means wires go on top
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	can_have_catwalk = TRUE
 	var/can_cover_up = TRUE
 	var/can_build_on = TRUE
 
@@ -28,7 +29,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/openspace/airless/planetary
-		planetary_atmos = TRUE
+	planetary_atmos = TRUE
 
 /turf/open/openspace/Initialize() // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()

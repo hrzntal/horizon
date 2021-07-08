@@ -8,6 +8,29 @@
 	var/heavyfootstep = null
 	/// Reference to the turf fire on the turf
 	var/obj/effect/abstract/turf_fire/turf_fire
+	/// Whether this turf can have catwalk tiles placed on
+	var/can_have_catwalk
+
+/turf/open/attackby(obj/item/item, mob/user, params)
+	if(istype(item, /obj/item/stack/catwalk))
+		if(can_have_catwalk)
+			var/obj/item/stack/catwalk/catitem = item
+			if(locate(/obj/structure/lattice/catwalk, src))
+				return
+			var/cost = 2
+			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
+			if(L)
+				qdel(L)
+				cost = 1
+			if(catitem.use(cost))
+				new catitem.catwalk_type(src)
+				playsound(src, 'sound/weapons/genhit.ogg', 50, TRUE)
+				to_chat(user, "<span class='notice'>You place down the catwalk.</span>")
+			else
+				to_chat(user, "<span class='warning'>You need two rods to build a catwalk!</span>")
+			return
+		to_chat(user, "<span class='warning'>You can't place down a catwalk in this spot!</span>")
+	return ..()
 
 //direction is direction of travel of A
 /turf/open/zPassIn(atom/movable/A, direction, turf/source)

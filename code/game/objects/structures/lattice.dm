@@ -17,7 +17,6 @@
 	var/number_of_mats = 1
 	var/build_material = /obj/item/stack/rods
 
-
 /obj/structure/lattice/examine(mob/user)
 	. = ..()
 	. += deconstruction_hints(user)
@@ -32,6 +31,7 @@
 			continue
 		stack_trace("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
 		return INITIALIZE_HINT_QDEL
+	AddElement(/datum/element/footstep_override, FOOTSTEP_LATTICE, FOOTSTEP_HARD_BAREFOOT, FOOTSTEP_LATTICE, FOOTSTEP_LATTICE)
 
 /obj/structure/lattice/blob_act(obj/structure/blob/B)
 	return
@@ -40,6 +40,7 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(C.tool_behaviour == TOOL_WIRECUTTER)
+		C.play_tool_sound(src)
 		to_chat(user, "<span class='notice'>Slicing [name] joints ...</span>")
 		deconstruct()
 	else
@@ -75,26 +76,65 @@
 	icon = 'icons/obj/smooth_structures/catwalk.dmi'
 	icon_state = "catwalk-0"
 	base_icon_state = "catwalk"
+	layer = CATWALK_LAYER //over pipes
 	number_of_mats = 2
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_CATWALK, SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = list(SMOOTH_GROUP_CATWALK)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
 
+/obj/structure/lattice/catwalk/Initialize()
+	if(isspaceturf(loc))
+		layer = LATTICE_LAYER //For solars and other space projects to have the wires/other stuff show up higher than the catwalk
+	return ..()
+
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
 	return "<span class='notice'>The supporting rods look like they could be <b>cut</b>.</span>"
 
 /obj/structure/lattice/catwalk/Move()
-	var/turf/T = loc
-	for(var/obj/structure/cable/C in T)
-		C.deconstruct()
+	CheckCableSupport()
 	..()
 
 /obj/structure/lattice/catwalk/deconstruct()
+	CheckCableSupport()
+	..()
+
+/obj/structure/lattice/catwalk/proc/CheckCableSupport()
 	var/turf/T = loc
+	if(!isopenspaceturf(T) || !isspaceturf(T))
+		return
 	for(var/obj/structure/cable/C in T)
 		C.deconstruct()
-	..()
+
+/obj/structure/lattice/catwalk/plated
+	name = "plated catwalk"
+	icon = 'icons/obj/smooth_structures/catwalk_plated.dmi'
+	icon_state = "catwalk_plated-0"
+	base_icon_state = "catwalk_plated"
+	smoothing_groups = list(SMOOTH_GROUP_PLATED_CATWALK)
+	canSmoothWith = list(SMOOTH_GROUP_PLATED_CATWALK)
+	build_material = /obj/item/stack/catwalk/plated
+
+/obj/structure/lattice/catwalk/plated/deconstruction_hints(mob/user)
+	return "<span class='notice'>The plate looks like it could be <b>pried</b> up.</span>"
+
+/obj/structure/lattice/catwalk/plated/attackby(obj/item/item, mob/user, params)
+	if(item.tool_behaviour == TOOL_CROWBAR)
+		item.play_tool_sound(src)
+		to_chat(user, "<span class='notice'>You pry \the [src] up.</span>")
+		deconstruct()
+		return TRUE
+	if(item.tool_behaviour == TOOL_WIRECUTTER) //To stop "cutting" it from lattice inheritance
+		return TRUE
+	return ..()
+
+/obj/structure/lattice/catwalk/plated/dark
+	icon = 'icons/obj/smooth_structures/catwalk_plated_dark.dmi'
+	build_material = /obj/item/stack/catwalk/plated/dark
+
+/obj/structure/lattice/catwalk/plated/smooth
+	icon = 'icons/obj/smooth_structures/catwalk_plated_smooth.dmi'
+	build_material = /obj/item/stack/catwalk/plated/smooth
 
 /obj/structure/lattice/lava
 	name = "heatproof support lattice"

@@ -1315,3 +1315,8 @@
 
 /// Called in /obj/machinery/atmospherics/components/unary/engine/DrawThrust(), and in /obj/structure/shuttle/engine/proc/DrawThrust()
 #define COMSIG_ENGINE_DRAWN_POWER "engine_drawn_power"
+
+/// When a mob attempts to play the footstep sound. Called in the foostep component
+#define COMSIG_MOB_PLAYS_FOOTSTEP "mob_plays_footstep"
+	/// Will cancel the attempted footstep playing (most likely after overriding and playing another one)
+	#define COMPONENT_CANCEL_PLAY_FOOTSTEP (1<<0)
