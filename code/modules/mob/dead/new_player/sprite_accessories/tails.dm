@@ -333,3 +333,8 @@
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
 	icon_state = "spade"
+
+/datum/sprite_accessory/tails/mammal/wagging/tiger
+	name = "Leopard"
+	icon_state = "leopard"
+	general_type = "feline"
