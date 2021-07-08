@@ -24,6 +24,7 @@
 	planetary_atmos = TRUE
 	tiled_dirt = FALSE
 	intact = FALSE
+	baseturfs = /turf/open/floor/planetary/rock
 	var/can_build_on = TRUE
 
 /turf/open/floor/planetary/ex_act(severity, target)

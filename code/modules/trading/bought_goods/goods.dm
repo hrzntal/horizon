@@ -23,16 +23,22 @@
 /datum/bought_goods/lungs
 	name = "lungs"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/lungs = TRADER_THIS_TYPE)
 
 /datum/bought_goods/heart
 	name = "hearts"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/heart = TRADER_THIS_TYPE)
 
 /datum/bought_goods/liver
 	name = "livers"
 	cost = 300
+	stock_low = 2
+	stock_high = 5
 	trading_types = list(/obj/item/organ/liver = TRADER_THIS_TYPE)
 
 /datum/bought_goods/stack/iron
@@ -89,3 +95,9 @@
 	name = "anomalous crystals"
 	cost = 1000
 	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
+
+/datum/bought_goods/reagent/meth
+	cost = 40
+	reagent_type = /datum/reagent/drug/methamphetamine
+	stock_low = 20
+	stock_high = 50

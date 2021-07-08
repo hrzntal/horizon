@@ -1,5 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Added engine effects to shuttle engines - fire plume and looping sound"
-  - rscadd: "Bearcat now has fire warnings around the engines"

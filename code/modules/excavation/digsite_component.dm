@@ -38,9 +38,9 @@
 		var/actual_depth = text2num(text_depth)
 		var/datum/excavation_find/iterated_find = find_list[text_depth]
 		if(current_dig_depth > actual_depth) //We broke it
-			find_list -= iterated_find
+			find_list -= text_depth
 			qdel(iterated_find)
-			A.visible_message("<span class='warning'>Something cracks inside the [A]!</span>")
+			A.visible_message("<span class='warning'>Something breaks inside \the [A]!</span>")
 			playsound(A, 'sound/effects/break_stone.ogg', 30, TRUE)
 
 		else if (current_dig_depth >= (actual_depth - iterated_find.clearance)) //Close dig

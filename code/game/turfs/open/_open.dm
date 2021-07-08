@@ -13,7 +13,7 @@
 /turf/open/zPassIn(atom/movable/A, direction, turf/source)
 	if(direction == DOWN)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_IN_DOWN)
+			if(O.obj_flags & BLOCK_Z_IN_DOWN || O.obj_flags & FULL_BLOCK_Z_ABOVE)
 				return FALSE
 		return TRUE
 	return FALSE
@@ -22,7 +22,7 @@
 /turf/open/zPassOut(atom/movable/A, direction, turf/destination)
 	if(direction == UP)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_OUT_UP)
+			if(O.obj_flags & BLOCK_Z_OUT_UP || O.obj_flags & FULL_BLOCK_Z_BELOW)
 				return FALSE
 		return TRUE
 	return FALSE

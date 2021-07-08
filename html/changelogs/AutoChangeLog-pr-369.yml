@@ -1,4 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - bugfix: "Fixed nulls in managed_overlays"

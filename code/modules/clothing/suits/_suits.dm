@@ -14,22 +14,26 @@
 	limb_integrity = 0 // disabled for most exo-suits
 
 
-/obj/item/clothing/suit/worn_overlays(isinhands = FALSE, file2use, mutant_styles = NONE)
-	. = list()
-	if(!isinhands)
-		if(damaged_clothes)
-			var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
-			. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
-		if(HAS_BLOOD_DNA(src))
-			var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
-			. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
-		var/mob/living/carbon/human/M = loc
-		if(ishuman(M) && M.w_uniform)
-			var/obj/item/clothing/under/U = M.w_uniform
-			if(istype(U) && U.attached_accessory)
-				var/obj/item/clothing/accessory/A = U.attached_accessory
-				if(A.above_suit)
-					. += U.accessory_overlay
+/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use, mutant_styles = NONE)
+	. = ..()
+	if(isinhands)
+		return
+
+	if(damaged_clothes)
+		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
+		. += mutable_appearance(damagefile2use, "damaged[blood_overlay_type]")
+	if(HAS_BLOOD_DNA(src))
+		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'icons/horizon/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
+		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
+
+	var/mob/living/carbon/human/M = loc
+	if(!ishuman(M) || !M.w_uniform)
+		return
+	var/obj/item/clothing/under/U = M.w_uniform
+	if(istype(U) && U.attached_accessory)
+		var/obj/item/clothing/accessory/A = U.attached_accessory
+		if(A.above_suit)
+			. += U.accessory_overlay
 
 /obj/item/clothing/suit/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
 	..()

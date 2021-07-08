@@ -117,8 +117,9 @@
 				if(TRADER_SCREEN_BOUGHT_GOODS)
 					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 					dat += "<tr style='vertical-align:top'>"
-					dat += "<td width=45%>Name:</td>"
+					dat += "<td width=35%>Name:</td>"
 					dat += "<td width=20%>Price:</td>"
+					dat += "<td width=10%>Amount:</td>"
 					dat += "<td width=35%>Actions:</td>"
 					dat += "</tr>"
 					var/even = TRUE
@@ -130,6 +131,7 @@
 						dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
 						dat += "<td>[goodie.name]</td>"
 						dat += "<td>[goodie.cost_label]</td>"
+						dat += "<td>[isnull(goodie.amount) ? "-" : "[goodie.amount]"]</td>"
 						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=sell;index=[goodie_index]'>Sell</a><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=haggle;index=[goodie_index]'>Haggle</a></td>"
 						dat += "</tr>"
 

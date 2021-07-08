@@ -69,6 +69,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 	/// Reference to an underlying area in a turf. Used by shuttles to restore original areas back
 	var/area/underlying_area
+	/// If this turf is a part of a shuttle, this is a reference to its roof.
+	var/obj/effect/abstract/shuttle_roof/shuttle_roof
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list("x", "y", "z")
@@ -663,3 +665,11 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 /turf/proc/IgniteTurf(power)
 	return
+
+/turf/proc/IsTransparent()
+	if(!(HAS_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT)))
+		return FALSE
+	for(var/obj/O in contents)
+		if(O.obj_flags & FULL_BLOCK_Z_BELOW)
+			return FALSE
+	return TRUE

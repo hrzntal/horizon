@@ -1,0 +1,7 @@
+author: "Azarak"
+delete-after: True
+changes: 
+  - rscadd: "Traders now can have a limited amount of \"stock\" they'll purchase. If they run out, it'll rotate (possibly into the same thing)"
+  - rscadd: "Traders can now purchase reagents"
+  - rscadd: "Medical trader may now be interested in a reagent of white variety"
+  - balance: "Medical trader will now purchase a limited amount of organs"

@@ -1,0 +1,7 @@
+author: "Avunia Takiya"
+delete-after: True
+changes: 
+  - qol: "Medicine Allergy Quirk now has insulin, spaceacillin, sal-glucose solution and coagulant in their blacklist - no more allergies from those"
+  - balance: "Medicine Allergy Quirk only gives 4 points now"
+  - rscadd: "Re-added Extreme Medicine Allergy"
+  - balance: "Extreme Medicine Allergy now has sal-glucose and insulin blacklisted"

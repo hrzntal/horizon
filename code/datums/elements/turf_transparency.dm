@@ -16,6 +16,7 @@
 
 	RegisterSignal(target, COMSIG_TURF_MULTIZ_DEL, .proc/on_multiz_turf_del)
 	RegisterSignal(target, COMSIG_TURF_MULTIZ_NEW, .proc/on_multiz_turf_new)
+	RegisterSignal(target, COMSIG_TURF_UPDATE_TRANSPARENCY, .proc/update_multiz)
 
 	ADD_TRAIT(our_turf, TURF_Z_TRANSPARENT_TRAIT, TURF_TRAIT)
 
@@ -31,13 +32,20 @@
 ///Updates the viscontents or underlays below this tile.
 /datum/element/turf_z_transparency/proc/update_multiz(turf/our_turf, prune_on_fail = FALSE, init = FALSE)
 	var/turf/below_turf = our_turf.below()
+	our_turf.vis_contents.len = 0
 	if(!below_turf)
-		our_turf.vis_contents.len = 0
 		if(!show_bottom_level(our_turf) && prune_on_fail) //If we cant show whats below, and we prune on fail, change the turf to plating as a fallback
 			our_turf.ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return FALSE
-	if(init)
+
+	var/apply_transparency = TRUE
+	for(var/obj/object in our_turf)
+		if(object.obj_flags & FULL_BLOCK_Z_BELOW) //Something's blocking our mutltiz view
+			apply_transparency = FALSE
+			break
+	if(apply_transparency)
 		our_turf.vis_contents += below_turf
+
 	if(isclosedturf(our_turf)) //Show girders below closed turfs
 		var/mutable_appearance/girder_underlay = mutable_appearance('icons/obj/structures.dmi', "girder", layer = TURF_LAYER-0.01)
 		girder_underlay.appearance_flags = RESET_ALPHA | RESET_COLOR

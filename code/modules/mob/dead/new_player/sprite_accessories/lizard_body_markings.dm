@@ -3,6 +3,7 @@
 	key = "body_markings"
 	generic = "Body Markings"
 	default_color = DEFAULT_TERTIARY
+	em_block = FALSE
 
 /datum/sprite_accessory/body_markings/none
 	name = "None"

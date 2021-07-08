@@ -159,6 +159,8 @@ All ShuttleMove procs go here
 	oldT.change_area(src, target_area)
 	oldT.underlying_area = null
 	//The old turf has now been given back to the area that turf originaly belonged to
+	if(oldT.shuttle_roof)
+		QDEL_NULL(oldT.shuttle_roof)
 
 	var/area/old_dest_area = newT.loc
 	parallax_movedir = old_dest_area.parallax_movedir
@@ -167,6 +169,10 @@ All ShuttleMove procs go here
 	contents += newT
 	newT.change_area(old_dest_area, src)
 	newT.underlying_area = old_dest_area
+
+	var/turf/above_turf = SSmapping.get_turf_above(newT)
+	if(above_turf)
+		newT.shuttle_roof = new(above_turf)
 	return TRUE
 
 // Called on areas after everything has been moved

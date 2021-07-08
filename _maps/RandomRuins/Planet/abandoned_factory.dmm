@@ -20,7 +20,7 @@
 	open = 1
 	},
 /obj/effect/spawner/clear,
-/turf/open/space/basic,
+/turf/open/floor/planetary/concrete/reinforced,
 /area/template_noop)
 "bn" = (
 /obj/structure/fence/door,
@@ -264,6 +264,11 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating/rust,
 /area/ruin/unpowered)
+"kL" = (
+/obj/structure/fence,
+/obj/effect/spawner/clear,
+/turf/open/floor/planetary/concrete/reinforced,
+/area/template_noop)
 "la" = (
 /obj/effect/turf_decal/caution/stand_clear/red,
 /obj/effect/decal/cleanable/dirt,
@@ -594,13 +599,6 @@
 /obj/effect/spawner/clear,
 /obj/effect/spawner/clear,
 /turf/template_noop,
-/area/template_noop)
-"xu" = (
-/obj/structure/fence{
-	dir = 8
-	},
-/obj/effect/spawner/clear,
-/turf/open/space/basic,
 /area/template_noop)
 "xC" = (
 /obj/effect/decal/cleanable/wrapping,
@@ -1277,7 +1275,7 @@ ZI
 JL
 VN
 bl
-bZ
+kL
 bE
 bE
 xo
@@ -1660,7 +1658,7 @@ Yi
 Ob
 St
 fV
-xu
+Oq
 nI
 "}
 (22,1,1) = {"
@@ -1680,7 +1678,7 @@ bz
 lU
 MB
 YZ
-xu
+Oq
 nI
 "}
 (23,1,1) = {"

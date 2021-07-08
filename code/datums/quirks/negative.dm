@@ -626,15 +626,27 @@
 	hardcore_value = 9
 
 /datum/quirk/allergic
-	name = "Extreme Medicine Allergy"
+	name = "Medicine Allergy"
 	desc = "Ever since you were a kid, you've been allergic to certain chemicals..."
-	value = -6
-	gain_text = "<span class='danger'>You feel your immune system shift.</span>"
+	value = -4
+	gain_text = "<span class='danger'>You feel your immune system shift lightly.</span>"
 	lose_text = "<span class='notice'>You feel your immune system phase back into perfect shape.</span>"
-	medical_record_text = "Patient's immune system responds violently to certain chemicals."
+	medical_record_text = "Patient's immune system responds undesirably to certain chemicals."
 	hardcore_value = 3
 	var/list/allergies = list()
-	var/list/blacklist = list(/datum/reagent/medicine/c2,/datum/reagent/medicine/epinephrine,/datum/reagent/medicine/adminordrazine,/datum/reagent/medicine/omnizine/godblood,/datum/reagent/medicine/cordiolis_hepatico,/datum/reagent/medicine/synaphydramine,/datum/reagent/medicine/diphenhydramine)
+	var/list/blacklist = list(
+		/datum/reagent/medicine/c2,
+		/datum/reagent/medicine/epinephrine,
+		/datum/reagent/medicine/adminordrazine,
+		/datum/reagent/medicine/omnizine/godblood,
+		/datum/reagent/medicine/cordiolis_hepatico,
+		/datum/reagent/medicine/synaphydramine,
+		/datum/reagent/medicine/diphenhydramine,
+		/datum/reagent/medicine/insulin,
+		/datum/reagent/medicine/spaceacillin,
+		/datum/reagent/medicine/salglu_solution,
+		/datum/reagent/medicine/coagulant,
+	)
 
 /datum/quirk/allergic/on_spawn()
 	var/list/chem_list = subtypesof(/datum/reagent/medicine) - blacklist
@@ -684,6 +696,24 @@
 		if(DT_PROB(10, delta_time))
 			carbon_quirk_holder.vomit()
 			carbon_quirk_holder.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),10)
+
+/datum/quirk/allergic/extreme
+	name = "Extreme Medicine Allergy"
+	desc = "Ever since you were born, you've been extremely allergic to certain chemicals..."
+	value = -6
+	gain_text = "<span class='danger'>You feel your immune system shift.</span>"
+	medical_record_text = "Patient's immune system responds violently to certain chemicals."
+	blacklist = list(
+		/datum/reagent/medicine/c2,
+		/datum/reagent/medicine/epinephrine,
+		/datum/reagent/medicine/adminordrazine,
+		/datum/reagent/medicine/omnizine/godblood,
+		/datum/reagent/medicine/cordiolis_hepatico,
+		/datum/reagent/medicine/synaphydramine,
+		/datum/reagent/medicine/diphenhydramine,
+		/datum/reagent/medicine/insulin,
+		/datum/reagent/medicine/salglu_solution,
+	)
 
 /datum/quirk/bad_touch
 	name = "Bad Touch"

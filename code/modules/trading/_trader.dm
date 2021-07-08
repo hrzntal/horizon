@@ -79,7 +79,7 @@
 /datum/trader/proc/get_matching_bought_datum(atom/movable/AM)
 	for(var/b in bought_goods)
 		var/datum/bought_goods/goodie = bought_goods[b]
-		if(goodie.Validate(AM))
+		if(goodie.Validate(AM) && goodie.CheckAmount(AM))
 			return goodie
 
 /datum/trader/proc/requested_barter(mob/user, obj/machinery/computer/trade_console/console, datum/sold_goods/goodie)
@@ -136,7 +136,7 @@
 	var/item_value
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
-		if(goodie.Validate(AM))
+		if(goodie.Validate(AM) && goodie.CheckAmount(AM))
 			chosen_item = AM
 			item_value = goodie.GetCost(AM)
 			break
@@ -155,6 +155,7 @@
 			return get_response("too_much_value", "No way I'm paying that much for this", user)
 		else if (haggled_price > item_value*(haggle_percent-TRADE_HARD_BARGAIN_MARGIN))
 			hard_bargain = TRUE
+	goodie.SubtractAmount(chosen_item)
 	qdel(chosen_item)
 	console.linked_pad.do_teleport_effect()
 	AfterTrade(user,console)
@@ -238,6 +239,7 @@
 		if(goodie)
 			item_count++
 			total_value += goodie.GetCost(AM)
+			goodie.SubtractAmount(AM)
 			valid_items += AM
 
 	if(!item_count)
@@ -352,6 +354,14 @@
 				RemoveSoldGoodieType(chosen_type)
 				break
 
+	//Remove up to 1 bought goodie that we've ran out of stock
+	if(bought_goods.len && prob(TRADER_CHANCE_TO_REMOVE_EMPTY_STOCK))
+		for(var/chosen_type in bought_goods)
+			var/datum/bought_goods/goodie = bought_goods[chosen_type]
+			if(!isnull(goodie.amount) && !goodie.amount)
+				RemoveBoughtGoodieType(chosen_type)
+				break
+
 	//Simulate other people "purchasing" the stock items
 	for(var/chosen_type in sold_goods)
 		var/datum/sold_goods/goodie = sold_goods[chosen_type]
@@ -420,7 +430,7 @@
 	sold_goods[passed_type] = new passed_type(TRADER_COST_MACRO(sell_margin,price_variance), quantity_multiplier)
 
 /datum/trader/proc/CreateBoughtGoodieType(passed_type)
-	bought_goods[passed_type] = new passed_type(TRADER_COST_MACRO(buy_margin,price_variance))
+	bought_goods[passed_type] = new passed_type(TRADER_COST_MACRO(buy_margin,price_variance), quantity_multiplier)
 
 /datum/trader/proc/RemoveSoldGoodieType(passed_type)
 	qdel(sold_goods[passed_type])

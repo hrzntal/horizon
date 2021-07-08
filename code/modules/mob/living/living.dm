@@ -1619,17 +1619,17 @@
 	if(!ceiling) //We are at the highest z-level.
 		to_chat(src, "<span class='warning'>You can't see through the ceiling above you.</span>")
 		return
-	else if(!istransparentturf(ceiling)) //There is no turf we can look through above us
+	else if(!ceiling.IsTransparent()) //There is no turf we can look through above us
 		var/turf/front_hole = get_step(ceiling, dir)
-		if(istransparentturf(front_hole))
+		if(front_hole.IsTransparent())
 			ceiling = front_hole
 		else
 			var/list/checkturfs = block(locate(x-1,y-1,ceiling.z),locate(x+1,y+1,ceiling.z))-ceiling-front_hole //Try find hole near of us
 			for(var/turf/checkhole in checkturfs)
-				if(istransparentturf(checkhole))
+				if(checkhole.IsTransparent())
 					ceiling = checkhole
 					break
-		if(!istransparentturf(ceiling))
+		if(!ceiling.IsTransparent())
 			to_chat(src, "<span class='warning'>You can't see through the floor above you.</span>")
 			return
 
@@ -1667,19 +1667,19 @@
 	if(!lower_level) //We are at the lowest z-level.
 		to_chat(src, "<span class='warning'>You can't see through the floor below you.</span>")
 		return
-	else if(!istransparentturf(floor)) //There is no turf we can look through below us
+	else if(floor.IsTransparent()) //There is no turf we can look through below us
 		var/turf/front_hole = get_step(floor, dir)
-		if(istransparentturf(front_hole))
+		if(front_hole.IsTransparent())
 			floor = front_hole
 			lower_level = get_step_multiz(front_hole, DOWN)
 		else
 			var/list/checkturfs = block(locate(x-1,y-1,z),locate(x+1,y+1,z))-floor //Try find hole near of us
 			for(var/turf/checkhole in checkturfs)
-				if(istransparentturf(checkhole))
+				if(checkhole.IsTransparent())
 					floor = checkhole
 					lower_level = get_step_multiz(checkhole, DOWN)
 					break
-		if(!istransparentturf(floor))
+		if(!floor.IsTransparent())
 			to_chat(src, "<span class='warning'>You can't see through the floor below you.</span>")
 			return
 

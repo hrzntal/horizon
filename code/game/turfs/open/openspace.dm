@@ -53,12 +53,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open/openspace/zPassIn(atom/movable/A, direction, turf/source)
 	if(direction == DOWN)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_IN_DOWN)
+			if(O.obj_flags & BLOCK_Z_IN_DOWN || O.obj_flags & FULL_BLOCK_Z_ABOVE)
 				return FALSE
 		return TRUE
 	if(direction == UP)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_IN_UP)
+			if(O.obj_flags & BLOCK_Z_IN_UP || O.obj_flags & FULL_BLOCK_Z_BELOW)
 				return FALSE
 		return TRUE
 	return FALSE
@@ -68,12 +68,12 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return FALSE
 	if(direction == DOWN)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_OUT_DOWN)
+			if(O.obj_flags & BLOCK_Z_OUT_DOWN || O.obj_flags & FULL_BLOCK_Z_BELOW)
 				return FALSE
 		return TRUE
 	if(direction == UP)
 		for(var/obj/O in contents)
-			if(O.obj_flags & BLOCK_Z_OUT_UP)
+			if(O.obj_flags & BLOCK_Z_OUT_UP || O.obj_flags & FULL_BLOCK_Z_ABOVE)
 				return FALSE
 		return TRUE
 	return FALSE
