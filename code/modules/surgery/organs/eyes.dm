@@ -12,12 +12,12 @@
 	high_threshold = 0.3 * STANDARD_ORGAN_THRESHOLD //threshold at 30
 	low_threshold = 0.2 * STANDARD_ORGAN_THRESHOLD //threshold at 20
 
-	low_threshold_passed = "<span class='info'>Distant objects become somewhat less tangible.</span>"
-	high_threshold_passed = "<span class='info'>Everything starts to look a lot less clear.</span>"
+	low_threshold_passed = SPAN_INFO("Distant objects become somewhat less tangible.")
+	high_threshold_passed = SPAN_INFO("Everything starts to look a lot less clear.")
 	now_failing = SPAN_WARNING("Darkness envelopes you, as your eyes go blind!")
-	now_fixed = "<span class='info'>Color and shapes are once again perceivable.</span>"
-	high_threshold_cleared = "<span class='info'>Your vision functions passably once more.</span>"
-	low_threshold_cleared = "<span class='info'>Your vision is cleared of any ailment.</span>"
+	now_fixed = SPAN_INFO("Color and shapes are once again perceivable.")
+	high_threshold_cleared = SPAN_INFO("Your vision functions passably once more.")
+	low_threshold_cleared = SPAN_INFO("Your vision is cleared of any ailment.")
 
 	var/sight_flags = 0
 	/// changes how the eyes overlay is applied, makes it apply over the lighting layer

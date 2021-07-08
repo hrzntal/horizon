@@ -7,7 +7,7 @@
 	telegraph_overlay = "snowfall_light"
 	telegraph_skyblock = 0.2
 
-	weather_message = "<span class='userdanger'><i>Harsh winds pick up as dense snow begins to fall from the sky! Seek shelter!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>Harsh winds pick up as dense snow begins to fall from the sky! Seek shelter!</i>")
 	weather_overlay = "snow_storm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
@@ -15,7 +15,7 @@
 
 	end_duration = 100
 	end_overlay = "snowfall_light"
-	end_message = "<span class='boldannounce'>The snowfall dies down, it should be safe to go outside again.</span>"
+	end_message = SPAN_BOLDANNOUNCE("The snowfall dies down, it should be safe to go outside again.")
 	end_skyblock = 0.2
 
 	area_type = /area

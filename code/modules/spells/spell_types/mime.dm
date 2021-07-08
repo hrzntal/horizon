@@ -5,7 +5,7 @@
 	panel = "Mime"
 	summon_type = list(/obj/effect/forcefield/mime)
 	invocation_type = INVOCATION_EMOTE
-	invocation_emote_self = "<span class='notice'>You form a wall in front of yourself.</span>"
+	invocation_emote_self = SPAN_NOTICE("You form a wall in front of yourself.")
 	summon_lifespan = 300
 	charge_max = 300
 	clothes_req = FALSE
@@ -35,7 +35,7 @@
 	panel = "Mime"
 	summon_type = list(/obj/structure/chair/mime)
 	invocation_type = INVOCATION_EMOTE
-	invocation_emote_self = "<span class='notice'>You conjure an invisible chair and sit down.</span>"
+	invocation_emote_self = SPAN_NOTICE("You conjure an invisible chair and sit down.")
 	summon_lifespan = 250
 	charge_max = 300
 	clothes_req = FALSE
@@ -73,7 +73,7 @@
 	panel = "Mime"
 	summon_type = list(/obj/item/storage/box/mime)
 	invocation_type = INVOCATION_EMOTE
-	invocation_emote_self = "<span class='notice'>You conjure up an invisible box, large enough to store a few things.</span>"
+	invocation_emote_self = SPAN_NOTICE("You conjure up an invisible box, large enough to store a few things.")
 	summon_lifespan = 500
 	charge_max = 300
 	clothes_req = FALSE
@@ -152,7 +152,7 @@
 	panel = "Mime"
 	wall_type = /obj/effect/forcefield/mime/advanced
 	invocation_type = INVOCATION_EMOTE
-	invocation_emote_self = "<span class='notice'>You form a blockade in front of yourself.</span>"
+	invocation_emote_self = SPAN_NOTICE("You form a blockade in front of yourself.")
 	charge_max = 600
 	sound =  null
 	clothes_req = FALSE

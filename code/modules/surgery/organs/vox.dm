@@ -28,7 +28,7 @@
 		return
 	switch(severity)
 		if(1)
-			to_chat(owner, "<span class='boldwarning'>You feel [pick("like your brain is being fried", "a sharp pain in your head")]!</span>")
+			to_chat(owner, SPAN_BOLDWARNING("You feel [pick("like your brain is being fried", "a sharp pain in your head")]!"))
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20, 150)
 			owner.jitteriness += 30
 			owner.stuttering += 30

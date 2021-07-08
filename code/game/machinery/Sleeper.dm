@@ -27,7 +27,7 @@
 	)
 	var/list/chem_buttons //Used when emagged to scramble which chem is used, eg: mutadone -> morphine
 	var/scrambled_chems = FALSE //Are chem buttons scrambled? used as a warning
-	var/enter_message = "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.</b></span>"
+	var/enter_message = SPAN_NOTICE("<b>You feel cool air surround you. You go numb as your senses turn inward.</b>")
 	payment_department = ACCOUNT_MED
 	fair_market_price = 5
 
@@ -295,7 +295,7 @@
 	var/spray_chems = list(
 		/datum/reagent/spraytan, /datum/reagent/hair_dye, /datum/reagent/baldium, /datum/reagent/barbers_aid
 	)//Chemicals that need to have a touch or vapor reaction to be applied, not the standard chamber reaction.
-	enter_message = "<span class='notice'><b>You're surrounded by some funky music inside the chamber. You zone out as you feel waves of krunk vibe within you.</b></span>"
+	enter_message = SPAN_NOTICE("<b>You're surrounded by some funky music inside the chamber. You zone out as you feel waves of krunk vibe within you.</b>")
 
 /obj/machinery/sleeper/party/inject_chem(chem, mob/user)
 	if(leddit)

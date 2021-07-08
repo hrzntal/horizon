@@ -14,8 +14,8 @@
 	low_threshold_passed = SPAN_WARNING("You feel short of breath.")
 	high_threshold_passed = SPAN_WARNING("You feel some sort of constriction around your chest as your breathing becomes shallow and rapid.")
 	now_fixed = SPAN_WARNING("Your lungs seem to once again be able to hold air.")
-	low_threshold_cleared = "<span class='info'>You can breathe normally again.</span>"
-	high_threshold_cleared = "<span class='info'>The constriction around your chest loosens as your breathing calms down.</span>"
+	low_threshold_cleared = SPAN_INFO("You can breathe normally again.")
+	high_threshold_cleared = SPAN_INFO("The constriction around your chest loosens as your breathing calms down.")
 
 
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/medicine/salbutamol = 5)

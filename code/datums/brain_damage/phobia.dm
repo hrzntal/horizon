@@ -3,7 +3,7 @@
 	desc = "Patient is unreasonably afraid of something."
 	scan_desc = "phobia"
 	gain_text = SPAN_WARNING("You start finding default values very unnerving...")
-	lose_text = "<span class='notice'>You no longer feel afraid of default values.</span>"
+	lose_text = SPAN_NOTICE("You no longer feel afraid of default values.")
 	var/phobia_type
 	/// Cooldown for proximity checks so we don't spam a range 7 view every two seconds.
 	COOLDOWN_DECLARE(check_cooldown)
@@ -25,7 +25,7 @@
 		phobia_type = pick(SStraumas.phobia_types)
 
 	gain_text = SPAN_WARNING("You start finding [phobia_type] very unnerving...")
-	lose_text = "<span class='notice'>You no longer feel afraid of [phobia_type].</span>"
+	lose_text = SPAN_NOTICE("You no longer feel afraid of [phobia_type].")
 	scan_desc += " of [phobia_type]"
 	trigger_regex = SStraumas.phobia_regexes[phobia_type]
 	trigger_mobs = SStraumas.phobia_mobs[phobia_type]

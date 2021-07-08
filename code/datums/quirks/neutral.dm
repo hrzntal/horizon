@@ -6,8 +6,8 @@
 	desc = "You are energized by talking to others, and enjoy spending your free time in the bar."
 	value = 0
 	mob_trait = TRAIT_EXTROVERT
-	gain_text = "<span class='notice'>You feel like hanging out with other people.</span>"
-	lose_text = "<span class='danger'>You feel like you're over the bar scene.</span>"
+	gain_text = SPAN_NOTICE("You feel like hanging out with other people.")
+	lose_text = SPAN_DANGER("You feel like you're over the bar scene.")
 	medical_record_text = "Patient will not shut the hell up."
 
 /datum/quirk/introvert
@@ -15,8 +15,8 @@
 	desc = "You are energized by having time to yourself, and enjoy spending your free time in the library."
 	value = 0
 	mob_trait = TRAIT_INTROVERT
-	gain_text = "<span class='notice'>You feel like reading a good book quietly.</span>"
-	lose_text = "<span class='danger'>You feel like libraries are boring.</span>"
+	gain_text = SPAN_NOTICE("You feel like reading a good book quietly.")
+	lose_text = SPAN_DANGER("You feel like libraries are boring.")
 	medical_record_text = "Patient doesn't seem to say much."
 
 /datum/quirk/no_taste
@@ -24,16 +24,16 @@
 	desc = "You can't taste anything! Toxic food will still poison you."
 	value = 0
 	mob_trait = TRAIT_AGEUSIA
-	gain_text = "<span class='notice'>You can't taste anything!</span>"
-	lose_text = "<span class='notice'>You can taste again!</span>"
+	gain_text = SPAN_NOTICE("You can't taste anything!")
+	lose_text = SPAN_NOTICE("You can taste again!")
 	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
 /datum/quirk/vegetarian
 	name = "Vegetarian"
 	desc = "You find the idea of eating meat morally and physically repulsive."
 	value = 0
-	gain_text = "<span class='notice'>You feel repulsion at the idea of eating meat.</span>"
-	lose_text = "<span class='notice'>You feel like eating meat isn't that bad.</span>"
+	gain_text = SPAN_NOTICE("You feel repulsion at the idea of eating meat.")
+	lose_text = SPAN_NOTICE("You feel like eating meat isn't that bad.")
 	medical_record_text = "Patient reports a vegetarian diet."
 
 /datum/quirk/vegetarian/add()
@@ -55,8 +55,8 @@
 	name = "Snob"
 	desc = "You care about the finer things, if a room doesn't look nice its just not really worth it, is it?"
 	value = 0
-	gain_text = "<span class='notice'>You feel like you understand what things should look like.</span>"
-	lose_text = "<span class='notice'>Well who cares about deco anyways?</span>"
+	gain_text = SPAN_NOTICE("You feel like you understand what things should look like.")
+	lose_text = SPAN_NOTICE("Well who cares about deco anyways?")
 	medical_record_text = "Patient seems to be rather stuck up."
 	mob_trait = TRAIT_SNOB
 
@@ -64,8 +64,8 @@
 	name = "Ananas Affinity"
 	desc = "You find yourself greatly enjoying fruits of the ananas genus. You can't seem to ever get enough of their sweet goodness!"
 	value = 0
-	gain_text = "<span class='notice'>You feel an intense craving for pineapple.</span>"
-	lose_text = "<span class='notice'>Your feelings towards pineapples seem to return to a lukewarm state.</span>"
+	gain_text = SPAN_NOTICE("You feel an intense craving for pineapple.")
+	lose_text = SPAN_NOTICE("Your feelings towards pineapples seem to return to a lukewarm state.")
 	medical_record_text = "Patient demonstrates a pathological love of pineapple."
 
 /datum/quirk/pineapple_liker/add()
@@ -82,8 +82,8 @@
 	name = "Ananas Aversion"
 	desc = "You find yourself greatly detesting fruits of the ananas genus. Serious, how the hell can anyone say these things are good? And what kind of madman would even dare putting it on a pizza!?"
 	value = 0
-	gain_text = "<span class='notice'>You find yourself pondering what kind of idiot actually enjoys pineapples...</span>"
-	lose_text = "<span class='notice'>Your feelings towards pineapples seem to return to a lukewarm state.</span>"
+	gain_text = SPAN_NOTICE("You find yourself pondering what kind of idiot actually enjoys pineapples...")
+	lose_text = SPAN_NOTICE("Your feelings towards pineapples seem to return to a lukewarm state.")
 	medical_record_text = "Patient is correct to think that pineapple is disgusting."
 
 /datum/quirk/pineapple_hater/add()
@@ -100,8 +100,8 @@
 	name = "Deviant Tastes"
 	desc = "You dislike food that most people enjoy, and find delicious what they don't."
 	value = 0
-	gain_text = "<span class='notice'>You start craving something that tastes strange.</span>"
-	lose_text = "<span class='notice'>You feel like eating normal food again.</span>"
+	gain_text = SPAN_NOTICE("You start craving something that tastes strange.")
+	lose_text = SPAN_NOTICE("You feel like eating normal food again.")
 	medical_record_text = "Patient demonstrates irregular nutrition preferences."
 
 /datum/quirk/deviant_tastes/add()
@@ -182,8 +182,8 @@
 	desc = "You have no hair and are quite insecure about it! Keep your wig on, or at least your head covered up."
 	value = 0
 	mob_trait = TRAIT_BALD
-	gain_text = "<span class='notice'>Your head is as smooth as can be, it's terrible.</span>"
-	lose_text = "<span class='notice'>Your head itches, could it be... growing hair?!</span>"
+	gain_text = SPAN_NOTICE("Your head is as smooth as can be, it's terrible.")
+	lose_text = SPAN_NOTICE("Your head itches, could it be... growing hair?!")
 	medical_record_text = "Patient starkly refused to take off headwear during examination."
 	/// The user's starting hairstyle
 	var/old_hair
@@ -256,8 +256,8 @@
 	desc = "You carry your camera and personal photo album everywhere you go, and your scrapbooks are legendary among your coworkers."
 	value = 0
 	mob_trait = TRAIT_PHOTOGRAPHER
-	gain_text = "<span class='notice'>You know everything about photography.</span>"
-	lose_text = "<span class='danger'>You forget how photo cameras work.</span>"
+	gain_text = SPAN_NOTICE("You know everything about photography.")
+	lose_text = SPAN_DANGER("You forget how photo cameras work.")
 	medical_record_text = "Patient mentions photography as a stress-relieving hobby."
 
 /datum/quirk/item_quirk/photographer/add_unique()

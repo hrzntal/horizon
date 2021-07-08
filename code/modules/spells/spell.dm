@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	var/charge_max = 10 SECONDS //recharge time in deciseconds if charge_type = "recharge" or starting charges if charge_type = "charges"
 	var/charge_counter = 0 //can only cast spells if it equals recharge, ++ each decisecond if charge_type = "recharge" or -- each cast if charge_type = "charges"
-	var/still_recharging_msg = "<span class='notice'>The spell is still recharging.</span>"
+	var/still_recharging_msg = SPAN_NOTICE("The spell is still recharging.")
 	var/recharging = TRUE
 
 	var/holder_var_type = "bruteloss" //only used if charge_type equals to "holder_var"

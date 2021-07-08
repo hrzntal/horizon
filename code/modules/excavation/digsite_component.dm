@@ -81,14 +81,14 @@
 		if(do_after(user,pick.dig_speed, target = parent))
 			if(QDELETED(src))
 				return
-			to_chat(user, "<span class='notice'>You dig [pick.dig_depth] centimeters deeper.</span>")
+			to_chat(user, SPAN_NOTICE("You dig [pick.dig_depth] centimeters deeper."))
 			playsound(A, pick.usesound, 50, 1, -1)
 			DoDig(user, pick.dig_depth)
 		return COMPONENT_NO_AFTERATTACK
 
 	if(istype(I, /obj/item/excavation_measuring_tape))
 		if(current_dig_depth)
-			to_chat(user, "<span class='notice'>You measure the hole being [current_dig_depth] centimeters deep.</span>")
+			to_chat(user, SPAN_NOTICE("You measure the hole being [current_dig_depth] centimeters deep."))
 		return COMPONENT_NO_AFTERATTACK
 
 	if(istype(I, /obj/item/excavation_depth_scanner))

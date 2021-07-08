@@ -292,7 +292,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		return
 
 	if(user != target && round((world.time - target.lastclienttime) / (1 MINUTES), 1) <= CONFIG_GET(number/cryo_min_ssd_time))
-		to_chat(user, "<span class='danger'>You can't put [target] into [src]. They might wake up soon.</span>")
+		to_chat(user, SPAN_DANGER("You can't put [target] into [src]. They might wake up soon."))
 		return
 
 	if(target == user)

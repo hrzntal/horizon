@@ -83,8 +83,8 @@
 			to_chat(user, SPAN_WARNING("You can't reach out!"))
 			return
 		var/direction = going_up ? "up" : "down"
-		user.visible_message("<span class='notice'>[user] begins to climb [direction] [src].</span>", "<span class='notice'>You begin to climb [direction] [src].</span>")
-		ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to climb [direction] [src]."), SPAN_NOTICE("You begin to climb [direction] [src]."))
+		ladder.audible_message(SPAN_NOTICE("You hear something coming [direction] \the [src]."))
 		ladder.add_fingerprint(user)
 		playsound(src, pick(climbsounds), 50) //Here
 		playsound(ladder, pick(climbsounds), 50) //And at the destination

@@ -5,7 +5,7 @@
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
-	text_gain_indication = "<span class='notice'>Your muscles hurt!</span>"
+	text_gain_indication = SPAN_NOTICE("Your muscles hurt!")
 	species_allowed = list("human") //no skeleton/lizard hulk
 	health_req = 25
 	instability = 40

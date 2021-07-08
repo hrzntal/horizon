@@ -25,7 +25,7 @@
 	. = ..()
 	if(!.) //if it wasn't caught
 		visible_message(SPAN_WARNING("[src] flashes and shatters!"),
-		"<span class='hear'>You hear something shatter!</span>")
+		SPAN_HEAR("You hear something shatter!"))
 		var/turf/our_T = get_turf(src)
 		var/obj/ash = new /obj/effect/decal/cleanable/ash(our_T)
 		ash.color = color
@@ -56,10 +56,10 @@
 
 /obj/item/anomalous_sliver/crystal/attackby(obj/item/I, mob/user, params)
 	if(I.get_sharpness() && user.Adjacent(src))
-		to_chat(user, "<span class='notice'>You carefully slice a piece off of [src]...</span>")
+		to_chat(user, SPAN_NOTICE("You carefully slice a piece off of [src]..."))
 		if(do_mob(user, src, 4 SECONDS))
 			if(prob(50 + (I.force*2)))
-				to_chat(user, "<span class='notice'>You succeed, slicing a sliver off of [src].</span>")
+				to_chat(user, SPAN_NOTICE("You succeed, slicing a sliver off of [src]."))
 				splinter_off()
 			else
 				to_chat(user, SPAN_WARNING("You mess up and the crystal flashes briefly!"))

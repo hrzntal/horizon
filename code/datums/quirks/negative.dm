@@ -5,8 +5,8 @@
 	desc = "Thanks to your poor posture, backpacks and other bags never sit right on your back. More evently weighted objects are fine, though."
 	value = -8
 	mood_quirk = TRUE
-	gain_text = "<span class='danger'>Your back REALLY hurts!</span>"
-	lose_text = "<span class='notice'>Your back feels better.</span>"
+	gain_text = SPAN_DANGER("Your back REALLY hurts!")
+	lose_text = SPAN_NOTICE("Your back feels better.")
 	medical_record_text = "Patient scans indicate severe and chronic back pain."
 	hardcore_value = 4
 	var/datum/weakref/backpack
@@ -53,8 +53,8 @@
 	name = "Blood Deficiency"
 	desc = "Your body can't produce enough blood to sustain itself."
 	value = -8
-	gain_text = "<span class='danger'>You feel your vigor slowly fading away.</span>"
-	lose_text = "<span class='notice'>You feel vigorous again.</span>"
+	gain_text = SPAN_DANGER("You feel your vigor slowly fading away.")
+	lose_text = SPAN_NOTICE("You feel vigorous again.")
 	medical_record_text = "Patient requires regular treatment for blood loss due to low production of blood."
 	hardcore_value = 8
 	processing_quirk = TRUE
@@ -74,8 +74,8 @@
 	name = "Blind"
 	desc = "You are completely blind, nothing can counteract this."
 	value = -16
-	gain_text = "<span class='danger'>You can't see anything.</span>"
-	lose_text = "<span class='notice'>You miraculously gain back your vision.</span>"
+	gain_text = SPAN_DANGER("You can't see anything.")
+	lose_text = SPAN_NOTICE("You miraculously gain back your vision.")
 	medical_record_text = "Patient has permanent blindness."
 	hardcore_value = 15
 
@@ -97,8 +97,8 @@
 	name = "Brain Tumor"
 	desc = "You have a little friend in your brain that is slowly destroying it. Better bring some mannitol!"
 	value = -12
-	gain_text = "<span class='danger'>You feel smooth.</span>"
-	lose_text = "<span class='notice'>You feel wrinkled again.</span>"
+	gain_text = SPAN_DANGER("You feel smooth.")
+	lose_text = SPAN_NOTICE("You feel wrinkled again.")
 	medical_record_text = "Patient has a tumor in their brain that is slowly driving them to brain death."
 	hardcore_value = 12
 	processing_quirk = TRUE
@@ -129,8 +129,8 @@
 	desc = "You are incurably deaf."
 	value = -8
 	mob_trait = TRAIT_DEAF
-	gain_text = "<span class='danger'>You can't hear anything.</span>"
-	lose_text = "<span class='notice'>You're able to hear again!</span>"
+	gain_text = SPAN_DANGER("You can't hear anything.")
+	lose_text = SPAN_NOTICE("You're able to hear again!")
 	medical_record_text = "Patient's cochlear nerve is incurably damaged."
 	hardcore_value = 12
 
@@ -139,8 +139,8 @@
 	desc = "You sometimes just hate life."
 	mob_trait = TRAIT_DEPRESSION
 	value = -3
-	gain_text = "<span class='danger'>You start feeling depressed.</span>"
-	lose_text = "<span class='notice'>You no longer feel depressed.</span>" //if only it were that easy!
+	gain_text = SPAN_DANGER("You start feeling depressed.")
+	lose_text = SPAN_NOTICE("You no longer feel depressed.") //if only it were that easy!
 	medical_record_text = "Patient has a mild mood disorder causing them to experience acute episodes of depression."
 	mood_quirk = TRUE
 	hardcore_value = 2
@@ -194,7 +194,7 @@
 
 	var/obj/family_heirloom = heirloom?.resolve()
 	if(!family_heirloom)
-		to_chat(quirk_holder, "<span class='boldnotice'>A wave of existential dread runs over you as you realise your precious family heirloom is missing. Perhaps the Gods will show mercy on your cursed soul?</span>")
+		to_chat(quirk_holder, SPAN_BOLDNOTICE("A wave of existential dread runs over you as you realise your precious family heirloom is missing. Perhaps the Gods will show mercy on your cursed soul?"))
 		return
 
 	family_heirloom.AddComponent(/datum/component/heirloom, quirk_holder.mind, family_name)
@@ -223,8 +223,8 @@
 	desc = "You have skin of paper and bones of glass! You suffer wounds much more easily than most."
 	value = -6
 	mob_trait = TRAIT_EASILY_WOUNDED
-	gain_text = "<span class='danger'>You feel frail.</span>"
-	lose_text = "<span class='notice'>You feel sturdy again.</span>"
+	gain_text = SPAN_DANGER("You feel frail.")
+	lose_text = SPAN_NOTICE("You feel sturdy again.")
 	medical_record_text = "Patient is absurdly easy to injure. Please take all due dilligence to avoid possible malpractice suits."
 	hardcore_value = 4
 
@@ -233,8 +233,8 @@
 	desc = "You sleep like a rock! Whenever you're put to sleep or knocked unconscious, you take a little bit longer to wake up."
 	value = -2
 	mob_trait = TRAIT_HEAVY_SLEEPER
-	gain_text = "<span class='danger'>You feel sleepy.</span>"
-	lose_text = "<span class='notice'>You feel awake again.</span>"
+	gain_text = SPAN_DANGER("You feel sleepy.")
+	lose_text = SPAN_NOTICE("You feel awake again.")
 	medical_record_text = "Patient has abnormal sleep study results and is difficult to wake up."
 	hardcore_value = 2
 
@@ -242,8 +242,8 @@
 	name = "Hypersensitive"
 	desc = "For better or worse, everything seems to affect your mood more than it should."
 	value = -2
-	gain_text = "<span class='danger'>You seem to make a big deal out of everything.</span>"
-	lose_text = "<span class='notice'>You don't seem to make a big deal out of everything anymore.</span>"
+	gain_text = SPAN_DANGER("You seem to make a big deal out of everything.")
+	lose_text = SPAN_NOTICE("You don't seem to make a big deal out of everything anymore.")
 	medical_record_text = "Patient demonstrates a high level of emotional volatility."
 	hardcore_value = 3
 
@@ -262,8 +262,8 @@
 	desc = "You just can't handle your drinks and get drunk very quickly."
 	value = -2
 	mob_trait = TRAIT_LIGHT_DRINKER
-	gain_text = "<span class='notice'>Just the thought of drinking alcohol makes your head spin.</span>"
-	lose_text = "<span class='danger'>You're no longer severely affected by alcohol.</span>"
+	gain_text = SPAN_NOTICE("Just the thought of drinking alcohol makes your head spin.")
+	lose_text = SPAN_DANGER("You're no longer severely affected by alcohol.")
 	medical_record_text = "Patient demonstrates a low tolerance for alcohol. (Wimp)"
 	hardcore_value = 3
 
@@ -271,8 +271,8 @@
 	name = "Nearsighted"
 	desc = "You are nearsighted without prescription glasses, but spawn with a pair."
 	value = -4
-	gain_text = "<span class='danger'>Things far away from you start looking blurry.</span>"
-	lose_text = "<span class='notice'>You start seeing faraway things normally again.</span>"
+	gain_text = SPAN_DANGER("Things far away from you start looking blurry.")
+	lose_text = SPAN_NOTICE("You start seeing faraway things normally again.")
 	medical_record_text = "Patient requires prescription glasses in order to counteract nearsightedness."
 	hardcore_value = 5
 
@@ -329,8 +329,8 @@
 	desc = "The thought of violence makes you sick. So much so, in fact, that you can't hurt anyone."
 	value = -8
 	mob_trait = TRAIT_PACIFISM
-	gain_text = "<span class='danger'>You feel repulsed by the thought of violence!</span>"
-	lose_text = "<span class='notice'>You think you can defend yourself again.</span>"
+	gain_text = SPAN_DANGER("You feel repulsed by the thought of violence!")
+	lose_text = SPAN_NOTICE("You think you can defend yourself again.")
 	medical_record_text = "Patient is unusually pacifistic and cannot bring themselves to cause physical harm."
 	hardcore_value = 6
 
@@ -396,8 +396,8 @@
 	desc = "Your first instinct is always to let people push you around. Resisting out of grabs will take conscious effort."
 	value = -8
 	mob_trait = TRAIT_GRABWEAKNESS
-	gain_text = "<span class='danger'>You feel like a pushover.</span>"
-	lose_text = "<span class='notice'>You feel like standing up for yourself.</span>"
+	gain_text = SPAN_DANGER("You feel like a pushover.")
+	lose_text = SPAN_NOTICE("You feel like standing up for yourself.")
 	medical_record_text = "Patient presents a notably unassertive personality and is easy to manipulate."
 	hardcore_value = 4
 
@@ -406,8 +406,8 @@
 	desc = "You suffer from a severe disorder that causes very vivid hallucinations. Mindbreaker toxin can suppress its effects, and you are immune to mindbreaker's hallucinogenic properties. <b>This is not a license to grief.</b>"
 	value = -8
 	mob_trait = TRAIT_INSANITY
-	gain_text = "<span class='userdanger'>...</span>"
-	lose_text = "<span class='notice'>You feel in tune with the world again.</span>"
+	gain_text = SPAN_USERDANGER("...")
+	lose_text = SPAN_NOTICE("You feel in tune with the world again.")
 	medical_record_text = "Patient suffers from acute Reality Dissociation Syndrome and experiences vivid hallucinations."
 	hardcore_value = 6
 	processing_quirk = TRUE
@@ -429,8 +429,8 @@
 	name = "Social Anxiety"
 	desc = "Talking to people is very difficult for you, and you often stutter or even lock up."
 	value = -3
-	gain_text = "<span class='danger'>You start worrying about what you're saying.</span>"
-	lose_text = "<span class='notice'>You feel easier about talking again.</span>" //if only it were that easy!
+	gain_text = SPAN_DANGER("You start worrying about what you're saying.")
+	lose_text = SPAN_NOTICE("You feel easier about talking again.") //if only it were that easy!
 	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
 	hardcore_value = 4
 	mob_trait = TRAIT_ANXIOUS
@@ -555,7 +555,7 @@
 	name = "Junkie"
 	desc = "You can't get enough of hard drugs."
 	value = -6
-	gain_text = "<span class='danger'>You suddenly feel the craving for drugs.</span>"
+	gain_text = SPAN_DANGER("You suddenly feel the craving for drugs.")
 	medical_record_text = "Patient has a history of hard drugs."
 	hardcore_value = 4
 	processing_quirk = TRUE
@@ -643,7 +643,7 @@
 	name = "Smoker"
 	desc = "Sometimes you just really want a smoke. Probably not great for your lungs."
 	value = -4
-	gain_text = "<span class='danger'>You could really go for a smoke right about now.</span>"
+	gain_text = SPAN_DANGER("You could really go for a smoke right about now.")
 	medical_record_text = "Patient is a current smoker."
 	reagent_type = /datum/reagent/drug/nicotine
 	accessory_type = /obj/item/lighter/greyscale
@@ -680,8 +680,8 @@
 	desc = "Due to past troubles, you are unable to recover your sanity if you lose it. Be very careful managing your mood!"
 	value = -10
 	mob_trait = TRAIT_UNSTABLE
-	gain_text = "<span class='danger'>There's a lot on your mind right now.</span>"
-	lose_text = "<span class='notice'>Your mind finally feels calm.</span>"
+	gain_text = SPAN_DANGER("There's a lot on your mind right now.")
+	lose_text = SPAN_NOTICE("Your mind finally feels calm.")
 	medical_record_text = "Patient's mind is in a vulnerable state, and cannot recover from traumatic events."
 	hardcore_value = 9
 
@@ -689,8 +689,8 @@
 	name = "Medicine Allergy"
 	desc = "Ever since you were a kid, you've been allergic to certain chemicals..."
 	value = -4
-	gain_text = "<span class='danger'>You feel your immune system shift lightly.</span>"
-	lose_text = "<span class='notice'>You feel your immune system phase back into perfect shape.</span>"
+	gain_text = SPAN_DANGER("You feel your immune system shift lightly.")
+	lose_text = SPAN_NOTICE("You feel your immune system phase back into perfect shape.")
 	medical_record_text = "Patient's immune system responds undesirably to certain chemicals."
 	hardcore_value = 3
 	processing_quirk = TRUE
@@ -778,8 +778,8 @@
 	desc = "You don't like hugs. You'd really prefer if people just left you alone."
 	mob_trait = TRAIT_BADTOUCH
 	value = -1
-	gain_text = "<span class='danger'>You just want people to leave you alone.</span>"
-	lose_text = "<span class='notice'>You could use a big hug.</span>"
+	gain_text = SPAN_DANGER("You just want people to leave you alone.")
+	lose_text = SPAN_NOTICE("You could use a big hug.")
 	medical_record_text = "Patient has disdain for being touched. Potentially has undiagnosed haphephobia."
 	mood_quirk = TRUE
 	hardcore_value = 1
@@ -804,8 +804,8 @@
 	name = "Mute"
 	desc = "Due to some accident, medical condition, or simply by choice, you are completely unable to speak."
 	value = -2
-	gain_text = "<span class='danger'>You find yourself unable to speak!</span>"
-	lose_text = "<span class='notice'>You feel a growing strength in your vocal chords.</span>"
+	gain_text = SPAN_DANGER("You find yourself unable to speak!")
+	lose_text = SPAN_NOTICE("You feel a growing strength in your vocal chords.")
 	medical_record_text = "Functionally mute, patient is unable to use their voice in any capacity."
 
 /datum/quirk/mute/add()

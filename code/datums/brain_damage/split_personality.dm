@@ -6,7 +6,7 @@
 	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
 	scan_desc = "complete lobe separation"
 	gain_text = SPAN_WARNING("You feel like your mind was split in two.")
-	lose_text = "<span class='notice'>You feel alone again.</span>"
+	lose_text = SPAN_NOTICE("You feel alone again.")
 	var/current_controller = OWNER
 	var/initialized = FALSE //to prevent personalities deleting themselves while we wait for ghosts
 	var/mob/living/split_personality/stranger_backseat //there's two so they can swap without overwriting
@@ -170,7 +170,7 @@
 	desc = "Patient's brain is split into two personalities, which randomly switch control of the body."
 	scan_desc = "complete lobe separation"
 	gain_text = ""
-	lose_text = "<span class='notice'>You are free of your brainwashing.</span>"
+	lose_text = SPAN_NOTICE("You are free of your brainwashing.")
 	can_gain = FALSE
 	var/codeword
 	var/objective

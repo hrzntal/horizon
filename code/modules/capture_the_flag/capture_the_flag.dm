@@ -207,7 +207,7 @@
 	resistance_flags = INDESTRUCTIBLE
 	var/game_id = "centcom"
 
-	var/victory_rejoin_text = "<span class='userdanger'>Teams have been cleared. Click on the machines to vote to begin another round.</span>"
+	var/victory_rejoin_text = SPAN_USERDANGER("Teams have been cleared. Click on the machines to vote to begin another round.")
 	var/team = WHITE_TEAM
 	var/team_span = ""
 	//Capture the Flag scoring

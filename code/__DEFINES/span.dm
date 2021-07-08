@@ -1,4 +1,4 @@
-#define SPAN(class, str) ("span class='[class]'>" + str + "</span>")
+#define SPAN(class, str) ("span class='" + class + "'>" + str + "</span>")
 // Sorted alphabetically
 #define SPAN_ABDUCTOR(str) ("<span class='abductor'>" + str + "</span>")
 #define SPAN_ADMIN(str) ("<span class='admin'>" + str + "</span>")
@@ -41,6 +41,7 @@
 #define SPAN_EMOTE(str) ("<span class='emote'>" + str + "</span>")
 #define SPAN_ENGRADIO(str) ("<span class='engradio'>" + str + "</span>")
 #define SPAN_EXTREMELYBIG(str) ("<span class='extremelybig'>" + str + "</span>")
+#define SPAN_GAME(str) ("<span class='game'>" + str + "</span>")
 #define SPAN_GHOSTALERT(str) ("<span class='ghostalert'>" + str + "</span>")
 #define SPAN_GREEN(str) ("<span class='green'>" + str + "</span>")
 #define SPAN_GREENANNOUNCE(str) ("<span class='greenannounce'>" + str + "</span>")

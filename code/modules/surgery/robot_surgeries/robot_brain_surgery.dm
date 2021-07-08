@@ -24,12 +24,12 @@
 	return TRUE
 
 /datum/surgery_step/fix_robot_brain/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to fix [target]'s posibrain...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to fix [target]'s posibrain..."),
 		"[user] begins to fix [target]'s posibrain.",
 		"[user] begins to perform surgery on [target]'s posibrain.")
 
 /datum/surgery_step/fix_robot_brain/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed in fixing [target]'s posibrain.</span>",
+	display_results(user, target, SPAN_NOTICE("You succeed in fixing [target]'s posibrain."),
 		"[user] successfully fixes [target]'s posibrain!",
 		"[user] completes the surgery on [target]'s posibrain.")
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))

@@ -119,7 +119,7 @@
 						continue
 					line += ORG.get_description_string(G)
 				if(length(line))
-					to_chat(usr, "<span class='notice'>[jointext(line, "\n")]</span>")
+					to_chat(usr, SPAN_NOTICE("[jointext(line, "\n")]"))
 			if("flavor_text")
 				if(length(dna.features["flavor_text"]))
 					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
@@ -1328,5 +1328,5 @@
 	if(!try_hide_mutant_parts && !do_after(src, 3 SECONDS,target = src))
 		return
 	try_hide_mutant_parts = !try_hide_mutant_parts
-	to_chat(usr, "<span class='notice'>[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]</span>")
+	to_chat(usr, SPAN_NOTICE("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
 	update_mutant_bodyparts()

@@ -8,7 +8,7 @@
 	quality = POSITIVE //so it gets carried over on revives
 	power = /obj/effect/proc_holder/spell/pointed/declare_evil
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel honorbound!</span>"
+	text_gain_indication = SPAN_NOTICE("You feel honorbound!")
 	text_lose_indication = SPAN_WARNING("You feel unshackled from your code of honor!")
 	/// list of guilty people
 	var/list/guilty = list()

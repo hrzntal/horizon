@@ -23,14 +23,14 @@
 	//Sparks effect - For emag
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	//Messages - Saves me time if I want to change something.
-	var/noserver = "<span class='alert'>ALERT: No server detected.</span>"
+	var/noserver = SPAN_ALERT("ALERT: No server detected.")
 	var/incorrectkey = SPAN_WARNING("ALERT: Incorrect decryption key!")
-	var/defaultmsg = "<span class='notice'>Welcome. Please select an option.</span>"
+	var/defaultmsg = SPAN_NOTICE("Welcome. Please select an option.")
 	var/rebootmsg = SPAN_WARNING("%$&(£: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!")
 	//Computer properties
 	var/screen = MSG_MON_SCREEN_MAIN // 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
 	var/hacking = FALSE // Is it being hacked into by the AI/Cyborg
-	var/message = "<span class='notice'>System bootup complete. Please select an option.</span>" // The message that shows on the main menu.
+	var/message = SPAN_NOTICE("System bootup complete. Please select an option.") // The message that shows on the main menu.
 	var/auth = FALSE // Are they authenticated?
 	var/optioncount = 7
 	// Custom Message Properties

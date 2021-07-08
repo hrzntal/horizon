@@ -736,7 +736,7 @@
 /obj/machinery/airalarm/proc/airalarm_toggleheat()
 	if(heating_manage)
 		if(heating_current_mode == "Heat")
-			visible_message("<span class='notice'>The air alarm makes a quiet click as it stops heating the area</span>")
+			visible_message(SPAN_NOTICE("The air alarm makes a quiet click as it stops heating the area"))
 			heating_current_mode = "Idle"
 			heating_manage = FALSE
 			return
@@ -760,14 +760,14 @@
 		wanted_mode = "Idle"
 
 	if(wanted_mode == "Idle" & heating_current_mode == "Heat")
-		visible_message("<span class='notice'>The air alarm makes a quiet click as it stops heating the area</span>")
+		visible_message(SPAN_NOTICE("The air alarm makes a quiet click as it stops heating the area"))
 		heating_current_mode = "Idle"
 		environment.garbage_collect()
 		use_power = IDLE_POWER_USE
 		return
 
 	if(wanted_mode == "Heat" & heating_current_mode == "Idle")
-		visible_message("<span class='notice'>The air alarm makes a quiet click as it starts heating the area</span>")
+		visible_message(SPAN_NOTICE("The air alarm makes a quiet click as it starts heating the area"))
 		heating_current_mode = "Heat"
 		use_power = ACTIVE_POWER_USE
 

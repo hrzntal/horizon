@@ -9,10 +9,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = 2.5 * STANDARD_ORGAN_DECAY //designed to fail around 6 minutes after death
 
-	low_threshold_passed = "<span class='info'>Prickles of pain appear then die out from within your chest...</span>"
+	low_threshold_passed = SPAN_INFO("Prickles of pain appear then die out from within your chest...")
 	high_threshold_passed = SPAN_WARNING("Something inside your chest hurts, and the pain isn't subsiding. You notice yourself breathing far faster than before.")
-	now_fixed = "<span class='info'>Your heart begins to beat again.</span>"
-	high_threshold_cleared = "<span class='info'>The pain in your chest has died down, and your breathing becomes more relaxed.</span>"
+	now_fixed = SPAN_INFO("Your heart begins to beat again.")
+	high_threshold_cleared = SPAN_INFO("The pain in your chest has died down, and your breathing becomes more relaxed.")
 
 	// Heart attack code is in code/modules/mob/living/carbon/human/life.dm
 	var/beating = TRUE

@@ -45,7 +45,7 @@
 
 /datum/species/robotic/spec_revival(mob/living/carbon/human/H)
 	playsound(H.loc, 'sound/machines/chime.ogg', 50, 1, -1)
-	H.visible_message("<span class='notice'>[H]'s monitor lights up.</span>", "<span class='notice'>All systems nominal. You're back online!</span>")
+	H.visible_message(SPAN_NOTICE("[H]'s monitor lights up."), SPAN_NOTICE("All systems nominal. You're back online!"))
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
 	. = ..()

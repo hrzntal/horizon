@@ -28,7 +28,7 @@
 	var/telegraph_skyblock = 0
 
 	/// Displayed in chat once the weather begins in earnest
-	var/weather_message = "<span class='userdanger'>The wind begins to blow ferociously!</span>"
+	var/weather_message = SPAN_USERDANGER("The wind begins to blow ferociously!")
 	/// In deciseconds, how long the weather lasts once it begins
 	var/weather_duration = 1200
 	/// See above - this is the lowest possible duration
@@ -45,7 +45,7 @@
 	var/weather_skyblock = 0
 
 	/// Displayed once the weather is over
-	var/end_message = "<span class='danger'>The wind relents its assault.</span>"
+	var/end_message = SPAN_DANGER("The wind relents its assault.")
 	/// In deciseconds, how long the "wind-down" graphic will appear before vanishing entirely
 	var/end_duration = 300
 	/// Sound that plays while weather is ending

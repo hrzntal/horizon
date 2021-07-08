@@ -441,10 +441,10 @@
 /obj/item/stack/medical/splint/try_heal(mob/living/M, mob/user, silent)
 	var/obj/item/bodypart/limb = M.get_bodypart(check_zone(user.zone_selected))
 	if(!limb)
-		to_chat(user, "<span class='notice'>There's nothing there to bandage!</span>")
+		to_chat(user, SPAN_NOTICE("There's nothing there to bandage!"))
 		return
 	if(!LAZYLEN(limb.wounds))
-		to_chat(user, "<span class='notice'>There's no wounds that require bandaging on [user==M ? "your" : "[M]'s"] [limb.name]!</span>") // good problem to have imo
+		to_chat(user, SPAN_NOTICE("There's no wounds that require bandaging on [user==M ? "your" : "[M]'s"] [limb.name]!")) // good problem to have imo
 		return
 
 	var/splintable_wound = FALSE
@@ -454,7 +454,7 @@
 			splintable_wound = TRUE
 			break
 	if(!splintable_wound)
-		to_chat(user, "<span class='notice'>There's no wounds that require splinting on [user==M ? "your" : "[M]'s"] [limb.name]!</span>") // good problem to have imo
+		to_chat(user, SPAN_NOTICE("There's no wounds that require splinting on [user==M ? "your" : "[M]'s"] [limb.name]!")) // good problem to have imo
 		return
 
 	if(limb.current_splint)
@@ -465,7 +465,7 @@
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
 		return
 
-	user.visible_message("<span class='green'>[user] applies [src] to [M]'s [limb.name].</span>", "<span class='green'>You splint [user == M ? "your" : "[M]'s"] [limb.name].</span>")
+	user.visible_message(SPAN_GREEN("[user] applies [src] to [M]'s [limb.name]."), SPAN_GREEN("You splint [user == M ? "your" : "[M]'s"] [limb.name]."))
 	limb.apply_splint(src)
 
 /obj/item/stack/medical/splint/twelve

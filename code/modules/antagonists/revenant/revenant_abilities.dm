@@ -104,7 +104,7 @@
 /obj/effect/proc_holder/spell/targeted/night_vision/revenant
 	charge_max = 0
 	panel = "Revenant Abilities"
-	message = "<span class='revennotice'>You toggle your night vision.</span>"
+	message = SPAN_REVENNOTICE("You toggle your night vision.")
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_nightvision"
 	action_background_icon_state = "bg_revenant"

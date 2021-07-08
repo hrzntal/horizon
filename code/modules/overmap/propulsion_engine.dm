@@ -117,22 +117,22 @@
 	if(!is_welded)
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		user.visible_message("<span class='notice'>[user.name] starts to weld the [name] to the floor.</span>", \
-			"<span class='notice'>You start to weld \the [src] to the floor...</span>", \
-			"<span class='hear'>You hear welding.</span>")
+		user.visible_message(SPAN_NOTICE("[user.name] starts to weld the [name] to the floor."), \
+			SPAN_NOTICE("You start to weld \the [src] to the floor..."), \
+			SPAN_HEAR("You hear welding."))
 		if(I.use_tool(src, user, 3 SECONDS, volume=50))
 			weld_down()
-			to_chat(user, "<span class='notice'>You weld \the [src] to the floor.</span>")
+			to_chat(user, SPAN_NOTICE("You weld \the [src] to the floor."))
 		return TRUE
 	else
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		user.visible_message("<span class='notice'>[user.name] starts to cut the [name] free from the floor.</span>", \
-			"<span class='notice'>You start to cut \the [src] free from the floor...</span>", \
-			"<span class='hear'>You hear welding.</span>")
+		user.visible_message(SPAN_NOTICE("[user.name] starts to cut the [name] free from the floor."), \
+			SPAN_NOTICE("You start to cut \the [src] free from the floor..."), \
+			SPAN_HEAR("You hear welding."))
 		if(I.use_tool(src, user, 3 SECONDS, volume=50))
 			unweld()
-			to_chat(user, "<span class='notice'>You cut \the [src] free from the floor.</span>")
+			to_chat(user, SPAN_NOTICE("You cut \the [src] free from the floor."))
 		return TRUE
 
 #define ENGINE_MINIMUM_OPERATABLE_MOLES 0.05

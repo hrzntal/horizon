@@ -57,10 +57,10 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/range = 10 //how far from the user the spirit can be
 	var/toggle_button_type = /atom/movable/screen/guardian/toggle_mode/inactive //what sort of toggle button the hud uses
 	var/playstyle_string = "<span class='holoparasite bold'>You are a Guardian without any type. You shouldn't exist!</span>"
-	var/magic_fluff_string = "<span class='holoparasite'>You draw the Coder, symbolizing bugs and errors. This shouldn't happen! Submit a bug report!</span>"
-	var/tech_fluff_string = "<span class='holoparasite'>BOOT SEQUENCE COMPLETE. ERROR MODULE LOADED. THIS SHOULDN'T HAPPEN. Submit a bug report!</span>"
-	var/carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP SOME SORT OF HORRIFIC BUG BLAME THE CODERS CARP CARP CARP</span>"
-	var/miner_fluff_string = "<span class='holoparasite'>You encounter... Mythril, it shouldn't exist... Submit a bug report!</span>"
+	var/magic_fluff_string = SPAN_HOLOPARASITE("You draw the Coder, symbolizing bugs and errors. This shouldn't happen! Submit a bug report!")
+	var/tech_fluff_string = SPAN_HOLOPARASITE("BOOT SEQUENCE COMPLETE. ERROR MODULE LOADED. THIS SHOULDN'T HAPPEN. Submit a bug report!")
+	var/carp_fluff_string = SPAN_HOLOPARASITE("CARP CARP CARP SOME SORT OF HORRIFIC BUG BLAME THE CODERS CARP CARP CARP")
+	var/miner_fluff_string = SPAN_HOLOPARASITE("You encounter... Mythril, it shouldn't exist... Submit a bug report!")
 
 /mob/living/simple_animal/hostile/guardian/Initialize(mapload, theme)
 	GLOB.parasites += src
@@ -508,8 +508,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/used = FALSE
 	var/theme = "magic"
 	var/mob_name = "Guardian Spirit"
-	var/use_message = "<span class='holoparasite'>You shuffle the deck...</span>"
-	var/used_message = "<span class='holoparasite'>All the cards seem to be blank now.</span>"
+	var/use_message = SPAN_HOLOPARASITE("You shuffle the deck...")
+	var/used_message = SPAN_HOLOPARASITE("All the cards seem to be blank now.")
 	var/failure_message = "<span class='holoparasite bold'>..And draw a card! It's...blank? Maybe you should try again later.</span>"
 	var/ling_failure = "<span class='holoparasite bold'>The deck refuses to respond to a souless creature such as you.</span>"
 	var/list/possible_guardians = list("Assassin", "Chaos", "Charger", "Explosive", "Lightning", "Protector", "Ranged", "Standard", "Support", "Gravitokinetic")
@@ -636,8 +636,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "combat_hypo"
 	theme = "tech"
 	mob_name = "Holoparasite"
-	use_message = "<span class='holoparasite'>You start to power on the injector...</span>"
-	used_message = "<span class='holoparasite'>The injector has already been used.</span>"
+	use_message = SPAN_HOLOPARASITE("You start to power on the injector...")
+	used_message = SPAN_HOLOPARASITE("The injector has already been used.")
 	failure_message = "<span class='holoparasite bold'>...ERROR. BOOT SEQUENCE ABORTED. AI FAILED TO INTIALIZE. PLEASE CONTACT SUPPORT OR TRY AGAIN LATER.</span>"
 	ling_failure = "<span class='holoparasite bold'>The holoparasites recoil in horror. They want nothing to do with a creature like you.</span>"
 
@@ -718,8 +718,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "fishfingers"
 	theme = "carp"
 	mob_name = "Holocarp"
-	use_message = "<span class='holoparasite'>You put the fishsticks in your mouth...</span>"
-	used_message = "<span class='holoparasite'>Someone's already taken a bite out of these fishsticks! Ew.</span>"
+	use_message = SPAN_HOLOPARASITE("You put the fishsticks in your mouth...")
+	used_message = SPAN_HOLOPARASITE("Someone's already taken a bite out of these fishsticks! Ew.")
 	failure_message = "<span class='holoparasite bold'>You couldn't catch any carp spirits from the seas of Lake Carp. Maybe there are none, maybe you fucked up.</span>"
 	ling_failure = "<span class='holoparasite bold'>Carp'sie seems to not have taken you as the chosen one. Maybe it's because of your horrifying origin.</span>"
 	allowmultiple = TRUE
@@ -734,8 +734,8 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	icon_state = "dustyshard"
 	theme = "miner"
 	mob_name = "Power Miner"
-	use_message = "<span class='holoparasite'>You pierce your skin with the shard...</span>"
-	used_message = "<span class='holoparasite'>This shard seems to have lost all its' power...</span>"
+	use_message = SPAN_HOLOPARASITE("You pierce your skin with the shard...")
+	used_message = SPAN_HOLOPARASITE("This shard seems to have lost all its' power...")
 	failure_message = "<span class='holoparasite bold'>The shard hasn't reacted at all. Maybe try again later...</span>"
 	ling_failure = "<span class='holoparasite bold'>The power of the shard seems to not react with your horrifying, mutated body.</span>"
 

@@ -570,7 +570,7 @@
 	id = "stabilizeddarkpurple"
 	colour = "dark purple"
 	var/obj/item/hothands/fire
-	examine_text = "<span class='notice'>Their fingertips burn brightly!</span>"
+	examine_text = SPAN_NOTICE("Their fingertips burn brightly!")
 
 /datum/status_effect/stabilized/darkpurple/on_apply()
 	ADD_TRAIT(owner, TRAIT_RESISTHEATHANDS, "slimestatus")

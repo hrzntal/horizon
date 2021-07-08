@@ -7,14 +7,14 @@
 	telegraph_overlay = "electric_ash"
 	telegraph_skyblock = 0.2
 
-	weather_message = "<span class='userdanger'><i>An electric storm is upon you! Seek shelter!</i></span>"
+	weather_message = SPAN_USERDANGER("<i>An electric storm is upon you! Seek shelter!</i>")
 	weather_overlay = "electric_storm"
 	weather_duration_lower = 600
 	weather_duration_upper = 1500
 	weather_skyblock = 0.4
 
 	end_duration = 100
-	end_message = "<span class='boldannounce'>The storm dissipates.</span>"
+	end_message = SPAN_BOLDANNOUNCE("The storm dissipates.")
 	end_overlay = "electric_ash"
 	end_skyblock = 0.2
 

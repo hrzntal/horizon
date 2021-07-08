@@ -188,7 +188,7 @@
 	to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 
 /obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")
+	H.visible_message(SPAN_NOTICE("[H] inserts a power connector into the [A]."), SPAN_NOTICE("You begin to draw power from the [A]."))
 	while(do_after(H, 10, target = A))
 		if(loc != H)
 			to_chat(H, SPAN_WARNING("You must keep your connector out while charging!"))
@@ -201,13 +201,13 @@
 			do_sparks(1, FALSE, A)
 			H.nutrition += 50
 			A.cell.charge -= 150
-			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
+			to_chat(H, SPAN_NOTICE("You siphon off some of the stored charge for your own use."))
 		else
 			H.nutrition += A.cell.charge/10
 			A.cell.charge = 0
-			to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
+			to_chat(H, SPAN_NOTICE("You siphon off as much as the [A] can spare."))
 			break
 		if(H.nutrition > NUTRITION_LEVEL_WELL_FED)
-			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+			to_chat(H, SPAN_NOTICE("You are now fully charged."))
 			break
-	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
+	H.visible_message(SPAN_NOTICE("[H] unplugs from the [A]."), SPAN_NOTICE("You unplug from the [A]."))

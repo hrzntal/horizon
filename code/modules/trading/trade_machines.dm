@@ -51,7 +51,7 @@
 	credits_held -= amount
 	var/obj/item/holochip/holochip = new(loc, amount)
 	if(user)
-		to_chat(user, "<span class='notice'>You withdraw [amount] credits.</span>")
+		to_chat(user, SPAN_NOTICE("You withdraw [amount] credits."))
 		user.put_in_hands(holochip)
 
 /obj/machinery/computer/trade_console/attackby(obj/item/I, mob/user, params)
@@ -60,7 +60,7 @@
 		if(!worth)
 			to_chat(user, SPAN_WARNING("[I] doesn't seem to be worth anything!"))
 		credits_held += worth
-		to_chat(user, "<span class='notice'>You slot [I] into [src] and it reports a total of [credits_held] credits inserted.</span>")
+		to_chat(user, SPAN_NOTICE("You slot [I] into [src] and it reports a total of [credits_held] credits inserted."))
 		qdel(I)
 		return
 	. = ..()

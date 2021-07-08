@@ -25,7 +25,7 @@
 	if(can_interact(user))
 		transfer_rate = MAX_TRANSFER_RATE
 		investigate_log("was set to [transfer_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
-		balloon_alert(user, "volume output set to [transfer_rate] L/s", "<span class='notice'>You maximize the volume output on [src] to [transfer_rate] L/s.</span>")
+		balloon_alert(user, "volume output set to [transfer_rate] L/s", SPAN_NOTICE("You maximize the volume output on [src] to [transfer_rate] L/s."))
 		update_appearance()
 	return ..()
 

@@ -154,13 +154,13 @@
 		cell.update_icon()
 		cell.add_fingerprint(user)
 		user.put_in_active_hand(cell)
-		to_chat(user, "<span class='notice'>You remove \the [cell].</span>")
+		to_chat(user, SPAN_NOTICE("You remove \the [cell]."))
 		cell = null
 		return
 	else
 		playsound(src, 'sound/machines/microwave/microwave-start.ogg', 50, TRUE) //Couldnt find a better one
 		if(active)
-			to_chat(user, "<span class='notice'>You turn off [src].</span>")
+			to_chat(user, SPAN_NOTICE("You turn off [src]."))
 			turn_off()
 		else
 			if(panel_open)
@@ -168,7 +168,7 @@
 			else if(length(connected_braces) < required_braces)
 				to_chat(user, SPAN_WARNING("\The [src] is not braced sufficiently."))
 			else
-				to_chat(user, "<span class='notice'>You turn on [src].</span>")
+				to_chat(user, SPAN_NOTICE("You turn on [src]."))
 				turn_on()
 	return ..()
 
@@ -180,7 +180,7 @@
 			terminal = new /obj/machinery/power/terminal(get_turf(user))
 			terminal.setDir(tdir)
 			terminal.master = src
-			to_chat(user, "<span class='notice'>You connect a terminal to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You connect a terminal to [src]."))
 			UpdateAnchored()
 		else
 			to_chat(user, SPAN_WARNING("You need 5 cables to wire a terminal for [src]."))
@@ -188,7 +188,7 @@
 	if(panel_open && !cell && istype(W, /obj/item/stock_parts/cell))
 		cell = W
 		cell.forceMove(src)
-		to_chat(user, "<span class='notice'>You insert the cell inside [src].</span>")
+		to_chat(user, SPAN_NOTICE("You insert the cell inside [src]."))
 		return
 	return ..()
 

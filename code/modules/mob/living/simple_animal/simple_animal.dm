@@ -222,9 +222,9 @@
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += "<span class='notice'>[temporary_flavor_text]</span>"
+			. += SPAN_NOTICE("[temporary_flavor_text]")
 		else
-			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+			. += SPAN_NOTICE("[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 
 
 /mob/living/simple_animal/update_stat()

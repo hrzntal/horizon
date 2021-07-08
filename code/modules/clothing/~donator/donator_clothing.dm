@@ -473,7 +473,7 @@
 		update_icon()
 		ooser.update_inv_wear_mask()
 		ooser.update_action_buttons_icon()
-		to_chat(ooser, "<span class='notice'>You toggle the [src] to [possible_colors[c_color_index]].</span>")
+		to_chat(ooser, SPAN_NOTICE("You toggle the [src] to [possible_colors[c_color_index]]."))
 
 //Donation reward for asky / Zulie
 /obj/item/clothing/suit/hooded/cloak/zuliecloak

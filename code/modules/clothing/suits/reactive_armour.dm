@@ -34,7 +34,7 @@
 	///Message sent when the armor is emp'd. It is not the message for when the emp effect goes off.
 	var/emp_message = SPAN_WARNING("The reactive armor has been emp'd! Damn, now it's REALLY gonna not do much!")
 	///Message sent when the armor is still on cooldown, but activates.
-	var/cooldown_message = "<span class='danger'>The reactive armor fails to do much, as it is recharging! From what? Only the reactive armor knows.</span>"
+	var/cooldown_message = SPAN_DANGER("The reactive armor fails to do much, as it is recharging! From what? Only the reactive armor knows.")
 	///Duration of the cooldown specific to reactive armor for when it can activate again.
 	var/reactivearmor_cooldown_duration = 10 SECONDS
 	///The cooldown itself of the reactive armor for when it can activate again.
@@ -110,7 +110,7 @@
 	name = "reactive teleport armor"
 	desc = "Someone separated our Research Director from his own head!"
 	emp_message = SPAN_WARNING("The reactive armor's teleportation calculations begin spewing errors!")
-	cooldown_message = "<span class='danger'>The reactive teleport system is still recharging! It fails to activate!</span>"
+	cooldown_message = SPAN_DANGER("The reactive teleport system is still recharging! It fails to activate!")
 	reactivearmor_cooldown_duration = 10 SECONDS
 	var/tele_range = 6
 	var/rad_amount= 15
@@ -138,7 +138,7 @@
 /obj/item/clothing/suit/armor/reactive/fire
 	name = "reactive incendiary armor"
 	desc = "An experimental suit of armor with a reactive sensor array rigged to a flame emitter. For the stylish pyromaniac."
-	cooldown_message = "<span class='danger'>The reactive incendiary armor activates, but fails to send out flames as it is still recharging its flame jets!</span>"
+	cooldown_message = SPAN_DANGER("The reactive incendiary armor activates, but fails to send out flames as it is still recharging its flame jets!")
 	emp_message = SPAN_WARNING("The reactive incendiary armor's targeting system begins rebooting...")
 
 /obj/item/clothing/suit/armor/reactive/fire/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
@@ -165,7 +165,7 @@
 /obj/item/clothing/suit/armor/reactive/stealth
 	name = "reactive stealth armor"
 	desc = "An experimental suit of armor that renders the wearer invisible on detection of imminent harm, and creates a decoy that runs away from the owner. You can't fight what you can't see."
-	cooldown_message = "<span class='danger'>The reactive stealth system activates, but is not charged enough to fully cloak!</span>"
+	cooldown_message = SPAN_DANGER("The reactive stealth system activates, but is not charged enough to fully cloak!")
 	emp_message = SPAN_WARNING("The reactive stealth armor's threat assessment system crashes...")
 	///when triggering while on cooldown will only flicker the alpha slightly. this is how much it removes.
 	var/cooldown_alpha_removal = 50
@@ -216,7 +216,7 @@
 	name = "reactive tesla armor"
 	desc = "An experimental suit of armor with sensitive detectors hooked up to a huge capacitor grid, with emitters strutting out of it. Zap."
 	siemens_coefficient = -1
-	cooldown_message = "<span class='danger'>The tesla capacitors on the reactive tesla armor are still recharging! The armor merely emits some sparks.</span>"
+	cooldown_message = SPAN_DANGER("The tesla capacitors on the reactive tesla armor are still recharging! The armor merely emits some sparks.")
 	cooldown_message = SPAN_WARNING("The tesla capacitors beep ominously for a moment.")
 	var/zap_power = 25000
 	var/zap_range = 20
@@ -257,7 +257,7 @@
 /obj/item/clothing/suit/armor/reactive/repulse
 	name = "reactive repulse armor"
 	desc = "An experimental suit of armor that violently throws back attackers."
-	cooldown_message = "<span class='danger'>The repulse generator is still recharging! It fails to generate a strong enough wave!</span>"
+	cooldown_message = SPAN_DANGER("The repulse generator is still recharging! It fails to generate a strong enough wave!")
 	emp_message = SPAN_WARNING("The repulse generator is reset to default settings...")
 	var/repulse_force = MOVE_FORCE_EXTREMELY_STRONG
 
@@ -293,8 +293,8 @@
 /obj/item/clothing/suit/armor/reactive/table
 	name = "reactive table armor"
 	desc = "If you can't beat the memes, embrace them."
-	cooldown_message = "<span class='danger'>The reactive table armor's fabricators are still on cooldown!</span>"
-	emp_message = "<span class='danger'>The reactive table armor's fabricators click and whirr ominously for a moment...</span>"
+	cooldown_message = SPAN_DANGER("The reactive table armor's fabricators are still on cooldown!")
+	emp_message = SPAN_DANGER("The reactive table armor's fabricators click and whirr ominously for a moment...")
 	var/tele_range = 10
 
 /obj/item/clothing/suit/armor/reactive/table/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)

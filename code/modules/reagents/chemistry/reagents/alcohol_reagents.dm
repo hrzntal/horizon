@@ -2625,7 +2625,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/gunfire/on_mob_life(mob/living/carbon/M)
 	if (prob(3))
-		to_chat(M,"<span class='notice'>You feel the gunfire pop in your mouth.</span>")
+		to_chat(M,SPAN_NOTICE("You feel the gunfire pop in your mouth."))
 	return ..()
 
 /datum/reagent/consumable/ethanol/hellfire

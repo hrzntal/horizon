@@ -275,7 +275,7 @@
 	my_shuttle.freeform_port.forceMove(locate(eyeobj.x - x_offset, eyeobj.y - y_offset, eyeobj.z))
 
 	if(current_user.client)
-		to_chat(current_user, "<span class='notice'>Transit location designated.</span>")
+		to_chat(current_user, SPAN_NOTICE("Transit location designated."))
 
 	//my_shuttle.request(my_shuttle.freeform_port)
 

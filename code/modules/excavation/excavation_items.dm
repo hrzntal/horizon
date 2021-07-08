@@ -13,7 +13,7 @@
 	. = ..()
 	if(.)
 		return
-	to_chat(user, "<span class='notice'>You carefully crack open [src].</span>")
+	to_chat(user, SPAN_NOTICE("You carefully crack open [src]."))
 	playsound(src, 'sound/effects/break_stone.ogg', 30, TRUE)
 	for(var/obj/item/I in contents)
 		if(!user.put_in_hand(I))

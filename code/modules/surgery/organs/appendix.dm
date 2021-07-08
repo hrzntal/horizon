@@ -10,7 +10,7 @@
 	decay_factor = STANDARD_ORGAN_DECAY
 
 	now_failing = SPAN_WARNING("An explosion of pain erupts in your lower right abdomen!")
-	now_fixed = "<span class='info'>The pain in your abdomen has subsided.</span>"
+	now_fixed = SPAN_INFO("The pain in your abdomen has subsided.")
 
 	var/inflamed
 

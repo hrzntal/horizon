@@ -7,7 +7,7 @@
 	to several other ones, possibly ready to trigger more genetic changes in the future."
 	quality = POSITIVE //so it gets carried over on revives
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel burdened!</span>"
+	text_gain_indication = SPAN_NOTICE("You feel burdened!")
 	text_lose_indication = SPAN_WARNING("You no longer feel the need to burden yourself!")
 	/// goes from 0 to 6 (but can be beyond 6, just does nothing) and gives rewards. increased by disabling yourself with debuffs
 	var/burden_level = 0

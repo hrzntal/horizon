@@ -9,7 +9,7 @@
 	time = 24
 
 /datum/surgery_step/cut_wires/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to cut loose wires in [target]'s [parse_zone(target_zone)]...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to cut loose wires in [target]'s [parse_zone(target_zone)]..."),
 			"[user] begins to cut loose wires in [target]'s [parse_zone(target_zone)].",
 			"[user] begins to cut loose wires in [target]'s [parse_zone(target_zone)].")
 
@@ -31,7 +31,7 @@
 	return TRUE
 
 /datum/surgery_step/pry_off_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to pry off [target]'s [parse_zone(target_zone)] plating...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to pry off [target]'s [parse_zone(target_zone)] plating..."),
 			"[user] begins to pry off [target]'s [parse_zone(target_zone)] plating.",
 			"[user] begins to pry off [target]'s [parse_zone(target_zone)] plating.")
 
@@ -48,7 +48,7 @@
 	return TRUE
 
 /datum/surgery_step/weld_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to weld [target]'s [parse_zone(target_zone)] plating...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to weld [target]'s [parse_zone(target_zone)] plating..."),
 			"[user] begins to weld [target]'s [parse_zone(target_zone)] plating.",
 			"[user] begins to weld [target]'s [parse_zone(target_zone)] plating.")
 
@@ -73,7 +73,7 @@
 	return TRUE
 
 /datum/surgery_step/replace_wires/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to replace [target]'s [parse_zone(target_zone)] wiring...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to replace [target]'s [parse_zone(target_zone)] wiring..."),
 			"[user] begins to replace [target]'s [parse_zone(target_zone)] wiring.",
 			"[user] begins to replace [target]'s [parse_zone(target_zone)] wiring.")
 
@@ -98,6 +98,6 @@
 	return TRUE
 
 /datum/surgery_step/add_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to add plating to [target]'s [parse_zone(target_zone)]...</span>",
+	display_results(user, target, SPAN_NOTICE("You begin to add plating to [target]'s [parse_zone(target_zone)]..."),
 			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].",
 			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].")

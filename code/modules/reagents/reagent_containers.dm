@@ -76,7 +76,7 @@
 		else
 			CRASH("change_transfer_amount() called with invalid direction value")
 	amount_per_transfer_from_this = possible_transfer_amounts[amount_list_position]
-	balloon_alert(user, "transferring [amount_per_transfer_from_this]u", "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
+	balloon_alert(user, "transferring [amount_per_transfer_from_this]u", SPAN_NOTICE("[src]'s transfer amount is now [amount_per_transfer_from_this] units."))
 	mode_change_message(user)
 
 /obj/item/reagent_containers/pre_attack_secondary(atom/target, mob/living/user, params)

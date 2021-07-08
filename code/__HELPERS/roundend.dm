@@ -205,7 +205,7 @@
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 
-	to_chat(world, "<span class='infoplain'><BR><BR><BR><span class='big bold'>The round has ended.</span></span>")
+	to_chat(world, SPAN("infoplain", "<BR><BR><BR><span class='big bold'>The round has ended.</span>"))
 	log_game("The round has ended.")
 
 	for(var/I in round_end_events)
@@ -503,8 +503,8 @@
 		station_vault += current_acc.account_balance
 		if(!mr_moneybags || mr_moneybags.account_balance < current_acc.account_balance)
 			mr_moneybags = current_acc
-	parts += "<div class='panel stationborder'><span class='header'>Station Economic Summary:</span><br>"
-	parts += "<span class='service'>Service Statistics:</span><br>"
+	parts += ("<div class='panel stationborder'>" + SPAN("header", "Station Economic Summary:") + "<br>")
+	parts += (SPAN("service", "Service Statistics:") + "<br>")
 	for(var/venue_path in SSrestaurant.all_venues)
 		var/datum/venue/venue = SSrestaurant.all_venues[venue_path]
 		tourist_income += venue.total_income
@@ -521,7 +521,7 @@
 			parts += "[SPAN_GREENTEXT("Centcom is satisfied with service's job today.")]<br>"
 			award_service(/datum/award/achievement/jobs/service_okay)
 		else
-			parts += "<span class='reallybig greentext'>Centcom is incredibly impressed with service today! What a team!</span><br>"
+			parts += (SPAN("reallybig greentext", "Centcom is incredibly impressed with service today! What a team!") + "<br>")
 			award_service(/datum/award/achievement/jobs/service_good)
 
 	parts += "<b>General Statistics:</b><br>"

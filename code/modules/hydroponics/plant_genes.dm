@@ -284,7 +284,7 @@
 /// Allows the plant to be squashed when thrown or slipped on, leaving a colored mess and trash type item behind.
 /datum/plant_gene/trait/squash
 	name = "Liquid Contents"
-	examine_line = "<span class='info'>It has a lot of liquid contents inside.</span>"
+	examine_line = SPAN_INFO("It has a lot of liquid contents inside.")
 	trait_ids = THROW_IMPACT_ID | REAGENT_TRANSFER_ID | ATTACK_SELF_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -339,7 +339,7 @@
 /datum/plant_gene/trait/slip
 	name = "Slippery Skin"
 	rate = 1.6
-	examine_line = "<span class='info'>It has a very slippery skin.</span>"
+	examine_line = SPAN_INFO("It has a very slippery skin.")
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
 /datum/plant_gene/trait/slip/on_new_plant(obj/item/our_plant, newloc)
@@ -439,7 +439,7 @@
 /datum/plant_gene/trait/glow
 	name = "Bioluminescence"
 	rate = 0.03
-	examine_line = "<span class='info'>It emits a soft glow.</span>"
+	examine_line = SPAN_INFO("It emits a soft glow.")
 	trait_ids = GLOW_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 	/// The color of our bioluminesence.
@@ -661,7 +661,7 @@
  */
 /datum/plant_gene/trait/stinging
 	name = "Hypodermic Prickles"
-	examine_line = "<span class='info'>It's quite prickley.</span>"
+	examine_line = SPAN_INFO("It's quite prickley.")
 	trait_ids = REAGENT_TRANSFER_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 
@@ -858,7 +858,7 @@
 /datum/plant_gene/trait/plant_laughter/proc/laughter(obj/item/our_plant, atom/target)
 	SIGNAL_HANDLER
 
-	our_plant.audible_message("<span_class='notice'>[our_plant] lets out burst of laughter.</span>")
+	our_plant.audible_message(SPAN_NOTICE("[our_plant] lets out burst of laughter."))
 	playsound(our_plant, pick(sounds), 100, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /**
@@ -884,7 +884,7 @@
 /// Makes the plant embed on thrown impact.
 /datum/plant_gene/trait/sticky
 	name = "Prickly Adhesion"
-	examine_line = "<span class='info'>It's quite sticky.</span>"
+	examine_line = SPAN_INFO("It's quite sticky.")
 	trait_ids = THROW_IMPACT_ID
 	mutability_flags = PLANT_GENE_REMOVABLE | PLANT_GENE_MUTATABLE | PLANT_GENE_GRAFTABLE
 

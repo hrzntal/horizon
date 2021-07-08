@@ -25,12 +25,12 @@
 			return
 		var/mob/living/carbon/C = usr
 		var/self = (C == bodypart.owner)
-		C.visible_message("<span class='notice'>[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]...</span>", "<span class='notice'>You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]...</span>")
+		C.visible_message(SPAN_NOTICE("[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]..."), SPAN_NOTICE("You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]..."))
 		if(!do_after(C, (self ? SELF_AID_REMOVE_DELAY : OTHER_AID_REMOVE_DELAY), target=bodypart.owner))
 			return
 		if(QDELETED(src))
 			return
-		C.visible_message("<span class='notice'>[C] removes [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name].</span>", "<span class='notice'>You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name].</span>")
+		C.visible_message(SPAN_NOTICE("[C] removes [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]."), SPAN_NOTICE("You remove [name] from [self ? "your" : "[bodypart.owner]'s" ] [bodypart.name]."))
 		var/obj/item/gotten = rip_off()
 		if(gotten && !C.put_in_hands(gotten))
 			gotten.forceMove(get_turf(C))

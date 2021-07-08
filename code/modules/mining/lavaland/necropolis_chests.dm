@@ -979,9 +979,9 @@
 	visibility_flags = 0
 	stage1 = list("Your bones ache.")
 	stage2 = list("Your skin feels scaly.")
-	stage3 = list("<span class='danger'>You have an overwhelming urge to terrorize some peasants.</span>", "<span class='danger'>Your teeth feel sharper.</span>")
-	stage4 = list("<span class='danger'>Your blood burns.</span>")
-	stage5 = list("<span class='danger'>You're a fucking dragon. However, any previous allegiances you held still apply. It'd be incredibly rude to eat your still human friends for no reason.</span>")
+	stage3 = list(SPAN_DANGER("You have an overwhelming urge to terrorize some peasants."), SPAN_DANGER("Your teeth feel sharper."))
+	stage4 = list(SPAN_DANGER("Your blood burns."))
+	stage5 = list(SPAN_DANGER("You're a fucking dragon. However, any previous allegiances you held still apply. It'd be incredibly rude to eat your still human friends for no reason."))
 	new_form = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
 
 
