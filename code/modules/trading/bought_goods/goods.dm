@@ -1,24 +1,28 @@
-/datum/bought_goods/toys
-	name = "toys"
-	cost = 100
-	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
-						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES,
-						/obj/item/toy/cards/singlecard = TRADER_BLACKLIST_TYPES)
+// Alphabetized by trader. Any trader can use these datums, but this keeps things a bit more organized.
 
-/datum/bought_goods/toy_figures
-	name = "toy figures"
-	cost = 150
-	trading_types = list(/obj/item/toy/figure = TRADER_SUBTYPES)
+/////////Artifact Shop Employee/////////
 
-/datum/bought_goods/space_carp
-	name = "space carps"
-	cost = 400
-	trading_types = list(/mob/living/simple_animal/hostile/carp = TRADER_TYPES)
-
-/datum/bought_goods/goliath
-	name = "goliaths"
+/datum/bought_goods/fossil
+	name = "fossils"
 	cost = 500
-	trading_types = list(/mob/living/simple_animal/hostile/asteroid/goliath = TRADER_TYPES)
+	trading_types = list(/obj/item/fossil = TRADER_THIS_TYPE)
+
+/datum/bought_goods/excavation_junk
+	name = "ancient artifacts"
+	cost = 300
+	trading_types = list(/obj/item/excavation_junk = TRADER_THIS_TYPE)
+
+/datum/bought_goods/excavation_artifact
+	name = "unknown artifacts"
+	cost = 500
+	trading_types = list(/obj/item/unknown_artifact = TRADER_THIS_TYPE)
+
+/datum/bought_goods/anomalous_crystal
+	name = "anomalous crystals"
+	cost = 1000
+	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
+
+/////////Medical Supplier/////////
 
 /datum/bought_goods/lungs
 	name = "lungs"
@@ -40,6 +44,21 @@
 	stock_low = 2
 	stock_high = 5
 	trading_types = list(/obj/item/organ/liver = TRADER_THIS_TYPE)
+
+/datum/bought_goods/reagent/meth
+	cost = 40
+	reagent_type = /datum/reagent/drug/methamphetamine
+	stock_low = 20
+	stock_high = 50
+
+/////////Pet Shop Employee/////////
+
+/datum/bought_goods/pets
+	name = "pets"
+	cost = 150
+	trading_types = list(/mob/living/simple_animal/pet = TRADER_SUBTYPES)
+
+/////////Rock'n'Drill Mining Inc/////////
 
 /datum/bought_goods/stack/iron
 	name = "iron ore"
@@ -71,33 +90,28 @@
 	cost = 200
 	trading_types = list(/obj/item/stack/ore/diamond = TRADER_THIS_TYPE)
 
-/datum/bought_goods/pets
-	name = "pets"
+/////////Toy Shop Employee/////////
+
+/datum/bought_goods/toys
+	name = "toys"
+	cost = 100
+	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
+						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES,
+						/obj/item/toy/cards/singlecard = TRADER_BLACKLIST_TYPES)
+
+/datum/bought_goods/toy_figures
+	name = "toy figures"
 	cost = 150
-	trading_types = list(/mob/living/simple_animal/pet = TRADER_SUBTYPES)
+	trading_types = list(/obj/item/toy/figure = TRADER_SUBTYPES)
 
-/datum/bought_goods/fossil
-	name = "fossils"
+/////////Xenolife Collector/////////
+
+/datum/bought_goods/space_carp
+	name = "space carps"
+	cost = 400
+	trading_types = list(/mob/living/simple_animal/hostile/carp = TRADER_TYPES)
+
+/datum/bought_goods/goliath
+	name = "goliaths"
 	cost = 500
-	trading_types = list(/obj/item/fossil = TRADER_THIS_TYPE)
-
-/datum/bought_goods/excavation_junk
-	name = "ancient artifacts"
-	cost = 300
-	trading_types = list(/obj/item/excavation_junk = TRADER_THIS_TYPE)
-
-/datum/bought_goods/excavation_artifact
-	name = "unknown artifacts"
-	cost = 500
-	trading_types = list(/obj/item/unknown_artifact = TRADER_THIS_TYPE)
-
-/datum/bought_goods/anomalous_crystal
-	name = "anomalous crystals"
-	cost = 1000
-	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
-
-/datum/bought_goods/reagent/meth
-	cost = 40
-	reagent_type = /datum/reagent/drug/methamphetamine
-	stock_low = 20
-	stock_high = 50
+	trading_types = list(/mob/living/simple_animal/hostile/asteroid/goliath = TRADER_TYPES)
