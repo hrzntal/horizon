@@ -57,7 +57,7 @@
 	integrity--
 	if(integrity <= 0)
 		if(bodypart.owner)
-			to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] tears and falls off!</span>")
+			to_chat(bodypart.owner, SPAN_WARNING("The [name] on your [bodypart.name] tears and falls off!"))
 		qdel(src)
 
 /**
@@ -220,11 +220,11 @@
 		if(type == GAUZE_STAIN_BLOOD && !blood_stained)
 			blood_stained = TRUE
 			if(bodypart.owner)
-				to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with blood.</span>")
+				to_chat(bodypart.owner, SPAN_WARNING("The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with blood."))
 		else if(type == GAUZE_STAIN_PUS && !pus_stained)
 			pus_stained = TRUE
 			if(bodypart.owner)
-				to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with pus.</span>")
+				to_chat(bodypart.owner, SPAN_WARNING("The [name] on your [bodypart.name] [pick(list("pools", "trickles", "seeps"))] with pus."))
 
 /datum/bodypart_aid/gauze/improvised
 	name = "improvised gauze"

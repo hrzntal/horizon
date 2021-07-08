@@ -81,7 +81,7 @@
 	var/mob/living/simple_animal/hostile/swarmer/newswarmer = new /mob/living/simple_animal/hostile/swarmer(src)
 	newswarmer.key = user.key
 	addtimer(CALLBACK(src, .proc/release_swarmer, newswarmer), (LAZYLEN(swarmerlist) * 2 SECONDS) + 5 SECONDS)
-	to_chat(newswarmer, "<span class='boldannounce'>SWARMER CONSTRUCTION INITIALIZED.</span>")
+	to_chat(newswarmer, SPAN_BOLDANNOUNCE("SWARMER CONSTRUCTION INITIALIZED."))
 	processing_swarmer = TRUE
 	return TRUE
 

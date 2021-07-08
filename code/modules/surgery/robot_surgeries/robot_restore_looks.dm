@@ -18,10 +18,10 @@
 /datum/surgery_step/restore_paintjob/tool_check(mob/user, obj/item/tool)
 	var/obj/item/toy/crayon/spraycan/sc = tool
 	if(sc.is_capped)
-		to_chat(user, "<span class='warning'>Take the cap off first!</span>")
+		to_chat(user, SPAN_WARNING("Take the cap off first!"))
 		return FALSE
 	if(sc.charges < 10)
-		to_chat(user, "<span class='warning'>Not enough paint in the can!</span>")
+		to_chat(user, SPAN_WARNING("Not enough paint in the can!"))
 		return FALSE
 	return TRUE
 

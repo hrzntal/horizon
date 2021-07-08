@@ -3,7 +3,7 @@
 	name = "the floor is lava"
 	desc = "The ground turns into surprisingly cool lava, lightly damaging anything on the floor."
 
-	telegraph_message = "<span class='warning'>You feel the ground beneath you getting hot. Waves of heat distort the air.</span>"
+	telegraph_message = SPAN_WARNING("You feel the ground beneath you getting hot. Waves of heat distort the air.")
 	telegraph_duration = 150
 
 	weather_message = "<span class='userdanger'>The floor is lava! Get on top of something!</span>"

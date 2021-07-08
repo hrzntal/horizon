@@ -2,7 +2,7 @@
 	name = "snow storm"
 	desc = "Harsh snowstorms roam the topside of this arctic planet, burying any area unfortunate enough to be in its path."
 
-	telegraph_message = "<span class='warning'>Drifting particles of snow begin to dust the surrounding area..</span>"
+	telegraph_message = SPAN_WARNING("Drifting particles of snow begin to dust the surrounding area..")
 	telegraph_duration = 300
 	telegraph_overlay = "snowfall_light"
 	telegraph_skyblock = 0.2

@@ -8,7 +8,7 @@
 	name = "Hallucinations"
 	desc = "Patient suffers constant hallucinations."
 	scan_desc = "schizophrenia"
-	gain_text = "<span class='warning'>You feel your grip on reality slipping...</span>"
+	gain_text = SPAN_WARNING("You feel your grip on reality slipping...")
 	lose_text = "<span class='notice'>You feel more grounded.</span>"
 
 /datum/brain_trauma/mild/hallucinations/on_life(delta_time, times_fired)
@@ -23,7 +23,7 @@
 	name = "Stuttering"
 	desc = "Patient can't speak properly."
 	scan_desc = "reduced mouth coordination"
-	gain_text = "<span class='warning'>Speaking clearly is getting harder.</span>"
+	gain_text = SPAN_WARNING("Speaking clearly is getting harder.")
 	lose_text = "<span class='notice'>You feel in control of your speech.</span>"
 
 /datum/brain_trauma/mild/stuttering/on_life(delta_time, times_fired)
@@ -38,7 +38,7 @@
 	name = "Dumbness"
 	desc = "Patient has reduced brain activity, making them less intelligent."
 	scan_desc = "reduced brain activity"
-	gain_text = "<span class='warning'>You feel dumber.</span>"
+	gain_text = SPAN_WARNING("You feel dumber.")
 	lose_text = "<span class='notice'>You feel smart again.</span>"
 
 /datum/brain_trauma/mild/dumbness/on_gain()
@@ -79,7 +79,7 @@
 	name = "Concussion"
 	desc = "Patient's brain is concussed."
 	scan_desc = "concussion"
-	gain_text = "<span class='warning'>Your head hurts!</span>"
+	gain_text = SPAN_WARNING("Your head hurts!")
 	lose_text = "<span class='notice'>The pressure inside your head starts fading.</span>"
 
 /datum/brain_trauma/mild/concussion/on_life(delta_time, times_fired)
@@ -95,10 +95,10 @@
 			if(6 to 9)
 				owner.slurring += 30
 			if(10)
-				to_chat(owner, "<span class='notice'>You forget for a moment what you were doing.</span>")
+				to_chat(owner, SPAN_NOTICE("You forget for a moment what you were doing."))
 				owner.Stun(20)
 			if(11)
-				to_chat(owner, "<span class='warning'>You faint.</span>")
+				to_chat(owner, SPAN_WARNING("You faint."))
 				owner.Unconscious(80)
 
 	..()
@@ -108,7 +108,7 @@
 	desc = "Patient always feels healthy, regardless of their condition."
 	scan_desc = "self-awareness deficit"
 	gain_text = "<span class='notice'>You feel great!</span>"
-	lose_text = "<span class='warning'>You no longer feel perfectly healthy.</span>"
+	lose_text = SPAN_WARNING("You no longer feel perfectly healthy.")
 
 /datum/brain_trauma/mild/healthy/on_gain()
 	owner.set_screwyhud(SCREWYHUD_HEALTHY)
@@ -127,7 +127,7 @@
 	name = "Muscle Weakness"
 	desc = "Patient experiences occasional bouts of muscle weakness."
 	scan_desc = "weak motor nerve signal"
-	gain_text = "<span class='warning'>Your muscles feel oddly faint.</span>"
+	gain_text = SPAN_WARNING("Your muscles feel oddly faint.")
 	lose_text = "<span class='notice'>You feel in control of your muscles again.</span>"
 
 /datum/brain_trauma/mild/muscle_weakness/on_life(delta_time, times_fired)
@@ -135,7 +135,7 @@
 	if(owner.m_intent == MOVE_INTENT_RUN)
 		fall_chance += 2
 	if(DT_PROB(0.5 * fall_chance, delta_time) && owner.body_position == STANDING_UP)
-		to_chat(owner, "<span class='warning'>Your leg gives out!</span>")
+		to_chat(owner, SPAN_WARNING("Your leg gives out!"))
 		owner.Paralyze(35)
 
 	else if(owner.get_active_held_item())
@@ -143,10 +143,10 @@
 		var/obj/item/I = owner.get_active_held_item()
 		drop_chance += I.w_class
 		if(DT_PROB(0.5 * drop_chance, delta_time) && owner.dropItemToGround(I))
-			to_chat(owner, "<span class='warning'>You drop [I]!</span>")
+			to_chat(owner, SPAN_WARNING("You drop [I]!"))
 
 	else if(DT_PROB(1.5, delta_time))
-		to_chat(owner, "<span class='warning'>You feel a sudden weakness in your muscles!</span>")
+		to_chat(owner, SPAN_WARNING("You feel a sudden weakness in your muscles!"))
 		owner.adjustStaminaLoss(50)
 	..()
 
@@ -154,7 +154,7 @@
 	name = "Muscle Spasms"
 	desc = "Patient has occasional muscle spasms, causing them to move unintentionally."
 	scan_desc = "nervous fits"
-	gain_text = "<span class='warning'>Your muscles feel oddly faint.</span>"
+	gain_text = SPAN_WARNING("Your muscles feel oddly faint.")
 	lose_text = "<span class='notice'>You feel in control of your muscles again.</span>"
 
 /datum/brain_trauma/mild/muscle_spasms/on_gain()
@@ -169,7 +169,7 @@
 	name = "Nervous Cough"
 	desc = "Patient feels a constant need to cough."
 	scan_desc = "nervous cough"
-	gain_text = "<span class='warning'>Your throat itches incessantly...</span>"
+	gain_text = SPAN_WARNING("Your throat itches incessantly...")
 	lose_text = "<span class='notice'>Your throat stops itching.</span>"
 
 /datum/brain_trauma/mild/nervous_cough/on_life(delta_time, times_fired)
@@ -187,7 +187,7 @@
 	name = "Expressive Aphasia"
 	desc = "Patient is affected by partial loss of speech leading to a reduced vocabulary."
 	scan_desc = "inability to form complex sentences"
-	gain_text = "<span class='warning'>You lose your grasp on complex words.</span>"
+	gain_text = SPAN_WARNING("You lose your grasp on complex words.")
 	lose_text = "<span class='notice'>You feel your vocabulary returning to normal again.</span>"
 
 	var/static/list/common_words = world.file2list("strings/1000_most_common.txt")
@@ -231,7 +231,7 @@
 	name = "Mind Echo"
 	desc = "Patient's language neurons do not terminate properly, causing previous speech patterns to occasionally resurface spontaneously."
 	scan_desc = "looping neural pattern"
-	gain_text = "<span class='warning'>You feel a faint echo of your thoughts...</span>"
+	gain_text = SPAN_WARNING("You feel a faint echo of your thoughts...")
 	lose_text = "<span class='notice'>The faint echo fades away.</span>"
 	var/list/hear_dejavu = list()
 	var/list/speak_dejavu = list()

@@ -2,7 +2,7 @@
 	name = "sandstorm"
 	desc = "Wshshshshh."
 
-	telegraph_message = "<span class='warning'>You see waves of sand traversing as the wind picks up the pace..</span>"
+	telegraph_message = SPAN_WARNING("You see waves of sand traversing as the wind picks up the pace..")
 	telegraph_duration = 300
 	telegraph_overlay = "dust"
 

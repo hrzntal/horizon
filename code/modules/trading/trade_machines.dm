@@ -58,7 +58,7 @@
 	if(istype(I, /obj/item/holochip) || istype(I, /obj/item/stack/spacecash) || istype(I, /obj/item/coin))
 		var/worth = I.get_item_credit_value()
 		if(!worth)
-			to_chat(user, "<span class='warning'>[I] doesn't seem to be worth anything!</span>")
+			to_chat(user, SPAN_WARNING("[I] doesn't seem to be worth anything!"))
 		credits_held += worth
 		to_chat(user, "<span class='notice'>You slot [I] into [src] and it reports a total of [credits_held] credits inserted.</span>")
 		qdel(I)

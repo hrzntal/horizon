@@ -105,12 +105,12 @@
 
 /obj/item/clothing/head/hardhat/cakehat/energycake/turn_on(mob/living/user)
 	playsound(user, 'sound/weapons/saberon.ogg', 5, TRUE)
-	to_chat(user, "<span class='warning'>You turn on \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You turn on \the [src]."))
 	..()
 
 /obj/item/clothing/head/hardhat/cakehat/energycake/turn_off(mob/living/user)
 	playsound(user, 'sound/weapons/saberoff.ogg', 5, TRUE)
-	to_chat(user, "<span class='warning'>You turn off \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You turn off \the [src]."))
 	..()
 
 /*
@@ -132,11 +132,11 @@
 	if(earflaps)
 		icon_state = "ushankaup"
 		inhand_icon_state = "ushankaup"
-		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
+		to_chat(user, SPAN_NOTICE("You raise the ear flaps on the ushanka."))
 	else
 		icon_state = "ushankadown"
 		inhand_icon_state = "ushankadown"
-		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
+		to_chat(user, SPAN_NOTICE("You lower the ear flaps on the ushanka."))
 	earflaps = !earflaps
 
 /*
@@ -271,7 +271,7 @@
 		return
 	if(new_style && new_style != hairstyle)
 		hairstyle = new_style
-		user.visible_message("<span class='notice'>[user] changes \the [src]'s hairstyle to [new_style].</span>", "<span class='notice'>You change \the [src]'s hairstyle to [new_style].</span>")
+		user.visible_message(SPAN_NOTICE("[user] changes \the [src]'s hairstyle to [new_style]."), SPAN_NOTICE("You change \the [src]'s hairstyle to [new_style]."))
 	if(newcolor && newcolor != color) // only update if necessary
 		add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 	update_appearance()
@@ -284,7 +284,7 @@
 	if(target.head)
 		var/obj/item/clothing/head = target.head
 		if((head.flags_inv & HIDEHAIR) && !istype(head, /obj/item/clothing/head/wig))
-			to_chat(user, "<span class='warning'>You can't get a good look at [target.p_their()] hair!</span>")
+			to_chat(user, SPAN_WARNING("You can't get a good look at [target.p_their()] hair!"))
 			return
 
 	var/selected_hairstyle = null
@@ -298,7 +298,7 @@
 		selected_hairstyle_color = "#[target.hair_color]"
 
 	if(selected_hairstyle)
-		to_chat(user, "<span class='notice'>You adjust the [src] to look just like [target.name]'s [selected_hairstyle].</span>")
+		to_chat(user, SPAN_NOTICE("You adjust the [src] to look just like [target.name]'s [selected_hairstyle]."))
 		add_atom_colour(selected_hairstyle_color, FIXED_COLOUR_PRIORITY)
 		hairstyle = selected_hairstyle
 		update_appearance()
@@ -365,14 +365,14 @@
 	paranoia = new()
 
 	user.gain_trauma(paranoia, TRAUMA_RESILIENCE_MAGIC)
-	to_chat(user, "<span class='warning'>As you don the foiled hat, an entire world of conspiracy theories and seemingly insane ideas suddenly rush into your mind. What you once thought unbelievable suddenly seems.. undeniable. Everything is connected and nothing happens just by accident. You know too much and now they're out to get you. </span>")
+	to_chat(user, SPAN_WARNING("As you don the foiled hat, an entire world of conspiracy theories and seemingly insane ideas suddenly rush into your mind. What you once thought unbelievable suddenly seems.. undeniable. Everything is connected and nothing happens just by accident. You know too much and now they're out to get you. "))
 
 /obj/item/clothing/head/foilhat/MouseDrop(atom/over_object)
 	//God Im sorry
 	if(!warped && iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(src == C.head)
-			to_chat(C, "<span class='userdanger'>Why would you want to take this off? Do you want them to get into your mind?!</span>")
+			to_chat(C, SPAN_USERDANGER("Why would you want to take this off? Do you want them to get into your mind?!"))
 			return
 	return ..()
 
@@ -393,13 +393,13 @@
 		return
 	QDEL_NULL(paranoia)
 	if(target.stat < UNCONSCIOUS)
-		to_chat(target, "<span class='warning'>Your zealous conspirationism rapidly dissipates as the donned hat warps up into a ruined mess. All those theories starting to sound like nothing but a ridicolous fanfare.</span>")
+		to_chat(target, SPAN_WARNING("Your zealous conspirationism rapidly dissipates as the donned hat warps up into a ruined mess. All those theories starting to sound like nothing but a ridicolous fanfare."))
 
 /obj/item/clothing/head/foilhat/attack_hand(mob/user, list/modifiers)
 	if(!warped && iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.head)
-			to_chat(user, "<span class='userdanger'>Why would you want to take this off? Do you want them to get into your mind?!</span>")
+			to_chat(user, SPAN_USERDANGER("Why would you want to take this off? Do you want them to get into your mind?!"))
 			return
 	return ..()
 

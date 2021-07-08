@@ -9,7 +9,7 @@
 	name = "Lumiphobia"
 	desc = "Patient has an inexplicable adverse reaction to light."
 	scan_desc = "light hypersensitivity"
-	gain_text = "<span class='warning'>You feel a craving for darkness.</span>"
+	gain_text = SPAN_WARNING("You feel a craving for darkness.")
 	lose_text = "<span class='notice'>Light no longer bothers you.</span>"
 	/// Cooldown to prevent warning spam
 	COOLDOWN_DECLARE(damage_warning_cooldown)
@@ -25,7 +25,7 @@
 		return
 
 	if(COOLDOWN_FINISHED(src, damage_warning_cooldown))
-		to_chat(owner, "<span class='warning'><b>The light burns you!</b></span>")
+		to_chat(owner, SPAN_WARNING("<b>The light burns you!</b>"))
 		COOLDOWN_START(src, damage_warning_cooldown, 10 SECONDS)
 	owner.take_overall_damage(0, 1.5 * delta_time)
 
@@ -33,7 +33,7 @@
 	name = "Poltergeist"
 	desc = "Patient appears to be targeted by a violent invisible entity."
 	scan_desc = "paranormal activity"
-	gain_text = "<span class='warning'>You feel a hateful presence close to you.</span>"
+	gain_text = SPAN_WARNING("You feel a hateful presence close to you.")
 	lose_text = "<span class='notice'>You feel the hateful presence fade away.</span>"
 
 /datum/brain_trauma/magic/poltergeist/on_life(delta_time, times_fired)
@@ -71,7 +71,7 @@
 	name = "Stalking Phantom"
 	desc = "Patient is stalked by a phantom only they can see."
 	scan_desc = "extra-sensory paranoia"
-	gain_text = "<span class='warning'>You feel like something wants to kill you...</span>"
+	gain_text = SPAN_WARNING("You feel like something wants to kill you...")
 	lose_text = "<span class='notice'>You no longer feel eyes on your back.</span>"
 	var/obj/effect/hallucination/simple/stalker_phantom/stalker
 	var/close_stalker = FALSE //For heartbeat
@@ -100,7 +100,7 @@
 
 	if(get_dist(owner, stalker) <= 1)
 		playsound(owner, 'sound/magic/demon_attack1.ogg', 50)
-		owner.visible_message("<span class='warning'>[owner] is torn apart by invisible claws!</span>", "<span class='userdanger'>Ghostly claws tear your body apart!</span>")
+		owner.visible_message(SPAN_WARNING("[owner] is torn apart by invisible claws!"), SPAN_USERDANGER("Ghostly claws tear your body apart!"))
 		owner.take_bodypart_damage(rand(20, 45), wound_bonus=CANT_WOUND)
 	else if(DT_PROB(30, delta_time))
 		stalker.forceMove(get_step_towards(stalker, owner))

@@ -2,7 +2,7 @@
 	name = "hailstorm"
 	desc = "Harsh hailstorm, battering the unfortunate who wound up in it."
 
-	telegraph_message = "<span class='warning'>Dark clouds converge as drifting particles of snow begin to dust the surrounding area..</span>"
+	telegraph_message = SPAN_WARNING("Dark clouds converge as drifting particles of snow begin to dust the surrounding area..")
 	telegraph_duration = 300
 	telegraph_overlay = "snowfall_light"
 	telegraph_skyblock = 0.2

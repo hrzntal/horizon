@@ -25,7 +25,7 @@
  */
 /datum/plant_gene/trait/anti_magic/proc/block_magic(mob/user, major, obj/item/our_plant)
 	if(major)
-		to_chat(user, "<span class='warning'>[our_plant] hums slightly, and seems to decay a bit.</span>")
+		to_chat(user, SPAN_WARNING("[our_plant] hums slightly, and seems to decay a bit."))
 
 /*
  * The proc called when the holymelon uses up all of its anti-magic charges.
@@ -35,7 +35,7 @@
  * our_plant - our plant, who tragically melted protecting us from magics
  */
 /datum/plant_gene/trait/anti_magic/proc/expire(mob/user, obj/item/our_plant)
-	to_chat(user, "<span class='warning'>[our_plant] rapidly turns into ash!</span>")
+	to_chat(user, SPAN_WARNING("[our_plant] rapidly turns into ash!"))
 	new /obj/effect/decal/cleanable/ash(our_plant.drop_location())
 	qdel(our_plant)
 
@@ -98,7 +98,7 @@
 	if(our_plant.force > 0)
 		our_plant.force -= rand(1, (our_plant.force / 3) + 1)
 	else
-		to_chat(user, "<span class='warning'>All the petals have fallen off [our_plant] from violent whacking!</span>")
+		to_chat(user, SPAN_WARNING("All the petals have fallen off [our_plant] from violent whacking!"))
 		qdel(our_plant)
 
 /// Sunflower's attack effect (shows cute text)
@@ -127,7 +127,7 @@
 	if(our_plant.force > 0)
 		our_plant.force -= rand(1, (our_plant.force / 3) + 1)
 	else
-		to_chat(user, "<span class='warning'>All the leaves have fallen off [our_plant] from violent whacking.</span>")
+		to_chat(user, SPAN_WARNING("All the leaves have fallen off [our_plant] from violent whacking."))
 		qdel(our_plant)
 
 /// Deathnettle force + degradation on attack
@@ -268,7 +268,7 @@
 	if(held_mob.is_holding(our_chili))
 		held_mob.adjust_bodytemperature(7.5 * TEMPERATURE_DAMAGE_COEFFICIENT * delta_time)
 		if(DT_PROB(5, delta_time))
-			to_chat(held_mob, "<span class='warning'>Your hand holding [our_chili] burns!</span>")
+			to_chat(held_mob, SPAN_WARNING("Your hand holding [our_chili] burns!"))
 	else
 		stop_backfire_effect()
 
@@ -329,8 +329,8 @@
 		return
 
 	if(target != user)
-		to_chat(user, "<span class='warning'>[our_plant] is twitching and shaking, preventing you from feeding it to [target].</span>")
-	to_chat(target, "<span class='warning'>[our_plant] is twitching and shaking, preventing you from eating it.</span>")
+		to_chat(user, SPAN_WARNING("[our_plant] is twitching and shaking, preventing you from feeding it to [target]."))
+	to_chat(target, SPAN_WARNING("[our_plant] is twitching and shaking, preventing you from eating it."))
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /*
@@ -486,7 +486,7 @@
 		our_plant.color = COLOR_RED
 
 	playsound(our_plant, 'sound/effects/fuse.ogg', our_seed.potency, FALSE)
-	user.visible_message("<span class='warning'>[user] plucks the stem from [our_plant]!</span>", "<span class='userdanger'>You pluck the stem from [our_plant], which begins to hiss loudly!</span>")
+	user.visible_message(SPAN_WARNING("[user] plucks the stem from [our_plant]!"), "<span class='userdanger'>You pluck the stem from [our_plant], which begins to hiss loudly!</span>")
 	log_bomber(user, "primed a", our_plant, "for detonation")
 	detonate(our_plant)
 
@@ -532,7 +532,7 @@
 	name = "Explosive Nature"
 
 /datum/plant_gene/trait/bomb_plant/potency_based/trigger_detonation(obj/item/our_plant, mob/living/user)
-	user.visible_message("<span class='warning'>[user] primes [our_plant]!</span>", "<span class='userdanger'>You prime [our_plant]!</span>")
+	user.visible_message(SPAN_WARNING("[user] primes [our_plant]!"), "<span class='userdanger'>You prime [our_plant]!</span>")
 	log_bomber(user, "primed a", our_plant, "for detonation")
 
 	var/obj/item/food/grown/grown_plant = our_plant

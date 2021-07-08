@@ -24,7 +24,7 @@
 /obj/item/anomalous_sliver/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	if(!.) //if it wasn't caught
-		visible_message("<span class='warning'>[src] flashes and shatters!</span>",
+		visible_message(SPAN_WARNING("[src] flashes and shatters!"),
 		"<span class='hear'>You hear something shatter!</span>")
 		var/turf/our_T = get_turf(src)
 		var/obj/ash = new /obj/effect/decal/cleanable/ash(our_T)
@@ -62,7 +62,7 @@
 				to_chat(user, "<span class='notice'>You succeed, slicing a sliver off of [src].</span>")
 				splinter_off()
 			else
-				to_chat(user, "<span class='warning'>You mess up and the crystal flashes briefly!</span>")
+				to_chat(user, SPAN_WARNING("You mess up and the crystal flashes briefly!"))
 				do_sparks(1, TRUE, src)
 				splinter_off(FALSE)
 				anomaly_crystal_effect(get_turf(src), anom_type, 20)
@@ -79,7 +79,7 @@
 	slivers_remaining--
 	power -= 20
 	if(slivers_remaining <= 0)
-		visible_message("<span class='warning'>[src] splinters off the last bit!</span>")
+		visible_message(SPAN_WARNING("[src] splinters off the last bit!"))
 		qdel(src)
 
 /obj/item/anomalous_sliver/proc/anomaly_crystal_effect(turf/T, anom_type, anom_pow)

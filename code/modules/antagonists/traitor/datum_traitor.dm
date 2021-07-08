@@ -50,7 +50,7 @@
 
 /datum/antagonist/traitor/on_removal()
 	if(!silent && owner.current)
-		to_chat(owner.current,"<span class='userdanger'>You are no longer the [job_rank]!</span>")
+		to_chat(owner.current,SPAN_USERDANGER("You are no longer the [job_rank]!"))
 
 	owner.special_role = null
 
@@ -144,7 +144,7 @@
 	objectives += steal_objective
 
 /datum/antagonist/traitor/greet()
-	to_chat(owner.current, "<span class='alertsyndie'>You are the [owner.special_role].</span>")
+	to_chat(owner.current, SPAN_ALERTSYNDIE("You are the [owner.special_role]."))
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
@@ -179,14 +179,14 @@
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
 	to_chat(traitor_mob, "<U><B>The Syndicate have provided you with the following codewords to identify fellow agents:</B></U>")
-	to_chat(traitor_mob, "<B>Code Phrase</B>: <span class='blue'>[phrases]</span>")
-	to_chat(traitor_mob, "<B>Code Response</B>: <span class='red'>[responses]</span>")
+	to_chat(traitor_mob, "<B>Code Phrase</B>: [SPAN_BLUE("[phrases]")]")
+	to_chat(traitor_mob, "<B>Code Response</B>: [SPAN_RED("[responses]")]")
 
-	antag_memory += "<b>Code Phrase</b>: <span class='blue'>[phrases]</span><br>"
-	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
+	antag_memory += "<b>Code Phrase</b>: [SPAN_BLUE("[phrases]")]<br>"
+	antag_memory += "<b>Code Response</b>: [SPAN_RED("[responses]")]<br>"
 
 	to_chat(traitor_mob, "Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	to_chat(traitor_mob, "<span class='alertwarning'>You memorize the codewords, allowing you to recognise them when heard.</span>")
+	to_chat(traitor_mob, SPAN_ALERTWARNING("You memorize the codewords, allowing you to recognise them when heard."))
 
 /datum/antagonist/traitor/roundend_report()
 	var/list/result = list()
@@ -212,9 +212,9 @@
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
 			if(objective.check_completion())
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [SPAN_GREENTEXT("Success!")]"
 			else
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [SPAN_REDTEXT("Fail.")]"
 				traitor_won = FALSE
 			count++
 
@@ -233,9 +233,9 @@
 		result += contractor_round_end()
 
 	if(traitor_won)
-		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
+		result += SPAN_GREENTEXT("The [special_role_text] was successful!")
 	else
-		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
+		result += SPAN_REDTEXT("The [special_role_text] has failed!")
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
 
 	return result.Join("<br>")
@@ -271,8 +271,8 @@
 		if (completed_contracts > 1)
 			pluralCheck = "contracts"
 
-		result += "Completed <span class='greentext'>[completed_contracts]</span> [pluralCheck] for a total of \
-					<span class='greentext'>[tc_total] TC</span>![contractor_support_unit]<br>"
+		result += "Completed [SPAN_GREENTEXT("[completed_contracts]")] [pluralCheck] for a total of \
+					[SPAN_GREENTEXT("[tc_total] TC")]![contractor_support_unit]<br>"
 
 	return result
 
@@ -281,7 +281,7 @@
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
 	var/message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> <span class='redtext'>[responses]</span><br>"
+					<b>The code responses were:</b> [SPAN_REDTEXT("[responses]")]<br>"
 
 	return message
 

@@ -90,17 +90,17 @@
 
 /obj/machinery/atmospherics/components/unary/engine/proc/can_be_rotated(mob/user, rotation_type)
 	if(is_welded)
-		to_chat(user, "<span class='warning'>It is welded to the floor!</span>")
+		to_chat(user, SPAN_WARNING("It is welded to the floor!"))
 		return FALSE
 	if(anchored)
-		to_chat(user, "<span class='warning'>It is fastened to the floor!</span>")
+		to_chat(user, SPAN_WARNING("It is fastened to the floor!"))
 		return FALSE
 	return TRUE
 
 /obj/machinery/atmospherics/components/unary/engine/can_be_unfasten_wrench(mob/user, silent)
 	if(is_welded)
 		if(!silent)
-			to_chat(user, "<span class='warning'>[src] is welded to the floor!</span>")
+			to_chat(user, SPAN_WARNING("[src] is welded to the floor!"))
 		return FAILED_UNFASTEN
 
 	return ..()
@@ -112,9 +112,9 @@
 /obj/machinery/atmospherics/components/unary/engine/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(!anchored)
-		to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor!</span>")
+		to_chat(user, SPAN_WARNING("The [src.name] needs to be wrenched to the floor!"))
 		return TRUE
-	if(!is_welded)	
+	if(!is_welded)
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
 		user.visible_message("<span class='notice'>[user.name] starts to weld the [name] to the floor.</span>", \

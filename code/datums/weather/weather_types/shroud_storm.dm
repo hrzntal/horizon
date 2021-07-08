@@ -2,7 +2,7 @@
 	name = "shroudstorm"
 	desc = "Zap."
 
-	telegraph_message = "<span class='warning'>You hear thunder in the distance, static electricity rising in the air, wind starts to pickup..</span>"
+	telegraph_message = SPAN_WARNING("You hear thunder in the distance, static electricity rising in the air, wind starts to pickup..")
 	telegraph_duration = 300
 	telegraph_overlay = "electric_ash"
 	telegraph_skyblock = 0.2

@@ -21,21 +21,21 @@
 	switch(stage)
 		if(2) //also changes say, see say.dm
 			if(DT_PROB(1, delta_time))
-				to_chat(affected_mob, "<span class='notice'>You taste honey in your mouth.</span>")
+				to_chat(affected_mob, SPAN_NOTICE("You taste honey in your mouth."))
 		if(3)
 			if(DT_PROB(5, delta_time))
-				to_chat(affected_mob, "<span class='notice'>Your stomach rumbles.</span>")
+				to_chat(affected_mob, SPAN_NOTICE("Your stomach rumbles."))
 			if(DT_PROB(1, delta_time))
-				to_chat(affected_mob, "<span class='danger'>Your stomach stings painfully.</span>")
+				to_chat(affected_mob, SPAN_DANGER("Your stomach stings painfully."))
 				if(prob(20))
 					affected_mob.adjustToxLoss(2)
 		if(4)
 			if(DT_PROB(5, delta_time))
-				affected_mob.visible_message("<span class='danger'>[affected_mob] buzzes.</span>", \
-												"<span class='userdanger'>Your stomach buzzes violently!</span>")
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob] buzzes."), \
+												SPAN_USERDANGER("Your stomach buzzes violently!"))
 			if(DT_PROB(2.5, delta_time))
-				to_chat(affected_mob, "<span class='danger'>You feel something moving in your throat.</span>")
+				to_chat(affected_mob, SPAN_DANGER("You feel something moving in your throat."))
 			if(DT_PROB(0.5, delta_time))
-				affected_mob.visible_message("<span class='danger'>[affected_mob] coughs up a swarm of bees!</span>", \
-													"<span class='userdanger'>You cough up a swarm of bees!</span>")
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob] coughs up a swarm of bees!"), \
+													SPAN_USERDANGER("You cough up a swarm of bees!"))
 				new /mob/living/simple_animal/hostile/bee(affected_mob.loc)

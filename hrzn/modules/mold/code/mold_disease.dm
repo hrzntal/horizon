@@ -44,7 +44,7 @@
 				affected_mob.adjustBruteLoss(5) //It's damaging the muscles
 			if(prob(2))
 				affected_mob.adjustStaminaLoss(100, FALSE)
-				affected_mob.visible_message("<span class='warning'>[affected_mob] faints!</span>", "<span class='userdanger'>You surrender yourself and feel at peace...</span>")
+				affected_mob.visible_message(SPAN_WARNING("[affected_mob] faints!"), "<span class='userdanger'>You surrender yourself and feel at peace...</span>")
 				affected_mob.AdjustSleeping(100)
 			if(prob(5))
 				to_chat(affected_mob, "<span class='userdanger'>You feel your mind relax and your thoughts drift!</span>")

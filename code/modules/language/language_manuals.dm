@@ -13,10 +13,10 @@
 		return
 
 	if(user.has_language(language))
-		to_chat(user, "<span class='boldwarning'>You start skimming through [src], but you already know [initial(language.name)].</span>")
+		to_chat(user, SPAN_BOLDWARNING("You start skimming through [src], but you already know [initial(language.name)]."))
 		return
 
-	to_chat(user, "<span class='boldannounce'>You start skimming through [src], and [flavour_text].</span>")
+	to_chat(user, SPAN_BOLDANNOUNCE("You start skimming through [src], and [flavour_text]."))
 	user.grant_language(language, TRUE, TRUE, LANGUAGE_MIND)
 
 	use_charge(user)
@@ -31,11 +31,11 @@
 	playsound(loc, "punch", 25, TRUE, -1)
 
 	if(M.stat == DEAD)
-		M.visible_message("<span class='danger'>[user] smacks [M]'s lifeless corpse with [src].</span>", "<span class='userdanger'>[user] smacks your lifeless corpse with [src].</span>", "<span class='hear'>You hear smacking.</span>")
+		M.visible_message(SPAN_DANGER("[user] smacks [M]'s lifeless corpse with [src]."), SPAN_USERDANGER("[user] smacks your lifeless corpse with [src]."), SPAN_HEAR("You hear smacking."))
 	else if(M.has_language(language))
-		M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", "<span class='userdanger'>[user] beats you over the head with [src]!</span>", "<span class='hear'>You hear smacking.</span>")
+		M.visible_message(SPAN_DANGER("[user] beats [M] over the head with [src]!"), SPAN_USERDANGER("[user] beats you over the head with [src]!"), SPAN_HEAR("You hear smacking."))
 	else
-		M.visible_message("<span class='notice'>[user] teaches [M] by beating [M.p_them()] over the head with [src]!</span>", "<span class='boldnotice'>As [user] hits you with [src], [flavour_text].</span>", "<span class='hear'>You hear smacking.</span>")
+		M.visible_message(SPAN_NOTICE("[user] teaches [M] by beating [M.p_them()] over the head with [src]!"), SPAN_BOLDNOTICE("As [user] hits you with [src], [flavour_text]."), SPAN_HEAR("You hear smacking."))
 		M.grant_language(language, TRUE, TRUE, LANGUAGE_MIND)
 		use_charge(user)
 
@@ -43,7 +43,7 @@
 	charges--
 	if(!charges)
 		var/turf/T = get_turf(src)
-		T.visible_message("<span class='warning'>The cover and contents of [src] start shifting and changing!</span>")
+		T.visible_message(SPAN_WARNING("The cover and contents of [src] start shifting and changing!"))
 
 		qdel(src)
 		var/obj/item/book/manual/random/book = new(T)
@@ -99,7 +99,7 @@
 /obj/item/language_manual/dronespeak_manual/attack(mob/living/M, mob/living/user)
 	// If they are not drone or silicon, we don't want them to learn this language.
 	if(!(isdrone(M) || issilicon(M)))
-		M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", "<span class='userdanger'>[user] beats you over the head with [src]!</span>", "<span class='hear'>You hear smacking.</span>")
+		M.visible_message(SPAN_DANGER("[user] beats [M] over the head with [src]!"), SPAN_USERDANGER("[user] beats you over the head with [src]!"), SPAN_HEAR("You hear smacking."))
 		return
 
 	return ..()

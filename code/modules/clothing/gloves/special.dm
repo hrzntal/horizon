@@ -15,10 +15,10 @@
 	. = ..()
 	if(slot != ITEM_SLOT_GLOVES)
 		return
-	to_chat(user, "<span class='notice'>You feel the gauntlets activate as soon as you fit them on, making your pulls stronger!</span>")
+	to_chat(user, SPAN_NOTICE("You feel the gauntlets activate as soon as you fit them on, making your pulls stronger!"))
 	pull_component = user.AddComponent(/datum/component/strong_pull)
 
 /obj/item/clothing/gloves/cargo_gauntlet/dropped(mob/user)
 	. = ..()
-	to_chat(user, "<span class='warning'>You have lost the grip power of [src]!</span>")
+	to_chat(user, SPAN_WARNING("You have lost the grip power of [src]!"))
 	QDEL_NULL(pull_component)

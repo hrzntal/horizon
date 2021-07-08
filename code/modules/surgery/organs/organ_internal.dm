@@ -149,17 +149,17 @@
 /obj/item/organ/examine(mob/user)
 	. = ..()
 
-	. += "<span class='notice'>It should be inserted in the [parse_zone(zone)].</span>"
+	. += SPAN_NOTICE("It should be inserted in the [parse_zone(zone)].")
 
 	if(organ_flags & ORGAN_FAILING)
 		if(status == ORGAN_ROBOTIC)
-			. += "<span class='warning'>[src] seems to be broken.</span>"
+			. += SPAN_WARNING("[src] seems to be broken.")
 			return
-		. += "<span class='warning'>[src] has decayed for too long, and has turned a sickly color. It probably won't work without repairs.</span>"
+		. += SPAN_WARNING("[src] has decayed for too long, and has turned a sickly color. It probably won't work without repairs.")
 		return
 
 	if(damage > high_threshold)
-		. += "<span class='warning'>[src] is starting to look discolored.</span>"
+		. += SPAN_WARNING("[src] is starting to look discolored.")
 
 /obj/item/organ/Initialize()
 	. = ..()

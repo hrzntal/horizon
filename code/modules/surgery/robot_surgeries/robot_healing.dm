@@ -97,8 +97,8 @@
 	return TRUE
 
 /datum/surgery_step/robot_heal/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
+	display_results(user, target, SPAN_WARNING("You screwed up!"),
+		SPAN_WARNING("[user] screws up!"),
 		"<span class='notice'>[user] fixes some of [target]'s damage.</span>", TRUE)
 	var/urdamageamt_brute = 0
 	if(healsbrute)

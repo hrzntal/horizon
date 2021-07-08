@@ -118,10 +118,10 @@
 	if(!has_readout || is_reading_out)
 		return
 	if(!turned_on)
-		to_chat(user, "<span class='warning'>[src] must be on turned on to make a readout!</span>")
+		to_chat(user, SPAN_WARNING("[src] must be on turned on to make a readout!"))
 		return TRUE
 	if(next_readout_scan > world.time)
-		to_chat(user, "<span class='warning'>[src] readout function is still recharging!</span>")
+		to_chat(user, SPAN_WARNING("[src] readout function is still recharging!"))
 		return TRUE
 	playsound(user, 'sound/machines/terminal_processing.ogg', 50, TRUE)
 	to_chat(user, "<span class='notice'>You turn on [src]'s readout function.</span>")

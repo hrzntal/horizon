@@ -57,7 +57,7 @@
 	if(!H.blood_volume)
 		H.blood_volume += 2.5 * delta_time
 		H.adjustBruteLoss(2.5 * delta_time)
-		to_chat(H, "<span class='danger'>You feel empty!</span>")
+		to_chat(H, SPAN_DANGER("You feel empty!"))
 
 	if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 		if(H.nutrition >= NUTRITION_LEVEL_STARVING)
@@ -66,7 +66,7 @@
 
 	if(H.blood_volume < BLOOD_VOLUME_OKAY)
 		if(DT_PROB(2.5, delta_time))
-			to_chat(H, "<span class='danger'>You feel drained!</span>")
+			to_chat(H, SPAN_DANGER("You feel drained!"))
 
 	if(H.blood_volume < BLOOD_VOLUME_BAD)
 		Cannibalize_Body(H)
@@ -84,7 +84,7 @@
 		limbs_to_consume -= list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-	to_chat(H, "<span class='userdanger'>Your [consumed_limb] is drawn back into your body, unable to maintain its shape!</span>")
+	to_chat(H, SPAN_USERDANGER("Your [consumed_limb] is drawn back into your body, unable to maintain its shape!"))
 	qdel(consumed_limb)
 	H.blood_volume += 20
 
@@ -110,13 +110,13 @@
 	var/mob/living/carbon/human/H = owner
 	var/list/limbs_to_heal = H.get_missing_limbs()
 	if(limbs_to_heal.len < 1)
-		to_chat(H, "<span class='notice'>You feel intact enough as it is.</span>")
+		to_chat(H, SPAN_NOTICE("You feel intact enough as it is."))
 		return
-	to_chat(H, "<span class='notice'>You focus intently on your missing [limbs_to_heal.len >= 2 ? "limbs" : "limb"]...</span>")
+	to_chat(H, SPAN_NOTICE("You focus intently on your missing [limbs_to_heal.len >= 2 ? "limbs" : "limb"]..."))
 	if(H.blood_volume >= 40*limbs_to_heal.len+BLOOD_VOLUME_OKAY)
 		H.regenerate_limbs()
 		H.blood_volume -= 40*limbs_to_heal.len
-		to_chat(H, "<span class='notice'>...and after a moment you finish reforming!</span>")
+		to_chat(H, SPAN_NOTICE("...and after a moment you finish reforming!"))
 		return
 	else if(H.blood_volume >= 40)//We can partially heal some limbs
 		while(H.blood_volume >= BLOOD_VOLUME_OKAY+40)
@@ -124,9 +124,9 @@
 			H.regenerate_limb(healed_limb)
 			limbs_to_heal -= healed_limb
 			H.blood_volume -= 40
-		to_chat(H, "<span class='warning'>...but there is not enough of you to fix everything! You must attain more mass to heal completely!</span>")
+		to_chat(H, SPAN_WARNING("...but there is not enough of you to fix everything! You must attain more mass to heal completely!"))
 		return
-	to_chat(H, "<span class='warning'>...but there is not enough of you to go around! You must attain more mass to heal!</span>")
+	to_chat(H, SPAN_WARNING("...but there is not enough of you to go around! You must attain more mass to heal!"))
 
 ////////////////////////////////////////////////////////SLIMEPEOPLE///////////////////////////////////////////////////////////////////
 
@@ -191,7 +191,7 @@
 /datum/species/jelly/slime/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 		if(DT_PROB(2.5, delta_time))
-			to_chat(H, "<span class='notice'>You feel very bloated!</span>")
+			to_chat(H, SPAN_NOTICE("You feel very bloated!"))
 
 	else if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
 		H.blood_volume += 1.5 * delta_time
@@ -231,9 +231,9 @@
 		if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 			make_dupe()
 		else
-			to_chat(H, "<span class='warning'>...but there is not enough of you to go around! You must attain more mass to split!</span>")
+			to_chat(H, SPAN_WARNING("...but there is not enough of you to go around! You must attain more mass to split!"))
 	else
-		to_chat(H, "<span class='warning'>...but fail to stand perfectly still!</span>")
+		to_chat(H, SPAN_WARNING("...but fail to stand perfectly still!"))
 
 	H.notransform = FALSE
 
@@ -286,7 +286,7 @@
 
 /datum/action/innate/swap_body/Activate()
 	if(!isslimeperson(owner))
-		to_chat(owner, "<span class='warning'>You are not a slimeperson.</span>")
+		to_chat(owner, SPAN_WARNING("You are not a slimeperson."))
 		Remove(owner)
 	else
 		ui_interact(owner)
@@ -412,14 +412,14 @@
 	if(M.current.stat == CONSCIOUS)
 		M.current.visible_message("<span class='notice'>[M.current] \
 			stops moving and starts staring vacantly into space.</span>",
-			"<span class='notice'>You stop moving this body...</span>")
+			SPAN_NOTICE("You stop moving this body..."))
 	else
-		to_chat(M.current, "<span class='notice'>You abandon this body...</span>")
+		to_chat(M.current, SPAN_NOTICE("You abandon this body..."))
 	M.current.transfer_trait_datums(dupe)
 	M.transfer_to(dupe)
 	dupe.visible_message("<span class='notice'>[dupe] blinks and looks \
 		around.</span>",
-		"<span class='notice'>...and move this one instead.</span>")
+		SPAN_NOTICE("...and move this one instead."))
 
 
 ///////////////////////////////////LUMINESCENTS//////////////////////////////////////////
@@ -538,23 +538,23 @@
 		if(!H.put_in_active_hand(S))
 			S.forceMove(H.drop_location())
 		species.current_extract = null
-		to_chat(H, "<span class='notice'>You eject [S].</span>")
+		to_chat(H, SPAN_NOTICE("You eject [S]."))
 		species.update_slime_actions()
 	else
 		var/obj/item/I = H.get_active_held_item()
 		if(istype(I, /obj/item/slime_extract))
 			var/obj/item/slime_extract/S = I
 			if(!S.Uses)
-				to_chat(H, "<span class='warning'>[I] is spent! You cannot integrate it.</span>")
+				to_chat(H, SPAN_WARNING("[I] is spent! You cannot integrate it."))
 				return
 			if(!H.temporarilyRemoveItemFromInventory(S))
 				return
 			S.forceMove(H)
 			species.current_extract = S
-			to_chat(H, "<span class='notice'>You consume [I], and you feel it pulse within you...</span>")
+			to_chat(H, SPAN_NOTICE("You consume [I], and you feel it pulse within you..."))
 			species.update_slime_actions()
 		else
-			to_chat(H, "<span class='warning'>You need to hold an unused slime extract in your active hand!</span>")
+			to_chat(H, SPAN_WARNING("You need to hold an unused slime extract in your active hand!"))
 
 /datum/action/innate/use_extract
 	name = "Extract Minor Activation"
@@ -657,7 +657,7 @@
 	if(!owner)
 		return FALSE
 	linked_mobs.Add(M)
-	to_chat(M, "<span class='notice'>You are now connected to [owner.real_name]'s Slime Link.</span>")
+	to_chat(M, SPAN_NOTICE("You are now connected to [owner.real_name]'s Slime Link."))
 	var/datum/action/innate/linked_speech/action = new(src)
 	linked_actions.Add(action)
 	action.Grant(M)
@@ -675,7 +675,7 @@
 	action.Remove(M)
 	var/mob/living/carbon/human/owner = slimelink_owner.resolve()
 	if(owner)
-		to_chat(M, "<span class='notice'>You are no longer connected to [owner.real_name]'s Slime Link.</span>")
+		to_chat(M, SPAN_NOTICE("You are no longer connected to [owner.real_name]'s Slime Link."))
 	linked_mobs -= M
 	linked_actions -= action
 	qdel(action)
@@ -693,14 +693,14 @@
 		return
 	var/datum/species/jelly/stargazer/species = target
 	if(!species || !(H in species.linked_mobs))
-		to_chat(H, "<span class='warning'>The link seems to have been severed...</span>")
+		to_chat(H, SPAN_WARNING("The link seems to have been severed..."))
 		Remove(H)
 		return
 
 	var/message = sanitize(input("Message:", "Slime Telepathy") as text|null)
 
 	if(!species || !(H in species.linked_mobs))
-		to_chat(H, "<span class='warning'>The link seems to have been severed...</span>")
+		to_chat(H, SPAN_WARNING("The link seems to have been severed..."))
 		Remove(H)
 		return
 
@@ -740,22 +740,22 @@
 	if(!M)
 		return
 	if(M.anti_magic_check(FALSE, FALSE, TRUE, 0))
-		to_chat(H, "<span class='notice'>As you try to communicate with [M], you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled.</span>")
+		to_chat(H, SPAN_NOTICE("As you try to communicate with [M], you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled."))
 		return
 	var/msg = sanitize(input("Message:", "Telepathy") as text|null)
 	if(msg)
 		if(M.anti_magic_check(FALSE, FALSE, TRUE, 0))
-			to_chat(H, "<span class='notice'>As you try to communicate with [M], you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled.</span>")
+			to_chat(H, SPAN_NOTICE("As you try to communicate with [M], you're suddenly stopped by a vision of a massive tinfoil wall that streches beyond visible range. It seems you've been foiled."))
 			return
 		log_directed_talk(H, M, msg, LOG_SAY, "slime telepathy")
-		to_chat(M, "<span class='notice'>You hear an alien voice in your head... </span><font color=#008CA2>[msg]</font>")
-		to_chat(H, "<span class='notice'>You telepathically said: \"[msg]\" to [M]</span>")
+		to_chat(M, "[SPAN_NOTICE("You hear an alien voice in your head... ")]<font color=#008CA2>[msg]</font>")
+		to_chat(H, SPAN_NOTICE("You telepathically said: \"[msg]\" to [M]"))
 		for(var/dead in GLOB.dead_mob_list)
 			if(!isobserver(dead))
 				continue
 			var/follow_link_user = FOLLOW_LINK(dead, H)
 			var/follow_link_target = FOLLOW_LINK(dead, M)
-			to_chat(dead, "[follow_link_user] <span class='name'>[H]</span> <span class='alertalien'>Slime Telepathy --> </span> [follow_link_target] <span class='name'>[M]</span> <span class='noticealien'>[msg]</span>")
+			to_chat(dead, "[follow_link_user] [SPAN_NAME("[H]")] [SPAN_ALERTALIEN("Slime Telepathy --> ")] [follow_link_target] [SPAN_NAME("[M]")] [SPAN_NOTICEALIEN("[msg]")]")
 
 /datum/action/innate/link_minds
 	name = "Link Minds"
@@ -771,22 +771,22 @@
 	CHECK_DNA_AND_SPECIES(H)
 
 	if(!H.pulling || !isliving(H.pulling) || H.grab_state < GRAB_AGGRESSIVE)
-		to_chat(H, "<span class='warning'>You need to aggressively grab someone to link minds!</span>")
+		to_chat(H, SPAN_WARNING("You need to aggressively grab someone to link minds!"))
 		return
 
 	var/mob/living/target = H.pulling
 	var/datum/species/jelly/stargazer/species = target
 
-	to_chat(H, "<span class='notice'>You begin linking [target]'s mind to yours...</span>")
-	to_chat(target, "<span class='warning'>You feel a foreign presence within your mind...</span>")
+	to_chat(H, SPAN_NOTICE("You begin linking [target]'s mind to yours..."))
+	to_chat(target, SPAN_WARNING("You feel a foreign presence within your mind..."))
 	if(do_after(H, 60, target = target))
 		if(H.pulling != target || H.grab_state < GRAB_AGGRESSIVE)
 			return
 		if(species.link_mob(target))
-			to_chat(H, "<span class='notice'>You connect [target]'s mind to your slime link!</span>")
+			to_chat(H, SPAN_NOTICE("You connect [target]'s mind to your slime link!"))
 		else
-			to_chat(H, "<span class='warning'>You can't seem to link [target]'s mind...</span>")
-			to_chat(target, "<span class='warning'>The foreign presence leaves your mind.</span>")
+			to_chat(H, SPAN_WARNING("You can't seem to link [target]'s mind..."))
+			to_chat(target, SPAN_WARNING("The foreign presence leaves your mind."))
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
@@ -819,11 +819,13 @@
 	if(slime_restricted && !isjellyperson(H))
 		return
 	if(slime_restricted)
-		H.visible_message("<span class='notice'>[owner] gains a look of \
-		concentration while standing perfectly still.\
-		Their body seems to shift and starts getting more goo-like.</span>",
-		"<span class='notice'>You focus intently on altering your body while \
-		standing perfectly still...</span>")
+		H.visible_message(
+			SPAN_NOTICE("[owner] gains a look of \
+				concentration while standing perfectly still.\
+				Their body seems to shift and starts getting more goo-like."),
+			SPAN_NOTICE("You focus intently on altering your body while \
+				standing perfectly still...")
+		)
 	change_form()
 
 /datum/action/innate/slime_change/proc/change_form()
@@ -966,10 +968,10 @@
 					var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
 					if(melons)
 						melons.lactates = DNA.features["breasts_lactation"]
-					to_chat(H, "<span class='notice'>Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"].</span>")
+					to_chat(H, SPAN_NOTICE("Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"]."))
 				if("Penis Taur Mode")
 					DNA.features["penis_taur_mode"] = !DNA.features["penis_taur_mode"]
-					to_chat(H, "<span class='notice'>Your penis [DNA.features["penis_taur_mode"] ? "will be at your taur part" : "will not be at your taur part anymore"].</span>")
+					to_chat(H, SPAN_NOTICE("Your penis [DNA.features["penis_taur_mode"] ? "will be at your taur part" : "will not be at your taur part anymore"]."))
 				if("Penis Size")
 					var/new_length = input(H, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "DNA Alteration") as num|null
 					if(new_length)

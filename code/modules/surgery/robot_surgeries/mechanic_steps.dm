@@ -62,7 +62,7 @@
 /datum/surgery_step/replace_wires/tool_check(mob/user, obj/item/tool)
 	var/obj/item/stack/cable_coil/coil = tool
 	if(coil.get_amount() < cableamount)
-		to_chat(user, "<span class='warning'>Not enough cable!</span>")
+		to_chat(user, SPAN_WARNING("Not enough cable!"))
 		return FALSE
 	return TRUE
 
@@ -87,7 +87,7 @@
 /datum/surgery_step/add_plating/tool_check(mob/user, obj/item/tool)
 	var/obj/item/stack/sheet/iron/plat = tool
 	if(plat.get_amount() < metalamount)
-		to_chat(user, "<span class='warning'>Not enough metal!</span>")
+		to_chat(user, SPAN_WARNING("Not enough metal!"))
 		return FALSE
 	return TRUE
 

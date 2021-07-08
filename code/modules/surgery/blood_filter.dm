@@ -23,21 +23,21 @@
 	time = 2.5 SECONDS
 
 /datum/surgery_step/filter_blood/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin filtering [target]'s blood...</span>",
-		"<span class='notice'>[user] uses [tool] to filter [target]'s blood.</span>",
-		"<span class='notice'>[user] uses [tool] on [target]'s chest.</span>")
+	display_results(user, target, SPAN_NOTICE("You begin filtering [target]'s blood..."),
+		SPAN_NOTICE("[user] uses [tool] to filter [target]'s blood."),
+		SPAN_NOTICE("[user] uses [tool] on [target]'s chest."))
 
 /datum/surgery_step/filter_blood/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(target.reagents?.total_volume)
 		for(var/datum/reagent/chem as anything in target.reagents.reagent_list)
 			target.reagents.remove_reagent(chem.type, min(chem.volume * 0.22, 10))
-	display_results(user, target, "<span class='notice'>\The [tool] pings as it finishes filtering [target]'s blood.</span>",
-		"<span class='notice'>\The [tool] pings as it stops pumping [target]'s blood.</span>",
+	display_results(user, target, SPAN_NOTICE("\The [tool] pings as it finishes filtering [target]'s blood."),
+		SPAN_NOTICE("\The [tool] pings as it stops pumping [target]'s blood."),
 		"\The [tool] pings as it stops pumping.")
 	return ..()
 
 /datum/surgery_step/filter_blood/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screw up, bruising [target]'s chest!</span>",
-		"<span class='warning'>[user] screws up, brusing [target]'s chest!</span>",
-		"<span class='warning'>[user] screws up!</span>")
+	display_results(user, target, SPAN_WARNING("You screw up, bruising [target]'s chest!"),
+		SPAN_WARNING("[user] screws up, brusing [target]'s chest!"),
+		SPAN_WARNING("[user] screws up!"))
 	target.adjustBruteLoss(5)

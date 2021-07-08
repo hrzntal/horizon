@@ -67,7 +67,7 @@
 	text = "Oh no! The engine has broken down! \
 	You can repair it with an engine part, or you \
 	can make repairs for 3 days."
-	emag_message = "<span class='warning'>You hear some large object lurch to a halt right behind you! When you go to look, nothing's there...</span>"
+	emag_message = SPAN_WARNING("You hear some large object lurch to a halt right behind you! When you go to look, nothing's there...")
 	emag_sound = 'sound/effects/creak1.ogg'
 	weight = 2
 	event_responses = list()
@@ -114,7 +114,7 @@
 
 /datum/orion_event/electronic_part/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
 	playsound(game, 'sound/effects/empulse.ogg', 50, TRUE)
-	game.visible_message("<span class='danger'>[src] malfunctions, randomizing in-game stats!</span>")
+	game.visible_message(SPAN_DANGER("[src] malfunctions, randomizing in-game stats!"))
 	var/oldfood = game.food
 	var/oldfuel = game.fuel
 	game.food = rand(10,80) / rand(1,2)
@@ -124,9 +124,9 @@
 
 /datum/orion_event/electronic_part/proc/revert_random(obj/machinery/computer/arcade/orion_trail/game, oldfood, oldfuel)
 	if(oldfuel > game.fuel && oldfood > game.food)
-		game.audible_message("<span class='danger'>[src] lets out a somehow reassuring chime.</span>")
+		game.audible_message(SPAN_DANGER("[src] lets out a somehow reassuring chime."))
 	else if(oldfuel < game.fuel || oldfood < game.food)
-		game.audible_message("<span class='danger'>[src] lets out a somehow ominous chime.</span>")
+		game.audible_message(SPAN_DANGER("[src] lets out a somehow ominous chime."))
 	game.food = oldfood
 	game.fuel = oldfuel
 	playsound(game, 'sound/machines/chime.ogg', 50, TRUE)
@@ -259,10 +259,10 @@
 
 /datum/orion_event/raiders/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
 	if(prob(50-gamer_skill))
-		to_chat(usr, "<span class='userdanger'>You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?</span>")
+		to_chat(usr, SPAN_USERDANGER("You hear battle shouts. The tramping of boots on cold metal. Screams of agony. The rush of venting air. Are you going insane?"))
 		gamer.hallucination += 30
 	else
-		to_chat(usr, "<span class='userdanger'>Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there...</span>")
+		to_chat(usr, SPAN_USERDANGER("Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there..."))
 		gamer.take_bodypart_damage(30)
 		playsound(game, 'sound/weapons/genhit2.ogg', 100, TRUE)
 
@@ -283,14 +283,14 @@
 		maxSeverity = 2 //part of gitting gud is rng mitigation
 	var/severity = rand(1,maxSeverity) //pray to RNGesus. PRAY, PIGS
 	if(severity == 1)
-		to_chat(gamer, "<span class='userdanger'>You suddenly feel slightly nauseated.</span>" )
+		to_chat(gamer, SPAN_USERDANGER("You suddenly feel slightly nauseated.") )
 		gamer.adjust_disgust(50)
 	if(severity == 2)
-		to_chat(usr, "<span class='userdanger'>You suddenly feel extremely nauseated and hunch over until it passes.</span>")
+		to_chat(usr, SPAN_USERDANGER("You suddenly feel extremely nauseated and hunch over until it passes."))
 		gamer.adjust_disgust(110)
 		gamer.Stun(60)
 	if(severity >= 3) //you didn't pray hard enough
-		to_chat(gamer, "<span class='warning'>An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit.</span>")
+		to_chat(gamer, SPAN_WARNING("An overpowering wave of nausea consumes over you. You hunch over, your stomach's contents preparing for a spectacular exit."))
 		gamer.adjust_disgust(150) //max this bitch out so they barf a lot
 		gamer.Stun(100)
 
@@ -316,7 +316,7 @@
 
 /datum/orion_event/flux/emag_effect(obj/machinery/computer/arcade/orion_trail/game, mob/living/carbon/gamer)
 	if(prob(25 + gamer_skill))//withstand the wind with your GAMER SKILL
-		to_chat(gamer, "<span class='userdanger'>A violent gale blows past you, and you barely manage to stay standing!</span>")
+		to_chat(gamer, SPAN_USERDANGER("A violent gale blows past you, and you barely manage to stay standing!"))
 		return
 	gamer.Paralyze(60)
 	game.say("A sudden gust of powerful wind slams [gamer] into the floor!")

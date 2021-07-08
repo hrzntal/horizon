@@ -142,7 +142,7 @@
  */
 /mob/living/simple_animal/hostile/retaliate/trader/proc/try_buy(mob/user, obj/item/item_to_buy)
 	var/cost = products[item_to_buy]
-	to_chat(user, "<span class='notice'>It will cost you [cost] credits to buy \the [initial(item_to_buy.name)]. Are you sure you want to buy it?</span>")
+	to_chat(user, SPAN_NOTICE("It will cost you [cost] credits to buy \the [initial(item_to_buy.name)]. Are you sure you want to buy it?"))
 	var/list/npc_options = list(
 		"Yes" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_yes"),
 		"No" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_no")
@@ -183,7 +183,7 @@
 	if(!cost)
 		return FALSE
 	say(interestedphrase)
-	to_chat(user, "<span class='notice'>You will receive [cost] credits for each one of [sellitem].</span>")
+	to_chat(user, SPAN_NOTICE("You will receive [cost] credits for each one of [sellitem]."))
 	var/list/npc_options = list(
 		"Yes" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_yes"),
 		"No" = image(icon = 'icons/hud/radial.dmi', icon_state = "radial_no")
@@ -220,7 +220,7 @@
 	name = "Mr. Bones"
 	desc = "A skeleton merchant, he seems very humerus."
 	speak_emote = list("rattles")
-	speech_span = SPAN_SANS
+	speech_span = SPEECH_SPAN_SANS
 	sell_sound = 'sound/voice/hiss2.ogg'
 	mob_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	products = list(

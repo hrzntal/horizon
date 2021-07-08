@@ -37,14 +37,14 @@
 	return TRUE
 
 /datum/surgery_step/lobotomize/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to perform a lobotomy on [target]'s brain...</span>",
-		"<span class='notice'>[user] begins to perform a lobotomy on [target]'s brain.</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>")
+	display_results(user, target, SPAN_NOTICE("You begin to perform a lobotomy on [target]'s brain..."),
+		SPAN_NOTICE("[user] begins to perform a lobotomy on [target]'s brain."),
+		SPAN_NOTICE("[user] begins to perform surgery on [target]'s brain."))
 
 /datum/surgery_step/lobotomize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
-	display_results(user, target, "<span class='notice'>You succeed in lobotomizing [target].</span>",
-			"<span class='notice'>[user] successfully lobotomizes [target]!</span>",
-			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+	display_results(user, target, SPAN_NOTICE("You succeed in lobotomizing [target]."),
+			SPAN_NOTICE("[user] successfully lobotomizes [target]!"),
+			SPAN_NOTICE("[user] completes the surgery on [target]'s brain."))
 	target.cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY)
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
@@ -63,9 +63,9 @@
 /datum/surgery_step/lobotomize/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/brain/target_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
 	if(target_brain)
-		display_results(user, target, "<span class='warning'>You remove the wrong part, causing more damage!</span>",
-			"<span class='notice'>[user] successfully lobotomizes [target]!</span>",
-			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+		display_results(user, target, SPAN_WARNING("You remove the wrong part, causing more damage!"),
+			SPAN_NOTICE("[user] successfully lobotomizes [target]!"),
+			SPAN_NOTICE("[user] completes the surgery on [target]'s brain."))
 		target_brain.applyOrganDamage(80)
 		switch(rand(1,3))
 			if(1)
@@ -78,5 +78,5 @@
 			if(3)
 				target.gain_trauma_type(BRAIN_TRAUMA_SPECIAL, TRAUMA_RESILIENCE_MAGIC)
 	else
-		user.visible_message("<span class='warning'>[user] suddenly notices that the brain [user.p_they()] [user.p_were()] working on is not there anymore.</span>", "<span class='warning'>You suddenly notice that the brain you were working on is not there anymore.</span>")
+		user.visible_message(SPAN_WARNING("[user] suddenly notices that the brain [user.p_they()] [user.p_were()] working on is not there anymore."), SPAN_WARNING("You suddenly notice that the brain you were working on is not there anymore."))
 	return FALSE

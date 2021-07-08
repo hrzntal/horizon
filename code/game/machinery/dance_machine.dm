@@ -69,10 +69,10 @@
 	if(!active && !(flags_1 & NODECONSTRUCT_1))
 		if(O.tool_behaviour == TOOL_WRENCH)
 			if(!anchored && !isinspace())
-				to_chat(user,"<span class='notice'>You secure [src] to the floor.</span>")
+				to_chat(user,SPAN_NOTICE("You secure [src] to the floor."))
 				set_anchored(TRUE)
 			else if(anchored)
-				to_chat(user,"<span class='notice'>You unsecure and disconnect [src].</span>")
+				to_chat(user,SPAN_NOTICE("You unsecure and disconnect [src]."))
 				set_anchored(FALSE)
 			playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 			return
@@ -84,14 +84,14 @@
 
 /obj/machinery/jukebox/ui_status(mob/user)
 	if(!anchored)
-		to_chat(user,"<span class='warning'>This device must be anchored by a wrench!</span>")
+		to_chat(user,SPAN_WARNING("This device must be anchored by a wrench!"))
 		return UI_CLOSE
 	if(!allowed(user) && !isobserver(user))
-		to_chat(user,"<span class='warning'>Error: Access Denied.</span>")
+		to_chat(user,SPAN_WARNING("Error: Access Denied."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	if(!songs.len && !isobserver(user))
-		to_chat(user,"<span class='warning'>Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue.</span>")
+		to_chat(user,SPAN_WARNING("Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
@@ -132,7 +132,7 @@
 				return
 			if(!active)
 				if(stop > world.time)
-					to_chat(usr, "<span class='warning'>Error: The device is still resetting from the last activation, it will be ready again in [DisplayTimeText(stop-world.time)].</span>")
+					to_chat(usr, SPAN_WARNING("Error: The device is still resetting from the last activation, it will be ready again in [DisplayTimeText(stop-world.time)]."))
 					if(!COOLDOWN_FINISHED(src, jukebox_error_cd))
 						return
 					playsound(src, 'sound/misc/compiler-failure.ogg', 50, TRUE)
@@ -146,7 +146,7 @@
 				return TRUE
 		if("select_track")
 			if(active)
-				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
+				to_chat(usr, SPAN_WARNING("Error: You cannot change the song until the current one is over."))
 				return
 			var/list/available = list()
 			for(var/datum/track/S in songs)

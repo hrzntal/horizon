@@ -51,5 +51,5 @@
 /datum/weather/rain/heavy/storm
 	name = "storm"
 	desc = "Storm with rain and lightning."
-	weather_message = "<span class='warning'>The clouds blacken and the sky starts to flash as thunder strikes down!</span>"
+	weather_message = SPAN_WARNING("The clouds blacken and the sky starts to flash as thunder strikes down!")
 	thunder_chance = 10

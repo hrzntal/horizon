@@ -24,40 +24,40 @@
 	if(istype(target, /obj/structure/projected_forcefield))
 		var/obj/structure/projected_forcefield/F = target
 		if(F.generator == src)
-			to_chat(user, "<span class='notice'>You deactivate [F].</span>")
+			to_chat(user, SPAN_NOTICE("You deactivate [F]."))
 			qdel(F)
 			return
 	var/turf/T = get_turf(target)
 	var/obj/structure/projected_forcefield/found_field = locate() in T
 	if(found_field)
-		to_chat(user, "<span class='warning'>There is already a forcefield in that location!</span>")
+		to_chat(user, SPAN_WARNING("There is already a forcefield in that location!"))
 		return
 	if(T.density)
 		return
 	if(get_dist(T,src) > field_distance_limit)
 		return
 	if (get_turf(src) == T)
-		to_chat(user, "<span class='warning'>Target is too close, aborting!</span>")
+		to_chat(user, SPAN_WARNING("Target is too close, aborting!"))
 		return
 	if(LAZYLEN(current_fields) >= max_fields)
-		to_chat(user, "<span class='warning'>[src] cannot sustain any more forcefields!</span>")
+		to_chat(user, SPAN_WARNING("[src] cannot sustain any more forcefields!"))
 		return
 
 	playsound(src,'sound/weapons/resonator_fire.ogg',50,TRUE)
-	user.visible_message("<span class='warning'>[user] projects a forcefield!</span>","<span class='notice'>You project a forcefield.</span>")
+	user.visible_message(SPAN_WARNING("[user] projects a forcefield!"),SPAN_NOTICE("You project a forcefield."))
 	var/obj/structure/projected_forcefield/F = new(T, src)
 	current_fields += F
 	user.changeNext_move(CLICK_CD_MELEE)
 
 /obj/item/forcefield_projector/attack_self(mob/user)
 	if(LAZYLEN(current_fields))
-		to_chat(user, "<span class='notice'>You deactivate [src], disabling all active forcefields.</span>")
+		to_chat(user, SPAN_NOTICE("You deactivate [src], disabling all active forcefields."))
 		for(var/obj/structure/projected_forcefield/F in current_fields)
 			qdel(F)
 
 /obj/item/forcefield_projector/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It is currently sustaining [LAZYLEN(current_fields)]/[max_fields] fields, and it's [round((shield_integrity/max_shield_integrity)*100)]% charged.</span>"
+	. += SPAN_NOTICE("It is currently sustaining [LAZYLEN(current_fields)]/[max_fields] fields, and it's [round((shield_integrity/max_shield_integrity)*100)]% charged.")
 
 /obj/item/forcefield_projector/Initialize(mapload)
 	. = ..()
@@ -97,7 +97,7 @@
 	generator = origin
 
 /obj/structure/projected_forcefield/Destroy()
-	visible_message("<span class='warning'>[src] flickers and disappears!</span>")
+	visible_message(SPAN_WARNING("[src] flickers and disappears!"))
 	playsound(src,'sound/weapons/resonator_blast.ogg',25,TRUE)
 	generator.current_fields -= src
 	generator = null

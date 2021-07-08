@@ -31,9 +31,9 @@
 	else
 		owner_name = my_mind.current.real_name
 	//Greet our antag player and give him a link to open ambitions!
-	to_chat(my_mind.current, "<span class='boldwarning'>You're a story driven antagonist, this means you'll have to fill ambitions before you start antagonising!</span>")
-	to_chat(my_mind.current, "<span class='boldwarning'>After filling them out you'll get access to your uplink or powers.</span>")
-	to_chat(my_mind.current, "<span class='boldwarning'>Click <a href='?src=[REF(src)];pref=show_ambitions'>here</a> to set your ambitions, or access them at any time from your IC tab.</span>")
+	to_chat(my_mind.current, SPAN_BOLDWARNING("You're a story driven antagonist, this means you'll have to fill ambitions before you start antagonising!"))
+	to_chat(my_mind.current, SPAN_BOLDWARNING("After filling them out you'll get access to your uplink or powers."))
+	to_chat(my_mind.current, SPAN_BOLDWARNING("Click <a href='?src=[REF(src)];pref=show_ambitions'>here</a> to set your ambitions, or access them at any time from your IC tab."))
 
 /datum/ambitions/proc/ShowPanel(mob/user, admin_view = FALSE)
 	if(!user || !user.client)
@@ -267,14 +267,14 @@
 					if(action && !(action == "Yes"))
 						return
 				GLOB.ambitions_to_review[src] = usr.ckey
-				message_admins("<span class='adminhelp'>[usr.ckey] is handling [owner_name]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
-				to_chat(my_mind.current, "<span class='boldnotice'>[usr.ckey] is handling your ambitions.</span>")
+				message_admins(SPAN_ADMINHELP("[usr.ckey] is handling [owner_name]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
+				to_chat(my_mind.current, SPAN_BOLDNOTICE("[usr.ckey] is handling your ambitions."))
 			if("request_changes")
 				var/changes_wanted = input(usr, "Requested changes:", "Ambitions")  as message|null
 				if(changes_wanted)
 					last_requested_change = changes_wanted
-					to_chat(my_mind.current, "<span class='boldwarning'>[usr.ckey] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)</span>")
-					message_admins("<span class='adminhelp'>[usr.ckey] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+					to_chat(my_mind.current, SPAN_BOLDWARNING("[usr.ckey] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)"))
+					message_admins(SPAN_ADMINHELP("[usr.ckey] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("discard_review")
 				var/action = tgui_alert(
 					usr,
@@ -288,16 +288,16 @@
 					changed_after_approval = FALSE
 					last_requested_change = null
 					GLOB.ambitions_to_review -= src
-					to_chat(my_mind.current, "<span class='warning'><b>Your ambitions review request was discarded by [usr.ckey].</b></span>")
-					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+					to_chat(my_mind.current, SPAN_WARNING("<b>Your ambitions review request was discarded by [usr.ckey].</b>"))
+					message_admins(SPAN_ADMINHELP("[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("approve")
 				admin_approval = TRUE
 				changed_after_approval = FALSE
 				last_requested_change = null
 				GLOB.ambitions_to_review -= src
 				log_action("APPROVED: Got an approval from [usr.ckey]", FALSE)
-				to_chat(my_mind.current, "<span class='nicegreen'><b>Your ambitions were approved by [usr.ckey].</b></span>")
-				message_admins("<span class='nicegreen'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				to_chat(my_mind.current, SPAN("nicegreen", "<b>Your ambitions were approved by [usr.ckey].</b>"))
+				message_admins(SPAN("nicegreen", "[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 				submit()
 			if("logs")
 				var/datum/browser/popup = new(usr, "Ambition logging", "Ambition logs", 500, 200)
@@ -314,17 +314,17 @@
 				ShowTemplatePanel(usr)
 				return
 			if("requested_done")
-				to_chat(src, "<span class='nicegreen'><b>You notify admins that you have adressed the requested changes.</b></span>")
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				to_chat(src, SPAN("nicegreen", "<b>You notify admins that you have adressed the requested changes.</b>"))
+				message_admins(SPAN_ADMINHELP("[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("request_review")
 				admin_review_requested = TRUE
 				GLOB.ambitions_to_review[src] = 0
 				log_action("--Requested an admin review--", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				message_admins(SPAN_ADMINHELP("[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("submit")
 				submit()
 				log_action("SUBMIT: Submitted their ambitions", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				message_admins(SPAN_ADMINHELP("[ADMIN_TPMONTY(usr)] has submitted their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)

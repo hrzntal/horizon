@@ -18,14 +18,14 @@
 	time = 125
 
 /datum/surgery_step/muscled_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start wrapping muscles around [target]'s circulatory system.</span>",
-		"<span class='notice'>[user] starts wrapping muscles around [target]'s circulatory system.</span>",
-		"<span class='notice'>[user] starts manipulating [target]'s circulatory system.</span>")
+	display_results(user, target, SPAN_NOTICE("You start wrapping muscles around [target]'s circulatory system."),
+		SPAN_NOTICE("[user] starts wrapping muscles around [target]'s circulatory system."),
+		SPAN_NOTICE("[user] starts manipulating [target]'s circulatory system."))
 
 /datum/surgery_step/muscled_veins/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
-	display_results(user, target, "<span class='notice'>You reshape [target]'s circulatory system, adding a muscled membrane!</span>",
-		"<span class='notice'>[user] reshapes [target]'s circulatory system, adding a muscled membrane!</span>",
-		"<span class='notice'>[user] finishes manipulating [target]'s circulatory system.</span>")
+	display_results(user, target, SPAN_NOTICE("You reshape [target]'s circulatory system, adding a muscled membrane!"),
+		SPAN_NOTICE("[user] reshapes [target]'s circulatory system, adding a muscled membrane!"),
+		SPAN_NOTICE("[user] finishes manipulating [target]'s circulatory system."))
 	new /datum/bioware/muscled_veins(target)
 	return ..()
 

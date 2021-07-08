@@ -104,7 +104,7 @@
 	if(!istype(living_target))
 		return FALSE //We failed to run the invoke. Might be because we're a structure. Let the squashable element handle it then!
 	if(!HAS_TRAIT(living_target, TRAIT_PIERCEIMMUNE))
-		living_target.visible_message("<span class='danger'>[living_target] steps onto [cockroach]'s spike!</span>", "<span class='userdanger'>You step onto [cockroach]'s spike!</span>")
+		living_target.visible_message(SPAN_DANGER("[living_target] steps onto [cockroach]'s spike!"), SPAN_USERDANGER("You step onto [cockroach]'s spike!"))
 		return TRUE
-	living_target.visible_message("<span class='notice'>[living_target] squashes [cockroach], not even noticing its spike.</span>", "<span class='notice'>You squashed [cockroach], not even noticing its spike.</span>")
+	living_target.visible_message(SPAN_NOTICE("[living_target] squashes [cockroach], not even noticing its spike."), SPAN_NOTICE("You squashed [cockroach], not even noticing its spike."))
 	return FALSE

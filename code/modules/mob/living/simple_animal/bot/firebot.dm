@@ -128,8 +128,8 @@
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+			to_chat(user, SPAN_DANGER("[src] buzzes and beeps."))
+		audible_message(SPAN_DANGER("[src] buzzes oddly!"))
 		playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		if(user)
 			old_target_fire = user
@@ -304,7 +304,7 @@
 
 /mob/living/simple_animal/bot/firebot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message(SPAN_BOLDANNOUNCE("[src] blows apart!"))
 
 	var/atom/Tsec = drop_location()
 
