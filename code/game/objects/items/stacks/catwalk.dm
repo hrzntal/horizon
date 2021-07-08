@@ -11,6 +11,7 @@
 	throw_range = 7
 	max_amount = 60
 	novariants = TRUE
+	merge_type = /obj/item/stack/catwalk
 	var/catwalk_type = /obj/structure/lattice/catwalk
 
 /obj/item/stack/catwalk/plated
@@ -18,6 +19,7 @@
 	singular_name = "plated catwalk rod"
 	desc = "Rods that could be used to make a plated catwalk."
 	icon_state = "catwalk_plated"
+	merge_type = /obj/item/stack/catwalk/plated
 	catwalk_type = /obj/structure/lattice/catwalk/plated
 
 /obj/item/stack/catwalk/plated/dark
@@ -25,6 +27,7 @@
 	singular_name = "dark plated catwalk rod"
 	desc = "Rods that could be used to make a plated catwalk, with style."
 	icon_state = "catwalk_plated_dark"
+	merge_type = /obj/item/stack/catwalk/plated/dark
 	catwalk_type = /obj/structure/lattice/catwalk/plated/dark
 
 /obj/item/stack/catwalk/plated/smooth
@@ -32,6 +35,7 @@
 	singular_name = "smooth plated catwalk rod"
 	desc = "Rods that could be used to make a plated catwalk, with style."
 	icon_state = "catwalk_plated_smooth"
+	merge_type = /obj/item/stack/catwalk/plated/smooth
 	catwalk_type = /obj/structure/lattice/catwalk/plated/smooth
 
 /obj/item/stack/catwalk/swarmer
@@ -39,4 +43,5 @@
 	singular_name = "swarmer catwalk rod"
 	desc = "Rods that could be used to make a quite peculiar catwalk."
 	icon_state = "catwalk_swarmer"
+	merge_type = /obj/item/stack/catwalk/plated/swarmer
 	catwalk_type = /obj/structure/lattice/catwalk/swarmer_catwalk
