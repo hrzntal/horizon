@@ -2,6 +2,8 @@
 	special_render_case = TRUE
 	var/associated_organ_slot 
 	var/uses_skintones
+	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
+	var/genital_location = GROIN
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
@@ -11,7 +13,7 @@
 		if(GENITAL_ALWAYS_SHOW)
 			return FALSE
 		if(GENITAL_HIDDEN_BY_CLOTHES)
-			if(H.w_uniform || H.wear_suit)
+			if((H.w_uniform && H.w_uniform.body_parts_covered & genital_location) || (H.wear_suit && H.wear_suit.body_parts_covered & genital_location))
 				return TRUE
 			else
 				return FALSE
@@ -40,9 +42,12 @@
 	var/can_have_sheath = TRUE
 
 /datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
 	. = ..()
+	if(.)
+		return
+	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES) && badonkers.visibility_preference != GENITAL_ALWAYS_SHOW)
+		return TRUE
 
 /datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
@@ -115,9 +120,12 @@
 	var/has_size = TRUE
 
 /datum/sprite_accessory/genital/testicles/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
 	. = ..()
+	if(.)
+		return
+	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES) && badonkers.visibility_preference != GENITAL_ALWAYS_SHOW)
+		return TRUE
 
 /datum/sprite_accessory/genital/testicles/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
@@ -163,10 +171,12 @@
 	var/alt_aroused = TRUE
 
 /datum/sprite_accessory/genital/vagina/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
-		return TRUE
 	. = ..()
-
+	if(.)
+		return
+	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES) && badonkers.visibility_preference != GENITAL_ALWAYS_SHOW)
+		return TRUE
 
 /datum/sprite_accessory/genital/vagina/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
@@ -221,11 +231,15 @@
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	uses_skintones = TRUE
+	genital_location = CHEST
 
 /datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
-		return TRUE
 	. = ..()
+	if(.)
+		return
+	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
+	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT) && badonkers.visibility_preference != GENITAL_ALWAYS_SHOW)
+		return TRUE
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
