@@ -101,7 +101,7 @@
 
 /obj/structure/lattice/catwalk/proc/CheckCableSupport()
 	var/turf/T = loc
-	if(!isopenspaceturf(T) || !isspaceturf(T))
+	if(!isopenspaceturf(T) && !isspaceturf(T))
 		return
 	for(var/obj/structure/cable/C in T)
 		C.deconstruct()
