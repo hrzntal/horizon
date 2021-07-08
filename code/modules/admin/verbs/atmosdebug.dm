@@ -13,7 +13,7 @@
 
 	//Pipes
 	for(var/obj/machinery/atmospherics/pipe/pipe in GLOB.machines)
-		if(istype(pipe, /obj/machinery/atmospherics/pipe/smart) || istype(pipe, /obj/machinery/atmospherics/pipe/layer_manifold))
+		if(istype(pipe, /obj/machinery/atmospherics/pipe/layer_manifold))
 			continue
 		if(pipe.z && (!pipe.nodes || !pipe.nodes.len || (null in pipe.nodes)))
 			to_chat(usr, "Unconnected [pipe.name] located at [ADMIN_VERBOSEJMP(pipe)]", confidential = TRUE)

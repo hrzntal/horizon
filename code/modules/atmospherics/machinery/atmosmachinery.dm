@@ -34,10 +34,6 @@
 	///This only works on pipes, because they have 1000 subtypes wich need to be visible and invisible under tiles, so we track this here
 	var/hide = TRUE
 
-	///Identifiers for the iconset, the path where the image will be taken from
-	var/static/list/iconsetids = list()
-	///The unique identifier created from the iconsetids, the parameters are then used to define the pipe image (icon, icon_state, color, direction, piping_layer)
-	var/static/list/pipeimages = list()
 	///The image of the pipe/device used for ventcrawling
 	var/image/pipe_vision_img = null
 
@@ -77,7 +73,7 @@
 		if(HAS_TRAIT(L, TRAIT_VENTCRAWLER_NUDE) || HAS_TRAIT(L, TRAIT_VENTCRAWLER_ALWAYS))
 			. += "<span class='notice'>Alt-click to crawl through it.</span>"
 
-/obj/machinery/atmospherics/New(loc, process = TRUE, setdir, init_dir = ALL_CARDINALS)
+/obj/machinery/atmospherics/New(loc, process = TRUE, setdir)
 	if(!isnull(setdir))
 		setDir(setdir)
 	if(pipe_flags & PIPING_CARDINAL_AUTONORMALIZE)
@@ -88,7 +84,7 @@
 	..()
 	if(process)
 		SSair.start_processing_machine(src)
-	SetInitDirections(init_dir)
+	SetInitDirections()
 
 /obj/machinery/atmospherics/Destroy()
 	for(var/i in 1 to device_type)
@@ -248,7 +244,7 @@
 /obj/machinery/atmospherics/proc/isConnectable(obj/machinery/atmospherics/target, given_layer)
 	if(isnull(given_layer))
 		given_layer = piping_layer
-	if(check_connectable_layer(target, given_layer) && target.loc != loc && check_connectable_color(target))
+	if(check_connectable_layer(target, given_layer) && target.loc != loc)
 		return TRUE
 	return FALSE
 
@@ -266,17 +262,6 @@
 	return FALSE
 
 /**
- * check if the color are the same on both sides or if one of the pipes are grey or have the PIPING_ALL_COLORS flag
- * returns TRUE if one of the parameters is TRUE
- * Arguments:
- * * obj/machinery/atmospherics/target - the machinery we want to connect to
- */
-/obj/machinery/atmospherics/proc/check_connectable_color(obj/machinery/atmospherics/target)
-	if(lowertext(target.pipe_color) == lowertext(pipe_color) || ((target.pipe_flags | pipe_flags) & PIPING_ALL_COLORS) || lowertext(target.pipe_color) == lowertext(COLOR_VERY_LIGHT_GRAY) || lowertext(pipe_color) == lowertext(COLOR_VERY_LIGHT_GRAY))
-		return TRUE
-	return FALSE
-
-/**
  * Called on construction and when expanding the datum_pipeline, returns the nodes of the device
  */
 /obj/machinery/atmospherics/proc/pipeline_expansion()
@@ -285,7 +270,7 @@
 /**
  * Set the initial directions of the device (NORTH || SOUTH || EAST || WEST), called on New()
  */
-/obj/machinery/atmospherics/proc/SetInitDirections(init_dir)
+/obj/machinery/atmospherics/proc/SetInitDirections()
 	return
 
 /**
@@ -423,40 +408,23 @@
 	..()
 
 /**
- * Getter for pipe underlay
+ * Getter for piping layer shifted, pipe colored overlays
  *
  * Creates the image for the pipe underlay that all components use, called by get_pipe_underlay() in components_base.dm
  * Arguments:
- * * iconset - path of the iconstate we are using (ex: 'icons/obj/atmospherics/components/thermomachine.dmi')
+ * * iconfile - path of the iconstate we are using (ex: 'icons/obj/atmospherics/components/thermomachine.dmi')
  * * iconstate - the image we are using inside the file
  * * direction - the direction of our device
  * * col - the color (in hex value, like #559900) that the pipe should have
  * * piping_layer - the piping_layer the device is in, used inside PIPING_LAYER_SHIFT
  * * trinary - if TRUE we also use PIPING_FORWARD_SHIFT on layer 1 and 5 for trinary devices (filters and mixers)
  */
-/obj/machinery/atmospherics/proc/getpipeimage(iconset, iconstate, direction, col=rgb(255,255,255), piping_layer=3, trinary = FALSE)
-
-	//Add identifiers for the iconset
-	if(iconsetids[iconset] == null)
-		iconsetids[iconset] = num2text(iconsetids.len + 1)
-
-	//Generate a unique identifier for this image combination
-	var/identifier = iconsetids[iconset] + "_[iconstate]_[direction]_[col]_[piping_layer]"
-
-	if((!(. = pipeimages[identifier])))
-		var/image/pipe_overlay
-		pipe_overlay = . = pipeimages[identifier] = image(iconset, iconstate, dir = direction)
-		pipe_overlay.color = col
-		PIPING_LAYER_SHIFT(pipe_overlay, piping_layer)
-		if(trinary == TRUE && (piping_layer == 1 || piping_layer == 5))
-			PIPING_FORWARD_SHIFT(pipe_overlay, piping_layer, 2)
-
-///Similar to getpipeimage(); will create an image from the set_icon and set_state; mostly used to create overlays for connections.
-/obj/machinery/atmospherics/proc/pipe_overlay(set_icon, set_state, direction, color = COLOR_VERY_LIGHT_GRAY, piping_layer = 3, set_layer = PIPE_VISIBLE_LEVEL)
-	var/image/pipe_overlay
-	pipe_overlay = image(icon = set_icon, icon_state = set_state, layer = set_layer, dir = direction)
-	pipe_overlay.color = color
+/obj/machinery/atmospherics/proc/getpipeimage(iconfile, iconstate, direction, col = COLOR_VERY_LIGHT_GRAY, piping_layer = 3, trinary = FALSE)
+	var/image/pipe_overlay = image(iconfile, iconstate, dir = direction)
+	pipe_overlay.color = col
 	PIPING_LAYER_SHIFT(pipe_overlay, piping_layer)
+	if(trinary == TRUE && (piping_layer == 1 || piping_layer == 5))
+		PIPING_FORWARD_SHIFT(pipe_overlay, piping_layer, 2)
 	return pipe_overlay
 
 /obj/machinery/atmospherics/on_construction(obj_color, set_layer)

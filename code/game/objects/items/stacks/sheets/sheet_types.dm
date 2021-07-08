@@ -42,6 +42,14 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new /datum/stack_recipe("sofa (right)", /obj/structure/chair/sofa/corp/right, one_per_turf = TRUE, on_floor = TRUE), \
 		new /datum/stack_recipe("sofa (corner)", /obj/structure/chair/sofa/corp/corner, one_per_turf = TRUE, on_floor = TRUE), \
 		)), \
+	new/datum/stack_recipe_list("makeshift pipes", list( \
+		new /datum/stack_recipe("straight pipe casing", /obj/item/pipe_casing/straight_pipe, on_floor = TRUE), \
+		new /datum/stack_recipe("bent pipe casing", /obj/item/pipe_casing/bent_pipe, on_floor = TRUE), \
+		new /datum/stack_recipe("manifold casing", /obj/item/pipe_casing/manifold, on_floor = TRUE), \
+		new /datum/stack_recipe("4-way manifold casing", /obj/item/pipe_casing/manifold4w, on_floor = TRUE), \
+		new /datum/stack_recipe("portable connector casing", /obj/item/pipe_casing/connector, on_floor = TRUE), \
+		new /datum/stack_recipe("layer adapter casing", /obj/item/pipe_casing/layer_manifold, on_floor = TRUE) \
+		)), \
 	new /datum/stack_recipe_list("chess pieces", list( \
 		new /datum/stack_recipe("White Pawn", /obj/structure/chess/whitepawn, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 		new /datum/stack_recipe("White Rook", /obj/structure/chess/whiterook, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
