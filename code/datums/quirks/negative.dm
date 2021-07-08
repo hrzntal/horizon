@@ -759,7 +759,7 @@
 	name = "Extreme Medicine Allergy"
 	desc = "Ever since you were born, you've been extremely allergic to certain chemicals..."
 	value = -6
-	gain_text = "<span class='danger'>You feel your immune system shift.</span>"
+	gain_text = SPAN_DANGER("You feel your immune system shift.")
 	medical_record_text = "Patient's immune system responds violently to certain chemicals."
 	blacklist = list(
 		/datum/reagent/medicine/c2,

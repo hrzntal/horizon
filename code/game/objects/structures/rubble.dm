@@ -32,30 +32,30 @@
 
 /obj/structure/rubble/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	if(buckled_mob != user)
-		buckled_mob.visible_message("<span class='notice'>[user.name] pulls [buckled_mob.name] free from the rubble!</span>",\
-			"<span class='notice'>[user.name] pulls you free from the rubble.</span>",\
-			"<span class='hear'>You hear something being dragged...</span>")
+		buckled_mob.visible_message(SPAN_NOTICE("[user.name] pulls [buckled_mob.name] free from the rubble!"),\
+			SPAN_NOTICE("[user.name] pulls you free from the rubble."),\
+			SPAN_HEAR("You hear something being dragged..."))
 	else
-		buckled_mob.visible_message("<span class='warning'>[buckled_mob.name] struggles to break free from the rubble!</span>",\
-			"<span class='notice'>You struggle to break free from the rubble... (Stay still for 30 seconds.)</span>",\
-			"<span class='hear'>You hear struggling...</span>")
+		buckled_mob.visible_message(SPAN_WARNING("[buckled_mob.name] struggles to break free from the rubble!"),\
+			SPAN_NOTICE("You struggle to break free from the rubble... (Stay still for 30 seconds.)"),\
+			SPAN_HEAR("You hear struggling..."))
 		if(!do_after(buckled_mob, 30 SECONDS, target = src))
 			if(buckled_mob?.buckled)
-				to_chat(buckled_mob, "<span class='warning'>You fail to get out!</span>")
+				to_chat(buckled_mob, SPAN_WARNING("You fail to get out!"))
 			return
 		if(!buckled_mob.buckled)
 			return
-		buckled_mob.visible_message("<span class='warning'>[buckled_mob.name] breaks free from the rubble!</span>",\
-			"<span class='notice'>You break free from the rubble!</span>")
+		buckled_mob.visible_message(SPAN_WARNING("[buckled_mob.name] breaks free from the rubble!"),\
+			SPAN_NOTICE("You break free from the rubble!"))
 	unbuckle_mob(buckled_mob)
 
 /obj/structure/rubble/welder_act(mob/living/user, obj/item/I)
 	..()
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
-	to_chat(user, "<span class='notice'>You start welding the [src] down...</span>")
+	to_chat(user, SPAN_NOTICE("You start welding the [src] down..."))
 	if(I.use_tool(src, user, 8 SECONDS, volume=50))
-		to_chat(user, "<span class='notice'>You weld the [src] down.</span>")
+		to_chat(user, SPAN_NOTICE("You weld the [src] down."))
 		qdel(src)
 	return TRUE
 
@@ -65,9 +65,9 @@
 
 /obj/structure/rubble/proc/CrushTurf(turf/Turf, power = 10)
 	for(var/mob/living/living_mob in Turf)
-		living_mob.visible_message("<span class='warning'>[living_mob.name] is crushed under the rubble!</span>",\
-			"<span class='userdanger'>Rubble crushes you, pinning you under its weight!</span>",\
-			"<span class='hear'>You hear crashing...</span>")
+		living_mob.visible_message(SPAN_WARNING("[living_mob.name] is crushed under the rubble!"),\
+			SPAN_USERDANGER("Rubble crushes you, pinning you under its weight!"),\
+			SPAN_HEAR("You hear crashing..."))
 		living_mob.adjustBruteLoss(power)
 		living_mob.Paralyze(2 SECONDS)
 		buckle_mob(living_mob, TRUE)

@@ -40,7 +40,7 @@
 		if(current_dig_depth > actual_depth) //We broke it
 			find_list -= text_depth
 			qdel(iterated_find)
-			A.visible_message(SPAN_WARNING("Something breaks inside \the [A]!")
+			A.visible_message(SPAN_WARNING("Something breaks inside \the [A]!"))
 			playsound(A, 'sound/effects/break_stone.ogg', 30, TRUE)
 
 		else if (current_dig_depth >= (actual_depth - iterated_find.clearance)) //Close dig
