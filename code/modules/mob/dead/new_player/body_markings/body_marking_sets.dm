@@ -5,11 +5,14 @@
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
 	var/recommended_species = list("mammal", "tajaran", "vulpkanin", "aquatic", "akula")
+	/// Bodytypes which can access this marking set. (This can be bypassed by mismatched parts anyway)
+	var/bodytypes = GENERIC_BODYTYPES
 
 /datum/body_marking_set/none
 	name = "None"
 	recommended_species = null
 	body_marking_list = list()
+	bodytypes = ALL_BODYTYPES
 
 /datum/body_marking_set/tajaran
 	name = "Tajaran"

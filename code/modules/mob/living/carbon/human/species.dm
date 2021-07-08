@@ -596,7 +596,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	if(H.facial_hairstyle && (FACEHAIR in species_traits) && (!facialhair_hidden || dynamic_fhair_suffix))
 		S = GLOB.facial_hairstyles_list[H.facial_hairstyle]
-		if(S)
+		if(S.icon_state)
 
 			//List of all valid dynamic_fhair_suffixes
 			var/static/list/fextensions
@@ -663,7 +663,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		else if(H.hairstyle && (HAIR in species_traits))
 			S = GLOB.hairstyles_list[H.hairstyle]
-			if(S)
+			if(S.icon_state)
 
 				//List of all valid dynamic_hair_suffixes
 				var/static/list/extensions
@@ -1081,14 +1081,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 ///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
 /datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
-	human_mob.hairstyle = random_hairstyle(human_mob.gender)
+	human_mob.hairstyle = random_hairstyle(human_mob.gender, human_mob.dna.species)
 	human_mob.update_hair()
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
 /datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
-	human_mob.undershirt = random_undershirt(human_mob.gender)
-	human_mob.underwear = random_underwear(human_mob.gender)
-	human_mob.socks = random_socks(human_mob.gender)
+	human_mob.undershirt = random_undershirt(human_mob.gender, human_mob.dna.species)
+	human_mob.underwear = random_underwear(human_mob.gender, human_mob.dna.species)
+	human_mob.socks = random_socks(human_mob.dna.species)
 	human_mob.update_body()
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H, delta_time, times_fired)

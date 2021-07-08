@@ -18,6 +18,8 @@
 	var/always_color_customizable
 	///Whether the body marking sprite is the same for both sexes or not. Only relevant for chest right now.
 	var/gendered = TRUE
+	/// Bodytypes which can access this marking. (This can be bypassed by mismatched parts anyway)
+	var/bodytypes = GENERIC_BODYTYPES
 
 /datum/body_marking/New()
 	if(!default_color)

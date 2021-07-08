@@ -10,6 +10,7 @@
 /datum/sprite_accessory/hair/vox
 	icon = 'icons/mob/sprite_accessory/vox_hair.dmi'
 	recommended_species = list("vox")
+	bodytypes = BODYTYPE_VOX
 
 /datum/sprite_accessory/hair/vox/vox_afro
 	name = "Vox Afro"
@@ -71,6 +72,7 @@
 /datum/sprite_accessory/facial_hair/vox
 	icon = 'icons/mob/sprite_accessory/vox_facial_hair.dmi'
 	recommended_species = list("vox")
+	bodytypes = BODYTYPE_VOX
 
 /datum/sprite_accessory/facial_hair/vox/vox_beard
 	name = "Vox Beard"

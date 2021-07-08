@@ -1,8 +1,9 @@
 /proc/accessory_list_of_key_for_species(key, datum/species/S, mismatched, ckey)
 	var/list/accessory_list = list()
-	for(var/name in GLOB.sprite_accessories[key])
-		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][name]
-		if(!mismatched && SP.recommended_species && !(S.id in SP.recommended_species))
+	var/list/cached_global_list = GLOB.sprite_accessories
+	for(var/name in cached_global_list[key])
+		var/datum/sprite_accessory/SP = cached_global_list[key][name]
+		if(!mismatched && (!(SP.bodytypes & S.bodytype) || (SP.recommended_species && !(S.id in SP.recommended_species))))
 			continue
 		if(SP.ckey_whitelist && !SP.ckey_whitelist[ckey])
 			continue
@@ -35,3 +36,120 @@
 					body_markings[zone] = list()
 				body_markings[zone][set_name] = BM.get_default_color(features, pref_species)
 	return body_markings
+
+/proc/marking_list_of_zone_for_species(zone, datum/species/species, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.body_markings_per_limb[zone].Copy()
+	var/list/compiled_list = list()
+	var/list/global_list_cache = GLOB.body_markings_per_limb[zone]
+	var/list/global_lookup_cache = GLOB.body_markings
+	for(var/name in global_list_cache)
+		var/datum/body_marking/body_marking = global_lookup_cache[name]
+		if(!(body_marking.bodytypes & species.bodytype) || (body_marking.recommended_species && !(species.id in body_marking.recommended_species)))
+			continue
+		compiled_list[name] = body_marking
+	return compiled_list
+
+/proc/marking_sets_for_species(datum/species/species, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.body_marking_sets.Copy()
+	var/list/compiled_list = list()
+	var/list/global_list_cache = GLOB.body_marking_sets
+	for(var/name in global_list_cache)
+		var/datum/body_marking_set/marking_set = global_list_cache[name]
+		if(!(marking_set.bodytypes & species.bodytype) || (marking_set.recommended_species && !(species.id in marking_set.recommended_species)))
+			continue
+		compiled_list[name] = marking_set
+	return compiled_list
+
+/proc/hairstyle_list_for_species(datum/species/species, gender, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.hairstyles_list.Copy()
+	var/list/global_list_cache
+	switch(gender)
+		if(MALE)
+			global_list_cache = GLOB.hairstyles_male_list
+		if(FEMALE)
+			global_list_cache = GLOB.hairstyles_female_list
+		else
+			global_list_cache = GLOB.hairstyles_list
+	var/list/global_list_lookup = GLOB.hairstyles_list
+	var/list/compiled_list = list()
+	for(var/name in global_list_cache)
+		var/datum/sprite_accessory/accessory = global_list_lookup[name]
+		if(!(accessory.bodytypes & species.bodytype))
+			continue
+		compiled_list += accessory.name
+	return compiled_list
+
+/proc/facial_hairstyle_list_for_species(datum/species/species, gender, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.hairstyles_list.Copy()
+	var/list/global_list_cache
+	switch(gender)
+		if(MALE)
+			global_list_cache = GLOB.facial_hairstyles_male_list
+		if(FEMALE)
+			global_list_cache = GLOB.facial_hairstyles_female_list
+		else
+			global_list_cache = GLOB.facial_hairstyles_list
+	var/list/global_list_lookup = GLOB.facial_hairstyles_list
+	var/list/compiled_list = list()
+	for(var/name in global_list_cache)
+		var/datum/sprite_accessory/accessory = global_list_lookup[name]
+		if(!(accessory.bodytypes & species.bodytype))
+			continue
+		compiled_list += accessory.name
+	return compiled_list
+
+/proc/underwear_list_for_species(datum/species/species, gender, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.underwear_list.Copy()
+	var/list/global_list_cache
+	switch(gender)
+		if(MALE)
+			global_list_cache = GLOB.underwear_m
+		if(FEMALE)
+			global_list_cache = GLOB.underwear_f
+		else
+			global_list_cache = GLOB.underwear_list
+	var/list/global_list_lookup = GLOB.underwear_list
+	var/list/compiled_list = list()
+	for(var/name in global_list_cache)
+		var/datum/sprite_accessory/accessory = global_list_lookup[name]
+		if(!(accessory.bodytypes & species.bodytype))
+			continue
+		compiled_list += accessory.name
+	return compiled_list
+
+/proc/undershirt_list_for_species(datum/species/species, gender, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.undershirt_list.Copy()
+	var/list/global_list_cache
+	switch(gender)
+		if(MALE)
+			global_list_cache = GLOB.undershirt_m
+		if(FEMALE)
+			global_list_cache = GLOB.undershirt_f
+		else
+			global_list_cache = GLOB.undershirt_list
+	var/list/global_list_lookup = GLOB.undershirt_list
+	var/list/compiled_list = list()
+	for(var/name in global_list_cache)
+		var/datum/sprite_accessory/accessory = global_list_lookup[name]
+		if(!(accessory.bodytypes & species.bodytype))
+			continue
+		compiled_list += accessory.name
+	return compiled_list
+
+/proc/socks_list_for_species(datum/species/species, mismatched = FALSE)
+	if(mismatched)
+		return GLOB.socks_list.Copy()
+	var/list/global_list_cache = GLOB.socks_list
+	var/list/compiled_list = list()
+	for(var/name in global_list_cache)
+		var/datum/sprite_accessory/accessory = global_list_cache[name]
+		if(!(accessory.bodytypes & species.bodytype))
+			continue
+		compiled_list += accessory.name
+	return compiled_list

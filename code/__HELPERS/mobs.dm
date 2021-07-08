@@ -20,32 +20,18 @@
 		else
 			return "000"
 
-/proc/random_underwear(gender)
-	if(!GLOB.underwear_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.underwear_m)
-		if(FEMALE)
-			return pick(GLOB.underwear_f)
-		else
-			return pick(GLOB.underwear_list)
+/proc/random_underwear(gender, datum/species/species, mismatched = FALSE)
+	if(!species)
+		mismatched = TRUE
+	return pick(underwear_list_for_species(species, gender, mismatched))
 
-/proc/random_undershirt(gender)
-	if(!GLOB.undershirt_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, GLOB.undershirt_list, GLOB.undershirt_m, GLOB.undershirt_f)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.undershirt_m)
-		if(FEMALE)
-			return pick(GLOB.undershirt_f)
-		else
-			return pick(GLOB.undershirt_list)
+/proc/random_undershirt(gender, datum/species/species, mismatched = FALSE)
+	if(!species)
+		mismatched = TRUE
+	return pick(undershirt_list_for_species(species, gender, mismatched))
 
-/proc/random_socks()
-	if(!GLOB.socks_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
-	return pick(GLOB.socks_list)
+/proc/random_socks(datum/species/species, mismatched = FALSE)
+	return pick(socks_list_for_species(species, mismatched))
 
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
@@ -53,23 +39,15 @@
 /proc/random_features() //Not random now, use the species specific ones for that. This is kept for compatibility
 	return MANDATORY_FEATURE_LIST
 
-/proc/random_hairstyle(gender)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.hairstyles_male_list)
-		if(FEMALE)
-			return pick(GLOB.hairstyles_female_list)
-		else
-			return pick(GLOB.hairstyles_list)
+/proc/random_hairstyle(gender, datum/species/species, mismatched = FALSE)
+	if(!species)
+		mismatched = TRUE
+	return pick(hairstyle_list_for_species(species, gender, mismatched))
 
-/proc/random_facial_hairstyle(gender)
-	switch(gender)
-		if(MALE)
-			return pick(GLOB.facial_hairstyles_male_list)
-		if(FEMALE)
-			return pick(GLOB.facial_hairstyles_female_list)
-		else
-			return pick(GLOB.facial_hairstyles_list)
+/proc/random_facial_hairstyle(gender, datum/species/species, mismatched = FALSE)
+	if(!species)
+		mismatched = TRUE
+	return pick(facial_hairstyle_list_for_species(species, gender, mismatched))
 
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
 	for(var/i in 1 to attempts_to_find_unique_name)

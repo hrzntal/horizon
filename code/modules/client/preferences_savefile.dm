@@ -407,7 +407,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["uplink_loc"], uplink_spawn_loc)
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
-	READ_FILE(S["randomise"],  randomise)
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -451,8 +450,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		custom_names[custom_name_id] = reject_bad_name(custom_names[custom_name_id],namedata["allow_numbers"])
 		if(!custom_names[custom_name_id])
 			custom_names[custom_name_id] = get_default_name(custom_name_id)
-
-	randomise = SANITIZE_LIST(randomise)
 
 	hairstyle = sanitize_inlist(hairstyle, GLOB.hairstyles_list)
 	facial_hairstyle = sanitize_inlist(facial_hairstyle, GLOB.facial_hairstyles_list)
@@ -622,7 +619,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["jumpsuit_style"] , jumpsuit_style)
 	WRITE_FILE(S["uplink_loc"] , uplink_spawn_loc)
 	WRITE_FILE(S["playtime_reward_cloak"] , playtime_reward_cloak)
-	WRITE_FILE(S["randomise"] , randomise)
 	WRITE_FILE(S["species"] , pref_species.id)
 	WRITE_FILE(S["phobia"], phobia)
 	WRITE_FILE(S["persistent_scars"], persistent_scars)

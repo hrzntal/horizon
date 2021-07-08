@@ -29,12 +29,13 @@
 			var/datum/sprite_accessory/P = path
 			if(initial(P.locked))
 				continue
-		var/datum/sprite_accessory/D = new path()
+		var/datum/sprite_accessory/D = path
+		if(!initial(D.name))
+			continue
 
-		if(D.icon_state)
-			L[D.name] = D
-		else
-			L += D.name
+		D = new path()
+
+		L[D.name] = D
 
 		switch(D.gender)
 			if(MALE)
@@ -117,6 +118,8 @@
 	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
+	/// Bodytypes which can access this accessory. (This can be bypassed by mismatched parts anyway)
+	var/bodytypes = GENERIC_BODYTYPES
 
 /datum/sprite_accessory/New()
 	if(!default_color)

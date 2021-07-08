@@ -85,7 +85,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/species/pref_species = new /datum/species/human() //Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need.
 	var/list/features = MANDATORY_FEATURE_LIST
-	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 
 	var/list/custom_names = list()
@@ -346,10 +345,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(is_banned_from(user.ckey, "Appearance"))
 						dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
 					dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-					/*if(user.client.get_exp_living(TRUE) >= PLAYTIME_HARDCORE_RANDOM)
-						dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HARDCORE]'>Hardcore Random: [(randomise[RANDOM_HARDCORE]) ? "Yes" : "No"]</a>"*/
 					dat += "<br><b>Name:</b> "
 					dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 
@@ -365,15 +360,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(gender == PLURAL || gender == NEUTER)
 							dat += "<BR><b>Body Type:</b> <a href='?_src_=prefs;preference=body_type'>[body_type == MALE ? "Male" : "Female"]</a>"
 
-						/*if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-							dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
-							dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"*/
-
+						
 					dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
-					/*if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-						dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>Always Random Age: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
-						dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"*/
-
 					dat += "<br><br><b>Special Names:</b><BR>"
 					var/old_group
 					for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -401,9 +389,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(1) //Appearance
 					dat += "<h2>Body</h2>"
 					dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY]'>Always Random Body: [(randomise[RANDOM_BODY]) ? "Yes" : "No"]</A>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY_ANTAG]'>When Antagonist: [(randomise[RANDOM_BODY_ANTAG]) ? "Yes" : "No"]</A><br>"
-
+					
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
@@ -445,18 +431,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "[copytext(html_encode(ooc_prefs), 1, 40)]..."
 					dat += "<br>"
 
-					//dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
-
+					
 					var/use_skintones = pref_species.use_skintones
 					if(use_skintones)
 
 						dat += APPEARANCE_CATEGORY_COLUMN
 
 						dat += "<h3>Skin Tone</h3>"
-
 						dat += "<a href='?_src_=prefs;preference=s_tone;task=input'>[skin_tone]</a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
 						dat += "<br>"
 
 
@@ -489,8 +471,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 						dat += "<h3>Eye Color</h3>"
 						dat += "<a href='?_src_=prefs;preference=eyes;task=input'><span class='color_holder_box' style='background-color:#[eye_color]'></span></a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "Lock" : "Unlock"]</A>"
-
+						
 						dat += "<br></td>"
 					else if(use_skintones)
 						dat += "</td>"
@@ -501,21 +482,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 						dat += "<h3>Hairstyle</h3>"
 
-						dat += "<a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
 						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
-
+						dat += "<a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
+						
 						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
-
+						
 						dat += "<BR><h3>Facial Hairstyle</h3>"
 
-						dat += "<a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
 						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
-
+						dat += "<a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
+						
 						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
-						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 						dat += "<br></td>"
 
 					//Mutant stuff
@@ -547,25 +524,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 					dat += "<BR><b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR]'>[(randomise[RANDOM_UNDERWEAR]) ? "Lock" : "Unlock"]</A>"
-
+					
 					dat += "<a href='?_src_=prefs;preference=underwear_color;task=input'><span class='color_holder_box' style='background-color:#[underwear_color]'></span></a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR_COLOR]'>[(randomise[RANDOM_UNDERWEAR_COLOR]) ? "Lock" : "Unlock"]</A>"
-
+					
 					dat += "<BR><b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERSHIRT]'>[(randomise[RANDOM_UNDERSHIRT]) ? "Lock" : "Unlock"]</A>"
 					dat += "<a href='?_src_=prefs;preference=undershirt_color;task=input'><span class='color_holder_box' style='background-color:#[undershirt_color]'></span></a>"
 
 					dat += "<br><b>Socks:</b><BR><a href ='?_src_=prefs;preference=socks;task=input'>[socks]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SOCKS]'>[(randomise[RANDOM_SOCKS]) ? "Lock" : "Unlock"]</A>"
 					dat += "<a href='?_src_=prefs;preference=socks_color;task=input'><span class='color_holder_box' style='background-color:#[socks_color]'></span></a>"
 
 					dat += "<br><b>Jumpsuit Style:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_JUMPSUIT_STYLE]'>[(randomise[RANDOM_JUMPSUIT_STYLE]) ? "Lock" : "Unlock"]</A>"
-
+					
 					dat += "<br><b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backpack]</a>"
-					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BACKPACK]'>[(randomise[RANDOM_BACKPACK]) ? "Lock" : "Unlock"]</A>"
-
+					
 					if((HAS_FLESH in pref_species.species_traits) || (HAS_BONE in pref_species.species_traits))
 						dat += "<BR><b>Temporal Scarring:</b><BR><a href='?_src_=prefs;preference=persistent_scars'>[(persistent_scars) ? "Enabled" : "Disabled"]</A>"
 						dat += "<a href='?_src_=prefs;preference=clear_scars'>Clear scar slots</A>"
@@ -1702,12 +1673,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						list("Yes", "No")
 					)
 					if(action && action == "Yes")
-						var/list/candidates = GLOB.body_marking_sets.Copy()
-						if(!mismatched_customization)
-							for(var/name in candidates)
-								var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
-								if(BMS.recommended_species && !(pref_species.id in BMS.recommended_species))
-									candidates -= name
+						var/list/candidates = marking_sets_for_species(pref_species, mismatched_customization)
 						if(length(candidates) == 0)
 							return
 						var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
@@ -1759,7 +1725,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/zone = href_list["key"]
 					if(!GLOB.body_markings_per_limb[zone])
 						return
-					var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
+					var/list/possible_candidates = marking_list_of_zone_for_species(zone, pref_species, mismatched_customization)
 					if(body_markings[zone])
 						//To prevent exploiting hrefs to bypass the marking limit
 						if(body_markings[zone].len >= MAXIMUM_MARKINGS_PER_LIMB)
@@ -1767,11 +1733,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						//Remove already used markings from the candidates
 						for(var/list/this_list in body_markings[zone])
 							possible_candidates -= this_list[MUTANT_INDEX_NAME]
-					if(!mismatched_customization)
-						for(var/name in possible_candidates)
-							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)))
-								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
 						return
@@ -1794,16 +1755,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/zone = href_list["key"]
 					var/changing_name = href_list["name"]
 
-					var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
+					var/list/possible_candidates = marking_list_of_zone_for_species(zone, pref_species, mismatched_customization)
 					if(body_markings[zone])
 						//Remove already used markings from the candidates
 						for(var/keyed_name in body_markings[zone])
 							possible_candidates -= keyed_name
-					if(!mismatched_customization)
-						for(var/name in possible_candidates)
-							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
-								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
 					var/desired_marking = input(user, "Choose a marking to change the current one to:", "Character Preference") as null|anything in possible_candidates
@@ -1907,19 +1863,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("hair")
 					hair_color = random_short_color()
 				if("hairstyle")
-					hairstyle = random_hairstyle(gender)
+					hairstyle = random_hairstyle(gender, pref_species)
 				if("facial")
 					facial_hair_color = random_short_color()
 				if("facial_hairstyle")
-					facial_hairstyle = random_facial_hairstyle(gender)
+					facial_hairstyle = random_facial_hairstyle(gender, pref_species)
 				if("underwear")
-					underwear = random_underwear(gender)
+					underwear = random_underwear(gender, pref_species)
 				if("underwear_color")
 					underwear_color = random_short_color()
 				if("undershirt")
-					undershirt = random_undershirt(gender)
+					undershirt = random_undershirt(gender, pref_species)
 				if("socks")
-					socks = random_socks()
+					socks = random_socks(pref_species)
 				if(BODY_ZONE_PRECISE_EYES)
 					eye_color = random_eye_color()
 				if("s_tone")
@@ -2152,17 +2108,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("hairstyle")
 					needs_update = TRUE
-					var/new_hairstyle = input(user, "Choose your character's hairstyle:", "Character Preference")  as null|anything in GLOB.hairstyles_list
+					var/new_hairstyle = input(user, "Choose your character's hairstyle:", "Character Preference")  as null|anything in hairstyle_list_for_species(pref_species, null, mismatched_customization)
 					if(new_hairstyle)
 						hairstyle = new_hairstyle
 
 				if("next_hairstyle")
+					next_hairstyle()
 					needs_update = TRUE
-					hairstyle = next_list_item(hairstyle, GLOB.hairstyles_list)
 
 				if("previous_hairstyle")
+					prev_hairstyle()
 					needs_update = TRUE
-					hairstyle = previous_list_item(hairstyle, GLOB.hairstyles_list)
 
 				if("facial")
 					needs_update = TRUE
@@ -2172,20 +2128,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("facial_hairstyle")
 					needs_update = TRUE
-					var/new_facial_hairstyle = input(user, "Choose your character's facial-hairstyle:", "Character Preference")  as null|anything in GLOB.facial_hairstyles_list
+					var/new_facial_hairstyle = input(user, "Choose your character's facial-hairstyle:", "Character Preference")  as null|anything in facial_hairstyle_list_for_species(pref_species, null, mismatched_customization)
 					if(new_facial_hairstyle)
 						facial_hairstyle = new_facial_hairstyle
 
 				if("next_facehairstyle")
+					next_face_hairstyle()
 					needs_update = TRUE
-					facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
 
 				if("previous_facehairstyle")
+					prev_face_hairstyle()
 					needs_update = TRUE
-					facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
 
 				if("underwear")
-					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
+					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in underwear_list_for_species(pref_species, null, mismatched_customization)
 					if(new_underwear)
 						underwear = new_underwear
 
@@ -2209,14 +2165,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("undershirt")
 					needs_update = TRUE
-					var/new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_list
+					var/new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in undershirt_list_for_species(pref_species, null, mismatched_customization)
 					if(new_undershirt)
 						undershirt = new_undershirt
 
 				if("socks")
 					needs_update = TRUE
 					var/new_socks
-					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
+					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in socks_list_for_species(pref_species, mismatched_customization)
 					if(new_socks)
 						socks = new_socks
 
@@ -2641,13 +2597,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else
 						be_special += be_special_type
 
-				if("toggle_random")
-					var/random_type = href_list["random_type"]
-					if(randomise[random_type])
-						randomise -= random_type
-					else
-						randomise[random_type] = TRUE
-
 				if("persistent_scars")
 					persistent_scars = !persistent_scars
 
@@ -2829,18 +2778,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, is_latejoiner = TRUE)
 
 	hardcore_survival_score = 0 //Set to 0 to prevent you getting points from last another time.
-
-	/*if((randomise[RANDOM_SPECIES] || randomise[RANDOM_HARDCORE]) && !character_setup)
-		random_species()
-	if((randomise[RANDOM_BODY] || (randomise[RANDOM_BODY_ANTAG] && antagonist) || randomise[RANDOM_HARDCORE]) && !character_setup)
-		slot_randomized = TRUE
-		random_character(gender, antagonist)
-	if((randomise[RANDOM_NAME] || (randomise[RANDOM_NAME_ANTAG] && antagonist) || randomise[RANDOM_HARDCORE]) && !character_setup)
-		slot_randomized = TRUE
-		real_name = pref_species.random_name(gender)
-	if(randomise[RANDOM_HARDCORE] && parent.mob.mind && !character_setup)
-		if(can_be_random_hardcore())
-			hardcore_random_setup(character, antagonist, is_latejoiner)*/
 
 	if(roundstart_checks)
 		if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
@@ -3197,3 +3134,55 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
+
+/datum/preferences/proc/get_hairstyle_cache(datum/species/species, mismatched)
+	var/cache_key = mismatched ? ALL_BODYTYPES : species.bodytype
+	if(!GLOB.hairstyle_cache["[cache_key]"])
+		GLOB.hairstyle_cache["[cache_key]"] = hairstyle_list_for_species(species, null, mismatched)
+	return GLOB.hairstyle_cache["[cache_key]"]
+
+/datum/preferences/proc/get_face_hairstyle_cache(datum/species/species, mismatched)
+	var/cache_key = mismatched ? ALL_BODYTYPES : species.bodytype
+	if(!GLOB.face_hairstyle_cache["[cache_key]"])
+		GLOB.face_hairstyle_cache["[cache_key]"] = facial_hairstyle_list_for_species(species, null, mismatched)
+	return GLOB.face_hairstyle_cache["[cache_key]"]
+
+/datum/preferences/proc/next_hairstyle()
+	var/list/our_list = get_hairstyle_cache(pref_species, mismatched_customization)
+	var/index = our_list.Find(hairstyle)
+	if(!index)
+		return
+	if(our_list.len == index)
+		hairstyle = our_list[1]
+	else
+		hairstyle = our_list[index+1]
+
+/datum/preferences/proc/prev_hairstyle()
+	var/list/our_list = get_hairstyle_cache(pref_species, mismatched_customization)
+	var/index = our_list.Find(hairstyle)
+	if(!index)
+		return
+	if(index == 1)
+		hairstyle = our_list[our_list.len]
+	else
+		hairstyle = our_list[index-1]
+
+/datum/preferences/proc/next_face_hairstyle()
+	var/list/our_list = get_face_hairstyle_cache(pref_species, mismatched_customization)
+	var/index = our_list.Find(facial_hairstyle)
+	if(!index)
+		return
+	if(our_list.len == index)
+		facial_hairstyle = our_list[1]
+	else
+		facial_hairstyle = our_list[index+1]
+
+/datum/preferences/proc/prev_face_hairstyle()
+	var/list/our_list = get_face_hairstyle_cache(pref_species, mismatched_customization)
+	var/index = our_list.Find(facial_hairstyle)
+	if(!index)
+		return
+	if(index == 1)
+		facial_hairstyle = our_list[our_list.len]
+	else
+		facial_hairstyle = our_list[index-1]

@@ -16,6 +16,7 @@
 	name = "Nude"
 	icon_state = null
 	gender = NEUTER
+	bodytypes = ALL_BODYTYPES
 
 /datum/sprite_accessory/underwear/male_briefs
 	name = "Men's Briefs"
@@ -319,6 +320,7 @@
 	name = "Nude"
 	icon_state = null
 	gender = NEUTER
+	bodytypes = ALL_BODYTYPES
 
 // please make sure they're sorted alphabetically and categorized
 
@@ -763,6 +765,7 @@
 /datum/sprite_accessory/socks/nude
 	name = "Nude"
 	icon_state = null
+	bodytypes = ALL_BODYTYPES
 
 // please make sure they're sorted alphabetically and categorized
 
