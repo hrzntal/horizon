@@ -17,8 +17,9 @@
 	if(!force)
 		message_admins("Overmap visual deleted, assuming badminerry, deleting the associated object, at [ADMIN_VERBOSEJMP(loc)]")
 		qdel(my_overmap_object)
-	else
-		return ..()
+		return //We return because qdelling our overmap object will delete this with a force
+	my_overmap_object = null
+	return ..()
 
 /obj/effect/abstract/overmap/ruins
 	icon_state = "event"

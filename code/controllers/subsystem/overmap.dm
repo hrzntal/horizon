@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(overmap)
 /datum/controller/subsystem/overmap/proc/UnregisterObject(datum/overmap_object/ovobj)
 	if(ovobj.overmap_process)
 		RemoveObjFromProcess(ovobj)
-	id_object_lookup -= ovobj
+	id_object_lookup -= "[ovobj.id]"
 
 /datum/controller/subsystem/overmap/proc/GetObjectByID(id)
 	return id_object_lookup["[id]"]

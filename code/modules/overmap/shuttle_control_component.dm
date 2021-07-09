@@ -25,6 +25,15 @@
 	shuttle_control_button = new
 	shuttle_control_button.target = src
 
+/datum/overmap_shuttle_controller/Destroy()
+	if(mob_controller)
+		RemoveCurrentControl()
+	QDEL_NULL(quit_control_button)
+	QDEL_NULL(stop_shuttle_button)
+	QDEL_NULL(shuttle_control_button)
+	overmap_obj = null
+	return ..()
+
 /datum/overmap_shuttle_controller/proc/SetController(mob/living/our_guy)
 	if(mob_controller)
 		RemoveCurrentControl()

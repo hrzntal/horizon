@@ -124,6 +124,7 @@
 			my_visual.qdel_init = TRUE
 		else
 			qdel(my_visual, TRUE)
+		my_visual = null
 	return ..()
 
 /datum/overmap_object/proc/relaymove(mob/living/user, direction)

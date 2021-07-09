@@ -561,6 +561,7 @@
 		for(var/i in my_shuttle.all_extensions)
 			var/datum/shuttle_extension/extension = i
 			extension.RemoveFromOvermapObject()
+		my_shuttle.my_overmap_object = null
 		my_shuttle = null
 	engine_extensions = null
 	shield_extensions = null
