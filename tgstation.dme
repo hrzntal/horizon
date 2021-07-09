@@ -3667,6 +3667,7 @@
 #include "code\modules\trading\_trader.dm"
 #include "code\modules\trading\trade_hub_overmap.dm"
 #include "code\modules\trading\trade_machines.dm"
+#include "code\modules\trading\bought_goods\food.dm"
 #include "code\modules\trading\bought_goods\goods.dm"
 #include "code\modules\trading\sold_goods\food.dm"
 #include "code\modules\trading\sold_goods\goods.dm"

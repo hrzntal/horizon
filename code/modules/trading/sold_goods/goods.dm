@@ -21,16 +21,29 @@
 /////////Atmospheric Shop Employee/////////
 
 /datum/sold_goods/belt/nitrogen
-	cost = 160
+	cost = 100
 	path = /obj/item/tank/internals/nitrogen/belt
+	stock_high = 5
+	stock_low = 3
 
 /datum/sold_goods/belt/plasma
 	cost = 180
 	path = /obj/item/tank/internals/plasmaman/belt
+	stock_high = 5
+	stock_low = 3
 
 /datum/sold_goods/emergency_oxygen
-	cost = 90
+	cost = 60
 	path = /obj/item/tank/internals/emergency_oxygen
+	stock_high = 5
+	stock_low = 3
+
+/datum/sold_goods/voidsuit
+	name = "vintage space suit"
+	cost = 1250
+	path = /obj/item/storage/box/hero/astronaut
+	stock_high = 1
+	stock_low = 1
 
 /////////Clothing Store Employee/////////
 
@@ -357,8 +370,10 @@
 /////////Rock'n'Drill Mining Inc/////////
 
 /datum/sold_goods/mining_kit
-	cost = 850
+	cost = 350
 	path = /obj/item/storage/backpack/duffelbag/mining_conscript/basic
+	stock_high = 4
+	stock_low = 2
 
 /datum/sold_goods/liquid_pump
 	cost = 700

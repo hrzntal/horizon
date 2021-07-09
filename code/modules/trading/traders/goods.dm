@@ -307,10 +307,12 @@
 
 /datum/trader/atmospherics
 	name = "Atmospheric Shop Employee"
+	trade_flags = TRADER_MONEY|TRADER_SELLS_GOODS
 	possible_origins = list("Fill Up Tanker", "Gasser'up", "Tank Topper", "Uncle Joe's Jenkem Emporium")
 	possible_sold_goods = list(
 		/datum/sold_goods/belt/nitrogen = 100,
 		/datum/sold_goods/belt/plasma = 100,
 		/datum/sold_goods/emergency_oxygen = 100,
+		/datum/sold_goods/voidsuit = 100,
 	)
-	target_bought_goods_amount = 3
+	target_sold_goods_amount = 5
