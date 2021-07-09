@@ -2128,11 +2128,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("facial_hairstyle")
 					needs_update = TRUE
-<<<<<<< HEAD
-					var/new_facial_hairstyle = input(user, "Choose your character's facial-hairstyle:", "Character Preference")  as null|anything in facial_hairstyle_list_for_species(pref_species, null, mismatched_customization)
-=======
-					var/new_facial_hairstyle = tgui_input_list(user, "Choose your character's facial-hairstyle:", "Character Preference", GLOB.facial_hairstyles_list)
->>>>>>> 1086593976 (More list pickers, and make some alerts instead)
+					var/new_facial_hairstyle = tgui_input_list(user, "Choose your character's facial-hairstyle:", "Character Preference", facial_hairstyle_list_for_species(pref_species, null, mismatched_customization))
 					if(new_facial_hairstyle)
 						facial_hairstyle = new_facial_hairstyle
 
