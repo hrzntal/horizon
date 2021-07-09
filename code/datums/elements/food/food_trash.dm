@@ -57,7 +57,7 @@
 
 	playsound(source, 'sound/effects/chipbagpop.ogg', 100)
 
-	popper.visible_message("<span class='danger'>[popper] steps on \the [source], popping the bag!</span>", "<span class='danger'>You step on \the [source], popping the bag!</span>", "<span class='danger'>You hear a sharp crack!</span>", COMBAT_MESSAGE_RANGE)
+	popper.visible_message(SPAN_DANGER("[popper] steps on \the [source], popping the bag!"), SPAN_DANGER("You step on \the [source], popping the bag!"), SPAN_DANGER("You hear a sharp crack!"), COMBAT_MESSAGE_RANGE)
 	INVOKE_ASYNC(src, .proc/async_generate_trash, source)
 	qdel(source)
 
@@ -65,7 +65,7 @@
 /datum/element/food_trash/proc/open_trash(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	to_chat(user, "<span class='notice'>You open the [source], revealing \a [initial(trash.name)].</span>")
+	to_chat(user, SPAN_NOTICE("You open the [source], revealing \a [initial(trash.name)]."))
 
 	INVOKE_ASYNC(src, .proc/async_generate_trash, source)
 	qdel(source)

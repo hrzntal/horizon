@@ -20,10 +20,10 @@
 	switch(severity)
 		if(1)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 75, 150)
-			to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
+			to_chat(owner, SPAN_WARNING("Alert: Posibrain heavily damaged."))
 		if(2)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25, 150)
-			to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")
+			to_chat(owner, SPAN_WARNING("Alert: Posibrain damaged."))
 
 /obj/item/organ/stomach/robot_ipc
 	name = "IPC micro cell"
@@ -43,10 +43,10 @@
 	switch(severity)
 		if(1)
 			owner.nutrition = 50
-			to_chat(owner, "<span class='warning'>Alert: Detected severe battery discharge!</span>")
+			to_chat(owner, SPAN_WARNING("Alert: Detected severe battery discharge!"))
 		if(2)
 			owner.nutrition = 250
-			to_chat(owner, "<span class='warning'>Alert: Minor battery discharge!</span>")
+			to_chat(owner, SPAN_WARNING("Alert: Minor battery discharge!"))
 
 /obj/item/organ/ears/robot_ipc
 	name = "auditory sensors"
@@ -69,12 +69,12 @@
 			owner.Dizzy(30)
 			owner.Knockdown(80)
 			deaf = 30
-			to_chat(owner, "<span class='warning'>Your robotic ears are ringing, uselessly.</span>")
+			to_chat(owner, SPAN_WARNING("Your robotic ears are ringing, uselessly."))
 		if(2)
 			owner.Jitter(15)
 			owner.Dizzy(15)
 			owner.Knockdown(40)
-			to_chat(owner, "<span class='warning'>Your robotic ears buzz.</span>")
+			to_chat(owner, SPAN_WARNING("Your robotic ears buzz."))
 
 /obj/item/organ/tongue/robot_ipc
 	name = "robotic voicebox"
@@ -89,7 +89,7 @@
 	organ_flags = ORGAN_SYNTHETIC
 
 /obj/item/organ/tongue/robot_ipc/handle_speech(datum/source, list/speech_args)
-	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
+	speech_args[SPEECH_SPANS] |= SPEECH_SPAN_ROBOT
 
 /obj/item/organ/eyes/robot_ipc
 	name = "robotic eyes"
@@ -102,7 +102,7 @@
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
-	to_chat(owner, "<span class='warning'>Static obfuscates your vision!</span>")
+	to_chat(owner, SPAN_WARNING("Static obfuscates your vision!"))
 	owner.flash_act(visual = 1)
 	if(severity == EMP_HEAVY)
 		owner.adjustOrganLoss(ORGAN_SLOT_EYES, 20)
@@ -132,7 +132,7 @@
 		return
 	switch(severity)
 		if(1)
-			to_chat(owner, "<span class='warning'>Alert: Critical cooling system failure!</span>")
+			to_chat(owner, SPAN_WARNING("Alert: Critical cooling system failure!"))
 			owner.adjust_bodytemperature(100*TEMPERATURE_DAMAGE_COEFFICIENT)
 		if(2)
 			owner.adjust_bodytemperature(30*TEMPERATURE_DAMAGE_COEFFICIENT)
@@ -174,40 +174,40 @@
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in H.internal_organs
 	if(!cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your power cell is gone!</span>")
+		to_chat(H, SPAN_WARNING("You try to siphon energy from the [A], but your power cell is gone!"))
 		return
 
 	if(A.cell && A.cell.charge > 0)
 		if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
-			to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+			to_chat(user, SPAN_WARNING("You are already fully charged!"))
 			return
 		else
 			powerdraw_loop(A, H)
 			return
 
-	to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
+	to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 
 /obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")
+	H.visible_message(SPAN_NOTICE("[H] inserts a power connector into the [A]."), SPAN_NOTICE("You begin to draw power from the [A]."))
 	while(do_after(H, 10, target = A))
 		if(loc != H)
-			to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
+			to_chat(H, SPAN_WARNING("You must keep your connector out while charging!"))
 			break
 		if(A.cell.charge == 0)
-			to_chat(H, "<span class='warning'>The [A] doesn't have enough charge to spare.</span>")
+			to_chat(H, SPAN_WARNING("The [A] doesn't have enough charge to spare."))
 			break
 		A.charging = 1
 		if(A.cell.charge >= 500)
 			do_sparks(1, FALSE, A)
 			H.nutrition += 50
 			A.cell.charge -= 150
-			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
+			to_chat(H, SPAN_NOTICE("You siphon off some of the stored charge for your own use."))
 		else
 			H.nutrition += A.cell.charge/10
 			A.cell.charge = 0
-			to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
+			to_chat(H, SPAN_NOTICE("You siphon off as much as the [A] can spare."))
 			break
 		if(H.nutrition > NUTRITION_LEVEL_WELL_FED)
-			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+			to_chat(H, SPAN_NOTICE("You are now fully charged."))
 			break
-	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
+	H.visible_message(SPAN_NOTICE("[H] unplugs from the [A]."), SPAN_NOTICE("You unplug from the [A]."))

@@ -5,13 +5,13 @@
 	name = "Epilepsy"
 	desc = "A genetic defect that sporadically causes seizures."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You get a headache.</span>"
+	text_gain_indication = SPAN_DANGER("You get a headache.")
 	synchronizer_coeff = 1
 	power_coeff = 1
 
 /datum/mutation/human/epilepsy/on_life(delta_time, times_fired)
 	if(DT_PROB(0.5 * GET_MUTATION_SYNCHRONIZER(src), delta_time) && owner.stat == CONSCIOUS)
-		owner.visible_message("<span class='danger'>[owner] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+		owner.visible_message(SPAN_DANGER("[owner] starts having a seizure!"), SPAN_USERDANGER("You have a seizure!"))
 		owner.Unconscious(200 * GET_MUTATION_POWER(src))
 		owner.Jitter(1000 * GET_MUTATION_POWER(src))
 		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "epilepsy", /datum/mood_event/epilepsy)
@@ -27,7 +27,7 @@
 	name = "Unstable DNA"
 	desc = "Strange mutation that causes the holder to randomly mutate."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel strange.</span>"
+	text_gain_indication = SPAN_DANGER("You feel strange.")
 	locked = TRUE
 
 /datum/mutation/human/bad_dna/on_acquiring(mob/living/carbon/human/owner)
@@ -53,7 +53,7 @@
 	name = "Cough"
 	desc = "A chronic cough."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>You start coughing.</span>"
+	text_gain_indication = SPAN_DANGER("You start coughing.")
 	synchronizer_coeff = 1
 	power_coeff = 1
 
@@ -70,8 +70,8 @@
 	name = "Paranoia"
 	desc = "Subject is easily terrified, and may suffer from hallucinations."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel screams echo through your mind...</span>"
-	text_lose_indication = "<span class='notice'>The screaming in your mind fades.</span>"
+	text_gain_indication = SPAN_DANGER("You feel screams echo through your mind...")
+	text_lose_indication = SPAN_NOTICE("The screaming in your mind fades.")
 
 /datum/mutation/human/paranoia/on_life(delta_time, times_fired)
 	if(DT_PROB(2.5, delta_time) && owner.stat == CONSCIOUS)
@@ -97,7 +97,7 @@
 	new_transform.Scale(1, 0.8)
 	owner.transform = new_transform.Multiply(owner.transform)
 	passtable_on(owner, GENETIC_MUTATION)
-	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
+	owner.visible_message(SPAN_DANGER("[owner] suddenly shrinks!"), SPAN_NOTICE("Everything around you seems to grow.."))
 
 /datum/mutation/human/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
@@ -107,14 +107,14 @@
 	new_transform.Scale(1, 1.25)
 	owner.transform = new_transform.Multiply(owner.transform)
 	passtable_off(owner, GENETIC_MUTATION)
-	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
+	owner.visible_message(SPAN_DANGER("[owner] suddenly grows!"), SPAN_NOTICE("Everything around you seems to shrink.."))
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/human/clumsy
 	name = "Clumsiness"
 	desc = "A genome that inhibits certain brain functions, causing the holder to appear clumsy. Honk!"
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel lightheaded.</span>"
+	text_gain_indication = SPAN_DANGER("You feel lightheaded.")
 
 /datum/mutation/human/clumsy/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -132,7 +132,7 @@
 	name = "Tourette's Syndrome"
 	desc = "A chronic twitch that forces the user to scream bad words." //definitely needs rewriting
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You twitch.</span>"
+	text_gain_indication = SPAN_DANGER("You twitch.")
 	synchronizer_coeff = 1
 
 /datum/mutation/human/tourettes/on_life(delta_time, times_fired)
@@ -156,7 +156,7 @@
 	name = "Deafness"
 	desc = "The holder of this genome is completely deaf."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You can't seem to hear anything.</span>"
+	text_gain_indication = SPAN_DANGER("You can't seem to hear anything.")
 
 /datum/mutation/human/deaf/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
@@ -195,7 +195,7 @@
 	name = "Glowy"
 	desc = "You permanently emit a light with a random color and intensity."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your skin begins to glow softly.</span>"
+	text_gain_indication = SPAN_NOTICE("Your skin begins to glow softly.")
 	instability = 5
 	var/obj/effect/dummy/luminescent_glow/glowth //shamelessly copied from luminescents
 	var/glow = 2.5
@@ -233,7 +233,7 @@
 /datum/mutation/human/glow/anti
 	name = "Anti-Glow"
 	desc = "Your skin seems to attract and absorb nearby light creating 'darkness' around you."
-	text_gain_indication = "<span class='notice'>Your light around you seems to disappear.</span>"
+	text_gain_indication = SPAN_NOTICE("Your light around you seems to disappear.")
 	glow = -1.5
 	conflicts = list(/datum/mutation/human/glow)
 	locked = TRUE
@@ -245,22 +245,22 @@
 	name = "Strength"
 	desc = "The user's muscles slightly expand."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>You feel strong.</span>"
+	text_gain_indication = SPAN_NOTICE("You feel strong.")
 	difficulty = 16
 
 /datum/mutation/human/stimmed
 	name = "Stimmed"
 	desc = "The user's chemical balance is more robust."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>You feel stimmed.</span>"
+	text_gain_indication = SPAN_NOTICE("You feel stimmed.")
 	difficulty = 16
 
 /datum/mutation/human/insulated
 	name = "Insulated"
 	desc = "The affected person does not conduct electricity."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your fingertips go numb.</span>"
-	text_lose_indication = "<span class='notice'>Your fingertips regain feeling.</span>"
+	text_gain_indication = SPAN_NOTICE("Your fingertips go numb.")
+	text_lose_indication = SPAN_NOTICE("Your fingertips regain feeling.")
 	difficulty = 16
 	instability = 25
 
@@ -278,8 +278,8 @@
 	name = "Fiery Sweat"
 	desc = "The user's skin will randomly combust, but is generally a lot more resilient to burning."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='warning'>You feel hot.</span>"
-	text_lose_indication = "<span class='notice'>You feel a lot cooler.</span>"
+	text_gain_indication = SPAN_WARNING("You feel hot.")
+	text_lose_indication = SPAN_NOTICE("You feel a lot cooler.")
 	difficulty = 14
 	synchronizer_coeff = 1
 	power_coeff = 1
@@ -303,8 +303,8 @@
 	name = "Spatial Instability"
 	desc = "The victim of the mutation has a very weak link to spatial reality, and may be displaced. Often causes extreme nausea."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='warning'>The space around you twists sickeningly.</span>"
-	text_lose_indication = "<span class='notice'>The space around you settles back to normal.</span>"
+	text_gain_indication = SPAN_WARNING("The space around you twists sickeningly.")
+	text_lose_indication = SPAN_NOTICE("The space around you settles back to normal.")
 	difficulty = 18//high so it's hard to unlock and abuse
 	instability = 10
 	synchronizer_coeff = 1
@@ -315,17 +315,17 @@
 /datum/mutation/human/badblink/on_life(delta_time, times_fired)
 	if(DT_PROB(warpchance, delta_time))
 		var/warpmessage = pick(
-		"<span class='warning'>With a sickening 720-degree twist of [owner.p_their()] back, [owner] vanishes into thin air.</span>",
-		"<span class='warning'>[owner] does some sort of strange backflip into another dimension. It looks pretty painful.</span>",
-		"<span class='warning'>[owner] does a jump to the left, a step to the right, and warps out of reality.</span>",
-		"<span class='warning'>[owner]'s torso starts folding inside out until it vanishes from reality, taking [owner] with it.</span>",
-		"<span class='warning'>One moment, you see [owner]. The next, [owner] is gone.</span>")
-		owner.visible_message(warpmessage, "<span class='userdanger'>You feel a wave of nausea as you fall through reality!</span>")
+		SPAN_WARNING("With a sickening 720-degree twist of [owner.p_their()] back, [owner] vanishes into thin air."),
+		SPAN_WARNING("[owner] does some sort of strange backflip into another dimension. It looks pretty painful."),
+		SPAN_WARNING("[owner] does a jump to the left, a step to the right, and warps out of reality."),
+		SPAN_WARNING("[owner]'s torso starts folding inside out until it vanishes from reality, taking [owner] with it."),
+		SPAN_WARNING("One moment, you see [owner]. The next, [owner] is gone."))
+		owner.visible_message(warpmessage, SPAN_USERDANGER("You feel a wave of nausea as you fall through reality!"))
 		var/warpdistance = rand(10, 15) * GET_MUTATION_POWER(src)
 		do_teleport(owner, get_turf(owner), warpdistance, channel = TELEPORT_CHANNEL_FREE)
 		owner.adjust_disgust(GET_MUTATION_SYNCHRONIZER(src) * (warpchance * warpdistance))
 		warpchance = 0
-		owner.visible_message("<span class='danger'>[owner] appears out of nowhere!</span>")
+		owner.visible_message(SPAN_DANGER("[owner] appears out of nowhere!"))
 	else
 		warpchance += 0.0625 * GET_MUTATION_ENERGY(src) * delta_time
 
@@ -333,8 +333,8 @@
 	name = "Acidic Flesh"
 	desc = "Subject has acidic chemicals building up underneath the skin. This is often lethal."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='userdanger'>A horrible burning sensation envelops you as your flesh turns to acid!</span>"
-	text_lose_indication = "<span class='notice'>A feeling of relief fills you as your flesh goes back to normal.</span>"
+	text_gain_indication = SPAN_USERDANGER("A horrible burning sensation envelops you as your flesh turns to acid!")
+	text_lose_indication = SPAN_NOTICE("A feeling of relief fills you as your flesh goes back to normal.")
 	difficulty = 18//high so it's hard to unlock and use on others
 	/// The cooldown for the warning message
 	COOLDOWN_DECLARE(msgcooldown)
@@ -342,11 +342,11 @@
 /datum/mutation/human/acidflesh/on_life(delta_time, times_fired)
 	if(DT_PROB(13, delta_time))
 		if(COOLDOWN_FINISHED(src, msgcooldown))
-			to_chat(owner, "<span class='danger'>Your acid flesh bubbles...</span>")
+			to_chat(owner, SPAN_DANGER("Your acid flesh bubbles..."))
 			COOLDOWN_START(src, msgcooldown, 20 SECONDS)
 		if(prob(15))
 			owner.acid_act(rand(30, 50), 10)
-			owner.visible_message("<span class='warning'>[owner]'s skin bubbles and pops.</span>", "<span class='userdanger'>Your bubbling flesh pops! It burns!</span>")
+			owner.visible_message(SPAN_WARNING("[owner]'s skin bubbles and pops."), SPAN_USERDANGER("Your bubbling flesh pops! It burns!"))
 			playsound(owner,'sound/weapons/sear.ogg', 50, TRUE)
 
 /datum/mutation/human/gigantism
@@ -362,7 +362,7 @@
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 1.25
 	owner.update_transform()
-	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
+	owner.visible_message(SPAN_DANGER("[owner] suddenly grows!"), SPAN_NOTICE("Everything around you seems to shrink.."))
 
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
@@ -370,14 +370,14 @@
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
 	owner.resize = 0.8
 	owner.update_transform()
-	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
+	owner.visible_message(SPAN_DANGER("[owner] suddenly shrinks!"), SPAN_NOTICE("Everything around you seems to grow.."))
 
 /datum/mutation/human/spastic
 	name = "Spastic"
 	desc = "Subject suffers from muscle spasms."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='warning'>You flinch.</span>"
-	text_lose_indication = "<span class='notice'>Your flinching subsides.</span>"
+	text_gain_indication = SPAN_WARNING("You flinch.")
+	text_lose_indication = SPAN_NOTICE("Your flinching subsides.")
 	difficulty = 16
 
 /datum/mutation/human/spastic/on_acquiring()
@@ -394,8 +394,8 @@
 	name = "Two Left Feet"
 	desc = "A mutation that replaces the right foot with another left foot. Symptoms include kissing the floor when taking a step."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='warning'>Your right foot feels... left.</span>"
-	text_lose_indication = "<span class='notice'>Your right foot feels alright.</span>"
+	text_gain_indication = SPAN_WARNING("Your right foot feels... left.")
+	text_lose_indication = SPAN_NOTICE("Your right foot feels alright.")
 	difficulty = 16
 
 /datum/mutation/human/extrastun/on_acquiring()
@@ -418,7 +418,7 @@
 		return
 	if(owner.buckled || owner.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || owner.throwing || owner.movement_type & (VENTCRAWLING | FLYING | FLOATING))
 		return //remove the 'edge' cases
-	to_chat(owner, "<span class='danger'>You trip over your own feet.</span>")
+	to_chat(owner, SPAN_DANGER("You trip over your own feet."))
 	owner.Knockdown(30)
 
 /datum/mutation/human/martyrdom
@@ -426,8 +426,8 @@
 	desc = "A mutation that makes the body destruct when near death. Not damaging, but very, VERY disorienting."
 	locked = TRUE
 	quality = POSITIVE //not that cloning will be an option a lot but generally lets keep this around i guess?
-	text_gain_indication = "<span class='warning'>You get an intense feeling of heartburn.</span>"
-	text_lose_indication = "<span class='notice'>Your internal organs feel at ease.</span>"
+	text_gain_indication = SPAN_WARNING("You get an intense feeling of heartburn.")
+	text_lose_indication = SPAN_NOTICE("Your internal organs feel at ease.")
 
 /datum/mutation/human/martyrdom/on_acquiring()
 	. = ..()
@@ -455,15 +455,15 @@
 	for(var/mob/living/carbon/human/H in view(2,owner))
 		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 		if(eyes)
-			to_chat(H, "<span class='userdanger'>You are blinded by a shower of blood!</span>")
+			to_chat(H, SPAN_USERDANGER("You are blinded by a shower of blood!"))
 		else
-			to_chat(H, "<span class='userdanger'>You are knocked down by a wave of... blood?!</span>")
+			to_chat(H, SPAN_USERDANGER("You are knocked down by a wave of... blood?!"))
 		H.Stun(20)
 		H.blur_eyes(20)
 		eyes?.applyOrganDamage(5)
 		H.add_confusion(3)
 	for(var/mob/living/silicon/S in view(2,owner))
-		to_chat(S, "<span class='userdanger'>Your sensors are disabled by a shower of blood!</span>")
+		to_chat(S, SPAN_USERDANGER("Your sensors are disabled by a shower of blood!"))
 		S.Paralyze(60)
 	owner.gib()
 
@@ -472,7 +472,7 @@
 	desc = "A mutation that makes the body reject the head, the brain receding into the chest. Stands for Head Allergic Rejection Syndrome. Warning: Removing this mutation is very dangerous, though it will regenerate non-vital head organs."
 	difficulty = 12 //pretty good for traitors
 	quality = NEGATIVE //holy shit no eyes or tongue or ears
-	text_gain_indication = "<span class='warning'>Something feels off.</span>"
+	text_gain_indication = SPAN_WARNING("Something feels off.")
 
 /datum/mutation/human/headless/on_acquiring()
 	. = ..()
@@ -484,7 +484,7 @@
 
 	var/obj/item/bodypart/head/head = owner.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
-		owner.visible_message("<span class='warning'>[owner]'s head splatters with a sickening crunch!</span>", ignored_mobs = list(owner))
+		owner.visible_message(SPAN_WARNING("[owner]'s head splatters with a sickening crunch!"), ignored_mobs = list(owner))
 		new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 		head.dismember(BRUTE)
 		head.drop_organs()
@@ -506,7 +506,7 @@
 		return TRUE
 	owner.dna.species.regenerate_organs(owner, replace_current = FALSE, excluded_zones = list(BODY_ZONE_CHEST)) //replace_current needs to be FALSE to prevent weird adding and removing mutation healing
 	owner.apply_damage(damage = 50, damagetype = BRUTE, def_zone = BODY_ZONE_HEAD) //and this to DISCOURAGE organ farming, or at least not make it free.
-	owner.visible_message("<span class='warning'>[owner]'s head returns with a sickening crunch!</span>", "<span class='warning'>Your head regrows with a sickening crack! Ouch.</span>")
+	owner.visible_message(SPAN_WARNING("[owner]'s head returns with a sickening crunch!"), SPAN_WARNING("Your head regrows with a sickening crack! Ouch."))
 	new /obj/effect/gibspawner/generic(get_turf(owner), owner)
 
 

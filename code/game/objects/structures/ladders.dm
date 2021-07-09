@@ -68,7 +68,7 @@
 
 /obj/structure/ladder/singularity_pull()
 	if (!(resistance_flags & INDESTRUCTIBLE))
-		visible_message("<span class='danger'>[src] is torn to pieces by the gravitational pull!</span>")
+		visible_message(SPAN_DANGER("[src] is torn to pieces by the gravitational pull!"))
 		qdel(src)
 
 /obj/structure/ladder/proc/travel(going_up, mob/user, is_ghost, obj/structure/ladder/ladder)
@@ -77,14 +77,14 @@
 		if(user.loc != loc) //If not at the ladder location, attempt to move in
 			var/can_move = user.Move(get_turf(src), get_dir(user,src))
 			if(!can_move)
-				to_chat(user, "<span class='warning'>You can't step in!</span>")
+				to_chat(user, SPAN_WARNING("You can't step in!"))
 				return
 		if(!(living_user.mobility_flags & MOBILITY_USE))
-			to_chat(user, "<span class='warning'>You can't reach out!</span>")
+			to_chat(user, SPAN_WARNING("You can't reach out!"))
 			return
 		var/direction = going_up ? "up" : "down"
-		user.visible_message("<span class='notice'>[user] begins to climb [direction] [src].</span>", "<span class='notice'>You begin to climb [direction] [src].</span>")
-		ladder.audible_message("<span class='notice'>You hear something coming [direction] \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to climb [direction] [src]."), SPAN_NOTICE("You begin to climb [direction] [src]."))
+		ladder.audible_message(SPAN_NOTICE("You hear something coming [direction] \the [src]."))
 		ladder.add_fingerprint(user)
 		playsound(src, pick(climbsounds), 50) //Here
 		playsound(ladder, pick(climbsounds), 50) //And at the destination
@@ -112,7 +112,7 @@
 	if (down)
 		tool_list["Down"] = image(icon = 'icons/testing/turf_analysis.dmi', icon_state = "red_arrow", dir = SOUTH)
 	if (!length(tool_list))
-		to_chat(user, "<span class='warning'>[src] doesn't seem to lead anywhere!</span>")
+		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere!"))
 		return
 
 	var/result = show_radial_menu(user, src, tool_list, custom_check = CALLBACK(src, .proc/check_menu, user, is_ghost), require_near = !is_ghost, tooltips = TRUE)
@@ -169,9 +169,9 @@
 
 /obj/structure/ladder/proc/show_fluff_message(going_up, mob/user)
 	if(going_up)
-		user.visible_message("<span class='notice'>[user] climbs up [src].</span>", "<span class='notice'>You climb up [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] climbs up [src]."), SPAN_NOTICE("You climb up [src]."))
 	else
-		user.visible_message("<span class='notice'>[user] climbs down [src].</span>", "<span class='notice'>You climb down [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] climbs down [src]."), SPAN_NOTICE("You climb down [src]."))
 
 
 // Indestructible away mission ladders which link based on a mapped ID and height value rather than X/Y/Z.

@@ -17,17 +17,17 @@
 	time = 64
 
 /datum/surgery_step/reshape_face/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("<span class='notice'>[user] begins to alter [target]'s appearance.</span>", "<span class='notice'>You begin to alter [target]'s appearance...</span>")
-	display_results(user, target, "<span class='notice'>You begin to alter [target]'s appearance...</span>",
-		"<span class='notice'>[user] begins to alter [target]'s appearance.</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s face.</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to alter [target]'s appearance."), SPAN_NOTICE("You begin to alter [target]'s appearance..."))
+	display_results(user, target, SPAN_NOTICE("You begin to alter [target]'s appearance..."),
+		SPAN_NOTICE("[user] begins to alter [target]'s appearance."),
+		SPAN_NOTICE("[user] begins to make an incision in [target]'s face."))
 
 /datum/surgery_step/reshape_face/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(HAS_TRAIT_FROM(target, TRAIT_DISFIGURED, TRAIT_GENERIC))
 		REMOVE_TRAIT(target, TRAIT_DISFIGURED, TRAIT_GENERIC)
-		display_results(user, target, "<span class='notice'>You successfully restore [target]'s appearance.</span>",
-			"<span class='notice'>[user] successfully restores [target]'s appearance!</span>",
-			"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
+		display_results(user, target, SPAN_NOTICE("You successfully restore [target]'s appearance."),
+			SPAN_NOTICE("[user] successfully restores [target]'s appearance!"),
+			SPAN_NOTICE("[user] finishes the operation on [target]'s face."))
 	else
 		var/list/names = list()
 		if(!isabductor(user))
@@ -43,17 +43,17 @@
 		var/oldname = target.real_name
 		target.real_name = chosen_name
 		var/newname = target.real_name //something about how the code handles names required that I use this instead of target.real_name
-		display_results(user, target, "<span class='notice'>You alter [oldname]'s appearance completely, [target.p_they()] is now [newname].</span>",
-			"<span class='notice'>[user] alters [oldname]'s appearance completely, [target.p_they()] is now [newname]!</span>",
-			"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
+		display_results(user, target, SPAN_NOTICE("You alter [oldname]'s appearance completely, [target.p_they()] is now [newname]."),
+			SPAN_NOTICE("[user] alters [oldname]'s appearance completely, [target.p_they()] is now [newname]!"),
+			SPAN_NOTICE("[user] finishes the operation on [target]'s face."))
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		human_target.sec_hud_set_ID()
 	return ..()
 
 /datum/surgery_step/reshape_face/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screw up, leaving [target]'s appearance disfigured!</span>",
-		"<span class='notice'>[user] screws up, disfiguring [target]'s appearance!</span>",
-		"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
+	display_results(user, target, SPAN_WARNING("You screw up, leaving [target]'s appearance disfigured!"),
+		SPAN_NOTICE("[user] screws up, disfiguring [target]'s appearance!"),
+		SPAN_NOTICE("[user] finishes the operation on [target]'s face."))
 	ADD_TRAIT(target, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	return FALSE

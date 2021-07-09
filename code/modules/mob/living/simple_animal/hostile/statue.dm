@@ -79,7 +79,7 @@
 /mob/living/simple_animal/hostile/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
+			to_chat(src, SPAN_WARNING("You cannot move, there are eyes on you!"))
 		return
 	return ..()
 
@@ -97,7 +97,7 @@
 /mob/living/simple_animal/hostile/statue/AttackingTarget()
 	if(can_be_seen(get_turf(loc)))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot attack, there are eyes on you!</span>")
+			to_chat(src, SPAN_WARNING("You cannot attack, there are eyes on you!"))
 		return FALSE
 	else
 		return ..()
@@ -190,7 +190,7 @@
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
 
-	message = "<span class='notice'>You glare your eyes.</span>"
+	message = SPAN_NOTICE("You glare your eyes.")
 	charge_max = 600
 	clothes_req = 0
 	range = 10
@@ -210,7 +210,7 @@
 	charge_max = 10
 	clothes_req = 0
 
-	message = "<span class='notice'>You toggle your night vision!</span>"
+	message = SPAN_NOTICE("You toggle your night vision!")
 	range = -1
 	include_user = 1
 

@@ -35,7 +35,7 @@
 	connected_hub.connected_consoles -= src
 	connected_hub = null
 	denied_hail_transmission = null
-	
+
 /obj/machinery/computer/trade_console/proc/disconnect_trader()
 	if(!connected_trader)
 		return
@@ -51,16 +51,16 @@
 	credits_held -= amount
 	var/obj/item/holochip/holochip = new(loc, amount)
 	if(user)
-		to_chat(user, "<span class='notice'>You withdraw [amount] credits.</span>")
+		to_chat(user, SPAN_NOTICE("You withdraw [amount] credits."))
 		user.put_in_hands(holochip)
 
 /obj/machinery/computer/trade_console/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/holochip) || istype(I, /obj/item/stack/spacecash) || istype(I, /obj/item/coin))
 		var/worth = I.get_item_credit_value()
 		if(!worth)
-			to_chat(user, "<span class='warning'>[I] doesn't seem to be worth anything!</span>")
+			to_chat(user, SPAN_WARNING("[I] doesn't seem to be worth anything!"))
 		credits_held += worth
-		to_chat(user, "<span class='notice'>You slot [I] into [src] and it reports a total of [credits_held] credits inserted.</span>")
+		to_chat(user, SPAN_NOTICE("You slot [I] into [src] and it reports a total of [credits_held] credits inserted."))
 		qdel(I)
 		return
 	. = ..()
@@ -206,7 +206,7 @@
 						last_transmission = connected_trader.get_response("trade_show_goods", "This is what I've got to offer!", living_user)
 					else
 						last_transmission = connected_trader.get_response("trade_no_sell_goods", "I don't sell any goods.", living_user)
-						
+
 				if("button_show_purchasables")
 					if(connected_trader.trade_flags & TRADER_BUYS_GOODS)
 						trader_screen_state = TRADER_SCREEN_BOUGHT_GOODS
@@ -230,7 +230,7 @@
 						last_transmission = connected_trader.get_appraisal(living_user, src)
 					else
 						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
-				
+
 				if("button_sell_item")
 					if(!(connected_trader.trade_flags & TRADER_BUYS_GOODS))
 						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
@@ -312,10 +312,16 @@
 	circuit = /obj/item/circuitboard/machine/trade_pad
 	density = FALSE
 	var/obj/machinery/computer/trade_console/linked_console
-	var/list/ignore_typecache = list(/atom/movable/lighting_object = TRUE,
-									/obj/machinery/trade_pad = TRUE,
-									/obj/machinery/navbeacon  = TRUE)
-	var/list/types_of_to_add_to_ignore = list(/obj/structure/cable, /obj/structure/disposalpipe, /obj/machinery/atmospherics/pipe, /obj/effect)
+	var/list/ignore_typecache = list(
+		/obj/machinery/trade_pad = TRUE,
+		/obj/machinery/navbeacon  = TRUE,
+	)
+	var/list/types_of_to_add_to_ignore = list(
+		/obj/structure/cable,
+		/obj/structure/disposalpipe,
+		/obj/machinery/atmospherics/pipe,
+		/obj/effect,
+	)
 
 /obj/machinery/trade_pad/proc/get_valid_items()
 	var/turf/my_turf = get_turf(src)
@@ -350,5 +356,6 @@
 		/obj/item/stack/ore/bluespace_crystal = 2,
 		/obj/item/stock_parts/subspace/ansible = 1,
 		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/scanning_module = 2)
+		/obj/item/stock_parts/scanning_module = 2,
+	)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)

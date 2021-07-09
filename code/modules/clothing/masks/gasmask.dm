@@ -54,7 +54,7 @@
 /obj/item/clothing/mask/gas/welding/up
 
 /obj/item/clothing/mask/gas/welding/up/Initialize()
-	..()
+	. = ..()
 	visor_toggling()
 
 // ********************************************************************
@@ -121,7 +121,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>Your Clown Mask has now morphed into [choice], all praise the Honkmother!</span>")
+		to_chat(user, SPAN_NOTICE("Your Clown Mask has now morphed into [choice], all praise the Honkmother!"))
 		return TRUE
 
 /obj/item/clothing/mask/gas/sexyclown
@@ -176,7 +176,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(user, "<span class='notice'>Your Mime Mask has now morphed into [choice]!</span>")
+		to_chat(user, SPAN_NOTICE("Your Mime Mask has now morphed into [choice]!"))
 		return TRUE
 
 /obj/item/clothing/mask/gas/monkeymask
@@ -260,7 +260,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-		to_chat(M, "<span class='notice'>The Tiki Mask has now changed into the [choice] Mask!</span>")
+		to_chat(M, SPAN_NOTICE("The Tiki Mask has now changed into the [choice] Mask!"))
 		return 1
 
 /obj/item/clothing/mask/gas/tiki_mask/yalp_elor

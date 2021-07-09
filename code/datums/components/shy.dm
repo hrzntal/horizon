@@ -69,7 +69,7 @@
 	if(length(strangers) && locate(/mob/living) in strangers)
 		for(var/mob/living/person in strangers)
 			if(person != owner && !is_type_in_typecache(person, whitelist) && (person.stat != DEAD || dead_shy))
-				to_chat(owner, "<span class='warning'>[replacetext(message, "%TARGET", person)]</span>")
+				to_chat(owner, SPAN_WARNING("[replacetext(message, "%TARGET", person)]"))
 				result = TRUE
 				break
 

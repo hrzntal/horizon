@@ -80,7 +80,7 @@
 	if(!lit || operating)
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You can't bring yourself to fire \the [src]! You don't want to risk harming anyone...</span>")
+		to_chat(user, SPAN_WARNING("You can't bring yourself to fire \the [src]! You don't want to risk harming anyone..."))
 		return
 	if(user && user.get_active_held_item() == src) // Make sure our user is still holding us
 		var/turf/target_turf = get_turf(target)
@@ -107,7 +107,7 @@
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER && igniter && !lit)
 		status = !status
-		to_chat(user, "<span class='notice'>[igniter] is now [status ? "secured" : "unsecured"]!</span>")
+		to_chat(user, SPAN_NOTICE("[igniter] is now [status ? "secured" : "unsecured"]!"))
 		update_appearance()
 		return
 
@@ -128,7 +128,7 @@
 			if(user.transferItemToLoc(W,src))
 				beaker.forceMove(get_turf(src))
 				beaker = W
-				to_chat(user, "<span class='notice'>You swap the fuel container in [src]!</span>")
+				to_chat(user, SPAN_NOTICE("You swap the fuel container in [src]!"))
 			return
 		if(!user.transferItemToLoc(W, src))
 			return
@@ -146,22 +146,22 @@
 	if(beaker && isliving(user) && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		user.put_in_hands(beaker)
 		beaker = null
-		to_chat(user, "<span class='notice'>You remove the fuel container from [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You remove the fuel container from [src]!"))
 		update_appearance()
 
 /obj/item/flamethrower/examine(mob/user)
 	. = ..()
 	if(beaker)
-		. += "<span class='notice'>\The [src] has \a [beaker] attached. Alt-click to remove it.</span>"
+		. += SPAN_NOTICE("\The [src] has \a [beaker] attached. Alt-click to remove it.")
 
 /obj/item/flamethrower/proc/toggle_igniter(mob/user)
 	if(!beaker)
-		to_chat(user, "<span class='notice'>Attach a fuel container first!</span>")
+		to_chat(user, SPAN_NOTICE("Attach a fuel container first!"))
 		return
 	if(!status)
-		to_chat(user, "<span class='notice'>Secure the igniter first!</span>")
+		to_chat(user, SPAN_NOTICE("Secure the igniter first!"))
 		return
-	to_chat(user, "<span class='notice'>You [lit ? "extinguish" : "ignite"] [src]!</span>")
+	to_chat(user, SPAN_NOTICE("You [lit ? "extinguish" : "ignite"] [src]!"))
 	lit = !lit
 	if(lit)
 		playsound(loc, acti_sound, 50, TRUE)
@@ -253,7 +253,7 @@
 /obj/item/flamethrower/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	var/obj/projectile/P = hitby
 	if(beaker && damage && attack_type == PROJECTILE_ATTACK && P.damage_type != STAMINA && prob(15))
-		owner.visible_message("<span class='danger'>\The [attack_text] hits the fuel tank on [owner]'s [name], rupturing it! What a shot!</span>")
+		owner.visible_message(SPAN_DANGER("\The [attack_text] hits the fuel tank on [owner]'s [name], rupturing it! What a shot!"))
 		var/turf/target_turf = get_turf(owner)
 		log_game("A projectile ([hitby]) detonated a flamethrower tank held by [key_name(owner)] at [COORD(target_turf)]")
 		flame_turf(list(get_turf(src)), 100, FALSE)

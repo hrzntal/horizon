@@ -28,9 +28,9 @@
 	time = 42
 
 /datum/surgery_step/lobectomy/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s lungs...</span>",
-		"<span class='notice'>[user] begins to make an incision in [target].</span>",
-		"<span class='notice'>[user] begins to make an incision in [target].</span>")
+	display_results(user, target, SPAN_NOTICE("You begin to make an incision in [target]'s lungs..."),
+		SPAN_NOTICE("[user] begins to make an incision in [target]."),
+		SPAN_NOTICE("[user] begins to make an incision in [target]."))
 
 /datum/surgery_step/lobectomy/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(ishuman(target))
@@ -38,17 +38,17 @@
 		var/obj/item/organ/lungs/target_lungs = human_target.getorganslot(ORGAN_SLOT_LUNGS)
 		target_lungs.operated = TRUE
 		human_target.setOrganLoss(ORGAN_SLOT_LUNGS, 60)
-		display_results(user, target, "<span class='notice'>You successfully excise [human_target]'s most damaged lobe.</span>",
-			"<span class='notice'>Successfully removes a piece of [human_target]'s lungs.</span>",
+		display_results(user, target, SPAN_NOTICE("You successfully excise [human_target]'s most damaged lobe."),
+			SPAN_NOTICE("Successfully removes a piece of [human_target]'s lungs."),
 			"")
 	return ..()
 
 /datum/surgery_step/lobectomy/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
-		display_results(user, target, "<span class='warning'>You screw up, failing to excise [human_target]'s damaged lobe!</span>",
-			"<span class='warning'>[user] screws up!</span>",
-			"<span class='warning'>[user] screws up!</span>")
+		display_results(user, target, SPAN_WARNING("You screw up, failing to excise [human_target]'s damaged lobe!"),
+			SPAN_WARNING("[user] screws up!"),
+			SPAN_WARNING("[user] screws up!"))
 		human_target.losebreath += 4
 		human_target.adjustOrganLoss(ORGAN_SLOT_LUNGS, 10)
 	return FALSE

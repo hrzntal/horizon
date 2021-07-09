@@ -22,7 +22,7 @@
 	. += deconstruction_hints(user)
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)
-	return "<span class='notice'>The rods look like they could be <b>cut</b>. There's space for more <i>rods</i> or a <i>tile</i>.</span>"
+	return SPAN_NOTICE("The rods look like they could be <b>cut</b>. There's space for more <i>rods</i> or a <i>tile</i>.")
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -41,7 +41,7 @@
 		return
 	if(C.tool_behaviour == TOOL_WIRECUTTER)
 		C.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>Slicing [name] joints ...</span>")
+		to_chat(user, SPAN_NOTICE("Slicing [name] joints ..."))
 		deconstruct()
 	else
 		var/turf/T = get_turf(src)
@@ -58,7 +58,7 @@
 
 /obj/structure/lattice/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, "<span class='notice'>You build a floor.</span>")
+		to_chat(user, SPAN_NOTICE("You build a floor."))
 		var/turf/T = src.loc
 		if(isspaceturf(T))
 			T.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
@@ -89,7 +89,7 @@
 	return ..()
 
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
-	return "<span class='notice'>The supporting rods look like they could be <b>cut</b>.</span>"
+	return SPAN_NOTICE("The supporting rods look like they could be <b>cut</b>.")
 
 /obj/structure/lattice/catwalk/Move()
 	CheckCableSupport()
@@ -151,16 +151,16 @@
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
 
 /obj/structure/lattice/lava/deconstruction_hints(mob/user)
-	return "<span class='notice'>The rods look like they could be <b>cut</b>, but the <i>heat treatment will shatter off</i>. There's space for a <i>tile</i>.</span>"
+	return SPAN_NOTICE("The rods look like they could be <b>cut</b>, but the <i>heat treatment will shatter off</i>. There's space for a <i>tile</i>.")
 
 /obj/structure/lattice/lava/attackby(obj/item/C, mob/user, params)
 	. = ..()
 	if(istype(C, /obj/item/stack/tile/iron))
 		var/obj/item/stack/tile/iron/P = C
 		if(P.use(1))
-			to_chat(user, "<span class='notice'>You construct a floor plating, as lava settles around the rods.</span>")
+			to_chat(user, SPAN_NOTICE("You construct a floor plating, as lava settles around the rods."))
 			playsound(src, 'sound/weapons/genhit.ogg', 50, TRUE)
 			new /turf/open/floor/plating(locate(x, y, z))
 		else
-			to_chat(user, "<span class='warning'>You need one floor tile to build atop [src].</span>")
+			to_chat(user, SPAN_WARNING("You need one floor tile to build atop [src]."))
 		return

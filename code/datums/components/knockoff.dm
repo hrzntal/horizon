@@ -34,7 +34,7 @@
 		return
 	if(!wearer.dropItemToGround(item))
 		return
-	wearer.visible_message("<span class='warning'>[attacker] knocks off [wearer]'s [item.name]!</span>","<span class='userdanger'>[attacker] knocks off your [item.name]!</span>")
+	wearer.visible_message(SPAN_WARNING("[attacker] knocks off [wearer]'s [item.name]!"),SPAN_USERDANGER("[attacker] knocks off your [item.name]!"))
 
 ///Tries to knockoff the item when user is knocked down
 /datum/component/knockoff/proc/Knockoff_knockdown(mob/living/carbon/human/wearer,amount)
@@ -50,7 +50,7 @@
 		return
 	if(!wearer.dropItemToGround(item))
 		return
-	wearer.visible_message("<span class='warning'>[wearer]'s [item.name] gets knocked off!</span>","<span class='userdanger'>Your [item.name] was knocked off!</span>")
+	wearer.visible_message(SPAN_WARNING("[wearer]'s [item.name] gets knocked off!"),SPAN_USERDANGER("Your [item.name] was knocked off!"))
 
 
 /datum/component/knockoff/proc/OnEquipped(datum/source, mob/living/carbon/human/H,slot)

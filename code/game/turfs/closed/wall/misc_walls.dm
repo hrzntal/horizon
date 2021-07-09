@@ -123,9 +123,9 @@
 	rad_insulation = RAD_HEAVY_INSULATION
 
 /turf/closed/wall/concrete/deconstruction_hints(mob/user)
-	return "<span class='notice'>Nothing's going to cut that.</span>"
+	return SPAN_NOTICE("Nothing's going to cut that.")
 
 /turf/closed/wall/concrete/try_decon(obj/item/I, mob/user, turf/T)
 	if(I.tool_behaviour == TOOL_WELDER)
-		to_chat(user, "<span class='warning'>This wall is way too hard to cut through!</span>")
+		to_chat(user, SPAN_WARNING("This wall is way too hard to cut through!"))
 	return FALSE

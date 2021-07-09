@@ -120,13 +120,13 @@
 						return
 					var/obj/item/card/id/held_id = carbon_user.get_active_held_item()
 					if(!istype(held_id))
-						to_chat(carbon_user, "<span class='warning'>Swipe your ID!</span>")
+						to_chat(carbon_user, SPAN_WARNING("Swipe your ID!"))
 						return
 					if(!held_id.registered_account)
-						to_chat(carbon_user, "<span class='warning'>Your ID has no registered account!</span>")
+						to_chat(carbon_user, SPAN_WARNING("Your ID has no registered account!"))
 						return
 					if(!held_id.registered_account.adjust_money(-selected_shuttle.cost))
-						to_chat(carbon_user, "<span class='warning'>You can't afford this!</span>")
+						to_chat(carbon_user, SPAN_WARNING("You can't afford this!"))
 						return
 					selected_shuttle.stock--
 					say("Thank you for the purchase! Your shuttle will arrive shortly.")

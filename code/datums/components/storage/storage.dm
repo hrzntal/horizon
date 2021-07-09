@@ -130,7 +130,7 @@
 		var/obj/item/valid_item = valid_type
 		desc += "\a [initial(valid_item.name)]"
 
-	return "\n\t<span class='notice'>[desc.Join("\n\t")]</span>"
+	return "\n\t[SPAN_NOTICE("[desc.Join("\n\t")]")]"
 
 /datum/component/storage/proc/update_actions()
 	QDEL_NULL(modeswitch_action)
@@ -188,7 +188,7 @@
 	SIGNAL_HANDLER
 
 	if(locked)
-		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(M, SPAN_WARNING("[parent] seems to be locked!"))
 		return FALSE
 	if((M.get_active_held_item() == parent) && allow_quick_empty)
 		INVOKE_ASYNC(src, .proc/quick_empty, M)
@@ -200,7 +200,7 @@
 		return FALSE
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(locked)
-		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(M, SPAN_WARNING("[parent] seems to be locked!"))
 		return FALSE
 	var/obj/item/I = O
 	if(collection_mode == COLLECT_ONE)
@@ -218,14 +218,14 @@
 		things = typecache_filter_list(things, typecacheof(attack_item.type))
 	var/len = length(things)
 	if(!len)
-		to_chat(pre_attack_mob, "<span class='warning'>You failed to pick up anything with [parent]!</span>")
+		to_chat(pre_attack_mob, SPAN_WARNING("You failed to pick up anything with [parent]!"))
 		return
 	var/datum/progressbar/progress = new(pre_attack_mob, len, attack_item.loc)
 	var/list/rejections = list()
 	while(do_after(pre_attack_mob, 1 SECONDS, parent, NONE, FALSE, CALLBACK(src, .proc/handle_mass_pickup, things, attack_item.loc, rejections, progress)))
 		stoplag(1)
 	progress.end_progress()
-	to_chat(pre_attack_mob, "<span class='notice'>You put everything you could [insert_preposition] [parent].</span>")
+	to_chat(pre_attack_mob, SPAN_NOTICE("You put everything you could [insert_preposition] [parent]."))
 
 /datum/component/storage/proc/handle_mass_item_insertion(list/things, datum/component/storage/src_object, mob/user, datum/progressbar/progress)
 	var/atom/source_real_location = src_object.real_location()
@@ -273,10 +273,10 @@
 	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
 		return
 	if(locked)
-		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(M, SPAN_WARNING("[parent] seems to be locked!"))
 		return FALSE
 	A.add_fingerprint(M)
-	to_chat(M, "<span class='notice'>You start dumping out [parent].</span>")
+	to_chat(M, SPAN_NOTICE("You start dumping out [parent]."))
 	var/turf/T = get_turf(A)
 	var/list/things = contents()
 	var/datum/progressbar/progress = new(M, length(things), T)
@@ -397,20 +397,27 @@
 	M.client.screen |= boxes
 	M.client.screen |= closer
 	M.client.screen |= real_location.contents
-	M.active_storage = src
+	M.set_active_storage(src)
 	LAZYOR(is_using, M)
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/mob_deleted)
 	return TRUE
 
+/datum/component/storage/proc/mob_deleted(datum/source)
+	SIGNAL_HANDLER
+	hide_from(source)
+
 /datum/component/storage/proc/hide_from(mob/M)
+	if(M.active_storage == src)
+		M.set_active_storage(null)
+	LAZYREMOVE(is_using, M)
+
+	UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 	if(!M.client)
 		return TRUE
 	var/atom/real_location = real_location()
 	M.client.screen -= boxes
 	M.client.screen -= closer
 	M.client.screen -= real_location.contents
-	if(M.active_storage == src)
-		M.active_storage = null
-	LAZYREMOVE(is_using, M)
 	return TRUE
 
 /datum/component/storage/proc/close(mob/M)
@@ -489,6 +496,7 @@
 			cansee |= M
 		else
 			LAZYREMOVE(is_using, M)
+			UnregisterSignal(M, COMSIG_PARENT_QDELETING)
 	return cansee
 
 //Tries to dump content
@@ -497,7 +505,7 @@
 	var/atom/dump_destination = dest_object.get_dumping_location()
 	if(A.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
 		if(locked)
-			to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+			to_chat(M, SPAN_WARNING("[parent] seems to be locked!"))
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
 			playsound(A, "rustle", 50, TRUE, -5)
@@ -551,7 +559,7 @@
 		handle_show_valid_items(source, user)
 
 /datum/component/storage/proc/handle_show_valid_items(datum/source, user)
-	to_chat(user, "<span class='notice'>[source] can hold: [can_hold_description]</span>")
+	to_chat(user, SPAN_NOTICE("[source] can hold: [can_hold_description]"))
 
 /datum/component/storage/proc/mousedrop_onto(datum/source, atom/over_object, mob/M)
 	SIGNAL_HANDLER
@@ -589,7 +597,7 @@
 		return FALSE
 	A.add_fingerprint(M)
 	if(locked && !force)
-		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(M, SPAN_WARNING("[parent] seems to be locked!"))
 		return FALSE
 	if(force || M.CanReach(parent, view_only = TRUE))
 		show_to(M)
@@ -619,47 +627,47 @@
 	if(locked)
 		if(M && !stop_messages)
 			host.add_fingerprint(M)
-			to_chat(M, "<span class='warning'>[host] seems to be locked!</span>")
+			to_chat(M, SPAN_WARNING("[host] seems to be locked!"))
 		return FALSE
 	if(real_location.contents.len >= max_items)
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>[host] is full, make some space!</span>")
+			to_chat(M, SPAN_WARNING("[host] is full, make some space!"))
 		return FALSE //Storage item is full
 	if(length(can_hold))
 		if(!is_type_in_typecache(I, can_hold))
 			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[host] cannot hold [I]!</span>")
+				to_chat(M, SPAN_WARNING("[host] cannot hold [I]!"))
 			return FALSE
 	if(is_type_in_typecache(I, cant_hold) || HAS_TRAIT(I, TRAIT_NO_STORAGE_INSERT) || (can_hold_trait && !HAS_TRAIT(I, can_hold_trait))) //Items which this container can't hold.
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>[host] cannot hold [I]!</span>")
+			to_chat(M, SPAN_WARNING("[host] cannot hold [I]!"))
 		return FALSE
 	if(I.w_class > max_w_class && !is_type_in_typecache(I, exception_hold))
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>[I] is too big for [host]!</span>")
+			to_chat(M, SPAN_WARNING("[I] is too big for [host]!"))
 		return FALSE
 	var/datum/component/storage/biggerfish = real_location.loc.GetComponent(/datum/component/storage)
 	if(biggerfish && biggerfish.max_w_class < max_w_class) //return false if we are inside of another container, and that container has a smaller max_w_class than us (like if we're a bag in a box)
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>[I] can't fit in [host] while [real_location.loc] is in the way!</span>")
+			to_chat(M, SPAN_WARNING("[I] can't fit in [host] while [real_location.loc] is in the way!"))
 		return FALSE
 	var/sum_w_class = I.w_class
 	for(var/obj/item/_I in real_location)
 		sum_w_class += _I.w_class //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 	if(sum_w_class > max_combined_w_class)
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>[I] won't fit in [host], make some space!</span>")
+			to_chat(M, SPAN_WARNING("[I] won't fit in [host], make some space!"))
 		return FALSE
 	if(isitem(host))
 		var/obj/item/IP = host
 		var/datum/component/storage/STR_I = I.GetComponent(/datum/component/storage)
 		if((I.w_class >= IP.w_class) && STR_I && !allow_big_nesting)
 			if(!stop_messages)
-				to_chat(M, "<span class='warning'>[IP] cannot hold [I] as it's a storage item of the same size!</span>")
+				to_chat(M, SPAN_WARNING("[IP] cannot hold [I] as it's a storage item of the same size!"))
 			return FALSE //To prevent the stacking of same sized storage items.
 	if(HAS_TRAIT(I, TRAIT_NODROP)) //SHOULD be handled in unEquip, but better safe than sorry.
 		if(!stop_messages)
-			to_chat(M, "<span class='warning'>\the [I] is stuck to your hand, you can't put it in \the [host]!</span>")
+			to_chat(M, SPAN_WARNING("\the [I] is stuck to your hand, you can't put it in \the [host]!"))
 		return FALSE
 	var/datum/component/storage/concrete/master = master()
 	if(!istype(master))
@@ -690,11 +698,11 @@
 		playsound(parent, "rustle", 50, TRUE, -5)
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)
-			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
+			to_chat(usr, SPAN_NOTICE("You put [I] [insert_preposition]to [parent]."))
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message(SPAN_NOTICE("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message(SPAN_NOTICE("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 
 /datum/component/storage/proc/update_icon()
 	if(isobj(parent))
@@ -801,7 +809,7 @@
 	if(A.loc == user)
 		. = COMPONENT_CANCEL_ATTACK_CHAIN
 		if(locked)
-			to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+			to_chat(user, SPAN_WARNING("[parent] seems to be locked!"))
 		else
 			show_to(user)
 
@@ -836,7 +844,7 @@
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, SPAN_WARNING("[parent] seems to be locked!"))
 		return
 
 	var/atom/A = parent
@@ -859,9 +867,9 @@
 	parent_as_atom.add_fingerprint(user)
 	remove_from_storage(to_remove, get_turf(user))
 	if(!user.put_in_hands(to_remove))
-		to_chat(user, "<span class='notice'>You fumble for [to_remove] and it falls on the floor.</span>")
+		to_chat(user, SPAN_NOTICE("You fumble for [to_remove] and it falls on the floor."))
 		return
-	user.visible_message("<span class='warning'>[user] draws [to_remove] from [parent]!</span>", "<span class='notice'>You draw [to_remove] from [parent].</span>")
+	user.visible_message(SPAN_WARNING("[user] draws [to_remove] from [parent]!"), SPAN_NOTICE("You draw [to_remove] from [parent]."))
 
 /datum/component/storage/proc/action_trigger(datum/signal_source, datum/action/source)
 	SIGNAL_HANDLER
@@ -873,8 +881,8 @@
 	collection_mode = (collection_mode+1)%3
 	switch(collection_mode)
 		if(COLLECT_SAME)
-			to_chat(user, "<span class='notice'>[parent] now picks up all items of a single type at once.</span>")
+			to_chat(user, SPAN_NOTICE("[parent] now picks up all items of a single type at once."))
 		if(COLLECT_EVERYTHING)
-			to_chat(user, "<span class='notice'>[parent] now picks up all items in a tile at once.</span>")
+			to_chat(user, SPAN_NOTICE("[parent] now picks up all items in a tile at once."))
 		if(COLLECT_ONE)
-			to_chat(user, "<span class='notice'>[parent] now picks up one item at a time.</span>")
+			to_chat(user, SPAN_NOTICE("[parent] now picks up one item at a time."))

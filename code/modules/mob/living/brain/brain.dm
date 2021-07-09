@@ -5,7 +5,7 @@
 	var/datum/dna/stored/stored_dna // dna var for brain. Used to store dna, brain dna is not considered like actual dna, brain.has_dna() returns FALSE.
 	stat = DEAD //we start dead by default
 	see_invisible = SEE_INVISIBLE_LIVING
-	speech_span = SPAN_ROBOT
+	speech_span = SPEECH_SPAN_ROBOT
 
 /mob/living/brain/Initialize()
 	. = ..()
@@ -31,9 +31,10 @@
 		if(stat!=DEAD) //If not dead.
 			death(1) //Brains can die again. AND THEY SHOULD AHA HA HA HA HA HA
 		if(mind) //You aren't allowed to return to brains that don't exist
-			mind.current = null
+			mind.set_current(null)
 		ghostize() //Ghostize checks for key so nothing else is necessary.
 	container = null
+	QDEL_NULL(stored_dna)
 	return ..()
 
 

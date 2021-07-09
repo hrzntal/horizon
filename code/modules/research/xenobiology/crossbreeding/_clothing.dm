@@ -57,7 +57,7 @@ Slimecrossing Armor
 	set_light(5)
 
 /obj/structure/light_prism/attack_hand(mob/user, list/modifiers)
-	to_chat(user, "<span class='notice'>You dispel [src].</span>")
+	to_chat(user, SPAN_NOTICE("You dispel [src]."))
 	qdel(src)
 
 /datum/action/item_action/change_prism_colour
@@ -84,13 +84,13 @@ Slimecrossing Armor
 		return
 	var/obj/item/clothing/glasses/prism_glasses/glasses = target
 	if(locate(/obj/structure/light_prism) in get_turf(owner))
-		to_chat(owner, "<span class='warning'>There isn't enough ambient energy to fabricate another light prism here.</span>")
+		to_chat(owner, SPAN_WARNING("There isn't enough ambient energy to fabricate another light prism here."))
 		return
 	if(istype(glasses))
 		if(!glasses.glasses_color)
-			to_chat(owner, "<span class='warning'>The lens is oddly opaque...</span>")
+			to_chat(owner, SPAN_WARNING("The lens is oddly opaque..."))
 			return
-		to_chat(owner, "<span class='notice'>You channel nearby light into a glowing, ethereal prism.</span>")
+		to_chat(owner, SPAN_NOTICE("You channel nearby light into a glowing, ethereal prism."))
 		new /obj/structure/light_prism(get_turf(owner), glasses.glasses_color)
 
 /obj/item/clothing/head/peaceflower
@@ -114,7 +114,7 @@ Slimecrossing Armor
 	if(iscarbon(user))
 		var/mob/living/carbon/carbon_user = user
 		if(src == carbon_user.head)
-			to_chat(user, "<span class='warning'>You feel at peace. <b style='color:pink'>Why would you want anything else?</b></span>")
+			to_chat(user, SPAN_WARNING("You feel at peace. <b style='color:pink'>Why would you want anything else?</b>"))
 			return TRUE
 	return FALSE
 

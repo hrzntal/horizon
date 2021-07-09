@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	if(istype(I, /obj/item/tcgcard_deck))
 		var/obj/item/tcgcard_deck/old_deck = I
 		if(length(old_deck.contents) >= 30)
-			to_chat(user, "<span class='notice'>This pile has too many cards for a regular deck!</span>")
+			to_chat(user, SPAN_NOTICE("This pile has too many cards for a regular deck!"))
 			return
 		user.transferItemToLoc(src, old_deck)
 		flipped = old_deck.flipped
@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	animate(src, transform = ntransform, time = 2, easing = (EASE_IN|EASE_OUT))
 
 /obj/item/tcgcard/proc/flip_card(mob/user)
-	to_chat(user, "<span_class='notice'>You turn the card over.</span>")
+	to_chat(user, SPAN_NOTICE("You turn the card over."))
 	if(!flipped)
 		name = "Trading Card"
 		desc = "It's the back of a trading card... no peeking!"
@@ -212,7 +212,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 
 /obj/item/tcgcard_deck/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] has [contents.len] cards inside.</span>"
+	. += SPAN_NOTICE("\The [src] has [contents.len] cards inside.")
 
 /obj/item/tcgcard_deck/attack_hand(mob/user, list/modifiers)
 	var/list/choices = list(
@@ -253,7 +253,7 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	. = ..()
 	if(istype(I, /obj/item/tcgcard))
 		if(contents.len > 30)
-			to_chat(user, "<span class='notice'>This pile has too many cards for a regular deck!</span>")
+			to_chat(user, SPAN_NOTICE("This pile has too many cards for a regular deck!"))
 			return FALSE
 		var/obj/item/tcgcard/new_card = I
 		new_card.flipped = flipped
@@ -274,8 +274,8 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	user.put_in_hands(drawn_card)
 	drawn_card.flipped = flipped //If it's a face down deck, it'll be drawn face down, if it's a face up pile you'll draw it face up.
 	drawn_card.update_icon_state()
-	user.visible_message("<span class='notice'>[user] draws a card from \the [src]!</span>", \
-					"<span class='notice'>You draw a card from \the [src]!</span>")
+	user.visible_message(SPAN_NOTICE("[user] draws a card from \the [src]!"), \
+					SPAN_NOTICE("You draw a card from \the [src]!"))
 	if(contents.len <= 1)
 		var/obj/item/tcgcard/final_card = contents[1]
 		user.transferItemToLoc(final_card, drop_location())
@@ -294,8 +294,8 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	if(user.active_storage)
 		user.active_storage.close(user)
 	if(visable)
-		user.visible_message("<span class='notice'>[user] shuffles \the [src]!</span>", \
-						"<span class='notice'>You shuffle \the [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] shuffles \the [src]!"), \
+						SPAN_NOTICE("You shuffle \the [src]!"))
 
 
 /**
@@ -382,11 +382,11 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 	for(var/template in cards)
 		//Makes a new card based of the series of the pack.
 		new /obj/item/tcgcard(get_turf(user), series, template)
-	to_chat(user, "<span_class='notice'>Wow! Check out these cards!</span>")
+	to_chat(user, SPAN_NOTICE("Wow! Check out these cards!"))
 	new /obj/effect/decal/cleanable/wrapping(get_turf(user))
 	playsound(loc, 'sound/items/poster_ripped.ogg', 20, TRUE)
 	if(prob(contains_coin))
-		to_chat(user, "<span_class='notice'>...and it came with a flipper, too!</span>")
+		to_chat(user, SPAN_NOTICE("...and it came with a flipper, too!"))
 		new /obj/item/coin/thunderdome(get_turf(user))
 	qdel(src)
 

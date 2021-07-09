@@ -33,42 +33,42 @@
 	if(.)
 		return
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>It is fully repaired already!</span>")
+		to_chat(user, SPAN_NOTICE("It is fully repaired already!"))
 		return
 	if(!I.use_tool(src, user, 0, volume = 50, amount = 1))
 		return
-	user.visible_message("<span class='notice'>[user] repairs some damage to [name].</span>", "<span class='notice'>You repair some damage to \the [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] repairs some damage to [name]."), SPAN_NOTICE("You repair some damage to \the [src]."))
 	obj_integrity += min(10, max_integrity-obj_integrity)
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>It looks to be fully repaired now.</span>")
+		to_chat(user, SPAN_NOTICE("It looks to be fully repaired now."))
 		STOP_PROCESSING(SSobj, src)
 
 /obj/vehicle/ridden/secway/attackby(obj/item/W, mob/living/user, params)
 	if(!istype(W, /obj/item/food/grown/banana))
 		return ..()
 	// ignore the occupants because they're presumably too distracted to notice the guy stuffing fruit into their vehicle's exhaust. do segways have exhausts? they do now!
-	user.visible_message("<span class='warning'>[user] begins stuffing [W] into [src]'s tailpipe.</span>", "<span class='warning'>You begin stuffing [W] into [src]'s tailpipe...</span>", ignored_mobs = occupants)
+	user.visible_message(SPAN_WARNING("[user] begins stuffing [W] into [src]'s tailpipe."), SPAN_WARNING("You begin stuffing [W] into [src]'s tailpipe..."), ignored_mobs = occupants)
 	if(!do_after(user, 3 SECONDS, src))
 		return TRUE
 	if(user.transferItemToLoc(W, src))
-		user.visible_message("<span class='warning'>[user] stuffs [W] into [src]'s tailpipe.</span>", "<span class='warning'>You stuff [W] into [src]'s tailpipe.</span>", ignored_mobs = occupants)
+		user.visible_message(SPAN_WARNING("[user] stuffs [W] into [src]'s tailpipe."), SPAN_WARNING("You stuff [W] into [src]'s tailpipe."), ignored_mobs = occupants)
 		eddie_murphy = W
 	return TRUE
 
 /obj/vehicle/ridden/secway/attack_hand(mob/living/user, list/modifiers)
 	if(!eddie_murphy)
 		return ..()
-	user.visible_message("<span class='warning'>[user] begins cleaning [eddie_murphy] out of [src].</span>", "<span class='warning'>You begin cleaning [eddie_murphy] out of [src]...</span>")
+	user.visible_message(SPAN_WARNING("[user] begins cleaning [eddie_murphy] out of [src]."), SPAN_WARNING("You begin cleaning [eddie_murphy] out of [src]..."))
 	if(!do_after(user, 60, target = src))
 		return ..()
-	user.visible_message("<span class='warning'>[user] cleans [eddie_murphy] out of [src].</span>", "<span class='warning'>You manage to get [eddie_murphy] out of [src].</span>")
+	user.visible_message(SPAN_WARNING("[user] cleans [eddie_murphy] out of [src]."), SPAN_WARNING("You manage to get [eddie_murphy] out of [src]."))
 	eddie_murphy.forceMove(drop_location())
 	eddie_murphy = null
 
 /obj/vehicle/ridden/secway/examine(mob/user)
 	. = ..()
 	if(eddie_murphy)
-		. += "<span class='warning'>Something appears to be stuck in its exhaust...</span>"
+		. += SPAN_WARNING("Something appears to be stuck in its exhaust...")
 
 /obj/vehicle/ridden/secway/obj_destruction()
 	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)

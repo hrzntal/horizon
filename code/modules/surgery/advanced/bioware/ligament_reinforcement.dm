@@ -19,14 +19,14 @@
 	time = 125
 
 /datum/surgery_step/reinforce_ligaments/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start reinforcing [target]'s ligaments.</span>",
-		"<span class='notice'>[user] starts reinforce [target]'s ligaments.</span>",
-		"<span class='notice'>[user] starts manipulating [target]'s ligaments.</span>")
+	display_results(user, target, SPAN_NOTICE("You start reinforcing [target]'s ligaments."),
+		SPAN_NOTICE("[user] starts reinforce [target]'s ligaments."),
+		SPAN_NOTICE("[user] starts manipulating [target]'s ligaments."))
 
 /datum/surgery_step/reinforce_ligaments/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
-	display_results(user, target, "<span class='notice'>You reinforce [target]'s ligaments!</span>",
-		"<span class='notice'>[user] reinforces [target]'s ligaments!</span>",
-		"<span class='notice'>[user] finishes manipulating [target]'s ligaments.</span>")
+	display_results(user, target, SPAN_NOTICE("You reinforce [target]'s ligaments!"),
+		SPAN_NOTICE("[user] reinforces [target]'s ligaments!"),
+		SPAN_NOTICE("[user] finishes manipulating [target]'s ligaments."))
 	new /datum/bioware/reinforced_ligaments(target)
 	return ..()
 

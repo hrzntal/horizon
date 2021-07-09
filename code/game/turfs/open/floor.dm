@@ -198,10 +198,10 @@
 		broken = FALSE
 		burnt = FALSE
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
+			to_chat(user, SPAN_NOTICE("You remove the broken plating."))
 	else
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the floor tile.</span>")
+			to_chat(user, SPAN_NOTICE("You remove the floor tile."))
 		if(make_tile)
 			spawn_tile()
 	return make_plating(force_plating)
@@ -272,17 +272,17 @@
 /turf/open/floor/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>You build a wall.</span>")
+			to_chat(user, SPAN_NOTICE("You build a wall."))
 			PlaceOnTop(/turf/closed/wall)
 			return TRUE
 		if(RCD_AIRLOCK)
 			for(var/obj/machinery/door/door in src)
 				if(door.sub_door)
 					continue
-				to_chat(user, "<span class='notice'>There is another door here!</span>")
+				to_chat(user, SPAN_NOTICE("There is another door here!"))
 				return FALSE
 			if(ispath(the_rcd.airlock_type, /obj/machinery/door/window))
-				to_chat(user, "<span class='notice'>You build a windoor.</span>")
+				to_chat(user, SPAN_NOTICE("You build a windoor."))
 				var/obj/machinery/door/window/new_window = new the_rcd.airlock_type(src, user.dir)
 				if(the_rcd.airlock_electronics)
 					new_window.req_access = the_rcd.airlock_electronics.accesses.Copy()
@@ -291,7 +291,7 @@
 				new_window.autoclose = TRUE
 				new_window.update_appearance()
 				return TRUE
-			to_chat(user, "<span class='notice'>You build an airlock.</span>")
+			to_chat(user, SPAN_NOTICE("You build an airlock."))
 			var/obj/machinery/door/airlock/new_airlock = new the_rcd.airlock_type(src)
 			new_airlock.electronics = new /obj/item/electronics/airlock(new_airlock)
 			if(the_rcd.airlock_electronics)
@@ -310,12 +310,12 @@
 		if(RCD_DECONSTRUCT)
 			if(!ScrapeAway(flags = CHANGETURF_INHERIT_AIR))
 				return FALSE
-			to_chat(user, "<span class='notice'>You deconstruct [src].</span>")
+			to_chat(user, SPAN_NOTICE("You deconstruct [src]."))
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/grille) in src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You construct the grille.</span>")
+			to_chat(user, SPAN_NOTICE("You construct the grille."))
 			var/obj/structure/grille/new_grille = new(src)
 			new_grille.set_anchored(TRUE)
 			return TRUE
@@ -347,37 +347,37 @@
 	if(istype(C, /obj/item/stack/rods) && can_reinforce)
 		if(considered_broken)
 			if(!iscyborg(user))
-				to_chat(user, "<span class='warning'>Repair the plating first! Use a welding tool to fix the damage.</span>")
+				to_chat(user, SPAN_WARNING("Repair the plating first! Use a welding tool to fix the damage."))
 			else
-				to_chat(user, "<span class='warning'>Repair the plating first! Use a welding tool or a plating repair tool to fix the damage.</span>") //we don't need to confuse humans by giving them a message about plating repair tools, since only janiborgs should have access to them outside of Christmas presents or admin intervention
+				to_chat(user, SPAN_WARNING("Repair the plating first! Use a welding tool or a plating repair tool to fix the damage.")) //we don't need to confuse humans by giving them a message about plating repair tools, since only janiborgs should have access to them outside of Christmas presents or admin intervention
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.get_amount() < 2)
-			to_chat(user, "<span class='warning'>You need two rods to make a reinforced floor!</span>")
+			to_chat(user, SPAN_WARNING("You need two rods to make a reinforced floor!"))
 			return
 		else
-			to_chat(user, "<span class='notice'>You begin reinforcing the floor...</span>")
+			to_chat(user, SPAN_NOTICE("You begin reinforcing the floor..."))
 			if(do_after(user, 30, target = src))
 				if (R.get_amount() >= 2 && !istype(src, /turf/open/floor/engine))
 					PlaceOnTop(/turf/open/floor/engine, flags = CHANGETURF_INHERIT_AIR)
 					playsound(src, 'sound/items/deconstruct.ogg', 80, TRUE)
 					R.use(2)
-					to_chat(user, "<span class='notice'>You reinforce the floor.</span>")
+					to_chat(user, SPAN_NOTICE("You reinforce the floor."))
 				return
 	else if(istype(C, /obj/item/stack/tile))
 		if(!considered_broken)
 			for(var/obj/O in src)
 				for(var/M in O.buckled_mobs)
-					to_chat(user, "<span class='warning'>Someone is buckled to \the [O]! Unbuckle [M] to move \him out of the way.</span>")
+					to_chat(user, SPAN_WARNING("Someone is buckled to \the [O]! Unbuckle [M] to move \him out of the way."))
 					return
 			var/obj/item/stack/tile/tile = C
 			tile.place_tile(src)
 			playsound(src, 'sound/weapons/genhit.ogg', 50, TRUE)
 		else
 			if(!iscyborg(user))
-				to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welding tool to fix the damage.</span>")
+				to_chat(user, SPAN_WARNING("This section is too damaged to support a tile! Use a welding tool to fix the damage."))
 			else
-				to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welding tool or a plating repair tool to fix the damage.</span>")
+				to_chat(user, SPAN_WARNING("This section is too damaged to support a tile! Use a welding tool or a plating repair tool to fix the damage."))
 
 /turf/open/floor/material
 	name = "floor"

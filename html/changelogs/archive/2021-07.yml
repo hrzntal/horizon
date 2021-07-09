@@ -261,3 +261,26 @@
   - balance: Medical trader will now purchase a limited amount of organs
   FedTheCat:
   - rscadd: Added the Leopard Tail to the tails menu for certain species.
+2021-07-09:
+  /tg/station:
+  - rscadd: Ported patches from /tg/station, from 2021-06-11 until 2021-06-15. See
+      https://github.com/hrzntal/horizon/pull/332 for more details.
+  Azarak:
+  - rscadd: Fireplaces can now be crafted with 15 sandstone bricks (be mindful of
+      direction)
+  - qol: Fireplaces now burn 10 times longer
+  - rscadd: Wrench can be used in setting/repairing bone surgery as a ghetto tool,
+      it'll be very ineffective though
+  - balance: Coins no longer have any force, and wont hurt anyone when hurled
+  - bugfix: Jumpsuits and suits now properly hide/show your privates, based off their
+      coverage.
+  - bugfix: When you want your privates exposed, not even underwear will block them
+  - rscadd: RnD design for Trade Pad, Trade Console, Transporter, Mining Laser, Shield
+      Generator & Excavation gear. See https://github.com/hrzntal/horizon/pull/395
+      for details.
+  - rscadd: Mining Laser can now be rotated
+  - bugfix: Fixed a couple minor bugs regarding preferences
+  - code_imp: Backend for bodytype restrictions have been introduced for hairstyles,
+      underwear, markings and mutant parts
+  Owai-Seek:
+  - code_imp: Organized the buy/sell goods list used with traders.

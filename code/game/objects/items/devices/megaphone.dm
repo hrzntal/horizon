@@ -9,10 +9,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	siemens_coefficient = 1
 	var/spamcheck = 0
-	var/list/voicespan = list(SPAN_COMMAND)
+	var/list/voicespan = list(SPEECH_SPAN_COMMAND)
 
 /obj/item/megaphone/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is uttering [user.p_their()] last words into \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is uttering [user.p_their()] last words into \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	spamcheck = 0//so they dont have to worry about recharging
 	user.say("AAAAAAAAAAAARGHHHHH", forced="megaphone suicide")//he must have died while coding this
 	return OXYLOSS
@@ -32,7 +32,7 @@
 	SIGNAL_HANDLER
 	if (user.get_active_held_item() == src)
 		if(spamcheck > world.time)
-			to_chat(user, "<span class='warning'>\The [src] needs to recharge!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] needs to recharge!"))
 		else
 			playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 			spamcheck = world.time + 50
@@ -41,9 +41,9 @@
 /obj/item/megaphone/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
+	to_chat(user, SPAN_WARNING("You overload \the [src]'s voice synthesizer."))
 	obj_flags |= EMAGGED
-	voicespan = list(SPAN_REALLYBIG, "userdanger")
+	voicespan = list(SPEECH_SPAN_REALLYBIG, "userdanger")
 
 /obj/item/megaphone/sec
 	name = "security megaphone"
@@ -65,4 +65,4 @@
 	desc = "Something that should not exist."
 	icon_state = "megaphone-clown"
 	inhand_icon_state = "megaphone-clown"
-	voicespan = list(SPAN_CLOWN)
+	voicespan = list(SPEECH_SPAN_CLOWN)

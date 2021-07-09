@@ -9,10 +9,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	low_threshold_passed = "<span class='info'>Your ears begin to resonate with an internal ring sometimes.</span>"
-	now_failing = "<span class='warning'>You are unable to hear at all!</span>"
-	now_fixed = "<span class='info'>Noise slowly begins filling your ears once more.</span>"
-	low_threshold_cleared = "<span class='info'>The ringing in your ears has died down.</span>"
+	low_threshold_passed = SPAN_INFO("Your ears begin to resonate with an internal ring sometimes.")
+	now_failing = SPAN_WARNING("You are unable to hear at all!")
+	now_fixed = SPAN_INFO("Noise slowly begins filling your ears once more.")
+	low_threshold_cleared = SPAN_INFO("The ringing in your ears has died down.")
 
 	// `deaf` measures "ticks" of deafness. While > 0, the person is unable
 	// to hear anything.
@@ -30,7 +30,7 @@
 /obj/item/organ/ears/on_life(delta_time, times_fired)
 	// only inform when things got worse, needs to happen before we heal
 	if((damage > low_threshold && prev_damage < low_threshold) || (damage > high_threshold && prev_damage < high_threshold))
-		to_chat(owner, "<span class='warning'>The ringing in your ears grows louder, blocking out any external noises for a moment.</span>")
+		to_chat(owner, SPAN_WARNING("The ringing in your ears grows louder, blocking out any external noises for a moment."))
 
 	. = ..()
 	// if we have non-damage related deafness like mutations, quirks or clothing (earmuffs), don't bother processing here. Ear healing from earmuffs or chems happen elsewhere
@@ -73,13 +73,13 @@
 /obj/item/organ/ears/penguin/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
 	. = ..()
 	if(istype(ear_owner))
-		to_chat(ear_owner, "<span class='notice'>You suddenly feel like you've lost your balance.</span>")
+		to_chat(ear_owner, SPAN_NOTICE("You suddenly feel like you've lost your balance."))
 		ear_owner.AddElement(/datum/element/waddling)
 
 /obj/item/organ/ears/penguin/Remove(mob/living/carbon/human/ear_owner,  special = 0)
 	. = ..()
 	if(istype(ear_owner))
-		to_chat(ear_owner, "<span class='notice'>Your sense of balance comes back to you.</span>")
+		to_chat(ear_owner, SPAN_NOTICE("Your sense of balance comes back to you."))
 		ear_owner.RemoveElement(/datum/element/waddling)
 
 /obj/item/organ/ears/bronze

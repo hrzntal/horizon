@@ -102,7 +102,7 @@
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		open = !open
 
-		user.visible_message("<span class='notice'>[user] [open ? "opens" : "closes"] the beacon's cover.</span>", "<span class='notice'>You [open ? "open" : "close"] the beacon's cover.</span>")
+		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the beacon's cover."), SPAN_NOTICE("You [open ? "open" : "close"] the beacon's cover."))
 
 		update_appearance()
 
@@ -110,12 +110,12 @@
 		if(open)
 			if (src.allowed(user))
 				src.locked = !src.locked
-				to_chat(user, "<span class='notice'>Controls are now [src.locked ? "locked" : "unlocked"].</span>")
+				to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked" : "unlocked"]."))
 			else
-				to_chat(user, "<span class='danger'>Access denied.</span>")
+				to_chat(user, SPAN_DANGER("Access denied."))
 			updateDialog()
 		else
-			to_chat(user, "<span class='warning'>You must open the cover first!</span>")
+			to_chat(user, SPAN_WARNING("You must open the cover first!"))
 	else
 		return ..()
 
@@ -133,7 +133,7 @@
 		return // prevent intraction when T-scanner revealed
 
 	if(!open && !ai) // can't alter controls if not open, unless you're an AI
-		to_chat(user, "<span class='warning'>The beacon's control cover is closed!</span>")
+		to_chat(user, SPAN_WARNING("The beacon's control cover is closed!"))
 		return
 
 

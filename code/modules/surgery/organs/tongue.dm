@@ -123,19 +123,19 @@
 /datum/action/item_action/organ_action/statue/Trigger()
 	. = ..()
 	if(!iscarbon(owner))
-		to_chat(owner, "<span class='warning'>Your body rejects the powers of the tongue!</span>")
+		to_chat(owner, SPAN_WARNING("Your body rejects the powers of the tongue!"))
 		return
 	var/mob/living/carbon/becoming_statue = owner
 	if(becoming_statue.health < 1)
-		to_chat(becoming_statue, "<span class='danger'>You are too weak to become a statue!</span>")
+		to_chat(becoming_statue, SPAN_DANGER("You are too weak to become a statue!"))
 		return
 	if(!COOLDOWN_FINISHED(src, ability_cooldown))
-		to_chat(becoming_statue, "<span class='warning'>You just used the ability, wait a little bit!</span>")
+		to_chat(becoming_statue, SPAN_WARNING("You just used the ability, wait a little bit!"))
 		return
 	var/is_statue = becoming_statue.loc == statue
-	to_chat(becoming_statue, "<span class='notice'>You begin to [is_statue ? "break free from the statue" : "make a glorious pose as you become a statue"]!</span>")
+	to_chat(becoming_statue, SPAN_NOTICE("You begin to [is_statue ? "break free from the statue" : "make a glorious pose as you become a statue"]!"))
 	if(!do_after(becoming_statue, (is_statue ? 5 : 30), target = get_turf(becoming_statue)))
-		to_chat(becoming_statue, "<span class='warning'>Your transformation is interrupted!</span>")
+		to_chat(becoming_statue, SPAN_WARNING("Your transformation is interrupted!"))
 		COOLDOWN_START(src, ability_cooldown, 3 SECONDS)
 		return
 	COOLDOWN_START(src, ability_cooldown, 10 SECONDS)
@@ -146,12 +146,12 @@
 		statue.set_custom_materials(list(/datum/material/silver=MINERAL_MATERIAL_AMOUNT*5))
 
 	if(is_statue)
-		statue.visible_message("<span class='danger'>[statue] becomes animated!</span>")
+		statue.visible_message(SPAN_DANGER("[statue] becomes animated!"))
 		becoming_statue.forceMove(get_turf(statue))
 		statue.moveToNullspace()
 		UnregisterSignal(becoming_statue, COMSIG_MOVABLE_MOVED)
 	else
-		becoming_statue.visible_message("<span class='notice'>[becoming_statue] hardens into a silver statue.</span>", "<span class='notice'>You have become a silver statue!</span>")
+		becoming_statue.visible_message(SPAN_NOTICE("[becoming_statue] hardens into a silver statue."), SPAN_NOTICE("You have become a silver statue!"))
 		statue.set_visuals(becoming_statue.appearance)
 		statue.forceMove(get_turf(becoming_statue))
 		becoming_statue.forceMove(statue)
@@ -166,7 +166,7 @@
 	UnregisterSignal(mover, COMSIG_MOVABLE_MOVED)
 
 /datum/action/item_action/organ_action/statue/proc/statue_destroyed(datum/source)
-	to_chat(owner, "<span class='userdanger'>Your existence as a living creature snaps as your statue form crumbles!</span>")
+	to_chat(owner, SPAN_USERDANGER("Your existence as a living creature snaps as your statue form crumbles!"))
 	if(iscarbon(owner))
 		//drop everything, just in case
 		var/mob/living/carbon/dying_carbon = owner
@@ -232,27 +232,27 @@
 		return
 
 	if(tongue.mothership == mothership)
-		to_chat(tongue_holder, "<span class='notice'>[src] is already attuned to the same channel as your own.</span>")
+		to_chat(tongue_holder, SPAN_NOTICE("[src] is already attuned to the same channel as your own."))
 
-	tongue_holder.visible_message("<span class='notice'>[tongue_holder] holds [src] in their hands, and concentrates for a moment.</span>", "<span class='notice'>You attempt to modify the attenuation of [src].</span>")
+	tongue_holder.visible_message(SPAN_NOTICE("[tongue_holder] holds [src] in their hands, and concentrates for a moment."), SPAN_NOTICE("You attempt to modify the attenuation of [src]."))
 	if(do_after(tongue_holder, delay=15, target=src))
-		to_chat(tongue_holder, "<span class='notice'>You attune [src] to your own channel.</span>")
+		to_chat(tongue_holder, SPAN_NOTICE("You attune [src] to your own channel."))
 		mothership = tongue.mothership
 
 /obj/item/organ/tongue/abductor/examine(mob/examining_mob)
 	. = ..()
 	if(HAS_TRAIT(examining_mob, TRAIT_ABDUCTOR_TRAINING) || (examining_mob.mind && HAS_TRAIT(examining_mob.mind, TRAIT_ABDUCTOR_TRAINING)) || isobserver(examining_mob))
-		. += "<span class='notice'>It can be attuned to a different channel by using it inhand.</span>"
+		. += SPAN_NOTICE("It can be attuned to a different channel by using it inhand.")
 		if(!mothership)
-			. += "<span class='notice'>It is not attuned to a specific mothership.</span>"
+			. += SPAN_NOTICE("It is not attuned to a specific mothership.")
 		else
-			. += "<span class='notice'>It is attuned to [mothership].</span>"
+			. += SPAN_NOTICE("It is attuned to [mothership].")
 
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/mob/living/carbon/human/user = source
-	var/rendered = "<span class='abductor'><b>[user.real_name]:</b> [message]</span>"
+	var/rendered = SPAN_ABDUCTOR("<b>[user.real_name]:</b> [message]")
 	user.log_talk(message, LOG_SAY, tag="abductor")
 	for(var/mob/living/carbon/human/living_mob in GLOB.alive_mob_list)
 		var/obj/item/organ/tongue/abductor/tongue = living_mob.getorganslot(ORGAN_SLOT_TONGUE)
@@ -350,9 +350,9 @@
 		chatter(speech_args[SPEECH_MESSAGE], phomeme_type, source)
 	switch(phomeme_type)
 		if("sans")
-			speech_args[SPEECH_SPANS] |= SPAN_SANS
+			speech_args[SPEECH_SPANS] |= SPEECH_SPAN_SANS
 		if("papyrus")
-			speech_args[SPEECH_SPANS] |= SPAN_PAPYRUS
+			speech_args[SPEECH_SPANS] |= SPEECH_SPAN_PAPYRUS
 
 /obj/item/organ/tongue/bone/plasmaman
 	name = "plasma bone \"tongue\""
@@ -376,7 +376,7 @@
 	return TRUE // THE MAGIC OF ELECTRONICS
 
 /obj/item/organ/tongue/robot/handle_speech(datum/source, list/speech_args)
-	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
+	speech_args[SPEECH_SPANS] |= SPEECH_SPAN_ROBOT
 
 /obj/item/organ/tongue/snail
 	name = "radula"
@@ -467,8 +467,8 @@
 	speech_args[SPEECH_MESSAGE] = new_message
 
 	if(exclamation_found && question_found)
-		signer.visible_message("<span class='notice'>[signer] lowers one of [signer.p_their()] eyebrows, raising the other.</span>")
+		signer.visible_message(SPAN_NOTICE("[signer] lowers one of [signer.p_their()] eyebrows, raising the other."))
 	else if(exclamation_found)
-		signer.visible_message("<span class='notice'>[signer] raises [signer.p_their()] eyebrows.</span>")
+		signer.visible_message(SPAN_NOTICE("[signer] raises [signer.p_their()] eyebrows."))
 	else if(question_found)
-		signer.visible_message("<span class='notice'>[signer] lowers [signer.p_their()] eyebrows.</span>")
+		signer.visible_message(SPAN_NOTICE("[signer] lowers [signer.p_their()] eyebrows."))

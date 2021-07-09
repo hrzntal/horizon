@@ -29,7 +29,7 @@
 			I = victim.get_inactive_held_item()
 
 		if(I && victim.dropItemToGround(I))
-			victim.visible_message("<span class='danger'>[victim] drops [I] in shock!</span>", "<span class='warning'><b>The force on your [limb.name] causes you to drop [I]!</b></span>", vision_distance=COMBAT_MESSAGE_RANGE)
+			victim.visible_message(SPAN_DANGER("[victim] drops [I] in shock!"), SPAN_WARNING("<b>The force on your [limb.name] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	update_inefficiencies()
 
@@ -58,7 +58,7 @@
 		if(!victim || !limb)
 			qdel(src)
 			return
-		to_chat(victim, "<span class='green'>Your [limb.name] has regenerated its muscle!</span>")
+		to_chat(victim, SPAN_GREEN("Your [limb.name] has regenerated its muscle!"))
 		remove_wound()
 
 /// If we're a human who's punching something with a broken arm, we might hurt ourselves doing so
@@ -73,11 +73,11 @@
 	if(prob(severity * 15))
 		// And you have a 70% or 50% chance to actually land the blow, respectively
 		if(prob(70 - 20 * severity))
-			to_chat(victim, "<span class='userdanger'>The damaged muscle in your [limb.name] shoots with pain as you strike [target]!</span>")
+			to_chat(victim, SPAN_USERDANGER("The damaged muscle in your [limb.name] shoots with pain as you strike [target]!"))
 			limb.receive_damage(brute=rand(1,5))
 		else
-			victim.visible_message("<span class='danger'>[victim] weakly strikes [target] with [victim.p_their()] swollen [limb.name], recoiling from pain!</span>", \
-			"<span class='userdanger'>You fail to strike [target] as the fracture in your [limb.name] lights up in unbearable pain!</span>", vision_distance=COMBAT_MESSAGE_RANGE)
+			victim.visible_message(SPAN_DANGER("[victim] weakly strikes [target] with [victim.p_their()] swollen [limb.name], recoiling from pain!"), \
+			SPAN_USERDANGER("You fail to strike [target] as the fracture in your [limb.name] lights up in unbearable pain!"), vision_distance=COMBAT_MESSAGE_RANGE)
 			INVOKE_ASYNC(victim, /mob.proc/emote, "scream")
 			victim.Stun(0.5 SECONDS)
 			limb.receive_damage(brute=rand(3,7))

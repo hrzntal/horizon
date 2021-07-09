@@ -104,7 +104,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(ic_blocked)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span></span>")
+		to_chat(src, SPAN_WARNING("That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span>"))
 		SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 		return
 	var/list/message_mods = list()
@@ -158,13 +158,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(!can_speak_vocal(message))
 		if(H.mind?.miming)
 			if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
-				to_chat(src, "<span class='warning'>You stop yourself from signing in favor of the artform of mimery!</span>")
+				to_chat(src, SPAN_WARNING("You stop yourself from signing in favor of the artform of mimery!"))
 				return
 			else
-				to_chat(src, "<span class='green'>Your vow of silence prevents you from speaking!</span>")
+				to_chat(src, SPAN_GREEN("Your vow of silence prevents you from speaking!"))
 				return
 		else
-			to_chat(src, "<span class='warning'>You find yourself unable to speak!</span>")
+			to_chat(src, SPAN_WARNING("You find yourself unable to speak!"))
 			return
 
 	var/message_range = 7
@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(message_mods[MODE_SING])
 		var/randomnote = pick("\u2669", "\u266A", "\u266B")
 		message = "[randomnote] [message] [randomnote]"
-		spans |= SPAN_SINGING
+		spans |= SPEECH_SPAN_SINGING
 
 	//This is before anything that sends say a radio message, and after all important message type modifications, so you can scumb in alien chat or something
 	if(saymode && !saymode.handle_message(src, message, language))
@@ -211,10 +211,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(message_mods[WHISPER_MODE])
 		// radios don't pick up whispers very well
 		radio_message = stars(radio_message)
-		spans |= SPAN_ITALICS
+		spans |= SPEECH_SPAN_ITALICS
 	var/radio_return = radio(radio_message, message_mods, spans, language)
 	if(radio_return & ITALICS)
-		spans |= SPAN_ITALICS
+		spans |= SPEECH_SPAN_ITALICS
 	if(radio_return & REDUCE_RANGE)
 		message_range = 1
 		if(!message_mods[WHISPER_MODE])
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		message_range = 1
 
 	if(pressure < ONE_ATMOSPHERE*0.4) //Thin air, let's italicise the message
-		spans |= SPAN_ITALICS
+		spans |= SPEECH_SPAN_ITALICS
 
 	send_speech(message, message_range, src, bubble_type, spans, language, message_mods)
 
@@ -270,10 +270,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(speaker != src)
 		if(!radio_freq) //These checks have to be seperate, else people talking on the radio will make "You can't hear yourself!" appear when hearing people over the radio while deaf.
-			deaf_message = "<span class='name'>[speaker]</span> [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
+			deaf_message = "[SPAN_NAME("[speaker]")] [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
 			deaf_type = 1
 	else
-		deaf_message = "<span class='notice'>You can't hear yourself!</span>"
+		deaf_message = SPAN_NOTICE("You can't hear yourself!")
 		deaf_type = 2 // Since you should be able to hear yourself without looking
 
 	// Create map text prior to modifying message for goonchat
@@ -360,7 +360,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 /mob/living/proc/can_speak_basic(message, ignore_spam = FALSE, forced = FALSE) //Check BEFORE handling of xeno and ling channels
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>You cannot speak in IC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
 			return FALSE
 		if(!(ignore_spam || forced) && client.handle_spam_prevention(message,MUTE_IC))
 			return FALSE

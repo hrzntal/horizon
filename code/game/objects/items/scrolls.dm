@@ -57,16 +57,16 @@
 			L += T
 
 	if(!L.len)
-		to_chat(user, "<span class='warning'>The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry.</span>")
+		to_chat(user, SPAN_WARNING("The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry."))
 		return
 
 	if(do_teleport(user, pick(L), forceMove = TRUE, channel = TELEPORT_CHANNEL_MAGIC, forced = TRUE))
 		smoke.start()
 		uses--
 		if(!uses)
-			to_chat(user, "<span class='warning'>[src] has run out of uses and crumbles to dust!</span>")
+			to_chat(user, SPAN_WARNING("[src] has run out of uses and crumbles to dust!"))
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>[src] has [uses] use\s remaining.</span>")
+			to_chat(user, SPAN_NOTICE("[src] has [uses] use\s remaining."))
 	else
-		to_chat(user, "<span class='warning'>The spell matrix was disrupted by something near the destination.</span>")
+		to_chat(user, SPAN_WARNING("The spell matrix was disrupted by something near the destination."))

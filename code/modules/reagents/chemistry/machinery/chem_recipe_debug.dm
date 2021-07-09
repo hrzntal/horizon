@@ -131,25 +131,25 @@
 		for(var/reagent_type in reaction.results)
 			var/datum/reagent/reagent =  reagents.get_reagent(reagent_type)
 			if(!reagent)
-				say("<span class='warning'>Unable to find product [reagent_type] in holder after reaction! reagents found are:</span>")
+				say(SPAN_WARNING("Unable to find product [reagent_type] in holder after reaction! reagents found are:"))
 				for(var/other_reagent in reagents.reagent_list)
 					say("[other_reagent]")
 				var/obj/item/reagent_containers/glass/beaker/bluespace/beaker = new /obj/item/reagent_containers/glass/beaker/bluespace(loc)
 				reagents.trans_to(beaker)
 				beaker.name = "[cached_reactions[index]] failed"
 				if(!failed)
-					problem_string += "[cached_reactions[index]] <span class='warning'>Unable to find product [reagent_type] in holder after reaction! Trying alternative setup. index:[index]</span>\n"
+					problem_string += "[cached_reactions[index]] [SPAN_WARNING("Unable to find product [reagent_type] in holder after reaction! Trying alternative setup. index:[index]")]\n"
 					failed++
 					return
 			say("Reaction has a product [reagent_type] [reagent.volume]u purity of [reagent.purity]")
 			if(reagent.purity < 0.9)
-				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [reagent.volume]u <span class='boldwarning'>purity of [reagent.purity]</span> index:[index]\n"
+				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [reagent.volume]u [SPAN_BOLDWARNING("purity of [reagent.purity]")] index:[index]\n"
 				majorImpurity++
 			else if (reagent.purity < 1)
-				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [reagent.volume]u <span class='warning'>purity of [reagent.purity]</span> index:[index]\n"
+				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [reagent.volume]u [SPAN_WARNING("purity of [reagent.purity]")] index:[index]\n"
 				minorImpurity++
 			if(reagent.volume < reaction.results[reagent_type])
-				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] <span class='warning'>[reagent.volume]u</span> purity of [reagent.purity] index:[index]\n"
+				impure_string += "Reaction [cached_reactions[index]] has a product [reagent_type] [SPAN_WARNING("[reagent.volume]u")] purity of [reagent.purity] index:[index]\n"
 			cached_purity = reagent.purity
 		if(beaker_spawn && reagents.total_volume)
 			var/obj/item/reagent_containers/glass/beaker/bluespace/beaker = new /obj/item/reagent_containers/glass/beaker/bluespace(loc)
@@ -191,7 +191,7 @@
 	if(min_temp)
 		say("Overriding temperature to required temp.")
 		reagents.chem_temp = reaction.is_cold_recipe ? reaction.required_temp - 1 : reaction.required_temp + 1
-	say("Reacting <span class='nicegreen'>[cached_reactions[index]]</span> starting pH: [reagents.ph] index [index] of [cached_reactions.len]")
+	say("Reacting [SPAN_NICEGREEN("[cached_reactions[index]]")] starting pH: [reagents.ph] index [index] of [cached_reactions.len]")
 
 /obj/machinery/chem_recipe_debug/ui_data(mob/user)
 	var/data = list()

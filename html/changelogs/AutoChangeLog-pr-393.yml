@@ -1,5 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - bugfix: "Jumpsuits and suits now properly hide/show your privates, based off their coverage."
-  - bugfix: "When you want your privates exposed, not even underwear will block them"

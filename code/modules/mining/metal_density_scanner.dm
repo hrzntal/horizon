@@ -88,17 +88,17 @@
 /obj/item/metal_density_scanner/examine(mob/user)
 	. = ..()
 	if(has_readout)
-		. += "<span class='notice'>Alt-click to use the readout function.</span>"
+		. += SPAN_NOTICE("Alt-click to use the readout function.")
 	if(turned_on)
 		switch(last_scan)
 			if(METAL_DENSITY_NONE)
-				. += "<span class='notice'>Not recieving any feedback.</span>"
+				. += SPAN_NOTICE("Not recieving any feedback.")
 			if(METAL_DENSITY_LOW)
-				. += "<span class='notice'>Metal density levels are low.</span>"
+				. += SPAN_NOTICE("Metal density levels are low.")
 			if(METAL_DENSITY_MEDIUM)
-				. += "<span class='notice'>Metal density levels are medium.</span>"
+				. += SPAN_NOTICE("Metal density levels are medium.")
 			if(METAL_DENSITY_HIGH)
-				. += "<span class='boldnotice'>Metal density levels are high.</span>"
+				. += SPAN_BOLDNOTICE("Metal density levels are high.")
 
 /obj/item/metal_density_scanner/attack_self(mob/user)
 	if(is_reading_out)
@@ -109,7 +109,7 @@
 		turn_on()
 	playsound(user, turned_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 20, TRUE)
 	update_icon()
-	to_chat(user, "<span class='notice'>[icon2html(src, user)] You switch [turned_on ? "on" : "off"] [src].</span>")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch [turned_on ? "on" : "off"] [src]."))
 
 /obj/item/metal_density_scanner/AltClick(mob/living/user)
 	. = ..()
@@ -118,13 +118,13 @@
 	if(!has_readout || is_reading_out)
 		return
 	if(!turned_on)
-		to_chat(user, "<span class='warning'>[src] must be on turned on to make a readout!</span>")
+		to_chat(user, SPAN_WARNING("[src] must be on turned on to make a readout!"))
 		return TRUE
 	if(next_readout_scan > world.time)
-		to_chat(user, "<span class='warning'>[src] readout function is still recharging!</span>")
+		to_chat(user, SPAN_WARNING("[src] readout function is still recharging!"))
 		return TRUE
 	playsound(user, 'sound/machines/terminal_processing.ogg', 50, TRUE)
-	to_chat(user, "<span class='notice'>You turn on [src]'s readout function.</span>")
+	to_chat(user, SPAN_NOTICE("You turn on [src]'s readout function."))
 	is_reading_out = TRUE
 	update_icon()
 	return TRUE

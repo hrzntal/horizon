@@ -7,7 +7,7 @@
 	game_id = "medieval"
 	game_area = /area/shuttle/escape/simulation
 	ammo_type = null //no guns, no need
-	victory_rejoin_text = "<span class='userdanger'>Teams have been cleared. The next game is starting automatically. Rejoin a team if you wish!</span>"
+	victory_rejoin_text = SPAN_USERDANGER("Teams have been cleared. The next game is starting automatically. Rejoin a team if you wish!")
 
 /obj/machinery/capture_the_flag/medisim/Initialize(mapload)
 	. = ..()

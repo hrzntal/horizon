@@ -7,8 +7,8 @@
 	to several other ones, possibly ready to trigger more genetic changes in the future."
 	quality = POSITIVE //so it gets carried over on revives
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel burdened!</span>"
-	text_lose_indication = "<span class='warning'>You no longer feel the need to burden yourself!</span>"
+	text_gain_indication = SPAN_NOTICE("You feel burdened!")
+	text_lose_indication = SPAN_WARNING("You no longer feel the need to burden yourself!")
 	/// goes from 0 to 6 (but can be beyond 6, just does nothing) and gives rewards. increased by disabling yourself with debuffs
 	var/burden_level = 0
 
@@ -61,42 +61,42 @@
 	//send a message and handle rewards
 	switch(burden_level)
 		if(0)
-			to_chat(owner, "<span class='warning'>You feel no weight on your shoulders. You are not feeling [GLOB.deity]'s suffering.</span>")
+			to_chat(owner, SPAN_WARNING("You feel no weight on your shoulders. You are not feeling [GLOB.deity]'s suffering."))
 		if(1)
 			if(increase)
-				to_chat(owner, "<span class='notice'>You begin to feel the scars on [GLOB.deity]. You must continue to burden yourself.</span>")
+				to_chat(owner, SPAN_NOTICE("You begin to feel the scars on [GLOB.deity]. You must continue to burden yourself."))
 			else
-				to_chat(owner, "<span class='warning'>The weight on your shoulders feels lighter. You are barely feeling [GLOB.deity]'s suffering.</span>")
+				to_chat(owner, SPAN_WARNING("The weight on your shoulders feels lighter. You are barely feeling [GLOB.deity]'s suffering."))
 		if(2)
 			if(increase)
-				to_chat(owner, "<span class='notice'>You have done well to understand [GLOB.deity]. You are almost at a breakthrough.</span>")
+				to_chat(owner, SPAN_NOTICE("You have done well to understand [GLOB.deity]. You are almost at a breakthrough."))
 			else
-				to_chat(owner, "<span class='warning'>The weight on your shoulders feels lighter. You have lost some universal truths.</span>")
+				to_chat(owner, SPAN_WARNING("The weight on your shoulders feels lighter. You have lost some universal truths."))
 				dna.remove_mutation(TELEPATHY)
 				dna.remove_mutation(MUT_MUTE)
 				owner.remove_filter("burden_outline")
 		if(3)
 			if(increase)
-				to_chat(owner, "<span class='notice'>Your suffering is only a fraction of [GLOB.deity]'s, and yet the universal truths are coming to you.</span>")
+				to_chat(owner, SPAN_NOTICE("Your suffering is only a fraction of [GLOB.deity]'s, and yet the universal truths are coming to you."))
 				dna.add_mutation(TELEPATHY)
 				dna.add_mutation(MUT_MUTE)
 				owner.add_filter("burden_outline", 9, list("type" = "outline", "color" = "#6c6eff"))
 			else
-				to_chat(owner, "<span class='warning'>The weight on your shoulders feels lighter. You feel like you're about to forget.</span>")
+				to_chat(owner, SPAN_WARNING("The weight on your shoulders feels lighter. You feel like you're about to forget."))
 		if(4)
 			if(increase)
-				to_chat(owner, "<span class='notice'>The weight on your shoulders is immense. [GLOB.deity] is shattered across the cosmos.</span>")
+				to_chat(owner, SPAN_NOTICE("The weight on your shoulders is immense. [GLOB.deity] is shattered across the cosmos."))
 			else
-				to_chat(owner, "<span class='warning'>The weight on your shoulders feels lighter. You're growing further from your goal.</span>")
+				to_chat(owner, SPAN_WARNING("The weight on your shoulders feels lighter. You're growing further from your goal."))
 		if(5)
 			if(increase)
-				to_chat(owner, "<span class='notice'>You're on the cusp of another breakthrough. [GLOB.deity] lost everything.</span>")
+				to_chat(owner, SPAN_NOTICE("You're on the cusp of another breakthrough. [GLOB.deity] lost everything."))
 			else
-				to_chat(owner, "<span class='warning'>The weight on your shoulders feels lighter. You have lost some universal truths.</span>")
+				to_chat(owner, SPAN_WARNING("The weight on your shoulders feels lighter. You have lost some universal truths."))
 				dna.remove_mutation(TK)
 				dna.remove_mutation(MINDREAD)
 		if(6)
-			to_chat(owner, "<span class='notice'>You have finally broken yourself enough to understand [GLOB.deity]. It's all so clear to you.</span>")
+			to_chat(owner, SPAN_NOTICE("You have finally broken yourself enough to understand [GLOB.deity]. It's all so clear to you."))
 			dna.add_mutation(TK)
 			dna.add_mutation(MINDREAD)
 

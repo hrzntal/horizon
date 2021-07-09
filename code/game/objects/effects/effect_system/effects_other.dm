@@ -102,7 +102,7 @@
 
 /datum/effect_system/reagents_explosion/start()
 	if(explosion_message)
-		location.visible_message("<span class='danger'>The solution violently explodes!</span>", \
-								"<span class='hear'>You hear an explosion!</span>")
+		location.visible_message(SPAN_DANGER("The solution violently explodes!"), \
+								SPAN_HEAR("You hear an explosion!"))
 
 	dyn_explosion(location, amount, flash_range = flashing_factor)

@@ -55,25 +55,25 @@
 /datum/action/innate/elite_attack/legionnaire_charge
 	name = "Legionnaire Charge"
 	button_icon_state = "legionnaire_charge"
-	chosen_message = "<span class='boldwarning'>You will attempt to grab your opponent and throw them.</span>"
+	chosen_message = SPAN_BOLDWARNING("You will attempt to grab your opponent and throw them.")
 	chosen_attack_num = LEGIONNAIRE_CHARGE
 
 /datum/action/innate/elite_attack/head_detach
 	name = "Release Head"
 	button_icon_state = "head_detach"
-	chosen_message = "<span class='boldwarning'>You will now detach your head or kill it if it is already released.</span>"
+	chosen_message = SPAN_BOLDWARNING("You will now detach your head or kill it if it is already released.")
 	chosen_attack_num = HEAD_DETACH
 
 /datum/action/innate/elite_attack/bonfire_teleport
 	name = "Bonfire Teleport"
 	button_icon_state = "bonfire_teleport"
-	chosen_message = "<span class='boldwarning'>You will leave a bonfire.  Second use will let you swap positions with it indefintiely.  Using this move on the same tile as your active bonfire removes it.</span>"
+	chosen_message = SPAN_BOLDWARNING("You will leave a bonfire.  Second use will let you swap positions with it indefintiely.  Using this move on the same tile as your active bonfire removes it.")
 	chosen_attack_num = BONFIRE_TELEPORT
 
 /datum/action/innate/elite_attack/spew_smoke
 	name = "Spew Smoke"
 	button_icon_state = "spew_smoke"
-	chosen_message = "<span class='boldwarning'>Your head will spew smoke in an area, wherever it may be.</span>"
+	chosen_message = SPAN_BOLDWARNING("Your head will spew smoke in an area, wherever it may be.")
 	chosen_attack_num = SPEW_SMOKE
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/OpenFire()
@@ -122,7 +122,7 @@
 		new /obj/effect/temp_visual/dragon_swoop/legionnaire(T)
 		T = get_step(T, dir_to_target)
 	playsound(src,'sound/magic/demon_attack1.ogg', 200, 1)
-	visible_message("<span class='boldwarning'>[src] prepares to charge!</span>")
+	visible_message(SPAN_BOLDWARNING("[src] prepares to charge!"))
 	addtimer(CALLBACK(src, .proc/legionnaire_charge_2, dir_to_target, 0), 4)
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/legionnaire_charge_2(move_dir, times_ran)
@@ -151,8 +151,8 @@
 		if(faction_check_mob(L))
 			return
 		hit_things += L
-		visible_message("<span class='boldwarning'>[src] tramples and kicks [L]!</span>")
-		to_chat(L, "<span class='userdanger'>[src] tramples you and kicks you away!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] tramples and kicks [L]!"))
+		to_chat(L, SPAN_USERDANGER("[src] tramples you and kicks you away!"))
 		L.safe_throw_at(throwtarget, 10, 1, src)
 		L.Paralyze(20)
 		L.adjustBruteLoss(melee_damage_upper)
@@ -168,7 +168,7 @@
 		icon_state = "legionnaire_headless"
 		icon_living = "legionnaire_headless"
 		icon_aggro = "legionnaire_headless"
-		visible_message("<span class='boldwarning'>[src]'s head flies off!</span>")
+		visible_message(SPAN_BOLDWARNING("[src]'s head flies off!"))
 		var/mob/living/simple_animal/hostile/asteroid/elite/legionnairehead/newhead = new /mob/living/simple_animal/hostile/asteroid/elite/legionnairehead(loc)
 		newhead.GiveTarget(target)
 		newhead.faction = faction.Copy()
@@ -192,7 +192,7 @@
 	icon_state = "legionnaire"
 	icon_living = "legionnaire"
 	icon_aggro = "legionnaire"
-	visible_message("<span class='boldwarning'>The top of [src]'s spine leaks a black liquid, forming into a skull!</span>")
+	visible_message(SPAN_BOLDWARNING("The top of [src]'s spine leaks a black liquid, forming into a skull!"))
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/bonfire_teleport()
 	ranged_cooldown = world.time + 5
@@ -201,7 +201,7 @@
 		mypile = newpile
 		mypile.myowner = src
 		playsound(get_turf(src),'sound/items/fultext_deploy.ogg', 200, 1)
-		visible_message("<span class='boldwarning'>[src] summons a bonfire on [get_turf(src)]!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] summons a bonfire on [get_turf(src)]!"))
 		return
 	else
 		var/turf/legionturf = get_turf(src)
@@ -212,9 +212,9 @@
 			return
 		playsound(pileturf,'sound/items/fultext_deploy.ogg', 200, 1)
 		playsound(legionturf,'sound/items/fultext_deploy.ogg', 200, 1)
-		visible_message("<span class='boldwarning'>[src] melts down into a burning pile of bones!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] melts down into a burning pile of bones!"))
 		forceMove(pileturf)
-		visible_message("<span class='boldwarning'>[src] forms from the bonfire!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] forms from the bonfire!"))
 		mypile.forceMove(legionturf)
 
 /mob/living/simple_animal/hostile/asteroid/elite/legionnaire/proc/spew_smoke()
@@ -225,11 +225,11 @@
 	else
 		smoke_location = get_turf(src)
 	if(myhead != null)
-		myhead.visible_message("<span class='boldwarning'>[myhead] spews smoke from its maw!</span>")
+		myhead.visible_message(SPAN_BOLDWARNING("[myhead] spews smoke from its maw!"))
 	else if(!has_head)
-		visible_message("<span class='boldwarning'>[src] spews smoke from the tip of their spine!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] spews smoke from the tip of their spine!"))
 	else
-		visible_message("<span class='boldwarning'>[src] spews smoke from its maw!</span>")
+		visible_message(SPAN_BOLDWARNING("[src] spews smoke from its maw!"))
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(2, smoke_location)
 	smoke.start()
@@ -338,10 +338,10 @@
 		return
 	var/mob/living/LivingUser = user
 	if(next_use_time > world.time)
-		LivingUser.visible_message("<span class='warning'>[LivingUser] shakes the [src], but nothing happens...</span>")
+		LivingUser.visible_message(SPAN_WARNING("[LivingUser] shakes the [src], but nothing happens..."))
 		to_chat(LivingUser, "<b>You need to wait longer to use this again.</b>")
 		return
-	LivingUser.visible_message("<span class='boldwarning'>[LivingUser] shakes the [src] and summons a legion skull!</span>")
+	LivingUser.visible_message(SPAN_BOLDWARNING("[LivingUser] shakes the [src] and summons a legion skull!"))
 	var/mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/LegionSkull = new /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion(LivingUser.loc)
 	LegionSkull.friends += LivingUser
 	LegionSkull.faction = LivingUser.faction.Copy()

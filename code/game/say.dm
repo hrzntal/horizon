@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		input = "..."
 
 	if(copytext_char(input, -2) == "!!")
-		spans |= SPAN_YELL
+		spans |= SPEECH_SPAN_YELL
 
 	var/spanned = attach_spans(input, spans)
 	return "[say_mod(input, message_mods)], \"[spanned]\""

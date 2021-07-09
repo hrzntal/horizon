@@ -48,13 +48,13 @@
 /obj/item/documents/photocopy/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/toy/crayon/red) || istype(O, /obj/item/toy/crayon/blue))
 		if (forgedseal)
-			to_chat(user, "<span class='warning'>You have already forged a seal on [src]!</span>")
+			to_chat(user, SPAN_WARNING("You have already forged a seal on [src]!"))
 		else
 			var/obj/item/toy/crayon/C = O
 			name = "[C.crayon_color] secret documents"
 			icon_state = "docs_[C.crayon_color]"
 			forgedseal = C.crayon_color
-			to_chat(user, "<span class='notice'>You forge the official seal with a [C.crayon_color] crayon. No one will notice... right?</span>")
+			to_chat(user, SPAN_NOTICE("You forge the official seal with a [C.crayon_color] crayon. No one will notice... right?"))
 			update_appearance()
 
 /obj/item/inspector
@@ -107,11 +107,11 @@
 /obj/item/paper/report/examine(mob/user)
 	. = ..()
 	if(scanned_area?.name)
-		. += "<span class='notice'>\The [src] contains data on [scanned_area.name].</span>"
+		. += SPAN_NOTICE("\The [src] contains data on [scanned_area.name].")
 	else if(scanned_area)
-		. += "<span class='notice'>\The [src] contains data on a vague area on station, you should throw it away.</span>"
+		. += SPAN_NOTICE("\The [src] contains data on a vague area on station, you should throw it away.")
 	else if(info)
 		icon_state = "slipfull"
-		. += "<span class='notice'>Wait a minute, this isn't an encrypted inspection report! You should throw it away.</span>"
+		. += SPAN_NOTICE("Wait a minute, this isn't an encrypted inspection report! You should throw it away.")
 	else
-		. += "<span class='notice'>Wait a minute, this thing's blank! You should throw it away.</span>"
+		. += SPAN_NOTICE("Wait a minute, this thing's blank! You should throw it away.")

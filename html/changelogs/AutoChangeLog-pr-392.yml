@@ -1,5 +1,0 @@
-author: "Azarak"
-delete-after: True
-changes: 
-  - rscadd: "Fireplaces can now be crafted with 15 sandstone bricks (be mindful of direction)"
-  - qol: "Fireplaces now burn 10 times longer"

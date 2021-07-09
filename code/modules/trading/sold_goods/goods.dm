@@ -1,58 +1,38 @@
-/datum/sold_goods/toy
-	cost = 100
-	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
-						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES)
+// Alphabetized by trader. Any trader can use these datums, but this keeps things a bit more organized.
 
-/datum/sold_goods/toy/two
-/datum/sold_goods/toy/three
-/datum/sold_goods/toy/four
+/////////Artifact Shop Employee/////////
 
-/datum/sold_goods/toy_plushie
-	cost = 100
-	trading_types = list(/obj/item/toy/plush = TRADER_SUBTYPES)
+/datum/sold_goods/excavation_pick_set
+	path = /obj/item/storage/excavation_pick_set/full
 
-/datum/sold_goods/toy_figure
-	cost = 150
-	trading_types = list(/obj/item/toy/figure = TRADER_SUBTYPES)
+/datum/sold_goods/excavation_measuring_tape
+	path = /obj/item/excavation_measuring_tape
 
-/datum/sold_goods/toy_figure/two
+/datum/sold_goods/excavation_depth_scanner
+	path = /obj/item/excavation_depth_scanner
 
-/datum/sold_goods/toy_guns
-	cost = 200
-	trading_types = list(/obj/item/gun/ballistic/automatic/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/automatic/pistol/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/shotgun/toy = TRADER_THIS_TYPE,
-							/obj/item/gun/ballistic/automatic/l6_saw/toy = TRADER_THIS_TYPE)
+/datum/sold_goods/excavation_locator
+	path = /obj/item/excavation_locator
 
-/datum/sold_goods/electronics
-	trading_types = list(/obj/item/electronics = TRADER_SUBTYPES)
+/datum/sold_goods/anomalous_crystal
+	cost = 1000
+	path = /obj/item/anomalous_sliver/crystal
 
-/datum/sold_goods/electronics/two
+/////////Atmospheric Shop Employee/////////
 
-/datum/sold_goods/cable_coil
-	path = /obj/item/stack/cable_coil
+/datum/sold_goods/belt/nitrogen
+	cost = 160
+	path = /obj/item/tank/internals/nitrogen/belt
 
-/datum/sold_goods/computer_battery
-	path = /obj/item/computer_hardware/battery
+/datum/sold_goods/belt/plasma
+	cost = 180
+	path = /obj/item/tank/internals/plasmaman/belt
 
-/datum/sold_goods/computer_hardware
-	trading_types = list(/obj/item/computer_hardware = TRADER_SUBTYPES)
+/datum/sold_goods/emergency_oxygen
+	cost = 90
+	path = /obj/item/tank/internals/emergency_oxygen
 
-/datum/sold_goods/computer_hardware/two
-/datum/sold_goods/computer_hardware/three
-
-/datum/sold_goods/laptop
-	cost = 500
-	path = /obj/item/modular_computer/laptop/preset/civilian
-
-/datum/sold_goods/cell
-	path = /obj/item/stock_parts/cell
-
-/datum/sold_goods/decent_cell
-	cost = 200
-	trading_types = list(/obj/item/stock_parts/cell/upgraded = TRADER_THIS_TYPE,
-							/obj/item/stock_parts/cell/upgraded/plus = TRADER_THIS_TYPE,
-							/obj/item/stock_parts/cell/high = TRADER_THIS_TYPE)
+/////////Clothing Store Employee/////////
 
 /datum/sold_goods/clothing_under
 	trading_types = list(/obj/item/clothing/under = TRADER_SUBTYPES,
@@ -99,6 +79,12 @@
 
 /datum/sold_goods/clothing_gloves/two
 /datum/sold_goods/clothing_gloves/three
+
+/datum/sold_goods/budget_insuls
+	cost = 355
+	path = /obj/item/clothing/gloves/color/fyellow
+
+/////////Drugstore Employee/////////
 
 /datum/sold_goods/flashlight
 	cost = 50
@@ -186,33 +172,43 @@
 
 /datum/sold_goods/random_medical_stack/two
 
-/datum/sold_goods/posibrain
-	cost = 400
-	stock_high = 1
-	stock_low = 1
-	path = /obj/item/mmi/posibrain
+/datum/sold_goods/grey_bull
+	cost = 50
+	path = /obj/item/reagent_containers/food/drinks/soda_cans/grey_bull
 
-/datum/sold_goods/random_bot
-	stock_high = 1
-	stock_low = 1
-	cost = 400
-	trading_types = list(/mob/living/simple_animal/bot = TRADER_SUBTYPES,
-						/mob/living/simple_animal/bot/secbot = TRADER_BLACKLIST_SUBTYPES,
-						/mob/living/simple_animal/bot/honkbot = TRADER_BLACKLIST_TYPES)
+/////////Electronic Shop Employee/////////
 
-/datum/sold_goods/random_bot/two
+/datum/sold_goods/electronics
+	trading_types = list(/obj/item/electronics = TRADER_SUBTYPES)
 
-/datum/sold_goods/incomplete_bot
-	cost = 200
-	trading_types = list(/obj/item/bot_assembly = TRADER_SUBTYPES)
+/datum/sold_goods/electronics/two
 
-/datum/sold_goods/space_carp
-	cost = 400
-	path = /mob/living/simple_animal/hostile/carp
+/datum/sold_goods/cable_coil
+	path = /obj/item/stack/cable_coil
 
-/datum/sold_goods/goliath
+/datum/sold_goods/computer_battery
+	path = /obj/item/computer_hardware/battery
+
+/datum/sold_goods/computer_hardware
+	trading_types = list(/obj/item/computer_hardware = TRADER_SUBTYPES)
+
+/datum/sold_goods/computer_hardware/two
+/datum/sold_goods/computer_hardware/three
+
+/datum/sold_goods/laptop
 	cost = 500
-	path = /mob/living/simple_animal/hostile/asteroid/goliath
+	path = /obj/item/modular_computer/laptop/preset/civilian
+
+/datum/sold_goods/cell
+	path = /obj/item/stock_parts/cell
+
+/datum/sold_goods/decent_cell
+	cost = 200
+	trading_types = list(/obj/item/stock_parts/cell/upgraded = TRADER_THIS_TYPE,
+							/obj/item/stock_parts/cell/upgraded/plus = TRADER_THIS_TYPE,
+							/obj/item/stock_parts/cell/high = TRADER_THIS_TYPE)
+
+/////////Medical Supplier/////////
 
 /datum/sold_goods/firstaid
 	cost = 300
@@ -298,6 +294,76 @@
 	cost = 400
 	path = /obj/item/reagent_containers/blood/universal
 
+/////////Pet Shop Employee/////////
+
+/datum/sold_goods/corgi
+	stock_high = 1
+	stock_low = 1
+	cost = 300
+	path = /mob/living/simple_animal/pet/dog/corgi
+
+/datum/sold_goods/fox
+	stock_high = 1
+	stock_low = 1
+	cost = 400
+	path = /mob/living/simple_animal/pet/fox
+
+/datum/sold_goods/cat
+	stock_high = 1
+	stock_low = 1
+	cost = 200
+	path = /mob/living/simple_animal/pet/cat
+
+/datum/sold_goods/penguin
+	stock_high = 1
+	stock_low = 1
+	cost = 400
+	path = /mob/living/simple_animal/pet/penguin/emperor
+
+/datum/sold_goods/sloth
+	stock_high = 1
+	stock_low = 1
+	cost = 300
+	path = /mob/living/simple_animal/sloth
+
+/datum/sold_goods/lizard
+	stock_high = 1
+	stock_low = 1
+	cost = 200
+	path = /mob/living/simple_animal/hostile/lizard
+
+/////////Robot Seller/////////
+
+/datum/sold_goods/posibrain
+	cost = 400
+	stock_high = 1
+	stock_low = 1
+	path = /obj/item/mmi/posibrain
+
+/datum/sold_goods/random_bot
+	stock_high = 1
+	stock_low = 1
+	cost = 400
+	trading_types = list(/mob/living/simple_animal/bot = TRADER_SUBTYPES,
+						/mob/living/simple_animal/bot/secbot = TRADER_BLACKLIST_SUBTYPES,
+						/mob/living/simple_animal/bot/honkbot = TRADER_BLACKLIST_TYPES)
+
+/datum/sold_goods/random_bot/two
+
+/datum/sold_goods/incomplete_bot
+	cost = 200
+	trading_types = list(/obj/item/bot_assembly = TRADER_SUBTYPES)
+
+/////////Rock'n'Drill Mining Inc/////////
+
+/datum/sold_goods/mining_kit
+	cost = 850
+	path = /obj/item/storage/backpack/duffelbag/mining_conscript/basic
+
+/datum/sold_goods/liquid_pump
+	cost = 700
+	path = /obj/machinery/plumbing/liquid_pump
+
 /datum/sold_goods/stack/iron_ten
 	stock_high = 3
 	stock_low = 10
@@ -337,82 +403,40 @@
 	cost = 1000
 	path = /obj/item/stack/sheet/mineral/diamond
 
-/datum/sold_goods/corgi
-	stock_high = 1
-	stock_low = 1
-	cost = 300
-	path = /mob/living/simple_animal/pet/dog/corgi
+/////////Toy Shop Employee/////////
 
-/datum/sold_goods/fox
-	stock_high = 1
-	stock_low = 1
-	cost = 400
-	path = /mob/living/simple_animal/pet/fox
+/datum/sold_goods/toy
+	cost = 100
+	trading_types = list(/obj/item/toy = TRADER_SUBTYPES,
+						/obj/item/toy/figure = TRADER_BLACKLIST_TYPES)
 
-/datum/sold_goods/cat
-	stock_high = 1
-	stock_low = 1
+/datum/sold_goods/toy/two
+/datum/sold_goods/toy/three
+/datum/sold_goods/toy/four
+
+/datum/sold_goods/toy_plushie
+	cost = 100
+	trading_types = list(/obj/item/toy/plush = TRADER_SUBTYPES)
+
+/datum/sold_goods/toy_figure
+	cost = 150
+	trading_types = list(/obj/item/toy/figure = TRADER_SUBTYPES)
+
+/datum/sold_goods/toy_figure/two
+
+/datum/sold_goods/toy_guns
 	cost = 200
-	path = /mob/living/simple_animal/pet/cat
+	trading_types = list(/obj/item/gun/ballistic/automatic/toy = TRADER_THIS_TYPE,
+							/obj/item/gun/ballistic/automatic/pistol/toy = TRADER_THIS_TYPE,
+							/obj/item/gun/ballistic/shotgun/toy = TRADER_THIS_TYPE,
+							/obj/item/gun/ballistic/automatic/l6_saw/toy = TRADER_THIS_TYPE)
 
-/datum/sold_goods/penguin
-	stock_high = 1
-	stock_low = 1
+/////////Xenolife Collector/////////
+
+/datum/sold_goods/space_carp
 	cost = 400
-	path = /mob/living/simple_animal/pet/penguin/emperor
+	path = /mob/living/simple_animal/hostile/carp
 
-/datum/sold_goods/sloth
-	stock_high = 1
-	stock_low = 1
-	cost = 300
-	path = /mob/living/simple_animal/sloth
-
-/datum/sold_goods/lizard
-	stock_high = 1
-	stock_low = 1
-	cost = 200
-	path = /mob/living/simple_animal/hostile/lizard
-
-/datum/sold_goods/excavation_pick_set
-	path = /obj/item/storage/excavation_pick_set/full
-
-/datum/sold_goods/excavation_measuring_tape
-	path = /obj/item/excavation_measuring_tape
-
-/datum/sold_goods/excavation_depth_scanner
-	path = /obj/item/excavation_depth_scanner
-
-/datum/sold_goods/excavation_locator
-	path = /obj/item/excavation_locator
-
-/datum/sold_goods/anomalous_crystal
-	cost = 1000
-	path = /obj/item/anomalous_sliver/crystal
-
-/datum/sold_goods/mining_kit
-	cost = 850
-	path = /obj/item/storage/backpack/duffelbag/mining_conscript/basic
-
-/datum/sold_goods/liquid_pump
-	cost = 700
-	path = /obj/machinery/plumbing/liquid_pump
-
-/datum/sold_goods/grey_bull
-	cost = 50
-	path = /obj/item/reagent_containers/food/drinks/soda_cans/grey_bull
-
-/datum/sold_goods/budget_insuls
-	cost = 355
-	path = /obj/item/clothing/gloves/color/fyellow
-
-/datum/sold_goods/belt/nitrogen
-	cost = 160
-	path = /obj/item/tank/internals/nitrogen/belt
-
-/datum/sold_goods/belt/plasma
-	cost = 180
-	path = /obj/item/tank/internals/plasmaman/belt
-
-/datum/sold_goods/emergency_oxygen
-	cost = 90
-	path = /obj/item/tank/internals/emergency_oxygen
+/datum/sold_goods/goliath
+	cost = 500
+	path = /mob/living/simple_animal/hostile/asteroid/goliath

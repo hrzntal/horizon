@@ -1,7 +1,7 @@
 /datum/language/swarmer
 	name = "Swarmer"
 	desc = "A language only consisting of musical notes."
-	spans = list(SPAN_ROBOT)
+	spans = list(SPEECH_SPAN_ROBOT)
 	key = "s"
 	flags = NO_STUTTER
 	space_chance = 100

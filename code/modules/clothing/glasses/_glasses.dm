@@ -20,13 +20,13 @@
 	var/glass_colour_type //colors your vision when worn
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/examine(mob/user)
 	. = ..()
 	if(glass_colour_type && ishuman(user))
-		. += "<span class='notice'>Alt-click to toggle [p_their()] colors.</span>"
+		. += SPAN_NOTICE("Alt-click to toggle [p_their()] colors.")
 
 /obj/item/clothing/glasses/visor_toggling()
 	..()
@@ -49,7 +49,7 @@
 		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 		if(!H.is_blind())
 			if(H.glasses == src)
-				to_chat(H, "<span class='danger'>[src] overloads and blinds you!</span>")
+				to_chat(H, SPAN_DANGER("[src] overloads and blinds you!"))
 				H.flash_act(visual = 1)
 				H.blind_eyes(3)
 				H.blur_eyes(5)
@@ -63,9 +63,9 @@
 				if(src == H.glasses)
 					H.client.prefs.uses_glasses_colour = !H.client.prefs.uses_glasses_colour
 					if(H.client.prefs.uses_glasses_colour)
-						to_chat(H, "<span class='notice'>You will now see glasses colors.</span>")
+						to_chat(H, SPAN_NOTICE("You will now see glasses colors."))
 					else
-						to_chat(H, "<span class='notice'>You will no longer see glasses colors.</span>")
+						to_chat(H, SPAN_NOTICE("You will no longer see glasses colors."))
 					H.update_glasses_color(src, 1)
 	else
 		return ..()
@@ -100,7 +100,7 @@
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
 /obj/item/clothing/glasses/meson/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is putting \the [src] to [user.p_their()] eyes and overloading the brightness! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is putting \the [src] to [user.p_their()] eyes and overloading the brightness! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/meson/night
@@ -152,7 +152,7 @@
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return OXYLOSS
 
 /obj/item/clothing/glasses/eyepatch
@@ -220,7 +220,7 @@
 		var/mob/living/crusher = movable
 		if(crusher.m_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & (FLYING|FLOATING)) || crusher.buckled))
 			playsound(src, 'sound/effects/glass_step.ogg', 30, TRUE)
-			visible_message("<span class='warning'>[crusher] steps on [src], damaging it!</span>")
+			visible_message(SPAN_WARNING("[crusher] steps on [src], damaging it!"))
 			take_damage(100, sound_effect = FALSE)
 
 /obj/item/clothing/glasses/regular/obj_destruction(damage_flag)
@@ -234,8 +234,8 @@
 	if(!I.tool_start_check(user, amount=1))
 		return
 	if(I.use_tool(src, user, 10, volume=30, amount=1))
-		user.visible_message("<span class='notice'>[user] welds [src] back together.</span>",\
-					"<span class='notice'>You weld [src] back together.</span>")
+		user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),\
+					SPAN_NOTICE("You weld [src] back together."))
 		repair()
 		return TRUE
 
@@ -361,11 +361,11 @@
 /obj/item/clothing/glasses/blindfold/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_EYES)
-		user.become_blind("blindfold_[REF(src)]")
+		user.become_blind(BLINDFOLD_TRAIT)
 
 /obj/item/clothing/glasses/blindfold/dropped(mob/living/carbon/human/user)
 	..()
-	user.cure_blind("blindfold_[REF(src)]")
+	user.cure_blind(BLINDFOLD_TRAIT)
 
 /obj/item/clothing/glasses/trickblindfold
 	name = "blindfold"
@@ -553,14 +553,14 @@
 			desc = initial(T.desc)
 			double = TRUE
 		else
-			to_chat(user, "<span class='notice'>[W] winks at you and vanishes into the abyss, you feel really unlucky.</span>")
+			to_chat(user, SPAN_NOTICE("[W] winks at you and vanishes into the abyss, you feel really unlucky."))
 		qdel(W)
 	..()
 
 /obj/item/clothing/glasses/godeye/proc/pain(mob/living/victim)
 	// If pain/pain immunity ever implemented, check for it here.
 
-	to_chat(victim, "<span class='userdanger'>You experience blinding pain, as [src] [double ? "burrow" : "burrows"] into your skull.</span>")
+	to_chat(victim, SPAN_USERDANGER("You experience blinding pain, as [src] [double ? "burrow" : "burrows"] into your skull."))
 	victim.emote("scream")
 	victim.flash_act()
 

@@ -14,10 +14,10 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY * 1.15 // ~13 minutes, the stomach is one of the first organs to die
 
-	low_threshold_passed = "<span class='info'>Your stomach flashes with pain before subsiding. Food doesn't seem like a good idea right now.</span>"
-	high_threshold_passed = "<span class='warning'>Your stomach flares up with constant pain- you can hardly stomach the idea of food right now!</span>"
-	high_threshold_cleared = "<span class='info'>The pain in your stomach dies down for now, but food still seems unappealing.</span>"
-	low_threshold_cleared = "<span class='info'>The last bouts of pain in your stomach have died out.</span>"
+	low_threshold_passed = SPAN_INFO("Your stomach flashes with pain before subsiding. Food doesn't seem like a good idea right now.")
+	high_threshold_passed = SPAN_WARNING("Your stomach flares up with constant pain- you can hardly stomach the idea of food right now!")
+	high_threshold_cleared = SPAN_INFO("The pain in your stomach dies down for now, but food still seems unappealing.")
+	low_threshold_cleared = SPAN_INFO("The last bouts of pain in your stomach have died out.")
 
 	food_reagents = list(/datum/reagent/consumable/nutriment/organ_tissue = 5)
 	//This is a reagent user and needs more then the 10u from edible component
@@ -106,13 +106,13 @@
 	//The stomach is damage has nutriment but low on theshhold, lo prob of vomit
 	if(DT_PROB(0.0125 * damage * nutri_vol * nutri_vol, delta_time))
 		body.vomit(damage)
-		to_chat(body, "<span class='warning'>Your stomach reels in pain as you're incapable of holding down all that food!</span>")
+		to_chat(body, SPAN_WARNING("Your stomach reels in pain as you're incapable of holding down all that food!"))
 		return
 
 	// the change of vomit is now high
 	if(damage > high_threshold && DT_PROB(0.05 * damage * nutri_vol * nutri_vol, delta_time))
 		body.vomit(damage)
-		to_chat(body, "<span class='warning'>Your stomach reels in pain as you're incapable of holding down all that food!</span>")
+		to_chat(body, SPAN_WARNING("Your stomach reels in pain as you're incapable of holding down all that food!"))
 
 /obj/item/organ/stomach/get_availability(datum/species/owner_species)
 	return !(NOSTOMACH in owner_species.inherent_traits)
@@ -125,7 +125,7 @@
 				disgusted.stuttering += 1
 				disgusted.add_confusion(2)
 			if(DT_PROB(5, delta_time) && !disgusted.stat)
-				to_chat(disgusted, "<span class='warning'>You feel kind of iffy...</span>")
+				to_chat(disgusted, SPAN_WARNING("You feel kind of iffy..."))
 			disgusted.jitteriness = max(disgusted.jitteriness - 3, 0)
 		if(disgusted.disgust >= DISGUST_LEVEL_VERYGROSS)
 			if(DT_PROB(pukeprob, delta_time)) //iT hAndLeS mOrE ThaN PukInG
@@ -174,7 +174,7 @@
 		var/mob/living/carbon/body = owner
 		if(milk.volume > 50)
 			reagents.remove_reagent(milk.type, milk.volume - 5)
-			to_chat(owner, "<span class='warning'>The excess milk is dripping off your bones!</span>")
+			to_chat(owner, SPAN_WARNING("The excess milk is dripping off your bones!"))
 		body.heal_bodypart_damage(milk_brute_healing * REAGENTS_EFFECT_MULTIPLIER * delta_time, milk_burn_healing * REAGENTS_EFFECT_MULTIPLIER * delta_time)
 
 		for(var/datum/wound/iter_wound as anything in body.all_wounds)
@@ -218,7 +218,7 @@
 	if(flags & SHOCK_ILLUSION)
 		return
 	adjust_charge(shock_damage * siemens_coeff * 2)
-	to_chat(owner, "<span class='notice'>You absorb some of the shock into your body!</span>")
+	to_chat(owner, SPAN_NOTICE("You absorb some of the shock into your body!"))
 
 /obj/item/organ/stomach/ethereal/proc/adjust_charge(amount)
 	crystal_charge = clamp(crystal_charge + amount, ETHEREAL_CHARGE_NONE, ETHEREAL_CHARGE_DANGEROUS)

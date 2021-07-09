@@ -68,7 +68,7 @@
 		SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice]")
 		GLOB.holy_armor_type = choice
 	else
-		to_chat(M, "<span class='warning'>A selection has already been made. Self-Destructing...</span>")
+		to_chat(M, SPAN_WARNING("A selection has already been made. Self-Destructing..."))
 		return
 
 
@@ -240,7 +240,7 @@
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!"))
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/nullrod/attack_self(mob/user)
@@ -453,8 +453,8 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/nullrod/sord/suicide_act(mob/user) //a near-exact copy+paste of the actual sord suicide_act()
-	user.visible_message("<span class='suicide'>[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so HOLY.</span>", \
-	"<span class='suicide'>You try to impale yourself with [src], but it's TOO HOLY...</span>")
+	user.visible_message(SPAN_SUICIDE("[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so HOLY."), \
+	SPAN_SUICIDE("You try to impale yourself with [src], but it's TOO HOLY..."))
 	return SHAME
 
 /obj/item/nullrod/scythe
@@ -518,10 +518,10 @@
 	if(possessed)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
-		to_chat(user, "<span class='notice'>Anomalous otherworldly energies block you from awakening the blade!</span>")
+		to_chat(user, SPAN_NOTICE("Anomalous otherworldly energies block you from awakening the blade!"))
 		return
 
-	to_chat(user, "<span class='notice'>You attempt to wake the spirit of the blade...</span>")
+	to_chat(user, SPAN_NOTICE("You attempt to wake the spirit of the blade..."))
 
 	possessed = TRUE
 
@@ -542,12 +542,12 @@
 			name = input
 			S.fully_replace_character_name(null, "The spirit of [input]")
 	else
-		to_chat(user, "<span class='warning'>The blade is dormant. Maybe you can try again later.</span>")
+		to_chat(user, SPAN_WARNING("The blade is dormant. Maybe you can try again later."))
 		possessed = FALSE
 
 /obj/item/nullrod/scythe/talking/Destroy()
 	for(var/mob/living/simple_animal/shade/S in contents)
-		to_chat(S, "<span class='userdanger'>You were destroyed!</span>")
+		to_chat(S, SPAN_USERDANGER("You were destroyed!"))
 		qdel(S)
 	return ..()
 
@@ -643,8 +643,8 @@
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0, transfered_by = user)
-		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
-		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")
+		to_chat(user, SPAN_NOTICE("Your pride reflects on [H]."))
+		to_chat(H, SPAN_USERDANGER("You feel insecure, taking on [user]'s burden."))
 
 /obj/item/nullrod/whip
 	name = "holy whip"
@@ -717,7 +717,7 @@
 /obj/item/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, "<span class='boldnotice'>You are blessed by Carp-Sie. Wild space carp will no longer attack you.</span>")
+		to_chat(user, SPAN_BOLDNOTICE("You are blessed by Carp-Sie. Wild space carp will no longer attack you."))
 		user.faction |= "carp"
 		used_blessing = TRUE
 

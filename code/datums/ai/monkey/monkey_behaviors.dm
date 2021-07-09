@@ -86,7 +86,7 @@
 
 	var/mob/living/living_pawn = controller.pawn
 
-	victim.visible_message("<span class='warning'>[living_pawn] starts trying to take [target] from [victim]!</span>", "<span class='danger'>[living_pawn] tries to take [target]!</span>")
+	victim.visible_message(SPAN_WARNING("[living_pawn] starts trying to take [target] from [victim]!"), SPAN_DANGER("[living_pawn] tries to take [target]!"))
 
 	controller.blackboard[BB_MONKEY_PICKPOCKETING] = TRUE
 
@@ -96,14 +96,14 @@
 
 		for(var/obj/item/I in victim.held_items)
 			if(I == target)
-				victim.visible_message("<span class='danger'>[living_pawn] snatches [target] from [victim].</span>", "<span class='userdanger'>[living_pawn] snatched [target]!</span>")
+				victim.visible_message(SPAN_DANGER("[living_pawn] snatches [target] from [victim]."), SPAN_USERDANGER("[living_pawn] snatched [target]!"))
 				if(victim.temporarilyRemoveItemFromInventory(target))
 					if(!QDELETED(target) && !equip_item(controller))
 						target.forceMove(living_pawn.drop_location())
 						success = TRUE
 						break
 				else
-					victim.visible_message("<span class='danger'>[living_pawn] tried to snatch [target] from [victim], but failed!</span>", "<span class='userdanger'>[living_pawn] tried to grab [target]!</span>")
+					victim.visible_message(SPAN_DANGER("[living_pawn] tried to snatch [target] from [victim], but failed!"), SPAN_USERDANGER("[living_pawn] tried to grab [target]!"))
 
 	finish_action(controller, success) //We either fucked up or got the item.
 

@@ -120,12 +120,12 @@
 		if(!ghost.client || isnewplayer(ghost))
 			continue
 		if(ghost.stat == DEAD && ghost.client && user.client && (ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers(user_turf, null)))
-			ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
+			ghost.show_message(SPAN_EMOTE("[FOLLOW_LINK(ghost, user)] [dchatmsg]"))
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
+		user.audible_message(msg, deaf_message = SPAN_EMOTE("You see how <b>[user]</b> [msg]"), audible_message_flags = EMOTE_MESSAGE)
 	else
-		user.visible_message(msg, blind_message = "<span class='emote'>You hear how <b>[user]</b> [msg]</span>", visible_message_flags = EMOTE_MESSAGE)
+		user.visible_message(msg, blind_message = SPAN_EMOTE("You hear how <b>[user]</b> [msg]"), visible_message_flags = EMOTE_MESSAGE)
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -146,7 +146,7 @@
 	if((user.emotes_used && user.emotes_used[src] + cooldown > world.time) || (user.nextsoundemote > world.time))
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
-			to_chat(user, "<span class='danger'>You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote.</span>")
+			to_chat(user, SPAN_DANGER("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
 		return FALSE
 	if(!user.emotes_used)
 		user.emotes_used = list()
@@ -249,16 +249,16 @@
 				return FALSE
 			switch(user.stat)
 				if(SOFT_CRIT)
-					to_chat(user, "<span class='warning'>You cannot [key] while in a critical condition!</span>")
+					to_chat(user, SPAN_WARNING("You cannot [key] while in a critical condition!"))
 				if(UNCONSCIOUS, HARD_CRIT)
-					to_chat(user, "<span class='warning'>You cannot [key] while unconscious!</span>")
+					to_chat(user, SPAN_WARNING("You cannot [key] while unconscious!"))
 				if(DEAD)
-					to_chat(user, "<span class='warning'>You cannot [key] while dead!</span>")
+					to_chat(user, SPAN_WARNING("You cannot [key] while dead!"))
 			return FALSE
 		if(hands_use_check && HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 			if(!intentional)
 				return FALSE
-			to_chat(user, "<span class='warning'>You cannot use your hands to [key] right now!</span>")
+			to_chat(user, SPAN_WARNING("You cannot use your hands to [key] right now!"))
 			return FALSE
 
 	if(isliving(user))

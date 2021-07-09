@@ -13,7 +13,7 @@
 
 /obj/item/multitool/circuit/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It has [marked_atom? "a" : "no"] marked entity registered.</span>"
+	. += SPAN_NOTICE("It has [marked_atom? "a" : "no"] marked entity registered.")
 
 /obj/item/multitool/circuit/attack_self(mob/user, modifiers)
 	. = ..()

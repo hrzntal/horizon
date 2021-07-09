@@ -94,14 +94,14 @@
 			if(!launch_check(usr))
 				return
 			if(M.launch_status == ENDGAME_LAUNCHED)
-				to_chat(usr, "<span class='warning'>You've already escaped. Never going back to that place again!</span>")
+				to_chat(usr, SPAN_WARNING("You've already escaped. Never going back to that place again!"))
 				return
 			if(no_destination_swap)
 				if(M.mode == SHUTTLE_RECHARGING)
-					to_chat(usr, "<span class='warning'>Shuttle engines are not ready for use.</span>")
+					to_chat(usr, SPAN_WARNING("Shuttle engines are not ready for use."))
 					return
 				if(M.mode != SHUTTLE_IDLE)
-					to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+					to_chat(usr, SPAN_WARNING("Shuttle already in transit."))
 					return
 			if(uses_overmap)
 				if(M.DrawDockingThrust())
@@ -179,7 +179,7 @@
 	if(.)
 		return
 	if(!allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+		to_chat(usr, SPAN_DANGER("Access denied."))
 		return
 
 	switch(action)
@@ -188,14 +188,14 @@
 				return
 			var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 			if(M.launch_status == ENDGAME_LAUNCHED)
-				to_chat(usr, "<span class='warning'>You've already escaped. Never going back to that place again!</span>")
+				to_chat(usr, SPAN_WARNING("You've already escaped. Never going back to that place again!"))
 				return
 			if(no_destination_swap)
 				if(M.mode == SHUTTLE_RECHARGING)
-					to_chat(usr, "<span class='warning'>Shuttle engines are not ready for use.</span>")
+					to_chat(usr, SPAN_WARNING("Shuttle engines are not ready for use."))
 					return
 				if(M.mode != SHUTTLE_IDLE)
-					to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+					to_chat(usr, SPAN_WARNING("Shuttle already in transit."))
 					return
 			var/list/options = params2list(possible_destinations)
 			var/obj/docking_port/stationary/S = SSshuttle.getDock(params["shuttle_id"])
@@ -209,9 +209,9 @@
 					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" towards \"[params["shuttle_id"]]\", using [src].")
 					return TRUE
 				if(1)
-					to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+					to_chat(usr, SPAN_WARNING("Invalid shuttle requested."))
 				else
-					to_chat(usr, "<span class='warning'>Unable to comply.</span>")
+					to_chat(usr, SPAN_WARNING("Unable to comply."))
 		if("set_destination")
 			var/target_destination = params["destination"]
 			if(target_destination)
@@ -219,10 +219,10 @@
 				return TRUE
 		if("request")
 			if(!COOLDOWN_FINISHED(src, request_cooldown))
-				to_chat(usr, "<span class='warning'>CentCom is still processing last authorization request!</span>")
+				to_chat(usr, SPAN_WARNING("CentCom is still processing last authorization request!"))
 				return
 			COOLDOWN_START(src, request_cooldown, 1 MINUTES)
-			to_chat(usr, "<span class='notice'>Your request has been received by CentCom.</span>")
+			to_chat(usr, SPAN_NOTICE("Your request has been received by CentCom."))
 			to_chat(GLOB.admins, "<b>SHUTTLE: <font color='#3d5bc3'>[ADMIN_LOOKUPFLW(usr)] (<A HREF='?_src_=holder;[HrefToken()];move_shuttle=[shuttleId]'>Move Shuttle</a>)(<A HREF='?_src_=holder;[HrefToken()];unlock_shuttle=[REF(src)]'>Lock/Unlock Shuttle</a>)</b> is requesting to move or unlock the shuttle.</font>")
 			return TRUE
 
@@ -231,7 +231,7 @@
 		return
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You fried the consoles ID checking system.</span>")
+	to_chat(user, SPAN_NOTICE("You fried the consoles ID checking system."))
 
 /obj/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(port)

@@ -9,29 +9,29 @@
 	. += status_effect_examines()
 	if (getBruteLoss())
 		if (getBruteLoss() < maxHealth*0.5)
-			. += "<span class='warning'>It looks slightly dented.</span>"
+			. += SPAN_WARNING("It looks slightly dented.")
 		else
-			. += "<span class='warning'><B>It looks severely dented!</B></span>"
+			. += SPAN_WARNING("<B>It looks severely dented!</B>")
 	if (getFireLoss() || getToxLoss())
 		var/overall_fireloss = getFireLoss() + getToxLoss()
 		if (overall_fireloss < maxHealth * 0.5)
-			. += "<span class='warning'>It looks slightly charred.</span>"
+			. += SPAN_WARNING("It looks slightly charred.")
 		else
-			. += "<span class='warning'><B>It looks severely burnt and heat-warped!</B></span>"
+			. += SPAN_WARNING("<B>It looks severely burnt and heat-warped!</B>")
 	if (health < -maxHealth*0.5)
-		. += "<span class='warning'>It looks barely operational.</span>"
+		. += SPAN_WARNING("It looks barely operational.")
 	if (fire_stacks < 0)
-		. += "<span class='warning'>It's covered in water.</span>"
+		. += SPAN_WARNING("It's covered in water.")
 	else if (fire_stacks > 0)
-		. += "<span class='warning'>It's coated in something flammable.</span>"
+		. += SPAN_WARNING("It's coated in something flammable.")
 
 	if(opened)
-		. += "<span class='warning'>Its cover is open and the power cell is [cell ? "installed" : "missing"].</span>"
+		. += SPAN_WARNING("Its cover is open and the power cell is [cell ? "installed" : "missing"].")
 	else
 		. += "Its cover is closed[locked ? "" : ", and looks unlocked"]."
 
 	if(cell && cell.charge <= 0)
-		. += "<span class='warning'>Its battery indicator is blinking red!</span>"
+		. += SPAN_WARNING("Its battery indicator is blinking red!")
 
 	switch(stat)
 		if(CONSCIOUS)
@@ -40,14 +40,14 @@
 			else if(!client)
 				. += "It appears to be in stand-by mode." //afk
 		if(SOFT_CRIT, UNCONSCIOUS, HARD_CRIT)
-			. += "<span class='warning'>It doesn't seem to be responding.</span>"
+			. += SPAN_WARNING("It doesn't seem to be responding.")
 		if(DEAD)
-			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
+			. += SPAN_DEADSAY("It looks like its system is corrupted and requires a reset.")
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
-			. += "<span class='notice'>[temporary_flavor_text]</span>"
+			. += SPAN_NOTICE("[temporary_flavor_text]")
 		else
-			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+			. += SPAN_NOTICE("[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	. += "*---------*</span>"
 
 	. += ..()

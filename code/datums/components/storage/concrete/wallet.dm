@@ -2,7 +2,7 @@
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, SPAN_WARNING("[parent] seems to be locked!"))
 		return
 
 	var/obj/item/storage/wallet/A = parent

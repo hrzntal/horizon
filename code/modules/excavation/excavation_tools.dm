@@ -107,7 +107,7 @@
 			var/turf/M = i
 			new /obj/effect/temp_visual/strange_rock_overlay(M)
 	else
-		to_chat(user,"<span class='warning'>No curiosities detected.</span>")
+		to_chat(user,SPAN_WARNING("No curiosities detected."))
 
 #undef LOCATOR_COOLDOWN
 

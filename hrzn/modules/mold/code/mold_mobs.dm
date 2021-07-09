@@ -42,7 +42,7 @@
 	update_overlays()
 
 /mob/living/simple_animal/hostile/mold/oil_shambler/Destroy()
-	visible_message("<span class='warning'>The [src] ruptures!</span>")
+	visible_message(SPAN_WARNING("The [src] ruptures!"))
 	var/datum/reagents/R = new/datum/reagents(300)
 	R.my_atom = src
 	R.add_reagent(/datum/reagent/napalm, 50)

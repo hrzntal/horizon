@@ -1,17 +1,17 @@
 /datum/buildmode_mode/throwing
 	key = "throw"
-	
+
 	var/atom/movable/throw_atom = null
-	
+
 /datum/buildmode_mode/throwing/Destroy()
 	throw_atom = null
 	return ..()
 
 /datum/buildmode_mode/throwing/show_help(client/c)
-	to_chat(c, "<span class='notice'>***********************************************************</span>")
-	to_chat(c, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select</span>")
-	to_chat(c, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Throw</span>")
-	to_chat(c, "<span class='notice'>***********************************************************</span>")
+	to_chat(c, SPAN_NOTICE("***********************************************************"))
+	to_chat(c, SPAN_NOTICE("Left Mouse Button on turf/obj/mob      = Select"))
+	to_chat(c, SPAN_NOTICE("Right Mouse Button on turf/obj/mob     = Throw"))
+	to_chat(c, SPAN_NOTICE("***********************************************************"))
 
 /datum/buildmode_mode/throwing/handle_click(client/c, params, obj/object)
 	var/list/modifiers = params2list(params)
