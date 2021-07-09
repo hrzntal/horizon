@@ -134,3 +134,19 @@
 	cost = 5
 	suffix = "mining_facility.dmm"
 	planet_requirements = PLANET_HABITABLE
+
+/datum/map_template/ruin/planetary/abandoned_containment
+	name = "Abandoned Containment"
+	id = "abandoned_containment"
+	description = "A long abandoned base containing a dangerous secret."
+	cost = 5
+	suffix = "abandoned_containment.dmm"
+	planet_requirements = PLANET_HABITABLE
+
+/datum/map_template/ruin/planetary/weather_station
+	name = "Weather Station"
+	id = "weather_station"
+	description = "A dormant weather research station."
+	cost = 5
+	suffix = "weather_station.dmm"
+	planet_requirements = PLANET_HABITABLE
