@@ -16,10 +16,10 @@
 	stock_high = 10
 	stock_low = 4
 
-/datum/bought_goods/pastrybase // 80-150c
+/datum/bought_goods/batter // 80-150c
 	name = "cake batter"
 	cost = 10
-	trading_types = list(/obj/item/food/rawpastrybase = TRADER_THIS_TYPE)
+	trading_types = list(/obj/item/food/cakebatter = TRADER_THIS_TYPE)
 	stock_high = 15
 	stock_low = 8
 

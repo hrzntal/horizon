@@ -52,7 +52,7 @@
 								/datum/sold_goods/cupramen = 100)
 	possible_bought_goods = list(/datum/bought_goods/carpmeat = 100,
 								/datum/bought_goods/cabbage = 100,
-								/datum/bought_goods/pastrybase = 100)
+								/datum/bought_goods/batter = 100)
 	target_sold_goods_amount = 5
 	target_bought_goods_amount = 3
 	var/list/fortunes = list("Today it's up to you to create the peacefulness you long for.",
