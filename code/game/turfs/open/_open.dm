@@ -25,11 +25,11 @@
 			if(catitem.use(cost))
 				new catitem.catwalk_type(src)
 				playsound(src, 'sound/weapons/genhit.ogg', 50, TRUE)
-				to_chat(user, SPAN_NOTICE("You place down the catwalk.")
+				to_chat(user, SPAN_NOTICE("You place down the catwalk."))
 			else
-				to_chat(user, SPAN_WARNING("You need two rods to build a catwalk!")
+				to_chat(user, SPAN_WARNING("You need two rods to build a catwalk!"))
 			return
-		to_chat(user, SPAN_WARNING("You can't place down a catwalk in this spot!")
+		to_chat(user, SPAN_WARNING("You can't place down a catwalk in this spot!"))
 	return ..()
 
 //direction is direction of travel of A

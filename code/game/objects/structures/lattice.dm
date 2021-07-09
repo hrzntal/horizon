@@ -121,7 +121,7 @@
 /obj/structure/lattice/catwalk/plated/attackby(obj/item/item, mob/user, params)
 	if(item.tool_behaviour == TOOL_CROWBAR)
 		item.play_tool_sound(src)
-		to_chat(user, SPAN_NOTICE("You pry \the [src] up.")
+		to_chat(user, SPAN_NOTICE("You pry \the [src] up."))
 		deconstruct()
 		return TRUE
 	if(item.tool_behaviour == TOOL_WIRECUTTER) //To stop "cutting" it from lattice inheritance
