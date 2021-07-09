@@ -34,7 +34,7 @@
 	/// Maximum percent that the merchant will be able to drop the price. Randomized between 0 and this
 	var/haggle_percent = 15
 	/// A percentage of the price variance on all sold and bought goods
-	var/price_variance = 25
+	var/price_variance = 20
 	/// How much more items are valuable to the merchant for purchasing (in %)
 	var/buy_margin = 1
 	/// How much more items are expensive for the users to purchase (in %)
