@@ -1,5 +1,5 @@
 /datum/element/footstep_override
-	element_flags = ELEMENT_BESPOKE
+	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH
 	id_arg_index = 2
 	var/footstep
 	var/barefootstep
@@ -41,3 +41,8 @@
 		return
 	playsound(source, pick(sound_ref[played_step][1]), sound_ref[played_step][2] * volume, TRUE, sound_ref[played_step][3] + e_range, falloff_distance = 1, vary = sound_vary)
 	return COMPONENT_CANCEL_PLAY_FOOTSTEP
+
+/datum/element/footstep_override/Detach(datum/target)
+	. = ..()
+	if(ismovable(target))
+		RemoveElement(/datum/element/connect_loc, target, connection_signal)
