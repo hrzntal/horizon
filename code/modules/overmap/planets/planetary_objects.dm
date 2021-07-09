@@ -25,6 +25,7 @@
 	tiled_dirt = FALSE
 	intact = FALSE
 	baseturfs = /turf/open/floor/planetary/rock
+	can_have_catwalk = TRUE
 	var/can_build_on = TRUE
 
 /turf/open/floor/planetary/ex_act(severity, target)

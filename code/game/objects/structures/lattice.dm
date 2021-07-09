@@ -116,12 +116,12 @@
 	build_material = /obj/item/stack/catwalk/plated
 
 /obj/structure/lattice/catwalk/plated/deconstruction_hints(mob/user)
-	return "<span class='notice'>The plate looks like it could be <b>pried</b> up.</span>"
+	return SPAN_NOTICE("The plate looks like it could be <b>pried</b> up.")
 
 /obj/structure/lattice/catwalk/plated/attackby(obj/item/item, mob/user, params)
 	if(item.tool_behaviour == TOOL_CROWBAR)
 		item.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>You pry \the [src] up.</span>")
+		to_chat(user, SPAN_NOTICE("You pry \the [src] up.")
 		deconstruct()
 		return TRUE
 	if(item.tool_behaviour == TOOL_WIRECUTTER) //To stop "cutting" it from lattice inheritance

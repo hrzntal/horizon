@@ -43,5 +43,5 @@
 	singular_name = "swarmer catwalk rod"
 	desc = "Rods that could be used to make a quite peculiar catwalk."
 	icon_state = "catwalk_swarmer"
-	merge_type = /obj/item/stack/catwalk/plated/swarmer
+	merge_type = /obj/item/stack/catwalk/swarmer
 	catwalk_type = /obj/structure/lattice/catwalk/swarmer_catwalk
