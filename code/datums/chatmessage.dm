@@ -12,6 +12,8 @@
 #define CHAT_MESSAGE_APPROX_LHEIGHT 11
 /// Max width of chat message in pixels
 #define CHAT_MESSAGE_WIDTH 96
+/// Width that we use for message dimension calculation
+#define CHAT_MESSAGE_DIVISOR_WIDTH 88
 /// Max length of chat message in characters
 #define CHAT_MESSAGE_MAX_LENGTH 110
 /// The dimensions of the chat message icons
@@ -166,7 +168,7 @@
 
 	// Approximate text height
 	var/complete_text = "<span class='center [extra_classes.Join(" ")]' style='color: [tgt_color]'>[text]</span>"
-	var/mheight = WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH))
+	var/mheight = WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_DIVISOR_WIDTH))
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
 
 	// Translate any existing messages upwards, apply exponential decay factors to timers
@@ -312,6 +314,7 @@
 #undef CHAT_MESSAGE_HEIGHT_DECAY
 #undef CHAT_MESSAGE_APPROX_LHEIGHT
 #undef CHAT_MESSAGE_WIDTH
+#undef CHAT_MESSAGE_DIVISOR_WIDTH
 #undef CHAT_LAYER_Z_STEP
 #undef CHAT_LAYER_MAX_Z
 #undef CHAT_MESSAGE_ICON_SIZE
