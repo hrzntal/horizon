@@ -35,7 +35,7 @@
 /datum/bought_goods/produce // 80-160c
 	name = "grown produce"
 	cost = 10
-	trading_types = list(/obj/item/food/grown/ = TRADER_THIS_TYPE)
+	trading_types = list(/obj/item/food/grown = TRADER_SUBTYPES)
 	stock_high = 16
 	stock_low = 8
 
