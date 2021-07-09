@@ -38,11 +38,10 @@
 		examine_texts += SPAN_NOTICE("[source] looks climbable.")
 
 /datum/element/climbable/proc/can_climb(atom/source, mob/user)
-	if(climb_over)
-		if(source.loc != user.loc)
-			var/turf/neighboring_turf = get_step(source.loc,source.dir)
-			if(user.loc != neighboring_turf)
-				return FALSE
+	if(climb_over && source.loc != user.loc)
+		var/turf/neighboring_turf = get_step(source.loc,source.dir)
+		if(user.loc != neighboring_turf)
+			return FALSE
 	return TRUE
 
 /datum/element/climbable/proc/attack_hand(atom/climbed_thing, mob/user)
