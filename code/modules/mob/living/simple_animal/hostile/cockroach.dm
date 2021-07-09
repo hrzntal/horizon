@@ -94,7 +94,7 @@
 
 /mob/living/simple_animal/hostile/cockroach/hauberoach/Initialize()
 	. = ..()
-	AddElement(/datum/element/caltrop, min_damage = 10, max_damage = 15, flags = (CALTROP_BYPASS_SHOES | CALTROP_SILENT))
+	AddElement(/datum/element/caltrop, name, min_damage = 10, max_damage = 15, flags = (CALTROP_BYPASS_SHOES | CALTROP_SILENT))
 
 /mob/living/simple_animal/hostile/cockroach/hauberoach/make_squashable()
 	AddComponent(/datum/component/squashable, squash_chance = 100, squash_damage = 1, squash_callback = /mob/living/simple_animal/hostile/cockroach/hauberoach/.proc/on_squish)

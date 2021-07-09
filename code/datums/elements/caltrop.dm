@@ -19,16 +19,20 @@
 	///Miscelanous caltrop flags; shoe bypassing, walking interaction, silence
 	var/flags
 
+	/// Pasesd name of the attached atom
+	var/attached_name
+
 	///given to connect_loc to listen for something moving over target
 	var/static/list/crossed_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 
-/datum/element/caltrop/Attach(datum/target, min_damage = 0, max_damage = 0, probability = 100, flags = NONE)
+/datum/element/caltrop/Attach(datum/target, name = "sharp thing", min_damage = 0, max_damage = 0, probability = 100, flags = NONE)
 	. = ..()
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
 
+	src.attached_name = name
 	src.min_damage = min_damage
 	src.max_damage = max(min_damage, max_damage)
 	src.probability = probability
@@ -39,7 +43,7 @@
 	else
 		RegisterSignal(get_turf(target), COMSIG_ATOM_ENTERED, .proc/on_entered)
 
-/datum/element/caltrop/proc/on_entered(atom/caltrop, atom/movable/AM)
+/datum/element/caltrop/proc/on_entered(atom/source, atom/movable/AM)
 	SIGNAL_HANDLER
 
 	if(!prob(probability))
@@ -84,8 +88,8 @@
 
 	if(!(flags & CALTROP_SILENT) && !H.has_status_effect(/datum/status_effect/caltropped))
 		H.apply_status_effect(/datum/status_effect/caltropped)
-		H.visible_message(SPAN_DANGER("[H] steps on [caltrop]."), \
-					SPAN_USERDANGER("You step on [caltrop]!"))
+		H.visible_message(SPAN_DANGER("[H] steps on the [attached_name]."), \
+					SPAN_USERDANGER("You step on the [attached_name]!"))
 
 	H.apply_damage(damage, BRUTE, picked_def_zone, wound_bonus = CANT_WOUND)
 	H.Paralyze(60)
