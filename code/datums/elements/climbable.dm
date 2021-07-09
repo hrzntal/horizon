@@ -39,14 +39,10 @@
 
 /datum/element/climbable/proc/can_climb(atom/source, mob/user)
 	if(climb_over)
-		if(source.loc == user.loc)
-			return TRUE
-		else
+		if(source.loc != user.loc)
 			var/turf/neighboring_turf = get_step(source.loc,source.dir)
 			if(user.loc != neighboring_turf)
 				return FALSE
-			else
-				return TRUE
 	return TRUE
 
 /datum/element/climbable/proc/attack_hand(atom/climbed_thing, mob/user)
