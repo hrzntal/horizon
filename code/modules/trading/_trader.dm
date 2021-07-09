@@ -38,7 +38,7 @@
 	/// How much more items are valuable to the merchant for purchasing (in %)
 	var/buy_margin = 1
 	/// How much more items are expensive for the users to purchase (in %)
-	var/sell_margin = 1.3
+	var/sell_margin = 1.15
 	/// How much more, or less items will he have on stock. Minimum of 1 per datum
 	var/quantity_multiplier = 1
 	/// Amount of disposition gained per each trade
