@@ -67,8 +67,6 @@
 
 /obj/machinery/computer/trade_console/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
 	if(!linked_pad)
 		try_link_pad()
 	var/list/dat = list()
