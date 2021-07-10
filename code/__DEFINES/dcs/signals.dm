@@ -1330,12 +1330,6 @@
 	/// Cancels the attack chain, but without performing any other action.
 	#define COMSIG_CANCEL_USB_CABLE_ATTACK (1<<2)
 
-/// Sent from /obj/structure/industrial_lift/tram when its travelling status updates. (travelling)
-#define COMSIG_TRAM_SET_TRAVELLING "tram_set_travelling"
-
-/// Sent from /obj/structure/industrial_lift/tram when it begins to travel. (obj/effect/landmark/tram/from_where, obj/effect/landmark/tram/to_where)
-#define COMSIG_TRAM_TRAVEL "tram_travel"
-
 /// Called in /obj/structure/moneybot/add_money(). (to_add)
 #define COMSIG_MONEYBOT_ADD_MONEY "moneybot_add_money"
 
