@@ -220,7 +220,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 		var/datum/sprite_accessory/S
 		if(facial_hairstyle)
 			S = GLOB.facial_hairstyles_list[facial_hairstyle]
-			if(S)
+			if(S.icon_state)
 				facial_hair_overlay = mutable_appearance(S.icon, "[S.icon_state]", -HAIR_LAYER)
 				if(facial_hair_color)
 					facial_hair_overlay.color = "#" + facial_hair_color
@@ -228,7 +228,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 				add_overlay(facial_hair_overlay)
 		if(hairstyle)
 			S = GLOB.hairstyles_list[hairstyle]
-			if(S)
+			if(S.icon_state)
 				hair_overlay = mutable_appearance(S.icon, "[S.icon_state]", -HAIR_LAYER)
 				if(hair_color)
 					hair_overlay.color = "#" + hair_color
