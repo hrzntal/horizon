@@ -1,4 +1,4 @@
-#define SPAN(class, str) ("span class='" + class + "'>" + str + "</span>")
+#define SPAN(class, str) ("<span class='" + class + "'>" + str + "</span>")
 // Sorted alphabetically
 #define SPAN_ABDUCTOR(str) ("<span class='abductor'>" + str + "</span>")
 #define SPAN_ADMIN(str) ("<span class='admin'>" + str + "</span>")
