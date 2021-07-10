@@ -1,5 +1,4 @@
 /obj/machinery/atmospherics/pipe
-	icon = 'icons/obj/atmospherics/pipes/pipes_bitmask.dmi'
 	damage_deflection = 12
 	var/datum/gas_mixture/air_temporary //used when reconstructing a pipeline that broke
 	var/volume = 0
