@@ -18,7 +18,7 @@
 	name = "Machine Design (Mining Laser)"
 	desc = "The circuit board for a Mining Laser."
 	id = "mininglaser"
-	build_path = /obj/machinery/mining_laser
+	build_path = /obj/item/circuitboard/machine/mining_laser
 	category = list ("Cargo Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
