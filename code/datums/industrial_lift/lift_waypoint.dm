@@ -1,11 +1,27 @@
+// Mapping helper and not a landmark because landmarks are terrible
+/obj/effect/mapping_helpers/lift_waypoint
+	name = "Lift Waypoint"
+	desc = "A waypoint of the lift"
+	var/id
+	var/waypoint_id
+	/// Associative list of connected waypoints to speed multiplier to getting to them ("waypoint_id" = 0.5) for example
+	var/connects_to = list()
+	var/is_stop = TRUE
+
+/obj/effect/mapping_helpers/lift_waypoint/Initialize()
+	new /datum/lift_waypoint(name, desc, id, waypoint_id, loc, connects_to, is_stop)
+	return ..()
+
 /datum/lift_waypoint
 	var/name
 	var/desc
 	var/id
 	var/waypoint_id
 	var/turf/position
-	var/list/connect_to = list()
+	/// Associative list of connected waypoints to speed multiplier to getting to them ("waypoint_id" = 0.5) for example
+	var/list/connect_to
 	var/is_stop = TRUE
+	/// Associative list of connected waypoints to speed multiplier to getting to them (waypoint_ref = 0.5) for example
 	var/list/connected = list()
 
 /datum/lift_waypoint/New(arg_name, arg_desc, arg_id, arg_wp_id, arg_position, arg_connect_to, arg_is_stop)
@@ -30,13 +46,15 @@
 
 //Called by SSindustrial_lift. Connect to other waypoints here
 /datum/lift_waypoint/proc/InitializeWaypoint()
-	for(var/other_id in connect_to)
-		var/datum/lift_waypoint/waypoint = SSindustrial_lift.lift_waypoints[other_id]
-		if(!waypoint)
-			WARNING("Lift waypoint of id [id] and waypoint id of [waypoint_id] couldn't connect find a waypoint of id [other_id]")
-			continue
-		connected[waypoint] = TRUE
-		waypoint.connected[src] = TRUE
+	if(connect_to)
+		for(var/other_id in connect_to)
+			var/datum/lift_waypoint/waypoint = SSindustrial_lift.lift_waypoints[other_id]
+			if(!waypoint)
+				WARNING("Lift waypoint of id [id] and waypoint id of [waypoint_id] couldn't connect find a waypoint of id [other_id]")
+				continue
+			var/speed_multiplier = connect_to[other_id]
+			connected[waypoint] = speed_multiplier
+			waypoint.connected[src] = speed_multiplier
 	connect_to = null
 
 /datum/lift_route
@@ -57,8 +75,8 @@
 
 #define LIFT_PATHFINDING_MAX_STEPS 20
 
-/datum/lift_route/proc/GetEnrouteWaypoint(datum/lift_route/origin, datum/lift_route/destination)
-	var/datum/lift_route/found_next
+/datum/lift_route/proc/GetEnrouteWaypoint(datum/lift_waypoint/origin, datum/lift_waypoint/destination)
+	var/datum/lift_waypoint/found_next
 	var/list/possible_waypoints = list()
 	for(var/wp in origin.connected)
 		var/datum/lift_waypoint/iterated_waypoint = wp
@@ -66,13 +84,15 @@
 			return iterated_waypoint
 		var/steps = 0
 		var/connects = FALSE
-		var/list/already_checked_waypoints = list(origin = TRUE)
-		var/list/waypoints_to_check = list(iterated_waypoint = TRUE)
+		var/list/already_checked_waypoints = list()
+		already_checked_waypoints[origin] = TRUE
+		var/list/waypoints_to_check = list()
+		waypoints_to_check[iterated_waypoint] = TRUE
 		while(steps <= LIFT_PATHFINDING_MAX_STEPS)
 			steps++
 			for(var/b in waypoints_to_check)
-				waypoints_to_check -= b
 				var/datum/lift_waypoint/waypoint_in_loop = b
+				waypoints_to_check -= b
 				if(waypoint_in_loop.connected[destination])
 					connects = TRUE
 					break
