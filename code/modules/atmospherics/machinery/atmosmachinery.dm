@@ -426,11 +426,11 @@
  * * iconfile - path of the iconstate we are using (ex: 'icons/obj/atmospherics/components/thermomachine.dmi')
  * * iconstate - the image we are using inside the file
  * * direction - the direction of our device
- * * color - the color (in hex value, like #559900) that the pipe should have
+ * * col - the color (in hex value, like #559900) that the pipe should have
  * * piping_layer - the piping_layer the device is in, used inside PIPING_LAYER_SHIFT
  * * trinary - if TRUE we also use PIPING_FORWARD_SHIFT on layer 1 and 5 for trinary devices (filters and mixers)
  */
-/obj/machinery/atmospherics/proc/getpipeimage(iconfile, iconstate, direction, color = COLOR_VERY_LIGHT_GRAY, piping_layer = 3, trinary = FALSE)
+/obj/machinery/atmospherics/proc/getpipeimage(iconfile, iconstate, direction, col = COLOR_VERY_LIGHT_GRAY, piping_layer = 3, trinary = FALSE)
 	var/image/pipe_overlay = image(iconfile, iconstate, dir = direction)
 	pipe_overlay.color = col
 	PIPING_LAYER_SHIFT(pipe_overlay, piping_layer)
