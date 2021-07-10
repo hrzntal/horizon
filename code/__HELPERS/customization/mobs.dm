@@ -84,7 +84,7 @@
 
 /proc/facial_hairstyle_list_for_species(datum/species/species, gender, mismatched = FALSE)
 	if(mismatched)
-		return GLOB.hairstyles_list.Copy()
+		return GLOB.facial_hairstyles_list.Copy()
 	var/list/global_list_cache
 	switch(gender)
 		if(MALE)
