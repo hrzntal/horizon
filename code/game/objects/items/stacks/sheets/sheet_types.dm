@@ -168,7 +168,23 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 		new/datum/stack_recipe("high security airlock assembly", /obj/structure/door_assembly/door_assembly_highsecurity, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("vault door assembly", /obj/structure/door_assembly/door_assembly_vault, 6, time = 50, one_per_turf = 1, on_floor = 1), \
 	)), \
+	null, \
+    new /datum/stack_recipe_list("crates & carts", list( \
+        new/datum/stack_recipe("grey crate", /obj/structure/closet/crate, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("medical crate", /obj/structure/closet/crate/medical, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("freezer crate", /obj/structure/closet/crate/freezer, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("internals crate", /obj/structure/closet/crate/internals, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("hydroponics crate", /obj/structure/closet/crate/hydroponics, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("radiation crate", /obj/structure/closet/crate/radiation, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("engineering crate", /obj/structure/closet/crate/engineering, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+        new/datum/stack_recipe("science crate", /obj/structure/closet/crate/science, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("trash cart", /obj/structure/closet/crate/trashcart, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+		new/datum/stack_recipe("laundry cart", /obj/structure/closet/crate/trashcart/laundry, 2, time = 15, one_per_turf = 1, on_floor = 1), \
+	)), \
 ))
+
+/obj/structure/closet/crate/trashcart/laundry
+/obj/structure/closet/crate/trashcart
 
 /obj/item/stack/sheet/plasteel
 	name = "plasteel"
@@ -303,6 +319,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white scarf", /obj/item/clothing/neck/scarf, 1), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
+	new/datum/stack_recipe("satchel", /obj/item/storage/backpack/satchel, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
 	null, \
 	new/datum/stack_recipe("plant bag", /obj/item/storage/bag/plants, 4), \
