@@ -108,6 +108,7 @@
 
 /obj/structure/lattice/catwalk/plated
 	name = "plated catwalk"
+	desc = "A durable catwalk for easier maintenance of pipes and wires. Cats hate this thing."
 	icon = 'icons/obj/smooth_structures/catwalk_plated.dmi'
 	icon_state = "catwalk_plated-0"
 	base_icon_state = "catwalk_plated"
