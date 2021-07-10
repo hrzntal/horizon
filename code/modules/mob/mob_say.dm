@@ -31,7 +31,8 @@
 /mob/verb/me_verb(message as text)
 	set name = "Me"
 	set category = "IC"
-
+	if(typing_indicator) //For async typing indicator
+		set_typing_indicator(FALSE)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
 		return
