@@ -426,7 +426,7 @@
  * * iconfile - path of the iconstate we are using (ex: 'icons/obj/atmospherics/components/thermomachine.dmi')
  * * iconstate - the image we are using inside the file
  * * direction - the direction of our device
- * * col - the color (in hex value, like #559900) that the pipe should have
+ * * color - the color (in hex value, like #559900) that the pipe should have
  * * piping_layer - the piping_layer the device is in, used inside PIPING_LAYER_SHIFT
  * * trinary - if TRUE we also use PIPING_FORWARD_SHIFT on layer 1 and 5 for trinary devices (filters and mixers)
  */
