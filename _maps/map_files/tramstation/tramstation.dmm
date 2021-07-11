@@ -1354,6 +1354,9 @@
 /obj/machinery/button/elevator/speaker{
 	id = "tram"
 	},
+/obj/machinery/lift_status_display{
+	id = "tram"
+	},
 /turf/closed/wall,
 /area/hallway/primary/tram/center)
 "aeT" = (
@@ -48230,6 +48233,9 @@
 /obj/machinery/button/elevator/speaker{
 	id = "tram"
 	},
+/obj/machinery/lift_status_display{
+	id = "tram"
+	},
 /turf/closed/wall,
 /area/hallway/primary/tram/right)
 "oDL" = (
@@ -57013,6 +57019,9 @@
 /area/science/xenobiology)
 "scg" = (
 /obj/machinery/button/elevator/speaker{
+	id = "tram"
+	},
+/obj/machinery/lift_status_display{
 	id = "tram"
 	},
 /turf/closed/wall,

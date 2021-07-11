@@ -62,7 +62,7 @@
 	if(halted && ProcessHalted())
 		return
 	if(!next_wp)
-		next_wp = SetNextWaypoint(route.GetEnrouteWaypoint(current_wp, destination_wp))
+		SetNextWaypoint(route.GetEnrouteWaypoint(current_wp, destination_wp))
 	
 	travel_progress += calculated_travel_speed
 	if(travel_progress < 1)

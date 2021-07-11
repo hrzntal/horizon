@@ -248,6 +248,7 @@
 	idle_power_usage = 10
 	layer = ABOVE_WINDOW_LAYER
 	var/id
+	var/display_icon = "display_blue"
 
 /obj/machinery/lift_status_display/Initialize()
 	. = ..()
@@ -267,10 +268,11 @@
 		return
 	name = "[controller.name] status display"
 	desc = "A status display for the [controller.name]."
+	update_icon()
 
 /obj/machinery/lift_status_display/update_overlays()
 	. = ..()
 	if(machine_stat & NOPOWER)
 		return
-	. += mutable_appearance(icon, "text")
-	. += emissive_appearance(icon, "text")
+	. += mutable_appearance(icon, display_icon)
+	. += emissive_appearance(icon, display_icon)
