@@ -151,7 +151,7 @@
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
 	icon = 'icons/obj/ipc_surgery.dmi'
-	icon_state = "liver-c"
+	icon_state = "liver-ipc"
 	filterToxins = FALSE //We dont filter them, we're immune ot them
 
 /obj/item/organ/cyberimp/arm/power_cord

@@ -861,3 +861,94 @@
 	construction_time = 150
 	build_path = /obj/effect/mob_spawn/drone
 	category = list("Control Interfaces")
+
+//Synthetic Organs
+/datum/design/robot_eyes
+	name = "Robotic Eyes"
+	desc = "A very basic set of optical sensors with no extra vision modes or functions."
+	id = "robot_eyes"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 250, /datum/material/glass = 400)
+	build_path = /obj/item/organ/eyes/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robot_ears
+	name = "Auditory Sensors"
+	desc = "A pair of microphones intended to be installed in a robotic head, that grant the ability to hear."
+	id = "robot_ears"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 250, /datum/material/glass = 400)
+	build_path = /obj/item/organ/ears/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robot_tongue
+	name = "Robotic Voicebox"
+	desc = "A voice synthesizer that can interface with organic lifeforms."
+	id = "robot_tongue"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 250, /datum/material/glass = 400)
+	build_path = /obj/item/organ/tongue/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robot_heart
+	name = "Hydraulic Pump Engine"
+	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs."
+	id = "robot_heart"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/organ/heart/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robot_liver
+	name = "Reagent Processing Unit"
+	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
+	id = "robot_liver"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/organ/liver/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robot_lungs
+	name = "Heat Sink"
+	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs."
+	id = "robot_lungs"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/organ/lungs/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/robotic_heart
+	name = "IPC Micro Cell"
+	desc = "A specialised cell, for robotic use only. Do not swallow. Stores energy."
+	id = "robot_stomach"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/organ/stomach/robot_ipc
+	category = list("Robot Parts")
+
+/datum/design/power_cord
+	name = "Power Cord Implant"
+	desc = "An implant allowing synthetics to recharge using APCs."
+	id = "power_cord"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 250, /datum/material/glass = 400)
+	build_path = /obj/item/organ/cyberimp/arm/power_cord
+	category = list("Robot Parts")
+
+/datum/design/vox_lungs
+	name = "Vox Lungs"
+	desc = "A pair of lungs for breathing nitrogen."
+	id = "vox_lungs"
+	build_type = MECHFAB
+	construction_time = 50
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/organ/lungs/vox
+	category = list("Robot Parts")

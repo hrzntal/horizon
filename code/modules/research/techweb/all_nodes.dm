@@ -87,6 +87,23 @@
 		"sflash",
 	)
 
+/datum/techweb_node/robot_parts
+	id = "robot_organs"
+	starting_node = TRUE
+	display_name = "Robot Parts"
+	description = "Basic `organs` for robotic or synthetic lifeforms."
+	design_ids = list(
+		"robot_eyes",
+		"robot_ears",
+		"robot_tongue",
+		"robot_heart",
+		"robot_liver",
+		"robot_lungs",
+		"robot_stomach",
+		"power_cord",
+		"vox_lungs",
+	)
+
 /datum/techweb_node/mech
 	id = "mecha"
 	starting_node = TRUE

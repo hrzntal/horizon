@@ -57,6 +57,7 @@
 								"Exosuit Ammunition",
 								"Cyborg Upgrade Modules",
 								"Cybernetics",
+								"Robot Parts",
 								"Implants",
 								"Control Interfaces",
 								"Misc"
