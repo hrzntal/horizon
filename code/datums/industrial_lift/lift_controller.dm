@@ -1,4 +1,6 @@
 /datum/lift_controller
+	/// Name of the thing we're operating on, be it lift, tram or elevator
+	var/name = "industrial lift"
 	/// Id of the lift controller
 	var/id
 	/// Associative list of all the lift platforms
@@ -10,7 +12,7 @@
 	/// Y length of the platform
 	var/y_len
 	/// How fast we progress to the next tile movement, per process of the subsystem (in %s)
-	var/speed = 1
+	var/speed = 0.5
 	/// Keeping track of our progress towards the next turf
 	var/travel_progress = 0
 	/// Whether it has safeties on. Safeties will cause the lift to halt when attempting to crush something (still will heavy deal damage)
@@ -25,10 +27,13 @@
 	var/datum/lift_waypoint/prev_wp
 	/// Next waypoint, will be null if we're not in mid-transit
 	var/datum/lift_waypoint/next_wp
+	/// Direction to the next waypoint, so we dont need to keep getting it
+	var/next_wp_dir = SOUTH
 
 	/// Reference to the lift's route, for easy getting
 	var/datum/lift_route/route
 
+	var/datum/lift_waypoint/last_stop_wp
 	/// The current destination of the lift
 	var/datum/lift_waypoint/destination_wp
 	/// Associative list of all the waypoints that have been queued for destination (FIFU)
@@ -39,8 +44,11 @@
 	var/interior_closed = FALSE
 	var/exterior_closed = FALSE
 	var/waypoint_speed_multiplier = 1
+	var/calculated_travel_speed = 1
+	var/calculated_glide_size = 8
 
-#define VERTICAL_TRAVEL_SPEED 0.2
+	var/sound_loop_type = /datum/looping_sound/industrial_lift
+	var/datum/looping_sound/loop_sound
 
 /datum/lift_controller/process(delta_time)
 	if(next_action_time > world.time)
@@ -54,31 +62,50 @@
 	if(halted && ProcessHalted())
 		return
 	if(!next_wp)
-		next_wp = route.GetEnrouteWaypoint(current_wp, destination_wp)
-		waypoint_speed_multiplier = next_wp.connected[current_wp]
-	var/move_dir = get_dir_multiz(current_position, next_wp.position)
-	var/travel_speed = speed
-	if(move_dir == UP || move_dir == DOWN)
-		travel_speed *= VERTICAL_TRAVEL_SPEED
-	travel_progress += travel_speed * waypoint_speed_multiplier
+		next_wp = SetNextWaypoint(route.GetEnrouteWaypoint(current_wp, destination_wp))
+	
+	travel_progress += calculated_travel_speed
 	if(travel_progress < 1)
 		return
 	//Move
+	var/move_dir = next_wp_dir
 	travel_progress = 0
-	var/premove_collision = FALSE
+	var/premove_collisions = NONE
 	for(var/i in lift_platforms)
 		var/obj/structure/industrial_lift/platform = i
-		var/collision = platform.PreLiftMove(move_dir)
-		if(collision)
-			premove_collision = TRUE
+		premove_collisions |= platform.PreLiftMove(move_dir, safeties)
 
+	if(premove_collisions & LIFT_HIT_BLOCK)
+		DoImpactEffects()
+		ToggleIntentionalHalt()
+		return
+	if(premove_collisions & LIFT_HIT_MOB)
+		DoImpactEffects()
+	if(premove_collisions & LIFT_CRUSH_MOB && safeties)
+		ToggleIntentionalHalt()
+		return
+
+	//Here we move the ALL the platforms, and then after doing that we move ALL their contents back on their rightful platforms
 	for(var/i in lift_platforms)
 		var/obj/structure/industrial_lift/platform = i
-		platform.LiftMove(move_dir)
+		if(platform.glide_size != calculated_glide_size)
+			platform.glide_size = calculated_glide_size
+		var/turf/step_turf = get_step_multiz(platform.loc, move_dir)
+		platform.forceMove(step_turf)
+	for(var/i in lift_platforms)
+		var/obj/structure/industrial_lift/platform = i
+		for(var/b in platform.lift_load)
+			var/atom/movable/movable_atom = b
+			if(movable_atom.glide_size != calculated_glide_size)
+				movable_atom.glide_size = calculated_glide_size
+			movable_atom.forceMove(platform.loc)
 
 	current_position = get_step_multiz(current_position, move_dir)
+	loop_sound.output_atoms = list(GetSoundTurf())
 	if(current_position == next_wp.position)
 		current_wp = next_wp
+		if(current_wp.is_stop)
+			last_stop_wp = current_wp
 		prev_wp = null
 		next_wp = null
 	else if (current_wp)
@@ -86,7 +113,44 @@
 		current_wp = null
 	CheckMyDestination()
 
+// This proc will reverse the route of the lift to the last stop and clear it's FIFO queue
+/datum/lift_controller/proc/EmergencyRouteReversal()
+	if(!halted || !prev_wp || !next_wp || !destination_wp)
+		return
+	var/prev_wp_cache = prev_wp
+	var/destination_wp_cache = destination_wp
+	called_waypoints.Cut()
+	prev_wp = next_wp
+	SetNextWaypoint(prev_wp_cache)
+	SetDestination(last_stop_wp)
+	last_stop_wp = destination_wp_cache
+
+/datum/lift_controller/proc/GetStatusInfo()
+	if(halted && current_wp == last_stop_wp)
+		return SPAN_NOTICE("The <b>[name]</b> is currently at <b>[current_wp.name]</b>.")
+	else
+		return SPAN_NOTICE("The <b>[name]</b> is currently in transit from <b>[last_stop_wp.name]</b> to <b>[destination_wp.name]</b>.")
+
+#define VERTICAL_TRAVEL_SPEED 0.2
+
+/datum/lift_controller/proc/SetNextWaypoint(datum/lift_waypoint/setted_wp)
+	next_wp = setted_wp
+	var/connection_wp = current_wp || prev_wp
+	waypoint_speed_multiplier = next_wp.connected[connection_wp]
+	calculated_travel_speed = speed * waypoint_speed_multiplier
+	next_wp_dir = get_dir_multiz(current_position, next_wp.position)
+	if(next_wp_dir == UP || next_wp_dir == DOWN)
+		calculated_travel_speed *= VERTICAL_TRAVEL_SPEED
+	calculated_glide_size = (1/SS_LIFTS_TICK_RATE) * calculated_travel_speed * INDUSTRIAL_LIFT_GLIDE_SIZE_MULTIPLIER * GLOB.glide_size_multiplier
+
 #undef VERTICAL_TRAVEL_SPEED
+
+/datum/lift_controller/proc/DoImpactEffects()
+	var/turf/action_turf = GetSoundTurf()
+	playsound(action_turf, 'sound/effects/meteorimpact.ogg', 60, TRUE)
+	for(var/mob/M in urange(CEILING(x_len/2,1), action_turf))
+		if(!M.stat)
+			shake_camera(M, 3, 1)
 
 //Called on process() when halted is TRUE, check all conditions to determine whether we un-halt
 /datum/lift_controller/proc/ProcessHalted()
@@ -127,7 +191,7 @@
 	if(called_waypoints.len)
 		var/datum/lift_waypoint/called_waypoint = called_waypoints[1]
 		if(current_wp == called_waypoint)
-			called_waypoints -= destination_wp
+			called_waypoints -= called_waypoint
 		else
 			SetDestination(called_waypoint)
 
@@ -136,7 +200,9 @@
 		ArrivedDestination()
 
 /datum/lift_controller/proc/ArrivedDestination()
+	playsound(GetSoundTurf(), 'sound/lifts/elevator_ding.ogg', 100)
 	needs_to_open_doors = TRUE
+	last_stop_wp = destination_wp
 	called_waypoints -= destination_wp
 	destination_wp = null
 	SetHalted(TRUE)
@@ -146,6 +212,8 @@
 	intentionally_halted = !intentionally_halted
 	if(intentionally_halted)
 		SetHalted(TRUE)
+	else
+		next_action_time = world.time + 1 SECONDS
 
 /datum/lift_controller/proc/InLiftBounds(atom/checked)
 	var/turf/my_turf = current_position
@@ -154,6 +222,11 @@
 	if((checked.x >= my_turf.x && checked.x <= my_turf.x + x_len) && (checked.y >= my_turf.y && checked.y <= my_turf.y + x_len))
 		return TRUE
 	return FALSE
+
+//Gets the turf sounds are supposed to be played on
+/datum/lift_controller/proc/GetSoundTurf()
+	var/turf/passed_turf = locate(current_position.x + FLOOR(x_len/2,1), current_position.y + FLOOR(y_len/2,1), current_position.z)
+	return passed_turf
 
 /datum/lift_controller/New(obj/structure/industrial_lift/master_lift)
 	id = master_lift.id
@@ -190,6 +263,8 @@
 	current_position = closest_platform.loc
 	x_len = furthest_platform.x - current_position.x
 	y_len = furthest_platform.y - current_position.y
+
+	loop_sound = new sound_loop_type(list(GetSoundTurf()))
 	return ..()
 
 /datum/lift_controller/proc/CallWaypoint(datum/lift_waypoint/called)
@@ -203,7 +278,11 @@
 	if(halted == bool)
 		return
 	halted = bool
-	travel_progress = 0
+	if(halted)
+		travel_progress = 0
+		loop_sound.stop()
+	else
+		loop_sound.start()
 	if(!current_wp)
 		current_wp = route.GetWaypointInPosition(current_position)
 		if(current_wp)
@@ -243,7 +322,10 @@
 		//Create waypoint
 		waypoint_counter++
 		var/wp_id = "[id]_[waypoint_counter]"
-		var/connectibles = previous_waypoint_id ? list(previous_waypoint_id = 1) : null
+		var/list/connectibles
+		if(previous_waypoint_id)
+			connectibles = list()
+			connectibles[previous_waypoint_id] = 1
 		new /datum/lift_waypoint(
 			"Floor [waypoint_counter]",
 			"A stop for the floor [waypoint_counter]",
@@ -270,5 +352,13 @@
 		if(!route)
 			CRASH("Lift controller of id [id] could not create a route.")
 	current_wp = route.GetWaypointInPosition(current_position)
+	last_stop_wp = current_wp
 	if(!current_wp)
 		CRASH("Lift controller of id [id] could not find current waypoint.")
+
+/datum/lift_controller/tram
+	name = "tram"
+	speed = 1
+
+/datum/lift_controller/elevator
+	name = "elevator"

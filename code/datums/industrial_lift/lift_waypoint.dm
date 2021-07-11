@@ -110,4 +110,16 @@
 
 	return found_next
 
+/datum/lift_route/proc/GetNearbyStop(var/turf/near_turf)
+	var/datum/lift_waypoint/found
+	var/last_dist
+	for(var/i in stops)
+		var/datum/lift_waypoint/iterated_stop = i
+		if(iterated_stop.position.z != near_turf.z)
+			continue
+		if(!found || (get_dist(iterated_stop.position, near_turf) < last_dist))
+			found = iterated_stop
+			last_dist = get_dist(iterated_stop.position, near_turf)
+	return found
+
 #undef LIFT_PATHFINDING_MAX_STEPS

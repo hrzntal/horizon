@@ -136,3 +136,12 @@
 	end_sound = 'sound/machines/engine/engineend.ogg'
 	volume = 10
 	falloff_distance = 5
+
+/datum/looping_sound/industrial_lift
+	start_sound = 'sound/lifts/lift_loop/lift_start.ogg'
+	start_length = 0.5 SECONDS
+	mid_sounds = list('sound/lifts/lift_loop/lift_loop.ogg'=1)
+	mid_length = 2 SECONDS
+	end_sound = 'sound/lifts/lift_loop/lift_end.ogg'
+	volume = 40
+	falloff_distance = 4

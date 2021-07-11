@@ -1,0 +1,7 @@
+#define LIFT_HIT_MOB (1<<0)
+#define LIFT_CRUSH_MOB (1<<1)
+#define LIFT_HIT_OBJ (1<<2)
+#define LIFT_HIT_BLOCK (1<<3)
+
+#define SS_LIFTS_TICK_RATE 0.2 SECONDS
+#define INDUSTRIAL_LIFT_GLIDE_SIZE_MULTIPLIER 1.6 / 10

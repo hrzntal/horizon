@@ -1351,8 +1351,8 @@
 /turf/open/floor/wood,
 /area/service/library)
 "aeR" = (
-/obj/machinery/button/tram{
-	id = "middle_part"
+/obj/machinery/button/elevator/speaker{
+	id = "tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/center)
@@ -5591,18 +5591,6 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron,
 /area/hallway/primary/tram/right)
-"asi" = (
-/obj/effect/turf_decal/stripes,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/effect/landmark/tram/middle_part,
-/obj/structure/industrial_lift/tram/central{
-	icon_state = "titanium"
-	},
-/obj/machinery/computer/tram_controls,
-/turf/open/floor/vault,
-/area/hallway/primary/tram/center)
 "asj" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -9822,6 +9810,16 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
+"aFA" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "titanium_white";
+	id = "tram"
+	},
+/obj/machinery/door/window/southright{
+	id_tag = "tramdoor"
+	},
+/turf/open/openspace,
+/area/hallway/primary/tram/center)
 "aFB" = (
 /obj/structure/chair/comfy/beige{
 	dir = 8
@@ -14203,6 +14201,7 @@
 /obj/structure/fluff/tram_rail{
 	dir = 1
 	},
+/obj/structure/lift_control_panel,
 /turf/open/openspace,
 /area/hallway/primary/tram/center)
 "brP" = (
@@ -38201,6 +38200,14 @@
 	},
 /turf/open/floor/iron,
 /area/commons/storage/primary)
+"kBD" = (
+/obj/effect/mapping_helpers/lift_waypoint{
+	id = "tram";
+	name = "West Wing";
+	waypoint_id = "tram_left"
+	},
+/turf/open/openspace,
+/area/hallway/primary/tram/left)
 "kBI" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/status_display/evac/directional/north,
@@ -48220,8 +48227,8 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "oDr" = (
-/obj/machinery/button/tram{
-	id = "right_part"
+/obj/machinery/button/elevator/speaker{
+	id = "tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/right)
@@ -52707,6 +52714,21 @@
 /obj/machinery/air_sensor/atmos/oxygen_tank,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
+"qqg" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "plating"
+	},
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/lift_waypoint{
+	connects_to = list("tram_right" = 1, "tram_left" = 1);
+	id = "tram";
+	name = "Central Wing";
+	waypoint_id = "tram_middle"
+	},
+/turf/open/openspace,
+/area/hallway/primary/tram/center)
 "qqh" = (
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/iron/white,
@@ -54943,6 +54965,14 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
+"rmv" = (
+/obj/effect/mapping_helpers/lift_waypoint{
+	id = "tram";
+	name = "East Wing";
+	waypoint_id = "tram_right"
+	},
+/turf/open/openspace,
+/area/hallway/primary/tram/right)
 "rmz" = (
 /obj/machinery/power/tracker,
 /obj/effect/turf_decal/sand/plating,
@@ -55079,14 +55109,6 @@
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
-"roW" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes,
-/obj/effect/landmark/tram/right_part,
-/turf/open/floor/vault,
-/area/hallway/primary/tram/right)
 "rpb" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 8
@@ -56990,8 +57012,8 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "scg" = (
-/obj/machinery/button/tram{
-	id = "left_part"
+/obj/machinery/button/elevator/speaker{
+	id = "tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/left)
@@ -58560,14 +58582,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/storage)
-"sFL" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes,
-/obj/effect/landmark/tram/left_part,
-/turf/open/floor/vault,
-/area/hallway/primary/tram/left)
 "sFN" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/decal/cleanable/dirt,
@@ -72535,6 +72549,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
+/obj/structure/lift_control_panel,
 /turf/open/openspace,
 /area/security/prison)
 "xRN" = (
@@ -159859,7 +159874,7 @@ axX
 vUA
 azB
 qbg
-axX
+kBD
 aBy
 qmE
 aFj
@@ -160885,7 +160900,7 @@ avd
 scg
 axX
 vUA
-sFL
+azB
 qbg
 axX
 scg
@@ -170139,7 +170154,7 @@ mph
 bWo
 hdO
 cdx
-mph
+qqg
 aBR
 aDr
 aFf
@@ -171165,7 +171180,7 @@ avS
 aeR
 tlq
 qTm
-asi
+knD
 brL
 tlq
 aeR
@@ -171681,7 +171696,7 @@ umR
 gVN
 knD
 eDw
-vjI
+aFA
 hsN
 eHV
 aFf
@@ -180419,7 +180434,7 @@ ayt
 omi
 aAQ
 ujT
-ayt
+rmv
 aCs
 aEd
 cLO
@@ -181445,7 +181460,7 @@ awq
 oDr
 ayt
 omi
-roW
+aAQ
 ujT
 ayt
 oDr

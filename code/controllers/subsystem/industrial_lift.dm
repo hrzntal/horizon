@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(industrial_lift)
 	name = "Industrial Lifts"
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	wait = 0.5 SECONDS
+	wait = SS_LIFTS_TICK_RATE
 	var/list/lift_controllers = list()
 	var/list/lift_routes = list()
 	var/list/lift_waypoints = list()
