@@ -251,11 +251,7 @@
 /datum/addiction/nicotine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
 	affected_carbon.Jitter(10 * delta_time)
-	if(DT_PROB(10, delta_time))
-		affected_carbon.emote("cough")
 
 /datum/addiction/nicotine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
 	affected_carbon.Jitter(15 * delta_time)
-	if(DT_PROB(15, delta_time))
-		affected_carbon.emote("cough")
