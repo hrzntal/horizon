@@ -176,10 +176,12 @@
 		return TRUE
 	if(destination_wp)
 		if(!exterior_closed)
+			//Put code to close exteriors here
 			exterior_closed = TRUE
 			next_action_time = world.time + 0.5 SECONDS
 			return TRUE
 		if(!interior_closed)
+			//Put code to close interiors here
 			interior_closed = TRUE
 			next_action_time = world.time + 0.5 SECONDS
 			return TRUE
