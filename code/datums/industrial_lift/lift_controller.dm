@@ -313,6 +313,7 @@
 	y_len = furthest_platform.y - current_position.y
 
 	loop_sound = new sound_loop_type(list(GetSoundTurf()))
+	SSindustrial_lift.AddControllerToInit(src)
 	return ..()
 
 /datum/lift_controller/proc/CallWaypoint(datum/lift_waypoint/called)

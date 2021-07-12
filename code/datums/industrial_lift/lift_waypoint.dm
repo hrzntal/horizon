@@ -42,6 +42,7 @@
 		route.stops += src
 
 	SSindustrial_lift.lift_waypoints[waypoint_id] = src
+	SSindustrial_lift.AddWaypointToInit(src)
 	. = ..()
 
 //Called by SSindustrial_lift. Connect to other waypoints here
