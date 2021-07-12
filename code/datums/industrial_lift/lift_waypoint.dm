@@ -90,6 +90,8 @@
 		waypoints_to_check[iterated_waypoint] = TRUE
 		while(steps <= LIFT_PATHFINDING_MAX_STEPS)
 			steps++
+			if(connects)
+				break
 			for(var/b in waypoints_to_check)
 				var/datum/lift_waypoint/waypoint_in_loop = b
 				waypoints_to_check -= b
@@ -104,7 +106,7 @@
 			possible_waypoints[iterated_waypoint] = steps
 	var/last_steps = 0
 	for(var/wp in possible_waypoints)
-		if(!found_next || last_steps < possible_waypoints[wp])
+		if(!found_next || last_steps > possible_waypoints[wp])
 			found_next = wp
 			last_steps = possible_waypoints[wp]
 

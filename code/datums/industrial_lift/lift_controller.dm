@@ -50,6 +50,9 @@
 	var/sound_loop_type = /datum/looping_sound/industrial_lift
 	var/datum/looping_sound/loop_sound
 
+	var/roof_type
+	var/managing_roof = FALSE
+
 /datum/lift_controller/process(delta_time)
 	if(next_action_time > world.time)
 		return
@@ -75,6 +78,12 @@
 		var/obj/structure/industrial_lift/platform = i
 		premove_collisions |= platform.PreLiftMove(move_dir, safeties)
 
+	if(managing_roof)
+		for(var/i in lift_platforms)
+			var/obj/structure/industrial_lift/platform = i
+			var/obj/structure/industrial_lift/roof = platform.managed_roof
+			premove_collisions |= roof.PreLiftMove(move_dir, safeties)
+
 	if(premove_collisions & LIFT_HIT_BLOCK)
 		DoImpactEffects()
 		ToggleIntentionalHalt()
@@ -84,6 +93,19 @@
 	if(premove_collisions & LIFT_CRUSH_MOB && safeties)
 		ToggleIntentionalHalt()
 		return
+
+	//Move the position and manage roof if any
+	current_position = get_step_multiz(current_position, move_dir)
+
+	//Current position changes, manage the roof
+	var/do_manifest_roof = FALSE
+	if(roof_type)
+		var/can_roof = CanHaveRoof()
+		if(can_roof != managing_roof)
+			if(can_roof)
+				do_manifest_roof = TRUE
+			else
+				UnmanifestRoof()
 
 	//Here we move the ALL the platforms, and then after doing that we move ALL their contents back on their rightful platforms
 	for(var/i in lift_platforms)
@@ -100,7 +122,27 @@
 				movable_atom.glide_size = calculated_glide_size
 			movable_atom.forceMove(platform.loc)
 
-	current_position = get_step_multiz(current_position, move_dir)
+	//And here we move ALL the roofs of the platforms, and then ALL their contents
+	if(managing_roof)
+		for(var/i in lift_platforms)
+			var/obj/structure/industrial_lift/platform = i
+			var/obj/structure/industrial_lift/roof = platform.managed_roof
+			if(!isopenspaceturf(roof.loc)) //Dont snag people from turfs as we drive under them
+				roof.RemoveAllItemsFromLift()
+			if(roof.glide_size != calculated_glide_size)
+				roof.glide_size = calculated_glide_size
+			var/turf/step_turf = get_step_multiz(roof.loc, move_dir)
+			roof.forceMove(step_turf)
+		for(var/i in lift_platforms)
+			var/obj/structure/industrial_lift/platform = i
+			var/obj/structure/industrial_lift/roof = platform.managed_roof
+			for(var/b in roof.lift_load)
+				var/atom/movable/movable_atom = b
+				if(movable_atom.glide_size != calculated_glide_size)
+					movable_atom.glide_size = calculated_glide_size
+				movable_atom.forceMove(roof.loc)
+
+	//All the checks and sets regaring the new position
 	loop_sound.output_atoms = list(GetSoundTurf())
 	if(current_position == next_wp.position)
 		current_wp = next_wp
@@ -112,6 +154,10 @@
 		prev_wp = current_wp
 		current_wp = null
 	CheckMyDestination()
+
+	if(do_manifest_roof)
+		ManifestRoof()
+
 
 // This proc will reverse the route of the lift to the last stop and clear it's FIFO queue
 /datum/lift_controller/proc/EmergencyRouteReversal()
@@ -357,6 +403,28 @@
 	last_stop_wp = current_wp
 	if(!current_wp)
 		CRASH("Lift controller of id [id] could not find current waypoint.")
+	//Initialize roof, if possible
+	if(roof_type && CanHaveRoof())
+		ManifestRoof()
+
+/datum/lift_controller/proc/CanHaveRoof()
+	var/turf/up_step = get_step_multiz(current_position, UP)
+	if(!up_step)
+		return FALSE
+	return TRUE
+
+/datum/lift_controller/proc/ManifestRoof()
+	managing_roof = TRUE
+	for(var/i in lift_platforms)
+		var/obj/structure/industrial_lift/platform = i
+		var/turf/up_step = get_step_multiz(platform.loc, UP)
+		platform.managed_roof = new roof_type(up_step)
+
+/datum/lift_controller/proc/UnmanifestRoof()
+	managing_roof = FALSE
+	for(var/i in lift_platforms)
+		var/obj/structure/industrial_lift/platform = i
+		QDEL_NULL(platform.managed_roof)
 
 /datum/lift_controller/tram
 	name = "tram"
@@ -364,3 +432,4 @@
 
 /datum/lift_controller/elevator
 	name = "elevator"
+	roof_type = /obj/structure/industrial_lift/roof

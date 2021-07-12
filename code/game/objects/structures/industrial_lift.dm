@@ -49,6 +49,8 @@
 
 /obj/structure/industrial_lift/proc/RemoveItemFromLift(atom/movable/potential_rider)
 	SIGNAL_HANDLER
+	if(potential_rider.loc == loc) //We move the lift, THEN the things back on the lift, don't remove our items
+		return
 	if(!lift_load || !lift_load[potential_rider])
 		return
 	lift_load -= potential_rider
@@ -57,13 +59,28 @@
 
 /obj/structure/industrial_lift/proc/AddItemOnLift(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
-	if(AM == src || type_blacklist[AM.type] || AM.invisibility == INVISIBILITY_ABSTRACT)
+	if(lift_load && lift_load[AM])
+		return
+	if(type_blacklist[AM.type] || AM.invisibility == INVISIBILITY_ABSTRACT)
 		return
 	LAZYINITLIST(lift_load)
-	if(lift_load[AM])
-		return
 	lift_load[AM] = TRUE
 	RegisterSignal(AM, COMSIG_PARENT_QDELETING, .proc/RemoveItemFromLift)
+
+/obj/structure/industrial_lift/proc/RemoveAllItemsFromLift()
+	if(!lift_load)
+		return
+	for(var/i in lift_load)
+		var/atom/movable/movable_atom = i
+		UnregisterSignal(movable_atom, COMSIG_PARENT_QDELETING)
+	lift_load = null
+
+/obj/structure/industrial_lift/proc/CrushMob(mob/living/crushed, safeties)
+	if(safeties && crushed.getBruteLoss() <= 200)
+		crushed.Paralyze(10 SECONDS)
+		crushed.adjustBruteLoss(80)
+	else
+		crushed.gib(FALSE,FALSE,FALSE)//the nicest kind of gibbing, keeping everything intact.
 
 //ACTUAL movement happens in the controller
 //Collisions happen here, before the lift is moved (because it may not be moved, depending on collisions / safeties)
@@ -71,47 +88,49 @@
 	var/turf/step_turf = get_step_multiz(loc, move_dir)
 	if(lift_controller.InLiftBounds(step_turf)) //Dont check collisions inside the lift bounds
 		return
-	if(move_dir == UP && !isopenspaceturf(step_turf))
-		return LIFT_HIT_BLOCK
 	if(move_dir == DOWN && !isopenspaceturf(loc))
 		return LIFT_HIT_BLOCK
 	if(isclosedturf(step_turf))
 		return LIFT_HIT_BLOCK
 	var/returned_bitfield = NONE
+	//Collision UP movements are an odd case, because it both crushes and blocks the lift
+	var/collision_up_movement = FALSE
+	if(!managed_roof && move_dir == UP && !isopenspaceturf(step_turf))
+		collision_up_movement = TRUE
+		returned_bitfield |= LIFT_HIT_BLOCK
 	for(var/mob/living/collided in step_turf)
 		returned_bitfield |= LIFT_HIT_MOB
 		shake_camera(collided, 3, 1)
-		if(move_dir == DOWN)
+		if(collision_up_movement)
+			returned_bitfield |= LIFT_CRUSH_MOB
+			to_chat(collided, SPAN_USERDANGER("You are crushed by \the [src] against the ceiling!"))
+			CrushMob(collided, safeties)
+		else if(move_dir == DOWN)
 			returned_bitfield |= LIFT_CRUSH_MOB
 			to_chat(collided, SPAN_USERDANGER("You are crushed by \the [src]!"))
-			if(safeties)
-				collided.Paralyze(10 SECONDS)
-				collided.adjustBruteLoss(80)
-			else
-				collided.gib(FALSE,FALSE,FALSE)//the nicest kind of gibbing, keeping everything intact.
-		else
+			CrushMob(collided, safeties)
+		else if(move_dir != UP)
 			var/turf/two_step_turf = get_step(step_turf, move_dir) //We know its not multi-z now
 			var/crushing = isclosedturf(two_step_turf) ? TRUE : FALSE
 			if(crushing)
 				returned_bitfield |= LIFT_CRUSH_MOB
 				to_chat(collided, SPAN_USERDANGER("\The [src] crushes you against \the [two_step_turf]!"))
-				if(safeties)
-					collided.Paralyze(10 SECONDS)
-					collided.adjustBruteLoss(80)
-				else
-					collided.gib(FALSE,FALSE,FALSE)//the nicest kind of gibbing, keeping everything intact.
+				CrushMob(collided, safeties)
 			else
 				to_chat(collided, SPAN_USERDANGER("[src] slams into you and sends you flying!"))
 				collided.Paralyze(5 SECONDS)
 				collided.adjustBruteLoss(40)
 				var/atom/throw_target = get_edge_target_turf(collided, turn(move_dir, pick(45, -45)))
-				collided.throw_at(throw_target, 200, 4)
+				collided.throw_at(throw_target, 100, 3)
 
 	return returned_bitfield
 
 /obj/structure/industrial_lift/Destroy()
+	if(managed_roof)
+		QDEL_NULL(managed_roof)
 	if(lift_controller)
 		lift_controller.lift_platforms -= src
+	RemoveAllItemsFromLift()
 	return ..()
 
 /obj/structure/industrial_lift/tram
@@ -142,13 +161,32 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	lift_controller_type = /datum/lift_controller/elevator
 
+//DO NOT MAP THOSE IN ABOVE YOUR LIFT, USE THE PROPER CONTROLLER TYPE WITH THE ROOFS(make new one if you need to), IT HANDLES THAT
 /obj/structure/industrial_lift/roof
 	name = "industrial lift roof"
 	desc = "A roof of an industrial lift"
 	lift_controller_type = null
+	plane = FLOOR_PLANE
+	layer = ROOF_LAYER
 
 /obj/structure/industrial_lift/roof/PreLiftMove(move_dir, safeties)
 	if(move_dir == DOWN)
 		return
-	//Note: lift floors check blocked ways in the UP direction, and it should stay that way
-
+	if(!isopenspaceturf(loc)) //Lift roof going under a turf
+		return
+	var/turf/step_turf = get_step_multiz(loc, move_dir)
+	var/returned_bitfield = NONE
+	for(var/mob/living/collided in loc)
+		if(move_dir == UP && (!step_turf || !isopenspaceturf(step_turf))) //Step turf could not exist if going up, we treat it as ceiling
+			returned_bitfield |= LIFT_HIT_MOB
+			returned_bitfield |= LIFT_CRUSH_MOB
+			to_chat(collided, SPAN_USERDANGER("You are crushed by \the [src] against the ceiling!"))
+			CrushMob(collided, safeties)
+		else if(move_dir != UP && isclosedturf(step_turf)) //Just cardinal directions here
+			returned_bitfield |= LIFT_HIT_MOB
+			to_chat(collided, SPAN_USERDANGER("[step_turf] slams into you and sends you flying!"))
+			collided.Paralyze(5 SECONDS)
+			collided.adjustBruteLoss(40)
+			var/atom/throw_target = get_edge_target_turf(collided, turn(REVERSE_DIR(move_dir), pick(45, -45)))
+			collided.throw_at(throw_target, 100, 3)
+	return returned_bitfield
