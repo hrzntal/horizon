@@ -1438,6 +1438,7 @@
 #include "code\game\objects\structures\hivebot.dm"
 #include "code\game\objects\structures\holosign.dm"
 #include "code\game\objects\structures\industrial_lift.dm"
+#include "code\game\objects\structures\industrial_lift_structures.dm"
 #include "code\game\objects\structures\janicart.dm"
 #include "code\game\objects\structures\kitchen_spike.dm"
 #include "code\game\objects\structures\ladders.dm"
