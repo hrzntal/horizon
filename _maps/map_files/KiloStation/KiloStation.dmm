@@ -43980,6 +43980,7 @@
 /area/service/chapel/office)
 "ejA" = (
 /obj/docking_port/stationary/huge{
+	dir = 2;
 	name = "Abandoned Station Dock"
 	},
 /turf/open/space/basic,
