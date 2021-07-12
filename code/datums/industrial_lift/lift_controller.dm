@@ -167,6 +167,7 @@
 			next_action_time = world.time + 0.5 SECONDS
 			return TRUE
 		if(exterior_closed)
+			playsound(GetSoundTurf(), 'sound/lifts/elevator_ding.ogg', 100)
 			//Put code to open exteriors here
 			exterior_closed = FALSE
 			next_action_time = world.time + 0.5 SECONDS
@@ -202,7 +203,6 @@
 		ArrivedDestination()
 
 /datum/lift_controller/proc/ArrivedDestination()
-	playsound(GetSoundTurf(), 'sound/lifts/elevator_ding.ogg', 100)
 	needs_to_open_doors = TRUE
 	last_stop_wp = destination_wp
 	called_waypoints -= destination_wp

@@ -161,6 +161,10 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/white,
 /area/science/research/abandoned)
+"fJ" = (
+/obj/machinery/mining_brace,
+/turf/open/floor/iron,
+/area/cargo/warehouse)
 "fL" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/large,
@@ -1426,6 +1430,11 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/storage)
+"Oj" = (
+/obj/structure/industrial_lift,
+/obj/structure/lift_control_panel,
+/turf/open/openspace,
+/area/cargo/warehouse)
 "OH" = (
 /obj/structure/chair/office,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -1745,7 +1754,6 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/mining_brace,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "Yv" = (
@@ -33839,7 +33847,7 @@ ME
 pD
 iF
 Hv
-gW
+fJ
 nk
 RR
 fL
@@ -34103,7 +34111,7 @@ rc
 Zs
 FP
 Yk
-qe
+Oj
 qe
 qe
 qe

@@ -155,6 +155,7 @@
 	density = FALSE
 	anchored = TRUE
 	move_resist = INFINITY
+	layer = ABOVE_WINDOW_LAYER
 	var/datum/lift_controller/linked_controller
 
 /obj/structure/lift_control_panel/Initialize()
