@@ -113,7 +113,7 @@
 
 	return found_next
 
-/datum/lift_route/proc/GetNearbyStop(var/turf/near_turf)
+/datum/lift_route/proc/GetNearbyStop(turf/near_turf)
 	var/datum/lift_waypoint/found
 	var/last_dist
 	for(var/i in stops)
