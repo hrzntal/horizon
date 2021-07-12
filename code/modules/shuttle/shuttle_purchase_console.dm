@@ -61,24 +61,27 @@
 		TryFindDock()
 	if(!catalogue)
 		GetCatalogue()
-	if(selected_shuttle)
-		dat += "<a href='?src=[REF(src)];task=back'>Back</a>"
+	if(!dock)
+		dat += "<center><b>Couldn't find a suitable dock to connect to! Please construct the console near a common docking port.</b></center>"
 	else
-		dat += "---"
-	dat += "<HR>"
-	if(selected_shuttle)
-		var/shown_name = selected_rename ? selected_rename : selected_shuttle.name
-		dat += "<b>[shown_name]</b> <a href='?src=[REF(src)];task=selected;selected_task=rename'>Rename</a>"
-		dat += "<BR><i>[selected_shuttle.desc]<BR>[selected_shuttle.detailed_desc]</i><BR>Cost: [selected_shuttle.cost] cr.<BR>Stock remaining: [selected_shuttle.stock]"
-		dat += "<BR><center><a href='?src=[REF(src)];task=selected;selected_task=purchase'>Purchase</a></center>"
-	else
-		var/index = 0
-		for(var/i in catalogue)
-			index++
-			var/datum/sold_shuttle/iterated_shuttle = i
-			dat += "<b>[iterated_shuttle.name]</b> <a href='?src=[REF(src)];task=select;index=[index]'>Select</a>"
-			dat += "<BR><i>[iterated_shuttle.desc]</i><BR>Cost: [iterated_shuttle.cost] cr.<BR>Stock remaining: [iterated_shuttle.stock]"
-			dat += "<HR>"
+		if(selected_shuttle)
+			dat += "<a href='?src=[REF(src)];task=back'>Back</a>"
+		else
+			dat += "---"
+		dat += "<HR>"
+		if(selected_shuttle)
+			var/shown_name = selected_rename ? selected_rename : selected_shuttle.name
+			dat += "<b>[shown_name]</b> <a href='?src=[REF(src)];task=selected;selected_task=rename'>Rename</a>"
+			dat += "<BR><i>[selected_shuttle.desc]<BR>[selected_shuttle.detailed_desc]</i><BR>Cost: [selected_shuttle.cost] cr.<BR>Stock remaining: [selected_shuttle.stock]"
+			dat += "<BR><center><a href='?src=[REF(src)];task=selected;selected_task=purchase'>Purchase</a></center>"
+		else
+			var/index = 0
+			for(var/i in catalogue)
+				index++
+				var/datum/sold_shuttle/iterated_shuttle = i
+				dat += "<b>[iterated_shuttle.name]</b> <a href='?src=[REF(src)];task=select;index=[index]'>Select</a>"
+				dat += "<BR><i>[iterated_shuttle.desc]</i><BR>Cost: [iterated_shuttle.cost] cr.<BR>Stock remaining: [iterated_shuttle.stock]"
+				dat += "<HR>"
 	var/datum/browser/popup = new(user, "shuttle_purchase", name, 450, 600)
 	popup.set_content(dat.Join())
 	popup.open()
