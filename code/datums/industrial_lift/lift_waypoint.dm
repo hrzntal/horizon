@@ -2,10 +2,13 @@
 /obj/effect/mapping_helpers/lift_waypoint
 	name = "Lift Waypoint"
 	desc = "A waypoint of the lift"
+	/// Id of the lift this will belong to
 	var/id
+	/// Id of the waypoint
 	var/waypoint_id
-	/// Associative list of connected waypoints to speed multiplier to getting to them ("waypoint_id" = 0.5) for example
+	/// Associative list of connected waypoint ID's to speed multiplier to getting to them ("waypoint_id" = 0.5) for example
 	var/connects_to = list()
+	/// Whether this will spawn a stop waypoint
 	var/is_stop = TRUE
 
 /obj/effect/mapping_helpers/lift_waypoint/Initialize()
@@ -13,13 +16,19 @@
 	return ..()
 
 /datum/lift_waypoint
+	/// Name of the waypoint
 	var/name
+	/// Description of the waypoint
 	var/desc
+	/// Id of the lift this belongs to
 	var/id
+	/// Id of the waypoint
 	var/waypoint_id
+	/// Position of the waypoint
 	var/turf/position
 	/// Associative list of connected waypoints to speed multiplier to getting to them ("waypoint_id" = 0.5) for example
 	var/list/connect_to
+	/// Whether the waypoint is a stop
 	var/is_stop = TRUE
 	/// Associative list of connected waypoints to speed multiplier to getting to them (waypoint_ref = 0.5) for example
 	var/list/connected = list()
@@ -59,8 +68,11 @@
 	connect_to = null
 
 /datum/lift_route
+	/// Id of the lift
 	var/id
+	/// All waypoints of our lift
 	var/list/waypoints = list()
+	/// All waypoints that are stops
 	var/list/stops = list()
 
 /datum/lift_route/New(arg_id)

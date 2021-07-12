@@ -15,11 +15,17 @@
 	smoothing_groups = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
 	canSmoothWith = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
+	/// ID of the lift controller this will create
 	var/id
+	/// Type of the lift controller this will create
 	var/lift_controller_type = /datum/lift_controller
+	/// Reference to our lift controller
 	var/datum/lift_controller/lift_controller
+	/// All the atoms this lift is managing
 	var/list/lift_load
+	/// The turf of this lift platform, managed by the controller
 	var/obj/structure/industrial_lift/roof/managed_roof
+	/// List of all blacklisted types, to prevent unwanted stuff from moved
 	var/static/list/type_blacklist
 
 /obj/structure/industrial_lift/Initialize()

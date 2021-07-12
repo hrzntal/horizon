@@ -39,18 +39,27 @@
 	/// Associative list of all the waypoints that have been queued for destination (FIFU)
 	var/list/called_waypoints = list()
 
+	/// Cooldown for actions
 	var/next_action_time = 0
+	/// Whether we have been requested to open doors by an arrival to destination
 	var/needs_to_open_doors = FALSE
+	/// Whether interior doors are closed
 	var/interior_closed = FALSE
+	/// Whether exterior doors are closed
 	var/exterior_closed = FALSE
-	var/waypoint_speed_multiplier = 1
+	/// The travel speed we calculated to the next waypoint
 	var/calculated_travel_speed = 1
+	/// The glide size we calculated to the next waypoint
 	var/calculated_glide_size = 8
 
+	/// Type of our sound loop
 	var/sound_loop_type = /datum/looping_sound/industrial_lift
+	/// Our sound loop
 	var/datum/looping_sound/loop_sound
 
+	/// Our roof type, if any it'll manifest whenever possible
 	var/roof_type
+	/// Whether we are currently managing a roof
 	var/managing_roof = FALSE
 
 /datum/lift_controller/process(delta_time)
@@ -182,7 +191,7 @@
 /datum/lift_controller/proc/SetNextWaypoint(datum/lift_waypoint/setted_wp)
 	next_wp = setted_wp
 	var/connection_wp = current_wp || prev_wp
-	waypoint_speed_multiplier = next_wp.connected[connection_wp]
+	var/waypoint_speed_multiplier = next_wp.connected[connection_wp]
 	calculated_travel_speed = speed * waypoint_speed_multiplier
 	next_wp_dir = get_dir_multiz(current_position, next_wp.position)
 	if(next_wp_dir == UP || next_wp_dir == DOWN)

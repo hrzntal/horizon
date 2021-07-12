@@ -7,7 +7,9 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	layer = ABOVE_WINDOW_LAYER
+	/// Id of the lift controller we connect to
 	var/id
+	/// Our text display icon, "display_blue" and "display_red" exist
 	var/display_icon = "display_blue"
 
 /obj/machinery/lift_status_display/Initialize()
@@ -91,7 +93,10 @@
 	anchored = TRUE
 	move_resist = INFINITY
 	layer = ABOVE_WINDOW_LAYER
+	/// Linked lift, we automatically link to this on LateInit, no need to input ID
 	var/datum/lift_controller/linked_controller
+	/// In any case of wanting an external controller (it being outside of the lift), you can input the ID
+	var/id
 
 /obj/structure/lift_control_panel/non_directional
 	icon_state = "elevator_control_nondir"
@@ -104,9 +109,13 @@
 	TryLink()
 
 /obj/structure/lift_control_panel/proc/TryLink()
-	var/obj/structure/industrial_lift/lift = locate() in loc
-	if(lift)
-		linked_controller = lift.lift_controller
+	if(id)
+		linked_controller = SSindustrial_lift.lift_controllers[id]
+	else
+		var/obj/structure/industrial_lift/lift = locate() in loc
+		if(lift)
+			linked_controller = lift.lift_controller
+	if(linked_controller)
 		name = "[linked_controller.name] control panel"
 		desc = "A panel which interfaces with \the [linked_controller.name] controls."
 

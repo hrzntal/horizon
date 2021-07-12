@@ -2,12 +2,18 @@ SUBSYSTEM_DEF(industrial_lift)
 	name = "Industrial Lifts"
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = SS_LIFTS_TICK_RATE
+	/// All lift controllers associative by ID
 	var/list/lift_controllers = list()
+	/// All lift routes associative by ID
 	var/list/lift_routes = list()
+	/// All lift waypoints associative by waypoint ID
 	var/list/lift_waypoints = list()
 
+	/// Lift controllers to initialize
 	var/list/lift_controllers_to_init
+	/// Lift waypoints to initialize
 	var/list/lift_waypoints_to_init
+	/// Whether do we need to call initializations
 	var/needs_init = TRUE
 
 /datum/controller/subsystem/industrial_lift/Initialize()
