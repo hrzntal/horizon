@@ -1696,12 +1696,6 @@
 /obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
-"Kc" = (
-/turf/closed/wall,
-/area/ruin/unpowered/no_grav)
-"Kk" = (
-/turf/closed/wall,
-/area/template_noop)
 "Lo" = (
 /obj/structure/cable,
 /obj/structure/alien/weeds/creature,
@@ -1733,9 +1727,6 @@
 /obj/structure/alien/weeds/creature,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/derelictoutpost)
-"QW" = (
-/turf/open/floor/plating/asteroid,
-/area/template_noop)
 "Sj" = (
 /turf/closed/wall/r_wall/rust,
 /area/ruin/space/has_grav/derelictoutpost/powerstorage)
@@ -2731,9 +2722,9 @@ aZ
 cm
 cm
 cm
-Kc
-Kc
-Kk
+aZ
+aZ
+aZ
 aa
 aa
 aa
@@ -2768,8 +2759,8 @@ cR
 cR
 GD
 GD
-QW
-Kk
+GD
+aZ
 aa
 aa
 aa

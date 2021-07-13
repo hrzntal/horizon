@@ -62,9 +62,6 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron/airless,
 /area/ruin/space/oldteleporter)
-"E" = (
-/turf/closed/wall/r_wall/rust,
-/area/template_noop)
 "G" = (
 /obj/structure/girder,
 /turf/open/floor/plating/airless,
@@ -75,16 +72,9 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/oldteleporter)
-"T" = (
-/obj/structure/girder,
-/turf/open/floor/plating/airless,
-/area/template_noop)
 "V" = (
 /turf/closed/wall/r_wall/rust,
 /area/ruin/space/oldteleporter)
-"Y" = (
-/turf/closed/wall/r_wall,
-/area/template_noop)
 
 (1,1,1) = {"
 a
@@ -148,13 +138,13 @@ a
 a
 b
 b
-T
+G
 d
 d
 d
 d
 d
-E
+V
 "}
 (6,1,1) = {"
 a
@@ -266,7 +256,7 @@ d
 d
 d
 d
-Y
+d
 "}
 (14,1,1) = {"
 b
