@@ -71,7 +71,6 @@
 	icon = 'icons/effects/light_overlays/light_32.dmi'
 	icon_state = "light"
 	plane = LIGHTING_PLANE
-	layer = MOB_LAYER
 	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0
@@ -82,7 +81,6 @@
 	icon = 'icons/effects/light_overlays/light_cone.dmi'
 	icon_state = "light"
 	plane = LIGHTING_PLANE
-	layer = MOB_LAYER
 	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	vis_flags = NONE

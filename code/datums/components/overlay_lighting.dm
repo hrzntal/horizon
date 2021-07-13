@@ -181,6 +181,8 @@
 		return
 	if(directional)
 		cast_directional_light()
+		cone.layer = current_holder.z
+	visible_mask.layer = current_holder.z
 	get_new_turfs()
 
 
