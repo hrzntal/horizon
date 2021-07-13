@@ -67,7 +67,7 @@
 		if(has_speaker)
 			say("The [controller.name] is already here. Please board the [controller.name] and select a destination.")
 		return
-	playsound(my_turf, 'sound/lifts/elevator_ding.ogg', 100)
+	playsound(my_turf, 'sound/lifts/elevator_ding.ogg', 60)
 	if(has_speaker)
 		say("The [controller.name] has been called to [stop_wp.name]. Please wait for its arrival.")
 	controller.CallWaypoint(stop_wp)
