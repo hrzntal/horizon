@@ -94,12 +94,20 @@
 	var/total_value = 0
 	var/list/valid_items = list()
 
+	var/bartered_items
+	var/bartered_item_count = 0
+
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
 		var/datum/bought_goods/bought_goodie = get_matching_bought_datum(AM)
 		if(bought_goodie)
 			total_value += bought_goodie.GetCost(AM)
 			valid_items += AM
+			if(!bartered_items)
+				bartered_items = "[bought_goodie.name]"
+			else
+				bartered_items += ", [bought_goodie.name]"
+			bartered_item_count += bought_goodie.GetAmount(AM)
 
 	total_value *= TRADE_BARTER_EXTRA_MARGIN
 	//Always treat barter as if it's haggling
@@ -119,6 +127,8 @@
 			. = get_response("hard_bargain", "You drive a hard bargain, but I'll accept", user)
 		else
 			. = get_response("trade_complete", "Thanks for your business!", user)
+		console.write_manifest(bartered_items, "[bartered_item_count] total", total_value, TRUE, user.name)
+		console.write_manifest(goodie.name, 1, total_value, FALSE, user.name)
 		goodie.current_stock--
 		var/destination_turf = get_turf(console.linked_pad)
 		goodie.spawn_item(destination_turf)
@@ -155,6 +165,7 @@
 			return get_response("too_much_value", "No way I'm paying that much for this", user)
 		else if (haggled_price > item_value*(haggle_percent-TRADE_HARD_BARGAIN_MARGIN))
 			hard_bargain = TRUE
+	console.write_manifest(goodie.name, goodie.GetAmount(chosen_item), proposed_cost, TRUE, user.name)
 	goodie.SubtractAmount(chosen_item)
 	qdel(chosen_item)
 	console.linked_pad.do_teleport_effect()
@@ -187,6 +198,7 @@
 			hard_bargain = TRUE
 
 	//We established there's stock and we have enough money for it, and the trader deals in cash
+	console.write_manifest(goodie.name, 1, proposed_cost, FALSE, user.name)
 	console.credits_held -= proposed_cost
 	current_credits += proposed_cost
 	goodie.current_stock--
@@ -232,6 +244,8 @@
 		return get_response("pad_empty", "There's nothing on the pad...", user)
 	var/item_count = 0
 	var/total_value = 0
+	var/conjoined_amount = 0
+	var/conjoined_string
 	var/list/valid_items = list()
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
@@ -241,6 +255,11 @@
 			total_value += goodie.GetCost(AM)
 			goodie.SubtractAmount(AM)
 			valid_items += AM
+			if(!conjoined_string)
+				conjoined_string = "[goodie.name]"
+			else
+				conjoined_string += ", [goodie.name]"
+			conjoined_amount += goodie.GetAmount(AM)
 
 	if(!item_count)
 		return get_response("trade_found_unwanted", "I'm not interested in these kinds of items!", user)
@@ -250,6 +269,7 @@
 		var/atom/movable/AM = i
 		qdel(AM)
 	valid_items = null
+	console.write_manifest(conjoined_string, "[conjoined_amount] total", total_value, TRUE, user.name)
 	current_credits -= total_value
 	console.credits_held += total_value
 	disposition += disposition_per_trade*item_count

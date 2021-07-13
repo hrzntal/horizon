@@ -48,15 +48,18 @@
 /datum/bought_goods/proc/CheckAmount(atom/movable/movable_atom_to_validate)
 	if(isnull(amount))
 		return TRUE
-	if(!amount)
+	if(amount < GetAmount(movable_atom_to_validate))
 		return FALSE
 	return TRUE
+
+/datum/bought_goods/proc/GetAmount(atom/movable/movable_atom_to_validate)
+	return 1
 
 /// Subtract the stock by amount of items sold. Matters for stack datums
 /datum/bought_goods/proc/SubtractAmount(atom/movable/movable_atom_to_subtract_from)
 	if(isnull(amount))
 		return
-	amount--
+	amount -= GetAmount(movable_atom_to_subtract_from)
 
 /// This proc is used to verify items past their typecheck verification
 /datum/bought_goods/proc/IsValid(atom/movable/movable_atom_to_verify)
@@ -64,32 +67,18 @@
 
 /// This proc is used to dynamically appraise the items, changing their price based off variables, make sure the price label reflects such a possibility if used
 /datum/bought_goods/proc/GetCost(atom/movable/movable_atom_to_appraise)
-	return cost
+	return cost * GetAmount(movable_atom_to_appraise)
 
 /datum/bought_goods/stack
 	name = "a stack"
-
-/datum/bought_goods/stack/GetCost(atom/movable/movable_atom_to_appraise)
-	var/obj/item/stack/our_stack = movable_atom_to_appraise
-	return cost*our_stack.amount
 
 /datum/bought_goods/stack/New(price_multiplier)
 	. = ..()
 	cost_label += " each"
 
-/datum/bought_goods/stack/CheckAmount(atom/movable/movable_atom_to_validate)
-	if(isnull(amount))
-		return TRUE
+/datum/bought_goods/stack/GetAmount(atom/movable/movable_atom_to_validate)
 	var/obj/item/stack/our_stack = movable_atom_to_validate
-	if(amount < our_stack.amount)
-		return FALSE
-	return TRUE
-
-/datum/bought_goods/stack/SubtractAmount(atom/movable/movable_atom_to_subtract_from)
-	if(isnull(amount))
-		return
-	var/obj/item/stack/our_stack = movable_atom_to_subtract_from
-	amount -= our_stack.amount
+	return our_stack.amount
 
 /datum/bought_goods/reagent
 	name = null
@@ -119,23 +108,7 @@
 		return FALSE
 	return TRUE
 
-/datum/bought_goods/reagent/CheckAmount(atom/movable/movable_atom_to_validate)
-	if(isnull(amount))
-		return TRUE
+/datum/bought_goods/reagent/GetAmount(atom/movable/movable_atom_to_validate)
 	var/datum/reagents/holder = movable_atom_to_validate.reagents
 	var/datum/reagent/reagent = holder.get_reagent(reagent_type)
-	if(amount < reagent.volume)
-		return FALSE
-	return TRUE
-
-/datum/bought_goods/reagent/SubtractAmount(atom/movable/movable_atom_to_subtract_from)
-	if(isnull(amount))
-		return
-	var/datum/reagents/holder = movable_atom_to_subtract_from.reagents
-	var/datum/reagent/reagent = holder.get_reagent(reagent_type)
-	amount -= reagent.volume
-
-/datum/bought_goods/reagent/GetCost(atom/movable/movable_atom_to_appraise)
-	var/datum/reagents/holder = movable_atom_to_appraise.reagents
-	var/datum/reagent/reagent = holder.get_reagent(reagent_type)
-	return cost*reagent.volume
+	return reagent.volume
