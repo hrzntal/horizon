@@ -60,10 +60,10 @@
 
 	/// Current listed bounties
 	var/list/bounties
-	/// All possible bounties
+	/// All possible bounties, associative to weight
 	var/list/possible_bounties
 	/// Chance to gain a bounty per stock rotation
-	var/bounty_gain_chance = 15
+	var/bounty_gain_chance = 20
 	/// Chance to gain a bounty when the trader is spawned in
 	var/initial_bounty_gain_chance = 50
 

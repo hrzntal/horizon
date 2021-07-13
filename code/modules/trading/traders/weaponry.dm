@@ -22,6 +22,11 @@
 								/datum/sold_goods/ammo_shotgun_buckshot = 100,
 								/datum/sold_goods/ammo_shotgun_slug = 100)
 	target_sold_goods_amount = 5
+	possible_bounties = list(
+		/datum/trader_bounty/gun_celebration_day = 150,
+		/datum/trader_bounty/reagent/ammo_requisition = 200,
+		/datum/trader_bounty/reagent/explosive_ammo = 100
+		)
 
 /datum/trader/egunshop
 	name = "Energy Gun Shop Employee"
@@ -45,6 +50,10 @@
 								/datum/sold_goods/hellgun = 100,
 								/datum/sold_goods/aegun = 100)
 	target_sold_goods_amount = 4
+	possible_bounties = list(
+		/datum/trader_bounty/anomalous_energy_sources = 100,
+		/datum/trader_bounty/unlimited_power = 100
+		)
 
 /* TODO
 /datum/trader/dogan
