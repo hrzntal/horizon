@@ -4,23 +4,31 @@
 
 /datum/bought_goods/fossil
 	name = "fossils"
-	cost = 500
+	cost = 300
 	trading_types = list(/obj/item/fossil = TRADER_THIS_TYPE)
+	stock_low = 2
+	stock_high = 5
 
 /datum/bought_goods/excavation_junk
 	name = "ancient artifacts"
-	cost = 300
+	cost = 250
 	trading_types = list(/obj/item/excavation_junk = TRADER_THIS_TYPE)
+	stock_low = 2
+	stock_high = 5
 
 /datum/bought_goods/excavation_artifact
 	name = "unknown artifacts"
-	cost = 500
+	cost = 350
 	trading_types = list(/obj/item/unknown_artifact = TRADER_THIS_TYPE)
+	stock_low = 2
+	stock_high = 5
 
 /datum/bought_goods/anomalous_crystal
 	name = "anomalous crystals"
-	cost = 1000
+	cost = 700
 	trading_types = list(/obj/item/anomalous_sliver/crystal = TRADER_THIS_TYPE)
+	stock_low = 2
+	stock_high = 4
 
 /////////Medical Supplier/////////
 
