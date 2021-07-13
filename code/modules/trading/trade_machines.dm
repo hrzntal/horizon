@@ -59,7 +59,7 @@
 	var/obj/item/paper/P = new /obj/item/paper(my_turf)
 	manifest_counter++
 	P.name = "trade manifest #[manifest_counter]"
-	P.info = "<CENTER><B>TRADE MANIFEST #[manifest_counter] - [last_trade_time]</B></CENTER><BR>Transaction between [last_user_name] and [connected_trader.name] at [connected_trader.origin]<HR>"
+	P.info = "<CENTER><B>TRADE MANIFEST #[manifest_counter] - [last_trade_time]</B></CENTER><BR>Transaction between [last_user_name] and [connected_trader.name] at [connected_trader.origin]"
 	if(manifest_purchased)
 		P.info += "<HR><b>BOUGHT ITEMS:</b><BR>"
 		for(var/line in manifest_purchased)
