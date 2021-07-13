@@ -24,6 +24,7 @@
 #define TRADER_SCREEN_NOTHING 0
 #define TRADER_SCREEN_SOLD_GOODS 1
 #define TRADER_SCREEN_BOUGHT_GOODS 2
+#define TRADER_SCREEN_BOUNTIES 3
 
 #define TRADER_THIS_TYPE 1
 #define TRADER_TYPES 2
@@ -93,4 +94,6 @@ too_much_value //When the user tries to sell something for too high of a price
 out_of_stock //The trader is out of stock on an item the user wants to buy
 user_no_money //When the user doesnt have enough money to perform a trade
 only_deal_in_goods //When the user tries to sell items for money, but the trader doesnt deal in money
+
+bounty_fail_claim //When the user tries to turn in a bounty, but doesn't meet the requirements
 */

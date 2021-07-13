@@ -58,6 +58,15 @@
 	/// What's the chance the vendor will rotate stock
 	var/rotate_stock_chance = 100
 
+	/// Current listed bounties
+	var/list/bounties
+	/// All possible bounties
+	var/list/possible_bounties
+	/// Chance to gain a bounty per stock rotation
+	var/bounty_gain_chance = 15
+	/// Chance to gain a bounty when the trader is spawned in
+	var/initial_bounty_gain_chance = 50
+
 	/// An associative list of unique responses
 	var/list/speech
 	var/id
@@ -127,8 +136,6 @@
 			. = get_response("hard_bargain", "You drive a hard bargain, but I'll accept", user)
 		else
 			. = get_response("trade_complete", "Thanks for your business!", user)
-		console.write_manifest(bartered_items, "[bartered_item_count] total", total_value, TRUE, user.name)
-		console.write_manifest(goodie.name, 1, total_value, FALSE, user.name)
 		goodie.current_stock--
 		var/destination_turf = get_turf(console.linked_pad)
 		goodie.spawn_item(destination_turf)
@@ -136,7 +143,8 @@
 		console.linked_pad.do_teleport_effect()
 		AfterTrade(user,console)
 		randomize_haggle()
-	valid_items = null
+		console.write_manifest(bartered_items, "[bartered_item_count] total", total_value, TRUE, user.name)
+		console.write_manifest(goodie.name, 1, total_value, FALSE, user.name)
 
 /datum/trader/proc/requested_sell(mob/user, obj/machinery/computer/trade_console/console, datum/bought_goods/goodie, haggled_price)
 	if(!(trade_flags & TRADER_MONEY))
@@ -165,7 +173,6 @@
 			return get_response("too_much_value", "No way I'm paying that much for this", user)
 		else if (haggled_price > item_value*(haggle_percent-TRADE_HARD_BARGAIN_MARGIN))
 			hard_bargain = TRUE
-	console.write_manifest(goodie.name, goodie.GetAmount(chosen_item), proposed_cost, TRUE, user.name)
 	goodie.SubtractAmount(chosen_item)
 	qdel(chosen_item)
 	console.linked_pad.do_teleport_effect()
@@ -173,6 +180,7 @@
 	console.credits_held += proposed_cost
 	current_credits -= proposed_cost
 	randomize_haggle()
+	console.write_manifest(goodie.name, goodie.GetAmount(chosen_item), proposed_cost, TRUE, user.name)
 	if(hard_bargain)
 		return get_response("hard_bargain", "You drive a hard bargain, but I'll accept", user)
 	else
@@ -198,7 +206,6 @@
 			hard_bargain = TRUE
 
 	//We established there's stock and we have enough money for it, and the trader deals in cash
-	console.write_manifest(goodie.name, 1, proposed_cost, FALSE, user.name)
 	console.credits_held -= proposed_cost
 	current_credits += proposed_cost
 	goodie.current_stock--
@@ -207,6 +214,7 @@
 	console.linked_pad.do_teleport_effect()
 	AfterTrade(user,console)
 	randomize_haggle()
+	console.write_manifest(goodie.name, 1, proposed_cost, FALSE, user.name)
 	if(hard_bargain)
 		return get_response("hard_bargain", "You drive a hard bargain, but I'll accept", user)
 	else
@@ -269,14 +277,56 @@
 		var/atom/movable/AM = i
 		qdel(AM)
 	valid_items = null
-	console.write_manifest(conjoined_string, "[conjoined_amount] total", total_value, TRUE, user.name)
 	current_credits -= total_value
 	console.credits_held += total_value
 	disposition += disposition_per_trade*item_count
 	console.linked_pad.do_teleport_effect()
 	AfterTrade(user,console)
 	randomize_haggle()
+	console.write_manifest(conjoined_string, "[conjoined_amount] total", total_value, TRUE, user.name)
 	return get_response("trade_complete", "Thanks for your business!", user)
+
+/datum/trader/proc/requested_bounty_claim(mob/user, obj/machinery/computer/trade_console/console, datum/trader_bounty/bounty)
+	var/list/items_on_pad = console.linked_pad.get_valid_items()
+	var/list/valid_items = list()
+	var/counted_amount = 0
+	var/bounty_completed = FALSE
+	var/conjoined_amount = 0
+	var/conjoined_string
+	for(var/i in items_on_pad)
+		var/atom/movable/AM = i
+		var/amount_in_this_item = bounty.Validate(AM)
+		if(!amount_in_this_item)
+			continue
+		counted_amount += amount_in_this_item
+		valid_items += AM
+		if(!conjoined_string)
+			conjoined_string = "[bounty.name]"
+		else
+			conjoined_string += ", [bounty.name]"
+		conjoined_amount += amount_in_this_item		
+		if(counted_amount >= bounty.amount)
+			bounty_completed = TRUE
+			break
+	if(!bounty_completed)
+		return get_response("bounty_fail_claim", "I'm afraid you're a bit short of what I need!", user)
+	for(var/i in valid_items)
+		var/atom/movable/AM = i
+		qdel(AM)
+	console.credits_held += bounty.reward_cash
+	if(bounty.reward_item_path)
+		console.write_manifest(bounty.reward_item_name, 1, 0, FALSE, user.name)
+		new bounty.reward_item_path(get_turf(console.linked_pad))
+	console.linked_pad.do_teleport_effect()
+	AfterTrade(user,console)
+	randomize_haggle()
+	console.write_manifest(conjoined_string, "[conjoined_amount] total", bounty.reward_cash, TRUE, user.name)
+	. = bounty.bounty_complete_text
+	bounties -= bounty
+	qdel(bounty)
+	if(!bounties.len)
+		bounties = null
+		console.trader_screen_state = TRADER_SCREEN_NOTHING
 
 /datum/trader/proc/hail_msg(is_success, mob/user)
 	var/key = is_success ? "hail" : "hail_deny"
@@ -334,6 +384,8 @@
 		RotateStock()
 
 /datum/trader/proc/InitializeStock()
+	if(prob(initial_bounty_gain_chance))
+		GainBounty()
 	if(possible_bought_goods)
 		var/list/candidates = possible_bought_goods.Copy()
 		var/amount_of_iterations = rand(target_bought_goods_amount-initial_goods_amount_randomness,target_bought_goods_amount+initial_goods_amount_randomness)
@@ -361,7 +413,16 @@
 					CreateSoldGoodieType(picked_type)
 		candidates = null
 
+/datum/trader/proc/GainBounty()
+	if(bounties || !possible_bounties)
+		return
+	LAZYINITLIST(bounties)
+	var/bounty_type = pickweight(possible_bounties)
+	bounties += new bounty_type()
+
 /datum/trader/proc/RotateStock()
+	if(prob(bounty_gain_chance))
+		GainBounty()
 	if(prob(TRADER_ABSOLUTE_STOCK_ROTATION_CHANCE))
 		RemoveAllStock()
 		InitializeStock()

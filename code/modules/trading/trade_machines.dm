@@ -34,15 +34,15 @@
 	last_trade_time = station_time_timestamp()
 	if(user_selling)
 		trade_string = "[amount] of [item_name] for [price] cr."
-		write_log("[last_trade_time]: [user_name] sold [trade_string] to [connected_trader.name]")
+		write_log("[last_trade_time]: [user_name] sold [trade_string] to [connected_trader.name] (new balance: [credits_held] cr.)")
 		if(!makes_manifests)
 			return
 		LAZYINITLIST(manifest_sold)
 		manifest_sold += trade_string
 		manifest_profit += price
 	else
-		trade_string = "[amount] of [item_name] for -[price] cr."
-		write_log("[last_trade_time]: [user_name] bought [trade_string] from [connected_trader.name]")
+		trade_string = "[amount] of [item_name] for [price] cr."
+		write_log("[last_trade_time]: [user_name] bought [trade_string] from [connected_trader.name] (new balance: [credits_held] cr.)")
 		if(!makes_manifests)
 			return
 		LAZYINITLIST(manifest_purchased)
@@ -55,7 +55,7 @@
 	if(!manifest_sold && !manifest_purchased)
 		return
 	var/turf/my_turf = get_turf(src)
-	playsound(my_turf, 'sound/items/poster_being_created.ogg', 30, 1)
+	playsound(my_turf, 'sound/items/poster_being_created.ogg', 20, 1)
 	var/obj/item/paper/P = new /obj/item/paper(my_turf)
 	manifest_counter++
 	P.name = "trade manifest #[manifest_counter]"
@@ -160,13 +160,45 @@
 		dat += "<BR><a href='?src=[REF(src)];task=trader_task;pref=button_show_purchasables'>Any goods you're interested in?</a>"
 		dat += "<BR><a href='?src=[REF(src)];task=trader_task;pref=button_appraise'>Appraise item(s) on the pad</a>"
 		dat += "<BR><a href='?src=[REF(src)];task=trader_task;pref=button_sell_item'>Sell all items on the pad</a>"
+		if(connected_trader.bounties)
+			dat += "<BR><a href='?src=[REF(src)];task=trader_task;pref=button_show_bounties'>Bounties</a>"
 		dat += "<BR><a href='?src=[REF(src)];task=trader_task;pref=button_compliment'>Compliment</a>"
 		dat += " <a href='?src=[REF(src)];task=trader_task;pref=button_insult'>Insult</a></center>"
-
 		//Item menus, if applicable
 		if(trader_screen_state)
 			dat += "<HR>"
 			switch(trader_screen_state)
+				if(TRADER_SCREEN_BOUNTIES)
+					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
+					dat += "<tr style='vertical-align:top'>"
+					dat += "<td width=15%>Name:</td>"
+					dat += "<td width=30%>Desc.:</td>"
+					dat += "<td width=15%>Item:</td>"
+					dat += "<td width=15%>Rewards:</td>"
+					dat += "<td width=15%>Actions:</td>"
+					dat += "</tr>"
+					var/even = TRUE
+					var/bounty_index = 0
+					for(var/i in connected_trader.bounties)
+						even = !even
+						bounty_index++
+						var/datum/trader_bounty/bounty = i
+						var/bounty_reward_string
+						if(bounty.reward_cash)
+							bounty_reward_string = "[bounty.reward_cash] cr."
+						if(bounty.reward_item_path)
+							if(bounty_reward_string)
+								bounty_reward_string += "<BR>&<BR>[bounty.reward_item_name]"
+							else
+								bounty_reward_string = bounty.reward_item_name
+						dat += "<tr style='background-color: [even ? "#17191C" : "#23273C"];'>"
+						dat += "<td>[bounty.bounty_name]</td>"
+						dat += "<td>[bounty.bounty_text]</td>"
+						dat += "<td>[bounty.name] x[bounty.amount]</td>"
+						dat += "<td>[bounty_reward_string]</td>"
+						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bounty;index=[bounty_index]'>Claim</a>"
+						dat += "</tr>"
+					dat += "</table>"
 				if(TRADER_SCREEN_SOLD_GOODS)
 					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 					dat += "<tr style='vertical-align:top'>"
@@ -187,6 +219,7 @@
 						dat += "<td>[goodie.cost]</td>"
 						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_sold;sold_type=buy;index=[goodie_index]'>Buy</a><a href='?src=[REF(src)];task=trader_task;pref=interact_with_sold;sold_type=haggle;index=[goodie_index]'>Haggle</a><a href='?src=[REF(src)];task=trader_task;pref=interact_with_sold;sold_type=barter;index=[goodie_index]'>Barter</a></td>"
 						dat += "</tr>"
+					dat += "</table>"
 				if(TRADER_SCREEN_BOUGHT_GOODS)
 					dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 					dat += "<tr style='vertical-align:top'>"
@@ -207,6 +240,7 @@
 						dat += "<td>[isnull(goodie.amount) ? "-" : "[goodie.amount]"]</td>"
 						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=sell;index=[goodie_index]'>Sell</a><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bought;bought_type=haggle;index=[goodie_index]'>Haggle</a></td>"
 						dat += "</tr>"
+					dat += "</table>"
 
 	else if (connected_hub)
 		dat += "<b>Welcome to [connected_hub.name]!</b><HR>"
@@ -217,7 +251,7 @@
 		//List all merchants in the hub
 		for(var/i in connected_hub.traders)
 			var/datum/trader/trader = i
-			dat += "<b>[trader.name]</b> - <a href='?src=[REF(src)];task=hub_task;pref=hail_merchant;id=[trader.id]'>Hail</a><BR>Origin: [trader.origin]<HR>"
+			dat += "<b>[trader.name]</b> - <a href='?src=[REF(src)];task=hub_task;pref=hail_merchant;id=[trader.id]'>Hail</a>[trader.bounties? " <b>(B)</b>" : ""]<BR>Origin: [trader.origin]<HR>"
 	else
 		//Main menu
 		//List available trade hubs
@@ -250,6 +284,14 @@
 			switch(href_list["pref"])
 				if("early_manifest_print")
 					print_manifest()
+				if("interact_with_bounty")
+					if(!connected_trader.bounties)
+						return
+					var/index = text2num(href_list["index"])
+					if(connected_trader.bounties.len < index)
+						return
+					var/datum/trader_bounty/bounty = connected_trader.bounties[index]
+					last_transmission = connected_trader.requested_bounty_claim(living_user, src, bounty)
 				if("interact_with_sold")
 					var/index = text2num(href_list["index"])
 					if(connected_trader.sold_goods.len < index)
@@ -291,6 +333,9 @@
 						last_transmission = connected_trader.get_response("what_want", "Hm, I want.. those..", living_user)
 					else
 						last_transmission = connected_trader.get_response("trade_no_goods", "I don't deal in goods!", living_user)
+
+				if("button_show_bounties")
+					trader_screen_state = TRADER_SCREEN_BOUNTIES
 
 				if("button_compliment")
 					if(prob(50))
