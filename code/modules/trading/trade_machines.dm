@@ -121,7 +121,7 @@
 	if(user)
 		to_chat(user, SPAN_NOTICE("You withdraw [amount] credits."))
 		user.put_in_hands(holochip)
-		write_log("[station_time_timestamp()]: [user.name] withdrew [amount] cr.")
+		write_log("[station_time_timestamp()]: [user.name] withdrew [amount] cr. (new balance: [credits_held] cr.)")
 
 /obj/machinery/computer/trade_console/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/holochip) || istype(I, /obj/item/stack/spacecash) || istype(I, /obj/item/coin))
@@ -131,7 +131,7 @@
 		credits_held += worth
 		to_chat(user, SPAN_NOTICE("You slot [I] into [src] and it reports a total of [credits_held] credits inserted."))
 		qdel(I)
-		write_log("[station_time_timestamp()]: [user.name] deposited [worth] cr.")
+		write_log("[station_time_timestamp()]: [user.name] deposited [worth] cr. (new balance: [credits_held] cr.)")
 		return
 	. = ..()
 
@@ -196,7 +196,7 @@
 						dat += "<td>[bounty.bounty_text]</td>"
 						dat += "<td>[bounty.name] x[bounty.amount]</td>"
 						dat += "<td>[bounty_reward_string]</td>"
-						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bounty;index=[bounty_index]'>Claim</a>"
+						dat += "<td><a href='?src=[REF(src)];task=trader_task;pref=interact_with_bounty;bounty_type=claim;index=[bounty_index]'>Claim</a> <a href='?src=[REF(src)];task=trader_task;pref=interact_with_bounty;bounty_type=print;index=[bounty_index]'>Print</a>"
 						dat += "</tr>"
 					dat += "</table>"
 				if(TRADER_SCREEN_SOLD_GOODS)
@@ -262,7 +262,7 @@
 			dat += "<BR><a href='?src=[REF(src)];task=main_task;pref=choose_hub;id=[trade_hub.id]'>[trade_hub.name]</a>"
 		dat += "<HR><a href='?src=[REF(src)];task=main_task;pref=withdraw_money'>Withdraw credits</a>"
 		dat += "<HR><a href='?src=[REF(src)];task=main_task;pref=view_log'>View Log</a>"
-		dat += "<BR><a href='?src=[REF(src)];task=main_task;pref=toggle_manifest' [makes_manifests ? "class='linkOn'" : ""]>Print Manifests</a>"
+		dat += "<HR><a href='?src=[REF(src)];task=main_task;pref=toggle_manifest' [makes_manifests ? "class='linkOn'" : ""]>Print Manifests</a>"
 		dat += "<BR><a href='?src=[REF(src)];task=main_task;pref=toggle_logging' [makes_log ? "class='linkOn'" : ""]>Allow Logging</a>"
 
 	var/datum/browser/popup = new(user, "trade_console", "Trade Console", 450, 600)
@@ -291,7 +291,11 @@
 					if(connected_trader.bounties.len < index)
 						return
 					var/datum/trader_bounty/bounty = connected_trader.bounties[index]
-					last_transmission = connected_trader.requested_bounty_claim(living_user, src, bounty)
+					switch(href_list["bounty_type"])
+						if("print")
+							message_admins("brr")
+						if("claim")
+							last_transmission = connected_trader.requested_bounty_claim(living_user, src, bounty)
 				if("interact_with_sold")
 					var/index = text2num(href_list["index"])
 					if(connected_trader.sold_goods.len < index)

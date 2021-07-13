@@ -291,8 +291,6 @@
 	var/list/valid_items = list()
 	var/counted_amount = 0
 	var/bounty_completed = FALSE
-	var/conjoined_amount = 0
-	var/conjoined_string
 	for(var/i in items_on_pad)
 		var/atom/movable/AM = i
 		var/amount_in_this_item = bounty.Validate(AM)
@@ -300,11 +298,6 @@
 			continue
 		counted_amount += amount_in_this_item
 		valid_items += AM
-		if(!conjoined_string)
-			conjoined_string = "[bounty.name]"
-		else
-			conjoined_string += ", [bounty.name]"
-		conjoined_amount += amount_in_this_item		
 		if(counted_amount >= bounty.amount)
 			bounty_completed = TRUE
 			break
@@ -320,7 +313,7 @@
 	console.linked_pad.do_teleport_effect()
 	AfterTrade(user,console)
 	randomize_haggle()
-	console.write_manifest(conjoined_string, "[conjoined_amount] total", bounty.reward_cash, TRUE, user.name)
+	console.write_manifest(bounty.name, counted_amount, bounty.reward_cash, TRUE, user.name)
 	. = bounty.bounty_complete_text
 	bounties -= bounty
 	qdel(bounty)
