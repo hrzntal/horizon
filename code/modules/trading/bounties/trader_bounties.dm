@@ -39,5 +39,5 @@
 	amount = 1
 	path = /obj/item/stock_parts/cell/high/slime_hypercharged
 	reward_cash = 3000
-	bounty_text = "Our electricity bill is getting way too steep, we need switch to renewable energy, and by that I mean a supercharged slime core."
+	bounty_text = "Our electricity bill is getting way too steep, we need to switch to renewable energy, and by that I mean a supercharged slime core."
 	bounty_complete_text = "You won't catch us with our lights off now."
