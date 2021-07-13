@@ -28,6 +28,8 @@
 	var/last_trade_time = ""
 	var/manifest_counter = 0
 
+	var/next_bounty_print = 0
+
 /obj/machinery/computer/trade_console/proc/write_manifest(item_name, amount, price, user_selling, user_name)
 	var/trade_string
 	last_user_name = user_name
@@ -293,7 +295,26 @@
 					var/datum/trader_bounty/bounty = connected_trader.bounties[index]
 					switch(href_list["bounty_type"])
 						if("print")
-							message_admins("brr")
+							if(world.time < next_bounty_print)
+								return
+							next_bounty_print = world.time + 5 SECONDS
+							var/turf/my_turf = get_turf(src)
+							playsound(my_turf, 'sound/items/poster_being_created.ogg', 20, 1)
+							var/obj/item/paper/P = new /obj/item/paper(my_turf)
+							P.name = "Bounty: [bounty.bounty_name]"
+							P.info = "<CENTER><B>BOUNTY: [bounty.bounty_name]</B></CENTER><HR>"
+							P.info += "[bounty.bounty_text]"
+							P.info += "<BR>Requested items: [bounty.name] x[bounty.amount]"
+							var/reward_line
+							if(bounty.reward_cash)
+								reward_line = "[bounty.reward_cash] cr."
+							if(bounty.reward_item_path)
+								if(reward_line)
+									reward_line += " & [bounty.reward_item_name]"
+								else
+									reward_line = bounty.reward_item_name
+							P.info += "<BR>Rewards: [reward_line]"
+							P.update_icon()
 						if("claim")
 							last_transmission = connected_trader.requested_bounty_claim(living_user, src, bounty)
 				if("interact_with_sold")
