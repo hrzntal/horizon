@@ -302,7 +302,7 @@
 							playsound(my_turf, 'sound/items/poster_being_created.ogg', 20, 1)
 							var/obj/item/paper/P = new /obj/item/paper(my_turf)
 							P.name = "Bounty: [bounty.bounty_name]"
-							P.info = "<CENTER><B>BOUNTY: [bounty.bounty_name]</B></CENTER><HR>"
+							P.info = "<CENTER><B>[connected_trader.origin] - BOUNTY: [bounty.bounty_name]</B></CENTER><HR>"
 							P.info += "[bounty.bounty_text]"
 							P.info += "<BR>Requested items: [bounty.name] x[bounty.amount]"
 							var/reward_line
