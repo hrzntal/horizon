@@ -119,6 +119,13 @@
 	if(.)
 		update_appearance()
 
+/obj/machinery/light_switch/attackby(obj/item/weapon, mob/user, params)
+	if(istype(weapon, /obj/item/pen) && build_stage == STAGE_PANEL)
+		var/newname = stripped_input(user, "Lightswitch name:")
+		name = (!newname || newname == "") ? "light switch ([area.name])" : newname
+		return
+	return ..()
+
 /obj/machinery/light_switch/LateInitialize()
 	if(area.lightswitch)
 		do_switch()
