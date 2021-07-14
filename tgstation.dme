@@ -452,6 +452,7 @@
 #include "code\datums\spawners_menu.dm"
 #include "code\datums\station_integrity.dm"
 #include "code\datums\tgs_event_handler.dm"
+#include "code\datums\transit_instance.dm"
 #include "code\datums\verbs.dm"
 #include "code\datums\view.dm"
 #include "code\datums\voice_of_god_command.dm"

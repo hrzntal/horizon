@@ -3,7 +3,8 @@
 	visual_type = /obj/effect/abstract/overmap/shuttle
 	overmap_process = TRUE
 
-	var/obj/docking_port/mobile/my_shuttle = null
+	var/obj/docking_port/mobile/my_shuttle
+	var/datum/transit_instance/transit_instance
 	var/angle = 0
 
 	var/velocity_x = 0
@@ -552,9 +553,16 @@
 	for(var/i in my_shuttle.all_extensions)
 		var/datum/shuttle_extension/extension = i
 		extension.AddToOvermapObject(src)
+
+	var/obj/docking_port/stationary/transit/my_transit = my_shuttle.assigned_transit
+	transit_instance = my_transit.transit_instance
+	transit_instance.overmap_shuttle = src
+
 	update_perceived_parallax()
 
 /datum/overmap_object/shuttle/Destroy()
+	transit_instance.overmap_shuttle = null
+	transit_instance = null
 	control_turf = null
 	QDEL_NULL(shuttle_controller)
 	if(my_shuttle)
@@ -597,6 +605,8 @@
 		if(direction_to_set != my_shuttle.overmap_parallax_dir)
 			my_shuttle.overmap_parallax_dir = direction_to_set
 			changed = TRUE
+			var/area/hyperspace_area = transit_instance.dock.assigned_area
+			hyperspace_area.parallax_movedir = direction_to_set
 	else if (is_seperate_z_level && length(related_levels))
 		for(var/i in related_levels)
 			var/datum/space_level/level = i

@@ -571,6 +571,7 @@ SUBSYSTEM_DEF(shuttle)
 	new_transit_dock.setDir(angle2dir(dock_angle))
 
 	M.assigned_transit = new_transit_dock
+	new /datum/transit_instance(proposal, new_transit_dock)
 	return new_transit_dock
 
 /datum/controller/subsystem/shuttle/Recover()
