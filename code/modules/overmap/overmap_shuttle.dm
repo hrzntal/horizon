@@ -60,6 +60,8 @@
 
 	var/last_shield_change_state = 0
 
+	var/current_parallax_dir = 0
+
 /datum/overmap_object/shuttle/GetAllAliveClientMobs()
 	. = ..()
 	if(my_shuttle)
@@ -436,7 +438,7 @@
 					switch(SSshuttle.moveShuttle(my_shuttle.id, dock_id, 1))
 						if(0)
 							shuttle_controller.busy = TRUE
-							shuttle_controller.RemoveCurrentControl(TRUE)
+							shuttle_controller.RemoveCurrentControl()
 				if("freeform_dock")
 					if(shuttle_controller.busy)
 						return
@@ -561,8 +563,9 @@
 	update_perceived_parallax()
 
 /datum/overmap_object/shuttle/Destroy()
-	transit_instance.overmap_shuttle = null
-	transit_instance = null
+	if(transit_instance)
+		transit_instance.overmap_shuttle = null
+		transit_instance = null
 	control_turf = null
 	QDEL_NULL(shuttle_controller)
 	if(my_shuttle)
@@ -601,18 +604,18 @@
 
 	var/changed = FALSE
 	if(my_shuttle)
-		var/direction_to_set = established_direction ? (my_shuttle.preferred_direction ? my_shuttle.preferred_direction : established_direction) : FALSE
-		if(direction_to_set != my_shuttle.overmap_parallax_dir)
-			my_shuttle.overmap_parallax_dir = direction_to_set
+		current_parallax_dir = established_direction ? (my_shuttle.preferred_direction ? my_shuttle.preferred_direction : established_direction) : FALSE
+		if(current_parallax_dir != my_shuttle.overmap_parallax_dir)
+			my_shuttle.overmap_parallax_dir = current_parallax_dir
 			changed = TRUE
 			var/area/hyperspace_area = transit_instance.dock.assigned_area
-			hyperspace_area.parallax_movedir = direction_to_set
+			hyperspace_area.parallax_movedir = current_parallax_dir
 	else if (is_seperate_z_level && length(related_levels))
 		for(var/i in related_levels)
 			var/datum/space_level/level = i
-			var/direction_to_set = (established_direction && fixed_parallax_dir) ? fixed_parallax_dir : established_direction
-			if(direction_to_set != level.parallax_direction_override)
-				level.parallax_direction_override = direction_to_set
+			current_parallax_dir = (established_direction && fixed_parallax_dir) ? fixed_parallax_dir : established_direction
+			if(current_parallax_dir != level.parallax_direction_override)
+				level.parallax_direction_override = current_parallax_dir
 				changed = TRUE
 
 	if(changed)

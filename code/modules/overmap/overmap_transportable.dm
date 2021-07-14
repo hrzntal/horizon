@@ -102,3 +102,31 @@
 	icon_state = "smallobject"
 	layer = OVERMAP_LAYER_LOOT
 	color = COLOR_LIME
+
+/datum/overmap_object/transportable/stranded
+	name = "stranded object"
+	visual_type = /obj/effect/abstract/overmap/stranded
+	var/atom/movable/stranded_object
+
+/datum/overmap_object/transportable/stranded/proc/StoreStranded(atom/movable/to_strand, rename)
+	stranded_object = to_strand
+	if(ismob(stranded_object))
+		var/mob/stranded_mob = stranded_object
+		if(stranded_mob.client)
+			stranded_mob.client.eye = my_visual
+	if(rename)
+		name = rename
+		my_visual.name = rename
+
+/datum/overmap_object/transportable/stranded/DoTransport(turf/destination)
+	stranded_object.forceMove(destination)
+	if(ismob(stranded_object))
+		var/mob/stranded_mob = stranded_object
+		if(stranded_mob.client)
+			stranded_mob.client.eye = stranded_mob
+	qdel(src)
+
+/obj/effect/abstract/overmap/stranded
+	icon_state = "smallobject"
+	layer = OVERMAP_LAYER_LOOT
+	color = COLOR_MAGENTA

@@ -141,6 +141,8 @@
 
 			ProcessPartials()
 		update_perceived_parallax()
+		if(transit_instance)
+			transit_instance.ApplyVelocity(REVERSE_DIR(current_parallax_dir), velocity_length)
 
 	//Update rotation
 	if(uses_rotation)
