@@ -23,7 +23,7 @@
 	EnterTransitTurf(entered)
 
 /turf/open/space/transit/proc/EnterTransitTurf(atom/movable/entered)
-	if(iseffect(entered) || entered.invisibility = INVISIBILITY_ABSTRACT)
+	if(iseffect(entered) || entered.invisibility == INVISIBILITY_ABSTRACT)
 		return
 	if(entered.GetComponent(/datum/component/transit_handler))
 		return
