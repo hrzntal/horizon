@@ -72,6 +72,8 @@
 
 /obj/machinery/light_switch/wrench_act(mob/living/user, obj/item/tool)
 	if(build_stage == STAGE_INITIAL)
+		playsound(loc, 'sound/machines/click.ogg', 75, TRUE)
+		user.balloon_alert(user, "removed the light switch frame")
 		transfer_fingerprints_to(new /obj/item/wallframe/light_switch(get_turf(user)))
 		qdel(src)
 		addtimer(CALLBACK(area, /atom/proc/update_appearance), 1)
