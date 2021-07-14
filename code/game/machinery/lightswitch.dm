@@ -98,9 +98,13 @@
 			build_stage++
 			if(area.lightswitch)
 				do_switch()
+			user.electrocute_act(10, src)
+			do_sparks(5, FALSE, src)
 			. = TRUE
 		if(STAGE_FINAL)
 			user.balloon_alert(user, "disconnected the light switch")
+			user.electrocute_act(10, src)
+			do_sparks(5, FALSE, src)
 			build_stage--
 			. = TRUE
 	if(.)
