@@ -14,6 +14,7 @@
 	/// Set this to a string, path, or area instance to control that area
 	/// instead of the switch's location.
 	var/area/area = null
+	/// Our current build stage; starts off finalized and gets set to initial if built by the wallframe item
 	var/build_stage = STAGE_FINAL
 
 /obj/item/wallframe/light_switch
