@@ -13,7 +13,7 @@
 
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
-	edge_type = /turf/closed/indestructible/transitedge
+	edge_type = /turf/open/space/transit/edge
 
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()

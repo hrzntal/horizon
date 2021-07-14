@@ -68,12 +68,7 @@
 		if(WEST)
 			. = -90
 
-/turf/closed/indestructible/transitedge
-	icon = 'icons/turf/space.dmi'
-	icon_state = "black"
-	name = "\proper hyperspace"
-	baseturfs = /turf/closed/indestructible/transitedge
-	explosion_block = INFINITY
-	plane = PLANE_SPACE
-	layer = SPACE_LAYER
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+//Because I can't use a closed turfs because that makes something weird with the generation
+/turf/open/space/transit/edge
+	opacity = TRUE
+	density = TRUE
