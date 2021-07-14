@@ -22,6 +22,15 @@
 		SSmapping.used_turfs -= i
 	SSmapping.reserve_turfs(v)
 
+/datum/turf_reservation/proc/IsInBounds(atom/atom_check)
+	var/low_x = bottom_left_coords[1]
+	var/high_x = top_right_coords[1]
+	var/low_y = bottom_left_coords[2]
+	var/high_y = top_right_coords[2]
+	if(atom_check.x >= low_x && atom_check.x <= high_x && atom_check.y >= low_y && atom_check.y <= high_y)
+		return TRUE
+	return FALSE
+
 /datum/turf_reservation/proc/IsAtEdge(atom/atom_check)
 	var/low_x = bottom_left_coords[1]
 	var/high_x = top_right_coords[1]

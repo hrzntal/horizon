@@ -6,6 +6,29 @@
 	flags_1 = NOJAUNT //This line goes out to every wizard that ever managed to escape the den. I'm sorry.
 	explosion_block = INFINITY
 
+/turf/open/space/transit/Entered(atom/movable/entered)
+	. = ..()
+	EnterTransitTurf(entered)
+
+/turf/open/space/transit/Exit(atom/movable/mover, atom/newloc)
+	. = ..()
+	LeaveTransitTurf(mover, newloc)
+
+/turf/open/space/transit/proc/LeaveTransitTurf(atom/movable/source, atom/newloc)
+	if(istype(newloc, /turf/open/space/transit)) //If new location is transit, no need to do further stuff
+		return
+	var/component = source.GetComponent(/datum/component/transit_handler)
+	if(component)
+		qdel(component)
+
+/turf/open/space/transit/proc/EnterTransitTurf(atom/movable/entered)
+	if(entered.GetComponent(/datum/component/transit_handler))
+		return
+	var/datum/transit_instance/this_transit = SSshuttle.get_transit_instance(src)
+	if(!this_transit)
+		return
+	entered.AddComponent(/datum/component/transit_handler, this_transit)
+
 /turf/open/space/transit/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	. = ..()
 	underlay_appearance.icon_state = "speedspace_ns_[get_transit_state(asking_turf)]"
