@@ -70,6 +70,13 @@
 	if(mapload)
 		return INITIALIZE_HINT_LATELOAD
 
+/obj/machinery/light_switch/wrench_act(mob/living/user, obj/item/tool)
+	if(build_stage == STAGE_INITIAL)
+		transfer_fingerprints_to(new /obj/item/wallframe/light_switch(get_turf(user)))
+		qdel(src)
+		addtimer(CALLBACK(area, /atom/proc/update_appearance), 1)
+		return TRUE
+
 /obj/machinery/light_switch/screwdriver_act(mob/living/user, obj/item/tool)
 	switch(build_stage)
 		if(STAGE_INITIAL)
@@ -156,6 +163,7 @@
 	playsound(src, 'sound/effects/light/lightswitch.ogg', 100, 1)
 	do_switch()
 
+/// Toggle our areas lightswitch var and update the area and all its light switches, including us!
 /obj/machinery/light_switch/proc/do_switch()
 	area.lightswitch = !area.lightswitch
 	area.update_appearance()
