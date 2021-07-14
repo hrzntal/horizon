@@ -109,7 +109,7 @@
 				user.electrocute_act(10, src)
 				do_sparks(5, FALSE, src)
 			. = TRUE
-		if(STAGE_FINAL)
+		if(STAGE_PANEL)
 			user.balloon_alert(user, "disconnected the light switch")
 			if(area.power_light)
 				user.electrocute_act(10, src)
