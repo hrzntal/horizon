@@ -9,9 +9,11 @@
 	var/top_right_coords[3]
 	var/wipe_reservation_on_release = TRUE
 	var/turf_type = /turf/open/space
+	var/edge_type
 
 /datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
+	edge_type = /turf/closed/indestructible/transitedge
 
 /datum/turf_reservation/proc/Release()
 	var/v = reserved_turfs.Copy()
@@ -19,6 +21,15 @@
 		reserved_turfs -= i
 		SSmapping.used_turfs -= i
 	SSmapping.reserve_turfs(v)
+
+/datum/turf_reservation/proc/IsAtEdge(atom/atom_check)
+	var/low_x = bottom_left_coords[1]
+	var/high_x = top_right_coords[1]
+	var/low_y = bottom_left_coords[2]
+	var/high_y = top_right_coords[2]
+	if((atom_check.x == low_x || atom_check.x == high_x) || (atom_check.y == low_y || atom_check.y == high_y))
+		return TRUE
+	return FALSE
 
 /datum/turf_reservation/proc/Reserve(width, height, zlevel)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
@@ -60,6 +71,9 @@
 		T.flags_1 &= ~UNUSED_RESERVATION_TURF
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
+		if(edge_type && IsAtEdge(T))
+			T.ChangeTurf(edge_type, edge_type)
+			continue
 		T.ChangeTurf(turf_type, turf_type)
 	src.width = width
 	src.height = height

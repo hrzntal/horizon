@@ -26,61 +26,12 @@
 /turf/open/space/transit/east
 	dir = EAST
 
-/turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
-	..()
-	if(!locate(/obj/structure/lattice) in src)
-		throw_atom(AM)
-
-/turf/open/space/transit/proc/throw_atom(atom/movable/AM)
-	set waitfor = FALSE
-	if(!AM || istype(AM, /obj/docking_port) || istype(AM, /obj/effect/abstract))
-		return
-	if(AM.loc != src) // Multi-tile objects are "in" multiple locs but its loc is it's true placement.
-		return // Don't move multi tile objects if their origin isn't in transit
-	var/max = world.maxx-TRANSITIONEDGE
-	var/min = 1+TRANSITIONEDGE
-
-	var/list/possible_transtitons = list()
-	for(var/A in SSmapping.z_list)
-		var/datum/space_level/D = A
-		if (D.linkage == CROSSLINKED)
-			possible_transtitons += D.z_value
-	if(!length(possible_transtitons)) //No space to throw them to - try throwing them onto mining
-		possible_transtitons = SSmapping.levels_by_trait(ZTRAIT_MINING)
-		if(!length(possible_transtitons)) //Just throw them back on station, if not just runtime.
-			possible_transtitons = SSmapping.levels_by_trait(ZTRAIT_STATION)
-	var/_z = pick(possible_transtitons)
-
-	//now select coordinates for a border turf
-	var/_x
-	var/_y
-	switch(dir)
-		if(SOUTH)
-			_x = rand(min,max)
-			_y = max
-		if(WEST)
-			_x = max
-			_y = rand(min,max)
-		if(EAST)
-			_x = min
-			_y = rand(min,max)
-		else
-			_x = rand(min,max)
-			_y = min
-
-	var/turf/T = locate(_x, _y, _z)
-	AM.forceMove(T)
-
-
 /turf/open/space/transit/CanBuildHere()
 	return SSshuttle.is_in_shuttle_bounds(src)
-
 
 /turf/open/space/transit/Initialize()
 	. = ..()
 	update_appearance()
-	for(var/atom/movable/AM in src)
-		throw_atom(AM)
 
 /turf/open/space/transit/update_icon()
 	. = ..()
@@ -116,3 +67,13 @@
 			. = 90
 		if(WEST)
 			. = -90
+
+/turf/closed/indestructible/transitedge
+	icon = 'icons/turf/space.dmi'
+	icon_state = "black"
+	name = "\proper hyperspace"
+	baseturfs = /turf/closed/indestructible/transitedge
+	explosion_block = INFINITY
+	plane = PLANE_SPACE
+	layer = SPACE_LAYER
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
