@@ -124,7 +124,8 @@
 /obj/machinery/light_switch/attackby(obj/item/weapon, mob/user, params)
 	if(istype(weapon, /obj/item/pen) && build_stage == STAGE_PANEL)
 		var/newname = stripped_input(user, "Lightswitch name:")
-		name = (!newname || newname == "") ? "light switch ([area.name])" : newname
+		if(newname)
+			name = newname
 		return
 	return ..()
 
