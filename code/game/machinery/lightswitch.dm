@@ -48,8 +48,6 @@
 		area = GLOB.areas_by_type[area]
 	if(!area)
 		area = get_area(src)
-	if(!name)
-		name = "light switch ([area.name])"
 
 	if(built) // Is there an easier way of doing this? Maybe make a set_dir_shift proc?
 		build_stage = STAGE_INITIAL
