@@ -445,3 +445,8 @@
 
 //Saves a proc call, life is suffering. If who has no targets_from var, we assume it's just who
 #define GET_TARGETS_FROM(who) (who.targets_from ? who.get_targets_from() : who)
+
+/// Defines for dominanthand state
+#define HAND_DOMINANT_LEFT "Left"
+#define HAND_DOMINANT_RIGHT "Right"
+#define HAND_DOMINANT_AMBI "Ambidextrous"
