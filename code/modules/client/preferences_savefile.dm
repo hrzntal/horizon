@@ -355,7 +355,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
-	WRITE_FILE(S["dominant_hand"], dominant_hand)
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -629,6 +628,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["species"] , pref_species.id)
 	WRITE_FILE(S["phobia"], phobia)
 	WRITE_FILE(S["persistent_scars"], persistent_scars)
+	WRITE_FILE(S["dominant_hand"], dominant_hand)
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
