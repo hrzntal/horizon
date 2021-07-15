@@ -513,17 +513,20 @@
 /mob/proc/can_hold_items(obj/item/I)
 	return length(held_items)
 
-/mob/proc/calculate_dominant_delay(original_delay)
+/mob/proc/get_delay_modifier_dominant()
 	switch(dominant_hand)
 		if(DOMINANT_HAND_LEFT)
 			if(active_hand_index == 1)
-				return original_delay * (1 - DOMINANT_HAND_FACTOR)
-			return original_delay * (1 + DOMINANT_HAND_FACTOR)
+				return 1 - DOMINANT_HAND_FACTOR
+			return 1 + DOMINANT_HAND_FACTOR
 
 		if(DOMINANT_HAND_RIGHT)
 			if(active_hand_index == 2)
-				return original_delay * (1 - DOMINANT_HAND_FACTOR)
-			return original_delay * (1 + DOMINANT_HAND_FACTOR)
+				return 1 - DOMINANT_HAND_FACTOR
+			return 1 + DOMINANT_HAND_FACTOR
 
 		if(DOMINANT_HAND_AMBI)
-			return original_delay
+			return 1
+
+	stack_trace("Invalid value for dominant_hand! [src] = [dominant_hand]")
+	return 1
