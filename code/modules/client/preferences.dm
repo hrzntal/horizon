@@ -2783,7 +2783,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dominant_hand = DOMINANT_HAND_AMBI
 						if(DOMINANT_HAND_AMBI)
 							dominant_hand = DOMINANT_HAND_LEFT
-					save_preferences()
 
 	ShowChoices(user)
 	return TRUE
