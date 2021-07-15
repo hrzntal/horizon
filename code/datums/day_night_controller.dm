@@ -91,7 +91,7 @@
 
 	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white")
 	appearance_to_add.plane = LIGHTING_PLANE
-	appearance_to_add.layer = OBJ_LAYER
+	appearance_to_add.layer = DAY_NIGHT_LIGHTING_LAYER
 	appearance_to_add.color = last_color
 	appearance_to_add.alpha = last_alpha
 	for(var/i in affected_areas)

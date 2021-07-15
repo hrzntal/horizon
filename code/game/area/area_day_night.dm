@@ -71,7 +71,7 @@
 	last_day_night_color = subbed_day_night_controller.last_color
 	last_day_night_alpha = subbed_day_night_controller.last_alpha
 	
-	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white", z, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
 	appearance_to_add.color = last_day_night_color
 	appearance_to_add.alpha = last_day_night_alpha
 	
@@ -87,7 +87,7 @@
 	last_day_night_luminosity = subbed_day_night_controller.has_applied_luminosity
 
 /area/proc/ClearDayNightTurfs()
-	var/mutable_appearance/appearance_to_clear = mutable_appearance('icons/effects/daynight_blend.dmi', "white", z, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
+	var/mutable_appearance/appearance_to_clear = mutable_appearance('icons/effects/daynight_blend.dmi', "white", DAY_NIGHT_LIGHTING_LAYER, LIGHTING_PLANE, 255, RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM)
 	appearance_to_clear.color = last_day_night_color
 	appearance_to_clear.alpha = last_day_night_alpha
 	for(var/i in day_night_adjacent_turfs)
