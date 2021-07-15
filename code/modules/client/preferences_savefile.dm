@@ -411,9 +411,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["dominant_hand"], dominant_hand)
 
 	switch(dominant_hand)
-		if(HAND_DOMINANT_LEFT, HAND_DOMINANT_RIGHT, HAND_DOMINANT_AMBI) // do nothing
+		if(DOMINANT_HAND_LEFT, DOMINANT_HAND_RIGHT, DOMINANT_HAND_AMBI) // do nothing
 		else
-			dominant_hand = HAND_DOMINANT_AMBI
+			dominant_hand = DOMINANT_HAND_AMBI
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)

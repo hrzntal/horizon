@@ -512,3 +512,18 @@
 ///Can this mob hold items
 /mob/proc/can_hold_items(obj/item/I)
 	return length(held_items)
+
+/mob/proc/calculate_dominant_delay(original_delay)
+	switch(dominant_hand)
+		if(DOMINANT_HAND_LEFT)
+			if(active_hand_index == 1)
+				return original_delay * (1 - DOMINANT_HAND_FACTOR)
+			return original_delay * (1 + DOMINANT_HAND_FACTOR)
+
+		if(DOMINANT_HAND_RIGHT)
+			if(active_hand_index == 2)
+				return original_delay * (1 - DOMINANT_HAND_FACTOR)
+			return original_delay * (1 + DOMINANT_HAND_FACTOR)
+
+		if(DOMINANT_HAND_AMBI)
+			return original_delay

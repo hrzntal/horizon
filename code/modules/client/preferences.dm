@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/phobia = "spiders"
 	/// Characters dominant hand
-	var/dominant_hand = HAND_DOMINANT_AMBI
+	var/dominant_hand = DOMINANT_HAND_AMBI
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -2777,12 +2777,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("dhand")
 					switch(dominant_hand)
-						if(HAND_DOMINANT_LEFT)
-							dominant_hand = HAND_DOMINANT_RIGHT
-						if(HAND_DOMINANT_RIGHT)
-							dominant_hand = HAND_DOMINANT_AMBI
-						if(HAND_DOMINANT_AMBI)
-							dominant_hand = HAND_DOMINANT_LEFT
+						if(DOMINANT_HAND_LEFT)
+							dominant_hand = DOMINANT_HAND_RIGHT
+						if(DOMINANT_HAND_RIGHT)
+							dominant_hand = DOMINANT_HAND_AMBI
+						if(DOMINANT_HAND_AMBI)
+							dominant_hand = DOMINANT_HAND_LEFT
 					save_preferences()
 
 	ShowChoices(user)

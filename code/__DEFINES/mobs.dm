@@ -447,6 +447,8 @@
 #define GET_TARGETS_FROM(who) (who.targets_from ? who.get_targets_from() : who)
 
 /// Defines for dominanthand state
-#define HAND_DOMINANT_LEFT "Left"
-#define HAND_DOMINANT_RIGHT "Right"
-#define HAND_DOMINANT_AMBI "Ambidextrous"
+#define DOMINANT_HAND_LEFT "Left"
+#define DOMINANT_HAND_RIGHT "Right"
+#define DOMINANT_HAND_AMBI "Ambidextrous"
+/// What is the increase/slowdown for using your dominant hand, or not
+#define DOMINANT_HAND_FACTOR 0.20

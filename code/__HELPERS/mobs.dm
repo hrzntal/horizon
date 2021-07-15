@@ -142,11 +142,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		drifting = TRUE
 
 	if(!(timed_action_flags & IGNORE_DOMINANT_HAND))
-		switch(user.dominant_hand)
-			if(HAND_DOMINANT_LEFT)
-				time *= (user.active_hand_index == 1) ? 1 - user.dominant_factor : 1 + user.dominant_factor
-			if(HAND_DOMINANT_RIGHT)
-				time *= (user.active_hand_index == 2) ? 1 - user.dominant_factor : 1 + user.dominant_factor
+		time = user.calculate_dominant_delay(time)
 
 	var/target_loc = target.loc
 
@@ -224,11 +220,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		return FALSE
 
 	if(!(timed_action_flags & IGNORE_DOMINANT_HAND))
-		switch(user.dominant_hand)
-			if(HAND_DOMINANT_LEFT)
-				delay *= (user.active_hand_index == 1) ? 1 - user.dominant_factor : 1 + user.dominant_factor
-			if(HAND_DOMINANT_RIGHT)
-				delay *= (user.active_hand_index == 2) ? 1 - user.dominant_factor : 1 + user.dominant_factor
+		delay = user.calculate_dominant_delay(delay)
 
 	var/atom/target_loc = null
 	if(target && !isturf(target))
@@ -306,11 +298,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		return FALSE
 
 	if(!(timed_action_flags & IGNORE_DOMINANT_HAND))
-		switch(user.dominant_hand)
-			if(HAND_DOMINANT_LEFT)
-				time *= (user.active_hand_index == 1) ? 1 - user.dominant_factor : 1 + user.dominant_factor
-			if(HAND_DOMINANT_RIGHT)
-				time *= (user.active_hand_index == 2) ? 1 - user.dominant_factor : 1 + user.dominant_factor
+		time = user.calculate_dominant_delay(time)
 
 	var/user_loc = user.loc
 

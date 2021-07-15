@@ -231,7 +231,5 @@
 
 	/// Our dominant hand, affects delay for do_after
 	/// If ambidextrous no speedup or slowdown occurs
-	var/dominant_hand = HAND_DOMINANT_AMBI
+	var/dominant_hand = DOMINANT_HAND_AMBI
 
-	/// The speed modifier on using our dominant hand for do_after
-	var/dominant_factor = 0.20 // 20% faster
