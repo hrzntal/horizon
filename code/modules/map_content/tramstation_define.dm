@@ -4,11 +4,9 @@
 	map_file = "tramstation.dmm"
 
 	traits = list(list("Up" = 1,
-						"Baseturf" = "/turf/open/floor/plating/asteroid/airless",
-						"Linkage" = "Cross"),
+						"Baseturf" = "/turf/open/floor/plating/asteroid/airless"),
 						list("Down" = -1,
-						"Baseturf" = "/turf/open/openspace",
-						"Linkage" = "Cross"))
+						"Baseturf" = "/turf/open/openspace"))
 	space_ruin_levels = 3
 
 	minetype = "lavaland"

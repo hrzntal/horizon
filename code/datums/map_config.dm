@@ -64,12 +64,15 @@
 	var/ore_node_seeder_type
 
 /datum/map_config/New()
-	//Make sure that all levels in station do have this z trait
+	//Make sure that all levels in station have the default station traits, unless they're overriden
 	. = ..()
 	if(islist(traits))
 		for(var/level in traits)
 			var/list/level_traits = level
-			level_traits[ZTRAIT_STATION] = TRUE
+			var/base_traits_station = ZTRAITS_STATION
+			for(var/trait_to_validate in base_traits_station)
+				if(!level_traits[trait_to_validate])
+					level_traits[trait_to_validate] = base_traits_station[trait_to_validate]
 
 /datum/map_config/proc/get_map_info()
 	return "You're on board <b>[map_name]</b>, a top of the class NanoTrasen research station."
