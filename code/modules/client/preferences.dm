@@ -86,6 +86,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//Has to include all information that extra organs from mutant bodyparts would need.
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/phobia = "spiders"
+	/// Characters dominant hand
+	var/dominant_hand = HAND_DOMINANT_AMBI
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -360,8 +362,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(gender == PLURAL || gender == NEUTER)
 							dat += "<BR><b>Body Type:</b> <a href='?_src_=prefs;preference=body_type'>[body_type == MALE ? "Male" : "Female"]</a>"
 
-						
+
 					dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
+					dat += "<br><b>Dominant Hand:</b> <a href='?_src_=prefs;preference=dhand'>[dominant_hand]</a>"
 					dat += "<br><br><b>Special Names:</b><BR>"
 					var/old_group
 					for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -389,7 +392,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(1) //Appearance
 					dat += "<h2>Body</h2>"
 					dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
-					
+
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
@@ -431,7 +434,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "[copytext(html_encode(ooc_prefs), 1, 40)]..."
 					dat += "<br>"
 
-					
+
 					var/use_skintones = pref_species.use_skintones
 					if(use_skintones)
 
@@ -471,7 +474,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 						dat += "<h3>Eye Color</h3>"
 						dat += "<a href='?_src_=prefs;preference=eyes;task=input'><span class='color_holder_box' style='background-color:#[eye_color]'></span></a>"
-						
+
 						dat += "<br></td>"
 					else if(use_skintones)
 						dat += "</td>"
@@ -484,14 +487,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						dat += "<a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
-						
+
 						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
-						
+
 						dat += "<BR><h3>Facial Hairstyle</h3>"
 
 						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
 						dat += "<a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
-						
+
 						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
 						dat += "<br></td>"
 
@@ -524,9 +527,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 					dat += "<BR><b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
-					
+
 					dat += "<a href='?_src_=prefs;preference=underwear_color;task=input'><span class='color_holder_box' style='background-color:#[underwear_color]'></span></a>"
-					
+
 					dat += "<BR><b>Undershirt:</b><BR><a href ='?_src_=prefs;preference=undershirt;task=input'>[undershirt]</a>"
 					dat += "<a href='?_src_=prefs;preference=undershirt_color;task=input'><span class='color_holder_box' style='background-color:#[undershirt_color]'></span></a>"
 
@@ -534,9 +537,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<a href='?_src_=prefs;preference=socks_color;task=input'><span class='color_holder_box' style='background-color:#[socks_color]'></span></a>"
 
 					dat += "<br><b>Jumpsuit Style:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a>"
-					
+
 					dat += "<br><b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backpack]</a>"
-					
+
 					if((HAS_FLESH in pref_species.species_traits) || (HAS_BONE in pref_species.species_traits))
 						dat += "<BR><b>Temporal Scarring:</b><BR><a href='?_src_=prefs;preference=persistent_scars'>[(persistent_scars) ? "Enabled" : "Disabled"]</A>"
 						dat += "<a href='?_src_=prefs;preference=clear_scars'>Clear scar slots</A>"
@@ -2772,8 +2775,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					to_chat(user, SPAN_NOTICE("OOC Commendation Heart disabled"))
 					save_preferences()
 
+				if("dhand")
+					switch(dominant_hand)
+						if(HAND_DOMINANT_LEFT)
+							dominant_hand = HAND_DOMINANT_RIGHT
+						if(HAND_DOMINANT_RIGHT)
+							dominant_hand = HAND_DOMINANT_AMBI
+						if(HAND_DOMINANT_AMBI)
+							dominant_hand = HAND_DOMINANT_LEFT
+					save_preferences()
+
 	ShowChoices(user)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, is_latejoiner = TRUE)
 
@@ -2819,6 +2832,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.backpack = backpack
 
 	character.jumpsuit_style = jumpsuit_style
+
+	character.dominant_hand = dominant_hand
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
