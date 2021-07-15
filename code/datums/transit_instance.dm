@@ -76,7 +76,8 @@
 				var/turf/cardinal_turf = get_step(my_turf, cardinal)
 				if(!istype(cardinal_turf, /turf/open/space/transit))
 					continue
-		movable.throw_at(get_edge_target_turf(my_turf, dir), 4, 3)
+		if(!isclosedturf(step_turf) && !step_turf.is_blocked_turf(TRUE))
+			movable.throw_at(get_edge_target_turf(my_turf, dir), 4, 3)
 
 ///Strand all movables that we're managing
 /datum/transit_instance/proc/StrandAll()
