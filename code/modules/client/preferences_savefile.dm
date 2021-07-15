@@ -355,6 +355,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
+	WRITE_FILE(S["dominant_hand"], dominant_hand)
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -407,6 +408,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["uplink_loc"], uplink_spawn_loc)
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
+	READ_FILE(S["dominant_hand"], dominant_hand)
+
+	switch(dominant_hand)
+		if(HAND_DOMINANT_LEFT, HAND_DOMINANT_RIGHT, HAND_DOMINANT_AMBI)
+			break
+		else
+			dominant_hand = HAND_DOMINANT_AMBI
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
