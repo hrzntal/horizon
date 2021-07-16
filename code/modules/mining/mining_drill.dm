@@ -13,7 +13,7 @@
 	max_integrity = 200
 	integrity_failure = 0.25
 	damage_deflection = 10
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
 
 	circuit = /obj/item/circuitboard/machine/mining_drill
@@ -389,7 +389,7 @@
 	icon_state = "mining_brace"
 	use_power = NO_POWER_USE
 	layer = ABOVE_MOB_LAYER
-	resistance_flags = FIRE_PROOF
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
 
 	circuit = /obj/item/circuitboard/machine/mining_brace
 
