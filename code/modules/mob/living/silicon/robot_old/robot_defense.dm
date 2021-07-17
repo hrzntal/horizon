@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	to_chat(src, SPAN_DANGER("Initiating diagnostics..."))
 	sleep(20)
 	to_chat(src, SPAN_DANGER("SynBorg v1.7 loaded."))
-	logevent("WARN: root privleges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
+	logevent("WARN: root privileges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
 	sleep(5)
 	to_chat(src, SPAN_DANGER("LAW SYNCHRONISATION ERROR"))
 	sleep(5)
