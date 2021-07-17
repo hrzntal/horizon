@@ -13,7 +13,7 @@
 	if(B)
 		B.suicided = suicide_state
 
-/mob/living/silicon/robot/set_suicide(suicide_state)
+/mob/living/silicon/robot_old/set_suicide(suicide_state)
 	. = ..()
 	if(mmi)
 		if(mmi.brain)
@@ -147,7 +147,7 @@
 		death(FALSE)
 		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
-/mob/living/silicon/robot/verb/suicide()
+/mob/living/silicon/robot_old/verb/suicide()
 	set hidden = TRUE
 	if(!canSuicide())
 		return

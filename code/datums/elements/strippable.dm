@@ -44,7 +44,7 @@
 
 	// Cyborgs buckle people by dragging them onto them, unless in combat mode.
 	if (iscyborg(user))
-		var/mob/living/silicon/robot/cyborg_user = user
+		var/mob/living/silicon/robot_old/cyborg_user = user
 		if (!cyborg_user.combat_mode)
 			return
 

@@ -22,7 +22,7 @@
 		if(istype(computer, /obj/item/modular_computer/tablet/integrated)) //If this is a borg's integrated tablet
 			var/obj/item/modular_computer/tablet/integrated/modularInterface = computer
 			to_chat(modularInterface.borgo,SPAN_USERDANGER("SYSTEM PURGE DETECTED/"))
-			addtimer(CALLBACK(modularInterface.borgo, /mob/living/silicon/robot/.proc/death), 2 SECONDS, TIMER_UNIQUE)
+			addtimer(CALLBACK(modularInterface.borgo, /mob/living/silicon/robot_old/.proc/death), 2 SECONDS, TIMER_UNIQUE)
 			return
 
 		computer.visible_message(SPAN_NOTICE("\The [computer]'s screen brightly flashes and loud electrical buzzing is heard."))

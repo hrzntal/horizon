@@ -67,7 +67,7 @@
 	comp_light_luminosity = 0
 	has_variants = FALSE
 	///Ref to the borg we're installed in. Set by the borg during our creation.
-	var/mob/living/silicon/robot/borgo
+	var/mob/living/silicon/robot_old/borgo
 	///Ref to the RoboTact app. Important enough to borgs to deserve a ref.
 	var/datum/computer_file/program/robotact/robotact
 	///IC log that borgs can view in their personal management app

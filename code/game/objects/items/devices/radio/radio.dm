@@ -387,7 +387,7 @@
 /obj/item/radio/borg/resetChannels()
 	. = ..()
 
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	if(istype(R))
 		for(var/ch_name in R.model.radio_channels)
 			channels[ch_name] = 1

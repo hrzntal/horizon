@@ -22,7 +22,7 @@
 		"[SPAN_NOTICE("Serves as a substitute for <b>fire/air alarm</b>, <b>firelock</b>, and <b>APC</b> electronics.")]\n"+\
 		SPAN_NOTICE("It can also be used on an APC with no power cell to <b>fabricate a low-capacity cell</b> at a high power cost.")
 
-/obj/item/electroadaptive_pseudocircuit/proc/adapt_circuit(mob/living/silicon/robot/R, circuit_cost = 0)
+/obj/item/electroadaptive_pseudocircuit/proc/adapt_circuit(mob/living/silicon/robot_old/R, circuit_cost = 0)
 	if(QDELETED(R) || !istype(R))
 		return
 	if(!R.cell)

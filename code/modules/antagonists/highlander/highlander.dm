@@ -90,7 +90,7 @@
 	Activate it in your hand, and it will lead to the nearest target. Attack the nuclear authentication disk with it, and you will store it.</span>")
 
 /datum/antagonist/highlander/robot/give_equipment()
-	var/mob/living/silicon/robot/robotlander = owner.current
+	var/mob/living/silicon/robot_old/robotlander = owner.current
 	if(!istype(robotlander))
 		return ..()
 	robotlander.revive(full_heal = TRUE, admin_revive = TRUE)

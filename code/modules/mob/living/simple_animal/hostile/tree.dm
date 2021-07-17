@@ -101,7 +101,7 @@
 		visible_message(SPAN_WARNING("[src] crackles with static electricity!"))
 		for(var/obj/item/stock_parts/cell/C in range(2, get_turf(src)))
 			C.give(75)
-		for(var/mob/living/silicon/robot/R in range(2, get_turf(src)))
+		for(var/mob/living/silicon/robot_old/R in range(2, get_turf(src)))
 			if(R.cell)
 				R.cell.give(75)
 		for(var/obj/machinery/power/apc/A in range(2, get_turf(src)))

@@ -93,7 +93,7 @@
 		if(iscyborg(user)) //Cyborg modules that include drinks automatically refill themselves (and only with consumable drinks), but drain the borg's cell
 			if (!ispath(refill, /datum/reagent/consumable))
 				return
-			var/mob/living/silicon/robot/bro = user
+			var/mob/living/silicon/robot_old/bro = user
 			bro.cell.use(30)
 			addtimer(CALLBACK(reagents, /datum/reagents.proc/add_reagent, refill, trans), 600)
 

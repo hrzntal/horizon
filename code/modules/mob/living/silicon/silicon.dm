@@ -172,7 +172,7 @@
 	if(!. && (injection_flags & INJECT_TRY_SHOW_ERROR_MESSAGE))
 		to_chat(user, SPAN_ALERT("[p_their(TRUE)] outer shell is too tough."))
 
-/proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
+/proc/islinked(mob/living/silicon/robot_old/bot, mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
 		return FALSE
 	if(bot.connected_ai == ai)

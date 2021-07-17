@@ -17,7 +17,7 @@
 			playsound(M, 'sound/weapons/genhit.ogg', 50, TRUE)
 			return FALSE
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 		if(!R.cell.use(charge_cost))
 			return
 
@@ -44,7 +44,7 @@
 
 /obj/item/borg/cyborghug/attack_self(mob/living/user)
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/P = user
+		var/mob/living/silicon/robot_old/P = user
 		if(P.emagged&&shockallowed == 1)
 			if(mode < 3)
 				mode++
@@ -64,7 +64,7 @@
 		if(3)
 			to_chat(user, "<span class='warningplain'>ERROR: ARM ACTUATORS OVERLOADED.</span>")
 
-/obj/item/borg/cyborghug/attack(mob/living/M, mob/living/silicon/robot/user, params)
+/obj/item/borg/cyborghug/attack(mob/living/M, mob/living/silicon/robot_old/user, params)
 	if(M == user)
 		return
 	switch(mode)
@@ -170,7 +170,7 @@
 	to_chat(user, SPAN_NOTICE("You toggle [src] to \"[mode]\" mode."))
 	update_appearance()
 
-/obj/item/borg/charger/afterattack(obj/item/target, mob/living/silicon/robot/user, proximity_flag)
+/obj/item/borg/charger/afterattack(obj/item/target, mob/living/silicon/robot_old/user, proximity_flag)
 	. = ..()
 	if(!proximity_flag || !iscyborg(user))
 		return
@@ -294,7 +294,7 @@
 		return
 
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 		if(!R.cell || R.cell.charge < 1200)
 			to_chat(user, SPAN_WARNING("You don't have enough charge to do this!"))
 			return
@@ -314,7 +314,7 @@
 		cooldown = world.time + 200
 		user.log_message("used a Cyborg Harm Alarm in [AREACOORD(user)]", LOG_ATTACK)
 		if(iscyborg(user))
-			var/mob/living/silicon/robot/R = user
+			var/mob/living/silicon/robot_old/R = user
 			to_chat(R.connected_ai, "<br>[SPAN_NOTICE("NOTICE - Peacekeeping 'HARM ALARM' used by: [user]")]<br>")
 
 		return
@@ -418,7 +418,7 @@
 	candy--
 
 	var/obj/item/ammo_casing/caseless/lollipop/A
-	var/mob/living/silicon/robot/R = user
+	var/mob/living/silicon/robot_old/R = user
 	if(istype(R) && R.emagged)
 		A = new /obj/item/ammo_casing/caseless/lollipop/harmful(src)
 	else
@@ -435,7 +435,7 @@
 		return FALSE
 	candy--
 	var/obj/item/ammo_casing/caseless/gumball/A
-	var/mob/living/silicon/robot/R = user
+	var/mob/living/silicon/robot_old/R = user
 	if(istype(R) && R.emagged)
 		A = new /obj/item/ammo_casing/caseless/gumball/harmful(src)
 	else
@@ -451,7 +451,7 @@
 	. = ..()
 	check_amount()
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 		if(!R.cell.use(12))
 			to_chat(user, SPAN_WARNING("Not enough power."))
 			return FALSE
@@ -582,7 +582,7 @@
 	var/energy_recharge = 37.5
 	var/energy_recharge_cyborg_drain_coefficient = 0.4
 	var/cyborg_cell_critical_percentage = 0.05
-	var/mob/living/silicon/robot/host = null
+	var/mob/living/silicon/robot_old/host = null
 	var/datum/proximity_monitor/advanced/dampening_field
 	var/projectile_damage_coefficient = 0.5
 	/// Energy cost per tracked projectile damage amount per second
@@ -642,7 +642,7 @@
 	if(istype(dampening_field))
 		QDEL_NULL(dampening_field)
 	dampening_field = make_field(/datum/proximity_monitor/advanced/peaceborg_dampener, list("current_range" = field_radius, "host" = src, "projector" = src))
-	var/mob/living/silicon/robot/owner = get_host()
+	var/mob/living/silicon/robot_old/owner = get_host()
 	if(owner)
 		owner.model.allow_riding = FALSE
 	active = TRUE
@@ -654,7 +654,7 @@
 		restore_projectile(P)
 	active = FALSE
 
-	var/mob/living/silicon/robot/owner = get_host()
+	var/mob/living/silicon/robot_old/owner = get_host()
 	if(owner)
 		owner.model.allow_riding = TRUE
 
@@ -825,13 +825,13 @@
 /**
 * Attack_self will pass for the stored item.
 */
-/obj/item/borg/apparatus/attack_self(mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/attack_self(mob/living/silicon/robot_old/user)
 	if(!stored || !issilicon(user))
 		return ..()
 	stored.attack_self(user)
 
 //Alt click drops the stored item.
-/obj/item/borg/apparatus/AltClick(mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/AltClick(mob/living/silicon/robot_old/user)
 	if(!stored || !issilicon(user))
 		return ..()
 	stored.forceMove(user.drop_location())
@@ -928,7 +928,7 @@
 	. += arm
 
 /// Secondary attack spills the content of the beaker.
-/obj/item/borg/apparatus/beaker/pre_attack_secondary(atom/target, mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/beaker/pre_attack_secondary(atom/target, mob/living/silicon/robot_old/user)
 	var/obj/item/reagent_containers/stored_beaker = stored
 	stored_beaker.SplashReagents(drop_location(user))
 	loc.visible_message(SPAN_NOTICE("[user] spills the contents of [stored_beaker] all over the ground."))
@@ -991,7 +991,7 @@
 		bag = mutable_appearance(icon, icon_state = "evidenceobj") // empty bag
 	. += bag
 
-/obj/item/borg/apparatus/organ_storage/AltClick(mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/organ_storage/AltClick(mob/living/silicon/robot_old/user)
 	. = ..()
 	if(stored)
 		var/obj/item/organ = stored

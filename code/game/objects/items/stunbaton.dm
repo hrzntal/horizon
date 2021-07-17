@@ -222,7 +222,7 @@
 		to_chat(user, SPAN_DANGER("[L] manages to avoid the attack!"))
 		return FALSE
 	if(iscyborg(loc))
-		var/mob/living/silicon/robot/R = loc
+		var/mob/living/silicon/robot_old/R = loc
 		if(!R || !R.cell || !R.cell.use(cell_hit_cost))
 			return FALSE
 	else

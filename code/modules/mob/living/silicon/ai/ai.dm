@@ -84,7 +84,7 @@
 	var/acceleration = 1
 
 	var/obj/structure/ai_core/deactivated/linked_core //For exosuit control
-	var/mob/living/silicon/robot/deployed_shell = null //For shell control
+	var/mob/living/silicon/robot_old/deployed_shell = null //For shell control
 	var/datum/action/innate/deploy_shell/deploy_action = new
 	var/datum/action/innate/deploy_last_shell/redeploy_action = new
 	var/datum/action/innate/choose_modules/modules_action
@@ -270,7 +270,7 @@
 		. += text("Backup Power: [battery * 0.5]%")
 	. += text("Connected cyborgs: [length(connected_robots)]")
 	for(var/r in connected_robots)
-		var/mob/living/silicon/robot/connected_robot = r
+		var/mob/living/silicon/robot_old/connected_robot = r
 		var/robot_status = "Nominal"
 		if(connected_robot.shell)
 			robot_status = "AI SHELL"
@@ -852,7 +852,7 @@
 			eyeobj.name = "[newname] (AI Eye)"
 
 		// Notify Cyborgs
-		for(var/mob/living/silicon/robot/Slave in connected_robots)
+		for(var/mob/living/silicon/robot_old/Slave in connected_robots)
 			Slave.show_laws()
 
 /mob/living/silicon/ai/replace_identification_name(oldname,newname)
@@ -944,7 +944,7 @@
 		to_chat(src, "Hack complete. [apc] is now under your exclusive control.")
 		apc.update_appearance()
 
-/mob/living/silicon/ai/verb/deploy_to_shell(mob/living/silicon/robot/target)
+/mob/living/silicon/ai/verb/deploy_to_shell(mob/living/silicon/robot_old/target)
 	set category = "AI Commands"
 	set name = "Deploy to Shell"
 
@@ -957,7 +957,7 @@
 	var/list/possible = list()
 
 	for(var/borgie in GLOB.available_ai_shells)
-		var/mob/living/silicon/robot/R = borgie
+		var/mob/living/silicon/robot_old/R = borgie
 		if(R.shell && !R.deployed && (R.stat != DEAD) && (!R.connected_ai ||(R.connected_ai == src)))
 			possible += R
 
@@ -994,7 +994,7 @@
 	desc = "Reconnect to the most recently used AI shell."
 	icon_icon = 'icons/mob/actions/actions_AI.dmi'
 	button_icon_state = "ai_last_shell"
-	var/mob/living/silicon/robot/last_used_shell
+	var/mob/living/silicon/robot_old/last_used_shell
 
 /datum/action/innate/deploy_last_shell/Trigger()
 	if(!owner)

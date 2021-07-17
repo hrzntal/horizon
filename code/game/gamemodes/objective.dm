@@ -455,7 +455,7 @@ GLOBAL_LIST_EMPTY(objectives)
 		if(!M.current || !isAI(M.current))
 			continue
 		var/mob/living/silicon/ai/A = M.current
-		for(var/mob/living/silicon/robot/R in A.connected_robots)
+		for(var/mob/living/silicon/robot_old/R in A.connected_robots)
 			if(R.stat != DEAD)
 				counter++
 	return counter >= 8
@@ -531,7 +531,7 @@ GLOBAL_LIST_EMPTY(objectives)
 /datum/objective/survive/malf/check_completion()
 	var/list/datum/mind/owners = get_owners()
 	for(var/datum/mind/mindobj in owners)
-		if(!istype(mindobj, /mob/living/silicon/robot) && !considered_alive(mindobj, FALSE)) //Shells (and normal borgs for that matter) are considered alive for Malf
+		if(!istype(mindobj, /mob/living/silicon/robot_old) && !considered_alive(mindobj, FALSE)) //Shells (and normal borgs for that matter) are considered alive for Malf
 			return FALSE
 		return TRUE
 

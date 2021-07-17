@@ -799,7 +799,7 @@
 		if(isAI(S))
 			to_chat(usr, "<b>AI [key_name(S, usr)]'s laws:</b>", confidential = TRUE)
 		else if(iscyborg(S))
-			var/mob/living/silicon/robot/R = S
+			var/mob/living/silicon/robot_old/R = S
 			to_chat(usr, "<b>CYBORG [key_name(S, usr)] [R.connected_ai?"(Slaved to: [key_name(R.connected_ai)])":"(Independent)"]: laws:</b>", confidential = TRUE)
 		else if (ispAI(S))
 			to_chat(usr, "<b>pAI [key_name(S, usr)]'s laws:</b>", confidential = TRUE)

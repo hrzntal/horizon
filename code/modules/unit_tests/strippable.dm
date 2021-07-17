@@ -44,7 +44,7 @@
 	ADD_TRAIT(observer, TRAIT_PRESERVE_UI_WITHOUT_CLIENT, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(observer, ui_state), UI_UPDATE, "Being within range but an observer was not update-only.")
 
-	var/mob/living/silicon/robot/borg = allocate(/mob/living/silicon/robot, run_loc_floor_bottom_left)
+	var/mob/living/silicon/robot_old/borg = allocate(/mob/living/silicon/robot_old, run_loc_floor_bottom_left)
 	ADD_TRAIT(borg, TRAIT_PRESERVE_UI_WITHOUT_CLIENT, TRAIT_SOURCE_UNIT_TESTS)
 	TEST_ASSERT_EQUAL(strip_menu.ui_status(borg, ui_state), UI_INTERACTIVE, "Being within range as a borg was not interactive.")
 

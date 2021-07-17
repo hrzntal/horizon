@@ -7,7 +7,7 @@
 	circuit = /obj/item/circuitboard/computer/robotics
 	light_color = LIGHT_COLOR_PINK
 
-/obj/machinery/computer/robotics/proc/can_control(mob/user, mob/living/silicon/robot/R)
+/obj/machinery/computer/robotics/proc/can_control(mob/user, mob/living/silicon/robot_old/R)
 	. = FALSE
 	if(!istype(R))
 		return
@@ -39,7 +39,7 @@
 		data["can_hack"] = TRUE
 
 	data["cyborgs"] = list()
-	for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
+	for(var/mob/living/silicon/robot_old/R in GLOB.silicon_mobs)
 		if(!can_control(user, R))
 			continue
 		if(z != (get_turf(R)).z)
@@ -79,7 +79,7 @@
 	switch(action)
 		if("killbot")
 			if(allowed(usr))
-				var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
+				var/mob/living/silicon/robot_old/R = locate(params["ref"]) in GLOB.silicon_mobs
 				if(can_control(usr, R) && !..())
 					var/turf/T = get_turf(R)
 					message_admins(SPAN_NOTICE("[ADMIN_LOOKUPFLW(usr)] detonated [key_name_admin(R, R.client)] at [ADMIN_VERBOSEJMP(T)]!"))
@@ -91,7 +91,7 @@
 				to_chat(usr, SPAN_DANGER("Access Denied."))
 		if("stopbot")
 			if(allowed(usr))
-				var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
+				var/mob/living/silicon/robot_old/R = locate(params["ref"]) in GLOB.silicon_mobs
 				if(can_control(usr, R) && !..())
 					message_admins(SPAN_NOTICE("[ADMIN_LOOKUPFLW(usr)] [!R.lockcharge ? "locked down" : "released"] [ADMIN_LOOKUPFLW(R)]!"))
 					log_game("[key_name(usr)] [!R.lockcharge ? "locked down" : "released"] [key_name(R)]!")
@@ -104,7 +104,7 @@
 		if("magbot")
 			var/mob/living/silicon/S = usr
 			if((istype(S) && S.hack_software) || isAdminGhostAI(usr))
-				var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
+				var/mob/living/silicon/robot_old/R = locate(params["ref"]) in GLOB.silicon_mobs
 				if(istype(R) && !R.emagged && (R.connected_ai == usr || isAdminGhostAI(usr)) && !R.scrambledcodes && can_control(usr, R))
 					log_game("[key_name(usr)] emagged [key_name(R)] using robotic console!")
 					message_admins("[ADMIN_LOOKUPFLW(usr)] emagged cyborg [key_name_admin(R)] using robotic console!")

@@ -16,7 +16,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/silicon/robot/R = user.mob
+	var/mob/living/silicon/robot_old/R = user.mob
 	R.toggle_module(1)
 	return TRUE
 
@@ -31,7 +31,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/silicon/robot/R = user.mob
+	var/mob/living/silicon/robot_old/R = user.mob
 	R.toggle_module(2)
 	return TRUE
 
@@ -46,7 +46,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/silicon/robot/R = user.mob
+	var/mob/living/silicon/robot_old/R = user.mob
 	R.toggle_module(3)
 	return TRUE
 
@@ -61,6 +61,6 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/silicon/robot/R = user.mob
+	var/mob/living/silicon/robot_old/R = user.mob
 	R.uneq_active()
 	return TRUE

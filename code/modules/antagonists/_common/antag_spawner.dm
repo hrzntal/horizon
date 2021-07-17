@@ -190,18 +190,18 @@
 	borg_to_spawn = "Saboteur"
 
 /obj/item/antag_spawner/nuke_ops/borg_tele/spawn_antag(client/C, turf/T, kind, datum/mind/user)
-	var/mob/living/silicon/robot/borg
+	var/mob/living/silicon/robot_old/borg
 	var/datum/antagonist/nukeop/creator_op = user.has_antag_datum(/datum/antagonist/nukeop,TRUE)
 	if(!creator_op)
 		return
 	var/obj/structure/closet/supplypod/pod = setup_pod()
 	switch(borg_to_spawn)
 		if("Medical")
-			borg = new /mob/living/silicon/robot/model/syndicate/medical()
+			borg = new /mob/living/silicon/robot_old/model/syndicate/medical()
 		if("Saboteur")
-			borg = new /mob/living/silicon/robot/model/syndicate/saboteur()
+			borg = new /mob/living/silicon/robot_old/model/syndicate/saboteur()
 		else
-			borg = new /mob/living/silicon/robot/model/syndicate() //Assault borg by default
+			borg = new /mob/living/silicon/robot_old/model/syndicate() //Assault borg by default
 
 	var/brainfirstname = pick(GLOB.first_names_male)
 	if(prob(50))

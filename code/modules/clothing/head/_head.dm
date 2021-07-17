@@ -51,7 +51,7 @@
 			H.update_inv_hands() //force update hands to prevent ghost sprites appearing when throw mode is on
 		return
 	if(iscyborg(hit_atom))
-		var/mob/living/silicon/robot/R = hit_atom
+		var/mob/living/silicon/robot_old/R = hit_atom
 		var/obj/item/worn_hat = R.hat
 		if(worn_hat && HAS_TRAIT(worn_hat, TRAIT_NODROP))
 			R.visible_message(SPAN_WARNING("[src] bounces off [worn_hat], without an effect!"), SPAN_WARNING("[src] bounces off your mighty [worn_hat.name], falling to the floor in defeat."))

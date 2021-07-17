@@ -30,7 +30,7 @@
 
 /obj/item/robot_model/proc/get_inactive_modules()
 	. = list()
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	for(var/m in get_usable_modules())
 		if(!(m in R.held_items))
 			. += m
@@ -71,7 +71,7 @@
 		qdel(I)
 
 /obj/item/robot_model/proc/rebuild_modules() //builds the usable module list from the modules we have
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	var/list/held_modules = R.held_items.Copy()
 	var/active_module = R.module_active
 	R.uneq_all()
@@ -91,7 +91,7 @@
 	if(R.hud_used)
 		R.hud_used.update_robot_modules_display()
 
-/obj/item/robot_model/proc/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
+/obj/item/robot_model/proc/respawn_consumable(mob/living/silicon/robot_old/R, coeff = 1)
 	for(var/datum/robot_energy_storage/st in storages)
 		st.energy = min(st.max_energy, st.energy + coeff * st.recharge_rate)
 
@@ -125,7 +125,7 @@
 
 // --------------------- Transformations
 /obj/item/robot_model/proc/transform_to(new_config_type)
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	var/obj/item/robot_model/RM = new new_config_type(R)
 	RM.robot = R
 	if(!RM.be_transformed_to(src))
@@ -148,7 +148,7 @@
 	return TRUE
 
 /obj/item/robot_model/proc/do_transform_animation()
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	if(R.hat)
 		R.hat.forceMove(get_turf(R))
 		R.hat = null
@@ -157,7 +157,7 @@
 	do_transform_delay()
 
 /obj/item/robot_model/proc/do_transform_delay()
-	var/mob/living/silicon/robot/R = loc
+	var/mob/living/silicon/robot_old/R = loc
 	var/prev_lockcharge = R.lockcharge
 	sleep(1)
 	flick("[cyborg_base_icon]_transform", R)
@@ -188,7 +188,7 @@
  * * user The cyborg mob interacting with the menu
  * * old_model The old cyborg's model
  */
-/obj/item/robot_model/proc/check_menu(mob/living/silicon/robot/user, obj/item/robot_model/old_model)
+/obj/item/robot_model/proc/check_menu(mob/living/silicon/robot_old/user, obj/item/robot_model/old_model)
 	if(!istype(user))
 		return FALSE
 	if(user.incapacitated())
@@ -294,7 +294,7 @@
 	name = "lube spray"
 	list_reagents = list(/datum/reagent/lube = 250)
 
-/obj/item/robot_model/janitor/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
+/obj/item/robot_model/janitor/respawn_consumable(mob/living/silicon/robot_old/R, coeff = 1)
 	..()
 	var/obj/item/lightreplacer/LR = locate(/obj/item/lightreplacer) in basic_modules
 	if(LR)
@@ -365,7 +365,7 @@
 	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
 
 /obj/item/robot_model/miner/be_transformed_to(obj/item/robot_model/old_model)
-	var/mob/living/silicon/robot/cyborg = loc
+	var/mob/living/silicon/robot_old/cyborg = loc
 	var/list/miner_icons = list(
 		"Asteroid Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD"),
 		"Spider Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "spidermin"),
@@ -438,7 +438,7 @@
 	to_chat(loc, "<span class='userdanger'>While you have picked the security model, you still have to follow your laws, NOT Space Law. \
 	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
 
-/obj/item/robot_model/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
+/obj/item/robot_model/security/respawn_consumable(mob/living/silicon/robot_old/R, coeff = 1)
 	..()
 	var/obj/item/gun/energy/e_gun/advtaser/cyborg/T = locate(/obj/item/gun/energy/e_gun/advtaser/cyborg) in basic_modules
 	if(T)
@@ -478,14 +478,14 @@
 	special_light_key = "service"
 	hat_offset = 0
 
-/obj/item/robot_model/service/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
+/obj/item/robot_model/service/respawn_consumable(mob/living/silicon/robot_old/R, coeff = 1)
 	..()
 	var/obj/item/reagent_containers/O = locate(/obj/item/reagent_containers/food/condiment/enzyme) in basic_modules
 	if(O)
 		O.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
 /obj/item/robot_model/service/be_transformed_to(obj/item/robot_model/old_model)
-	var/mob/living/silicon/robot/cyborg = loc
+	var/mob/living/silicon/robot_old/cyborg = loc
 	var/list/service_icons = list(
 		"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
 		"Butler" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
@@ -534,12 +534,12 @@
 
 /obj/item/robot_model/syndicate/rebuild_modules()
 	..()
-	var/mob/living/silicon/robot/Syndi = loc
+	var/mob/living/silicon/robot_old/Syndi = loc
 	Syndi.faction  -= "silicon" //ai turrets
 
 /obj/item/robot_model/syndicate/remove_module(obj/item/I, delete_after)
 	..()
-	var/mob/living/silicon/robot/Syndi = loc
+	var/mob/living/silicon/robot_old/Syndi = loc
 	Syndi.faction += "silicon" //ai is your bff now!
 
 // --------------------- Syndicate Medical

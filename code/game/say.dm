@@ -195,7 +195,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 	else if(isAI(M))  // AI
 		job = "AI"
 	else if(iscyborg(M))  // Cyborg
-		var/mob/living/silicon/robot/B = M
+		var/mob/living/silicon/robot_old/B = M
 		job = "[B.designation] Cyborg"
 	else if(istype(M, /mob/living/silicon/pai))  // Personal AI (pAI)
 		job = "Personal AI"

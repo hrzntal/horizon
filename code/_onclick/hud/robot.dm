@@ -12,7 +12,7 @@
 /atom/movable/screen/robot/module/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	if(R.model.type != /obj/item/robot_model)
 		R.hud_used.toggle_show_robot_modules()
 		return 1
@@ -25,7 +25,7 @@
 /atom/movable/screen/robot/module1/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	R.toggle_module(1)
 
 /atom/movable/screen/robot/module2
@@ -35,7 +35,7 @@
 /atom/movable/screen/robot/module2/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	R.toggle_module(2)
 
 /atom/movable/screen/robot/module3
@@ -45,7 +45,7 @@
 /atom/movable/screen/robot/module3/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	R.toggle_module(3)
 
 /atom/movable/screen/robot/radio
@@ -55,7 +55,7 @@
 /atom/movable/screen/robot/radio/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	R.radio.interact(R)
 
 /atom/movable/screen/robot/store
@@ -65,7 +65,7 @@
 /atom/movable/screen/robot/store/Click()
 	if(..())
 		return
-	var/mob/living/silicon/robot/R = usr
+	var/mob/living/silicon/robot_old/R = usr
 	R.uneq_active()
 
 /datum/hud/robot
@@ -74,7 +74,7 @@
 /datum/hud/robot/New(mob/owner)
 	..()
 	// i, Robit
-	var/mob/living/silicon/robot/robit = mymob
+	var/mob/living/silicon/robot_old/robit = mymob
 	var/atom/movable/screen/using
 
 	using = new/atom/movable/screen/language_menu
@@ -182,7 +182,7 @@
 	if(!iscyborg(mymob))
 		return
 
-	var/mob/living/silicon/robot/R = mymob
+	var/mob/living/silicon/robot_old/R = mymob
 
 	R.shown_robot_modules = !R.shown_robot_modules
 	update_robot_modules_display()
@@ -191,7 +191,7 @@
 	if(!iscyborg(mymob))
 		return
 
-	var/mob/living/silicon/robot/R = mymob
+	var/mob/living/silicon/robot_old/R = mymob
 
 	var/mob/screenmob = viewer || R
 
@@ -246,7 +246,7 @@
 /datum/hud/robot/persistent_inventory_update(mob/viewer)
 	if(!mymob)
 		return
-	var/mob/living/silicon/robot/R = mymob
+	var/mob/living/silicon/robot_old/R = mymob
 
 	var/mob/screenmob = viewer || R
 
@@ -273,7 +273,7 @@
 	name = "headlamp"
 	icon_state = "lamp_off"
 	base_icon_state = "lamp"
-	var/mob/living/silicon/robot/robot
+	var/mob/living/silicon/robot_old/robot
 
 /atom/movable/screen/robot/lamp/Click()
 	. = ..()
@@ -289,7 +289,7 @@
 /atom/movable/screen/robot/modPC
 	name = "Modular Interface"
 	icon_state = "template"
-	var/mob/living/silicon/robot/robot
+	var/mob/living/silicon/robot_old/robot
 
 /atom/movable/screen/robot/modPC/Click()
 	. = ..()
@@ -306,5 +306,5 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/living/silicon/robot/borgo = usr
+	var/mob/living/silicon/robot_old/borgo = usr
 	borgo.robot_alerts()

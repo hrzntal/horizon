@@ -130,7 +130,7 @@ RSF
 ///A helper proc. checks to see if we can afford the amount of charge that is passed, and if we can docs the charge from our base, and returns TRUE. If we can't we return FALSE
 /obj/item/rsf/proc/use_matter(charge, mob/user)
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 		var/end_charge = R.cell.charge - charge
 		if(end_charge < 0)
 			to_chat(user, SPAN_WARNING("You do not have enough power to use [src]."))
@@ -177,7 +177,7 @@ RSF
 		to_chat(user, SPAN_WARNING("You reset [src]'s reagent safety checker!"))
 
 /obj/item/rsf/cookiesynth/attack_self(mob/user)
-	var/mob/living/silicon/robot/P = null
+	var/mob/living/silicon/robot_old/P = null
 	if(iscyborg(user))
 		P = user
 	if(((obj_flags & EMAGGED) || (P?.emagged)) && !toxin)

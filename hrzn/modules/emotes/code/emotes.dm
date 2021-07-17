@@ -70,7 +70,7 @@
 
 /datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 
 		if(R.cell?.charge < 200)
 			to_chat(R, SPAN_WARNING("Scream module deactivated. Please recharge."))

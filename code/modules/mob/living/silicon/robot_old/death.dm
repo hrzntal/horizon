@@ -1,19 +1,19 @@
 
-/mob/living/silicon/robot/gib_animation()
+/mob/living/silicon/robot_old/gib_animation()
 	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
 
-/mob/living/silicon/robot/dust(just_ash, drop_items, force)
+/mob/living/silicon/robot_old/dust(just_ash, drop_items, force)
 	if(mmi)
 		qdel(mmi)
 	..()
 
-/mob/living/silicon/robot/spawn_dust()
+/mob/living/silicon/robot_old/spawn_dust()
 	new /obj/effect/decal/remains/robot(loc)
 
-/mob/living/silicon/robot/dust_animation()
+/mob/living/silicon/robot_old/dust_animation()
 	new /obj/effect/temp_visual/dust_animation(loc, "dust-r")
 
-/mob/living/silicon/robot/death(gibbed)
+/mob/living/silicon/robot_old/death(gibbed)
 	if(stat == DEAD)
 		return
 	if(!gibbed)
