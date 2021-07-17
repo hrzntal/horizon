@@ -3,6 +3,11 @@
 	if(notransform)
 		return
 
+	if(isopenturf(loc))
+		var/turf/open/my_open_turf = loc
+		if(my_open_turf.pollution)
+			my_open_turf.pollution.TouchAct(src)
+
 	if(damageoverlaytemp)
 		damageoverlaytemp = 0
 		update_damage_hud()
@@ -111,6 +116,14 @@
 				breath = loc_as_obj.handle_internal_lifeform(src, BREATH_VOLUME)
 
 			else if(isturf(loc)) //Breathe from loc as turf
+				//When we breathe from location, we can smell pollution and inhale pollution
+				var/turf/open/open_turf = loc
+				if(istype(open_turf) && open_turf.pollution)
+					if(next_smell <= world.time)
+						next_smell = world.time + SMELL_COOLDOWN
+						open_turf.pollution.SmellAct(src)
+					open_turf.pollution.BreatheAct(src)
+
 				var/breath_moles = 0
 				if(environment)
 					breath_moles = environment.total_moles()*BREATH_PERCENTAGE
