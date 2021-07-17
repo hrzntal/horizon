@@ -126,6 +126,10 @@
 	name = "Slime plushie"
 	path = /obj/item/toy/plush/slimeplushie
 
+/datum/loadout_item/backpack/toy/plushborb
+	name = "Borb plushie"
+	path = /obj/item/toy/plush/borbplushie
+
 /datum/loadout_item/backpack/toy/tennis
 	name = "Classic Tennis Ball"
 	path = /obj/item/toy/tennis
