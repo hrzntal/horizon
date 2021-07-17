@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(pollution)
 		while(current_run_cache.len)
 			var/datum/pollution/pollution = current_run_cache[current_run_cache.len]
 			current_run_cache.len--
-			pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR, FALSE)
+			pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR, FALSE, TRUE)
 			if(MC_TICK_CHECK)
 				return
 		pollution_task = POLLUTION_TASK_PROCESS
