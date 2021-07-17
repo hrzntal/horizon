@@ -4,6 +4,7 @@
 	slot_flags = ITEM_SLOT_BACKPACK|ITEM_SLOT_BELT|ITEM_SLOT_HEAD|ITEM_SLOT_NECK|ITEM_SLOT_ICLOTHING
 	icon = 'icons/obj/items/towel.dmi'
 	icon_state = "towel"
+	w_class = WEIGHT_CLASS_NORMAL
 	worn_icon = 'icons/obj/items/towel.dmi'
 	worn_icon_state = "towel_worn"
 	/// Are we ready to assert dominance?
@@ -37,9 +38,7 @@
 	if(!ishuman(loc))
 		return
 
-	if(ready_to_strike)
-		icon_state = initial(icon_state) + "_strike"
-		return
+	icon_state = initial(icon_state) + ready_to_strike ? "_strike" : ""
 
 	var/mob/living/carbon/human/holder = loc
 	var/state_append = "_err"
@@ -57,7 +56,7 @@
 		state_append = "_neck"
 
 	if(holder.w_uniform == src)
-		state_append = "_iclothing"
+		state_append = "_suit"
 
 	worn_icon_state = initial(worn_icon_state) + state_append
 
@@ -115,7 +114,8 @@
 
 		if(user.combat_mode && user.zone_selected == BODY_ZONE_HEAD) // uh oh
 			user.visible_message(SPAN_DANGER("[user] strikes [victim] in the neck with [src]!"))
-			victim.get_bodypart(BODY_ZONE_HEAD).take_damage(harmy_force)
+			var/obj/item/bodypart/bodypart = victim.get_bodypart(BODY_ZONE_HEAD)
+			bodypart?.take_damage(harmy_force)
 			return
 
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
