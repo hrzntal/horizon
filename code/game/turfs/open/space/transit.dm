@@ -23,9 +23,11 @@
 	EnterTransitTurf(entered)
 
 /turf/open/space/transit/proc/EnterTransitTurf(atom/movable/entered)
-	if(iseffect(entered) || entered.invisibility == INVISIBILITY_ABSTRACT)
+	if(istype(entered, /obj/effect/abstract) || entered.invisibility == INVISIBILITY_ABSTRACT)
 		return
 	if(entered.GetComponent(/datum/component/transit_handler))
+		return
+	if(entered.loc != src || src.loc.type != /area/shuttle/transit)
 		return
 	var/datum/transit_instance/this_transit = SSshuttle.get_transit_instance(src)
 	if(!this_transit)

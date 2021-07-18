@@ -5,6 +5,33 @@
 	//Associative for easy lookup
 	var/list/affected_movables = list()
 
+//Getter for hazards to easily find random and appropriate turfs to spawn/do stuff on
+/datum/transit_instance/proc/GetActionSideTurf(dir, middle = FALSE)
+	var/turf/found_turf
+	var/list/bottom_left_coords = reservation.bottom_left_coords
+	var/list/top_right_coords = reservation.top_right_coords
+	var/z = bottom_left_coords[3]
+	//The margin is 2 because diagonal movement will cause things to evaporate due to entering a transit border turf
+	var/low_x = bottom_left_coords[1] + 2
+	var/high_x = top_right_coords[1] - 2
+	var/low_y = bottom_left_coords[2] + 2
+	var/high_y = top_right_coords[2] - 2
+	if(middle)
+		found_turf = locate(rand(low_x, high_x), rand(low_y, high_y), z)
+	else
+		if(!dir)
+			dir = pick(GLOB.cardinals)
+		switch(dir)
+			if(NORTH)
+				found_turf = locate(rand(low_x, high_x), high_y, z)
+			if(SOUTH)
+				found_turf = locate(rand(low_x, high_x), low_y, z)
+			if(EAST)
+				found_turf = locate(high_x, rand(low_y, high_y), z)
+			if(WEST)
+				found_turf = locate(low_x, rand(low_y, high_y), z)
+	return found_turf
+
 /datum/transit_instance/New(datum/turf_reservation/arg_reservation, obj/docking_port/stationary/transit/arg_dock)
 	. = ..()
 	reservation = arg_reservation
@@ -22,9 +49,12 @@
 
 //Movable moved in transit
 /datum/transit_instance/proc/MovableMoved(atom/movable/moved)
-	var/turf/my_turf = get_turf(moved)
-	if(!my_turf)
+	if(!moved)
+		stack_trace("null movable on Movable Moved in Transit Instance")
 		return
+	if(!moved.loc || !isturf(moved.loc))
+		return
+	var/turf/my_turf = moved.loc
 	if(!reservation.IsAdjacentToEdgeOrOutOfBounds(my_turf))
 		return
 	//We've moved to be adjacent to edge or out of bounds
@@ -54,6 +84,8 @@
 		return
 	for(var/i in affected_movables)
 		var/atom/movable/movable = i
+		if(movable.anchored)
+			continue
 		var/turf/my_turf = get_turf(movable)
 		if(!my_turf)
 			continue
@@ -77,7 +109,7 @@
 				if(!istype(cardinal_turf, /turf/open/space/transit))
 					continue
 		if(!isclosedturf(step_turf) && !step_turf.is_blocked_turf(TRUE))
-			movable.throw_at(get_edge_target_turf(my_turf, dir), 4, 3)
+			movable.throw_at(get_edge_target_turf(my_turf, dir), 4, 2)
 
 ///Strand all movables that we're managing
 /datum/transit_instance/proc/StrandAll()

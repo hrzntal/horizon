@@ -39,8 +39,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 		max_i--
 		if(max_i<=0)
 			return
-	var/obj/effect/meteor/M = new meteor_type(pickedstart, pickedgoal)
-	M.dest = pickedgoal
+	new meteor_type(pickedstart, pickedgoal)
 
 /proc/spaceDebrisStartLoc(startSide, Z, padding)
 	var/starty
@@ -132,6 +131,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	SSaugury.register_doom(src, threat)
 	SpinAnimation()
 	timerid = QDEL_IN(src, lifetime)
+	dest = target
 	chase_target(target)
 
 /obj/effect/meteor/Bump(atom/A)

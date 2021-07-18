@@ -95,12 +95,17 @@
 						shuttle.DoShieldImpactEffect(pick('sound/effects/explosioncreak1.ogg', 'sound/effects/explosioncreak2.ogg'), 50, 5, 2)
 				if(!remaining_damage)
 					continue
-			//TODO: ADD HANDLING FOR SHUTTLES!!
-			if(length(shuttle.related_levels))
+			var/dir
+			if(try_directional)
+				dir = shuttle.current_parallax_dir
+			else
+				dir = pick(GLOB.cardinals)
+			if(shuttle.transit_instance)
+				var/turf/pickedstart = shuttle.transit_instance.GetActionSideTurf(dir)
+				var/turf/pickedgoal = shuttle.transit_instance.GetActionSideTurf(REVERSE_DIR(dir))
+				new picked_meteor_type(pickedstart, pickedgoal)
+			else if(length(shuttle.related_levels))
 				var/datum/space_level/hit_level = pick(shuttle.related_levels)
-				var/dir
-				if(try_directional && hit_level.parallax_direction_override)
-					dir = hit_level.parallax_direction_override
 				spawn_meteor(picked_meteor_type, dir, hit_level.z_value, ASTEROID_AND_DUST_PADDING)
 
 /datum/overmap_object/hazard/asteroid/get_random_icon_state()
@@ -138,12 +143,17 @@
 				shuttle.DoShieldImpactEffect('sound/effects/explosion_distant.ogg', 30, 0, 0)
 				if(!remaining_damage)
 					continue
-			//TODO: ADD HANDLING FOR SHUTTLES!!
-			if(length(shuttle.related_levels))
+			var/dir
+			if(try_directional)
+				dir = shuttle.current_parallax_dir
+			else
+				dir = pick(GLOB.cardinals)
+			if(shuttle.transit_instance)
+				var/turf/pickedstart = shuttle.transit_instance.GetActionSideTurf(dir)
+				var/turf/pickedgoal = shuttle.transit_instance.GetActionSideTurf(REVERSE_DIR(dir))
+				new picked_meteor_type(pickedstart, pickedgoal)
+			else if(length(shuttle.related_levels))
 				var/datum/space_level/hit_level = pick(shuttle.related_levels)
-				var/dir
-				if(try_directional && hit_level.parallax_direction_override)
-					dir = hit_level.parallax_direction_override
 				spawn_meteor(picked_meteor_type, dir, hit_level.z_value, ASTEROID_AND_DUST_PADDING)
 
 /datum/overmap_object/hazard/dust/get_random_icon_state()
@@ -157,6 +167,7 @@
 #define ELECTRICAL_STORM_SHIELD_DAMAGE 10
 #define ELECTRICAL_STORM_SEARCH_MARGIN 70
 #define ELECTRICAL_STORM_LIGHTS_OUT_RANGE 25
+#define ELECTRICAL_STORM_LIGHTS_OUT_RANGE_SHUTTLE 10
 
 /datum/overmap_object/hazard/electrical_storm/process(delta_time)
 	for(var/i in affected_shuttles)
@@ -168,7 +179,17 @@
 				if(!remaining_damage)
 					return
 			//Do effect here
-			if(length(shuttle.related_levels))
+			if(shuttle.transit_instance)
+				var/turf/pickedturf = shuttle.transit_instance.GetActionSideTurf(middle = TRUE)
+				if(prob(50))
+					for(var/a in GLOB.apcs_list) //Yes very inefficient
+						var/obj/machinery/power/apc/A = a
+						if(get_dist(pickedturf, A) <= ELECTRICAL_STORM_LIGHTS_OUT_RANGE_SHUTTLE)
+							A.overload_lighting()
+				else
+					//EMP
+					empulse(pickedturf, 2, 6)
+			else if(length(shuttle.related_levels))
 				var/datum/space_level/picked_level = pick(shuttle.related_levels)
 				var/turf/epicentre_turf = GetRandomTurfInZLevelWithMargin(ELECTRICAL_STORM_SEARCH_MARGIN, picked_level)
 				if(prob(50))
@@ -186,6 +207,7 @@
 #undef ELECTRICAL_STORM_SHIELD_DAMAGE
 #undef ELECTRICAL_STORM_ACT_PROB
 #undef ELECTRICAL_STORM_LIGHTS_OUT_RANGE
+#undef ELECTRICAL_STORM_LIGHTS_OUT_RANGE_SHUTTLE
 
 /datum/overmap_object/hazard/electrical_storm/get_random_icon_state()
 	return pick(list("electrical1", "electrical2", "electrical3", "electrical4"))
@@ -214,18 +236,25 @@
 /datum/overmap_object/hazard/carp_school/process(delta_time)
 	for(var/i in affected_shuttles)
 		var/datum/overmap_object/shuttle/shuttle = i
-		var/probability = shuttle.GetShieldPercent() ? 1 : 5
+		var/has_shields = shuttle.GetShieldPercent()
+		var/probability = has_shields ? 2 : 5
+		var/shuttle_velocity = VECTOR_LENGTH(shuttle.velocity_x, shuttle.velocity_y)
+		if(!has_shields && shuttle.transit_instance)
+			probability += shuttle_velocity * 5
 		if(prob(probability))
-			if(length(shuttle.related_levels))
+			var/carp_type = prob(95) ? /mob/living/simple_animal/hostile/carp : /mob/living/simple_animal/hostile/carp/megacarp
+			if(shuttle.transit_instance)
+				var/set_dir
+				if(shuttle_velocity > 0.5)
+					set_dir = shuttle.current_parallax_dir
+				new carp_type(shuttle.transit_instance.GetActionSideTurf(set_dir))
+			else if(length(shuttle.related_levels))
 				var/datum/space_level/spawn_level = pick(shuttle.related_levels)
 				var/carp_spawn_list = GetLandmarksInZLevel(/obj/effect/landmark/carpspawn, spawn_level)
 				if(!length(carp_spawn_list))
 					continue
 				var/obj/effect/landmark/picked_spot = pick(carp_spawn_list)
-				if(prob(95))
-					new /mob/living/simple_animal/hostile/carp(picked_spot.loc)
-				else
-					new /mob/living/simple_animal/hostile/carp/megacarp(picked_spot.loc)
+				new carp_type(picked_spot.loc)
 			//TODO: SHUTTLE HANDLING
 
 /datum/overmap_object/hazard/carp_school/get_random_icon_state()
