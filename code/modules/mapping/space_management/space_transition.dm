@@ -121,10 +121,14 @@
 					D = D.neigbours["[dirside]"]
 				zdestination = D.z_value
 			D = I
-			for(var/turf/open/space/S in turfblock)
-				S.destination_x = x_pos_transition[side] == 1 ? S.x : x_pos_transition[side]
-				S.destination_y = y_pos_transition[side] == 1 ? S.y : y_pos_transition[side]
-				S.destination_z = zdestination
+			for(var/turfcheck in turfblock)
+				//Only space and openspace turfs can be mirage level transits
+				if(!isspaceturf(turfcheck) && !isopenspaceturf(turfcheck))
+					continue
+				var/turf/open/S = turfcheck
+				var/destination_x = x_pos_transition[side] == 1 ? S.x : x_pos_transition[side]
+				var/destination_y = y_pos_transition[side] == 1 ? S.y : y_pos_transition[side]
+				var/destination_z = zdestination
 				
 				// Mirage border code
 				var/mirage_dir
@@ -139,5 +143,5 @@
 				if(!mirage_dir)
 					continue
 
-				var/turf/place = locate(S.destination_x, S.destination_y, S.destination_z)
+				var/turf/place = locate(destination_x, destination_y, destination_z)
 				S.AddComponent(/datum/component/mirage_border, place, mirage_dir)
