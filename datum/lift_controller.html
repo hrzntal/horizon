@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;lift_controller - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/lift_controller.html#var">Var Details</a></header>
+<main>
+<h1>lift_controller <aside>/<a href="datum.html">datum</a>/<a href="datum/lift_controller.html">lift_controller</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/calculated_glide_size">calculated_glide_size</a></th><td>The glide size we calculated to the next waypoint</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/calculated_travel_speed">calculated_travel_speed</a></th><td>The travel speed we calculated to the next waypoint</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/called_waypoints">called_waypoints</a></th><td>Associative list of all the waypoints that have been queued for destination (FIFU)</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/current_position">current_position</a></th><td>The current turf of the lift controller (most bottom left one)</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/current_wp">current_wp</a></th><td>Current waypoint, will be null if we're in mid-transit</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/destination_wp">destination_wp</a></th><td>The current destination of the lift</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/exterior_closed">exterior_closed</a></th><td>Whether exterior doors are closed</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/halted">halted</a></th><td>Whether the lift is currently halted</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/id">id</a></th><td>Id of the lift controller</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/intentionally_halted">intentionally_halted</a></th><td>Whether the lift is intentionally halted through an emergency button</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/interior_closed">interior_closed</a></th><td>Whether interior doors are closed</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/lift_platforms">lift_platforms</a></th><td>Associative list of all the lift platforms</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/loop_sound">loop_sound</a></th><td>Our sound loop</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/managing_roof">managing_roof</a></th><td>Whether we are currently managing a roof</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/name">name</a></th><td>Name of the thing we're operating on, be it lift, tram or elevator</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/needs_to_open_doors">needs_to_open_doors</a></th><td>Whether we have been requested to open doors by an arrival to destination</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/next_action_time">next_action_time</a></th><td>Cooldown for actions</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/next_wp">next_wp</a></th><td>Next waypoint, will be null if we're not in mid-transit</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/next_wp_dir">next_wp_dir</a></th><td>Direction to the next waypoint, so we dont need to keep getting it</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/prev_wp">prev_wp</a></th><td>Previous waypoint, will be null if we're not in mid-transit</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/roof_type">roof_type</a></th><td>Our roof type, if any it'll manifest whenever possible</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/route">route</a></th><td>Reference to the lift's route, for easy getting</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/safeties">safeties</a></th><td>Whether it has safeties on. Safeties will cause the lift to halt when attempting to crush something (still will heavy deal damage)</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/sound_loop_type">sound_loop_type</a></th><td>Type of our sound loop</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/speed">speed</a></th><td>How fast we progress to the next tile movement, per process of the subsystem (in %s)</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/travel_progress">travel_progress</a></th><td>Keeping track of our progress towards the next turf</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/x_len">x_len</a></th><td>X length of the platform. FROM the position a lift of 4x4 will have 3 length in both dimensions</td></tr>
+            <tr><th><a href="datum/lift_controller.html#var/y_len">y_len</a></th><td>Y length of the platform</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/calculated_glide_size"><aside class="declaration">var </aside>calculated_glide_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 53"/></a></h3>
+        <p>The glide size we calculated to the next waypoint</p><h3 id="var/calculated_travel_speed"><aside class="declaration">var </aside>calculated_travel_speed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 51"/></a></h3>
+        <p>The travel speed we calculated to the next waypoint</p><h3 id="var/called_waypoints"><aside class="declaration">var </aside>called_waypoints
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 40"/></a></h3>
+        <p>Associative list of all the waypoints that have been queued for destination (FIFU)</p><h3 id="var/current_position"><aside class="declaration">var </aside>current_position
+            <aside>&ndash; /<a href="turf.html">turf</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 9"/></a></h3>
+        <p>The current turf of the lift controller (most bottom left one)</p><h3 id="var/current_wp"><aside class="declaration">var </aside>current_wp
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/lift_waypoint.html">lift_waypoint</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 25"/></a></h3>
+        <p>Current waypoint, will be null if we're in mid-transit</p><h3 id="var/destination_wp"><aside class="declaration">var </aside>destination_wp
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/lift_waypoint.html">lift_waypoint</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 38"/></a></h3>
+        <p>The current destination of the lift</p><h3 id="var/exterior_closed"><aside class="declaration">var </aside>exterior_closed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 49"/></a></h3>
+        <p>Whether exterior doors are closed</p><h3 id="var/halted"><aside class="declaration">var </aside>halted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 21"/></a></h3>
+        <p>Whether the lift is currently halted</p><h3 id="var/id"><aside class="declaration">var </aside>id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 5"/></a></h3>
+        <p>Id of the lift controller</p><h3 id="var/intentionally_halted"><aside class="declaration">var </aside>intentionally_halted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 23"/></a></h3>
+        <p>Whether the lift is intentionally halted through an emergency button</p><h3 id="var/interior_closed"><aside class="declaration">var </aside>interior_closed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 47"/></a></h3>
+        <p>Whether interior doors are closed</p><h3 id="var/lift_platforms"><aside class="declaration">var </aside>lift_platforms
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 7"/></a></h3>
+        <p>Associative list of all the lift platforms</p><h3 id="var/loop_sound"><aside class="declaration">var </aside>loop_sound
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/looping_sound.html">looping_sound</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 58"/></a></h3>
+        <p>Our sound loop</p><h3 id="var/managing_roof"><aside class="declaration">var </aside>managing_roof
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 63"/></a></h3>
+        <p>Whether we are currently managing a roof</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 3"/></a></h3>
+        <p>Name of the thing we're operating on, be it lift, tram or elevator</p><h3 id="var/needs_to_open_doors"><aside class="declaration">var </aside>needs_to_open_doors
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 45"/></a></h3>
+        <p>Whether we have been requested to open doors by an arrival to destination</p><h3 id="var/next_action_time"><aside class="declaration">var </aside>next_action_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 43"/></a></h3>
+        <p>Cooldown for actions</p><h3 id="var/next_wp"><aside class="declaration">var </aside>next_wp
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/lift_waypoint.html">lift_waypoint</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 29"/></a></h3>
+        <p>Next waypoint, will be null if we're not in mid-transit</p><h3 id="var/next_wp_dir"><aside class="declaration">var </aside>next_wp_dir
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 31"/></a></h3>
+        <p>Direction to the next waypoint, so we dont need to keep getting it</p><h3 id="var/prev_wp"><aside class="declaration">var </aside>prev_wp
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/lift_waypoint.html">lift_waypoint</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 27"/></a></h3>
+        <p>Previous waypoint, will be null if we're not in mid-transit</p><h3 id="var/roof_type"><aside class="declaration">var </aside>roof_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 61"/></a></h3>
+        <p>Our roof type, if any it'll manifest whenever possible</p><h3 id="var/route"><aside class="declaration">var </aside>route
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/lift_route.html">lift_route</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 34"/></a></h3>
+        <p>Reference to the lift's route, for easy getting</p><h3 id="var/safeties"><aside class="declaration">var </aside>safeties
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 19"/></a></h3>
+        <p>Whether it has safeties on. Safeties will cause the lift to halt when attempting to crush something (still will heavy deal damage)</p><h3 id="var/sound_loop_type"><aside class="declaration">var </aside>sound_loop_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 56"/></a></h3>
+        <p>Type of our sound loop</p><h3 id="var/speed"><aside class="declaration">var </aside>speed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 15"/></a></h3>
+        <p>How fast we progress to the next tile movement, per process of the subsystem (in %s)</p><h3 id="var/travel_progress"><aside class="declaration">var </aside>travel_progress
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 17"/></a></h3>
+        <p>Keeping track of our progress towards the next turf</p><h3 id="var/x_len"><aside class="declaration">var </aside>x_len
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 11"/></a></h3>
+        <p>X length of the platform. FROM the position a lift of 4x4 will have 3 length in both dimensions</p><h3 id="var/y_len"><aside class="declaration">var </aside>y_len
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/industrial_lift/lift_controller.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;industrial_lift&#x2F;lift_controller.dm 13"/></a></h3>
+        <p>Y length of the platform</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>hrzn&#x2F;modules&#x2F;typing_indicator&#x2F;readme.md - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>hrzn/modules/typing_indicator/readme.md 
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/hrzn/modules/typing_indicator/readme.md">
+        <img src="git.png" width="16" height="16" title="hrzn&#x2F;modules&#x2F;typing_indicator&#x2F;readme.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><h2 id="title-typing-indicator">Title: Typing Indicator</h2>
+<p>MODULE ID: TYPING_INDICATOR</p>
+<h3 id="description">Description:</h3>
+<p>Adds an asynchronously tracked typing indicator, which shows a typing bubble with an animation.
+Added in a hacky way to make it very smooth on the user's end. It registers &quot;Say&quot; and &quot;Me&quot; keypresses for the indicator to popup, and makes it gone on mouse click, or say/emote send</p>
+<h3 id="tg-proc-changes">TG Proc Changes:</h3>
+<ul>
+<li>APPEND: code/modules/keybindings/setup.dm &gt; /datum/proc/key_down()</li>
+<li>ADDITION: code/onclick/_click.dm &gt; /mob/proc/ClickOn() </li>
+<li>ADDITION: code/modules/mob/mob_say.dm &gt; /mob/verb/say_verb(), /mob/verb/me_verb()</li>
+<li>CHANGE: code\modules\mob\living\living_say.dm &gt; /mob/living/send_speech</li>
+<li>ADDITION: code/modules/mob/living/death.dm &gt; /mob/living/death()</li>
+</ul>
+<h3 id="defines">Defines:</h3>
+<p>N/A</p>
+<h3 id="included-files">Included files:</h3>
+<p>N/A</p>
+<h3 id="credits">Credits:</h3>
+<p>Azarak</p></td></tr></table></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

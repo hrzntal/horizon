@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;weather_controller - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/weather_controller.html#var">Var Details</a> - <a href="datum/weather_controller.html#proc">Proc Details</a></header>
+<main>
+<h1>weather_controller <aside>/<a href="datum.html">datum</a>/<a href="datum/weather_controller.html">weather_controller</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/current_weathers">current_weathers</a></th><td>Current weathers this controller is handling. Associative of type to reference</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/last_checked_skyblock">last_checked_skyblock</a></th><td>A simple cache to make sure we dont call updates with no changes</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/linked_overmap_object">linked_overmap_object</a></th><td>The linked overmap object of our controller</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/next_weather">next_weather</a></th><td>When will the next weather will be rolled, also read by barometers</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/next_weather_type">next_weather_type</a></th><td>What will be the next weather type rolled, rolled before initializing it for barometers</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/possible_weathers">possible_weathers</a></th><td>What possible weather types will be rolled naturally here, assoc list of type to weight. You'll still be able to call different weathers by events and such</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/skyblock">skyblock</a></th><td>Percentage of how much we're blocking the sky, for the day/night controller to read from</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/wait_interval_high">wait_interval_high</a></th><td>The highest interval between one naturally occuring weather and another</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/wait_interval_low">wait_interval_low</a></th><td>The lowest interval between one naturally occuring weather and another</td></tr>
+            <tr><th><a href="datum/weather_controller.html#var/z_levels">z_levels</a></th><td>The z levels we are controlling</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/weather_controller.html#proc/Destroy">Destroy</a></th><td>In theory this should never be destroyed, unless you plan to dynamically change existing z levels</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/current_weathers"><aside class="declaration">var </aside>current_weathers
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 13"/></a></h3>
+        <p>Current weathers this controller is handling. Associative of type to reference</p><h3 id="var/last_checked_skyblock"><aside class="declaration">var </aside>last_checked_skyblock
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 21"/></a></h3>
+        <p>A simple cache to make sure we dont call updates with no changes</p><h3 id="var/linked_overmap_object"><aside class="declaration">var </aside>linked_overmap_object
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/overmap_object.html">overmap_object</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 17"/></a></h3>
+        <p>The linked overmap object of our controller</p><h3 id="var/next_weather"><aside class="declaration">var </aside>next_weather
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 11"/></a></h3>
+        <p>When will the next weather will be rolled, also read by barometers</p><h3 id="var/next_weather_type"><aside class="declaration">var </aside>next_weather_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 9"/></a></h3>
+        <p>What will be the next weather type rolled, rolled before initializing it for barometers</p><h3 id="var/possible_weathers"><aside class="declaration">var </aside>possible_weathers
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 3"/></a></h3>
+        <p>What possible weather types will be rolled naturally here, assoc list of type to weight. You'll still be able to call different weathers by events and such</p><h3 id="var/skyblock"><aside class="declaration">var </aside>skyblock
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 19"/></a></h3>
+        <p>Percentage of how much we're blocking the sky, for the day/night controller to read from</p><h3 id="var/wait_interval_high"><aside class="declaration">var </aside>wait_interval_high
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 7"/></a></h3>
+        <p>The highest interval between one naturally occuring weather and another</p><h3 id="var/wait_interval_low"><aside class="declaration">var </aside>wait_interval_low
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 5"/></a></h3>
+        <p>The lowest interval between one naturally occuring weather and another</p><h3 id="var/z_levels"><aside class="declaration">var </aside>z_levels
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 15"/></a></h3>
+        <p>The z levels we are controlling</p><h2 id="proc">Proc Details</h2><h3 id="proc/Destroy"><aside class="parent"><a title="/datum" href="datum.html#proc/Destroy">&uarr;</a></aside>Destroy<aside>() 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/weather/weather_controller.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;weather&#x2F;weather_controller.dm 50"/></a></aside>
+        </h3>
+        <p>In theory this should never be destroyed, unless you plan to dynamically change existing z levels</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;trader - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/trader.html#var">Var Details</a></header>
+<main>
+<h1>trader <aside>/<a href="datum.html">datum</a>/<a href="datum/trader.html">trader</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/trader.html#var/bought_goods">bought_goods</a></th><td>List of bought goods datums. If you want all of them to be guaranteed, make sure <code>target_bought_goods_amount</code> is greater than the amount of items in here</td></tr>
+            <tr><th><a href="datum/trader.html#var/bounties">bounties</a></th><td>Current listed bounties</td></tr>
+            <tr><th><a href="datum/trader.html#var/bounty_gain_chance">bounty_gain_chance</a></th><td>Chance to gain a bounty per stock rotation</td></tr>
+            <tr><th><a href="datum/trader.html#var/buy_margin">buy_margin</a></th><td>How much more items are valuable to the merchant for purchasing (in %)</td></tr>
+            <tr><th><a href="datum/trader.html#var/connected_consoles">connected_consoles</a></th><td>A list of connected trade consoles, in case the trader is destroyed we want to disconnect the consoles</td></tr>
+            <tr><th><a href="datum/trader.html#var/current_credits">current_credits</a></th><td>Cash they hold, they won't be able to pay out if it gets too low</td></tr>
+            <tr><th><a href="datum/trader.html#var/current_haggle">current_haggle</a></th><td>The present percentage the merchant will allow to haggle the people, it's randomized between 0 and haggle_percent each trade</td></tr>
+            <tr><th><a href="datum/trader.html#var/disposition">disposition</a></th><td>Current disposition. The merchant may close communications if it's too low</td></tr>
+            <tr><th><a href="datum/trader.html#var/disposition_per_reject">disposition_per_reject</a></th><td>Amount of disposition lost per each rejection</td></tr>
+            <tr><th><a href="datum/trader.html#var/disposition_per_trade">disposition_per_trade</a></th><td>Amount of disposition gained per each trade</td></tr>
+            <tr><th><a href="datum/trader.html#var/haggle_percent">haggle_percent</a></th><td>Maximum percent that the merchant will be able to drop the price. Randomized between 0 and this</td></tr>
+            <tr><th><a href="datum/trader.html#var/hub">hub</a></th><td>The hub they belong to</td></tr>
+            <tr><th><a href="datum/trader.html#var/initial_bounty_gain_chance">initial_bounty_gain_chance</a></th><td>Chance to gain a bounty when the trader is spawned in</td></tr>
+            <tr><th><a href="datum/trader.html#var/initial_goods_amount_randomness">initial_goods_amount_randomness</a></th><td>How much more or less the trader will initialize with in stock</td></tr>
+            <tr><th><a href="datum/trader.html#var/name">name</a></th><td>Name of the trader</td></tr>
+            <tr><th><a href="datum/trader.html#var/origin">origin</a></th><td>Place where he comes from, it'll be shown to the user</td></tr>
+            <tr><th><a href="datum/trader.html#var/possible_bought_goods">possible_bought_goods</a></th><td>Associative list of bought goods datums, key is type, value is chance that the datum will apply</td></tr>
+            <tr><th><a href="datum/trader.html#var/possible_bounties">possible_bounties</a></th><td>All possible bounties, associative to weight</td></tr>
+            <tr><th><a href="datum/trader.html#var/possible_names">possible_names</a></th><td>A list of possible names he'll have</td></tr>
+            <tr><th><a href="datum/trader.html#var/possible_origins">possible_origins</a></th><td>A list of possible places where he'll be from</td></tr>
+            <tr><th><a href="datum/trader.html#var/possible_sold_goods">possible_sold_goods</a></th><td>Associative list of sold goods datums, key is type, value is chance that the datum will apply</td></tr>
+            <tr><th><a href="datum/trader.html#var/price_variance">price_variance</a></th><td>A percentage of the price variance on all sold and bought goods</td></tr>
+            <tr><th><a href="datum/trader.html#var/quantity_multiplier">quantity_multiplier</a></th><td>How much more, or less items will he have on stock. Minimum of 1 per datum</td></tr>
+            <tr><th><a href="datum/trader.html#var/refuses_comms">refuses_comms</a></th><td>Whether he refuses comms or not</td></tr>
+            <tr><th><a href="datum/trader.html#var/rotate_stock_chance">rotate_stock_chance</a></th><td>What's the chance the vendor will rotate stock</td></tr>
+            <tr><th><a href="datum/trader.html#var/rotates_stock">rotates_stock</a></th><td>Whether the trader rotates stock or not</td></tr>
+            <tr><th><a href="datum/trader.html#var/sell_margin">sell_margin</a></th><td>How much more items are expensive for the users to purchase (in %)</td></tr>
+            <tr><th><a href="datum/trader.html#var/sold_goods">sold_goods</a></th><td>List of sold good datums. If you want all of them to be guaranteed, make sure <code>target_sold_goods_amount</code> is greater than the amount of items in here</td></tr>
+            <tr><th><a href="datum/trader.html#var/speech">speech</a></th><td>An associative list of unique responses</td></tr>
+            <tr><th><a href="datum/trader.html#var/target_bought_goods_amount">target_bought_goods_amount</a></th><td>The amount of individual bought items the trader will try and have. If equal or more, he'll loose a bought datum, if less he'll try and get a new one</td></tr>
+            <tr><th><a href="datum/trader.html#var/target_sold_goods_amount">target_sold_goods_amount</a></th><td>The amount of individual purchase items the trader will try and have. If equal or more, he'll loose a sold datum, if less he'll try and get a new one</td></tr>
+            <tr><th><a href="datum/trader.html#var/trade_flags">trade_flags</a></th><td>All the flags of the merchant, currently whether they trade money or barter or both</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/bought_goods"><aside class="declaration">var </aside>bought_goods
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 23"/></a></h3>
+        <p>List of bought goods datums. If you want all of them to be guaranteed, make sure <code>target_bought_goods_amount</code> is greater than the amount of items in here</p><h3 id="var/bounties"><aside class="declaration">var </aside>bounties
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 62"/></a></h3>
+        <p>Current listed bounties</p><h3 id="var/bounty_gain_chance"><aside class="declaration">var </aside>bounty_gain_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 66"/></a></h3>
+        <p>Chance to gain a bounty per stock rotation</p><h3 id="var/buy_margin"><aside class="declaration">var </aside>buy_margin
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 39"/></a></h3>
+        <p>How much more items are valuable to the merchant for purchasing (in %)</p><h3 id="var/connected_consoles"><aside class="declaration">var </aside>connected_consoles
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 29"/></a></h3>
+        <p>A list of connected trade consoles, in case the trader is destroyed we want to disconnect the consoles</p><h3 id="var/current_credits"><aside class="declaration">var </aside>current_credits
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 25"/></a></h3>
+        <p>Cash they hold, they won't be able to pay out if it gets too low</p><h3 id="var/current_haggle"><aside class="declaration">var </aside>current_haggle
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 27"/></a></h3>
+        <p>The present percentage the merchant will allow to haggle the people, it's randomized between 0 and haggle_percent each trade</p><h3 id="var/disposition"><aside class="declaration">var </aside>disposition
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 11"/></a></h3>
+        <p>Current disposition. The merchant may close communications if it's too low</p><h3 id="var/disposition_per_reject"><aside class="declaration">var </aside>disposition_per_reject
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 47"/></a></h3>
+        <p>Amount of disposition lost per each rejection</p><h3 id="var/disposition_per_trade"><aside class="declaration">var </aside>disposition_per_trade
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 45"/></a></h3>
+        <p>Amount of disposition gained per each trade</p><h3 id="var/haggle_percent"><aside class="declaration">var </aside>haggle_percent
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 35"/></a></h3>
+        <p>Maximum percent that the merchant will be able to drop the price. Randomized between 0 and this</p><h3 id="var/hub"><aside class="declaration">var </aside>hub
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/trade_hub.html">trade_hub</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 15"/></a></h3>
+        <p>The hub they belong to</p><h3 id="var/initial_bounty_gain_chance"><aside class="declaration">var </aside>initial_bounty_gain_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 68"/></a></h3>
+        <p>Chance to gain a bounty when the trader is spawned in</p><h3 id="var/initial_goods_amount_randomness"><aside class="declaration">var </aside>initial_goods_amount_randomness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 54"/></a></h3>
+        <p>How much more or less the trader will initialize with in stock</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 3"/></a></h3>
+        <p>Name of the trader</p><h3 id="var/origin"><aside class="declaration">var </aside>origin
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 5"/></a></h3>
+        <p>Place where he comes from, it'll be shown to the user</p><h3 id="var/possible_bought_goods"><aside class="declaration">var </aside>possible_bought_goods
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 19"/></a></h3>
+        <p>Associative list of bought goods datums, key is type, value is chance that the datum will apply</p><h3 id="var/possible_bounties"><aside class="declaration">var </aside>possible_bounties
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 64"/></a></h3>
+        <p>All possible bounties, associative to weight</p><h3 id="var/possible_names"><aside class="declaration">var </aside>possible_names
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 9"/></a></h3>
+        <p>A list of possible names he'll have</p><h3 id="var/possible_origins"><aside class="declaration">var </aside>possible_origins
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 7"/></a></h3>
+        <p>A list of possible places where he'll be from</p><h3 id="var/possible_sold_goods"><aside class="declaration">var </aside>possible_sold_goods
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 17"/></a></h3>
+        <p>Associative list of sold goods datums, key is type, value is chance that the datum will apply</p><h3 id="var/price_variance"><aside class="declaration">var </aside>price_variance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 37"/></a></h3>
+        <p>A percentage of the price variance on all sold and bought goods</p><h3 id="var/quantity_multiplier"><aside class="declaration">var </aside>quantity_multiplier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 43"/></a></h3>
+        <p>How much more, or less items will he have on stock. Minimum of 1 per datum</p><h3 id="var/refuses_comms"><aside class="declaration">var </aside>refuses_comms
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 32"/></a></h3>
+        <p>Whether he refuses comms or not</p><h3 id="var/rotate_stock_chance"><aside class="declaration">var </aside>rotate_stock_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 59"/></a></h3>
+        <p>What's the chance the vendor will rotate stock</p><h3 id="var/rotates_stock"><aside class="declaration">var </aside>rotates_stock
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 57"/></a></h3>
+        <p>Whether the trader rotates stock or not</p><h3 id="var/sell_margin"><aside class="declaration">var </aside>sell_margin
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 41"/></a></h3>
+        <p>How much more items are expensive for the users to purchase (in %)</p><h3 id="var/sold_goods"><aside class="declaration">var </aside>sold_goods
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 21"/></a></h3>
+        <p>List of sold good datums. If you want all of them to be guaranteed, make sure <code>target_sold_goods_amount</code> is greater than the amount of items in here</p><h3 id="var/speech"><aside class="declaration">var </aside>speech
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 71"/></a></h3>
+        <p>An associative list of unique responses</p><h3 id="var/target_bought_goods_amount"><aside class="declaration">var </aside>target_bought_goods_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 52"/></a></h3>
+        <p>The amount of individual bought items the trader will try and have. If equal or more, he'll loose a bought datum, if less he'll try and get a new one</p><h3 id="var/target_sold_goods_amount"><aside class="declaration">var </aside>target_sold_goods_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 50"/></a></h3>
+        <p>The amount of individual purchase items the trader will try and have. If equal or more, he'll loose a sold datum, if less he'll try and get a new one</p><h3 id="var/trade_flags"><aside class="declaration">var </aside>trade_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_trader.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_trader.dm 13"/></a></h3>
+        <p>All the flags of the merchant, currently whether they trade money or barter or both</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

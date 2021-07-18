@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;preferences - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/preferences.html#var">Var Details</a> - <a href="datum/preferences.html#proc">Proc Details</a></header>
+<main>
+<h1>preferences <aside>/<a href="datum.html">datum</a>/<a href="datum/preferences.html">preferences</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/preferences.html#var/arousal_preview">arousal_preview</a></th><td>The arousal state of the previewed character, can be toggled by the user</td></tr>
+            <tr><th><a href="datum/preferences.html#var/augment_limb_styles">augment_limb_styles</a></th><td>List of chosen preferred styles for limb replacements</td></tr>
+            <tr><th><a href="datum/preferences.html#var/augments">augments</a></th><td>List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define</td></tr>
+            <tr><th><a href="datum/preferences.html#var/auto_fit_viewport">auto_fit_viewport</a></th><td>Should we automatically fit the viewport?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/balloon_alerts_pref">balloon_alerts_pref</a></th><td>Does the user see balloon alerts (minor actions), or chat messages, or both?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/body_type">body_type</a></th><td>Agendered spessmen can choose whether to have a male or female bodytype</td></tr>
+            <tr><th><a href="datum/preferences.html#var/brief_outfit">brief_outfit</a></th><td>If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit</td></tr>
+            <tr><th><a href="datum/preferences.html#var/broadcast_login_logout">broadcast_login_logout</a></th><td>If we want to broadcast deadchat connect/disconnect messages</td></tr>
+            <tr><th><a href="datum/preferences.html#var/chat_on_map">chat_on_map</a></th><td>Runechat preference. If true, certain messages will be displayed on the map, not ust on the chat area. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/chosen_augment_slot">chosen_augment_slot</a></th><td>Which augment slot we currently have chosen, this is for UI display</td></tr>
+            <tr><th><a href="datum/preferences.html#var/culture_more_info">culture_more_info</a></th><td>Whether someone wishes to see more information regarding either of those</td></tr>
+            <tr><th><a href="datum/preferences.html#var/dominant_hand">dominant_hand</a></th><td>Characters dominant hand</td></tr>
+            <tr><th><a href="datum/preferences.html#var/favorite_outfits">favorite_outfits</a></th><td>What outfit typepaths we've favorited in the SelectEquipment menu</td></tr>
+            <tr><th><a href="datum/preferences.html#var/hardcore_survival_score">hardcore_survival_score</a></th><td>This var stores the amount of points the owner will get for making it out alive.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/hearted">hearted</a></th><td>Someone thought we were nice! We get a little heart in OOC until we join the server past the below time (we can keep it until the end of the round otherwise)</td></tr>
+            <tr><th><a href="datum/preferences.html#var/hearted_until">hearted_until</a></th><td>If we have a hearted commendations, we honor it every time the player loads preferences until this time has been passed</td></tr>
+            <tr><th><a href="datum/preferences.html#var/itemoutline_pref">itemoutline_pref</a></th><td>Do we show item hover outlines?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/loadout">loadout</a></th><td>Loadout items, this is an associative list stored as [name] = &quot;info&quot;. Info can be either colors or styles for the loadout items</td></tr>
+            <tr><th><a href="datum/preferences.html#var/loadout_points">loadout_points</a></th><td>How many loadout points we've got remaining</td></tr>
+            <tr><th><a href="datum/preferences.html#var/max_chat_length">max_chat_length</a></th><td>Limit preference on the size of the message. Requires chat_on_map to have effect.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/mismatched_customization">mismatched_customization</a></th><td>Will the person see accessories not meant for their species to choose from</td></tr>
+            <tr><th><a href="datum/preferences.html#var/needs_update">needs_update</a></th><td>Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set</td></tr>
+            <tr><th><a href="datum/preferences.html#var/persistent_scars">persistent_scars</a></th><td>If we have persistent scars enabled</td></tr>
+            <tr><th><a href="datum/preferences.html#var/pixel_size">pixel_size</a></th><td>What size should pixels be displayed as? 0 is strech to fit</td></tr>
+            <tr><th><a href="datum/preferences.html#var/playtime_reward_cloak">playtime_reward_cloak</a></th><td>The playtime_reward_cloak variable can be set to TRUE from the prefs menu only once the user has gained over 5K playtime hours. If true, it allows the user to get a cool looking roundstart cloak.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/pref_culture">pref_culture</a></th><td>Chosen cultural informations</td></tr>
+            <tr><th><a href="datum/preferences.html#var/scaling_method">scaling_method</a></th><td>What scaling method should we use? Distort means nearest neighbor</td></tr>
+            <tr><th><a href="datum/preferences.html#var/screentip_color">screentip_color</a></th><td>Color of screentips at top of screen</td></tr>
+            <tr><th><a href="datum/preferences.html#var/screentip_pref">screentip_pref</a></th><td>Do we show screentips, if so, how big?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/see_chat_non_mob">see_chat_non_mob</a></th><td>Whether non-mob messages will be displayed, such as machine vendor announcements. Requires chat_on_map to have effect. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/see_rc_emotes">see_rc_emotes</a></th><td>Whether emotes will be displayed on runechat. Requires chat_on_map to have effect. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/show_body_size">show_body_size</a></th><td>Whether the user wants to see body size being shown in the preview</td></tr>
+            <tr><th><a href="datum/preferences.html#var/widescreenpref">widescreenpref</a></th><td>Should we be in the widescreen mode set by the config?</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/preferences.html#proc/check_keybindings">check_keybindings</a></th><td>checks through keybindings for outdated unbound keys and updates them</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/hardcore_random_setup">hardcore_random_setup</a></th><td>Setup a hardcore random character and calculate their hardcore random score</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/select_hardcore_quirks">select_hardcore_quirks</a></th><td>Go through all quirks that can be used in hardcore mode and select some based on a random budget.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/arousal_preview"><aside class="declaration">var </aside>arousal_preview
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L200">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 200"/></a></h3>
+        <p>The arousal state of the previewed character, can be toggled by the user</p><h3 id="var/augment_limb_styles"><aside class="declaration">var </aside>augment_limb_styles
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L194">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 194"/></a></h3>
+        <p>List of chosen preferred styles for limb replacements</p><h3 id="var/augments"><aside class="declaration">var </aside>augments
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L192">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 192"/></a></h3>
+        <p>List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define</p><h3 id="var/auto_fit_viewport"><aside class="declaration">var </aside>auto_fit_viewport
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 128"/></a></h3>
+        <p>Should we automatically fit the viewport?</p><h3 id="var/balloon_alerts_pref"><aside class="declaration">var </aside>balloon_alerts_pref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L117">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 117"/></a></h3>
+        <p>Does the user see balloon alerts (minor actions), or chat messages, or both?</p><h3 id="var/body_type"><aside class="declaration">var </aside>body_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L152">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 152"/></a></h3>
+        <p>Agendered spessmen can choose whether to have a male or female bodytype</p><h3 id="var/brief_outfit"><aside class="declaration">var </aside>brief_outfit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 20"/></a></h3>
+        <p>If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit</p><h3 id="var/broadcast_login_logout"><aside class="declaration">var </aside>broadcast_login_logout
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L156">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 156"/></a></h3>
+        <p>If we want to broadcast deadchat connect/disconnect messages</p><h3 id="var/chat_on_map"><aside class="declaration">var </aside>chat_on_map
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 35"/></a></h3>
+        <p>Runechat preference. If true, certain messages will be displayed on the map, not ust on the chat area. Boolean.</p><h3 id="var/chosen_augment_slot"><aside class="declaration">var </aside>chosen_augment_slot
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L196">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 196"/></a></h3>
+        <p>Which augment slot we currently have chosen, this is for UI display</p><h3 id="var/culture_more_info"><aside class="declaration">var </aside>culture_more_info
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L206">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 206"/></a></h3>
+        <p>Whether someone wishes to see more information regarding either of those</p><h3 id="var/dominant_hand"><aside class="declaration">var </aside>dominant_hand
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 90"/></a></h3>
+        <p>Characters dominant hand</p><h3 id="var/favorite_outfits"><aside class="declaration">var </aside>favorite_outfits
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L158">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 158"/></a></h3>
+        <p>What outfit typepaths we've favorited in the SelectEquipment menu</p><h3 id="var/hardcore_survival_score"><aside class="declaration">var </aside>hardcore_survival_score
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 145"/></a></h3>
+        <p>This var stores the amount of points the owner will get for making it out alive.</p><h3 id="var/hearted"><aside class="declaration">var </aside>hearted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L148">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 148"/></a></h3>
+        <p>Someone thought we were nice! We get a little heart in OOC until we join the server past the below time (we can keep it until the end of the round otherwise)</p><h3 id="var/hearted_until"><aside class="declaration">var </aside>hearted_until
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 150"/></a></h3>
+        <p>If we have a hearted commendations, we honor it every time the player loads preferences until this time has been passed</p><h3 id="var/itemoutline_pref"><aside class="declaration">var </aside>itemoutline_pref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L124">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 124"/></a></h3>
+        <p>Do we show item hover outlines?</p><h3 id="var/loadout"><aside class="declaration">var </aside>loadout
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L170">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 170"/></a></h3>
+        <p>Loadout items, this is an associative list stored as [name] = &quot;info&quot;. Info can be either colors or styles for the loadout items</p><h3 id="var/loadout_points"><aside class="declaration">var </aside>loadout_points
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L168">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 168"/></a></h3>
+        <p>How many loadout points we've got remaining</p><h3 id="var/max_chat_length"><aside class="declaration">var </aside>max_chat_length
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 37"/></a></h3>
+        <p>Limit preference on the size of the message. Requires chat_on_map to have effect.</p><h3 id="var/mismatched_customization"><aside class="declaration">var </aside>mismatched_customization
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L160">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 160"/></a></h3>
+        <p>Will the person see accessories not meant for their species to choose from</p><h3 id="var/needs_update"><aside class="declaration">var </aside>needs_update
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L190">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 190"/></a></h3>
+        <p>Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set</p><h3 id="var/persistent_scars"><aside class="declaration">var </aside>persistent_scars
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L154">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 154"/></a></h3>
+        <p>If we have persistent scars enabled</p><h3 id="var/pixel_size"><aside class="declaration">var </aside>pixel_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L132">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 132"/></a></h3>
+        <p>What size should pixels be displayed as? 0 is strech to fit</p><h3 id="var/playtime_reward_cloak"><aside class="declaration">var </aside>playtime_reward_cloak
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L137">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 137"/></a></h3>
+        <p>The playtime_reward_cloak variable can be set to TRUE from the prefs menu only once the user has gained over 5K playtime hours. If true, it allows the user to get a cool looking roundstart cloak.</p><h3 id="var/pref_culture"><aside class="declaration">var </aside>pref_culture
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L202">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 202"/></a></h3>
+        <p>Chosen cultural informations</p><h3 id="var/scaling_method"><aside class="declaration">var </aside>scaling_method
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 134"/></a></h3>
+        <p>What scaling method should we use? Distort means nearest neighbor</p><h3 id="var/screentip_color"><aside class="declaration">var </aside>screentip_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L122">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 122"/></a></h3>
+        <p>Color of screentips at top of screen</p><h3 id="var/screentip_pref"><aside class="declaration">var </aside>screentip_pref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 120"/></a></h3>
+        <p>Do we show screentips, if so, how big?</p><h3 id="var/see_chat_non_mob"><aside class="declaration">var </aside>see_chat_non_mob
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 39"/></a></h3>
+        <p>Whether non-mob messages will be displayed, such as machine vendor announcements. Requires chat_on_map to have effect. Boolean.</p><h3 id="var/see_rc_emotes"><aside class="declaration">var </aside>see_rc_emotes
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 41"/></a></h3>
+        <p>Whether emotes will be displayed on runechat. Requires chat_on_map to have effect. Boolean.</p><h3 id="var/show_body_size"><aside class="declaration">var </aside>show_body_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L198">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 198"/></a></h3>
+        <p>Whether the user wants to see body size being shown in the preview</p><h3 id="var/widescreenpref"><aside class="declaration">var </aside>widescreenpref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences.dm#L130">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences.dm 130"/></a></h3>
+        <p>Should we be in the widescreen mode set by the config?</p><h2 id="proc">Proc Details</h2><h3 id="proc/check_keybindings"><aside class="declaration">proc </aside>check_keybindings<aside>() 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/client/preferences_savefile.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;preferences_savefile.dm 100"/></a></aside>
+        </h3>
+        <p>checks through keybindings for outdated unbound keys and updates them</p><h3 id="proc/hardcore_random_setup"><aside class="declaration">proc </aside>hardcore_random_setup<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/character, antagonist, is_latejoiner) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mob/dead/new_player/preferences_setup.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 42"/></a></aside>
+        </h3>
+        <p>Setup a hardcore random character and calculate their hardcore random score</p><h3 id="proc/select_hardcore_quirks"><aside class="declaration">proc </aside>select_hardcore_quirks<aside>() 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mob/dead/new_player/preferences_setup.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 51"/></a></aside>
+        </h3>
+        <p>Go through all quirks that can be used in hardcore mode and select some based on a random budget.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

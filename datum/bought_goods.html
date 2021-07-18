@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;bought_goods - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/bought_goods.html#var">Var Details</a> - <a href="datum/bought_goods.html#proc">Proc Details</a></header>
+<main>
+<h1>bought_goods <aside>/<a href="datum.html">datum</a>/<a href="datum/bought_goods.html">bought_goods</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/amount">amount</a></th><td>Remaining amount of how many of those the trader will yet buy. Infinite if null</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/check_types">check_types</a></th><td>Whether we check the types of the bought goodie. If not, make sure the datum handles verification by itself</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/cost_label">cost_label</a></th><td>The price label, if null then it'll initialize as correct price + variance</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/name">name</a></th><td>Name of the goods that will be displayed that the trader is interested in</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/stock_ceiling">stock_ceiling</a></th><td>The decimal the stock will be rounded up to</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/stock_high">stock_high</a></th><td>The highest stock amount of this purchasable goodie</td></tr>
+            <tr><th><a href="datum/bought_goods.html#var/stock_low">stock_low</a></th><td>The lowest stock amount of this purchasable goodie</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/bought_goods.html#proc/CheckAmount">CheckAmount</a></th><td>Whether the trader is interested in purchasing this amount of the item (matters for all stack related datums)</td></tr>
+            <tr><th><a href="datum/bought_goods.html#proc/GetCost">GetCost</a></th><td>This proc is used to dynamically appraise the items, changing their price based off variables, make sure the price label reflects such a possibility if used</td></tr>
+            <tr><th><a href="datum/bought_goods.html#proc/IsValid">IsValid</a></th><td>This proc is used to verify items past their typecheck verification</td></tr>
+            <tr><th><a href="datum/bought_goods.html#proc/SubtractAmount">SubtractAmount</a></th><td>Subtract the stock by amount of items sold. Matters for stack datums</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/amount"><aside class="declaration">var </aside>amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 18"/></a></h3>
+        <p>Remaining amount of how many of those the trader will yet buy. Infinite if null</p><h3 id="var/check_types"><aside class="declaration">var </aside>check_types
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 5"/></a></h3>
+        <p>Whether we check the types of the bought goodie. If not, make sure the datum handles verification by itself</p><h3 id="var/cost_label"><aside class="declaration">var </aside>cost_label
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 9"/></a></h3>
+        <p>The price label, if null then it'll initialize as correct price + variance</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 3"/></a></h3>
+        <p>Name of the goods that will be displayed that the trader is interested in</p><h3 id="var/stock_ceiling"><aside class="declaration">var </aside>stock_ceiling
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 20"/></a></h3>
+        <p>The decimal the stock will be rounded up to</p><h3 id="var/stock_high"><aside class="declaration">var </aside>stock_high
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 16"/></a></h3>
+        <p>The highest stock amount of this purchasable goodie</p><h3 id="var/stock_low"><aside class="declaration">var </aside>stock_low
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 14"/></a></h3>
+        <p>The lowest stock amount of this purchasable goodie</p><h2 id="proc">Proc Details</h2><h3 id="proc/CheckAmount"><aside class="declaration">proc </aside>CheckAmount<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/movable_atom_to_validate) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 48"/></a></aside>
+        </h3>
+        <p>Whether the trader is interested in purchasing this amount of the item (matters for all stack related datums)</p><h3 id="proc/GetCost"><aside class="declaration">proc </aside>GetCost<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/movable_atom_to_appraise) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 69"/></a></aside>
+        </h3>
+        <p>This proc is used to dynamically appraise the items, changing their price based off variables, make sure the price label reflects such a possibility if used</p><h3 id="proc/IsValid"><aside class="declaration">proc </aside>IsValid<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/movable_atom_to_verify) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 65"/></a></aside>
+        </h3>
+        <p>This proc is used to verify items past their typecheck verification</p><h3 id="proc/SubtractAmount"><aside class="declaration">proc </aside>SubtractAmount<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/movable_atom_to_subtract_from) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/trading/_bought_goods.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;trading&#x2F;_bought_goods.dm 59"/></a></aside>
+        </h3>
+        <p>Subtract the stock by amount of items sold. Matters for stack datums</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

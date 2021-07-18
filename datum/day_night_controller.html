@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;day_night_controller - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/day_night_controller.html#var">Var Details</a> - <a href="datum/day_night_controller.html#proc">Proc Details</a></header>
+<main>
+<h1>day_night_controller <aside>/<a href="datum.html">datum</a>/<a href="datum/day_night_controller.html">day_night_controller</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 7"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/affected_areas">affected_areas</a></th><td>All the areas that are affected by day/night</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/color_lookup_table">color_lookup_table</a></th><td>Lookup table for the colors</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/has_applied_luminosity">has_applied_luminosity</a></th><td>Whether we have applied luminosity to the areas</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/light_lookup_table">light_lookup_table</a></th><td>Lookup table for the light values</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/linked_overmap_object">linked_overmap_object</a></th><td>The linked overmap object of our controller</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/midnight_color">midnight_color</a></th><td>YOU NEED TO FILL OUT ALL OF THEM
+Colors are hexes and lights goes from 0 to 1. Need atleast MINIMUM_LIGHT_FOR_LUMINOSITY to light up the areas
+Each of the times represents 4 hours in a 24 hour cycle, the transitions between one and the next are smooth</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/z_level_lookup">z_level_lookup</a></th><td>Quick lookup for the area checking</td></tr>
+            <tr><th><a href="datum/day_night_controller.html#var/z_levels">z_levels</a></th><td>The z levels we are controlling</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/day_night_controller.html#proc/Destroy">Destroy</a></th><td>In theory this should never be destroyed, unless you plan to dynamically change existing z levels</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/affected_areas"><aside class="declaration">var </aside>affected_areas
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 42"/></a></h3>
+        <p>All the areas that are affected by day/night</p><h3 id="var/color_lookup_table"><aside class="declaration">var </aside>color_lookup_table
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 31"/></a></h3>
+        <p>Lookup table for the colors</p><h3 id="var/has_applied_luminosity"><aside class="declaration">var </aside>has_applied_luminosity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 44"/></a></h3>
+        <p>Whether we have applied luminosity to the areas</p><h3 id="var/light_lookup_table"><aside class="declaration">var </aside>light_lookup_table
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 33"/></a></h3>
+        <p>Lookup table for the light values</p><h3 id="var/linked_overmap_object"><aside class="declaration">var </aside>linked_overmap_object
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/overmap_object.html">overmap_object</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 40"/></a></h3>
+        <p>The linked overmap object of our controller</p><h3 id="var/midnight_color"><aside class="declaration">var </aside>midnight_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 12"/></a></h3>
+        <p>YOU NEED TO FILL OUT ALL OF THEM
+Colors are hexes and lights goes from 0 to 1. Need atleast MINIMUM_LIGHT_FOR_LUMINOSITY to light up the areas
+Each of the times represents 4 hours in a 24 hour cycle, the transitions between one and the next are smooth</p><h3 id="var/z_level_lookup"><aside class="declaration">var </aside>z_level_lookup
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 38"/></a></h3>
+        <p>Quick lookup for the area checking</p><h3 id="var/z_levels"><aside class="declaration">var </aside>z_levels
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 36"/></a></h3>
+        <p>The z levels we are controlling</p><h2 id="proc">Proc Details</h2><h3 id="proc/Destroy"><aside class="parent"><a title="/datum" href="datum.html#proc/Destroy">&uarr;</a></aside>Destroy<aside>() 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/datums/day_night_controller.dm#L180">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;day_night_controller.dm 180"/></a></aside>
+        </h3>
+        <p>In theory this should never be destroyed, unless you plan to dynamically change existing z levels</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

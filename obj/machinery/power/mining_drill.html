@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;power&#x2F;mining_drill - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/power/mining_drill.html#var">Var Details</a></header>
+<main>
+<h1>mining_drill <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/power/mining_drill.html">power/mining_drill</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 4"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/active">active</a></th><td>Is it active</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/can_have_external_power">can_have_external_power</a></th><td>Whether it can have external power connected</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/cell">cell</a></th><td>Reference to our cell</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/connected_braces">connected_braces</a></th><td>References to the connected braces</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/current_node">current_node</a></th><td>Reference to the current ore node we're taking ores from</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/dump_ticker">dump_ticker</a></th><td>Used as a timer for dumping the ore</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/errored">errored</a></th><td>Whether we have &quot;errored&quot;, means we couldnt find an ore node</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/mining_progress_ticker">mining_progress_ticker</a></th><td>Used as a timer for mining the ore</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/mining_speed">mining_speed</a></th><td>Speed of mining</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/ore_output_direction">ore_output_direction</a></th><td>Direction of the outputted ore</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/powered">powered</a></th><td>Is it powered</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/required_braces">required_braces</a></th><td>How many braces do we require</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/simple_icon_states">simple_icon_states</a></th><td>Whether we use &quot;simple&quot; icon states</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/soundloop">soundloop</a></th><td>Our sound loop</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/starting_cell">starting_cell</a></th><td>Type of the starting cell, if any</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/stored_ores">stored_ores</a></th><td>Stored ores, for the purpose of batching the mining</td></tr>
+            <tr><th><a href="obj/machinery/power/mining_drill.html#var/terminal">terminal</a></th><td>Reference to the terminal, for external power</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/active"><aside class="declaration">var </aside>active
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 28"/></a></h3>
+        <p>Is it active</p><h3 id="var/can_have_external_power"><aside class="declaration">var </aside>can_have_external_power
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 25"/></a></h3>
+        <p>Whether it can have external power connected</p><h3 id="var/cell"><aside class="declaration">var </aside>cell
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/stock_parts/cell.html">stock_parts/cell</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 33"/></a></h3>
+        <p>Reference to our cell</p><h3 id="var/connected_braces"><aside class="declaration">var </aside>connected_braces
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 56"/></a></h3>
+        <p>References to the connected braces</p><h3 id="var/current_node"><aside class="declaration">var </aside>current_node
+            <aside>&ndash; /<a href="datum.html">datum</a>/ore_node</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 40"/></a></h3>
+        <p>Reference to the current ore node we're taking ores from</p><h3 id="var/dump_ticker"><aside class="declaration">var </aside>dump_ticker
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 49"/></a></h3>
+        <p>Used as a timer for dumping the ore</p><h3 id="var/errored"><aside class="declaration">var </aside>errored
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 59"/></a></h3>
+        <p>Whether we have &quot;errored&quot;, means we couldnt find an ore node</p><h3 id="var/mining_progress_ticker"><aside class="declaration">var </aside>mining_progress_ticker
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 51"/></a></h3>
+        <p>Used as a timer for mining the ore</p><h3 id="var/mining_speed"><aside class="declaration">var </aside>mining_speed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 43"/></a></h3>
+        <p>Speed of mining</p><h3 id="var/ore_output_direction"><aside class="declaration">var </aside>ore_output_direction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 45"/></a></h3>
+        <p>Direction of the outputted ore</p><h3 id="var/powered"><aside class="declaration">var </aside>powered
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 30"/></a></h3>
+        <p>Is it powered</p><h3 id="var/required_braces"><aside class="declaration">var </aside>required_braces
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 54"/></a></h3>
+        <p>How many braces do we require</p><h3 id="var/simple_icon_states"><aside class="declaration">var </aside>simple_icon_states
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 62"/></a></h3>
+        <p>Whether we use &quot;simple&quot; icon states</p><h3 id="var/soundloop"><aside class="declaration">var </aside>soundloop
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/looping_sound.html">looping_sound</a>/drill</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 67"/></a></h3>
+        <p>Our sound loop</p><h3 id="var/starting_cell"><aside class="declaration">var </aside>starting_cell
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 35"/></a></h3>
+        <p>Type of the starting cell, if any</p><h3 id="var/stored_ores"><aside class="declaration">var </aside>stored_ores
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 47"/></a></h3>
+        <p>Stored ores, for the purpose of batching the mining</p><h3 id="var/terminal"><aside class="declaration">var </aside>terminal
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/power/terminal</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/mining/mining_drill.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;mining_drill.dm 37"/></a></h3>
+        <p>Reference to the terminal, for external power</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>

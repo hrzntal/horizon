@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;job - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/job.html#var">Var Details</a> - <a href="datum/job.html#proc">Proc Details</a></header>
+<main>
+<h1>job <aside>/<a href="datum.html">datum</a>/<a href="datum/job.html">job</a></aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/job.html#var/allow_bureaucratic_error">allow_bureaucratic_error</a></th><td>Should this job be allowed to be picked for the bureaucratic error event?</td></tr>
+            <tr><th><a href="datum/job.html#var/banned_quirks">banned_quirks</a></th><td>List of banned quirks in their names(dont blame me, that's how they're stored), players can't join as the job if they have the quirk. Associative for the purposes of performance</td></tr>
+            <tr><th><a href="datum/job.html#var/blacklist_dresscode_slots">blacklist_dresscode_slots</a></th><td>A list of slots that can't have loadout items assigned to them if no_dresscode is applied, used for important items such as ID, PDA, backpack and headset</td></tr>
+            <tr><th><a href="datum/job.html#var/departments">departments</a></th><td>Bitfield of departments this job belongs wit</td></tr>
+            <tr><th><a href="datum/job.html#var/exclusive_mail_goodies">exclusive_mail_goodies</a></th><td>If this job's mail goodies compete with generic goodies.</td></tr>
+            <tr><th><a href="datum/job.html#var/family_heirlooms">family_heirlooms</a></th><td>List of family heirlooms this job can get with the family heirloom quirk. List of types.</td></tr>
+            <tr><th><a href="datum/job.html#var/liver_traits">liver_traits</a></th><td>Lazylist of traits added to the liver of the mob assigned this job (used for the classic &quot;cops heal from donuts&quot; reaction, among others)</td></tr>
+            <tr><th><a href="datum/job.html#var/loadout">loadout</a></th><td>Whether the job can use the loadout system</td></tr>
+            <tr><th><a href="datum/job.html#var/mail_goodies">mail_goodies</a></th><td>Goodies that can be received via the mail system.
+Keep the _job definition for this empty and use /obj/item/mail to define general gifts.</td></tr>
+            <tr><th><a href="datum/job.html#var/minimal_skills">minimal_skills</a></th><td>Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm</td></tr>
+            <tr><th><a href="datum/job.html#var/no_dresscode">no_dresscode</a></th><td>With this set to TRUE, the loadout will be applied before a job clothing will be</td></tr>
+            <tr><th><a href="datum/job.html#var/plasmaman_outfit">plasmaman_outfit</a></th><td>The job's outfit that will be assigned for plasmamen.</td></tr>
+            <tr><th><a href="datum/job.html#var/random_spawns_possible">random_spawns_possible</a></th><td>Is this job affected by weird spawns like the ones from station traits</td></tr>
+            <tr><th><a href="datum/job.html#var/required_languages">required_languages</a></th><td>Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN</td></tr>
+            <tr><th><a href="datum/job.html#var/skills">skills</a></th><td>Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm</td></tr>
+            <tr><th><a href="datum/job.html#var/species_blacklist">species_blacklist</a></th><td>Blacklist of species for this job.</td></tr>
+            <tr><th><a href="datum/job.html#var/species_whitelist">species_whitelist</a></th><td>Whitelist of allowed species for this job. If not specified then all roundstart races can be used. Associative with TRUE</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/job.html#proc/get_mail_goodies">get_mail_goodies</a></th><td>An overridable getter for more dynamic goodies.</td></tr>
+            <tr><th><a href="datum/job.html#proc/get_map_changes">get_map_changes</a></th><td>Loads up map configs if necessary and returns job changes for this job.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/allow_bureaucratic_error"><aside class="declaration">var </aside>allow_bureaucratic_error
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 78"/></a></h3>
+        <p>Should this job be allowed to be picked for the bureaucratic error event?</p><h3 id="var/banned_quirks"><aside class="declaration">var </aside>banned_quirks
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 91"/></a></h3>
+        <p>List of banned quirks in their names(dont blame me, that's how they're stored), players can't join as the job if they have the quirk. Associative for the purposes of performance</p><h3 id="var/blacklist_dresscode_slots"><aside class="declaration">var </aside>blacklist_dresscode_slots
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L93">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 93"/></a></h3>
+        <p>A list of slots that can't have loadout items assigned to them if no_dresscode is applied, used for important items such as ID, PDA, backpack and headset</p><h3 id="var/departments"><aside class="declaration">var </aside>departments
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 75"/></a></h3>
+        <p>Bitfield of departments this job belongs wit</p><h3 id="var/exclusive_mail_goodies"><aside class="declaration">var </aside>exclusive_mail_goodies
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 72"/></a></h3>
+        <p>If this job's mail goodies compete with generic goodies.</p><h3 id="var/family_heirlooms"><aside class="declaration">var </aside>family_heirlooms
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 84"/></a></h3>
+        <p>List of family heirlooms this job can get with the family heirloom quirk. List of types.</p><h3 id="var/liver_traits"><aside class="declaration">var </aside>liver_traits
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 60"/></a></h3>
+        <p>Lazylist of traits added to the liver of the mob assigned this job (used for the classic &quot;cops heal from donuts&quot; reaction, among others)</p><h3 id="var/loadout"><aside class="declaration">var </aside>loadout
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 89"/></a></h3>
+        <p>Whether the job can use the loadout system</p><h3 id="var/mail_goodies"><aside class="declaration">var </aside>mail_goodies
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 69"/></a></h3>
+        <p>Goodies that can be received via the mail system.
+Keep the _job definition for this empty and use /obj/item/mail to define general gifts.</p><h3 id="var/minimal_skills"><aside class="declaration">var </aside>minimal_skills
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 8"/></a></h3>
+        <p>Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm</p><h3 id="var/no_dresscode"><aside class="declaration">var </aside>no_dresscode
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 87"/></a></h3>
+        <p>With this set to TRUE, the loadout will be applied before a job clothing will be</p><h3 id="var/plasmaman_outfit"><aside class="declaration">var </aside>plasmaman_outfit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 47"/></a></h3>
+        <p>The job's outfit that will be assigned for plasmamen.</p><h3 id="var/random_spawns_possible"><aside class="declaration">var </aside>random_spawns_possible
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 81"/></a></h3>
+        <p>Is this job affected by weird spawns like the ones from station traits</p><h3 id="var/required_languages"><aside class="declaration">var </aside>required_languages
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L99">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 99"/></a></h3>
+        <p>Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN</p><h3 id="var/skills"><aside class="declaration">var </aside>skills
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 6"/></a></h3>
+        <p>Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm</p><h3 id="var/species_blacklist"><aside class="declaration">var </aside>species_blacklist
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L97">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 97"/></a></h3>
+        <p>Blacklist of species for this job.</p><h3 id="var/species_whitelist"><aside class="declaration">var </aside>species_whitelist
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L95">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 95"/></a></h3>
+        <p>Whitelist of allowed species for this job. If not specified then all roundstart races can be used. Associative with TRUE</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_mail_goodies"><aside class="declaration">proc </aside>get_mail_goodies<aside>(/<a href="mob.html">mob</a>/recipient) 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L332">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 332"/></a></aside>
+        </h3>
+        <p>An overridable getter for more dynamic goodies.</p><h3 id="proc/get_map_changes"><aside class="declaration">proc </aside>get_map_changes<aside>() 
+        
+    
+            <a href="https://github.com/hrzntal/horizon/blob/bdf17174cf0c395a928d143319612710531ec731/code/modules/jobs/job_types/_job.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;_job.dm 112"/></a></aside>
+        </h3>
+        <p>Loads up map configs if necessary and returns job changes for this job.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/hrzntal/horizon/tree/bdf17174cf0c395a928d143319612710531ec731">bdf1717</a>
+        (main) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.0</a></footer>
+</body>
+</html>
