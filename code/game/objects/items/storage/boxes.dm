@@ -135,6 +135,8 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 
+	new /obj/item/crowbar(src)
+
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
