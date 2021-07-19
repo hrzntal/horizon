@@ -10,6 +10,8 @@
 	var/obj/effect/abstract/turf_fire/turf_fire
 	/// Whether this turf can have catwalk tiles placed on
 	var/can_have_catwalk
+	/// Pollution of this turf
+	var/datum/pollution/pollution
 
 /turf/open/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/stack/catwalk))
@@ -317,3 +319,13 @@
 	if(isopenspaceturf(src) || isspaceturf(src))
 		return
 	new /obj/effect/abstract/turf_fire(src, power)
+
+/turf/open/PolluteTurf(pollution_type, amount)
+	if(!pollution)
+		pollution = new(src)
+	pollution.AddPollutant(pollution_type, amount)
+
+/turf/open/PolluteListTurf(list/pollutions)
+	if(!pollution)
+		pollution = new(src)
+	pollution.AddPollutantList(pollutions)

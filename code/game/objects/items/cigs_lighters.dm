@@ -40,6 +40,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/match/proc/matchignite()
 	if(!lit && !burnt)
+		var/turf/my_turf = get_turf(src)
+		my_turf.PolluteTurf(/datum/pollutant/sulphur, 5)
 		playsound(src, 'sound/items/match_strike.ogg', 15, TRUE)
 		lit = TRUE
 		icon_state = "match_lit"
@@ -139,6 +141,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/smoke_all = FALSE /// Should we smoke all of the chems in the cig before it runs out. Splits each puff to take a portion of the overall chems so by the end you'll always have consumed all of the chems inside.
 	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
 	var/lung_harm = 0.3 //How bad it is for you
+	/// What type of pollution does this produce on smoking, changed to weed pollution sometimes
+	var/pollution_type = /datum/pollutant/smoke
 
 /obj/item/clothing/mask/cigarette/suicide_act(mob/user)
 	user.visible_message(SPAN_SUICIDE("[user] is huffing [src] as quickly as [user.p_they()] can! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer."))
@@ -209,6 +213,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		e.start()
 		qdel(src)
 		return
+	// Setting the puffed pollutant to cannabis if we're smoking the space drugs reagent(obtained from cannabis)
+	if(reagents.has_reagent(/datum/reagent/drug/space_drugs))
+		pollution_type = /datum/pollutant/smoke/cannabis
 	// allowing reagents to react after being lit
 	reagents.flags &= ~(NO_REACT)
 	reagents.handle_reactions()
@@ -278,6 +285,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!air || !air.has_gas(/datum/gas/oxygen, 1)) //or oxygen on a tile to burn
 			extinguish()
 			return
+	location.PolluteTurf(pollution_type, 10)
 	smoketime -= delta_time
 	if(smoketime <= 0)
 		new type_butt(location)
@@ -995,6 +1003,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			//it's reusable so it won't unequip when empty
 		return
 	//open flame removed because vapes are a closed system, they won't light anything on fire
+	var/turf/my_turf = get_turf(src)
+	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 10)
 
 	if(super && vapetime >= vapedelay)//Time to start puffing those fat vapes, yo.
 		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new

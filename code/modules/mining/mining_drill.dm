@@ -256,7 +256,9 @@
 			RegisterNode(node)
 			update_icon()
 		//Mine ore
+		var/turf/my_turf = get_turf(src)
 		if(current_node)
+			my_turf.PolluteTurf(/datum/pollutant/dust, 50)
 			var/obj/item/mined = current_node.TakeRandomOre()
 			if(mined)
 				stored_ores += mined
@@ -264,9 +266,6 @@
 		dump_ticker++
 		if(dump_ticker > 5)
 			dump_ore()
-			//"Dig" into the ground too
-			var/turf/my_turf = get_turf(src)
-			my_turf.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /obj/machinery/power/mining_drill/disconnect_terminal()
 	if(terminal)

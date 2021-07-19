@@ -291,6 +291,8 @@
 	if(!CheckOxygen())
 		extinguish()
 		return
+	var/turf/my_turf = get_turf(src)
+	my_turf.PolluteListTurf(list(/datum/pollutant/smoke = 20, /datum/pollutant/carbon_air_pollution = 5))
 	if(!grill)
 		Burn(delta_time)
 	else

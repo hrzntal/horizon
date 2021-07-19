@@ -8,6 +8,8 @@
 	purity_min = 0.1
 	rate_up_lim = 35
 	reaction_tags = REACTION_TAG_HEALING | REACTION_TAG_EASY
+	pollutant_type = /datum/pollutant/chemical_vapors
+	pollutant_amount = 0.2
 
 /datum/chemical_reaction/medicine/leporazine
 	results = list(/datum/reagent/medicine/leporazine = 2)

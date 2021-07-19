@@ -666,6 +666,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /turf/proc/IgniteTurf(power)
 	return
 
+/turf/proc/PolluteTurf(pollution_type, amount)
+	return
+
+/turf/proc/PolluteListTurf(list/pollutions)
+	return
+
 /turf/proc/IsTransparent()
 	if(!(HAS_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT)))
 		return FALSE
