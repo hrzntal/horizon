@@ -253,7 +253,7 @@
 
 /obj/item/organ/eyes/robotic/glow/Initialize()
 	. = ..()
-	mob_overlay = image('icons/mob/human_face.dmi', "eyes_glow_gs")
+	mob_overlay = image('icons/mob/sprite_accessory/human_face.dmi', "eyes_glow_gs")
 
 /obj/item/organ/eyes/robotic/glow/Destroy()
 	terminate_effects()
