@@ -135,6 +135,8 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 
+	new /obj/item/crowbar(src)
+
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
@@ -163,7 +165,7 @@
 	new /obj/item/radio/off(src)
 
 // Syndie survival box
-/obj/item/storage/box/survival/syndie //why is this its own thing if it's just the engi box with a syndie mask and medipen?
+/obj/item/storage/box/survival/syndie //why is this its own thing if it's just the engi box with a syndie mask and medipen? // Good question.
 	name = "extended-capacity survival box"
 	desc = "A box with the bare essentials of ensuring the survival of you and others. This one is labelled to contain an extended-capacity tank."
 	mask_type = /obj/item/clothing/mask/gas/syndicate
@@ -861,6 +863,8 @@
 		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
+
+	new /obj/item/crowbar(src)
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
