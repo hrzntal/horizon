@@ -6,6 +6,7 @@
 #define STYLE_TAUR_HOOF			(1<<4)
 #define STYLE_TAUR_ALL		(STYLE_TAUR_SNAKE|STYLE_TAUR_PAW|STYLE_TAUR_HOOF)
 #define STYLE_VOX			(1<<5) //For glasses, masks and head pieces for the Vox race
+#define STYLE_TESHARI		(1<<6) //Teshari stuff
 
 //Flags for bodytypes for species and clothing. If a clothing doesnt have a flag for a species, they cant wear the clothing
 #define BODYTYPE_HUMANOID		(1<<0)

@@ -3830,6 +3830,7 @@
 #include "hrzn\modules\mold\code\mold_disease.dm"
 #include "hrzn\modules\mold\code\mold_mobs.dm"
 #include "hrzn\modules\mold\code\mold_structures.dm"
+#include "hrzn\modules\teshari\code\teshari.dm"
 #include "hrzn\modules\typing_indicator\code\mob.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"

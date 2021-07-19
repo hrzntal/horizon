@@ -83,6 +83,7 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define ispodweak(A) (is_species(A,/datum/species/pod/podweak))
 #define isxenohybrid(A) (is_species(A,/datum/species/xeno))
 #define isroundstartslime(A) (is_species(A,/datum/species/jelly/roundstartslime))
+#define isteshari(A) (is_species(A,/datum/species/teshari))
 
 //more carbon mobs
 
