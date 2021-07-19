@@ -12,7 +12,7 @@
 	program_icon = "project-diagram"
 	var/emagged = FALSE ///Bool of if this app has already been emagged
 	var/list/loglist = list() ///A list to copy a borg's IC log list into
-	var/mob/living/silicon/robot/DL_source ///reference of a borg if we're downloading a log, or null if not.
+	var/mob/living/silicon/robot_old/DL_source ///reference of a borg if we're downloading a log, or null if not.
 	var/DL_progress = -1 ///Progress of current download, 0 to 100, -1 for no current download
 
 /datum/computer_file/program/borg_monitor/Destroy()
@@ -33,7 +33,7 @@
 	return TRUE
 
 /datum/computer_file/program/borg_monitor/tap(atom/A, mob/living/user, params)
-	var/mob/living/silicon/robot/borgo = A
+	var/mob/living/silicon/robot_old/borgo = A
 	if(!istype(borgo) || !borgo.modularInterface)
 		return FALSE
 	DL_source = borgo
@@ -83,7 +83,7 @@
 		data["card"] = TRUE
 
 	data["cyborgs"] = list()
-	for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
+	for(var/mob/living/silicon/robot_old/R in GLOB.silicon_mobs)
 		if(!evaluate_borg(R))
 			continue
 
@@ -122,7 +122,7 @@
 
 	switch(action)
 		if("messagebot")
-			var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
+			var/mob/living/silicon/robot_old/R = locate(params["ref"]) in GLOB.silicon_mobs
 			if(!istype(R))
 				return
 			var/ID = checkID()
@@ -143,7 +143,7 @@
 			usr.log_talk(message, LOG_PDA, tag="Cyborg Monitor Program: ID name \"[ID]\" to [R]")
 
 ///This proc is used to determin if a borg should be shown in the list (based on the borg's scrambledcodes var). Syndicate version overrides this to show only syndicate borgs.
-/datum/computer_file/program/borg_monitor/proc/evaluate_borg(mob/living/silicon/robot/R)
+/datum/computer_file/program/borg_monitor/proc/evaluate_borg(mob/living/silicon/robot_old/R)
 	if((get_turf(computer)).z != (get_turf(R)).z)
 		return FALSE
 	if(R.scrambledcodes)
@@ -175,7 +175,7 @@
 /datum/computer_file/program/borg_monitor/syndicate/run_emag()
 	return FALSE
 
-/datum/computer_file/program/borg_monitor/syndicate/evaluate_borg(mob/living/silicon/robot/R)
+/datum/computer_file/program/borg_monitor/syndicate/evaluate_borg(mob/living/silicon/robot_old/R)
 	if((get_turf(computer)).z != (get_turf(R)).z)
 		return FALSE
 	if(!R.scrambledcodes)

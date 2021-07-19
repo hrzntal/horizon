@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/Life(delta_time = SSMOBS_DT, times_fired)
+/mob/living/silicon/robot_old/Life(delta_time = SSMOBS_DT, times_fired)
 	if (src.notransform)
 		return
 
@@ -6,7 +6,7 @@
 	handle_robot_hud_updates()
 	handle_robot_cell(delta_time, times_fired)
 
-/mob/living/silicon/robot/proc/handle_robot_cell(delta_time, times_fired)
+/mob/living/silicon/robot_old/proc/handle_robot_cell(delta_time, times_fired)
 	if(stat == DEAD)
 		return
 
@@ -16,7 +16,7 @@
 	else if(stat == CONSCIOUS)
 		use_power(delta_time, times_fired)
 
-/mob/living/silicon/robot/proc/use_power(delta_time, times_fired)
+/mob/living/silicon/robot_old/proc/use_power(delta_time, times_fired)
 	if(cell?.charge)
 		if(cell.charge <= 100)
 			uneq_all()
@@ -28,13 +28,13 @@
 		toggle_headlamp(TRUE)
 	diag_hud_set_borgcell()
 
-/mob/living/silicon/robot/proc/handle_robot_hud_updates()
+/mob/living/silicon/robot_old/proc/handle_robot_hud_updates()
 	if(!client)
 		return
 
 	update_cell_hud_icon()
 
-/mob/living/silicon/robot/update_health_hud()
+/mob/living/silicon/robot_old/update_health_hud()
 	if(!client || !hud_used)
 		return
 	if(hud_used.healths)
@@ -54,7 +54,7 @@
 		else
 			hud_used.healths.icon_state = "health7"
 
-/mob/living/silicon/robot/proc/update_cell_hud_icon()
+/mob/living/silicon/robot_old/proc/update_cell_hud_icon()
 	if(cell)
 		var/cellcharge = cell.charge/cell.maxcharge
 		switch(cellcharge)
@@ -72,7 +72,7 @@
 		throw_alert("charge", /atom/movable/screen/alert/nocell)
 
 //Robots on fire
-/mob/living/silicon/robot/handle_fire(delta_time, times_fired)
+/mob/living/silicon/robot_old/handle_fire(delta_time, times_fired)
 	. = ..()
 	if(.) //if the mob isn't on fire anymore
 		return
@@ -84,7 +84,7 @@
 
 	//adjustFireLoss(3)
 
-/mob/living/silicon/robot/update_fire()
+/mob/living/silicon/robot_old/update_fire()
 	var/mutable_appearance/fire_overlay = mutable_appearance('icons/mob/OnFire.dmi', "Generic_mob_burning")
 	if(on_fire)
 		add_overlay(fire_overlay)

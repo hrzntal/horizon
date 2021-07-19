@@ -164,7 +164,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	for(var/mob/living/carbon/human/scot in GLOB.player_list - user)
 		if(scot.mind.special_role == "highlander" && (!closest_victim || get_dist(user, closest_victim) < closest_distance))
 			closest_victim = scot
-	for(var/mob/living/silicon/robot/siliscot in GLOB.player_list - user)
+	for(var/mob/living/silicon/robot_old/siliscot in GLOB.player_list - user)
 		if(siliscot.mind.special_role == "highlander" && (!closest_victim || get_dist(user, closest_victim) < closest_distance))
 			closest_victim = siliscot
 
@@ -232,7 +232,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/claymore/highlander/robot //BLOODTHIRSTY BORGS NOW COME IN PLAID
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "claymore_cyborg"
-	var/mob/living/silicon/robot/robot
+	var/mob/living/silicon/robot_old/robot
 
 /obj/item/claymore/highlander/robot/Initialize()
 	var/obj/item/robot_model/kiltkit = loc

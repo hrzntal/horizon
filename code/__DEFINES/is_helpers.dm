@@ -105,7 +105,7 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 #define issiliconoradminghost(A) (istype(A, /mob/living/silicon) || isAdminGhostAI(A))
 
-#define iscyborg(A) (istype(A, /mob/living/silicon/robot))
+#define iscyborg(A) (istype(A, /mob/living/silicon/robot_old))
 
 #define isAI(A) (istype(A, /mob/living/silicon/ai))
 

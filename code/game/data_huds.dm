@@ -345,7 +345,7 @@ Diagnostic HUDs!
 			holder.icon_state = "huddead2"
 
 //Borgie battery tracking!
-/mob/living/silicon/robot/proc/diag_hud_set_borgcell()
+/mob/living/silicon/robot_old/proc/diag_hud_set_borgcell()
 	var/image/holder = hud_list[DIAG_BATT_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
 	holder.pixel_y = I.Height() - world.icon_size
@@ -356,7 +356,7 @@ Diagnostic HUDs!
 		holder.icon_state = "hudnobatt"
 
 //borg-AI shell tracking
-/mob/living/silicon/robot/proc/diag_hud_set_aishell() //Shows tracking beacons on the mech
+/mob/living/silicon/robot_old/proc/diag_hud_set_aishell() //Shows tracking beacons on the mech
 	var/image/holder = hud_list[DIAG_TRACK_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
 	holder.pixel_y = I.Height() - world.icon_size

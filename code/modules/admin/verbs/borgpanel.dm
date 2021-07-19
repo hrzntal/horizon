@@ -6,9 +6,9 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	if (!istype(borgo, /mob/living/silicon/robot))
+	if (!istype(borgo, /mob/living/silicon/robot_old))
 		borgo = input("Select a borg", "Select a borg", null, null) as null|anything in sortNames(GLOB.silicon_mobs)
-	if (!istype(borgo, /mob/living/silicon/robot))
+	if (!istype(borgo, /mob/living/silicon/robot_old))
 		to_chat(usr, SPAN_WARNING("Borg is required for borgpanel"), confidential = TRUE)
 
 	var/datum/borgpanel/borgpanel = new(usr, borgo)
@@ -18,10 +18,10 @@
 
 
 /datum/borgpanel
-	var/mob/living/silicon/robot/borg
+	var/mob/living/silicon/robot_old/borg
 	var/user
 
-/datum/borgpanel/New(to_user, mob/living/silicon/robot/to_borg)
+/datum/borgpanel/New(to_user, mob/living/silicon/robot_old/to_borg)
 	if(!istype(to_borg))
 		qdel(src)
 		CRASH("Borg panel is only available for borgs")
@@ -151,7 +151,7 @@
 			if (installedupgrade)
 				message_admins("[key_name_admin(user)] removed the [installedupgrade] upgrade from [ADMIN_LOOKUPFLW(borg)].")
 				log_admin("[key_name(user)] removed the [installedupgrade] upgrade from [key_name(borg)].")
-				qdel(installedupgrade) // see [mob/living/silicon/robot/on_upgrade_deleted()].
+				qdel(installedupgrade) // see [mob/living/silicon/robot_old/on_upgrade_deleted()].
 			else
 				var/obj/item/borg/upgrade/upgrade = new upgradepath(borg)
 				upgrade.action(borg, user)

@@ -123,7 +123,7 @@
 
 /obj/item/holosign_creator/cyborg/attack_self(mob/user)
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
+		var/mob/living/silicon/robot_old/R = user
 
 		if(shock)
 			to_chat(user, SPAN_NOTICE("You clear all active holograms, and reset your projector to normal."))

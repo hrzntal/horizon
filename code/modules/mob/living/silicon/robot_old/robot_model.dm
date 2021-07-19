@@ -16,7 +16,7 @@
 	flags_1 = CONDUCT_1
 
 	///Host of this model
-	var/mob/living/silicon/robot/robot
+	var/mob/living/silicon/robot_old/robot
 
 	var/model_select_icon = "nomod"
 

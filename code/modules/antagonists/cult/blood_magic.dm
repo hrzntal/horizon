@@ -595,8 +595,8 @@
 				new /obj/item/stack/sheet/runed_metal(T,quantity)
 				to_chat(user, SPAN_WARNING("A dark cloud emanates from you hand and swirls around the plasteel, transforming it into runed metal!"))
 				SEND_SOUND(user, sound('sound/effects/magic.ogg',0,1,25))
-		else if(istype(target,/mob/living/silicon/robot))
-			var/mob/living/silicon/robot/candidate = target
+		else if(istype(target,/mob/living/silicon/robot_old))
+			var/mob/living/silicon/robot_old/candidate = target
 			if(candidate.mmi)
 				channeling = TRUE
 				user.visible_message(SPAN_DANGER("A dark cloud emanates from [user]'s hand and swirls around [candidate]!"))

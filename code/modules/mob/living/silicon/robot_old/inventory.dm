@@ -4,7 +4,7 @@
 /**
  * Returns the thing in our active hand (whatever is in our active module-slot, in this case)
  */
-/mob/living/silicon/robot/get_active_held_item()
+/mob/living/silicon/robot_old/get_active_held_item()
 	return module_active
 
 /**
@@ -19,7 +19,7 @@
  * Arguments
  * * item_module - the item being equipped to a slot.
  */
-/mob/living/silicon/robot/proc/activate_module(obj/item/item_module)
+/mob/living/silicon/robot_old/proc/activate_module(obj/item/item_module)
 	if(QDELETED(item_module))
 		CRASH("activate_module called with improper item_module")
 
@@ -50,7 +50,7 @@
  * * item_module - the item being equipped to a slot
  * * module_num - the slot number being equipped to.
  */
-/mob/living/silicon/robot/proc/equip_module_to_slot(obj/item/item_module, module_num)
+/mob/living/silicon/robot_old/proc/equip_module_to_slot(obj/item/item_module, module_num)
 	var/storage_was_closed = FALSE //Just to be consistant and all
 	if(!shown_robot_modules) //Tools may be invisible if the collection is hidden
 		hud_used.toggle_show_robot_modules()
@@ -87,7 +87,7 @@
  * * item_module - the item being unequipped
  * * module_num - the slot number being unequipped.
  */
-/mob/living/silicon/robot/proc/unequip_module_from_slot(obj/item/item_module, module_num)
+/mob/living/silicon/robot_old/proc/unequip_module_from_slot(obj/item/item_module, module_num)
 	if(QDELETED(item_module))
 		CRASH("unequip_module_from_slot called with improper item_module")
 
@@ -137,7 +137,7 @@
  * Arguments
  * * module_num - the slot number being repaired.
  */
-/mob/living/silicon/robot/proc/break_cyborg_slot(module_num)
+/mob/living/silicon/robot_old/proc/break_cyborg_slot(module_num)
 	if(is_invalid_module_number(module_num, TRUE))
 		return FALSE
 
@@ -189,7 +189,7 @@
 /**
  * Breaks all of a cyborg's slots.
  */
-/mob/living/silicon/robot/proc/break_all_cyborg_slots()
+/mob/living/silicon/robot_old/proc/break_all_cyborg_slots()
 	for(var/cyborg_slot in 1 to 3)
 		break_cyborg_slot(cyborg_slot)
 
@@ -199,7 +199,7 @@
  * Arguments
  * * module_num - the module number being repaired.
  */
-/mob/living/silicon/robot/proc/repair_cyborg_slot(module_num)
+/mob/living/silicon/robot_old/proc/repair_cyborg_slot(module_num)
 	if(is_invalid_module_number(module_num, TRUE))
 		return FALSE
 
@@ -233,7 +233,7 @@
 /**
  * Repairs all slots. Unbroken slots are unaffected.
  */
-/mob/living/silicon/robot/proc/repair_all_cyborg_slots()
+/mob/living/silicon/robot_old/proc/repair_all_cyborg_slots()
 	for(var/cyborg_slot in 1 to 3)
 		repair_cyborg_slot(cyborg_slot)
 
@@ -243,7 +243,7 @@
  * * item_module - the item being added or removed from the screen
  * * add - whether or not the item is being added, or removed.
  */
-/mob/living/silicon/robot/proc/observer_screen_update(obj/item/item_module, add = TRUE)
+/mob/living/silicon/robot_old/proc/observer_screen_update(obj/item/item_module, add = TRUE)
 	if(observers?.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
@@ -261,14 +261,14 @@
 /**
  * Unequips the active held item, if there is one.
  */
-/mob/living/silicon/robot/proc/uneq_active()
+/mob/living/silicon/robot_old/proc/uneq_active()
 	if(module_active)
 		unequip_module_from_slot(module_active, get_selected_module())
 
 /**
  * Unequips all held items.
  */
-/mob/living/silicon/robot/proc/uneq_all()
+/mob/living/silicon/robot_old/proc/uneq_all()
 	for(var/cyborg_slot in 1 to 3)
 		if(!held_items[cyborg_slot])
 			continue
@@ -281,7 +281,7 @@
  * Arguments
  * * item_module - the item being checked
  */
-/mob/living/silicon/robot/proc/activated(obj/item/item_module)
+/mob/living/silicon/robot_old/proc/activated(obj/item/item_module)
 	if(item_module in held_items)
 		return TRUE
 	return FALSE
@@ -295,7 +295,7 @@
  * * module_num - the passed module num that is checked for validity.
  * * check_all_slots - TRUE = the proc checks all slots | FALSE = the proc only checks un-disabled slots
  */
-/mob/living/silicon/robot/proc/is_invalid_module_number(module_num, check_all_slots = FALSE)
+/mob/living/silicon/robot_old/proc/is_invalid_module_number(module_num, check_all_slots = FALSE)
 	if(!module_num)
 		return TRUE
 
@@ -314,7 +314,7 @@
 /**
  * Returns the slot number of the selected module, or zero if no modules are selected.
  */
-/mob/living/silicon/robot/proc/get_selected_module()
+/mob/living/silicon/robot_old/proc/get_selected_module()
 	if(module_active)
 		return held_items.Find(module_active)
 
@@ -325,7 +325,7 @@
  * Arguments
  * * module_num - the slot number being selected
  */
-/mob/living/silicon/robot/proc/select_module(module_num)
+/mob/living/silicon/robot_old/proc/select_module(module_num)
 	if(is_invalid_module_number(module_num) || !held_items[module_num]) //If the slot number is invalid, or there's nothing there, we have nothing to equip
 		return FALSE
 
@@ -347,7 +347,7 @@
  * Arguments
  * * module_num - the slot number being de-selected
  */
-/mob/living/silicon/robot/proc/deselect_module(module_num)
+/mob/living/silicon/robot_old/proc/deselect_module(module_num)
 	switch(module_num)
 		if(BORG_CHOOSE_MODULE_ONE)
 			if(module_active == held_items[module_num])
@@ -366,7 +366,7 @@
  * Arguments
  * * module_num - the slot number being toggled
  */
-/mob/living/silicon/robot/proc/toggle_module(module_num)
+/mob/living/silicon/robot_old/proc/toggle_module(module_num)
 	if(is_invalid_module_number(module_num))
 		return FALSE
 
@@ -382,7 +382,7 @@
 /**
  * Cycles through the list of enabled modules, deselecting the current one and selecting the next one.
  */
-/mob/living/silicon/robot/proc/cycle_modules()
+/mob/living/silicon/robot_old/proc/cycle_modules()
 	var/slot_start = get_selected_module()
 	var/slot_num
 	if(slot_start)
@@ -399,8 +399,8 @@
 		if(slot_num > 4) // not >3 otherwise cycling with just one item on module 3 wouldn't work
 			slot_num = 1 //Wrap around.
 
-/mob/living/silicon/robot/swap_hand()
+/mob/living/silicon/robot_old/swap_hand()
 	cycle_modules()
 
-/mob/living/silicon/robot/can_hold_items(obj/item/I)
+/mob/living/silicon/robot_old/can_hold_items(obj/item/I)
 	return (I && (I in model.modules)) //Only if it's part of our model.

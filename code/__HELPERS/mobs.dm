@@ -543,7 +543,7 @@ GLOBAL_LIST_EMPTY(species_list)
 //Returns a list of unslaved cyborgs
 /proc/active_free_borgs()
 	. = list()
-	for(var/mob/living/silicon/robot/borg in GLOB.silicon_mobs)
+	for(var/mob/living/silicon/robot_old/borg in GLOB.silicon_mobs)
 		if(borg.connected_ai || borg.shell)
 			continue
 		if(borg.stat == DEAD)

@@ -1,5 +1,5 @@
 
-/mob/living/silicon/robot/Login()
+/mob/living/silicon/robot_old/Login()
 	. = ..()
 	if(!. || !client)
 		return FALSE

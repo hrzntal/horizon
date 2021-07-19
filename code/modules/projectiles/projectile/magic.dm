@@ -174,7 +174,7 @@
 	var/list/contents = M.contents.Copy()
 
 	if(iscyborg(M))
-		var/mob/living/silicon/robot/Robot = M
+		var/mob/living/silicon/robot_old/Robot = M
 		// Disconnect AI's in shells
 		if(Robot.connected_ai)
 			Robot.connected_ai.disconnect_shell()
@@ -195,17 +195,17 @@
 			new_mob = new /mob/living/carbon/human/species/monkey(M.loc)
 
 		if("robot")
-			var/robot = pick(200;/mob/living/silicon/robot,
-							/mob/living/silicon/robot/model/syndicate,
-							/mob/living/silicon/robot/model/syndicate/medical,
-							/mob/living/silicon/robot/model/syndicate/saboteur,
+			var/robot = pick(200;/mob/living/silicon/robot_old,
+							/mob/living/silicon/robot_old/model/syndicate,
+							/mob/living/silicon/robot_old/model/syndicate/medical,
+							/mob/living/silicon/robot_old/model/syndicate/saboteur,
 							200;/mob/living/simple_animal/drone/polymorphed)
 			new_mob = new robot(M.loc)
 			if(issilicon(new_mob))
 				new_mob.gender = M.gender
 				new_mob.invisibility = 0
 				new_mob.job = "Cyborg"
-				var/mob/living/silicon/robot/Robot = new_mob
+				var/mob/living/silicon/robot_old/Robot = new_mob
 				Robot.lawupdate = FALSE
 				Robot.connected_ai = null
 				Robot.mmi.transfer_identity(M) //Does not transfer key/client.

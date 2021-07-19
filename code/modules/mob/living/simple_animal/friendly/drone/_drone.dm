@@ -321,7 +321,7 @@
  * Arguments:
  * * class - One of the keys listed in [/mob/living/simple_animal/drone/var/alarms]
  * * A - [/area] the alarm occurs
- * * O - unused argument, see [/mob/living/silicon/robot/triggerAlarm]
+ * * O - unused argument, see [/mob/living/silicon/robot_old/triggerAlarm]
  * * alarmsource - [/atom] source of the alarm
  */
 /mob/living/simple_animal/drone/proc/triggerAlarm(class, area/home, cameras, obj/source)

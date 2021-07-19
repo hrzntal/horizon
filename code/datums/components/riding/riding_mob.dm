@@ -244,7 +244,7 @@
 	can_be_driven = FALSE
 
 /datum/component/riding/creature/cyborg/ride_check(mob/living/user)
-	var/mob/living/silicon/robot/robot_parent = parent
+	var/mob/living/silicon/robot_old/robot_parent = parent
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/carbonuser = user
@@ -263,7 +263,7 @@
 	return list(TEXT_NORTH = list(0, 4), TEXT_SOUTH = list(0, 4), TEXT_EAST = list(-6, 3), TEXT_WEST = list( 6, 3))
 
 /datum/component/riding/creature/cyborg/handle_vehicle_offsets(dir)
-	var/mob/living/silicon/robot/robot_parent = parent
+	var/mob/living/silicon/robot_old/robot_parent = parent
 
 	for(var/mob/living/rider in robot_parent.buckled_mobs)
 		rider.setDir(dir)

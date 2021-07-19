@@ -1,11 +1,11 @@
 /***************************************************************************************
  * # robot_defines
  *
- * Definitions for /mob/living/silicon/robot and its children, including AI shells.
+ * Definitions for /mob/living/silicon/robot_old and its children, including AI shells.
  *
  ***************************************************************************************/
 
-/mob/living/silicon/robot
+/mob/living/silicon/robot_old
 	name = "Cyborg"
 	real_name = "Cyborg"
 	icon = 'icons/mob/robots.dmi'
@@ -145,63 +145,63 @@
  *                          Defining specific kinds of robots
  ***************************************************************************************/
 ///This is the subtype that gets created by robot suits. It's needed so that those kind of borgs don't have a useless cell in them
-/mob/living/silicon/robot/nocell
+/mob/living/silicon/robot_old/nocell
 	cell = null
 
-/mob/living/silicon/robot/shell
+/mob/living/silicon/robot_old/shell
 	shell = TRUE
 	cell = null
 
-/mob/living/silicon/robot/model
+/mob/living/silicon/robot_old/model
 	var/set_model = /obj/item/robot_model
 
-/mob/living/silicon/robot/model/Initialize()
+/mob/living/silicon/robot_old/model/Initialize()
 	. = ..()
 	model.transform_to(set_model)
 
 // --------------------- Clown
-/mob/living/silicon/robot/model/clown
+/mob/living/silicon/robot_old/model/clown
 	set_model = /obj/item/robot_model/clown
 	icon_state = "clown"
 
 // --------------------- Engineering
-/mob/living/silicon/robot/model/engineering
+/mob/living/silicon/robot_old/model/engineering
 	set_model = /obj/item/robot_model/engineering
 	icon_state = "engineer"
 
 // --------------------- Janitor
-/mob/living/silicon/robot/model/janitor
+/mob/living/silicon/robot_old/model/janitor
 	set_model = /obj/item/robot_model/janitor
 	icon_state = "janitor"
 
 // --------------------- Medical
-/mob/living/silicon/robot/model/medical
+/mob/living/silicon/robot_old/model/medical
 	set_model = /obj/item/robot_model/medical
 	icon_state = "medical"
 
 // --------------------- Miner
-/mob/living/silicon/robot/model/miner
+/mob/living/silicon/robot_old/model/miner
 	set_model = /obj/item/robot_model/miner
 	icon_state = "miner"
 
 // --------------------- Peacekeeper
-/mob/living/silicon/robot/model/peacekeeper
+/mob/living/silicon/robot_old/model/peacekeeper
 	set_model = /obj/item/robot_model/peacekeeper
 	icon_state = "peace"
 
 // --------------------- Security
-/mob/living/silicon/robot/model/security
+/mob/living/silicon/robot_old/model/security
 	set_model = /obj/item/robot_model/security
 	icon_state = "sec"
 
 // --------------------- Service (formerly Butler)
-/mob/living/silicon/robot/model/service
+/mob/living/silicon/robot_old/model/service
 	set_model = /obj/item/robot_model/service
 	icon_state = "brobot"
 
 // ------------------------------------------ Syndie borgs
 // --------------------- Syndicate Assault
-/mob/living/silicon/robot/model/syndicate
+/mob/living/silicon/robot_old/model/syndicate
 	icon_state = "synd_sec"
 	faction = list(ROLE_SYNDICATE)
 	bubble_icon = "syndibot"
@@ -217,12 +217,12 @@
 	cell = /obj/item/stock_parts/cell/hyper
 	radio = /obj/item/radio/borg/syndicate
 
-/mob/living/silicon/robot/model/syndicate/proc/show_playstyle()
+/mob/living/silicon/robot_old/model/syndicate/proc/show_playstyle()
 	if(playstyle_string)
 		to_chat(src, playstyle_string)
 
 // --------------------- Syndicate Medical
-/mob/living/silicon/robot/model/syndicate/medical
+/mob/living/silicon/robot_old/model/syndicate/medical
 	icon_state = "synd_medical"
 	playstyle_string = "<span class='big bold'>You are a Syndicate medical cyborg!</span><br>\
 						<b>You are armed with powerful medical tools to aid you in your mission: help the operatives secure the nuclear authentication disk. \
@@ -233,7 +233,7 @@
 	set_model = /obj/item/robot_model/syndicate_medical
 
 // --------------------- Syndicate Saboteur
-/mob/living/silicon/robot/model/syndicate/saboteur
+/mob/living/silicon/robot_old/model/syndicate/saboteur
 	icon_state = "synd_engi"
 	playstyle_string = "<span class='big bold'>You are a Syndicate saboteur cyborg!</span><br>\
 						<b>You are armed with robust engineering tools to aid you in your mission: help the operatives secure the nuclear authentication disk. \
@@ -245,6 +245,6 @@
 	set_model = /obj/item/robot_model/saboteur
 
 // --------------------- Kiltborg (Highlander)
-/mob/living/silicon/robot/model/syndicate/kiltborg
+/mob/living/silicon/robot_old/model/syndicate/kiltborg
 	set_model = /obj/item/robot_model/syndicate/kiltborg
 	icon_state = "peace"

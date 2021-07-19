@@ -249,7 +249,7 @@
 		flash_carbon(M, user, 5, TRUE)
 		return
 	if(issilicon(M))
-		var/mob/living/silicon/robot/flashed_borgo = M
+		var/mob/living/silicon/robot_old/flashed_borgo = M
 		log_combat(user, flashed_borgo, "flashed", src)
 		update_icon(ALL, TRUE)
 		if(!flashed_borgo.flash_act(affect_silicon = TRUE))

@@ -140,7 +140,7 @@
 	var/ventcrawler = HAS_TRAIT(user, TRAIT_VENTCRAWLER_ALWAYS) || HAS_TRAIT(user, TRAIT_VENTCRAWLER_NUDE)
 	if(!iscarbon(user) && !ventcrawler) //only carbon and ventcrawlers can climb into disposal by themselves.
 		if (iscyborg(user))
-			var/mob/living/silicon/robot/borg = user
+			var/mob/living/silicon/robot_old/borg = user
 			if (!borg.model || !borg.model.canDispose)
 				return
 		else

@@ -130,7 +130,7 @@
 	for(var/t in bodyparts)
 		qdel(t)
 
-	var/mob/living/silicon/robot/R = new /mob/living/silicon/robot(loc)
+	var/mob/living/silicon/robot_old/R = new /mob/living/silicon/robot_old(loc)
 
 	R.gender = gender
 	R.invisibility = 0
@@ -158,10 +158,10 @@
 
 	. = R
 	if(R.ckey && is_banned_from(R.ckey, "Cyborg"))
-		INVOKE_ASYNC(R, /mob/living/silicon/robot.proc/replace_banned_cyborg)
+		INVOKE_ASYNC(R, /mob/living/silicon/robot_old.proc/replace_banned_cyborg)
 	qdel(src)
 
-/mob/living/silicon/robot/proc/replace_banned_cyborg()
+/mob/living/silicon/robot_old/proc/replace_banned_cyborg()
 	to_chat(src, "<b>You are job banned from cyborg! Appeal your job ban if you want to avoid this in the future!</b>")
 	ghostize(FALSE)
 

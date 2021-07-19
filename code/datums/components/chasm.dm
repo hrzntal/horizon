@@ -131,7 +131,7 @@
 			return
 
 		if(iscyborg(AM))
-			var/mob/living/silicon/robot/S = AM
+			var/mob/living/silicon/robot_old/S = AM
 			qdel(S.mmi)
 		if(isliving(AM))
 			var/mob/living/L = AM

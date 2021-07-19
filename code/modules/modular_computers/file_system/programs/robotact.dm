@@ -37,7 +37,7 @@
 	var/list/data = get_header_data()
 	if(!iscyborg(user))
 		return data
-	var/mob/living/silicon/robot/borgo = tablet.borgo
+	var/mob/living/silicon/robot_old/borgo = tablet.borgo
 
 	data["name"] = borgo.name
 	data["designation"] = borgo.model //Borgo model type
@@ -78,7 +78,7 @@
 	var/list/data = list()
 	if(!iscyborg(user))
 		return data
-	var/mob/living/silicon/robot/borgo = user
+	var/mob/living/silicon/robot_old/borgo = user
 
 	data["Laws"] = borgo.laws.get_law_list(TRUE, TRUE, FALSE)
 	data["borgLog"] = tablet.borglog
@@ -90,7 +90,7 @@
 	if(.)
 		return
 
-	var/mob/living/silicon/robot/borgo = tablet.borgo
+	var/mob/living/silicon/robot_old/borgo = tablet.borgo
 
 	switch(action)
 		if("coverunlock")

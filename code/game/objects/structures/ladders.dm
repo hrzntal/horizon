@@ -158,7 +158,7 @@
 /obj/structure/ladder/attackby(obj/item/W, mob/user, params)
 	return use(user)
 
-/obj/structure/ladder/attack_robot(mob/living/silicon/robot/R)
+/obj/structure/ladder/attack_robot(mob/living/silicon/robot_old/R)
 	if(R.Adjacent(src))
 		return use(R)
 

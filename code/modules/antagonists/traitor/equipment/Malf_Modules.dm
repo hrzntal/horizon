@@ -318,7 +318,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	SSshuttle.clearHostileEnvironment(src)
 	SSmapping.remove_nuke_threat(src)
 	set_security_level("red")
-	for(var/mob/living/silicon/robot/borg in owner.connected_robots)
+	for(var/mob/living/silicon/robot_old/borg in owner.connected_robots)
 		borg.lamp_doom = FALSE
 		borg.toggle_headlamp(FALSE, TRUE) //forces borg lamp to update
 	owner?.doomsday_device = null
@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	START_PROCESSING(SSfastprocess, src)
 	SSshuttle.registerHostileEnvironment(src)
 	SSmapping.add_nuke_threat(src) //This causes all blue "circuit" tiles on the map to change to animated red icon state.
-	for(var/mob/living/silicon/robot/borg in owner.connected_robots)
+	for(var/mob/living/silicon/robot_old/borg in owner.connected_robots)
 		borg.lamp_doom = TRUE
 		borg.toggle_headlamp(FALSE, TRUE) //forces borg lamp to update
 

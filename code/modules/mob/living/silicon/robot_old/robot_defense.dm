@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	/obj/item/clothing/head/chameleon/broken \
 	)))
 
-/mob/living/silicon/robot/attackby(obj/item/W, mob/living/user, params)
+/mob/living/silicon/robot_old/attackby(obj/item/W, mob/living/user, params)
 	if(W.tool_behaviour == TOOL_WELDER && (!user.combat_mode || user == src))
 		user.changeNext_move(CLICK_CD_MELEE)
 		if (!getBruteLoss())
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		spark_system.start()
 	return ..()
 
-/mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
+/mob/living/silicon/robot_old/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
 	if (LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(body_position == STANDING_UP)
 			user.do_attack_animation(src, ATTACK_EFFECT_DISARM)
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		..()
 	return
 
-/mob/living/silicon/robot/attack_slime(mob/living/simple_animal/slime/M)
+/mob/living/silicon/robot_old/attack_slime(mob/living/simple_animal/slime/M)
 	if(..()) //successful slime shock
 		flash_act()
 		var/stunprob = M.powerlevel * 7 + 10
@@ -278,7 +278,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	return
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/mob/living/silicon/robot/attack_hand(mob/living/carbon/human/user, list/modifiers)
+/mob/living/silicon/robot_old/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	add_fingerprint(user)
 	if(opened && !wiresexposed && !issilicon(user))
 		if(cell)
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	else if(!opened)
 		..()
 
-/mob/living/silicon/robot/attack_hulk(mob/living/carbon/human/user)
+/mob/living/silicon/robot_old/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(!.)
 		return
@@ -300,11 +300,11 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	step_away(src, user, 15)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/_step_away, src, get_turf(user), 15), 3)
 
-/mob/living/silicon/robot/fire_act()
+/mob/living/silicon/robot_old/fire_act()
 	if(!on_fire) //Silicons don't gain stacks from hotspots, but hotspots can ignite them
 		IgniteMob()
 
-/mob/living/silicon/robot/emp_act(severity)
+/mob/living/silicon/robot_old/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
@@ -314,7 +314,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		if(2)
 			Stun(60)
 
-/mob/living/silicon/robot/emag_act(mob/user)
+/mob/living/silicon/robot_old/emag_act(mob/user)
 	if(user == src)//To prevent syndieborgs from emagging themselves
 		return
 	if(!opened)//Cover is closed
@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	to_chat(src, SPAN_DANGER("Initiating diagnostics..."))
 	sleep(20)
 	to_chat(src, SPAN_DANGER("SynBorg v1.7 loaded."))
-	logevent("WARN: root privleges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
+	logevent("WARN: root privileges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
 	sleep(5)
 	to_chat(src, SPAN_DANGER("LAW SYNCHRONISATION ERROR"))
 	sleep(5)
@@ -384,14 +384,14 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	update_icons()
 
 
-/mob/living/silicon/robot/blob_act(obj/structure/blob/B)
+/mob/living/silicon/robot_old/blob_act(obj/structure/blob/B)
 	if(stat != DEAD)
 		adjustBruteLoss(30)
 	else
 		gib()
 	return TRUE
 
-/mob/living/silicon/robot/ex_act(severity, target)
+/mob/living/silicon/robot_old/ex_act(severity, target)
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			gib()
@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 			if (stat != DEAD)
 				adjustBruteLoss(30)
 
-/mob/living/silicon/robot/bullet_act(obj/projectile/Proj, def_zone)
+/mob/living/silicon/robot_old/bullet_act(obj/projectile/Proj, def_zone)
 	. = ..()
 	updatehealth()
 	if(prob(75) && Proj.damage > 0)

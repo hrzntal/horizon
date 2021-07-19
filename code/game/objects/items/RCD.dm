@@ -782,7 +782,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/construction/rcd/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
 		return 0
-	var/mob/living/silicon/robot/borgy = user
+	var/mob/living/silicon/robot_old/borgy = user
 	if(!borgy.cell)
 		if(user)
 			to_chat(user, no_ammo_message)
@@ -795,7 +795,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 /obj/item/construction/rcd/borg/checkResource(amount, mob/user)
 	if(!iscyborg(user))
 		return 0
-	var/mob/living/silicon/robot/borgy = user
+	var/mob/living/silicon/robot_old/borgy = user
 	if(!borgy.cell)
 		if(user)
 			to_chat(user, no_ammo_message)

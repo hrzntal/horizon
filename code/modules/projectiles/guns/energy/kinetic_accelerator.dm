@@ -43,7 +43,7 @@
 		I.play_tool_sound(src, 100)
 		for(var/a in modkits)
 			var/obj/item/borg/upgrade/modkit/M = a
-			M.forceMove(drop_location()) //uninstallation handled in Exited(), or /mob/living/silicon/robot/remove_from_upgrades() for borgs
+			M.forceMove(drop_location()) //uninstallation handled in Exited(), or /mob/living/silicon/robot_old/remove_from_upgrades() for borgs
 	else
 		to_chat(user, SPAN_NOTICE("There are no modifications currently installed."))
 
@@ -258,7 +258,7 @@
 	else
 		..()
 
-/obj/item/borg/upgrade/modkit/action(mob/living/silicon/robot/R)
+/obj/item/borg/upgrade/modkit/action(mob/living/silicon/robot_old/R)
 	. = ..()
 	if (.)
 		for(var/obj/item/gun/energy/kinetic_accelerator/cyborg/H in R.model.modules)
@@ -295,7 +295,7 @@
 		to_chat(user, SPAN_NOTICE("You don't have room(<b>[KA.get_remaining_mod_capacity()]%</b> remaining, [cost]% needed) to install this modkit. Use a crowbar to remove existing modkits."))
 		. = FALSE
 
-/obj/item/borg/upgrade/modkit/deactivate(mob/living/silicon/robot/R, user = usr)
+/obj/item/borg/upgrade/modkit/deactivate(mob/living/silicon/robot_old/R, user = usr)
 	. = ..()
 	if (.)
 		for(var/obj/item/gun/energy/kinetic_accelerator/cyborg/KA in R.model.modules)

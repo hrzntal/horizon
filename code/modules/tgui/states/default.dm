@@ -25,7 +25,7 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	if(. == UI_INTERACTIVE && !ISADVANCEDTOOLUSER(src)) // unhandy living mobs can only look, not touch.
 		return UI_UPDATE
 
-/mob/living/silicon/robot/default_can_use_topic(src_object)
+/mob/living/silicon/robot_old/default_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)
 	if(. <= UI_DISABLED)
 		return
