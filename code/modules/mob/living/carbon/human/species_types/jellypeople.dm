@@ -736,7 +736,7 @@
 	var/list/options = list()
 	for(var/mob/living/Ms in oview(H))
 		options += Ms
-	var/mob/living/M = input("Select who to send your message to:","Send thought to?",null) as null|mob in sortNames(options)
+	var/mob/living/M = tgui_input_list(usr, "Select who to send your message to:", "Send thought to?", sortNames(options))
 	if(!M)
 		return
 	if(M.anti_magic_check(FALSE, FALSE, TRUE, 0))
@@ -830,14 +830,14 @@
 
 /datum/action/innate/slime_change/proc/change_form()
 	var/mob/living/carbon/human/H = owner
-	var/select_alteration = input(H, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Colors","Hair Style", "Facial Hair Style", "Mutant Body Parts", "Markings", "DNA Specifics", "Cancel")
-	if(!select_alteration || select_alteration == "Cancel" || QDELETED(H))
+	var/select_alteration = tgui_input_list(H, "Select what part of your form to alter", "Form Alteration", list("Body Colors","Hair Style", "Facial Hair Style", "Mutant Body Parts", "Markings", "DNA Specifics"))
+	if(!select_alteration || QDELETED(H))
 		return
 	var/datum/dna/DNA = H.dna
 	switch(select_alteration)
 		if("Body Colors")
-			var/color_choice = input(H, "What color would you like to change?", "Form Alteration", "cancel") in list("Primary", "Secondary", "Tertiary", "All", "Cancel")
-			if(!color_choice || color_choice == "Cancel" || QDELETED(H))
+			var/color_choice = tgui_input_list(H, "What color would you like to change?", "Form Alteration", list("Primary", "Secondary", "Tertiary", "All"))
+			if(!color_choice || QDELETED(H))
 				return
 			var/color_target
 			switch(color_choice)
@@ -886,22 +886,22 @@
 			H.update_body()
 			H.update_hair()
 		if("Hair Style")
-			var/new_style = input(owner, "Select a hair style", "Hair Alterations")  as null|anything in GLOB.hairstyles_list
+			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", GLOB.hairstyles_list)
 			if(new_style)
 				H.hairstyle = new_style
 				H.update_hair()
 		if("Facial Hair Style")
-			var/new_style = input(H, "Select a facial hair style", "Hair Alterations")  as null|anything in GLOB.facial_hairstyles_list
+			var/new_style = tgui_input_list(H, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
 			if(new_style)
 				H.facial_hairstyle = new_style
 				H.update_hair()
 		if("Mutant Body Parts")
 			var/list/key_list = DNA.mutant_bodyparts
-			var/chosen_key = input(H, "Select the part you want to alter", "Body Part Alterations")  as null|anything in key_list + "Cancel"
+			var/chosen_key = tgui_input_list(H, "Select the part you want to alter", "Body Part Alterations", key_list + "Cancel")
 			if(!chosen_key || chosen_key == "Cancel")
 				return
 			var/choice_list = GLOB.sprite_accessories[chosen_key]
-			var/chosen_name_key = input(H, "What do you want the part to become?", "Body Part Alterations")  as null|anything in choice_list + "Cancel"
+			var/chosen_name_key = tgui_input_list(H, "What do you want the part to become?", "Body Part Alterations", choice_list + "Cancel")
 			if(!chosen_name_key || chosen_name_key == "Cancel")
 				return
 			var/datum/sprite_accessory/SA = GLOB.sprite_accessories[chosen_key][chosen_name_key]
@@ -944,7 +944,7 @@
 			H.update_mutant_bodyparts()
 		if("Markings")
 			var/list/candidates = GLOB.body_marking_sets
-			var/chosen_name = input(H, "Select which set of markings would you like to change into", "Marking Alterations")  as null|anything in candidates + "Cancel"
+			var/chosen_name = tgui_input_list(H, "Select which set of markings would you like to change into", "Marking Alterations", candidates + "Cancel")
 			if(!chosen_name || chosen_name == "Cancel")
 				return
 			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[chosen_name]
@@ -952,12 +952,12 @@
 			H.icon_render_key = "" //Just in case
 			H.update_body()
 		if("DNA Specifics")
-			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size", "Cancel")
-			if(!dna_alteration || dna_alteration == "Cancel")
+			var/dna_alteration = tgui_input_list(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size"))
+			if(!dna_alteration)
 				return
 			switch(dna_alteration)
 				if("Breasts Size")
-					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
+					var/new_size = tgui_input_list(H, "Choose your character's breasts size:", "DNA Alteration", GLOB.preference_breast_sizes)
 					if(new_size)
 						DNA.features["breasts_size"] = breasts_cup_to_size(new_size)
 						var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
@@ -984,7 +984,7 @@
 						if(PP)
 							PP.set_size(DNA.features["penis_size"])
 				if("Penis Sheath")
-					var/new_sheath = input(H, "Choose your penis sheath", "DNA Alteration") as null|anything in SHEATH_MODES
+					var/new_sheath = tgui_input_list(H, "Choose your penis sheath", "DNA Alteration", SHEATH_MODES)
 					if(new_sheath)
 						DNA.features["penis_sheath"] = new_sheath
 						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
@@ -1001,7 +1001,7 @@
 						if(PP)
 							PP.girth = DNA.features["penis_girth"]
 				if("Balls Size")
-					var/new_size = input(H, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
+					var/new_size = tgui_input_list(H, "Choose your character's balls size:", "Character Preference", GLOB.preference_balls_sizes)
 					if(new_size)
 						DNA.features["balls_size"] = balls_description_to_size(new_size)
 						var/obj/item/organ/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)

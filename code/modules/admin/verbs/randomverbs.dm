@@ -65,7 +65,7 @@
 		return
 
 	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
+		sender = tgui_input_list(usr, "Who is the message from?", "Sender", list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE))
 		if(!sender)
 			return
 
@@ -105,7 +105,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
+		M = tgui_input_list(usr, "Direct narrate to whom?", "Active Players", GLOB.player_list)
 
 	if(!M)
 		return
@@ -250,13 +250,13 @@
 				continue //we have a live body we are tied to
 			candidates += M.ckey
 		if(candidates.len)
-			ckey = input("Pick the player you want to respawn as a xeno.", "Suitable Candidates") as null|anything in sortKey(candidates)
+			ckey = tgui_input_list(usr, "Pick the player you want to respawn as a xeno.", "Suitable Candidates", sortKey(candidates))
 		else
 			to_chat(usr, SPAN_DANGER("Error: create_xeno(): no suitable candidates."), confidential = TRUE)
 	if(!istext(ckey))
 		return FALSE
 
-	var/alien_caste = input(usr, "Please choose which caste to spawn.","Pick a caste",null) as null|anything in list("Queen","Praetorian","Hunter","Sentinel","Drone","Larva")
+	var/alien_caste = tgui_input_list(usr, "Please choose which caste to spawn.", "Pick a caste", list("Queen","Praetorian","Hunter","Sentinel","Drone","Larva"))
 	var/obj/effect/landmark/spawn_here = GLOB.xeno_spawn.len ? pick(GLOB.xeno_spawn) : null
 	var/mob/living/carbon/alien/new_xeno
 	switch(alien_caste)
@@ -796,7 +796,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","red","delta")
+	var/level = tgui_input_list(usr, "Select security level to change to", "Set Security Level", list("green","blue","red","delta"))
 	if(level)
 		set_security_level(level)
 
@@ -866,7 +866,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		return
 
-	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/weather), /proc/cmp_typepaths_asc)
+	var/weather_type = tgui_input_list(usr, "Choose a weather", "Weather", sortList(subtypesof(/datum/weather), /proc/cmp_typepaths_asc))
 	if(!weather_type)
 		return
 
@@ -1034,7 +1034,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 
-	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in GLOB.smites
+	var/punishment = tgui_input_list(usr, "Choose a punishment", "DIVINE SMITING", GLOB.smites)
 
 	if(QDELETED(target) || !punishment)
 		return
@@ -1152,7 +1152,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!D)
 		return
 
-	var/add_or_remove = input("Remove/Add?", "Trait Remove/Add") as null|anything in list("Add","Remove")
+	var/add_or_remove = tgui_input_list(usr, "Remove/Add?", "Trait Remove/Add", list("Add","Remove"))
 	if(!add_or_remove)
 		return
 	var/list/available_traits = list()
@@ -1169,7 +1169,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				var/name = GLOB.trait_name_map[trait] || trait
 				available_traits[name] = trait
 
-	var/chosen_trait = input("Select trait to modify", "Trait") as null|anything in sortList(available_traits)
+	var/chosen_trait = tgui_input_list(usr, "Select trait to modify", "Trait", sortList(available_traits))
 	if(!chosen_trait)
 		return
 	chosen_trait = available_traits[chosen_trait]
@@ -1181,14 +1181,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				D.AddElement(/datum/element/movetype_handler)
 			ADD_TRAIT(D,chosen_trait,source)
 		if("Remove")
-			var/specific = input("All or specific source ?", "Trait Remove/Add") as null|anything in list("All","Specific")
+			var/specific = tgui_input_list(usr, "All or specific source ?", "Trait Remove/Add", list("All","Specific"))
 			if(!specific)
 				return
 			switch(specific)
 				if("All")
 					source = null
 				if("Specific")
-					source = input("Source to be removed","Trait Remove/Add") as null|anything in sortList(D.status_traits[chosen_trait])
+					source = tgui_input_list(usr, "Source to be removed","Trait Remove/Add", sortList(D.status_traits[chosen_trait]))
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)

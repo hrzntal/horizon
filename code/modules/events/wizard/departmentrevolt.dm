@@ -13,7 +13,7 @@
 	if(!check_rights(R_FUN))
 		return
 	var/list/options = list("Random", "Uprising of Assistants", "Medical", "Engineering", "Science", "Supply", "Service", "Security")
-	picked_department = input(usr,"Which department should revolt?","Select a department") as null|anything in options
+	picked_department = tgui_input_list(usr, "Which department should revolt?", "Select a department", options)
 
 	var/announce_question = tgui_alert(usr, "Announce This New Independent State?", "Secession", list("Announce", "No Announcement"))
 	if(announce_question == "Announce")

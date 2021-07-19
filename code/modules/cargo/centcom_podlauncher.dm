@@ -403,7 +403,7 @@
 				specificTarget = null
 				return
 			var/list/mobs = getpois()//code stolen from observer.dm
-			var/inputTarget = input("Select a mob! (Smiting does this automatically)", "Target", null, null) as null|anything in mobs
+			var/inputTarget = tgui_input_list(usr, "Select a mob!\n(Smiting does this automatically)", "Target", mobs)
 			if (isnull(inputTarget))
 				return
 			var/mob/target = mobs[inputTarget]

@@ -306,13 +306,13 @@
 		return
 	//Full list of exposable genitals created
 	var/obj/item/organ/genital/picked_organ
-	picked_organ = input(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals") as null|anything in genital_list
+	picked_organ = tgui_input_list(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals", genital_list)
 	if(picked_organ && (picked_organ in internal_organs))
 		var/list/gen_vis_trans = list("Never show" = GENITAL_NEVER_SHOW,
 												"Hidden by clothes" = GENITAL_HIDDEN_BY_CLOTHES,
 												"Always show" = GENITAL_ALWAYS_SHOW
 												)
-		var/picked_visibility = input(src, "Choose visibility setting", "Expose/Hide genitals") as null|anything in gen_vis_trans
+		var/picked_visibility = tgui_input_list(src, "Choose visibility setting", "Expose/Hide genitals", gen_vis_trans)
 		if(picked_visibility && picked_organ && (picked_organ in internal_organs))
 			picked_organ.visibility_preference = gen_vis_trans[picked_visibility]
 			update_body()
@@ -335,13 +335,13 @@
 		return
 	//Full list of exposable genitals created
 	var/obj/item/organ/genital/picked_organ
-	picked_organ = input(src, "Choose which genitalia to change arousal", "Expose/Hide genitals") as null|anything in genital_list
+	picked_organ = tgui_input_list(src, "Choose which genitalia to change arousal", "Expose/Hide genitals", genital_list)
 	if(picked_organ && (picked_organ in internal_organs))
 		var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
 												"Partly aroused" = AROUSAL_PARTIAL,
 												"Very aroused" = AROUSAL_FULL
 												)
-		var/picked_arousal = input(src, "Choose arousal", "Toggle Arousal") as null|anything in gen_arous_trans
+		var/picked_arousal = tgui_input_list(src, "Choose arousal", "Toggle Arousal", gen_arous_trans)
 		if(picked_arousal && picked_organ && (picked_organ in internal_organs))
 			picked_organ.aroused = gen_arous_trans[picked_arousal]
 			picked_organ.update_sprite_suffix()

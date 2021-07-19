@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(objectives)
 	if(target?.current)
 		def_value = target.current
 
-	var/mob/new_target = input(admin,"Select target:", "Objective target", def_value) as null|anything in possible_targets
+	var/mob/new_target = tgui_input_list(admin, "Select target:", "Objective target", possible_targets, default = def_value)
 	if (!new_target)
 		return
 
@@ -617,7 +617,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 
 /datum/objective/steal/admin_edit(mob/admin)
 	var/list/possible_items_all = GLOB.possible_items
-	var/new_target = input(admin,"Select target:", "Objective target", steal_target) as null|anything in sortNames(possible_items_all)+"custom"
+	var/new_target = tgui_input_list(admin, "Select target:", "Objective target", sortNames(possible_items_all)+"custom", default = steal_target)
 	if (!new_target)
 		return
 
@@ -885,7 +885,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/destroy/admin_edit(mob/admin)
 	var/list/possible_targets = active_ais(1)
 	if(possible_targets.len)
-		var/mob/new_target = input(admin,"Select target:", "Objective target") as null|anything in sortNames(possible_targets)
+		var/mob/new_target = tgui_input_list(admin, "Select target:", "Objective target", sortNames(possible_targets))
 		target = new_target.mind
 	else
 		to_chat(admin, SPAN_BOLDWARNING("No active AIs with minds."))

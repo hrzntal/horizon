@@ -454,7 +454,7 @@
 		if(tgui_alert(usr, "Are you sure? An admin has already delayed the round end for the following reason: [SSticker.admin_delay_notice]", "Confirmation", list("Yes", "No")) != "Yes")
 			return FALSE
 
-	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
+	var/result = tgui_input_list(usr, "Select reboot method", "World Reboot", options, default = options[1])
 	if(result)
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Reboot World") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		var/init_by = "Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]."

@@ -99,7 +99,7 @@
 	if(href_list["edit_mode"])
 		var/new_mode
 		var/mode_list = list("Local (normal sound)" = SOUND_EMITTER_LOCAL, "Direct (not affected by environment/location)" = SOUND_EMITTER_DIRECT)
-		new_mode = input(user, "Choose a new mode.", "Sound Emitter") as null|anything in mode_list
+		new_mode = tgui_input_list(user, "Choose a new mode.", "Sound Emitter", mode_list)
 		if(!new_mode)
 			return
 		motus_operandi = mode_list[new_mode]
@@ -107,7 +107,7 @@
 	if(href_list["edit_range"])
 		var/new_range
 		var/range_list = list("Radius (all mobs within a radius)" = SOUND_EMITTER_RADIUS, "Z-Level (all mobs on the same z)" = SOUND_EMITTER_ZLEVEL, "Global (all players)" = SOUND_EMITTER_GLOBAL)
-		new_range = input(user, "Choose a new range.", "Sound Emitter") as null|anything in range_list
+		new_range = tgui_input_list(user, "Choose a new range.", "Sound Emitter", range_list)
 		if(!new_range)
 			return
 		emitter_range = range_list[new_range]

@@ -292,7 +292,7 @@
 				message_servers += M
 
 			if(message_servers.len > 1)
-				linkedServer = input(usr, "Please select a server.", "Select a server.", null) as null|anything in message_servers
+				linkedServer = tgui_input_list(usr, "Please select a server.", "Select a server.", message_servers)
 				message = SPAN_ALERT("NOTICE: Server selected.")
 			else if(message_servers.len > 0)
 				linkedServer = message_servers[1]
@@ -394,7 +394,7 @@
 						//Get out list of viable PDAs
 						var/list/obj/item/pda/sendPDAs = get_viewable_pdas()
 						if(GLOB.PDAs && GLOB.PDAs.len > 0)
-							customrecepient = input(usr, "Select a PDA from the list.") as null|anything in sendPDAs
+							customrecepient = tgui_input_list(usr, "Select a PDA from the list.", sendPDAs)
 						else
 							customrecepient = null
 

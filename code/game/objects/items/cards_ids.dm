@@ -1195,7 +1195,7 @@
 							trim_list[fake_trim_name] = trim_path
 
 					var/selected_trim_path
-					selected_trim_path = input("Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", selected_trim_path) as null|anything in sortList(trim_list, /proc/cmp_typepaths_asc)
+					selected_trim_path = tgui_input_list(user, "Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", sortList(trim_list, /proc/cmp_typepaths_asc), default = selected_trim_path)
 					if(selected_trim_path)
 						SSid_access.apply_trim_to_chameleon_card(src, trim_list[selected_trim_path])
 

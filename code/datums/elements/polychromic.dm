@@ -31,7 +31,7 @@
 	if(!length(target.color)) //Something happened to our color and its no longer a matrix, uh oh
 		return ..()
 	var/list/choices = list("Primary" = 0, "Secondary" = 1, "Tertiary" = 2)
-	var/choice = input(usr ,"Which color would you like to change?", "Polychromic") as null|anything in choices
+	var/choice = tgui_input_list(usr ,"Which color would you like to change?", "Polychromic", choices)
 	if(choice)
 		var/color = input(usr, "Choose your new color:", "Polychromic") as color|null
 		if(color && target && in_range(target, usr))

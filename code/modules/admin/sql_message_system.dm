@@ -73,7 +73,7 @@
 				expiry = query_validate_expire_time.item[1]
 			qdel(query_validate_expire_time)
 	if(type == "note" && isnull(note_severity))
-		note_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
+		note_severity = tgui_input_list(usr, "Set the severity of the note.", "Severity", list("High", "Medium", "Minor", "None"))
 		if(!note_severity)
 			return
 	var/datum/db_query/query_create_message = SSdbcore.NewQuery({"
@@ -303,7 +303,7 @@
 			old_severity = "NA"
 		var/editor_key = usr.key
 		var/editor_ckey = usr.ckey
-		var/new_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
+		var/new_severity = tgui_input_list(usr, "Set the severity of the note.", "Severity", list("high", "medium", "minor", "none")) //lowercase for edit log consistency)
 		if(!new_severity)
 			qdel(query_find_edit_note_severity)
 			return

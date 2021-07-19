@@ -288,7 +288,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			to_chat(user, SPAN_DANGER("You can't put [target] into [src]. [target.p_theyre(capitalized = TRUE)] conscious."))
 		return
 
-	if(target == user && (tgalert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", "Yes", "No") != "Yes"))
+	if(target == user && (tgui_alert(target, "Would you like to enter cryosleep?", "Enter Cryopod?", list("Yes", "No")) != "Yes"))
 		return
 
 	if(user != target && round((world.time - target.lastclienttime) / (1 MINUTES), 1) <= CONFIG_GET(number/cryo_min_ssd_time))
